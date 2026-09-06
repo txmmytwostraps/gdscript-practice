@@ -3,29 +3,41 @@
   "title": "Greeting",
   "concept": "strings",
   "difficulty": 0,
-  "prompt": "Return \"Hello, \" followed by the name and an exclamation mark. For \"Tim\" that is \"Hello, Tim!\".",
-  "signature": "func solve(name: String) -> String:",
-  "starter": "func solve(name: String) -> String:\n\treturn name",
+  "prompt": "Return \"Hello, \" followed by the name and an exclamation mark.",
+  "signature": "func solve(name):",
+  "starter": "func solve(name):\n\treturn name",
   "tests": [
     {
+      "name": "Tim",
       "args": [
         "Tim"
       ],
       "expect": "Hello, Tim!"
     },
     {
+      "name": "Godot",
       "args": [
         "Godot"
       ],
       "expect": "Hello, Godot!"
     },
     {
+      "name": "Empty name",
       "args": [
         ""
       ],
       "expect": "Hello, !"
     }
   ],
-  "hint": "Text joins together with +: `\"Hello, \" + name + \"!\"`.",
-  "solution": "func solve(name: String) -> String:\n\treturn \"Hello, \" + name + \"!\""
+  "hints": [
+    "Text joins together with +.",
+    "`return \"Hello, \" + name + \"!\"`"
+  ],
+  "docs": [
+    {
+      "name": "text + text",
+      "what": "Joins two strings into one. Numbers must be turned into text first."
+    }
+  ],
+  "solution": "func solve(name):\n\treturn \"Hello, \" + name + \"!\""
 }

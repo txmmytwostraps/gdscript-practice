@@ -4,10 +4,11 @@
   "concept": "gq-strings",
   "difficulty": 1,
   "prompt": "Return an array of the words in the text, which are separated by single spaces.",
-  "signature": "func solve(text: String) -> Array:",
-  "starter": "func solve(text: String) -> Array:\n\treturn [text]",
+  "signature": "func solve(text):",
+  "starter": "func solve(text):\n\treturn [text]",
   "tests": [
     {
+      "name": "Three words",
       "args": [
         "one two three"
       ],
@@ -18,6 +19,7 @@
       ]
     },
     {
+      "name": "One word",
       "args": [
         "solo"
       ],
@@ -26,6 +28,15 @@
       ]
     }
   ],
-  "hint": "split takes the separator and gives back the pieces.",
-  "solution": "func solve(text: String) -> Array:\n\treturn text.split(\" \")"
+  "hints": [
+    "split takes the separator and gives back the pieces.",
+    "`return text.split(\" \")`"
+  ],
+  "docs": [
+    {
+      "name": "text.split(separator)",
+      "what": "Returns an array of the pieces between each separator."
+    }
+  ],
+  "solution": "func solve(text):\n\treturn text.split(\" \")"
 }

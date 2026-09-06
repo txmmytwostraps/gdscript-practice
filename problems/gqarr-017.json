@@ -3,11 +3,12 @@
   "title": "Double each",
   "concept": "gq-arrays",
   "difficulty": 1,
-  "prompt": "Return a new array where every number is doubled. Leave the original alone.",
-  "signature": "func solve(nums: Array) -> Array:",
-  "starter": "func solve(nums: Array) -> Array:\n\treturn nums",
+  "prompt": "Return a new array where every number is doubled; leave the original alone. [1, 2, 3] becomes [2, 4, 6].",
+  "signature": "func solve(nums):",
+  "starter": "func solve(nums):\n\treturn nums",
   "tests": [
     {
+      "name": "[1, 2, 3] becomes [2, 4, 6]",
       "args": [
         [
           1,
@@ -22,12 +23,14 @@
       ]
     },
     {
+      "name": "Empty stays empty",
       "args": [
         []
       ],
       "expect": []
     },
     {
+      "name": "Negatives and zero",
       "args": [
         [
           -1,
@@ -40,6 +43,19 @@
       ]
     }
   ],
-  "hint": "Make an empty result array, then append each doubled number as you loop.",
-  "solution": "func solve(nums: Array) -> Array:\n\tvar result = []\n\tfor n in nums:\n\t\tresult.append(n * 2)\n\treturn result"
+  "hints": [
+    "Make an empty result array, then append each doubled number as you loop.",
+    "`result.append(n * 2)` inside the loop."
+  ],
+  "docs": [
+    {
+      "name": "for item in list:",
+      "what": "Runs the indented lines once per item, with item holding each value in turn."
+    },
+    {
+      "name": "list.append(value)",
+      "what": "Adds value to the end of the array. Returns nothing."
+    }
+  ],
+  "solution": "func solve(nums):\n\tvar result = []\n\tfor n in nums:\n\t\tresult.append(n * 2)\n\treturn result"
 }

@@ -3,32 +3,48 @@
   "title": "Return the absolute value",
   "concept": "gq-return",
   "difficulty": 0,
-  "prompt": "Write `distance_from_zero`, which returns how far a number is from zero, always positive. The built-in abs() does this. solve returns distance_from_zero(n).",
-  "signature": "func solve(n: int) -> int:",
-  "starter": "func solve(n: int) -> int:\n\treturn n",
-  "require_methods": [
-    "distance_from_zero"
-  ],
+  "prompt": "Write `distance_from_zero`, which returns how far a number is from zero, always positive, using the built-in abs(). `solve` returns distance_from_zero(n).",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\treturn n",
   "tests": [
     {
+      "name": "-5 is 5 from zero",
       "args": [
         -5
       ],
       "expect": 5
     },
     {
+      "name": "3 is 3 from zero",
       "args": [
         3
       ],
       "expect": 3
     },
     {
+      "name": "0 is 0 from zero",
       "args": [
         0
       ],
       "expect": 0
     }
   ],
-  "hint": "Wrapping a built-in in your own well-named function is a normal thing to do.",
-  "solution": "func solve(n: int) -> int:\n\treturn distance_from_zero(n)\n\nfunc distance_from_zero(value: int) -> int:\n\treturn abs(value)"
+  "hints": [
+    "Wrapping a built-in in your own well-named function is a normal thing to do.",
+    "`return abs(value)` inside distance_from_zero."
+  ],
+  "docs": [
+    {
+      "name": "return value",
+      "what": "Ends the function and hands value back to whoever called it."
+    },
+    {
+      "name": "abs(n)",
+      "what": "Returns n without its sign: abs(-5) is 5."
+    }
+  ],
+  "solution": "func solve(n):\n\treturn distance_from_zero(n)\n\nfunc distance_from_zero(value):\n\treturn abs(value)",
+  "require_methods": [
+    "distance_from_zero"
+  ]
 }

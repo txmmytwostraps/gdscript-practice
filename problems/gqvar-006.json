@@ -1,31 +1,39 @@
 {
   "id": "gqvar-006",
-  "title": "Update with +=",
+  "title": "Pick up coins",
   "concept": "gq-variables",
   "difficulty": 0,
-  "prompt": "The variable `coins` starts with the value of n. Add the number `5` to it using `+=`. Return coins.",
-  "signature": "func solve(n: int) -> int:",
-  "starter": "func solve(n: int) -> int:\n\tvar coins = n\n\treturn coins",
+  "prompt": "The robot's `coins` start at whatever n is. It picks up 5 more. Add the number `5` to coins using `+=`, then return coins. solve(10) is 15.",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\tvar coins = n\n\treturn coins",
   "tests": [
     {
-      "args": [
-        0
-      ],
-      "expect": 5
-    },
-    {
+      "name": "10 coins plus 5 is 15",
       "args": [
         10
       ],
       "expect": 15
     },
     {
+      "name": "0 coins plus 5 is 5",
+      "args": [
+        0
+      ],
+      "expect": 5
+    },
+    {
+      "name": "A debt of 5 becomes 0",
       "args": [
         -5
       ],
       "expect": 0
     }
   ],
-  "hint": "`coins += 5` means the same as `coins = coins + 5`.",
-  "solution": "func solve(n: int) -> int:\n\tvar coins = n\n\tcoins += 5\n\treturn coins"
+  "hints": [
+    "`+=` adds to a variable and stores the result back in it.",
+    "`coins += 5` means the same as `coins = coins + 5`.",
+    "Put that line between the var line and the return."
+  ],
+  "docs": [],
+  "solution": "func solve(n):\n\tvar coins = n\n\tcoins += 5\n\treturn coins"
 }

@@ -3,9 +3,9 @@
   "title": "Name the max health",
   "concept": "gq-readable",
   "difficulty": 0,
-  "prompt": "A player starts with 100 health. Name that number `MAX_HEALTH` and use it to work out the health left after damage.",
-  "signature": "func solve(damage: int) -> int:",
-  "starter": "func solve(damage: int) -> int:\n\treturn 100 - damage",
+  "prompt": "The robot starts with 100 health. Name that number `MAX_HEALTH` and use it to work out the health left after damage.",
+  "signature": "func solve(damage):",
+  "starter": "func solve(damage):\n\treturn 100 - damage",
   "require_names": [
     "MAX_HEALTH"
   ],
@@ -14,24 +14,36 @@
   ],
   "tests": [
     {
+      "name": "30 damage leaves 70",
       "args": [
         30
       ],
       "expect": 70
     },
     {
+      "name": "No damage leaves 100",
       "args": [
         0
       ],
       "expect": 100
     },
     {
+      "name": "100 damage leaves 0",
       "args": [
         100
       ],
       "expect": 0
     }
   ],
-  "hint": "Which number in the starter is the maximum health? That is the one to name.",
-  "solution": "func solve(damage: int) -> int:\n\tconst MAX_HEALTH = 100\n\treturn MAX_HEALTH - damage"
+  "hints": [
+    "Which number in the starter is the maximum health? That is the one to name.",
+    "`const MAX_HEALTH = 100`"
+  ],
+  "docs": [
+    {
+      "name": "const NAME = value",
+      "what": "Declares a named value that never changes. Written in CAPITALS by convention."
+    }
+  ],
+  "solution": "func solve(damage):\n\tconst MAX_HEALTH = 100\n\treturn MAX_HEALTH - damage"
 }

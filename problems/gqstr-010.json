@@ -3,11 +3,12 @@
   "title": "Replace",
   "concept": "gq-strings",
   "difficulty": 0,
-  "prompt": "Return the text with every copy of old swapped for new.",
-  "signature": "func solve(text: String, old: String, new: String) -> String:",
-  "starter": "func solve(text: String, old: String, new: String) -> String:\n\treturn text",
+  "prompt": "Return the text with every copy of old swapped for new. \"a-b-c\" with \"-\" replaced by \" \" is \"a b c\".",
+  "signature": "func solve(text, old, new):",
+  "starter": "func solve(text, old, new):\n\treturn text",
   "tests": [
     {
+      "name": "Dashes become spaces",
       "args": [
         "a-b-c",
         "-",
@@ -16,6 +17,7 @@
       "expect": "a b c"
     },
     {
+      "name": "Every l becomes L",
       "args": [
         "hello",
         "l",
@@ -24,6 +26,7 @@
       "expect": "heLLo"
     },
     {
+      "name": "Nothing to replace",
       "args": [
         "hi",
         "z",
@@ -32,6 +35,15 @@
       "expect": "hi"
     }
   ],
-  "hint": "The replace method takes what to look for and what to put in its place.",
-  "solution": "func solve(text: String, old: String, new: String) -> String:\n\treturn text.replace(old, new)"
+  "hints": [
+    "The replace method takes what to look for and what to put in its place.",
+    "`return text.replace(old, new)`"
+  ],
+  "docs": [
+    {
+      "name": "text.replace(old, new)",
+      "what": "Returns the text with every copy of old swapped for new."
+    }
+  ],
+  "solution": "func solve(text, old, new):\n\treturn text.replace(old, new)"
 }

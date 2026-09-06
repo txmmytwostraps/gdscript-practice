@@ -3,11 +3,12 @@
   "title": "Scale a rect",
   "concept": "gq-rect",
   "difficulty": 1,
-  "prompt": "Return the rectangle with both its position and its size multiplied by factor, as if the whole drawing were zoomed from the top-left corner of the screen.",
-  "signature": "func solve(r: Rect2, factor: float) -> Rect2:",
-  "starter": "func solve(r: Rect2, factor: float) -> Rect2:\n\treturn Rect2(r.position, r.size * factor)",
+  "prompt": "Return the rectangle with both its position and its size multiplied by factor, as if the whole drawing were zoomed from the top-left corner of the screen. The starter scales only the size.",
+  "signature": "func solve(r, factor) -> Rect2:",
+  "starter": "func solve(r, factor) -> Rect2:\n\treturn Rect2(r.position, r.size * factor)",
   "tests": [
     {
+      "name": "Zoom by 2",
       "args": [
         {
           "$rect": [
@@ -29,6 +30,7 @@
       }
     },
     {
+      "name": "Zoom by 0.5",
       "args": [
         {
           "$rect": [
@@ -50,6 +52,23 @@
       }
     }
   ],
-  "hint": "The starter scales only the size. The position needs the same treatment.",
-  "solution": "func solve(r: Rect2, factor: float) -> Rect2:\n\treturn Rect2(r.position * factor, r.size * factor)"
+  "hints": [
+    "The position needs the same treatment as the size.",
+    "`return Rect2(r.position * factor, r.size * factor)`"
+  ],
+  "docs": [
+    {
+      "name": "Rect2(x, y, width, height)",
+      "what": "Makes a rectangle from a top-left corner and a size. Also Rect2(position, size) with two vectors."
+    },
+    {
+      "name": "r.position, r.size, r.end",
+      "what": "The top-left corner, the width and height, and the bottom-right corner, all Vector2."
+    },
+    {
+      "name": "a + b, a - b, v * number, v / number",
+      "what": "Vectors add and subtract part by part, and scale by a plain number."
+    }
+  ],
+  "solution": "func solve(r, factor) -> Rect2:\n\treturn Rect2(r.position * factor, r.size * factor)"
 }

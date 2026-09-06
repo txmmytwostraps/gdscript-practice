@@ -4,8 +4,8 @@
   "concept": "gq-readable",
   "difficulty": 0,
   "prompt": "A critical hit does 1.5 times the normal damage. Name the 1.5 `CRIT_MULTIPLIER` and use it.",
-  "signature": "func solve(damage: float) -> float:",
-  "starter": "func solve(damage: float) -> float:\n\treturn damage * 1.5",
+  "signature": "func solve(damage) -> float:",
+  "starter": "func solve(damage) -> float:\n\treturn damage * 1.5",
   "require_names": [
     "CRIT_MULTIPLIER"
   ],
@@ -14,24 +14,36 @@
   ],
   "tests": [
     {
+      "name": "10 damage crits for 15",
       "args": [
         10
       ],
       "expect": 15
     },
     {
+      "name": "0 damage crits for 0",
       "args": [
         0
       ],
       "expect": 0
     },
     {
+      "name": "7 damage crits for 10.5",
       "args": [
         7
       ],
       "expect": 10.5
     }
   ],
-  "hint": "A constant can hold a decimal just as easily as a whole number.",
-  "solution": "func solve(damage: float) -> float:\n\tconst CRIT_MULTIPLIER = 1.5\n\treturn damage * CRIT_MULTIPLIER"
+  "hints": [
+    "A constant can hold a decimal.",
+    "`const CRIT_MULTIPLIER = 1.5`"
+  ],
+  "docs": [
+    {
+      "name": "const NAME = value",
+      "what": "Declares a named value that never changes. Written in CAPITALS by convention."
+    }
+  ],
+  "solution": "func solve(damage) -> float:\n\tconst CRIT_MULTIPLIER = 1.5\n\treturn damage * CRIT_MULTIPLIER"
 }

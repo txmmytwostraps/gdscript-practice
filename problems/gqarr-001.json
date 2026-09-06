@@ -1,13 +1,14 @@
 {
   "id": "gqarr-001",
-  "title": "Make an array of three",
+  "title": "Make an inventory",
   "concept": "gq-arrays",
   "difficulty": 0,
-  "prompt": "Return an array holding the numbers 10, 20 and 30, in that order.",
-  "signature": "func solve() -> Array:",
-  "starter": "func solve() -> Array:\n\treturn []",
+  "prompt": "The robot carries three part numbers. Return an array holding 10, 20 and 30, in that order.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\treturn []",
   "tests": [
     {
+      "name": "Returns [10, 20, 30]",
       "args": [],
       "expect": [
         10,
@@ -16,6 +17,10 @@
       ]
     }
   ],
-  "hint": "Square brackets with commas between the items.",
-  "solution": "func solve() -> Array:\n\treturn [10, 20, 30]"
+  "hints": [
+    "Square brackets with commas between the items.",
+    "`return [10, 20, 30]`"
+  ],
+  "docs": [],
+  "solution": "func solve():\n\treturn [10, 20, 30]"
 }

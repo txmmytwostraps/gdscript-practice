@@ -3,9 +3,9 @@
   "title": "Name the gravity",
   "concept": "gq-readable",
   "difficulty": 0,
-  "prompt": "980 is how fast things fall in this game. Name it `GRAVITY` and use the name in the calculation.",
-  "signature": "func solve(velocity: float, seconds: float) -> float:",
-  "starter": "func solve(velocity: float, seconds: float) -> float:\n\treturn velocity + 980 * seconds",
+  "prompt": "980 is how fast the robot falls. Name it `GRAVITY` and use the name in the calculation.",
+  "signature": "func solve(velocity, seconds) -> float:",
+  "starter": "func solve(velocity, seconds) -> float:\n\treturn velocity + 980 * seconds",
   "require_names": [
     "GRAVITY"
   ],
@@ -14,6 +14,7 @@
   ],
   "tests": [
     {
+      "name": "From 0, one second of gravity is 980",
       "args": [
         0,
         1
@@ -21,6 +22,7 @@
       "expect": 980
     },
     {
+      "name": "100 plus half a second is 590",
       "args": [
         100,
         0.5
@@ -28,6 +30,7 @@
       "expect": 590
     },
     {
+      "name": "No time passes: unchanged",
       "args": [
         0,
         0
@@ -35,6 +38,16 @@
       "expect": 0
     }
   ],
-  "hint": "Declare the constant first, then swap the number for the name. Only the name changes; the maths stays the same.",
-  "solution": "func solve(velocity: float, seconds: float) -> float:\n\tconst GRAVITY = 980\n\treturn velocity + GRAVITY * seconds"
+  "hints": [
+    "Declare the constant first, then swap the number for the name.",
+    "`const GRAVITY = 980`",
+    "Only the name changes in the maths."
+  ],
+  "docs": [
+    {
+      "name": "const NAME = value",
+      "what": "Declares a named value that never changes. Written in CAPITALS by convention."
+    }
+  ],
+  "solution": "func solve(velocity, seconds) -> float:\n\tconst GRAVITY = 980\n\treturn velocity + GRAVITY * seconds"
 }

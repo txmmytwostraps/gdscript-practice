@@ -4,10 +4,11 @@
   "concept": "comparisons",
   "difficulty": 0,
   "prompt": "Return true if a and b are different numbers, false if they are the same.",
-  "signature": "func solve(a: int, b: int) -> bool:",
-  "starter": "func solve(a: int, b: int) -> bool:\n\treturn false",
+  "signature": "func solve(a, b):",
+  "starter": "func solve(a, b):\n\treturn false",
   "tests": [
     {
+      "name": "1 and 2 differ",
       "args": [
         1,
         2
@@ -15,6 +16,7 @@
       "expect": true
     },
     {
+      "name": "3 and 3 are the same",
       "args": [
         3,
         3
@@ -22,6 +24,7 @@
       "expect": false
     },
     {
+      "name": "0 and 0 are the same",
       "args": [
         0,
         0
@@ -29,6 +32,7 @@
       "expect": false
     },
     {
+      "name": "-1 and 1 differ",
       "args": [
         -1,
         1
@@ -36,6 +40,15 @@
       "expect": true
     }
   ],
-  "hint": "\"Not equal\" is written `!=`.",
-  "solution": "func solve(a: int, b: int) -> bool:\n\treturn a != b"
+  "hints": [
+    "Not equal is written !=.",
+    "`return a != b`"
+  ],
+  "docs": [
+    {
+      "name": "==  !=  <  <=  >  >=",
+      "what": "Comparisons. Each gives true or false."
+    }
+  ],
+  "solution": "func solve(a, b):\n\treturn a != b"
 }

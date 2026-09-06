@@ -3,35 +3,48 @@
   "title": "Square",
   "concept": "functions",
   "difficulty": 0,
-  "prompt": "Return n squared (n times itself).",
-  "signature": "func solve(n: int) -> int:",
-  "starter": "func solve(n: int) -> int:\n\treturn 0",
+  "prompt": "Return n squared, n times itself.",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\treturn 0",
   "tests": [
     {
+      "name": "3 squared is 9",
       "args": [
         3
       ],
       "expect": 9
     },
     {
+      "name": "-4 squared is 16",
       "args": [
         -4
       ],
       "expect": 16
     },
     {
+      "name": "0 squared is 0",
       "args": [
         0
       ],
       "expect": 0
     },
     {
+      "name": "12 squared is 144",
       "args": [
         12
       ],
       "expect": 144
     }
   ],
-  "hint": "`return n * n`",
-  "solution": "func solve(n: int) -> int:\n\treturn n * n"
+  "hints": [
+    "Multiply the number by itself.",
+    "`return n * n`"
+  ],
+  "docs": [
+    {
+      "name": "return value",
+      "what": "Ends the function and hands value back to whoever called it."
+    }
+  ],
+  "solution": "func solve(n):\n\treturn n * n"
 }

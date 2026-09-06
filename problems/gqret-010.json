@@ -3,14 +3,12 @@
   "title": "Return the remainder",
   "concept": "gq-return",
   "difficulty": 0,
-  "prompt": "Write `leftover`, which returns the remainder when its first parameter is divided by the second. solve returns leftover(a, b).",
-  "signature": "func solve(a: int, b: int) -> int:",
-  "starter": "func solve(a: int, b: int) -> int:\n\treturn 0",
-  "require_methods": [
-    "leftover"
-  ],
+  "prompt": "Write `leftover`, which returns the remainder when its first parameter is divided by the second. `solve` returns leftover(a, b).",
+  "signature": "func solve(a, b):",
+  "starter": "func solve(a, b):\n\treturn 0",
   "tests": [
     {
+      "name": "10 by 3 leaves 1",
       "args": [
         10,
         3
@@ -18,6 +16,7 @@
       "expect": 1
     },
     {
+      "name": "9 by 3 leaves 0",
       "args": [
         9,
         3
@@ -25,6 +24,7 @@
       "expect": 0
     },
     {
+      "name": "7 by 10 leaves 7",
       "args": [
         7,
         10
@@ -32,6 +32,22 @@
       "expect": 7
     }
   ],
-  "hint": "The remainder operator is the percent sign.",
-  "solution": "func solve(a: int, b: int) -> int:\n\treturn leftover(a, b)\n\nfunc leftover(x: int, y: int) -> int:\n\treturn x % y"
+  "hints": [
+    "The remainder operator is the percent sign.",
+    "`return x % y` inside leftover."
+  ],
+  "docs": [
+    {
+      "name": "return value",
+      "what": "Ends the function and hands value back to whoever called it."
+    },
+    {
+      "name": "a % b",
+      "what": "The remainder after dividing a by b."
+    }
+  ],
+  "solution": "func solve(a, b):\n\treturn leftover(a, b)\n\nfunc leftover(x, y):\n\treturn x % y",
+  "require_methods": [
+    "leftover"
+  ]
 }

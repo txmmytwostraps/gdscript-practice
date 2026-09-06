@@ -1,13 +1,14 @@
 {
   "id": "gqdelta-002",
-  "title": "New position on a line",
+  "title": "New position",
   "concept": "gq-delta",
   "difficulty": 0,
-  "prompt": "Something is at position x, moving at speed. Return where it is after one frame of delta seconds.",
-  "signature": "func solve(x: float, speed: float, delta: float) -> float:",
-  "starter": "func solve(x: float, speed: float, delta: float) -> float:\n\treturn x",
+  "prompt": "The robot is at position x, driving at speed. Return where it is after one frame of delta seconds. From 0 at 100 pixels per second, a 0.1 s frame puts it at 10.",
+  "signature": "func solve(x, speed, delta) -> float:",
+  "starter": "func solve(x, speed, delta) -> float:\n\treturn x",
   "tests": [
     {
+      "name": "From 0 at 100 for 0.1 s is 10",
       "args": [
         0,
         100,
@@ -16,6 +17,7 @@
       "expect": 10
     },
     {
+      "name": "Driving backwards lowers x",
       "args": [
         50,
         -20,
@@ -24,6 +26,7 @@
       "expect": 40
     },
     {
+      "name": "Speed 0 stays put",
       "args": [
         7,
         0,
@@ -32,6 +35,10 @@
       "expect": 7
     }
   ],
-  "hint": "Old position plus the distance moved this frame.",
-  "solution": "func solve(x: float, speed: float, delta: float) -> float:\n\treturn x + speed * delta"
+  "hints": [
+    "Old position plus the distance moved this frame.",
+    "`return x + speed * delta`"
+  ],
+  "docs": [],
+  "solution": "func solve(x, speed, delta) -> float:\n\treturn x + speed * delta"
 }

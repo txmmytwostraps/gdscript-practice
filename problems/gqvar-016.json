@@ -3,32 +3,39 @@
   "title": "Minutes to seconds",
   "concept": "gq-variables",
   "difficulty": 0,
-  "prompt": "Create a variable `seconds` equal to minutes times 60. Return seconds.",
-  "signature": "func solve(minutes: int) -> int:",
-  "starter": "func solve(minutes: int) -> int:\n\treturn minutes",
+  "prompt": "The robot's timer counts minutes but the display wants seconds. Create a variable `seconds` equal to minutes times 60 and return it. solve(2) is 120.",
+  "signature": "func solve(minutes):",
+  "starter": "func solve(minutes):\n\treturn minutes",
   "require_names": [
     "seconds"
   ],
   "tests": [
     {
+      "name": "2 minutes is 120 seconds",
       "args": [
         2
       ],
       "expect": 120
     },
     {
+      "name": "0 minutes is 0",
       "args": [
         0
       ],
       "expect": 0
     },
     {
+      "name": "10 minutes is 600",
       "args": [
         10
       ],
       "expect": 600
     }
   ],
-  "hint": "How many seconds are in one minute? Multiply by that.",
-  "solution": "func solve(minutes: int) -> int:\n\tvar seconds = minutes * 60\n\treturn seconds"
+  "hints": [
+    "How many seconds are in one minute? Multiply by that.",
+    "`var seconds = minutes * 60`"
+  ],
+  "docs": [],
+  "solution": "func solve(minutes):\n\tvar seconds = minutes * 60\n\treturn seconds"
 }

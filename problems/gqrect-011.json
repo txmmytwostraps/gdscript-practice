@@ -3,11 +3,12 @@
   "title": "Do they overlap",
   "concept": "gq-rect",
   "difficulty": 1,
-  "prompt": "Return true if the two rectangles overlap. This is how simple games spot collisions.",
-  "signature": "func solve(a: Rect2, b: Rect2) -> bool:",
-  "starter": "func solve(a: Rect2, b: Rect2) -> bool:\n\treturn false",
+  "prompt": "Return true if the two rectangles overlap. This is how simple games spot collisions. Touching edges do not count.",
+  "signature": "func solve(a, b):",
+  "starter": "func solve(a, b):\n\treturn false",
   "tests": [
     {
+      "name": "Overlapping squares",
       "args": [
         {
           "$rect": [
@@ -29,6 +30,7 @@
       "expect": true
     },
     {
+      "name": "Far apart",
       "args": [
         {
           "$rect": [
@@ -50,6 +52,7 @@
       "expect": false
     },
     {
+      "name": "Edge to edge is not overlap",
       "args": [
         {
           "$rect": [
@@ -71,6 +74,15 @@
       "expect": false
     }
   ],
-  "hint": "Look for a method whose name means to cross or overlap.",
-  "solution": "func solve(a: Rect2, b: Rect2) -> bool:\n\treturn a.intersects(b)"
+  "hints": [
+    "Look for a method whose name means to cross or overlap.",
+    "`return a.intersects(b)`"
+  ],
+  "docs": [
+    {
+      "name": "a.intersects(b)",
+      "what": "Returns true if the two rectangles overlap."
+    }
+  ],
+  "solution": "func solve(a, b):\n\treturn a.intersects(b)"
 }

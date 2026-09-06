@@ -1,0 +1,51 @@
+{
+  "id": "gqcond-017",
+  "title": "Guard with an early return",
+  "concept": "gq-conditions",
+  "difficulty": 1,
+  "prompt": "Dividing by zero is an error; run the starter to see it. Fix it: if b is 0, return -1 straight away, otherwise return a divided by b using whole-number division.",
+  "signature": "func solve(a, b):",
+  "starter": "func solve(a, b):\n\treturn a / b",
+  "tests": [
+    {
+      "name": "10 by 2 is 5",
+      "args": [
+        10,
+        2
+      ],
+      "expect": 5
+    },
+    {
+      "name": "Dividing by 0 returns -1",
+      "args": [
+        7,
+        0
+      ],
+      "expect": -1
+    },
+    {
+      "name": "9 by 3 is 3",
+      "args": [
+        9,
+        3
+      ],
+      "expect": 3
+    }
+  ],
+  "hints": [
+    "An if with a return inside stops the function early.",
+    "`if b == 0:` then `return -1`.",
+    "The division line stays after the if; it only runs when b is not 0."
+  ],
+  "docs": [
+    {
+      "name": "if condition:",
+      "what": "Runs the indented lines below it only when the condition is true. elif and else add more branches."
+    },
+    {
+      "name": "==  !=  <  <=  >  >=",
+      "what": "Comparisons. Each gives true or false."
+    }
+  ],
+  "solution": "func solve(a, b):\n\tif b == 0:\n\t\treturn -1\n\treturn a / b"
+}

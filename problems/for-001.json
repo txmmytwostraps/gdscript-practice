@@ -3,11 +3,12 @@
   "title": "Sum of a list",
   "concept": "for",
   "difficulty": 0,
-  "prompt": "Return the sum of all the numbers in the array. An empty array sums to 0.",
-  "signature": "func solve(nums: Array) -> int:",
-  "starter": "func solve(nums: Array) -> int:\n\tvar total = 0\n\treturn total",
+  "prompt": "The robot adds up its sensor readings. Return the sum of all the numbers in the array. An empty array sums to 0.",
+  "signature": "func solve(nums):",
+  "starter": "func solve(nums):\n\tvar total = 0\n\treturn total",
   "tests": [
     {
+      "name": "1, 2, 3 sum to 6",
       "args": [
         [
           1,
@@ -18,12 +19,14 @@
       "expect": 6
     },
     {
+      "name": "Empty sums to 0",
       "args": [
         []
       ],
       "expect": 0
     },
     {
+      "name": "Negatives cancel",
       "args": [
         [
           -5,
@@ -34,6 +37,7 @@
       "expect": 10
     },
     {
+      "name": "One item is itself",
       "args": [
         [
           100
@@ -42,6 +46,15 @@
       "expect": 100
     }
   ],
-  "hint": "`for n in nums:` visits each number in turn. Add it to total.",
-  "solution": "func solve(nums: Array) -> int:\n\tvar total = 0\n\tfor n in nums:\n\t\ttotal += n\n\treturn total"
+  "hints": [
+    "`for n in nums:` visits each number in turn.",
+    "Inside the loop: `total += n`."
+  ],
+  "docs": [
+    {
+      "name": "for item in list:",
+      "what": "Runs the indented lines once per item, with item holding each value in turn."
+    }
+  ],
+  "solution": "func solve(nums):\n\tvar total = 0\n\tfor n in nums:\n\t\ttotal += n\n\treturn total"
 }

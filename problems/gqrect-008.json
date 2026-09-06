@@ -3,11 +3,12 @@
   "title": "Grow",
   "concept": "gq-rect",
   "difficulty": 1,
-  "prompt": "Return the rectangle made bigger by margin on every side, so it stays centred where it was.",
-  "signature": "func solve(r: Rect2, margin: float) -> Rect2:",
-  "starter": "func solve(r: Rect2, margin: float) -> Rect2:\n\treturn r",
+  "prompt": "Return the rectangle made bigger by margin on every side, so it stays centred where it was. Growing (10, 10, 20, 20) by 5 gives (5, 5, 30, 30).",
+  "signature": "func solve(r, margin) -> Rect2:",
+  "starter": "func solve(r, margin) -> Rect2:\n\treturn r",
   "tests": [
     {
+      "name": "Grow by 5",
       "args": [
         {
           "$rect": [
@@ -29,6 +30,7 @@
       }
     },
     {
+      "name": "Grow by 0 is unchanged",
       "args": [
         {
           "$rect": [
@@ -50,6 +52,15 @@
       }
     }
   ],
-  "hint": "Rect2 has a grow method. Note the position moves up-left while the size grows by twice the margin.",
-  "solution": "func solve(r: Rect2, margin: float) -> Rect2:\n\treturn r.grow(margin)"
+  "hints": [
+    "Rect2 has a grow method.",
+    "`return r.grow(margin)`"
+  ],
+  "docs": [
+    {
+      "name": "r.grow(amount)",
+      "what": "Returns the rectangle made bigger by amount on every side (negative shrinks)."
+    }
+  ],
+  "solution": "func solve(r, margin) -> Rect2:\n\treturn r.grow(margin)"
 }

@@ -1,20 +1,26 @@
 {
   "id": "gqvar-001",
-  "title": "Store and return a number",
+  "title": "The robot's lives",
   "concept": "gq-variables",
   "difficulty": 0,
-  "prompt": "Create a variable called `lives` and store the number 3 in it. Then return lives.",
-  "signature": "func solve() -> int:",
-  "starter": "func solve() -> int:\n\treturn 0",
+  "prompt": "The robot starts every run with 3 lives, but nothing stores that yet. In `solve`, create a variable called `lives` holding the number 3, and return it.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\treturn 0",
   "require_names": [
     "lives"
   ],
   "tests": [
     {
+      "name": "Returns the 3 stored in lives",
       "args": [],
       "expect": 3
     }
   ],
-  "hint": "A variable needs three things: the word var, a name, and a value. Then return the name, not the number.",
-  "solution": "func solve() -> int:\n\tvar lives = 3\n\treturn lives"
+  "hints": [
+    "A variable needs three things: the word var, a name, and a value.",
+    "`var lives = 3` on its own line.",
+    "Then `return lives`, not the number."
+  ],
+  "docs": [],
+  "solution": "func solve():\n\tvar lives = 3\n\treturn lives"
 }

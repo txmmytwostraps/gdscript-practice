@@ -3,29 +3,36 @@
   "title": "Read a variable three times",
   "concept": "gq-variables",
   "difficulty": 0,
-  "prompt": "The variable `price` holds the value p. Return price added to itself three times (price + price + price).",
-  "signature": "func solve(p: float) -> float:",
-  "starter": "func solve(p: float) -> float:\n\tvar price = p\n\treturn price",
+  "prompt": "`price` holds the value p. Return price added to itself three times (price + price + price). solve(2) is 6.0.",
+  "signature": "func solve(p) -> float:",
+  "starter": "func solve(p) -> float:\n\tvar price = p\n\treturn price",
   "tests": [
     {
+      "name": "2 three times is 6",
       "args": [
         2
       ],
       "expect": 6
     },
     {
+      "name": "0 stays 0",
       "args": [
         0
       ],
       "expect": 0
     },
     {
+      "name": "1.5 three times is 4.5",
       "args": [
         1.5
       ],
       "expect": 4.5
     }
   ],
-  "hint": "Reading a variable does not change it, so you can use it as many times as you like.",
-  "solution": "func solve(p: float) -> float:\n\tvar price = p\n\treturn price + price + price"
+  "hints": [
+    "Reading a variable does not change it, so you can use it as many times as you like.",
+    "`return price + price + price`"
+  ],
+  "docs": [],
+  "solution": "func solve(p) -> float:\n\tvar price = p\n\treturn price + price + price"
 }

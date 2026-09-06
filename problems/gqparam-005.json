@@ -1,34 +1,48 @@
 {
   "id": "gqparam-005",
-  "title": "Order matters",
+  "title": "A default value",
   "concept": "gq-parameters",
-  "difficulty": 0,
-  "prompt": "The first value passed in goes into the first parameter, the second into the second. Return a minus b.",
-  "signature": "func solve(a: int, b: int) -> int:",
-  "starter": "func solve(a: int, b: int) -> int:\n\treturn b - a",
+  "difficulty": 1,
+  "prompt": "Write `show_score`, which takes a score and a bonus, where bonus has a default of 0, and prints their sum. In `solve`, call it once with just the score and once with the score and a bonus of 10, so solve(5) prints 5 then 15.",
+  "signature": "func solve(score):",
+  "starter": "func solve(score):\n\tpass",
+  "require_methods": [
+    "show_score"
+  ],
   "tests": [
     {
+      "name": "5 then 15",
       "args": [
-        10,
-        3
+        5
       ],
-      "expect": 7
+      "expect": null,
+      "out": [
+        "5",
+        "15"
+      ]
     },
     {
+      "name": "0 then 10",
       "args": [
-        3,
-        10
-      ],
-      "expect": -7
-    },
-    {
-      "args": [
-        0,
         0
       ],
-      "expect": 0
+      "expect": null,
+      "out": [
+        "0",
+        "10"
+      ]
     }
   ],
-  "hint": "Look at the test solve(10, 3): which parameter holds 10?",
-  "solution": "func solve(a: int, b: int) -> int:\n\treturn a - b"
+  "hints": [
+    "A default is written in the definition after an = sign; the caller may leave that parameter out.",
+    "`func show_score(score, bonus = 0):` printing `score + bonus`.",
+    "First call `show_score(score)`, then `show_score(score, 10)`."
+  ],
+  "docs": [
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve(score):\n\tshow_score(score)\n\tshow_score(score, 10)\n\nfunc show_score(score, bonus = 0):\n\tprint(score + bonus)"
 }

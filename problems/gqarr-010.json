@@ -3,11 +3,12 @@
   "title": "Where is it",
   "concept": "gq-arrays",
   "difficulty": 1,
-  "prompt": "Return the position of value in the array, or -1 if it is not there.",
-  "signature": "func solve(items: Array, value: int) -> int:",
-  "starter": "func solve(items: Array, value: int) -> int:\n\treturn 0",
+  "prompt": "Return the position of value in the array, or -1 if it is not there. 7 in [5, 6, 7] is at position 2.",
+  "signature": "func solve(items, value):",
+  "starter": "func solve(items, value):\n\treturn 0",
   "tests": [
     {
+      "name": "7 is at position 2",
       "args": [
         [
           5,
@@ -19,6 +20,7 @@
       "expect": 2
     },
     {
+      "name": "5 is at position 0",
       "args": [
         [
           5,
@@ -30,6 +32,7 @@
       "expect": 0
     },
     {
+      "name": "Missing gives -1",
       "args": [
         [
           5,
@@ -41,6 +44,15 @@
       "expect": -1
     }
   ],
-  "hint": "Arrays have a find method that already returns -1 when nothing matches.",
-  "solution": "func solve(items: Array, value: int) -> int:\n\treturn items.find(value)"
+  "hints": [
+    "Arrays have a find method that already returns -1 when nothing matches.",
+    "`return items.find(value)`"
+  ],
+  "docs": [
+    {
+      "name": "list.find(value)",
+      "what": "Returns the position of value, or -1 if it is not there."
+    }
+  ],
+  "solution": "func solve(items, value):\n\treturn items.find(value)"
 }

@@ -3,18 +3,20 @@
   "title": "Text built from parts",
   "concept": "gq-strings",
   "difficulty": 1,
-  "prompt": "Return a sentence like \"Tim has 100 hp\" from a name and a number. A number cannot be joined to text directly; it has to be turned into text first.",
-  "signature": "func solve(name: String, hp: int) -> String:",
-  "starter": "func solve(name: String, hp: int) -> String:\n\treturn name",
+  "prompt": "Return a status line like \"Robo has 100 hp\" from a name and a number. A number cannot be joined to text directly; it has to be turned into text first.",
+  "signature": "func solve(name, hp):",
+  "starter": "func solve(name, hp):\n\treturn name",
   "tests": [
     {
+      "name": "Robo with 100",
       "args": [
-        "Tim",
+        "Robo",
         100
       ],
-      "expect": "Tim has 100 hp"
+      "expect": "Robo has 100 hp"
     },
     {
+      "name": "Bob with 0",
       "args": [
         "Bob",
         0
@@ -22,6 +24,19 @@
       "expect": "Bob has 0 hp"
     }
   ],
-  "hint": "str() turns a number into text you can join with +.",
-  "solution": "func solve(name: String, hp: int) -> String:\n\treturn name + \" has \" + str(hp) + \" hp\""
+  "hints": [
+    "str() turns a number into text you can join with +.",
+    "`return name + \" has \" + str(hp) + \" hp\"`"
+  ],
+  "docs": [
+    {
+      "name": "text + text",
+      "what": "Joins two strings into one. Numbers must be turned into text first."
+    },
+    {
+      "name": "str(value)",
+      "what": "Returns the value as text."
+    }
+  ],
+  "solution": "func solve(name, hp):\n\treturn name + \" has \" + str(hp) + \" hp\""
 }

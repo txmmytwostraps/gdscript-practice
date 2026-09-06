@@ -3,11 +3,12 @@
   "title": "Length",
   "concept": "gq-vectors",
   "difficulty": 0,
-  "prompt": "Return how long the vector is: the straight-line distance from (0, 0) to its tip. Vector2(3, 4) has length 5.",
-  "signature": "func solve(v: Vector2) -> float:",
-  "starter": "func solve(v: Vector2) -> float:\n\treturn v.x + v.y",
+  "prompt": "Return how long the vector is: the straight-line distance from (0, 0) to its tip. (3, 4) has length 5.",
+  "signature": "func solve(v) -> float:",
+  "starter": "func solve(v) -> float:\n\treturn v.x + v.y",
   "tests": [
     {
+      "name": "(3, 4) is 5 long",
       "args": [
         {
           "$v2": [
@@ -19,6 +20,7 @@
       "expect": 5
     },
     {
+      "name": "(0, 0) is 0 long",
       "args": [
         {
           "$v2": [
@@ -30,6 +32,7 @@
       "expect": 0
     },
     {
+      "name": "(0, -7) is 7 long",
       "args": [
         {
           "$v2": [
@@ -41,6 +44,15 @@
       "expect": 7
     }
   ],
-  "hint": "Vectors have a length method; no need for the square-root formula.",
-  "solution": "func solve(v: Vector2) -> float:\n\treturn v.length()"
+  "hints": [
+    "Vectors have a length method; no square-root formula needed.",
+    "`return v.length()`"
+  ],
+  "docs": [
+    {
+      "name": "v.length()",
+      "what": "Returns the length of the vector as a float."
+    }
+  ],
+  "solution": "func solve(v) -> float:\n\treturn v.length()"
 }

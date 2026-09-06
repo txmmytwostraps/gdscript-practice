@@ -3,18 +3,20 @@
   "title": "Format with %",
   "concept": "gq-strings",
   "difficulty": 1,
-  "prompt": "Return \"NAME has N hp\" using a format string instead of joining pieces: \"%s has %d hp\" % [name, hp].",
-  "signature": "func solve(name: String, hp: int) -> String:",
-  "starter": "func solve(name: String, hp: int) -> String:\n\treturn name",
+  "prompt": "Return \"NAME has N hp\" using a format string instead of joining pieces.",
+  "signature": "func solve(name, hp):",
+  "starter": "func solve(name, hp):\n\treturn name",
   "tests": [
     {
+      "name": "Robo with 100",
       "args": [
-        "Tim",
+        "Robo",
         100
       ],
-      "expect": "Tim has 100 hp"
+      "expect": "Robo has 100 hp"
     },
     {
+      "name": "Bob with 0",
       "args": [
         "Bob",
         0
@@ -22,6 +24,15 @@
       "expect": "Bob has 0 hp"
     }
   ],
-  "hint": "%s is a slot for text and %d a slot for a whole number. The values come after the % in an array, in order.",
-  "solution": "func solve(name: String, hp: int) -> String:\n\treturn \"%s has %d hp\" % [name, hp]"
+  "hints": [
+    "%s is a slot for text and %d a slot for a whole number.",
+    "`return \"%s has %d hp\" % [name, hp]`"
+  ],
+  "docs": [
+    {
+      "name": "\"%s has %d hp\" % [name, hp]",
+      "what": "Fills the slots: %s takes text, %d a whole number. Values come after the % in an array."
+    }
+  ],
+  "solution": "func solve(name, hp):\n\treturn \"%s has %d hp\" % [name, hp]"
 }

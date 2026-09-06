@@ -3,11 +3,12 @@
   "title": "Damage with a shield",
   "concept": "gq-conditions",
   "difficulty": 0,
-  "prompt": "A shield halves the damage. Return the damage actually taken.",
-  "signature": "func solve(damage: int, has_shield: bool) -> int:",
-  "starter": "func solve(damage: int, has_shield: bool) -> int:\n\treturn damage",
+  "prompt": "A shield halves the damage the robot takes. Return the damage actually taken: 10 with a shield becomes 5, 10 without stays 10.",
+  "signature": "func solve(damage, has_shield):",
+  "starter": "func solve(damage, has_shield):\n\treturn damage",
   "tests": [
     {
+      "name": "10 with a shield is 5",
       "args": [
         10,
         true
@@ -15,6 +16,7 @@
       "expect": 5
     },
     {
+      "name": "10 without a shield is 10",
       "args": [
         10,
         false
@@ -22,6 +24,7 @@
       "expect": 10
     },
     {
+      "name": "0 with a shield is 0",
       "args": [
         0,
         true
@@ -29,6 +32,15 @@
       "expect": 0
     }
   ],
-  "hint": "A bool parameter can be the whole condition: if has_shield:",
-  "solution": "func solve(damage: int, has_shield: bool) -> int:\n\tif has_shield:\n\t\treturn damage / 2\n\telse:\n\t\treturn damage"
+  "hints": [
+    "A bool parameter can be the whole condition.",
+    "`if has_shield:` return damage / 2, `else:` return damage."
+  ],
+  "docs": [
+    {
+      "name": "if condition:",
+      "what": "Runs the indented lines below it only when the condition is true. elif and else add more branches."
+    }
+  ],
+  "solution": "func solve(damage, has_shield):\n\tif has_shield:\n\t\treturn damage / 2\n\telse:\n\t\treturn damage"
 }

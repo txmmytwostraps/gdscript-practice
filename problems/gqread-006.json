@@ -3,9 +3,9 @@
   "title": "Name the tile size",
   "concept": "gq-readable",
   "difficulty": 0,
-  "prompt": "The game grid uses tiles that are 64 pixels wide. Name that `TILE_SIZE` and use it to turn a column number into a pixel position.",
-  "signature": "func solve(column: int) -> int:",
-  "starter": "func solve(column: int) -> int:\n\treturn column * 64",
+  "prompt": "The robot's grid uses tiles 64 pixels wide. Name that `TILE_SIZE` and use it to turn a column number into a pixel position.",
+  "signature": "func solve(column):",
+  "starter": "func solve(column):\n\treturn column * 64",
   "require_names": [
     "TILE_SIZE"
   ],
@@ -14,24 +14,36 @@
   ],
   "tests": [
     {
+      "name": "Column 0 is at 0",
       "args": [
         0
       ],
       "expect": 0
     },
     {
+      "name": "Column 3 is at 192",
       "args": [
         3
       ],
       "expect": 192
     },
     {
+      "name": "Column 10 is at 640",
       "args": [
         10
       ],
       "expect": 640
     }
   ],
-  "hint": "After naming it, the only place 64 should appear is the const line.",
-  "solution": "func solve(column: int) -> int:\n\tconst TILE_SIZE = 64\n\treturn column * TILE_SIZE"
+  "hints": [
+    "After naming it, the only place 64 should appear is the const line.",
+    "`const TILE_SIZE = 64`"
+  ],
+  "docs": [
+    {
+      "name": "const NAME = value",
+      "what": "Declares a named value that never changes. Written in CAPITALS by convention."
+    }
+  ],
+  "solution": "func solve(column):\n\tconst TILE_SIZE = 64\n\treturn column * TILE_SIZE"
 }

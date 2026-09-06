@@ -1,36 +1,50 @@
 {
   "id": "gqfunc-009",
-  "title": "A helper with a default",
+  "title": "Print before and after",
   "concept": "gq-functions",
-  "difficulty": 1,
-  "prompt": "Write `show_score` with two parameters: score, and bonus with a default of 0. It prints score plus bonus. From solve, call it once with just the score, then again with the score and a bonus of 10.",
-  "signature": "func solve(score: int) -> void:",
-  "starter": "func solve(score: int) -> void:\n\tpass",
+  "difficulty": 0,
+  "prompt": "The robot logs a value with a marker before and after it. Write `start`, which prints \"start\", and `finish`, which prints \"done\". In `solve`, call start, then print n, then call finish, so solve(7) prints start, 7, done.",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\tprint(n)",
   "require_methods": [
-    "show_score"
+    "start",
+    "finish"
   ],
   "tests": [
     {
+      "name": "Markers around 7",
       "args": [
-        5
+        7
       ],
       "expect": null,
       "out": [
-        "5",
-        "15"
+        "start",
+        "7",
+        "done"
       ]
     },
     {
+      "name": "Markers around 0",
       "args": [
         0
       ],
       "expect": null,
       "out": [
+        "start",
         "0",
-        "10"
+        "done"
       ]
     }
   ],
-  "hint": "The default goes in the definition, after an = sign. The first call leaves the bonus out.",
-  "solution": "func solve(score: int) -> void:\n\tshow_score(score)\n\tshow_score(score, 10)\n\nfunc show_score(score: int, bonus: int = 0) -> void:\n\tprint(score + bonus)"
+  "hints": [
+    "solve can mix its own prints with calls to helpers.",
+    "Three lines in solve, in the order the output should appear: `start()`, `print(n)`, `finish()`."
+  ],
+  "docs": [
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve(n):\n\tstart()\n\tprint(n)\n\tfinish()\n\nfunc start():\n\tprint(\"start\")\n\nfunc finish():\n\tprint(\"done\")"
 }

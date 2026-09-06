@@ -3,41 +3,51 @@
   "title": "Celsius to Fahrenheit",
   "concept": "arithmetic",
   "difficulty": 1,
-  "prompt": "Convert a temperature from Celsius to Fahrenheit. The formula is: F = C × 9 / 5 + 32.",
-  "signature": "func solve(c: float) -> float:",
-  "starter": "func solve(c: float) -> float:\n\treturn c",
+  "prompt": "The robot's thermometer reads Celsius; the display wants Fahrenheit. The formula is F = C times 9, divided by 5, plus 32. Return the Fahrenheit value. solve(100) is 212.0.",
+  "signature": "func solve(c) -> float:",
+  "starter": "func solve(c) -> float:\n\treturn c",
   "tests": [
     {
+      "name": "0 C is 32 F",
       "args": [
         0
       ],
       "expect": 32
     },
     {
+      "name": "100 C is 212 F",
       "args": [
         100
       ],
       "expect": 212
     },
     {
+      "name": "-40 is the same in both",
       "args": [
         -40
       ],
       "expect": -40
     },
     {
+      "name": "37 C is 98.6 F",
       "args": [
         37
       ],
       "expect": 98.6
     },
     {
+      "name": "25 C is 77 F",
       "args": [
         25
       ],
       "expect": 77
     }
   ],
-  "hint": "Write the formula with * for times and / for divide: `c * 9 / 5 + 32`. Because c is a float, the whole result stays a float.",
-  "solution": "func solve(c: float) -> float:\n\treturn c * 9.0 / 5.0 + 32.0"
+  "hints": [
+    "Write the formula with * for times and / for divide.",
+    "Use 9.0 and 5.0 so the division keeps decimals.",
+    "`return c * 9.0 / 5.0 + 32`"
+  ],
+  "docs": [],
+  "solution": "func solve(c) -> float:\n\treturn c * 9.0 / 5.0 + 32.0"
 }

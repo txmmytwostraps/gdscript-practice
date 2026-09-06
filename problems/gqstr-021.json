@@ -4,28 +4,40 @@
   "concept": "gq-strings",
   "difficulty": 0,
   "prompt": "Return true if the password has at least 8 characters.",
-  "signature": "func solve(password: String) -> bool:",
-  "starter": "func solve(password: String) -> bool:\n\treturn false",
+  "signature": "func solve(password):",
+  "starter": "func solve(password):\n\treturn false",
   "tests": [
     {
+      "name": "8 characters is enough",
       "args": [
         "abcdefgh"
       ],
       "expect": true
     },
     {
+      "name": "short is not",
       "args": [
         "short"
       ],
       "expect": false
     },
     {
+      "name": "Longer is fine",
       "args": [
         "longer than eight"
       ],
       "expect": true
     }
   ],
-  "hint": "Get the length, then compare it.",
-  "solution": "func solve(password: String) -> bool:\n\treturn password.length() >= 8"
+  "hints": [
+    "Get the length, then compare it.",
+    "`return password.length() >= 8`"
+  ],
+  "docs": [
+    {
+      "name": "text.length()",
+      "what": "Returns how many characters the string has."
+    }
+  ],
+  "solution": "func solve(password):\n\treturn password.length() >= 8"
 }

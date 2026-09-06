@@ -4,28 +4,44 @@
   "concept": "gq-strings",
   "difficulty": 0,
   "prompt": "Return the text in capital letters with an exclamation mark on the end. \"hi\" becomes \"HI!\".",
-  "signature": "func solve(text: String) -> String:",
-  "starter": "func solve(text: String) -> String:\n\treturn text",
+  "signature": "func solve(text):",
+  "starter": "func solve(text):\n\treturn text",
   "tests": [
     {
+      "name": "hi becomes HI!",
       "args": [
         "hi"
       ],
       "expect": "HI!"
     },
     {
+      "name": "Godot becomes GODOT!",
       "args": [
         "Godot"
       ],
       "expect": "GODOT!"
     },
     {
+      "name": "Empty becomes just !",
       "args": [
         ""
       ],
       "expect": "!"
     }
   ],
-  "hint": "There is a method for uppercase. Call it, then join the exclamation mark.",
-  "solution": "func solve(text: String) -> String:\n\treturn text.to_upper() + \"!\""
+  "hints": [
+    "There is a method for uppercase.",
+    "`return text.to_upper() + \"!\"`"
+  ],
+  "docs": [
+    {
+      "name": "text.to_upper() / text.to_lower()",
+      "what": "Returns the text in capitals, or in small letters."
+    },
+    {
+      "name": "text + text",
+      "what": "Joins two strings into one. Numbers must be turned into text first."
+    }
+  ],
+  "solution": "func solve(text):\n\treturn text.to_upper() + \"!\""
 }

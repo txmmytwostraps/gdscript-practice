@@ -1,13 +1,14 @@
 {
   "id": "gqdelta-007",
-  "title": "Accelerate",
+  "title": "Speed up",
   "concept": "gq-delta",
   "difficulty": 0,
-  "prompt": "A car at speed gains acceleration pixels per second every second. Return its speed after one frame.",
-  "signature": "func solve(speed: float, acceleration: float, delta: float) -> float:",
-  "starter": "func solve(speed: float, acceleration: float, delta: float) -> float:\n\treturn speed",
+  "prompt": "The robot at speed gains acceleration pixels per second every second. Return its speed after one frame. From 0 with acceleration 100, a 0.1 s frame gives 10.",
+  "signature": "func solve(speed, acceleration, delta) -> float:",
+  "starter": "func solve(speed, acceleration, delta) -> float:\n\treturn speed",
   "tests": [
     {
+      "name": "0 plus 100 for 0.1 s is 10",
       "args": [
         0,
         100,
@@ -16,6 +17,7 @@
       "expect": 10
     },
     {
+      "name": "Braking lowers speed",
       "args": [
         50,
         -20,
@@ -24,6 +26,7 @@
       "expect": 40
     },
     {
+      "name": "No acceleration keeps speed",
       "args": [
         30,
         0,
@@ -32,6 +35,10 @@
       "expect": 30
     }
   ],
-  "hint": "Same shape as moving a position, but for speed.",
-  "solution": "func solve(speed: float, acceleration: float, delta: float) -> float:\n\treturn speed + acceleration * delta"
+  "hints": [
+    "Same shape as moving a position, but for speed.",
+    "`return speed + acceleration * delta`"
+  ],
+  "docs": [],
+  "solution": "func solve(speed, acceleration, delta) -> float:\n\treturn speed + acceleration * delta"
 }

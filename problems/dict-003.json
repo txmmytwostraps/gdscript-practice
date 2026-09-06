@@ -3,11 +3,12 @@
   "title": "Sum of values",
   "concept": "dictionaries",
   "difficulty": 0,
-  "prompt": "Return the sum of all the values in the dictionary (ignore the keys). An empty dictionary sums to 0.",
-  "signature": "func solve(data: Dictionary) -> int:",
-  "starter": "func solve(data: Dictionary) -> int:\n\treturn 0",
+  "prompt": "Return the sum of all the values in the dictionary, ignoring the keys. An empty dictionary sums to 0.",
+  "signature": "func solve(data):",
+  "starter": "func solve(data):\n\treturn 0",
   "tests": [
     {
+      "name": "1 and 2 sum to 3",
       "args": [
         {
           "x": 1,
@@ -17,12 +18,14 @@
       "expect": 3
     },
     {
+      "name": "Empty is 0",
       "args": [
         {}
       ],
       "expect": 0
     },
     {
+      "name": "10, 20, 30 sum to 60",
       "args": [
         {
           "a": 10,
@@ -33,6 +36,15 @@
       "expect": 60
     }
   ],
-  "hint": "`for key in data:` gives you each key; `data[key]` is its value.",
-  "solution": "func solve(data: Dictionary) -> int:\n\tvar total = 0\n\tfor key in data:\n\t\ttotal += data[key]\n\treturn total"
+  "hints": [
+    "for key in data gives you each key; data[key] is its value.",
+    "`total += data[key]` inside the loop."
+  ],
+  "docs": [
+    {
+      "name": "for key in data:",
+      "what": "Runs once per key; data[key] gives its value."
+    }
+  ],
+  "solution": "func solve(data):\n\tvar total = 0\n\tfor key in data:\n\t\ttotal += data[key]\n\treturn total"
 }

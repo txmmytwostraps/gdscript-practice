@@ -4,10 +4,11 @@
   "concept": "comparisons",
   "difficulty": 1,
   "prompt": "Return true if a and b are both zero-or-positive, or both negative. Otherwise return false.",
-  "signature": "func solve(a: int, b: int) -> bool:",
-  "starter": "func solve(a: int, b: int) -> bool:\n\treturn false",
+  "signature": "func solve(a, b):",
+  "starter": "func solve(a, b):\n\treturn false",
   "tests": [
     {
+      "name": "3 and 5 share a sign",
       "args": [
         3,
         5
@@ -15,6 +16,7 @@
       "expect": true
     },
     {
+      "name": "-3 and -5 share a sign",
       "args": [
         -3,
         -5
@@ -22,6 +24,7 @@
       "expect": true
     },
     {
+      "name": "3 and -5 do not",
       "args": [
         3,
         -5
@@ -29,6 +32,7 @@
       "expect": false
     },
     {
+      "name": "0 and 4 count as the same",
       "args": [
         0,
         4
@@ -36,6 +40,7 @@
       "expect": true
     },
     {
+      "name": "0 and -4 do not",
       "args": [
         0,
         -4
@@ -43,6 +48,19 @@
       "expect": false
     }
   ],
-  "hint": "Combine `and` and `or`, using parentheses to group: `(a >= 0 and b >= 0) or (a < 0 and b < 0)`.",
-  "solution": "func solve(a: int, b: int) -> bool:\n\treturn (a >= 0 and b >= 0) or (a < 0 and b < 0)"
+  "hints": [
+    "Combine and with or, using brackets to group.",
+    "`return (a >= 0 and b >= 0) or (a < 0 and b < 0)`"
+  ],
+  "docs": [
+    {
+      "name": "==  !=  <  <=  >  >=",
+      "what": "Comparisons. Each gives true or false."
+    },
+    {
+      "name": "and  or  not",
+      "what": "and is true when both sides are; or when at least one is; not flips true and false."
+    }
+  ],
+  "solution": "func solve(a, b):\n\treturn (a >= 0 and b >= 0) or (a < 0 and b < 0)"
 }

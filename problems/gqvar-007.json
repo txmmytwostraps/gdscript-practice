@@ -1,31 +1,38 @@
 {
   "id": "gqvar-007",
-  "title": "Update with -=",
+  "title": "Take a hit",
   "concept": "gq-variables",
   "difficulty": 0,
-  "prompt": "The variable `health` starts with the value of hp. Take away the number `20` from it using `-=`. Return health.",
-  "signature": "func solve(hp: int) -> int:",
-  "starter": "func solve(hp: int) -> int:\n\tvar health = hp\n\treturn health",
+  "prompt": "The robot's `health` starts at hp. It takes a hit of 20. Take the number `20` away from health using `-=`, then return health. solve(100) is 80.",
+  "signature": "func solve(hp):",
+  "starter": "func solve(hp):\n\tvar health = hp\n\treturn health",
   "tests": [
     {
+      "name": "100 hit for 20 leaves 80",
       "args": [
         100
       ],
       "expect": 80
     },
     {
+      "name": "Exactly 20 leaves 0",
       "args": [
         20
       ],
       "expect": 0
     },
     {
+      "name": "Below zero is allowed here",
       "args": [
         15
       ],
       "expect": -5
     }
   ],
-  "hint": "`health -= 20` takes 20 away from health.",
-  "solution": "func solve(hp: int) -> int:\n\tvar health = hp\n\thealth -= 20\n\treturn health"
+  "hints": [
+    "`-=` takes away from a variable and stores the result back in it.",
+    "`health -= 20` on the line after the var line."
+  ],
+  "docs": [],
+  "solution": "func solve(hp):\n\tvar health = hp\n\thealth -= 20\n\treturn health"
 }

@@ -1,31 +1,48 @@
 {
   "id": "gqparam-006",
-  "title": "A decimal parameter",
+  "title": "Parameters are copies",
   "concept": "gq-parameters",
-  "difficulty": 0,
-  "prompt": "speed is a float, so it can hold decimals. Return half of it.",
-  "signature": "func solve(speed: float) -> float:",
-  "starter": "func solve(speed: float) -> float:\n\treturn speed",
+  "difficulty": 1,
+  "prompt": "Write `add_ten`, which takes a number, adds 10 to its parameter with +=, and prints it. In `solve`, call add_ten(n) and then print n yourself, so solve(5) prints 15 and then 5. The original does not change.",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\tpass",
+  "require_methods": [
+    "add_ten"
+  ],
   "tests": [
     {
+      "name": "15 then the unchanged 5",
       "args": [
-        10
+        5
       ],
-      "expect": 5
+      "expect": null,
+      "out": [
+        "15",
+        "5"
+      ]
     },
     {
-      "args": [
-        3
-      ],
-      "expect": 1.5
-    },
-    {
+      "name": "10 then the unchanged 0",
       "args": [
         0
       ],
-      "expect": 0
+      "expect": null,
+      "out": [
+        "10",
+        "0"
+      ]
     }
   ],
-  "hint": "Because speed is already a float, dividing by 2 keeps the decimals.",
-  "solution": "func solve(speed: float) -> float:\n\treturn speed / 2"
+  "hints": [
+    "A number passed to a function is copied; changing the copy inside leaves the caller's variable alone.",
+    "Inside add_ten: `value += 10` then `print(value)`.",
+    "solve: `add_ten(n)` then `print(n)`."
+  ],
+  "docs": [
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve(n):\n\tadd_ten(n)\n\tprint(n)\n\nfunc add_ten(value):\n\tvalue += 10\n\tprint(value)"
 }

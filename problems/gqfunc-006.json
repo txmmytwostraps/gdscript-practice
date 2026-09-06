@@ -1,25 +1,33 @@
 {
   "id": "gqfunc-006",
-  "title": "A helper that calls a helper",
+  "title": "Name it well",
   "concept": "gq-functions",
-  "difficulty": 1,
-  "prompt": "Write `beep`, which prints \"beep\". Then write `double_beep`, which calls beep twice. From solve, call double_beep once.",
-  "signature": "func solve() -> void:",
-  "starter": "func solve() -> void:\n\tpass",
+  "difficulty": 0,
+  "prompt": "This robot code works, but `f` tells nobody what it does. Rename the function to `raise_shields`, both where it is defined and where solve calls it. The output stays \"Shields up\".",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tf()\n\nfunc f():\n\tprint(\"Shields up\")",
   "require_methods": [
-    "beep",
-    "double_beep"
+    "raise_shields"
   ],
   "tests": [
     {
+      "name": "Still prints Shields up",
       "args": [],
       "expect": null,
       "out": [
-        "beep",
-        "beep"
+        "Shields up"
       ]
     }
   ],
-  "hint": "Any function can call any other. solve calls one function, which calls another.",
-  "solution": "func solve() -> void:\n\tdouble_beep()\n\nfunc beep() -> void:\n\tprint(\"beep\")\n\nfunc double_beep() -> void:\n\tbeep()\n\tbeep()"
+  "hints": [
+    "A good function name says what the function does, so the code reads like a sentence.",
+    "Change the name in two places: after func, and in the call inside solve."
+  ],
+  "docs": [
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\traise_shields()\n\nfunc raise_shields():\n\tprint(\"Shields up\")"
 }

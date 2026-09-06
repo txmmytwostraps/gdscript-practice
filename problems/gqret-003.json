@@ -3,32 +3,44 @@
   "title": "Return an expression",
   "concept": "gq-return",
   "difficulty": 0,
-  "prompt": "Write `double`, which returns its parameter times 2. solve returns double(n).",
-  "signature": "func solve(n: int) -> int:",
-  "starter": "func solve(n: int) -> int:\n\treturn n",
-  "require_methods": [
-    "double"
-  ],
+  "prompt": "Write `double`, which returns its parameter times 2. `solve` returns double(n), so solve(4) is 8.",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\treturn n",
   "tests": [
     {
+      "name": "4 doubles to 8",
       "args": [
         4
       ],
       "expect": 8
     },
     {
+      "name": "0 doubles to 0",
       "args": [
         0
       ],
       "expect": 0
     },
     {
+      "name": "-3 doubles to -6",
       "args": [
         -3
       ],
       "expect": -6
     }
   ],
-  "hint": "return can be followed by a calculation, not just a name.",
-  "solution": "func solve(n: int) -> int:\n\treturn double(n)\n\nfunc double(value: int) -> int:\n\treturn value * 2"
+  "hints": [
+    "return can be followed by a calculation, not just a name.",
+    "`return value * 2` inside double."
+  ],
+  "docs": [
+    {
+      "name": "return value",
+      "what": "Ends the function and hands value back to whoever called it."
+    }
+  ],
+  "solution": "func solve(n):\n\treturn double(n)\n\nfunc double(value):\n\treturn value * 2",
+  "require_methods": [
+    "double"
+  ]
 }

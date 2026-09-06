@@ -3,11 +3,12 @@
   "title": "Safe lookup",
   "concept": "dictionaries",
   "difficulty": 1,
-  "prompt": "Return the value stored under key in data. If the key is not in the dictionary, return -1 instead of crashing. (Try running the starter as-is to see what the crash looks like.)",
-  "signature": "func solve(data: Dictionary, key: String) -> int:",
-  "starter": "func solve(data: Dictionary, key: String) -> int:\n\treturn data[key]",
+  "prompt": "Return the value stored under key in data. If the key is not there, return -1 instead of crashing. Try running the starter as-is to see what the crash looks like.",
+  "signature": "func solve(data, key):",
+  "starter": "func solve(data, key):\n\treturn data[key]",
   "tests": [
     {
+      "name": "a is 1",
       "args": [
         {
           "a": 1
@@ -17,6 +18,7 @@
       "expect": 1
     },
     {
+      "name": "Missing b gives -1",
       "args": [
         {
           "a": 1
@@ -26,6 +28,7 @@
       "expect": -1
     },
     {
+      "name": "Empty dictionary gives -1",
       "args": [
         {},
         "x"
@@ -33,6 +36,7 @@
       "expect": -1
     },
     {
+      "name": "gems is 3",
       "args": [
         {
           "gold": 50,
@@ -43,6 +47,20 @@
       "expect": 3
     }
   ],
-  "hint": "`if key in data:` checks whether the key exists. (Shortcut: `data.get(key, -1)` does the whole job.)",
-  "solution": "func solve(data: Dictionary, key: String) -> int:\n\tif key in data:\n\t\treturn data[key]\n\telse:\n\t\treturn -1"
+  "hints": [
+    "Check whether the key exists before reading it.",
+    "`if key in data:` return data[key], else return -1.",
+    "Shortcut: `data.get(key, -1)` does the whole job."
+  ],
+  "docs": [
+    {
+      "name": "key in data",
+      "what": "true if the dictionary has that key."
+    },
+    {
+      "name": "data.get(key, default)",
+      "what": "Returns the value for key, or default when the key is missing."
+    }
+  ],
+  "solution": "func solve(data, key):\n\tif key in data:\n\t\treturn data[key]\n\telse:\n\t\treturn -1"
 }

@@ -3,9 +3,9 @@
   "title": "Name the speed",
   "concept": "gq-readable",
   "difficulty": 0,
-  "prompt": "This code works, but what is 250? Give it a name: create a constant called `SPEED` and use it instead of the bare number.",
-  "signature": "func solve(seconds: float) -> float:",
-  "starter": "func solve(seconds: float) -> float:\n\treturn 250 * seconds",
+  "prompt": "The robot's drive code works, but what is 250? Give it a name: create a constant `SPEED` equal to 250 and use it in place of the bare number. The results stay the same.",
+  "signature": "func solve(seconds) -> float:",
+  "starter": "func solve(seconds) -> float:\n\treturn 250 * seconds",
   "require_names": [
     "SPEED"
   ],
@@ -14,24 +14,37 @@
   ],
   "tests": [
     {
+      "name": "1 second is 250",
       "args": [
         1
       ],
       "expect": 250
     },
     {
+      "name": "Half a second is 125",
       "args": [
         0.5
       ],
       "expect": 125
     },
     {
+      "name": "0 seconds is 0",
       "args": [
         0
       ],
       "expect": 0
     }
   ],
-  "hint": "A constant is made with the word const, on its own line above the return. Then the return line should not contain 250 any more.",
-  "solution": "func solve(seconds: float) -> float:\n\tconst SPEED = 250\n\treturn SPEED * seconds"
+  "hints": [
+    "A constant is made with the word const on its own line above the return.",
+    "`const SPEED = 250`",
+    "Then the return line becomes `SPEED * seconds`; 250 should appear only once in your code."
+  ],
+  "docs": [
+    {
+      "name": "const NAME = value",
+      "what": "Declares a named value that never changes. Written in CAPITALS by convention."
+    }
+  ],
+  "solution": "func solve(seconds) -> float:\n\tconst SPEED = 250\n\treturn SPEED * seconds"
 }

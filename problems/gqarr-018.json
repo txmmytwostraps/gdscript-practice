@@ -3,11 +3,12 @@
   "title": "Average",
   "concept": "gq-arrays",
   "difficulty": 1,
-  "prompt": "Return the average of the numbers as a float. If the array is empty, return 0.0 instead of dividing by zero.",
-  "signature": "func solve(nums: Array) -> float:",
-  "starter": "func solve(nums: Array) -> float:\n\treturn 0.0",
+  "prompt": "Return the average of the numbers as a float. If the array is empty, return 0.0 instead of dividing by zero. [1, 2, 3, 4] averages 2.5.",
+  "signature": "func solve(nums) -> float:",
+  "starter": "func solve(nums) -> float:\n\treturn 0.0",
   "tests": [
     {
+      "name": "[1, 2, 3, 4] averages 2.5",
       "args": [
         [
           1,
@@ -19,12 +20,14 @@
       "expect": 2.5
     },
     {
+      "name": "Empty is 0.0",
       "args": [
         []
       ],
       "expect": 0
     },
     {
+      "name": "One item is itself",
       "args": [
         [
           10
@@ -33,6 +36,28 @@
       "expect": 10
     }
   ],
-  "hint": "Guard the empty case first. Then total divided by size, making sure the division keeps decimals.",
-  "solution": "func solve(nums: Array) -> float:\n\tif nums.is_empty():\n\t\treturn 0.0\n\tvar total = 0\n\tfor n in nums:\n\t\ttotal += n\n\treturn float(total) / nums.size()"
+  "hints": [
+    "Guard the empty case first with is_empty().",
+    "Total divided by size, making sure the division keeps decimals.",
+    "`return float(total) / nums.size()`"
+  ],
+  "docs": [
+    {
+      "name": "list.is_empty()",
+      "what": "Returns true when the array has no items."
+    },
+    {
+      "name": "for item in list:",
+      "what": "Runs the indented lines once per item, with item holding each value in turn."
+    },
+    {
+      "name": "list.size()",
+      "what": "Returns how many items the array holds."
+    },
+    {
+      "name": "float(number)",
+      "what": "Returns the number as a float, so dividing keeps decimals."
+    }
+  ],
+  "solution": "func solve(nums) -> float:\n\tif nums.is_empty():\n\t\treturn 0.0\n\tvar total = 0\n\tfor n in nums:\n\t\ttotal += n\n\treturn float(total) / nums.size()"
 }

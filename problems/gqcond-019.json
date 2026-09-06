@@ -1,31 +1,50 @@
 {
   "id": "gqcond-019",
-  "title": "Absolute value with if",
+  "title": "Same or different",
   "concept": "gq-conditions",
   "difficulty": 0,
-  "prompt": "Return n made positive: -5 becomes 5, 5 stays 5. Use an if rather than abs().",
-  "signature": "func solve(n: int) -> int:",
-  "starter": "func solve(n: int) -> int:\n\treturn n",
+  "prompt": "Return \"same\" if a and b are equal, otherwise \"different\".",
+  "signature": "func solve(a, b):",
+  "starter": "func solve(a, b):\n\treturn \"same\"",
   "tests": [
     {
+      "name": "3 and 3 are the same",
       "args": [
-        -5
-      ],
-      "expect": 5
-    },
-    {
-      "args": [
+        3,
         3
       ],
-      "expect": 3
+      "expect": "same"
     },
     {
+      "name": "3 and 4 are different",
       "args": [
+        3,
+        4
+      ],
+      "expect": "different"
+    },
+    {
+      "name": "0 and 0 are the same",
+      "args": [
+        0,
         0
       ],
-      "expect": 0
+      "expect": "same"
     }
   ],
-  "hint": "Only negative numbers need changing. What do you multiply by to flip the sign?",
-  "solution": "func solve(n: int) -> int:\n\tif n < 0:\n\t\treturn -n\n\treturn n"
+  "hints": [
+    "Equality is two equals signs; a single one assigns.",
+    "`if a == b:` return \"same\", `else:` return \"different\"."
+  ],
+  "docs": [
+    {
+      "name": "if condition:",
+      "what": "Runs the indented lines below it only when the condition is true. elif and else add more branches."
+    },
+    {
+      "name": "==  !=  <  <=  >  >=",
+      "what": "Comparisons. Each gives true or false."
+    }
+  ],
+  "solution": "func solve(a, b):\n\tif a == b:\n\t\treturn \"same\"\n\telse:\n\t\treturn \"different\""
 }

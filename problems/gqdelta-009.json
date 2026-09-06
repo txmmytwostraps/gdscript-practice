@@ -1,13 +1,14 @@
 {
   "id": "gqdelta-009",
-  "title": "Move toward without overshooting",
+  "title": "Move toward a target",
   "concept": "gq-delta",
   "difficulty": 1,
-  "prompt": "Move x toward target at speed, but never past it. Return the new x.",
-  "signature": "func solve(x: float, target: float, speed: float, delta: float) -> float:",
-  "starter": "func solve(x: float, target: float, speed: float, delta: float) -> float:\n\treturn x + speed * delta",
+  "prompt": "Move the robot's x toward target at speed, but never past it. Return the new x. From 9 toward 10 at 4 per second, a 0.5 s frame lands exactly on 10, not 11.",
+  "signature": "func solve(x, target, speed, delta) -> float:",
+  "starter": "func solve(x, target, speed, delta) -> float:\n\treturn x + speed * delta",
   "tests": [
     {
+      "name": "Normal step: 0 toward 10 by 2",
       "args": [
         0,
         10,
@@ -17,6 +18,7 @@
       "expect": 2
     },
     {
+      "name": "Does not overshoot the target",
       "args": [
         9,
         10,
@@ -26,6 +28,7 @@
       "expect": 10
     },
     {
+      "name": "Works moving downward",
       "args": [
         10,
         0,
@@ -35,6 +38,7 @@
       "expect": 9
     },
     {
+      "name": "Already there stays there",
       "args": [
         5,
         5,
@@ -44,6 +48,16 @@
       "expect": 5
     }
   ],
-  "hint": "Godot has move_toward(from, to, step). The step is how far you may go this frame.",
-  "solution": "func solve(x: float, target: float, speed: float, delta: float) -> float:\n\treturn move_toward(x, target, speed * delta)"
+  "hints": [
+    "Godot has a built-in that moves a value toward another by a limited step.",
+    "The step is how far you may go this frame: speed times delta.",
+    "`return move_toward(x, target, speed * delta)`"
+  ],
+  "docs": [
+    {
+      "name": "move_toward(from, to, step)",
+      "what": "Returns from moved toward to by at most step, never past it."
+    }
+  ],
+  "solution": "func solve(x, target, speed, delta) -> float:\n\treturn move_toward(x, target, speed * delta)"
 }

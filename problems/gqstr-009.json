@@ -4,10 +4,11 @@
   "concept": "gq-strings",
   "difficulty": 0,
   "prompt": "Return true if the text begins with the given prefix.",
-  "signature": "func solve(text: String, prefix: String) -> bool:",
-  "starter": "func solve(text: String, prefix: String) -> bool:\n\treturn false",
+  "signature": "func solve(text, prefix):",
+  "starter": "func solve(text, prefix):\n\treturn false",
   "tests": [
     {
+      "name": "A web address starts with https",
       "args": [
         "https://godotengine.org",
         "https"
@@ -15,6 +16,7 @@
       "expect": true
     },
     {
+      "name": "ftp does not",
       "args": [
         "ftp://x",
         "https"
@@ -22,6 +24,7 @@
       "expect": false
     },
     {
+      "name": "Everything starts with nothing",
       "args": [
         "abc",
         ""
@@ -29,6 +32,15 @@
       "expect": true
     }
   ],
-  "hint": "Godot names this method begins_with, not starts_with.",
-  "solution": "func solve(text: String, prefix: String) -> bool:\n\treturn text.begins_with(prefix)"
+  "hints": [
+    "Godot names this method begins_with, not starts_with.",
+    "`return text.begins_with(prefix)`"
+  ],
+  "docs": [
+    {
+      "name": "text.begins_with(prefix)",
+      "what": "Returns true if the text starts with prefix."
+    }
+  ],
+  "solution": "func solve(text, prefix):\n\treturn text.begins_with(prefix)"
 }

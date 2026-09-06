@@ -3,15 +3,12 @@
   "title": "Two helpers, one answer",
   "concept": "gq-return",
   "difficulty": 1,
-  "prompt": "Write `perimeter` and `area` for a rectangle. solve returns the perimeter plus the area.",
-  "signature": "func solve(width: int, height: int) -> int:",
-  "starter": "func solve(width: int, height: int) -> int:\n\treturn 0",
-  "require_methods": [
-    "perimeter",
-    "area"
-  ],
+  "prompt": "Write `perimeter` and `area` for a rectangle. `solve` returns the perimeter plus the area. solve(3, 4) is 26.",
+  "signature": "func solve(width, height):",
+  "starter": "func solve(width, height):\n\treturn 0",
   "tests": [
     {
+      "name": "3 by 4: 14 plus 12 is 26",
       "args": [
         3,
         4
@@ -19,6 +16,7 @@
       "expect": 26
     },
     {
+      "name": "1 by 1: 4 plus 1 is 5",
       "args": [
         1,
         1
@@ -26,6 +24,7 @@
       "expect": 5
     },
     {
+      "name": "Zero size is 0",
       "args": [
         0,
         0
@@ -33,6 +32,19 @@
       "expect": 0
     }
   ],
-  "hint": "Two returned values can be added together in one expression.",
-  "solution": "func solve(width: int, height: int) -> int:\n\treturn perimeter(width, height) + area(width, height)\n\nfunc perimeter(w: int, h: int) -> int:\n\treturn 2 * w + 2 * h\n\nfunc area(w: int, h: int) -> int:\n\treturn w * h"
+  "hints": [
+    "Two returned values can be added in one expression.",
+    "`return perimeter(width, height) + area(width, height)`"
+  ],
+  "docs": [
+    {
+      "name": "return value",
+      "what": "Ends the function and hands value back to whoever called it."
+    }
+  ],
+  "solution": "func solve(width, height):\n\treturn perimeter(width, height) + area(width, height)\n\nfunc perimeter(w, h):\n\treturn 2 * w + 2 * h\n\nfunc area(w, h):\n\treturn w * h",
+  "require_methods": [
+    "perimeter",
+    "area"
+  ]
 }

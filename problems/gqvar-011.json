@@ -3,14 +3,15 @@
   "title": "Health after damage",
   "concept": "gq-variables",
   "difficulty": 0,
-  "prompt": "Make a variable called `remaining` equal to health minus damage. Return remaining.",
-  "signature": "func solve(health: int, damage: int) -> int:",
-  "starter": "func solve(health: int, damage: int) -> int:\n\treturn health",
+  "prompt": "Make a variable called `remaining` equal to health minus damage, and return it. solve(100, 30) is 70.",
+  "signature": "func solve(health, damage):",
+  "starter": "func solve(health, damage):\n\treturn health",
   "require_names": [
     "remaining"
   ],
   "tests": [
     {
+      "name": "100 minus 30 is 70",
       "args": [
         100,
         30
@@ -18,6 +19,7 @@
       "expect": 70
     },
     {
+      "name": "50 minus 50 is 0",
       "args": [
         50,
         50
@@ -25,6 +27,7 @@
       "expect": 0
     },
     {
+      "name": "10 minus 25 is -15",
       "args": [
         10,
         25
@@ -32,6 +35,10 @@
       "expect": -15
     }
   ],
-  "hint": "The value of a new variable can be a subtraction. Which of the two numbers comes first?",
-  "solution": "func solve(health: int, damage: int) -> int:\n\tvar remaining = health - damage\n\treturn remaining"
+  "hints": [
+    "The value of a new variable can be a subtraction.",
+    "`var remaining = health - damage`, then return it."
+  ],
+  "docs": [],
+  "solution": "func solve(health, damage):\n\tvar remaining = health - damage\n\treturn remaining"
 }

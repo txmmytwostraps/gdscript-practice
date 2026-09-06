@@ -1,37 +1,50 @@
 {
   "id": "str-002",
-  "title": "How long",
+  "title": "Length",
   "concept": "strings",
   "difficulty": 0,
-  "prompt": "Return the number of characters in text.",
-  "signature": "func solve(text: String) -> int:",
-  "starter": "func solve(text: String) -> int:\n\treturn 0",
+  "prompt": "Return the number of characters in the text.",
+  "signature": "func solve(s):",
+  "starter": "func solve(s):\n\treturn 0",
   "tests": [
     {
+      "name": "hello is 5",
       "args": [
         "hello"
       ],
       "expect": 5
     },
     {
+      "name": "Empty is 0",
       "args": [
         ""
       ],
       "expect": 0
     },
     {
+      "name": "a b is 3",
       "args": [
         "a b"
       ],
       "expect": 3
     },
     {
+      "name": "GDScript is 8",
       "args": [
         "GDScript"
       ],
       "expect": 8
     }
   ],
-  "hint": "Strings have a `length()` method: `text.length()`.",
-  "solution": "func solve(text: String) -> int:\n\treturn text.length()"
+  "hints": [
+    "Strings have a length method.",
+    "`return s.length()`"
+  ],
+  "docs": [
+    {
+      "name": "text.length()",
+      "what": "Returns how many characters the string has."
+    }
+  ],
+  "solution": "func solve(s):\n\treturn s.length()"
 }

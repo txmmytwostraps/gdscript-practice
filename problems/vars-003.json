@@ -1,37 +1,45 @@
 {
   "id": "vars-003",
-  "title": "Add ten",
+  "title": "Score bonus",
   "concept": "variables",
   "difficulty": 0,
-  "prompt": "A variable `score` starts out equal to n. Add the number `10` to it, then return score.",
-  "signature": "func solve(n: int) -> int:",
-  "starter": "func solve(n: int) -> int:\n\tvar score = n\n\treturn score",
+  "prompt": "The robot's `score` starts out equal to n. It earns a bonus: add the number `10` to score, then return score. solve(5) is 15.",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\tvar score = n\n\treturn score",
   "tests": [
     {
+      "name": "0 plus 10 is 10",
       "args": [
         0
       ],
       "expect": 10
     },
     {
+      "name": "5 plus 10 is 15",
       "args": [
         5
       ],
       "expect": 15
     },
     {
+      "name": "-10 plus 10 is 0",
       "args": [
         -10
       ],
       "expect": 0
     },
     {
+      "name": "100 plus 10 is 110",
       "args": [
         100
       ],
       "expect": 110
     }
   ],
-  "hint": "`score += 10` is a short way of writing `score = score + 10`.",
-  "solution": "func solve(n: int) -> int:\n\tvar score = n\n\tscore += 10\n\treturn score"
+  "hints": [
+    "`score += 10` is a short way of writing `score = score + 10`.",
+    "Add that line between the var and the return."
+  ],
+  "docs": [],
+  "solution": "func solve(n):\n\tvar score = n\n\tscore += 10\n\treturn score"
 }

@@ -4,8 +4,8 @@
   "concept": "gq-readable",
   "difficulty": 0,
   "prompt": "Everyone knows a minute has 60 seconds, but a name still helps. Call it `SECONDS_PER_MINUTE` and use it.",
-  "signature": "func solve(minutes: int) -> int:",
-  "starter": "func solve(minutes: int) -> int:\n\treturn minutes * 60",
+  "signature": "func solve(minutes):",
+  "starter": "func solve(minutes):\n\treturn minutes * 60",
   "require_names": [
     "SECONDS_PER_MINUTE"
   ],
@@ -14,24 +14,36 @@
   ],
   "tests": [
     {
+      "name": "2 minutes is 120",
       "args": [
         2
       ],
       "expect": 120
     },
     {
+      "name": "0 minutes is 0",
       "args": [
         0
       ],
       "expect": 0
     },
     {
+      "name": "1 minute is 60",
       "args": [
         1
       ],
       "expect": 60
     }
   ],
-  "hint": "Long names are fine and often better. Declare it, then use it in the multiplication.",
-  "solution": "func solve(minutes: int) -> int:\n\tconst SECONDS_PER_MINUTE = 60\n\treturn minutes * SECONDS_PER_MINUTE"
+  "hints": [
+    "Long names are fine and often better.",
+    "`const SECONDS_PER_MINUTE = 60`"
+  ],
+  "docs": [
+    {
+      "name": "const NAME = value",
+      "what": "Declares a named value that never changes. Written in CAPITALS by convention."
+    }
+  ],
+  "solution": "func solve(minutes):\n\tconst SECONDS_PER_MINUTE = 60\n\treturn minutes * SECONDS_PER_MINUTE"
 }

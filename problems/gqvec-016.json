@@ -3,11 +3,12 @@
   "title": "Keep inside a box",
   "concept": "gq-vectors",
   "difficulty": 1,
-  "prompt": "Return the position pushed back inside a box that runs from (0, 0) to (width, height). Each part is clamped separately.",
-  "signature": "func solve(position: Vector2, width: float, height: float) -> Vector2:",
-  "starter": "func solve(position: Vector2, width: float, height: float) -> Vector2:\n\treturn position",
+  "prompt": "Return the robot's position pushed back inside a box from (0, 0) to (width, height). Each part is clamped separately. (-3, 12) in a 10 by 10 box becomes (0, 10).",
+  "signature": "func solve(position, width, height) -> Vector2:",
+  "starter": "func solve(position, width, height) -> Vector2:\n\treturn position",
   "tests": [
     {
+      "name": "Inside stays put",
       "args": [
         {
           "$v2": [
@@ -26,6 +27,7 @@
       }
     },
     {
+      "name": "(-3, 12) becomes (0, 10)",
       "args": [
         {
           "$v2": [
@@ -44,6 +46,7 @@
       }
     },
     {
+      "name": "(15, -1) becomes (10, 0)",
       "args": [
         {
           "$v2": [
@@ -62,6 +65,19 @@
       }
     }
   ],
-  "hint": "clamp() on x and clamp() on y, or the vector's own clamp method with two corner vectors.",
-  "solution": "func solve(position: Vector2, width: float, height: float) -> Vector2:\n\treturn Vector2(clamp(position.x, 0, width), clamp(position.y, 0, height))"
+  "hints": [
+    "clamp() on x and clamp() on y.",
+    "`return Vector2(clamp(position.x, 0, width), clamp(position.y, 0, height))`"
+  ],
+  "docs": [
+    {
+      "name": "clamp(value, low, high)",
+      "what": "Returns value, but never lower than low or higher than high."
+    },
+    {
+      "name": "Vector2(x, y)",
+      "what": "Makes a vector holding an x and a y. Read them back with .x and .y."
+    }
+  ],
+  "solution": "func solve(position, width, height) -> Vector2:\n\treturn Vector2(clamp(position.x, 0, width), clamp(position.y, 0, height))"
 }

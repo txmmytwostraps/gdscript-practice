@@ -3,38 +3,59 @@
   "title": "Return a rounded value",
   "concept": "gq-return",
   "difficulty": 1,
-  "prompt": "Write `nearest`, which takes a float and returns the nearest whole number as an int. solve returns nearest(x).",
-  "signature": "func solve(x: float) -> int:",
-  "starter": "func solve(x: float) -> int:\n\treturn int(x)",
-  "require_methods": [
-    "nearest"
-  ],
+  "prompt": "Write `nearest`, which takes a decimal and returns the nearest whole number as an int. `solve` returns nearest(x). 2.6 becomes 3.",
+  "signature": "func solve(x):",
+  "starter": "func solve(x):\n\treturn int(x)",
   "tests": [
     {
+      "name": "2.4 rounds to 2",
       "args": [
         2.4
       ],
       "expect": 2
     },
     {
+      "name": "2.6 rounds to 3",
       "args": [
         2.6
       ],
       "expect": 3
     },
     {
+      "name": "-1.2 rounds to -1",
       "args": [
         -1.2
       ],
       "expect": -1
     },
     {
+      "name": "7 stays 7",
       "args": [
         7
       ],
       "expect": 7
     }
   ],
-  "hint": "round() gives the nearest value but as a float; int() turns a float into an int.",
-  "solution": "func solve(x: float) -> int:\n\treturn nearest(x)\n\nfunc nearest(value: float) -> int:\n\treturn int(round(value))"
+  "hints": [
+    "round() gives the nearest value but as a float; int() turns it into an int.",
+    "`return int(round(value))` inside nearest."
+  ],
+  "docs": [
+    {
+      "name": "return value",
+      "what": "Ends the function and hands value back to whoever called it."
+    },
+    {
+      "name": "round(x)",
+      "what": "Returns the nearest whole number as a float."
+    },
+    {
+      "name": "int(number)",
+      "what": "Returns the number as a whole number, dropping the decimals."
+    }
+  ],
+  "solution": "func solve(x):\n\treturn nearest(x)\n\nfunc nearest(value):\n\treturn int(round(value))",
+  "require_methods": [
+    "nearest"
+  ]
 }

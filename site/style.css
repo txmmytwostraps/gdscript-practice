@@ -28,7 +28,17 @@
 .linkish:hover { color: var(--accent-hover); }
 .linkish.locked { color: var(--dim); cursor: default; }
 .linkish.danger { color: var(--muted); } .linkish.danger:hover { color: var(--error); }
-.hint { margin: 0; font-size: 14px; max-width: 60ch; padding: 10px 14px; border-left: 2px solid var(--accent); background: var(--panel); }
+.hints { display: flex; flex-direction: column; gap: 6px; }
+.hints .stage { display: flex; flex-direction: column; gap: 6px; }
+.hints .stage p { margin: 0; font-size: 14px; max-width: 60ch; padding: 10px 14px; border-left: 2px solid var(--accent); background: var(--panel); }
+.testlist .row { grid-template-columns: minmax(0, 1fr) 24px minmax(0, 1fr); }
+.testlist .name { grid-column: 1 / -1; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+.doclist { display: flex; flex-direction: column; border: 1px solid var(--line); }
+.doclist .row { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 12px; padding: 8px 14px; border-bottom: 1px solid var(--line); font-size: 13px; }
+.doclist .row:last-child { border-bottom: 0; }
+.doclist .row code { background: transparent; padding: 0; color: var(--fn); }
+.doclist .row span:last-child { color: var(--muted); }
+#result-table .check { display: block; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
 .code { margin: 0; background: var(--panel); border: 1px solid var(--line); color: var(--text); font-size: 13px; line-height: 1.6; padding: 12px 16px; overflow-x: auto; white-space: pre; tab-size: 4; }
 .code .k { color: var(--error); } .code .t { color: var(--accent); } .code .s { color: var(--str); } .code .n { color: var(--num); } .code .f { color: var(--fn); } .code .c { color: var(--cmt); }
 .tests { display: flex; flex-direction: column; gap: 8px; }

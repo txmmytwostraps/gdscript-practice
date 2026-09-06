@@ -3,11 +3,12 @@
   "title": "Reverse with a loop",
   "concept": "gq-arrays",
   "difficulty": 1,
-  "prompt": "Return a new array with the items in the opposite order. Build it with a loop.",
-  "signature": "func solve(items: Array) -> Array:",
-  "starter": "func solve(items: Array) -> Array:\n\treturn items",
+  "prompt": "Return a new array with the items in the opposite order, built with a loop.",
+  "signature": "func solve(items):",
+  "starter": "func solve(items):\n\treturn items",
   "tests": [
     {
+      "name": "[1, 2, 3] becomes [3, 2, 1]",
       "args": [
         [
           1,
@@ -22,12 +23,14 @@
       ]
     },
     {
+      "name": "Empty stays empty",
       "args": [
         []
       ],
       "expect": []
     },
     {
+      "name": "One item stays",
       "args": [
         [
           7
@@ -38,6 +41,19 @@
       ]
     }
   ],
-  "hint": "Adding each item to the FRONT of a new array reverses the order. Look for a method that does that.",
-  "solution": "func solve(items: Array) -> Array:\n\tvar result = []\n\tfor item in items:\n\t\tresult.push_front(item)\n\treturn result"
+  "hints": [
+    "Adding each item to the front of a new array reverses the order.",
+    "`result.push_front(item)` inside the loop."
+  ],
+  "docs": [
+    {
+      "name": "for item in list:",
+      "what": "Runs the indented lines once per item, with item holding each value in turn."
+    },
+    {
+      "name": "list.push_front(value)",
+      "what": "Adds value at the start. Returns nothing."
+    }
+  ],
+  "solution": "func solve(items):\n\tvar result = []\n\tfor item in items:\n\t\tresult.push_front(item)\n\treturn result"
 }

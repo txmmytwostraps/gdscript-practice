@@ -4,10 +4,11 @@
   "concept": "gq-arrays",
   "difficulty": 1,
   "prompt": "Return the largest number in the array using a loop. The array always has at least one item.",
-  "signature": "func solve(nums: Array) -> int:",
-  "starter": "func solve(nums: Array) -> int:\n\treturn nums[0]",
+  "signature": "func solve(nums):",
+  "starter": "func solve(nums):\n\treturn nums[0]",
   "tests": [
     {
+      "name": "9 is largest",
       "args": [
         [
           3,
@@ -18,6 +19,7 @@
       "expect": 9
     },
     {
+      "name": "-1 is largest of negatives",
       "args": [
         [
           -5,
@@ -28,6 +30,7 @@
       "expect": -1
     },
     {
+      "name": "One item",
       "args": [
         [
           7
@@ -36,6 +39,19 @@
       "expect": 7
     }
   ],
-  "hint": "Keep the biggest seen so far, starting from the first item, and let each item challenge it.",
-  "solution": "func solve(nums: Array) -> int:\n\tvar biggest = nums[0]\n\tfor n in nums:\n\t\tif n > biggest:\n\t\t\tbiggest = n\n\treturn biggest"
+  "hints": [
+    "Keep the biggest seen so far, starting from the first item.",
+    "`var biggest = nums[0]` then `for n in nums:` with `if n > biggest:` update."
+  ],
+  "docs": [
+    {
+      "name": "for item in list:",
+      "what": "Runs the indented lines once per item, with item holding each value in turn."
+    },
+    {
+      "name": "list[i]",
+      "what": "The item at position i. Positions start at 0; -1 is the last item."
+    }
+  ],
+  "solution": "func solve(nums):\n\tvar biggest = nums[0]\n\tfor n in nums:\n\t\tif n > biggest:\n\t\t\tbiggest = n\n\treturn biggest"
 }

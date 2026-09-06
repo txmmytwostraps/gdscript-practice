@@ -3,17 +3,19 @@
   "title": "Empty or not",
   "concept": "gq-arrays",
   "difficulty": 0,
-  "prompt": "Return true if the array has no items.",
-  "signature": "func solve(items: Array) -> bool:",
-  "starter": "func solve(items: Array) -> bool:\n\treturn false",
+  "prompt": "Return true if the robot's inventory has no items.",
+  "signature": "func solve(items):",
+  "starter": "func solve(items):\n\treturn false",
   "tests": [
     {
+      "name": "Empty is true",
       "args": [
         []
       ],
       "expect": true
     },
     {
+      "name": "One item is false",
       "args": [
         [
           1
@@ -22,6 +24,7 @@
       "expect": false
     },
     {
+      "name": "Two zeros is false",
       "args": [
         [
           0,
@@ -31,6 +34,19 @@
       "expect": false
     }
   ],
-  "hint": "Compare the size with zero, or look for a method whose name asks the question.",
-  "solution": "func solve(items: Array) -> bool:\n\treturn items.is_empty()"
+  "hints": [
+    "Compare the size with zero, or use the method that asks the question.",
+    "`return items.is_empty()`"
+  ],
+  "docs": [
+    {
+      "name": "list.is_empty()",
+      "what": "Returns true when the array has no items."
+    },
+    {
+      "name": "list.size()",
+      "what": "Returns how many items the array holds."
+    }
+  ],
+  "solution": "func solve(items):\n\treturn items.is_empty()"
 }

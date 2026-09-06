@@ -1,17 +1,25 @@
 {
   "id": "vars-002",
-  "title": "Store and return",
+  "title": "Store and return a greeting",
   "concept": "variables",
   "difficulty": 0,
-  "prompt": "Inside solve(), create a variable named `greeting` that holds the text \"hello\". Then return that variable.",
-  "signature": "func solve() -> String:",
-  "starter": "func solve() -> String:\n\treturn \"\"",
+  "prompt": "Inside `solve`, create a variable named `greeting` that holds the text \"hello\", then return that variable.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\treturn \"\"",
+  "require_names": [
+    "greeting"
+  ],
   "tests": [
     {
+      "name": "Returns hello from the variable",
       "args": [],
       "expect": "hello"
     }
   ],
-  "hint": "A variable is made with `var`: `var greeting = \"hello\"`. Then `return greeting`.",
-  "solution": "func solve() -> String:\n\tvar greeting = \"hello\"\n\treturn greeting"
+  "hints": [
+    "var, a name, an = sign, and a value in quotes.",
+    "`var greeting = \"hello\"`, then `return greeting`."
+  ],
+  "docs": [],
+  "solution": "func solve():\n\tvar greeting = \"hello\"\n\treturn greeting"
 }

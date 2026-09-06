@@ -3,11 +3,12 @@
   "title": "Return two values in an array",
   "concept": "gq-arrays",
   "difficulty": 0,
-  "prompt": "A function can only return one thing, so return an array holding two: a plus b, then a minus b.",
-  "signature": "func solve(a: int, b: int) -> Array:",
-  "starter": "func solve(a: int, b: int) -> Array:\n\treturn []",
+  "prompt": "A function can only return one thing, so return an array holding two: a plus b, then a minus b. solve(5, 3) is [8, 2].",
+  "signature": "func solve(a, b):",
+  "starter": "func solve(a, b):\n\treturn []",
   "tests": [
     {
+      "name": "5 and 3 give [8, 2]",
       "args": [
         5,
         3
@@ -18,6 +19,7 @@
       ]
     },
     {
+      "name": "Zeros give [0, 0]",
       "args": [
         0,
         0
@@ -28,6 +30,7 @@
       ]
     },
     {
+      "name": "1 and 4 give [5, -3]",
       "args": [
         1,
         4
@@ -38,6 +41,10 @@
       ]
     }
   ],
-  "hint": "Calculations can go straight inside the square brackets.",
-  "solution": "func solve(a: int, b: int) -> Array:\n\treturn [a + b, a - b]"
+  "hints": [
+    "Calculations can go straight inside the square brackets.",
+    "`return [a + b, a - b]`"
+  ],
+  "docs": [],
+  "solution": "func solve(a, b):\n\treturn [a + b, a - b]"
 }

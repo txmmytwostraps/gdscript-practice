@@ -4,10 +4,11 @@
   "concept": "arrays",
   "difficulty": 1,
   "prompt": "Return a new array that has everything from items except any item equal to value.",
-  "signature": "func solve(items: Array, value) -> Array:",
-  "starter": "func solve(items: Array, value) -> Array:\n\treturn items",
+  "signature": "func solve(items, value):",
+  "starter": "func solve(items, value):\n\treturn items",
   "tests": [
     {
+      "name": "Both 1s removed",
       "args": [
         [
           1,
@@ -23,6 +24,7 @@
       ]
     },
     {
+      "name": "All removed leaves empty",
       "args": [
         [
           1,
@@ -33,6 +35,7 @@
       "expect": []
     },
     {
+      "name": "Nothing to remove",
       "args": [
         [
           4,
@@ -46,6 +49,7 @@
       ]
     },
     {
+      "name": "Works with text",
       "args": [
         [
           "a",
@@ -59,6 +63,19 @@
       ]
     }
   ],
-  "hint": "Make a new empty array. For each item, `if x != value:` append it.",
-  "solution": "func solve(items: Array, value) -> Array:\n\tvar result = []\n\tfor x in items:\n\t\tif x != value:\n\t\t\tresult.append(x)\n\treturn result"
+  "hints": [
+    "Make a new empty array. For each item, append it only if it is not the value.",
+    "`if x != value:` then `result.append(x)`."
+  ],
+  "docs": [
+    {
+      "name": "for item in list:",
+      "what": "Runs the indented lines once per item, with item holding each value in turn."
+    },
+    {
+      "name": "list.append(value)",
+      "what": "Adds value to the end of the array. Returns nothing."
+    }
+  ],
+  "solution": "func solve(items, value):\n\tvar result = []\n\tfor x in items:\n\t\tif x != value:\n\t\t\tresult.append(x)\n\treturn result"
 }

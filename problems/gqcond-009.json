@@ -3,23 +3,34 @@
   "title": "Not",
   "concept": "gq-conditions",
   "difficulty": 0,
-  "prompt": "Return true if the door is closed. You are told whether it is open.",
-  "signature": "func solve(is_open: bool) -> bool:",
-  "starter": "func solve(is_open: bool) -> bool:\n\treturn is_open",
+  "prompt": "Return true if the robot's hatch is closed. You are told whether it is open.",
+  "signature": "func solve(is_open):",
+  "starter": "func solve(is_open):\n\treturn is_open",
   "tests": [
     {
+      "name": "Open means not closed",
       "args": [
         true
       ],
       "expect": false
     },
     {
+      "name": "Not open means closed",
       "args": [
         false
       ],
       "expect": true
     }
   ],
-  "hint": "The word not flips a true to a false and a false to a true.",
-  "solution": "func solve(is_open: bool) -> bool:\n\treturn not is_open"
+  "hints": [
+    "The word not flips a true to a false and a false to a true.",
+    "`return not is_open`"
+  ],
+  "docs": [
+    {
+      "name": "and  or  not",
+      "what": "and is true when both sides are; or when at least one is; not flips true and false."
+    }
+  ],
+  "solution": "func solve(is_open):\n\treturn not is_open"
 }

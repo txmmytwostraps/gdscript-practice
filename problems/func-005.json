@@ -3,11 +3,12 @@
   "title": "Print then return",
   "concept": "functions",
   "difficulty": 1,
-  "prompt": "Call print(n) to print the value of n, then return n × 10. The tests check what you print as well as what you return.",
-  "signature": "func solve(n: int) -> int:",
-  "starter": "func solve(n: int) -> int:\n\treturn n * 10",
+  "prompt": "Call print(n) to print the value of n, then return n times 10. The tests check what you print as well as what you return.",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\treturn n * 10",
   "tests": [
     {
+      "name": "Prints 3, returns 30",
       "args": [
         3
       ],
@@ -17,6 +18,7 @@
       ]
     },
     {
+      "name": "Prints 0, returns 0",
       "args": [
         0
       ],
@@ -26,6 +28,7 @@
       ]
     },
     {
+      "name": "Prints -2, returns -20",
       "args": [
         -2
       ],
@@ -35,6 +38,19 @@
       ]
     }
   ],
-  "hint": "Two lines: first `print(n)`, then `return n * 10`.",
-  "solution": "func solve(n: int) -> int:\n\tprint(n)\n\treturn n * 10"
+  "hints": [
+    "Two lines: print first, then return.",
+    "`print(n)` then `return n * 10`."
+  ],
+  "docs": [
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    },
+    {
+      "name": "return value",
+      "what": "Ends the function and hands value back to whoever called it."
+    }
+  ],
+  "solution": "func solve(n):\n\tprint(n)\n\treturn n * 10"
 }

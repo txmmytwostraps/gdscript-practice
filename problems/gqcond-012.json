@@ -3,35 +3,52 @@
   "title": "Discount tiers",
   "concept": "gq-conditions",
   "difficulty": 1,
-  "prompt": "Orders of 100 or more get 20% off, orders of 50 or more get 10% off, smaller orders get nothing off. Return the price to pay.",
-  "signature": "func solve(total: float) -> float:",
-  "starter": "func solve(total: float) -> float:\n\treturn total",
+  "prompt": "Orders of 100 or more get 20% off, orders of 50 or more get 10% off, smaller orders get nothing off. Return the price to pay. solve(200) is 160.0.",
+  "signature": "func solve(total) -> float:",
+  "starter": "func solve(total) -> float:\n\treturn total",
   "tests": [
     {
+      "name": "200 gets 20% off",
       "args": [
         200
       ],
       "expect": 160
     },
     {
+      "name": "Exactly 100 gets 20% off",
       "args": [
         100
       ],
       "expect": 80
     },
     {
+      "name": "60 gets 10% off",
       "args": [
         60
       ],
       "expect": 54
     },
     {
+      "name": "20 gets nothing off",
       "args": [
         20
       ],
       "expect": 20
     }
   ],
-  "hint": "Test the biggest threshold first, or the 50 rule will catch the 100 orders too.",
-  "solution": "func solve(total: float) -> float:\n\tif total >= 100:\n\t\treturn total * 0.8\n\telif total >= 50:\n\t\treturn total * 0.9\n\telse:\n\t\treturn total"
+  "hints": [
+    "Test the biggest threshold first, or the 50 rule catches the 100 orders too.",
+    "`if total >= 100:` return total * 0.8, `elif total >= 50:` return total * 0.9, `else:` return total."
+  ],
+  "docs": [
+    {
+      "name": "if condition:",
+      "what": "Runs the indented lines below it only when the condition is true. elif and else add more branches."
+    },
+    {
+      "name": "==  !=  <  <=  >  >=",
+      "what": "Comparisons. Each gives true or false."
+    }
+  ],
+  "solution": "func solve(total) -> float:\n\tif total >= 100:\n\t\treturn total * 0.8\n\telif total >= 50:\n\t\treturn total * 0.9\n\telse:\n\t\treturn total"
 }

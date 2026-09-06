@@ -3,44 +3,59 @@
   "title": "Helper function",
   "concept": "functions",
   "difficulty": 1,
-  "prompt": "Write a second function called `cube(n)` that returns n × n × n. Then make solve(n) call cube(n) and return whatever it gives back. Both functions go in the same code box — put cube above or below solve.",
-  "signature": "func solve(n: int) -> int:",
-  "starter": "func solve(n: int) -> int:\n\treturn 0",
-  "require_methods": [
-    "cube"
-  ],
+  "prompt": "Write a second function called `cube` that returns n times n times n. Make `solve` call cube(n) and return what it gives back. Both go in the same code box.",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\treturn 0",
   "tests": [
     {
+      "name": "2 cubed is 8",
       "args": [
         2
       ],
       "expect": 8
     },
     {
+      "name": "3 cubed is 27",
       "args": [
         3
       ],
       "expect": 27
     },
     {
+      "name": "-1 cubed is -1",
       "args": [
         -1
       ],
       "expect": -1
     },
     {
+      "name": "0 cubed is 0",
       "args": [
         0
       ],
       "expect": 0
     },
     {
+      "name": "5 cubed is 125",
       "args": [
         5
       ],
       "expect": 125
     }
   ],
-  "hint": "A function is defined with `func cube(n: int) -> int:` on its own line, followed by an indented body. Call it like `cube(n)`.",
-  "solution": "func cube(n: int) -> int:\n\treturn n * n * n\n\nfunc solve(n: int) -> int:\n\treturn cube(n)"
+  "hints": [
+    "A function is defined with func and a name on its own line, followed by an indented body.",
+    "`func cube(n):` with `return n * n * n`.",
+    "solve: `return cube(n)`."
+  ],
+  "docs": [
+    {
+      "name": "return value",
+      "what": "Ends the function and hands value back to whoever called it."
+    }
+  ],
+  "solution": "func cube(n):\n\treturn n * n * n\n\nfunc solve(n):\n\treturn cube(n)",
+  "require_methods": [
+    "cube"
+  ]
 }

@@ -4,40 +4,58 @@
   "concept": "strings",
   "difficulty": 1,
   "prompt": "Return how many vowels (a, e, i, o, u) are in the text. The text is always lowercase.",
-  "signature": "func solve(text: String) -> int:",
-  "starter": "func solve(text: String) -> int:\n\treturn 0",
+  "signature": "func solve(s):",
+  "starter": "func solve(s):\n\treturn 0",
   "tests": [
     {
+      "name": "hello has 2",
       "args": [
         "hello"
       ],
       "expect": 2
     },
     {
+      "name": "xyz has 0",
       "args": [
         "xyz"
       ],
       "expect": 0
     },
     {
+      "name": "aeiou has 5",
       "args": [
         "aeiou"
       ],
       "expect": 5
     },
     {
+      "name": "gdscript has 1",
       "args": [
         "gdscript"
       ],
       "expect": 1
     },
     {
+      "name": "Empty has 0",
       "args": [
         ""
       ],
       "expect": 0
     }
   ],
-  "hint": "`for c in text:` goes through it one letter at a time. `c in \"aeiou\"` is true when c is a vowel.",
-  "solution": "func solve(text: String) -> int:\n\tvar count = 0\n\tfor c in text:\n\t\tif c in \"aeiou\":\n\t\t\tcount += 1\n\treturn count"
+  "hints": [
+    "for c in s goes letter by letter.",
+    "`if c in \"aeiou\":` then `count += 1`."
+  ],
+  "docs": [
+    {
+      "name": "for c in text:",
+      "what": "Runs the indented lines once per character, with c holding each one."
+    },
+    {
+      "name": "part in text",
+      "what": "true if part appears somewhere in text."
+    }
+  ],
+  "solution": "func solve(s):\n\tvar count = 0\n\tfor c in s:\n\t\tif c in \"aeiou\":\n\t\t\tcount += 1\n\treturn count"
 }

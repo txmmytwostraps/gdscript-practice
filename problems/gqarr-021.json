@@ -4,10 +4,11 @@
   "concept": "gq-arrays",
   "difficulty": 0,
   "prompt": "Put value at the start of the array, before everything else, and return the array.",
-  "signature": "func solve(items: Array, value: int) -> Array:",
-  "starter": "func solve(items: Array, value: int) -> Array:\n\titems.append(value)\n\treturn items",
+  "signature": "func solve(items, value):",
+  "starter": "func solve(items, value):\n\titems.append(value)\n\treturn items",
   "tests": [
     {
+      "name": "1 in front of [2, 3]",
       "args": [
         [
           2,
@@ -22,6 +23,7 @@
       ]
     },
     {
+      "name": "Into an empty array",
       "args": [
         [],
         5
@@ -31,6 +33,15 @@
       ]
     }
   ],
-  "hint": "append goes to the back. There is a matching method for the front, and insert can put an item at any position.",
-  "solution": "func solve(items: Array, value: int) -> Array:\n\titems.push_front(value)\n\treturn items"
+  "hints": [
+    "append goes to the back; there is a matching method for the front.",
+    "`items.push_front(value)`"
+  ],
+  "docs": [
+    {
+      "name": "list.push_front(value)",
+      "what": "Adds value at the start. Returns nothing."
+    }
+  ],
+  "solution": "func solve(items, value):\n\titems.push_front(value)\n\treturn items"
 }

@@ -3,11 +3,12 @@
   "title": "Mirror left to right",
   "concept": "gq-vectors",
   "difficulty": 1,
-  "prompt": "Return the vector flipped horizontally: x changes sign, y stays the same.",
-  "signature": "func solve(v: Vector2) -> Vector2:",
-  "starter": "func solve(v: Vector2) -> Vector2:\n\treturn v",
+  "prompt": "Return the vector flipped horizontally: x changes sign, y stays the same. (3, 4) becomes (-3, 4).",
+  "signature": "func solve(v) -> Vector2:",
+  "starter": "func solve(v) -> Vector2:\n\treturn v",
   "tests": [
     {
+      "name": "(3, 4) becomes (-3, 4)",
       "args": [
         {
           "$v2": [
@@ -24,6 +25,7 @@
       }
     },
     {
+      "name": "(-1, -1) becomes (1, -1)",
       "args": [
         {
           "$v2": [
@@ -40,6 +42,7 @@
       }
     },
     {
+      "name": "x of 0 stays 0",
       "args": [
         {
           "$v2": [
@@ -56,6 +59,15 @@
       }
     }
   ],
-  "hint": "Build a new Vector2 from the old parts, changing only one of them.",
-  "solution": "func solve(v: Vector2) -> Vector2:\n\treturn Vector2(-v.x, v.y)"
+  "hints": [
+    "Build a new Vector2 from the old parts, changing only one.",
+    "`return Vector2(-v.x, v.y)`"
+  ],
+  "docs": [
+    {
+      "name": "Vector2(x, y)",
+      "what": "Makes a vector holding an x and a y. Read them back with .x and .y."
+    }
+  ],
+  "solution": "func solve(v) -> Vector2:\n\treturn Vector2(-v.x, v.y)"
 }

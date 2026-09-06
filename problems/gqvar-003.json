@@ -1,20 +1,25 @@
 {
   "id": "gqvar-003",
-  "title": "Store a true or false",
+  "title": "Powered on",
   "concept": "gq-variables",
   "difficulty": 0,
-  "prompt": "Create a variable called `is_alive` and set it to true. Return it.",
-  "signature": "func solve() -> bool:",
-  "starter": "func solve() -> bool:\n\treturn false",
+  "prompt": "The robot needs a switch. Create a variable `is_on` set to true and return it.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\treturn false",
   "require_names": [
-    "is_alive"
+    "is_on"
   ],
   "tests": [
     {
+      "name": "Returns true from is_on",
       "args": [],
       "expect": true
     }
   ],
-  "hint": "true and false are written without quotes.",
-  "solution": "func solve() -> bool:\n\tvar is_alive = true\n\treturn is_alive"
+  "hints": [
+    "true and false are values too, written without quotes.",
+    "`var is_on = true`, then `return is_on`."
+  ],
+  "docs": [],
+  "solution": "func solve():\n\tvar is_on = true\n\treturn is_on"
 }

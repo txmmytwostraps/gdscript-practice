@@ -3,11 +3,12 @@
   "title": "Either is enough",
   "concept": "gq-conditions",
   "difficulty": 1,
-  "prompt": "Shipping is free if the order total is 50 or more, OR if the customer is a member. Return true if shipping is free.",
-  "signature": "func solve(total: float, is_member: bool) -> bool:",
-  "starter": "func solve(total: float, is_member: bool) -> bool:\n\treturn false",
+  "prompt": "Shipping of robot parts is free if the order total is 50 or more, OR if the customer is a member. Return true if shipping is free.",
+  "signature": "func solve(total, is_member):",
+  "starter": "func solve(total, is_member):\n\treturn false",
   "tests": [
     {
+      "name": "60 is free",
       "args": [
         60,
         false
@@ -15,6 +16,7 @@
       "expect": true
     },
     {
+      "name": "A member is always free",
       "args": [
         10,
         true
@@ -22,6 +24,7 @@
       "expect": true
     },
     {
+      "name": "10 for a non-member is not",
       "args": [
         10,
         false
@@ -29,6 +32,7 @@
       "expect": false
     },
     {
+      "name": "Exactly 50 is free",
       "args": [
         50,
         false
@@ -36,6 +40,19 @@
       "expect": true
     }
   ],
-  "hint": "or is true when at least one side is true.",
-  "solution": "func solve(total: float, is_member: bool) -> bool:\n\treturn total >= 50 or is_member"
+  "hints": [
+    "or is true when at least one side is true.",
+    "`return total >= 50 or is_member`"
+  ],
+  "docs": [
+    {
+      "name": "==  !=  <  <=  >  >=",
+      "what": "Comparisons. Each gives true or false."
+    },
+    {
+      "name": "and  or  not",
+      "what": "and is true when both sides are; or when at least one is; not flips true and false."
+    }
+  ],
+  "solution": "func solve(total, is_member):\n\treturn total >= 50 or is_member"
 }

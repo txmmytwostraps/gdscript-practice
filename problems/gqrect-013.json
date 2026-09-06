@@ -4,10 +4,11 @@
   "concept": "gq-rect",
   "difficulty": 0,
   "prompt": "Tiles are 64 by 64 pixels. Return the Rect2 that covers the tile at the given column and row.",
-  "signature": "func solve(column: int, row: int) -> Rect2:",
-  "starter": "func solve(column: int, row: int) -> Rect2:\n\treturn Rect2()",
+  "signature": "func solve(column, row) -> Rect2:",
+  "starter": "func solve(column, row) -> Rect2:\n\treturn Rect2()",
   "tests": [
     {
+      "name": "Cell (0, 0)",
       "args": [
         0,
         0
@@ -22,6 +23,7 @@
       }
     },
     {
+      "name": "Cell (2, 1)",
       "args": [
         2,
         1
@@ -36,6 +38,19 @@
       }
     }
   ],
-  "hint": "Position is the cell scaled by 64; size is always 64 by 64.",
-  "solution": "func solve(column: int, row: int) -> Rect2:\n\treturn Rect2(Vector2(column, row) * 64, Vector2(64, 64))"
+  "hints": [
+    "Position is the cell scaled by 64; size is always 64 by 64.",
+    "`return Rect2(Vector2(column, row) * 64, Vector2(64, 64))`"
+  ],
+  "docs": [
+    {
+      "name": "Rect2(x, y, width, height)",
+      "what": "Makes a rectangle from a top-left corner and a size. Also Rect2(position, size) with two vectors."
+    },
+    {
+      "name": "Vector2(x, y)",
+      "what": "Makes a vector holding an x and a y. Read them back with .x and .y."
+    }
+  ],
+  "solution": "func solve(column, row) -> Rect2:\n\treturn Rect2(Vector2(column, row) * 64, Vector2(64, 64))"
 }

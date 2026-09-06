@@ -4,10 +4,11 @@
   "concept": "gq-rect",
   "difficulty": 0,
   "prompt": "Return a Rect2 from a position vector and a size vector.",
-  "signature": "func solve(position: Vector2, size: Vector2) -> Rect2:",
-  "starter": "func solve(position: Vector2, size: Vector2) -> Rect2:\n\treturn Rect2()",
+  "signature": "func solve(position, size) -> Rect2:",
+  "starter": "func solve(position, size) -> Rect2:\n\treturn Rect2()",
   "tests": [
     {
+      "name": "(10, 20) with size (30, 40)",
       "args": [
         {
           "$v2": [
@@ -32,6 +33,7 @@
       }
     },
     {
+      "name": "Negative position works",
       "args": [
         {
           "$v2": [
@@ -56,6 +58,15 @@
       }
     }
   ],
-  "hint": "Rect2 also accepts two vectors.",
-  "solution": "func solve(position: Vector2, size: Vector2) -> Rect2:\n\treturn Rect2(position, size)"
+  "hints": [
+    "Rect2 also accepts two vectors.",
+    "`return Rect2(position, size)`"
+  ],
+  "docs": [
+    {
+      "name": "Rect2(x, y, width, height)",
+      "what": "Makes a rectangle from a top-left corner and a size. Also Rect2(position, size) with two vectors."
+    }
+  ],
+  "solution": "func solve(position, size) -> Rect2:\n\treturn Rect2(position, size)"
 }

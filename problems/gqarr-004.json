@@ -3,11 +3,12 @@
   "title": "How many",
   "concept": "gq-arrays",
   "difficulty": 0,
-  "prompt": "Return how many items are in the array.",
-  "signature": "func solve(items: Array) -> int:",
-  "starter": "func solve(items: Array) -> int:\n\treturn 0",
+  "prompt": "Return how many items are in the robot's inventory.",
+  "signature": "func solve(items):",
+  "starter": "func solve(items):\n\treturn 0",
   "tests": [
     {
+      "name": "Three items",
       "args": [
         [
           1,
@@ -18,12 +19,14 @@
       "expect": 3
     },
     {
+      "name": "Empty is 0",
       "args": [
         []
       ],
       "expect": 0
     },
     {
+      "name": "One item",
       "args": [
         [
           9
@@ -32,6 +35,15 @@
       "expect": 1
     }
   ],
-  "hint": "Arrays have a method that tells you their size.",
-  "solution": "func solve(items: Array) -> int:\n\treturn items.size()"
+  "hints": [
+    "Arrays have a method that tells you their size.",
+    "`return items.size()`"
+  ],
+  "docs": [
+    {
+      "name": "list.size()",
+      "what": "Returns how many items the array holds."
+    }
+  ],
+  "solution": "func solve(items):\n\treturn items.size()"
 }

@@ -1,46 +1,42 @@
 {
   "id": "gqfunc-016",
-  "title": "A helper you design",
+  "title": "Draw a square",
   "concept": "gq-functions",
   "difficulty": 1,
-  "prompt": "solve is given a rectangle's width and height. Write a helper called `print_perimeter` that prints the distance around the rectangle, and call it. You decide what parameters it needs.",
-  "signature": "func solve(width: int, height: int) -> void:",
-  "starter": "func solve(width: int, height: int) -> void:\n\tpass",
+  "prompt": "The robot draws by driving. `forward` prints \"forward 30\" and `left` prints \"left\", and both already exist. Make `solve` drive a square: forward then left, four times over, for eight instructions in total.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass\n\nfunc forward():\n\tprint(\"forward 30\")\n\nfunc left():\n\tprint(\"left\")",
   "require_methods": [
-    "print_perimeter"
+    "forward",
+    "left"
   ],
   "tests": [
     {
-      "args": [
-        3,
-        4
-      ],
+      "name": "Eight instructions: forward, left, four times",
+      "args": [],
       "expect": null,
       "out": [
-        "14"
-      ]
-    },
-    {
-      "args": [
-        0,
-        0
-      ],
-      "expect": null,
-      "out": [
-        "0"
-      ]
-    },
-    {
-      "args": [
-        5,
-        5
-      ],
-      "expect": null,
-      "out": [
-        "20"
+        "forward 30",
+        "left",
+        "forward 30",
+        "left",
+        "forward 30",
+        "left",
+        "forward 30",
+        "left"
       ]
     }
   ],
-  "hint": "The perimeter is twice the width plus twice the height. Your helper needs to know both.",
-  "solution": "func solve(width: int, height: int) -> void:\n\tprint_perimeter(width, height)\n\nfunc print_perimeter(w: int, h: int) -> void:\n\tprint(2 * w + 2 * h)"
+  "hints": [
+    "A square is the same corner four times.",
+    "One corner is `forward()` then `left()`.",
+    "Write that pair four times in solve, eight lines in all."
+  ],
+  "docs": [
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\tforward()\n\tleft()\n\tforward()\n\tleft()\n\tforward()\n\tleft()\n\tforward()\n\tleft()\n\nfunc forward():\n\tprint(\"forward 30\")\n\nfunc left():\n\tprint(\"left\")"
 }

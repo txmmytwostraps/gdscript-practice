@@ -3,11 +3,12 @@
   "title": "Repeat",
   "concept": "strings",
   "difficulty": 1,
-  "prompt": "Return text repeated `times` times, joined together. (\"ab\", 3) gives \"ababab\". Zero times gives an empty string.",
-  "signature": "func solve(text: String, times: int) -> String:",
-  "starter": "func solve(text: String, times: int) -> String:\n\treturn text",
+  "prompt": "Return text repeated n times. (\"ab\", 3) gives \"ababab\"; zero times gives an empty string.",
+  "signature": "func solve(text, n):",
+  "starter": "func solve(text, n):\n\treturn text",
   "tests": [
     {
+      "name": "ab three times",
       "args": [
         "ab",
         3
@@ -15,6 +16,7 @@
       "expect": "ababab"
     },
     {
+      "name": "Zero times is empty",
       "args": [
         "x",
         0
@@ -22,6 +24,7 @@
       "expect": ""
     },
     {
+      "name": "Once",
       "args": [
         "go",
         1
@@ -29,6 +32,7 @@
       "expect": "go"
     },
     {
+      "name": "Five dashes",
       "args": [
         "-",
         5
@@ -36,6 +40,19 @@
       "expect": "-----"
     }
   ],
-  "hint": "Start with `result = \"\"` and in a loop do `result += text`. (There is also a built-in `text.repeat(times)`.)",
-  "solution": "func solve(text: String, times: int) -> String:\n\tvar result = \"\"\n\tfor i in range(times):\n\t\tresult += text\n\treturn result"
+  "hints": [
+    "Start with an empty result and add text to it in a loop, or use repeat().",
+    "`return text.repeat(n)`"
+  ],
+  "docs": [
+    {
+      "name": "text.repeat(n)",
+      "what": "Returns the text repeated n times."
+    },
+    {
+      "name": "for c in text:",
+      "what": "Runs the indented lines once per character, with c holding each one."
+    }
+  ],
+  "solution": "func solve(text, n):\n\tvar result = \"\"\n\tfor i in range(n):\n\t\tresult += text\n\treturn result"
 }

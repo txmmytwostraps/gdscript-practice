@@ -3,11 +3,12 @@
   "title": "Reverse",
   "concept": "arrays",
   "difficulty": 1,
-  "prompt": "Return a new array with the items in reverse order.",
-  "signature": "func solve(items: Array) -> Array:",
-  "starter": "func solve(items: Array) -> Array:\n\treturn items",
+  "prompt": "Return a new array with the items in reverse order. You may loop, or use the reverse() method.",
+  "signature": "func solve(items):",
+  "starter": "func solve(items):\n\treturn items",
   "tests": [
     {
+      "name": "[1, 2, 3] becomes [3, 2, 1]",
       "args": [
         [
           1,
@@ -22,12 +23,14 @@
       ]
     },
     {
+      "name": "Empty stays empty",
       "args": [
         []
       ],
       "expect": []
     },
     {
+      "name": "One item stays",
       "args": [
         [
           1
@@ -38,6 +41,7 @@
       ]
     },
     {
+      "name": "Four letters",
       "args": [
         [
           "a",
@@ -54,6 +58,23 @@
       ]
     }
   ],
-  "hint": "Loop over items and insert each one at the front of a new array with `result.push_front(x)` — or look up the reverse() method.",
-  "solution": "func solve(items: Array) -> Array:\n\tvar result = []\n\tfor x in items:\n\t\tresult.push_front(x)\n\treturn result"
+  "hints": [
+    "Insert each item at the front of a new array with push_front.",
+    "`for x in items:` then `result.push_front(x)`."
+  ],
+  "docs": [
+    {
+      "name": "for item in list:",
+      "what": "Runs the indented lines once per item, with item holding each value in turn."
+    },
+    {
+      "name": "list.push_front(value)",
+      "what": "Adds value at the start. Returns nothing."
+    },
+    {
+      "name": "list.reverse()",
+      "what": "Reverses the array in place. Returns nothing."
+    }
+  ],
+  "solution": "func solve(items):\n\tvar result = []\n\tfor x in items:\n\t\tresult.push_front(x)\n\treturn result"
 }

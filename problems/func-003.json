@@ -3,17 +3,19 @@
   "title": "Default value",
   "concept": "functions",
   "difficulty": 1,
-  "prompt": "solve takes n and step. step has a default value of 1, so the tests sometimes call solve with only one argument. Return n + step.",
-  "signature": "func solve(n: int, step: int = 1) -> int:",
-  "starter": "func solve(n: int, step: int = 1) -> int:\n\treturn n",
+  "prompt": "solve takes n and step, where step has a default of 1, so the tests sometimes call solve with only one value. Return n plus step.",
+  "signature": "func solve(n, step = 1):",
+  "starter": "func solve(n, step = 1):\n\treturn n",
   "tests": [
     {
+      "name": "5 with the default is 6",
       "args": [
         5
       ],
       "expect": 6
     },
     {
+      "name": "5 and 3 is 8",
       "args": [
         5,
         3
@@ -21,12 +23,14 @@
       "expect": 8
     },
     {
+      "name": "0 with the default is 1",
       "args": [
         0
       ],
       "expect": 1
     },
     {
+      "name": "10 and -2 is 8",
       "args": [
         10,
         -2
@@ -34,6 +38,15 @@
       "expect": 8
     }
   ],
-  "hint": "The `= 1` in the signature is the default. Inside the function, step is just a normal variable.",
-  "solution": "func solve(n: int, step: int = 1) -> int:\n\treturn n + step"
+  "hints": [
+    "Inside the function, step is just a normal variable.",
+    "`return n + step`"
+  ],
+  "docs": [
+    {
+      "name": "return value",
+      "what": "Ends the function and hands value back to whoever called it."
+    }
+  ],
+  "solution": "func solve(n, step = 1):\n\treturn n + step"
 }

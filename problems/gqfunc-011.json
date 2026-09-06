@@ -1,39 +1,35 @@
 {
   "id": "gqfunc-011",
-  "title": "Print before and after",
+  "title": "Order matters",
   "concept": "gq-functions",
   "difficulty": 0,
-  "prompt": "Write `announce_start`, which prints \"start\", and `announce_end`, which prints \"done\". In solve: call the first one, print n with print(), then call the second one.",
-  "signature": "func solve(n: int) -> void:",
-  "starter": "func solve(n: int) -> void:\n\tprint(n)",
+  "prompt": "The robot lands before it takes off, which is backwards. Fix `solve` so the output is \"Taking off\" and then \"Landing\". Do not change the two helpers.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tland()\n\ttake_off()\n\nfunc take_off():\n\tprint(\"Taking off\")\n\nfunc land():\n\tprint(\"Landing\")",
   "require_methods": [
-    "announce_start",
-    "announce_end"
+    "take_off",
+    "land"
   ],
   "tests": [
     {
-      "args": [
-        7
-      ],
+      "name": "Take off first, land second",
+      "args": [],
       "expect": null,
       "out": [
-        "start",
-        "7",
-        "done"
-      ]
-    },
-    {
-      "args": [
-        0
-      ],
-      "expect": null,
-      "out": [
-        "start",
-        "0",
-        "done"
+        "Taking off",
+        "Landing"
       ]
     }
   ],
-  "hint": "Three lines in solve, in the order the output should appear.",
-  "solution": "func solve(n: int) -> void:\n\tannounce_start()\n\tprint(n)\n\tannounce_end()\n\nfunc announce_start() -> void:\n\tprint(\"start\")\n\nfunc announce_end() -> void:\n\tprint(\"done\")"
+  "hints": [
+    "The helpers are fine; only the order of the two calls in solve is wrong.",
+    "Swap the two lines inside solve."
+  ],
+  "docs": [
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\ttake_off()\n\tland()\n\nfunc take_off():\n\tprint(\"Taking off\")\n\nfunc land():\n\tprint(\"Landing\")"
 }

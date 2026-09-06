@@ -3,11 +3,12 @@
   "title": "Both must be true",
   "concept": "gq-conditions",
   "difficulty": 1,
-  "prompt": "Someone can enter the concert only if they are at least 18 AND they have a ticket. Return true if they can enter.",
-  "signature": "func solve(age: int, has_ticket: bool) -> bool:",
-  "starter": "func solve(age: int, has_ticket: bool) -> bool:\n\treturn has_ticket",
+  "prompt": "Someone can enter the robot arena only if they are at least 18 AND they have a ticket. Return true if they can enter. solve(20, true) is true; solve(16, true) is false.",
+  "signature": "func solve(age, has_ticket):",
+  "starter": "func solve(age, has_ticket):\n\treturn has_ticket",
   "tests": [
     {
+      "name": "20 with a ticket may enter",
       "args": [
         20,
         true
@@ -15,6 +16,7 @@
       "expect": true
     },
     {
+      "name": "20 without a ticket may not",
       "args": [
         20,
         false
@@ -22,6 +24,7 @@
       "expect": false
     },
     {
+      "name": "16 with a ticket may not",
       "args": [
         16,
         true
@@ -29,6 +32,7 @@
       "expect": false
     },
     {
+      "name": "Exactly 18 with a ticket may",
       "args": [
         18,
         true
@@ -36,6 +40,19 @@
       "expect": true
     }
   ],
-  "hint": "has_ticket is already true or false; you can put it straight into an and.",
-  "solution": "func solve(age: int, has_ticket: bool) -> bool:\n\treturn age >= 18 and has_ticket"
+  "hints": [
+    "has_ticket is already true or false; it can go straight into an and.",
+    "`return age >= 18 and has_ticket`"
+  ],
+  "docs": [
+    {
+      "name": "==  !=  <  <=  >  >=",
+      "what": "Comparisons. Each gives true or false."
+    },
+    {
+      "name": "and  or  not",
+      "what": "and is true when both sides are; or when at least one is; not flips true and false."
+    }
+  ],
+  "solution": "func solve(age, has_ticket):\n\treturn age >= 18 and has_ticket"
 }

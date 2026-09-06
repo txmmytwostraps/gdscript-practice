@@ -3,11 +3,12 @@
   "title": "Read x and y",
   "concept": "gq-vectors",
   "difficulty": 0,
-  "prompt": "Return the x part of the vector added to its y part.",
-  "signature": "func solve(v: Vector2) -> float:",
-  "starter": "func solve(v: Vector2) -> float:\n\treturn 0.0",
+  "prompt": "Return the x part of the robot's position added to its y part. For (3, 4) that is 7.",
+  "signature": "func solve(v) -> float:",
+  "starter": "func solve(v) -> float:\n\treturn 0.0",
   "tests": [
     {
+      "name": "(3, 4) gives 7",
       "args": [
         {
           "$v2": [
@@ -19,6 +20,7 @@
       "expect": 7
     },
     {
+      "name": "(-2, 2) gives 0",
       "args": [
         {
           "$v2": [
@@ -30,6 +32,7 @@
       "expect": 0
     },
     {
+      "name": "(0.5, 0.25) gives 0.75",
       "args": [
         {
           "$v2": [
@@ -41,6 +44,15 @@
       "expect": 0.75
     }
   ],
-  "hint": "The two parts are reached with a dot: v.x and v.y.",
-  "solution": "func solve(v: Vector2) -> float:\n\treturn v.x + v.y"
+  "hints": [
+    "The two parts are reached with a dot.",
+    "`return v.x + v.y`"
+  ],
+  "docs": [
+    {
+      "name": "Vector2(x, y)",
+      "what": "Makes a vector holding an x and a y. Read them back with .x and .y."
+    }
+  ],
+  "solution": "func solve(v) -> float:\n\treturn v.x + v.y"
 }

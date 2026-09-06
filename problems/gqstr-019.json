@@ -4,28 +4,40 @@
   "concept": "gq-strings",
   "difficulty": 0,
   "prompt": "Return the text with any spaces removed from the start and the end. Spaces in the middle stay.",
-  "signature": "func solve(text: String) -> String:",
-  "starter": "func solve(text: String) -> String:\n\treturn text",
+  "signature": "func solve(text):",
+  "starter": "func solve(text):\n\treturn text",
   "tests": [
     {
+      "name": "Spaces both sides removed",
       "args": [
         "  hi  "
       ],
       "expect": "hi"
     },
     {
+      "name": "Middle space kept",
       "args": [
         "a b "
       ],
       "expect": "a b"
     },
     {
+      "name": "Nothing to trim",
       "args": [
         "ok"
       ],
       "expect": "ok"
     }
   ],
-  "hint": "The method is called strip_edges.",
-  "solution": "func solve(text: String) -> String:\n\treturn text.strip_edges()"
+  "hints": [
+    "The method is called strip_edges.",
+    "`return text.strip_edges()`"
+  ],
+  "docs": [
+    {
+      "name": "text.strip_edges()",
+      "what": "Returns the text without spaces at the start and end."
+    }
+  ],
+  "solution": "func solve(text):\n\treturn text.strip_edges()"
 }

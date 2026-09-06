@@ -3,14 +3,12 @@
   "title": "Store the result first",
   "concept": "gq-return",
   "difficulty": 0,
-  "prompt": "Write `area`, which returns width times height. In solve, store area(width, height) in a variable, then return twice that (two identical rooms).",
-  "signature": "func solve(width: int, height: int) -> int:",
-  "starter": "func solve(width: int, height: int) -> int:\n\treturn 0",
-  "require_methods": [
-    "area"
-  ],
+  "prompt": "Write `area`, which returns width times height. In `solve`, store area(width, height) in a variable, then return twice that, for two identical rooms. solve(3, 4) is 24.",
+  "signature": "func solve(width, height):",
+  "starter": "func solve(width, height):\n\treturn 0",
   "tests": [
     {
+      "name": "3 by 4, twice, is 24",
       "args": [
         3,
         4
@@ -18,6 +16,7 @@
       "expect": 24
     },
     {
+      "name": "Zero width is 0",
       "args": [
         0,
         5
@@ -25,6 +24,7 @@
       "expect": 0
     },
     {
+      "name": "1 by 1, twice, is 2",
       "args": [
         1,
         1
@@ -32,6 +32,18 @@
       "expect": 2
     }
   ],
-  "hint": "Catch the returned value in a variable, then use the variable in the return line.",
-  "solution": "func solve(width: int, height: int) -> int:\n\tvar one_room = area(width, height)\n\treturn one_room * 2\n\nfunc area(w: int, h: int) -> int:\n\treturn w * h"
+  "hints": [
+    "Catch the returned value in a variable, then use the variable in the return line.",
+    "`var one_room = area(width, height)` then `return one_room * 2`."
+  ],
+  "docs": [
+    {
+      "name": "return value",
+      "what": "Ends the function and hands value back to whoever called it."
+    }
+  ],
+  "solution": "func solve(width, height):\n\tvar one_room = area(width, height)\n\treturn one_room * 2\n\nfunc area(w, h):\n\treturn w * h",
+  "require_methods": [
+    "area"
+  ]
 }

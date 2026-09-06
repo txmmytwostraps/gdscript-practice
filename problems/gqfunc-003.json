@@ -1,46 +1,34 @@
 {
   "id": "gqfunc-003",
-  "title": "A helper with a parameter",
+  "title": "Beep twice",
   "concept": "gq-functions",
   "difficulty": 0,
-  "prompt": "Write a function `show` that takes one number and prints it. From solve, call show with n, then call it again with n times 2.",
-  "signature": "func solve(n: int) -> void:",
-  "starter": "func solve(n: int) -> void:\n\tpass",
+  "prompt": "The robot beeps to get attention. Write `beep`, which prints \"beep\", and call it twice from `solve` so \"beep\" appears two times.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass",
   "require_methods": [
-    "show"
+    "beep"
   ],
   "tests": [
     {
-      "args": [
-        3
-      ],
+      "name": "beep appears exactly twice",
+      "args": [],
       "expect": null,
       "out": [
-        "3",
-        "6"
-      ]
-    },
-    {
-      "args": [
-        0
-      ],
-      "expect": null,
-      "out": [
-        "0",
-        "0"
-      ]
-    },
-    {
-      "args": [
-        -2
-      ],
-      "expect": null,
-      "out": [
-        "-2",
-        "-4"
+        "beep",
+        "beep"
       ]
     }
   ],
-  "hint": "Parameters on your own functions work exactly like the ones on solve.",
-  "solution": "func solve(n: int) -> void:\n\tshow(n)\n\tshow(n * 2)\n\nfunc show(value: int) -> void:\n\tprint(value)"
+  "hints": [
+    "Once a function exists you can call it as many times as you like.",
+    "Define `func beep():` with a single print, then write `beep()` on two separate lines in solve."
+  ],
+  "docs": [
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\tbeep()\n\tbeep()\n\nfunc beep():\n\tprint(\"beep\")"
 }

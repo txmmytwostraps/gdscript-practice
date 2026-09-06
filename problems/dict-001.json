@@ -4,10 +4,11 @@
   "concept": "dictionaries",
   "difficulty": 0,
   "prompt": "Return a dictionary with two entries: \"name\" set to name, and \"hp\" set to hp.",
-  "signature": "func solve(name: String, hp: int) -> Dictionary:",
-  "starter": "func solve(name: String, hp: int) -> Dictionary:\n\treturn {}",
+  "signature": "func solve(name, hp):",
+  "starter": "func solve(name, hp):\n\treturn {}",
   "tests": [
     {
+      "name": "Tim with 100",
       "args": [
         "Tim",
         100
@@ -18,6 +19,7 @@
       }
     },
     {
+      "name": "Bob with 0",
       "args": [
         "Bob",
         0
@@ -28,6 +30,15 @@
       }
     }
   ],
-  "hint": "Curly braces make a dictionary: `{\"name\": name, \"hp\": hp}`.",
-  "solution": "func solve(name: String, hp: int) -> Dictionary:\n\treturn {\"name\": name, \"hp\": hp}"
+  "hints": [
+    "Curly braces make a dictionary, with key: value pairs.",
+    "`return {\"name\": name, \"hp\": hp}`"
+  ],
+  "docs": [
+    {
+      "name": "{\"key\": value}",
+      "what": "Makes a dictionary: named slots you read and write with data[\"key\"]."
+    }
+  ],
+  "solution": "func solve(name, hp):\n\treturn {\"name\": name, \"hp\": hp}"
 }

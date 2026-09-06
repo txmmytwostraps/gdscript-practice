@@ -3,11 +3,12 @@
   "title": "Midpoint",
   "concept": "gq-vectors",
   "difficulty": 1,
-  "prompt": "Return the point exactly halfway between a and b.",
-  "signature": "func solve(a: Vector2, b: Vector2) -> Vector2:",
-  "starter": "func solve(a: Vector2, b: Vector2) -> Vector2:\n\treturn a",
+  "prompt": "Return the point exactly halfway between a and b. Between (0, 0) and (4, 6) is (2, 3).",
+  "signature": "func solve(a, b) -> Vector2:",
+  "starter": "func solve(a, b) -> Vector2:\n\treturn a",
   "tests": [
     {
+      "name": "(0, 0) and (4, 6) give (2, 3)",
       "args": [
         {
           "$v2": [
@@ -30,6 +31,7 @@
       }
     },
     {
+      "name": "Opposites give (0, 0)",
       "args": [
         {
           "$v2": [
@@ -52,6 +54,7 @@
       }
     },
     {
+      "name": "(1, 0) and (2, 0) give (1.5, 0)",
       "args": [
         {
           "$v2": [
@@ -74,6 +77,15 @@
       }
     }
   ],
-  "hint": "Add them, then halve the result. Dividing a vector by a number is allowed.",
-  "solution": "func solve(a: Vector2, b: Vector2) -> Vector2:\n\treturn (a + b) / 2"
+  "hints": [
+    "Add them, then halve the result.",
+    "`return (a + b) / 2`"
+  ],
+  "docs": [
+    {
+      "name": "a + b, a - b, v * number, v / number",
+      "what": "Vectors add and subtract part by part, and scale by a plain number."
+    }
+  ],
+  "solution": "func solve(a, b) -> Vector2:\n\treturn (a + b) / 2"
 }

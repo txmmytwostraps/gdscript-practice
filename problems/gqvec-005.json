@@ -3,11 +3,12 @@
   "title": "Scale by a number",
   "concept": "gq-vectors",
   "difficulty": 0,
-  "prompt": "Return the vector multiplied by factor. Both parts get multiplied.",
-  "signature": "func solve(v: Vector2, factor: float) -> Vector2:",
-  "starter": "func solve(v: Vector2, factor: float) -> Vector2:\n\treturn v",
+  "prompt": "Return the vector multiplied by factor; both parts get multiplied. (1, 2) times 3 is (3, 6).",
+  "signature": "func solve(v, factor) -> Vector2:",
+  "starter": "func solve(v, factor) -> Vector2:\n\treturn v",
   "tests": [
     {
+      "name": "(1, 2) times 3 is (3, 6)",
       "args": [
         {
           "$v2": [
@@ -25,6 +26,7 @@
       }
     },
     {
+      "name": "(4, -2) times 0.5 is (2, -1)",
       "args": [
         {
           "$v2": [
@@ -42,6 +44,7 @@
       }
     },
     {
+      "name": "Times 0 is (0, 0)",
       "args": [
         {
           "$v2": [
@@ -59,6 +62,15 @@
       }
     }
   ],
-  "hint": "A vector times a plain number is allowed with the * sign.",
-  "solution": "func solve(v: Vector2, factor: float) -> Vector2:\n\treturn v * factor"
+  "hints": [
+    "A vector times a plain number is allowed with *.",
+    "`return v * factor`"
+  ],
+  "docs": [
+    {
+      "name": "a + b, a - b, v * number, v / number",
+      "what": "Vectors add and subtract part by part, and scale by a plain number."
+    }
+  ],
+  "solution": "func solve(v, factor) -> Vector2:\n\treturn v * factor"
 }

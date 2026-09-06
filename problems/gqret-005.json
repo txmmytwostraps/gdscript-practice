@@ -3,14 +3,12 @@
   "title": "Print, then return",
   "concept": "gq-return",
   "difficulty": 0,
-  "prompt": "Write `add`, which prints \"adding\" and then returns its two parameters added together. solve returns add(a, b). Both the printed line and the returned value are checked.",
-  "signature": "func solve(a: int, b: int) -> int:",
-  "starter": "func solve(a: int, b: int) -> int:\n\treturn a + b",
-  "require_methods": [
-    "add"
-  ],
+  "prompt": "Write `add`, which prints \"adding\" and then returns its two parameters added together. `solve` returns add(a, b). Both the printed line and the returned value are checked.",
+  "signature": "func solve(a, b):",
+  "starter": "func solve(a, b):\n\treturn a + b",
   "tests": [
     {
+      "name": "2 and 3: prints adding, returns 5",
       "args": [
         2,
         3
@@ -21,6 +19,7 @@
       ]
     },
     {
+      "name": "Zeros: prints adding, returns 0",
       "args": [
         0,
         0
@@ -31,6 +30,22 @@
       ]
     }
   ],
-  "hint": "A function can do things before it returns. Printing is a thing; returning is the last thing.",
-  "solution": "func solve(a: int, b: int) -> int:\n\treturn add(a, b)\n\nfunc add(x: int, y: int) -> int:\n\tprint(\"adding\")\n\treturn x + y"
+  "hints": [
+    "A function can do things before it returns; returning is the last thing.",
+    "`print(\"adding\")` then `return x + y` inside add."
+  ],
+  "docs": [
+    {
+      "name": "return value",
+      "what": "Ends the function and hands value back to whoever called it."
+    },
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve(a, b):\n\treturn add(a, b)\n\nfunc add(x, y):\n\tprint(\"adding\")\n\treturn x + y",
+  "require_methods": [
+    "add"
+  ]
 }

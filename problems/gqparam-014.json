@@ -1,34 +1,50 @@
 {
   "id": "gqparam-014",
-  "title": "Total seconds",
+  "title": "Clamp with parameters",
   "concept": "gq-parameters",
-  "difficulty": 0,
-  "prompt": "A time is given as minutes and seconds. Return the total number of seconds.",
-  "signature": "func solve(minutes: int, seconds: int) -> int:",
-  "starter": "func solve(minutes: int, seconds: int) -> int:\n\treturn seconds",
+  "difficulty": 1,
+  "prompt": "The robot's speed must stay between a low and a high limit. Return value, but never lower than low and never higher than high. Godot has a built-in for exactly this. solve(15, 0, 10) is 10.",
+  "signature": "func solve(value, low, high):",
+  "starter": "func solve(value, low, high):\n\treturn value",
   "tests": [
     {
+      "name": "Inside the limits stays the same",
       "args": [
-        1,
-        30
-      ],
-      "expect": 90
-    },
-    {
-      "args": [
+        5,
         0,
-        45
+        10
       ],
-      "expect": 45
+      "expect": 5
     },
     {
+      "name": "Too low becomes the low limit",
       "args": [
-        2,
-        0
+        -3,
+        0,
+        10
       ],
-      "expect": 120
+      "expect": 0
+    },
+    {
+      "name": "Too high becomes the high limit",
+      "args": [
+        15,
+        0,
+        10
+      ],
+      "expect": 10
     }
   ],
-  "hint": "Convert the minutes first, then add the leftover seconds.",
-  "solution": "func solve(minutes: int, seconds: int) -> int:\n\treturn minutes * 60 + seconds"
+  "hints": [
+    "Built-in functions take parameters too, in a fixed order.",
+    "clamp takes value, low, high, in the same order as yours.",
+    "`return clamp(value, low, high)`"
+  ],
+  "docs": [
+    {
+      "name": "clamp(value, low, high)",
+      "what": "Returns value, but never lower than low or higher than high."
+    }
+  ],
+  "solution": "func solve(value, low, high):\n\treturn clamp(value, low, high)"
 }

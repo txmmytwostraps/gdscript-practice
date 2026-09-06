@@ -3,29 +3,42 @@
   "title": "Greet by name",
   "concept": "gq-strings",
   "difficulty": 0,
-  "prompt": "Return \"Hello, \" followed by the name and an exclamation mark, so \"Tim\" gives \"Hello, Tim!\".",
-  "signature": "func solve(name: String) -> String:",
-  "starter": "func solve(name: String) -> String:\n\treturn name",
+  "prompt": "The robot greets whoever walks in. Return \"Hello, \" followed by the name and an exclamation mark, so \"Tim\" gives \"Hello, Tim!\".",
+  "signature": "func solve(name):",
+  "starter": "func solve(name):\n\treturn name",
   "tests": [
     {
+      "name": "Tim gets Hello, Tim!",
       "args": [
         "Tim"
       ],
       "expect": "Hello, Tim!"
     },
     {
+      "name": "Godot gets Hello, Godot!",
       "args": [
         "Godot"
       ],
       "expect": "Hello, Godot!"
     },
     {
+      "name": "An empty name still works",
       "args": [
         ""
       ],
       "expect": "Hello, !"
     }
   ],
-  "hint": "Pieces of text join together with +. Mind the space after the comma.",
-  "solution": "func solve(name: String) -> String:\n\treturn \"Hello, \" + name + \"!\""
+  "hints": [
+    "Pieces of text join together with +.",
+    "Mind the space after the comma.",
+    "`return \"Hello, \" + name + \"!\"`"
+  ],
+  "docs": [
+    {
+      "name": "text + text",
+      "what": "Joins two strings into one. Numbers must be turned into text first."
+    }
+  ],
+  "solution": "func solve(name):\n\treturn \"Hello, \" + name + \"!\""
 }

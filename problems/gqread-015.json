@@ -3,9 +3,9 @@
   "title": "Two numbers to name",
   "concept": "gq-readable",
   "difficulty": 1,
-  "prompt": "This works out a bill: some items at 4.5 each, plus 20% tax. Name both numbers, `PRICE_PER_ITEM` and `TAX_RATE`, and use the names. Notice 4.5 appears twice in the starter.",
-  "signature": "func solve(quantity: int) -> float:",
-  "starter": "func solve(quantity: int) -> float:\n\treturn quantity * 4.5 + quantity * 4.5 * 0.2",
+  "prompt": "This bill is some items at 4.5 each, plus 20% tax. Name both numbers, `PRICE_PER_ITEM` and `TAX_RATE`, and use the names everywhere. Notice 4.5 appears twice in the starter.",
+  "signature": "func solve(quantity) -> float:",
+  "starter": "func solve(quantity) -> float:\n\treturn quantity * 4.5 + quantity * 4.5 * 0.2",
   "require_names": [
     "PRICE_PER_ITEM",
     "TAX_RATE"
@@ -16,24 +16,37 @@
   ],
   "tests": [
     {
+      "name": "1 item is 5.4",
       "args": [
         1
       ],
       "expect": 5.4
     },
     {
+      "name": "0 items is 0",
       "args": [
         0
       ],
       "expect": 0
     },
     {
+      "name": "10 items is 54",
       "args": [
         10
       ],
       "expect": 54
     }
   ],
-  "hint": "Two const lines. Then replace every copy of each number, not just the first one.",
-  "solution": "func solve(quantity: int) -> float:\n\tconst PRICE_PER_ITEM = 4.5\n\tconst TAX_RATE = 0.2\n\treturn quantity * PRICE_PER_ITEM + quantity * PRICE_PER_ITEM * TAX_RATE"
+  "hints": [
+    "Two const lines.",
+    "`const PRICE_PER_ITEM = 4.5` and `const TAX_RATE = 0.2`",
+    "Replace every copy of each number, not just the first."
+  ],
+  "docs": [
+    {
+      "name": "const NAME = value",
+      "what": "Declares a named value that never changes. Written in CAPITALS by convention."
+    }
+  ],
+  "solution": "func solve(quantity) -> float:\n\tconst PRICE_PER_ITEM = 4.5\n\tconst TAX_RATE = 0.2\n\treturn quantity * PRICE_PER_ITEM + quantity * PRICE_PER_ITEM * TAX_RATE"
 }

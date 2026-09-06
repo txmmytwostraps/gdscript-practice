@@ -4,10 +4,11 @@
   "concept": "comparisons",
   "difficulty": 1,
   "prompt": "You can ride the roller coaster if you are at least 120 cm tall OR you are with an adult. Return true if the person can ride.",
-  "signature": "func solve(height_cm: int, with_adult: bool) -> bool:",
-  "starter": "func solve(height_cm: int, with_adult: bool) -> bool:\n\treturn false",
+  "signature": "func solve(height_cm, with_adult):",
+  "starter": "func solve(height_cm, with_adult):\n\treturn false",
   "tests": [
     {
+      "name": "130 cm alone may ride",
       "args": [
         130,
         false
@@ -15,6 +16,7 @@
       "expect": true
     },
     {
+      "name": "100 cm with an adult may ride",
       "args": [
         100,
         true
@@ -22,6 +24,7 @@
       "expect": true
     },
     {
+      "name": "100 cm alone may not",
       "args": [
         100,
         false
@@ -29,6 +32,7 @@
       "expect": false
     },
     {
+      "name": "Exactly 120 cm alone may ride",
       "args": [
         120,
         false
@@ -36,6 +40,19 @@
       "expect": true
     }
   ],
-  "hint": "`or` is true if either side is true: `height_cm >= 120 or with_adult`.",
-  "solution": "func solve(height_cm: int, with_adult: bool) -> bool:\n\treturn height_cm >= 120 or with_adult"
+  "hints": [
+    "or is true if either side is true.",
+    "`return height_cm >= 120 or with_adult`"
+  ],
+  "docs": [
+    {
+      "name": "==  !=  <  <=  >  >=",
+      "what": "Comparisons. Each gives true or false."
+    },
+    {
+      "name": "and  or  not",
+      "what": "and is true when both sides are; or when at least one is; not flips true and false."
+    }
+  ],
+  "solution": "func solve(height_cm, with_adult):\n\treturn height_cm >= 120 or with_adult"
 }

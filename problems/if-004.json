@@ -4,10 +4,11 @@
   "concept": "ifelse",
   "difficulty": 0,
   "prompt": "Return whichever of a and b is larger. If they are equal, return either one.",
-  "signature": "func solve(a: int, b: int) -> int:",
-  "starter": "func solve(a: int, b: int) -> int:\n\treturn a",
+  "signature": "func solve(a, b):",
+  "starter": "func solve(a, b):\n\treturn a",
   "tests": [
     {
+      "name": "7 beats 3",
       "args": [
         3,
         7
@@ -15,6 +16,7 @@
       "expect": 7
     },
     {
+      "name": "9 beats 2",
       "args": [
         9,
         2
@@ -22,6 +24,7 @@
       "expect": 9
     },
     {
+      "name": "Equal returns 4",
       "args": [
         4,
         4
@@ -29,6 +32,7 @@
       "expect": 4
     },
     {
+      "name": "-1 beats -5",
       "args": [
         -1,
         -5
@@ -36,6 +40,19 @@
       "expect": -1
     }
   ],
-  "hint": "`if a > b:` return a, `else:` return b.",
-  "solution": "func solve(a: int, b: int) -> int:\n\tif a > b:\n\t\treturn a\n\telse:\n\t\treturn b"
+  "hints": [
+    "Compare the two, and return a different one in each branch.",
+    "`if a > b:` return a, `else:` return b."
+  ],
+  "docs": [
+    {
+      "name": "if condition:",
+      "what": "Runs the indented lines below it only when the condition is true. elif and else add more branches."
+    },
+    {
+      "name": "==  !=  <  <=  >  >=",
+      "what": "Comparisons. Each gives true or false."
+    }
+  ],
+  "solution": "func solve(a, b):\n\tif a > b:\n\t\treturn a\n\telse:\n\t\treturn b"
 }

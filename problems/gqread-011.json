@@ -3,9 +3,9 @@
   "title": "Name the frames per second",
   "concept": "gq-readable",
   "difficulty": 0,
-  "prompt": "This turns a number of frames into seconds, assuming 60 frames every second. Name the 60.0 `FRAMES_PER_SECOND`.",
-  "signature": "func solve(frames: int) -> float:",
-  "starter": "func solve(frames: int) -> float:\n\treturn frames / 60.0",
+  "prompt": "This turns frames into seconds at 60 frames per second. Name the 60.0 `FRAMES_PER_SECOND`.",
+  "signature": "func solve(frames) -> float:",
+  "starter": "func solve(frames) -> float:\n\treturn frames / 60.0",
   "require_names": [
     "FRAMES_PER_SECOND"
   ],
@@ -14,24 +14,36 @@
   ],
   "tests": [
     {
+      "name": "60 frames is 1 second",
       "args": [
         60
       ],
       "expect": 1
     },
     {
+      "name": "30 frames is half a second",
       "args": [
         30
       ],
       "expect": 0.5
     },
     {
+      "name": "0 frames is 0",
       "args": [
         0
       ],
       "expect": 0
     }
   ],
-  "hint": "Keep the .0 in the constant, or the division will throw away the decimals.",
-  "solution": "func solve(frames: int) -> float:\n\tconst FRAMES_PER_SECOND = 60.0\n\treturn frames / FRAMES_PER_SECOND"
+  "hints": [
+    "Keep the .0 in the constant, or the division drops the decimals.",
+    "`const FRAMES_PER_SECOND = 60.0`"
+  ],
+  "docs": [
+    {
+      "name": "const NAME = value",
+      "what": "Declares a named value that never changes. Written in CAPITALS by convention."
+    }
+  ],
+  "solution": "func solve(frames) -> float:\n\tconst FRAMES_PER_SECOND = 60.0\n\treturn frames / FRAMES_PER_SECOND"
 }

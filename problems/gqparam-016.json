@@ -4,10 +4,11 @@
   "concept": "gq-parameters",
   "difficulty": 1,
   "prompt": "Three single digits arrive in order: first, second, third. Return the three-digit number they make, so solve(1, 2, 3) is 123.",
-  "signature": "func solve(first: int, second: int, third: int) -> int:",
-  "starter": "func solve(first: int, second: int, third: int) -> int:\n\treturn first + second + third",
+  "signature": "func solve(first, second, third):",
+  "starter": "func solve(first, second, third):\n\treturn first + second + third",
   "tests": [
     {
+      "name": "1, 2, 3 make 123",
       "args": [
         1,
         2,
@@ -16,6 +17,7 @@
       "expect": 123
     },
     {
+      "name": "0, 0, 7 make 7",
       "args": [
         0,
         0,
@@ -24,6 +26,7 @@
       "expect": 7
     },
     {
+      "name": "9, 9, 9 make 999",
       "args": [
         9,
         9,
@@ -32,6 +35,10 @@
       "expect": 999
     }
   ],
-  "hint": "The first digit is worth a hundred times itself, the second ten times.",
-  "solution": "func solve(first: int, second: int, third: int) -> int:\n\treturn first * 100 + second * 10 + third"
+  "hints": [
+    "The first digit is worth a hundred times itself, the second ten times.",
+    "`return first * 100 + second * 10 + third`"
+  ],
+  "docs": [],
+  "solution": "func solve(first, second, third):\n\treturn first * 100 + second * 10 + third"
 }

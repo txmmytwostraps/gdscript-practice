@@ -4,34 +4,51 @@
   "concept": "ifelse",
   "difficulty": 0,
   "prompt": "Return the text \"even\" if n is even, or \"odd\" if it is odd.",
-  "signature": "func solve(n: int) -> String:",
-  "starter": "func solve(n: int) -> String:\n\treturn \"\"",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\treturn \"\"",
   "tests": [
     {
+      "name": "4 is even",
       "args": [
         4
       ],
       "expect": "even"
     },
     {
+      "name": "7 is odd",
       "args": [
         7
       ],
       "expect": "odd"
     },
     {
+      "name": "0 is even",
       "args": [
         0
       ],
       "expect": "even"
     },
     {
+      "name": "-3 is odd",
       "args": [
         -3
       ],
       "expect": "odd"
     }
   ],
-  "hint": "A number is even when the remainder after dividing by 2 is zero: `n % 2 == 0`.",
-  "solution": "func solve(n: int) -> String:\n\tif n % 2 == 0:\n\t\treturn \"even\"\n\telse:\n\t\treturn \"odd\""
+  "hints": [
+    "A number is even when the remainder after dividing by 2 is zero.",
+    "`if n % 2 == 0:`"
+  ],
+  "docs": [
+    {
+      "name": "if condition:",
+      "what": "Runs the indented lines below it only when the condition is true. elif and else add more branches."
+    },
+    {
+      "name": "a % b",
+      "what": "The remainder after dividing a by b."
+    }
+  ],
+  "solution": "func solve(n):\n\tif n % 2 == 0:\n\t\treturn \"even\"\n\telse:\n\t\treturn \"odd\""
 }

@@ -3,11 +3,12 @@
   "title": "Count the matches",
   "concept": "gq-arrays",
   "difficulty": 1,
-  "prompt": "Return how many items in the array are equal to value. Use a loop.",
-  "signature": "func solve(items: Array, value: int) -> int:",
-  "starter": "func solve(items: Array, value: int) -> int:\n\treturn 0",
+  "prompt": "Return how many items in the array are equal to value, using a loop.",
+  "signature": "func solve(items, value):",
+  "starter": "func solve(items, value):\n\treturn 0",
   "tests": [
     {
+      "name": "Three 1s",
       "args": [
         [
           1,
@@ -20,6 +21,7 @@
       "expect": 3
     },
     {
+      "name": "No matches",
       "args": [
         [
           1,
@@ -31,6 +33,7 @@
       "expect": 0
     },
     {
+      "name": "Empty is 0",
       "args": [
         [],
         1
@@ -38,6 +41,15 @@
       "expect": 0
     }
   ],
-  "hint": "A counter that goes up only inside an if.",
-  "solution": "func solve(items: Array, value: int) -> int:\n\tvar count = 0\n\tfor item in items:\n\t\tif item == value:\n\t\t\tcount += 1\n\treturn count"
+  "hints": [
+    "A counter that goes up only inside an if.",
+    "`for item in items:` then `if item == value:` then `count += 1`."
+  ],
+  "docs": [
+    {
+      "name": "for item in list:",
+      "what": "Runs the indented lines once per item, with item holding each value in turn."
+    }
+  ],
+  "solution": "func solve(items, value):\n\tvar count = 0\n\tfor item in items:\n\t\tif item == value:\n\t\t\tcount += 1\n\treturn count"
 }

@@ -25,55 +25,55 @@
   "problems": [
     {
       "id": "gqvar-001",
-      "title": "Store and return a number",
+      "title": "The robot's lives",
       "concept": "gq-variables",
       "difficulty": 0
     },
     {
       "id": "gqvar-002",
-      "title": "Store and return a name",
+      "title": "The robot's name",
       "concept": "gq-variables",
       "difficulty": 0
     },
     {
       "id": "gqvar-003",
-      "title": "Store a true or false",
+      "title": "Powered on",
       "concept": "gq-variables",
       "difficulty": 0
     },
     {
       "id": "gqvar-004",
-      "title": "Two variables, one sum",
+      "title": "Two variables, one total",
       "concept": "gq-variables",
       "difficulty": 0
     },
     {
       "id": "gqvar-005",
-      "title": "Reassign a variable",
+      "title": "Change a variable",
       "concept": "gq-variables",
       "difficulty": 0
     },
     {
       "id": "gqvar-006",
-      "title": "Update with +=",
+      "title": "Pick up coins",
       "concept": "gq-variables",
       "difficulty": 0
     },
     {
       "id": "gqvar-007",
-      "title": "Update with -=",
+      "title": "Take a hit",
       "concept": "gq-variables",
       "difficulty": 0
     },
     {
       "id": "gqvar-008",
-      "title": "A variable times itself",
+      "title": "A variable from a variable",
       "concept": "gq-variables",
       "difficulty": 0
     },
     {
       "id": "gqvar-009",
-      "title": "Copy a variable, then change the original",
+      "title": "Copy, then change the original",
       "concept": "gq-variables",
       "difficulty": 1
     },
@@ -213,97 +213,97 @@
       "id": "gqread-016",
       "title": "The same number twice",
       "concept": "gq-readable",
-      "difficulty": 1
+      "difficulty": 0
     },
     {
       "id": "gqparam-001",
-      "title": "Add two numbers",
+      "title": "Show a value",
       "concept": "gq-parameters",
       "difficulty": 0
     },
     {
       "id": "gqparam-002",
-      "title": "Area from width and height",
+      "title": "Add and print",
       "concept": "gq-parameters",
       "difficulty": 0
     },
     {
       "id": "gqparam-003",
-      "title": "Price, quantity, shipping",
+      "title": "Squares, three times",
       "concept": "gq-parameters",
       "difficulty": 0
     },
     {
       "id": "gqparam-004",
-      "title": "A parameter with a default",
+      "title": "Health, damage, remaining",
       "concept": "gq-parameters",
       "difficulty": 1
     },
     {
       "id": "gqparam-005",
+      "title": "A default value",
+      "concept": "gq-parameters",
+      "difficulty": 1
+    },
+    {
+      "id": "gqparam-006",
+      "title": "Parameters are copies",
+      "concept": "gq-parameters",
+      "difficulty": 1
+    },
+    {
+      "id": "gqparam-007",
+      "title": "Perimeter, your way",
+      "concept": "gq-parameters",
+      "difficulty": 1
+    },
+    {
+      "id": "gqparam-008",
+      "title": "Repeat a message",
+      "concept": "gq-parameters",
+      "difficulty": 0
+    },
+    {
+      "id": "gqparam-009",
+      "title": "Add two numbers",
+      "concept": "gq-parameters",
+      "difficulty": 0
+    },
+    {
+      "id": "gqparam-010",
       "title": "Order matters",
       "concept": "gq-parameters",
       "difficulty": 0
     },
     {
-      "id": "gqparam-006",
-      "title": "A decimal parameter",
-      "concept": "gq-parameters",
-      "difficulty": 0
-    },
-    {
-      "id": "gqparam-007",
-      "title": "Use the parameter twice",
-      "concept": "gq-parameters",
-      "difficulty": 0
-    },
-    {
-      "id": "gqparam-008",
-      "title": "Whole numbers in, decimal out",
-      "concept": "gq-parameters",
-      "difficulty": 1
-    },
-    {
-      "id": "gqparam-009",
-      "title": "Three parameters, one average",
-      "concept": "gq-parameters",
-      "difficulty": 1
-    },
-    {
-      "id": "gqparam-010",
-      "title": "Clamp with parameters",
-      "concept": "gq-parameters",
-      "difficulty": 1
-    },
-    {
       "id": "gqparam-011",
-      "title": "Distance along a line",
+      "title": "Price, quantity, shipping",
       "concept": "gq-parameters",
       "difficulty": 0
     },
     {
       "id": "gqparam-012",
-      "title": "Two defaults",
+      "title": "Use the parameter twice",
+      "concept": "gq-parameters",
+      "difficulty": 0
+    },
+    {
+      "id": "gqparam-013",
+      "title": "Whole numbers in, decimal out",
       "concept": "gq-parameters",
       "difficulty": 1
     },
     {
-      "id": "gqparam-013",
-      "title": "Percent of an amount",
-      "concept": "gq-parameters",
-      "difficulty": 0
-    },
-    {
       "id": "gqparam-014",
-      "title": "Total seconds",
+      "title": "Clamp with parameters",
       "concept": "gq-parameters",
-      "difficulty": 0
+      "difficulty": 1
     },
     {
       "id": "gqparam-015",
-      "title": "Change to give back",
+      "title": "Two defaults",
       "concept": "gq-parameters",
-      "difficulty": 0
+      "difficulty": 1
     },
     {
       "id": "gqparam-016",
@@ -313,97 +313,97 @@
     },
     {
       "id": "gqfunc-001",
-      "title": "Call a helper",
+      "title": "The robot says hello",
       "concept": "gq-functions",
       "difficulty": 0
     },
     {
       "id": "gqfunc-002",
-      "title": "Call it twice",
+      "title": "Boot sequence",
       "concept": "gq-functions",
       "difficulty": 0
     },
     {
       "id": "gqfunc-003",
-      "title": "A helper with a parameter",
+      "title": "Beep twice",
       "concept": "gq-functions",
       "difficulty": 0
     },
     {
       "id": "gqfunc-004",
-      "title": "A helper with two parameters",
+      "title": "Three steps in order",
       "concept": "gq-functions",
       "difficulty": 0
     },
     {
       "id": "gqfunc-005",
-      "title": "Functions run in order",
-      "concept": "gq-functions",
-      "difficulty": 0
-    },
-    {
-      "id": "gqfunc-006",
       "title": "A helper that calls a helper",
       "concept": "gq-functions",
       "difficulty": 1
     },
     {
+      "id": "gqfunc-006",
+      "title": "Name it well",
+      "concept": "gq-functions",
+      "difficulty": 0
+    },
+    {
       "id": "gqfunc-007",
-      "title": "Name a function well",
+      "title": "Same helper, three times",
       "concept": "gq-functions",
       "difficulty": 0
     },
     {
       "id": "gqfunc-008",
-      "title": "The same helper three times",
-      "concept": "gq-functions",
-      "difficulty": 0
-    },
-    {
-      "id": "gqfunc-009",
-      "title": "A helper with a default",
-      "concept": "gq-functions",
-      "difficulty": 1
-    },
-    {
-      "id": "gqfunc-010",
-      "title": "A helper that uses a constant",
-      "concept": "gq-functions",
-      "difficulty": 1
-    },
-    {
-      "id": "gqfunc-011",
-      "title": "Print before and after",
-      "concept": "gq-functions",
-      "difficulty": 0
-    },
-    {
-      "id": "gqfunc-012",
-      "title": "A helper for each step",
-      "concept": "gq-functions",
-      "difficulty": 1
-    },
-    {
-      "id": "gqfunc-013",
-      "title": "Parameters get copies",
-      "concept": "gq-functions",
-      "difficulty": 1
-    },
-    {
-      "id": "gqfunc-014",
       "title": "Defined below, called above",
       "concept": "gq-functions",
       "difficulty": 0
     },
     {
-      "id": "gqfunc-015",
+      "id": "gqfunc-009",
+      "title": "Print before and after",
+      "concept": "gq-functions",
+      "difficulty": 0
+    },
+    {
+      "id": "gqfunc-010",
       "title": "Two helpers, one job each",
       "concept": "gq-functions",
       "difficulty": 0
     },
     {
+      "id": "gqfunc-011",
+      "title": "Order matters",
+      "concept": "gq-functions",
+      "difficulty": 0
+    },
+    {
+      "id": "gqfunc-012",
+      "title": "A helper with two lines",
+      "concept": "gq-functions",
+      "difficulty": 0
+    },
+    {
+      "id": "gqfunc-013",
+      "title": "The missing call",
+      "concept": "gq-functions",
+      "difficulty": 0
+    },
+    {
+      "id": "gqfunc-014",
+      "title": "Patrol route",
+      "concept": "gq-functions",
+      "difficulty": 1
+    },
+    {
+      "id": "gqfunc-015",
+      "title": "Alarm",
+      "concept": "gq-functions",
+      "difficulty": 1
+    },
+    {
       "id": "gqfunc-016",
-      "title": "A helper you design",
+      "title": "Draw a square",
       "concept": "gq-functions",
       "difficulty": 1
     },
@@ -517,13 +517,13 @@
     },
     {
       "id": "gqcond-001",
-      "title": "Return a comparison",
+      "title": "Is the robot charged",
       "concept": "gq-conditions",
       "difficulty": 0
     },
     {
       "id": "gqcond-002",
-      "title": "Is it positive",
+      "title": "Positive or not",
       "concept": "gq-conditions",
       "difficulty": 0
     },
@@ -612,38 +612,38 @@
       "difficulty": 1
     },
     {
-      "id": "gqcond-018",
+      "id": "gqcond-017",
       "title": "Guard with an early return",
       "concept": "gq-conditions",
       "difficulty": 1
     },
     {
-      "id": "gqcond-019",
+      "id": "gqcond-018",
       "title": "Absolute value with if",
       "concept": "gq-conditions",
       "difficulty": 0
     },
     {
-      "id": "gqcond-020",
+      "id": "gqcond-019",
       "title": "Same or different",
       "concept": "gq-conditions",
       "difficulty": 0
     },
     {
-      "id": "gqcond-021",
+      "id": "gqcond-020",
       "title": "Game over?",
       "concept": "gq-conditions",
       "difficulty": 1
     },
     {
       "id": "gqarr-001",
-      "title": "Make an array of three",
+      "title": "Make an inventory",
       "concept": "gq-arrays",
       "difficulty": 0
     },
     {
       "id": "gqarr-002",
-      "title": "An array parameter",
+      "title": "First item",
       "concept": "gq-arrays",
       "difficulty": 0
     },
@@ -1027,13 +1027,13 @@
     },
     {
       "id": "gqdelta-001",
-      "title": "Distance moved this frame",
+      "title": "Distance this frame",
       "concept": "gq-delta",
       "difficulty": 0
     },
     {
       "id": "gqdelta-002",
-      "title": "New position on a line",
+      "title": "New position",
       "concept": "gq-delta",
       "difficulty": 0
     },
@@ -1059,11 +1059,11 @@
       "id": "gqdelta-006",
       "title": "Frames until the timer ends",
       "concept": "gq-delta",
-      "difficulty": 0
+      "difficulty": 1
     },
     {
       "id": "gqdelta-007",
-      "title": "Accelerate",
+      "title": "Speed up",
       "concept": "gq-delta",
       "difficulty": 0
     },
@@ -1075,7 +1075,7 @@
     },
     {
       "id": "gqdelta-009",
-      "title": "Move toward without overshooting",
+      "title": "Move toward a target",
       "concept": "gq-delta",
       "difficulty": 1
     },
@@ -1213,25 +1213,25 @@
     },
     {
       "id": "vars-001",
-      "title": "Double it",
+      "title": "Double the reward",
       "concept": "variables",
       "difficulty": 0
     },
     {
       "id": "vars-002",
-      "title": "Store and return",
+      "title": "Store and return a greeting",
       "concept": "variables",
       "difficulty": 0
     },
     {
       "id": "vars-003",
-      "title": "Add ten",
+      "title": "Score bonus",
       "concept": "variables",
       "difficulty": 0
     },
     {
       "id": "vars-004",
-      "title": "Halve it",
+      "title": "Halve it, keep the decimals",
       "concept": "variables",
       "difficulty": 1
     },
@@ -1243,13 +1243,13 @@
     },
     {
       "id": "arith-001",
-      "title": "Rectangle area",
+      "title": "Room area",
       "concept": "arithmetic",
       "difficulty": 0
     },
     {
       "id": "arith-002",
-      "title": "Average of three",
+      "title": "Average of three readings",
       "concept": "arithmetic",
       "difficulty": 1
     },
@@ -1459,7 +1459,7 @@
     },
     {
       "id": "str-002",
-      "title": "How long",
+      "title": "Length",
       "concept": "strings",
       "difficulty": 0
     },

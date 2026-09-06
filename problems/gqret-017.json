@@ -3,14 +3,12 @@
   "title": "Return an average",
   "concept": "gq-return",
   "difficulty": 1,
-  "prompt": "Write `average`, which returns the average of two whole numbers as a float, so average(1, 2) is 1.5. solve returns average(a, b).",
-  "signature": "func solve(a: int, b: int) -> float:",
-  "starter": "func solve(a: int, b: int) -> float:\n\treturn (a + b) / 2",
-  "require_methods": [
-    "average"
-  ],
+  "prompt": "Write `average`, which returns the average of two whole numbers with decimals, so average(1, 2) is 1.5. `solve` returns average(a, b).",
+  "signature": "func solve(a, b) -> float:",
+  "starter": "func solve(a, b) -> float:\n\treturn (a + b) / 2",
   "tests": [
     {
+      "name": "1 and 2 average 1.5",
       "args": [
         1,
         2
@@ -18,6 +16,7 @@
       "expect": 1.5
     },
     {
+      "name": "4 and 4 average 4",
       "args": [
         4,
         4
@@ -25,6 +24,7 @@
       "expect": 4
     },
     {
+      "name": "-3 and 3 average 0",
       "args": [
         -3,
         3
@@ -32,6 +32,18 @@
       "expect": 0
     }
   ],
-  "hint": "Same trap as before: dividing two ints drops the decimals. Divide by a float.",
-  "solution": "func solve(a: int, b: int) -> float:\n\treturn average(a, b)\n\nfunc average(x: int, y: int) -> float:\n\treturn (x + y) / 2.0"
+  "hints": [
+    "Dividing two ints drops the decimals; divide by a float.",
+    "`return (x + y) / 2.0` inside average."
+  ],
+  "docs": [
+    {
+      "name": "return value",
+      "what": "Ends the function and hands value back to whoever called it."
+    }
+  ],
+  "solution": "func solve(a, b) -> float:\n\treturn average(a, b)\n\nfunc average(x, y):\n\treturn (x + y) / 2.0",
+  "require_methods": [
+    "average"
+  ]
 }

@@ -4,10 +4,11 @@
   "concept": "gq-strings",
   "difficulty": 1,
   "prompt": "Return true if a and b are the same word ignoring capital letters, so \"Godot\" and \"GODOT\" match.",
-  "signature": "func solve(a: String, b: String) -> bool:",
-  "starter": "func solve(a: String, b: String) -> bool:\n\treturn a == b",
+  "signature": "func solve(a, b):",
+  "starter": "func solve(a, b):\n\treturn a == b",
   "tests": [
     {
+      "name": "Godot and GODOT match",
       "args": [
         "Godot",
         "GODOT"
@@ -15,6 +16,7 @@
       "expect": true
     },
     {
+      "name": "cat and dog do not",
       "args": [
         "cat",
         "dog"
@@ -22,6 +24,7 @@
       "expect": false
     },
     {
+      "name": "Hi and hi match",
       "args": [
         "Hi",
         "hi"
@@ -29,6 +32,15 @@
       "expect": true
     }
   ],
-  "hint": "Make both the same case before comparing.",
-  "solution": "func solve(a: String, b: String) -> bool:\n\treturn a.to_lower() == b.to_lower()"
+  "hints": [
+    "Make both the same case before comparing.",
+    "`return a.to_lower() == b.to_lower()`"
+  ],
+  "docs": [
+    {
+      "name": "text.to_upper() / text.to_lower()",
+      "what": "Returns the text in capitals, or in small letters."
+    }
+  ],
+  "solution": "func solve(a, b):\n\treturn a.to_lower() == b.to_lower()"
 }

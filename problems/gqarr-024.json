@@ -3,14 +3,12 @@
   "title": "Arrays are shared, not copied",
   "concept": "gq-arrays",
   "difficulty": 1,
-  "prompt": "Earlier you saw that a number passed to a function is a copy. Arrays are different. Write `add_item`, which takes an array and appends 99 to it, returning nothing. In solve, call add_item(items) and then return items. Has the original changed?",
-  "signature": "func solve(items: Array) -> Array:",
-  "starter": "func solve(items: Array) -> Array:\n\treturn items",
-  "require_methods": [
-    "add_item"
-  ],
+  "prompt": "Earlier you saw that a number passed to a function is a copy. Arrays are different. Write `add_item`, which takes an array and appends 99 to it. In `solve`, call add_item(items) and then return items; the original now contains the 99.",
+  "signature": "func solve(items):",
+  "starter": "func solve(items):\n\treturn items",
   "tests": [
     {
+      "name": "[1, 2] gains a 99",
       "args": [
         [
           1,
@@ -24,6 +22,7 @@
       ]
     },
     {
+      "name": "Empty gains a 99",
       "args": [
         []
       ],
@@ -32,6 +31,19 @@
       ]
     }
   ],
-  "hint": "The helper does not need to return anything: both names point at the same array, so changes made through one show up in the other.",
-  "solution": "func solve(items: Array) -> Array:\n\tadd_item(items)\n\treturn items\n\nfunc add_item(arr: Array) -> void:\n\tarr.append(99)"
+  "hints": [
+    "Both names point at the same array, so changes made through one show up in the other.",
+    "`func add_item(arr):` with `arr.append(99)`; it does not need to return anything.",
+    "solve: `add_item(items)` then `return items`."
+  ],
+  "docs": [
+    {
+      "name": "list.append(value)",
+      "what": "Adds value to the end of the array. Returns nothing."
+    }
+  ],
+  "solution": "func solve(items):\n\tadd_item(items)\n\treturn items\n\nfunc add_item(arr):\n\tarr.append(99)",
+  "require_methods": [
+    "add_item"
+  ]
 }

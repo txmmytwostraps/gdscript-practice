@@ -4,10 +4,11 @@
   "concept": "gq-arrays",
   "difficulty": 0,
   "prompt": "Return the total of all the numbers in the array. An empty array totals 0.",
-  "signature": "func solve(nums: Array) -> int:",
-  "starter": "func solve(nums: Array) -> int:\n\tvar total = 0\n\treturn total",
+  "signature": "func solve(nums):",
+  "starter": "func solve(nums):\n\tvar total = 0\n\treturn total",
   "tests": [
     {
+      "name": "1, 2, 3 total 6",
       "args": [
         [
           1,
@@ -18,12 +19,14 @@
       "expect": 6
     },
     {
+      "name": "Empty totals 0",
       "args": [
         []
       ],
       "expect": 0
     },
     {
+      "name": "Negatives cancel",
       "args": [
         [
           -5,
@@ -34,6 +37,15 @@
       "expect": 10
     }
   ],
-  "hint": "A for loop visits each item once. Add each one to the total.",
-  "solution": "func solve(nums: Array) -> int:\n\tvar total = 0\n\tfor n in nums:\n\t\ttotal += n\n\treturn total"
+  "hints": [
+    "A for loop visits each item once.",
+    "`for n in nums:` then `total += n`."
+  ],
+  "docs": [
+    {
+      "name": "for item in list:",
+      "what": "Runs the indented lines once per item, with item holding each value in turn."
+    }
+  ],
+  "solution": "func solve(nums):\n\tvar total = 0\n\tfor n in nums:\n\t\ttotal += n\n\treturn total"
 }

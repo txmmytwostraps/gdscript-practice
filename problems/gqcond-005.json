@@ -3,41 +3,60 @@
   "title": "Letter grade",
   "concept": "gq-conditions",
   "difficulty": 1,
-  "prompt": "Turn a score into a letter: 90 or more is \"A\", 80 or more is \"B\", 70 or more is \"C\", anything lower is \"F\".",
-  "signature": "func solve(score: int) -> String:",
-  "starter": "func solve(score: int) -> String:\n\treturn \"F\"",
+  "prompt": "Turn a score into a letter: 90 or more is \"A\", 80 or more is \"B\", 70 or more is \"C\", anything lower is \"F\". solve(85) is \"B\".",
+  "signature": "func solve(score):",
+  "starter": "func solve(score):\n\treturn \"F\"",
   "tests": [
     {
+      "name": "95 is an A",
       "args": [
         95
       ],
       "expect": "A"
     },
     {
+      "name": "Exactly 90 is an A",
       "args": [
         90
       ],
       "expect": "A"
     },
     {
+      "name": "85 is a B",
       "args": [
         85
       ],
       "expect": "B"
     },
     {
+      "name": "70 is a C",
       "args": [
         70
       ],
       "expect": "C"
     },
     {
+      "name": "69 is an F",
       "args": [
         69
       ],
       "expect": "F"
     }
   ],
-  "hint": "elif lets you test several ranges in a row. Start from the highest.",
-  "solution": "func solve(score: int) -> String:\n\tif score >= 90:\n\t\treturn \"A\"\n\telif score >= 80:\n\t\treturn \"B\"\n\telif score >= 70:\n\t\treturn \"C\"\n\telse:\n\t\treturn \"F\""
+  "hints": [
+    "elif lets you test several ranges in a row.",
+    "Start from the highest: `if score >= 90:`, then `elif score >= 80:`, `elif score >= 70:`, `else:`.",
+    "Each branch returns its letter."
+  ],
+  "docs": [
+    {
+      "name": "if condition:",
+      "what": "Runs the indented lines below it only when the condition is true. elif and else add more branches."
+    },
+    {
+      "name": "==  !=  <  <=  >  >=",
+      "what": "Comparisons. Each gives true or false."
+    }
+  ],
+  "solution": "func solve(score):\n\tif score >= 90:\n\t\treturn \"A\"\n\telif score >= 80:\n\t\treturn \"B\"\n\telif score >= 70:\n\t\treturn \"C\"\n\telse:\n\t\treturn \"F\""
 }

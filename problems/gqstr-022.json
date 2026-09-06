@@ -4,28 +4,44 @@
   "concept": "gq-strings",
   "difficulty": 1,
   "prompt": "Clocks show 5 minutes as \"05\". Return the number as text with at least two digits.",
-  "signature": "func solve(n: int) -> String:",
-  "starter": "func solve(n: int) -> String:\n\treturn str(n)",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\treturn str(n)",
   "tests": [
     {
+      "name": "5 becomes 05",
       "args": [
         5
       ],
       "expect": "05"
     },
     {
+      "name": "12 stays 12",
       "args": [
         12
       ],
       "expect": "12"
     },
     {
+      "name": "0 becomes 00",
       "args": [
         0
       ],
       "expect": "00"
     }
   ],
-  "hint": "Turn it into text, then look for a method that pads with zeros.",
-  "solution": "func solve(n: int) -> String:\n\treturn str(n).pad_zeros(2)"
+  "hints": [
+    "Turn it into text, then pad with zeros.",
+    "`return str(n).pad_zeros(2)`"
+  ],
+  "docs": [
+    {
+      "name": "str(value)",
+      "what": "Returns the value as text."
+    },
+    {
+      "name": "text.pad_zeros(n)",
+      "what": "Returns the text padded with zeros on the left to at least n digits."
+    }
+  ],
+  "solution": "func solve(n):\n\treturn str(n).pad_zeros(2)"
 }

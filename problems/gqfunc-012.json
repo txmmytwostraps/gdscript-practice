@@ -1,42 +1,34 @@
 {
   "id": "gqfunc-012",
-  "title": "A helper for each step",
+  "title": "A helper with two lines",
   "concept": "gq-functions",
-  "difficulty": 1,
-  "prompt": "Write three helpers: `print_health` prints the health, `print_damage` prints the damage, and `print_remaining` takes both and prints health minus damage. Call all three from solve in that order.",
-  "signature": "func solve(health: int, damage: int) -> void:",
-  "starter": "func solve(health: int, damage: int) -> void:\n\tpass",
+  "difficulty": 0,
+  "prompt": "The robot's status report is two lines. Write `report`, which prints \"Health OK\" and then \"Level 1\", and call it from `solve`.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass",
   "require_methods": [
-    "print_health",
-    "print_damage",
-    "print_remaining"
+    "report"
   ],
   "tests": [
     {
-      "args": [
-        100,
-        30
-      ],
+      "name": "Both report lines, in order",
+      "args": [],
       "expect": null,
       "out": [
-        "100",
-        "30",
-        "70"
-      ]
-    },
-    {
-      "args": [
-        50,
-        50
-      ],
-      "expect": null,
-      "out": [
-        "50",
-        "50",
-        "0"
+        "Health OK",
+        "Level 1"
       ]
     }
   ],
-  "hint": "Two of the helpers take one parameter; the last takes two.",
-  "solution": "func solve(health: int, damage: int) -> void:\n\tprint_health(health)\n\tprint_damage(damage)\n\tprint_remaining(health, damage)\n\nfunc print_health(health: int) -> void:\n\tprint(health)\n\nfunc print_damage(damage: int) -> void:\n\tprint(damage)\n\nfunc print_remaining(health: int, damage: int) -> void:\n\tprint(health - damage)"
+  "hints": [
+    "A function body can be as many lines as you need, all indented the same amount.",
+    "`func report():` followed by two print lines, then `report()` in solve."
+  ],
+  "docs": [
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\treport()\n\nfunc report():\n\tprint(\"Health OK\")\n\tprint(\"Level 1\")"
 }

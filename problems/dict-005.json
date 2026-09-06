@@ -4,10 +4,11 @@
   "concept": "dictionaries",
   "difficulty": 1,
   "prompt": "Return an array of every key whose value equals value, in the order they appear in the dictionary.",
-  "signature": "func solve(data: Dictionary, value: int) -> Array:",
-  "starter": "func solve(data: Dictionary, value: int) -> Array:\n\treturn []",
+  "signature": "func solve(data, value):",
+  "starter": "func solve(data, value):\n\treturn []",
   "tests": [
     {
+      "name": "a and c hold 1",
       "args": [
         {
           "a": 1,
@@ -22,6 +23,7 @@
       ]
     },
     {
+      "name": "No matches",
       "args": [
         {
           "a": 1
@@ -31,6 +33,7 @@
       "expect": []
     },
     {
+      "name": "Both hold 0",
       "args": [
         {
           "x": 0,
@@ -44,6 +47,15 @@
       ]
     }
   ],
-  "hint": "Loop over the keys; `if data[key] == value:` append the key to your result array.",
-  "solution": "func solve(data: Dictionary, value: int) -> Array:\n\tvar result = []\n\tfor key in data:\n\t\tif data[key] == value:\n\t\t\tresult.append(key)\n\treturn result"
+  "hints": [
+    "Loop over the keys; append the ones whose value matches.",
+    "`if data[key] == value:` then `result.append(key)`."
+  ],
+  "docs": [
+    {
+      "name": "for key in data:",
+      "what": "Runs once per key; data[key] gives its value."
+    }
+  ],
+  "solution": "func solve(data, value):\n\tvar result = []\n\tfor key in data:\n\t\tif data[key] == value:\n\t\t\tresult.append(key)\n\treturn result"
 }

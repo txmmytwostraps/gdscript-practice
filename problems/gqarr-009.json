@@ -4,10 +4,11 @@
   "concept": "gq-arrays",
   "difficulty": 0,
   "prompt": "Return true if value is somewhere in the array.",
-  "signature": "func solve(items: Array, value: int) -> bool:",
-  "starter": "func solve(items: Array, value: int) -> bool:\n\treturn false",
+  "signature": "func solve(items, value):",
+  "starter": "func solve(items, value):\n\treturn false",
   "tests": [
     {
+      "name": "2 is in [1, 2, 3]",
       "args": [
         [
           1,
@@ -19,6 +20,7 @@
       "expect": true
     },
     {
+      "name": "5 is not",
       "args": [
         [
           1,
@@ -30,6 +32,7 @@
       "expect": false
     },
     {
+      "name": "Nothing is in an empty array",
       "args": [
         [],
         1
@@ -37,6 +40,15 @@
       "expect": false
     }
   ],
-  "hint": "The word in works on arrays: value in items.",
-  "solution": "func solve(items: Array, value: int) -> bool:\n\treturn value in items"
+  "hints": [
+    "The word in works on arrays.",
+    "`return value in items`"
+  ],
+  "docs": [
+    {
+      "name": "value in list",
+      "what": "true if value is one of the items."
+    }
+  ],
+  "solution": "func solve(items, value):\n\treturn value in items"
 }

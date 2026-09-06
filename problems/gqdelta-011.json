@@ -3,11 +3,12 @@
   "title": "Distance over many frames",
   "concept": "gq-delta",
   "difficulty": 0,
-  "prompt": "Return the total distance covered at speed over a number of frames that each last delta seconds.",
-  "signature": "func solve(speed: float, delta: float, frames: int) -> float:",
-  "starter": "func solve(speed: float, delta: float, frames: int) -> float:\n\treturn speed * delta",
+  "prompt": "Return the total distance the robot covers at speed over a number of frames that each last delta seconds. 100 per second for 50 frames of 0.02 s is 100.",
+  "signature": "func solve(speed, delta, frames) -> float:",
+  "starter": "func solve(speed, delta, frames) -> float:\n\treturn speed * delta",
   "tests": [
     {
+      "name": "50 frames of 0.02 s at 100 is 100",
       "args": [
         100,
         0.02,
@@ -16,6 +17,7 @@
       "expect": 100
     },
     {
+      "name": "4 frames of 0.5 s at 10 is 20",
       "args": [
         10,
         0.5,
@@ -24,6 +26,7 @@
       "expect": 20
     },
     {
+      "name": "0 frames is 0",
       "args": [
         100,
         0.02,
@@ -32,6 +35,10 @@
       "expect": 0
     }
   ],
-  "hint": "Distance per frame, times the number of frames.",
-  "solution": "func solve(speed: float, delta: float, frames: int) -> float:\n\treturn speed * delta * frames"
+  "hints": [
+    "Distance per frame, times the number of frames.",
+    "`return speed * delta * frames`"
+  ],
+  "docs": [],
+  "solution": "func solve(speed, delta, frames) -> float:\n\treturn speed * delta * frames"
 }

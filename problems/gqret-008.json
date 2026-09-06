@@ -3,14 +3,12 @@
   "title": "Return the bigger with max()",
   "concept": "gq-return",
   "difficulty": 0,
-  "prompt": "Write `bigger`, which returns the larger of its two parameters. Godot has a built-in max() you can use inside it. solve returns bigger(a, b).",
-  "signature": "func solve(a: int, b: int) -> int:",
-  "starter": "func solve(a: int, b: int) -> int:\n\treturn a",
-  "require_methods": [
-    "bigger"
-  ],
+  "prompt": "Write `bigger`, which returns the larger of its two parameters using the built-in max(). `solve` returns bigger(a, b).",
+  "signature": "func solve(a, b):",
+  "starter": "func solve(a, b):\n\treturn a",
   "tests": [
     {
+      "name": "7 beats 3",
       "args": [
         3,
         7
@@ -18,6 +16,7 @@
       "expect": 7
     },
     {
+      "name": "9 beats 2",
       "args": [
         9,
         2
@@ -25,6 +24,7 @@
       "expect": 9
     },
     {
+      "name": "Equal gives 4",
       "args": [
         4,
         4
@@ -32,6 +32,22 @@
       "expect": 4
     }
   ],
-  "hint": "Built-in functions return values too; you can return what max() returns.",
-  "solution": "func solve(a: int, b: int) -> int:\n\treturn bigger(a, b)\n\nfunc bigger(x: int, y: int) -> int:\n\treturn max(x, y)"
+  "hints": [
+    "Built-in functions return values too; you can return what max() returns.",
+    "`return max(x, y)` inside bigger."
+  ],
+  "docs": [
+    {
+      "name": "return value",
+      "what": "Ends the function and hands value back to whoever called it."
+    },
+    {
+      "name": "max(a, b)",
+      "what": "Returns the larger of the two numbers."
+    }
+  ],
+  "solution": "func solve(a, b):\n\treturn bigger(a, b)\n\nfunc bigger(x, y):\n\treturn max(x, y)",
+  "require_methods": [
+    "bigger"
+  ]
 }

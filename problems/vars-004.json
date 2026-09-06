@@ -1,43 +1,52 @@
 {
   "id": "vars-004",
-  "title": "Halve it",
+  "title": "Halve it, keep the decimals",
   "concept": "variables",
   "difficulty": 1,
-  "prompt": "Return n divided by 2. The answer must keep its decimal part: 5 should give 2.5, not 2.",
-  "signature": "func solve(n: int) -> float:",
-  "starter": "func solve(n: int) -> float:\n\treturn n / 2",
+  "prompt": "Return n divided by 2. The answer must keep its decimal part: solve(5) is 2.5, not 2.",
+  "signature": "func solve(n) -> float:",
+  "starter": "func solve(n) -> float:\n\treturn n / 2",
   "tests": [
     {
+      "name": "5 halves to 2.5",
       "args": [
         5
       ],
       "expect": 2.5
     },
     {
+      "name": "4 halves to 2.0",
       "args": [
         4
       ],
       "expect": 2
     },
     {
+      "name": "1 halves to 0.5",
       "args": [
         1
       ],
       "expect": 0.5
     },
     {
+      "name": "0 halves to 0.0",
       "args": [
         0
       ],
       "expect": 0
     },
     {
+      "name": "-3 halves to -1.5",
       "args": [
         -3
       ],
       "expect": -1.5
     }
   ],
-  "hint": "Dividing two whole numbers (ints) throws away the remainder: 5 / 2 is 2. Divide by 2.0 instead, and the result becomes a float (a number with decimals).",
-  "solution": "func solve(n: int) -> float:\n\treturn n / 2.0"
+  "hints": [
+    "Dividing two whole numbers throws away the remainder: 5 / 2 is 2.",
+    "Divide by 2.0 instead, and the result becomes a float."
+  ],
+  "docs": [],
+  "solution": "func solve(n) -> float:\n\treturn n / 2.0"
 }

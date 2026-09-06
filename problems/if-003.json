@@ -4,46 +4,65 @@
   "concept": "ifelse",
   "difficulty": 1,
   "prompt": "Turn a score into a letter: 90 or more is \"A\", 80 or more is \"B\", 70 or more is \"C\", anything lower is \"F\".",
-  "signature": "func solve(score: int) -> String:",
-  "starter": "func solve(score: int) -> String:\n\treturn \"F\"",
+  "signature": "func solve(score):",
+  "starter": "func solve(score):\n\treturn \"F\"",
   "tests": [
     {
+      "name": "95 is an A",
       "args": [
         95
       ],
       "expect": "A"
     },
     {
+      "name": "90 is an A",
       "args": [
         90
       ],
       "expect": "A"
     },
     {
+      "name": "85 is a B",
       "args": [
         85
       ],
       "expect": "B"
     },
     {
+      "name": "70 is a C",
       "args": [
         70
       ],
       "expect": "C"
     },
     {
+      "name": "69 is an F",
       "args": [
         69
       ],
       "expect": "F"
     },
     {
+      "name": "0 is an F",
       "args": [
         0
       ],
       "expect": "F"
     }
   ],
-  "hint": "Check the biggest number first, using `if`, then `elif` (else-if), then `else`.",
-  "solution": "func solve(score: int) -> String:\n\tif score >= 90:\n\t\treturn \"A\"\n\telif score >= 80:\n\t\treturn \"B\"\n\telif score >= 70:\n\t\treturn \"C\"\n\telse:\n\t\treturn \"F\""
+  "hints": [
+    "Check the biggest number first, using if, then elif, then else.",
+    "`if score >= 90:` ... `elif score >= 80:` ... `elif score >= 70:` ... `else:`"
+  ],
+  "docs": [
+    {
+      "name": "if condition:",
+      "what": "Runs the indented lines below it only when the condition is true. elif and else add more branches."
+    },
+    {
+      "name": "==  !=  <  <=  >  >=",
+      "what": "Comparisons. Each gives true or false."
+    }
+  ],
+  "solution": "func solve(score):\n\tif score >= 90:\n\t\treturn \"A\"\n\telif score >= 80:\n\t\treturn \"B\"\n\telif score >= 70:\n\t\treturn \"C\"\n\telse:\n\t\treturn \"F\""
 }

@@ -1,34 +1,34 @@
 {
   "id": "gqparam-008",
-  "title": "Whole numbers in, decimal out",
+  "title": "Repeat a message",
   "concept": "gq-parameters",
-  "difficulty": 1,
-  "prompt": "Both parameters are whole numbers, but the answer must keep its decimals: solve(7, 2) is 3.5. Return a divided by b.",
-  "signature": "func solve(a: int, b: int) -> float:",
-  "starter": "func solve(a: int, b: int) -> float:\n\treturn a / b",
+  "difficulty": 0,
+  "prompt": "Write `say`, which takes a message and prints it. In `solve`, call say with \"Scanning\" and then with \"Clear\", so the output is those two words.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass",
+  "require_methods": [
+    "say"
+  ],
   "tests": [
     {
-      "args": [
-        7,
-        2
-      ],
-      "expect": 3.5
-    },
-    {
-      "args": [
-        1,
-        4
-      ],
-      "expect": 0.25
-    },
-    {
-      "args": [
-        9,
-        3
-      ],
-      "expect": 3
+      "name": "Scanning then Clear",
+      "args": [],
+      "expect": null,
+      "out": [
+        "Scanning",
+        "Clear"
+      ]
     }
   ],
-  "hint": "Turn one of them into a float before dividing. float() does that.",
-  "solution": "func solve(a: int, b: int) -> float:\n\treturn float(a) / b"
+  "hints": [
+    "Parameters can carry text as well as numbers.",
+    "`func say(message):` with `print(message)`, then two calls with the two strings."
+  ],
+  "docs": [
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\tsay(\"Scanning\")\n\tsay(\"Clear\")\n\nfunc say(message):\n\tprint(message)"
 }

@@ -2,12 +2,13 @@
   "id": "gqdelta-006",
   "title": "Frames until the timer ends",
   "concept": "gq-delta",
-  "difficulty": 0,
-  "prompt": "A timer has time_left seconds to go and every frame lasts delta seconds. Return how many whole frames fit into the time left.",
-  "signature": "func solve(time_left: float, delta: float) -> int:",
-  "starter": "func solve(time_left: float, delta: float) -> int:\n\treturn 0",
+  "difficulty": 1,
+  "prompt": "A timer has time_left seconds and every frame lasts delta seconds. Return how many whole frames fit into the time left. 1 second at 0.25 s per frame is 4 frames.",
+  "signature": "func solve(time_left, delta):",
+  "starter": "func solve(time_left, delta):\n\treturn 0",
   "tests": [
     {
+      "name": "1 s at 0.25 s is 4 frames",
       "args": [
         1,
         0.25
@@ -15,6 +16,7 @@
       "expect": 4
     },
     {
+      "name": "0.5 s at 0.2 s is 2 whole frames",
       "args": [
         0.5,
         0.2
@@ -22,6 +24,7 @@
       "expect": 2
     },
     {
+      "name": "No time left is 0 frames",
       "args": [
         0,
         0.1
@@ -29,6 +32,16 @@
       "expect": 0
     }
   ],
-  "hint": "Divide, then turn the result into a whole number with int(), which drops the decimals.",
-  "solution": "func solve(time_left: float, delta: float) -> int:\n\treturn int(time_left / delta)"
+  "hints": [
+    "Divide, then drop the decimals.",
+    "int() turns a decimal into a whole number.",
+    "`return int(time_left / delta)`"
+  ],
+  "docs": [
+    {
+      "name": "int(number)",
+      "what": "Returns the number as a whole number, dropping the decimals."
+    }
+  ],
+  "solution": "func solve(time_left, delta):\n\treturn int(time_left / delta)"
 }

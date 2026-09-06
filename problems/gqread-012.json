@@ -3,9 +3,9 @@
   "title": "Name the starting lives",
   "concept": "gq-readable",
   "difficulty": 0,
-  "prompt": "The player begins with 3 lives. This returns how many are left. Name the 3 `STARTING_LIVES`.",
-  "signature": "func solve(lives_lost: int) -> int:",
-  "starter": "func solve(lives_lost: int) -> int:\n\treturn 3 - lives_lost",
+  "prompt": "The robot begins with 3 lives. This returns how many are left. Name the 3 `STARTING_LIVES`.",
+  "signature": "func solve(lives_lost):",
+  "starter": "func solve(lives_lost):\n\treturn 3 - lives_lost",
   "require_names": [
     "STARTING_LIVES"
   ],
@@ -14,24 +14,36 @@
   ],
   "tests": [
     {
+      "name": "Lost 1, 2 left",
       "args": [
         1
       ],
       "expect": 2
     },
     {
+      "name": "Lost none, 3 left",
       "args": [
         0
       ],
       "expect": 3
     },
     {
+      "name": "Lost all, 0 left",
       "args": [
         3
       ],
       "expect": 0
     }
   ],
-  "hint": "Even a small number like 3 deserves a name when it means something.",
-  "solution": "func solve(lives_lost: int) -> int:\n\tconst STARTING_LIVES = 3\n\treturn STARTING_LIVES - lives_lost"
+  "hints": [
+    "Even a small number like 3 deserves a name when it means something.",
+    "`const STARTING_LIVES = 3`"
+  ],
+  "docs": [
+    {
+      "name": "const NAME = value",
+      "what": "Declares a named value that never changes. Written in CAPITALS by convention."
+    }
+  ],
+  "solution": "func solve(lives_lost):\n\tconst STARTING_LIVES = 3\n\treturn STARTING_LIVES - lives_lost"
 }

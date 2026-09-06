@@ -3,11 +3,12 @@
   "title": "From a to b",
   "concept": "gq-vectors",
   "difficulty": 1,
-  "prompt": "Return the vector that takes you from point a to point b. Starting at a and adding your answer should land on b.",
-  "signature": "func solve(a: Vector2, b: Vector2) -> Vector2:",
-  "starter": "func solve(a: Vector2, b: Vector2) -> Vector2:\n\treturn a - b",
+  "prompt": "Return the vector that takes the robot from point a to point b. Starting at a and adding your answer should land on b. The starter has the subtraction backwards.",
+  "signature": "func solve(a, b) -> Vector2:",
+  "starter": "func solve(a, b) -> Vector2:\n\treturn a - b",
   "tests": [
     {
+      "name": "(1, 1) to (4, 5) is (3, 4)",
       "args": [
         {
           "$v2": [
@@ -30,6 +31,7 @@
       }
     },
     {
+      "name": "Same point is (0, 0)",
       "args": [
         {
           "$v2": [
@@ -52,6 +54,7 @@
       }
     },
     {
+      "name": "(2, 0) to (0, 2) is (-2, 2)",
       "args": [
         {
           "$v2": [
@@ -74,6 +77,15 @@
       }
     }
   ],
-  "hint": "Destination minus start. The starter has them the wrong way round.",
-  "solution": "func solve(a: Vector2, b: Vector2) -> Vector2:\n\treturn b - a"
+  "hints": [
+    "Destination minus start.",
+    "`return b - a`"
+  ],
+  "docs": [
+    {
+      "name": "a + b, a - b, v * number, v / number",
+      "what": "Vectors add and subtract part by part, and scale by a plain number."
+    }
+  ],
+  "solution": "func solve(a, b) -> Vector2:\n\treturn b - a"
 }

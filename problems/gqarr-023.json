@@ -4,10 +4,11 @@
   "concept": "gq-arrays",
   "difficulty": 1,
   "prompt": "Return a new array containing only the even numbers from nums, in their original order.",
-  "signature": "func solve(nums: Array) -> Array:",
-  "starter": "func solve(nums: Array) -> Array:\n\treturn nums",
+  "signature": "func solve(nums):",
+  "starter": "func solve(nums):\n\treturn nums",
   "tests": [
     {
+      "name": "[1, 2, 3, 4] keeps [2, 4]",
       "args": [
         [
           1,
@@ -22,6 +23,7 @@
       ]
     },
     {
+      "name": "No evens gives empty",
       "args": [
         [
           1,
@@ -31,6 +33,7 @@
       "expect": []
     },
     {
+      "name": "0 and -2 are even",
       "args": [
         [
           0,
@@ -43,6 +46,23 @@
       ]
     }
   ],
-  "hint": "A loop with an if inside it, appending only when the test passes.",
-  "solution": "func solve(nums: Array) -> Array:\n\tvar result = []\n\tfor n in nums:\n\t\tif n % 2 == 0:\n\t\t\tresult.append(n)\n\treturn result"
+  "hints": [
+    "A loop with an if inside it, appending only when the test passes.",
+    "`if n % 2 == 0:` then `result.append(n)`."
+  ],
+  "docs": [
+    {
+      "name": "for item in list:",
+      "what": "Runs the indented lines once per item, with item holding each value in turn."
+    },
+    {
+      "name": "a % b",
+      "what": "The remainder after dividing a by b."
+    },
+    {
+      "name": "list.append(value)",
+      "what": "Adds value to the end of the array. Returns nothing."
+    }
+  ],
+  "solution": "func solve(nums):\n\tvar result = []\n\tfor n in nums:\n\t\tif n % 2 == 0:\n\t\t\tresult.append(n)\n\treturn result"
 }

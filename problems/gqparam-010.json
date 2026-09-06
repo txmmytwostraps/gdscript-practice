@@ -1,37 +1,41 @@
 {
   "id": "gqparam-010",
-  "title": "Clamp with parameters",
+  "title": "Order matters",
   "concept": "gq-parameters",
-  "difficulty": 1,
-  "prompt": "Return value, but never lower than low and never higher than high. Godot has a built-in function for exactly this.",
-  "signature": "func solve(value: int, low: int, high: int) -> int:",
-  "starter": "func solve(value: int, low: int, high: int) -> int:\n\treturn value",
+  "difficulty": 0,
+  "prompt": "The first value passed in goes into the first parameter, the second into the second. The starter subtracts them the wrong way round. Fix it so solve(10, 3) is 7.",
+  "signature": "func solve(a, b):",
+  "starter": "func solve(a, b):\n\treturn b - a",
   "tests": [
     {
+      "name": "10 minus 3 is 7",
       "args": [
-        5,
-        0,
-        10
+        10,
+        3
       ],
-      "expect": 5
+      "expect": 7
     },
     {
+      "name": "3 minus 10 is -7",
       "args": [
-        -3,
-        0,
+        3,
         10
+      ],
+      "expect": -7
+    },
+    {
+      "name": "Zeros give 0",
+      "args": [
+        0,
+        0
       ],
       "expect": 0
-    },
-    {
-      "args": [
-        15,
-        0,
-        10
-      ],
-      "expect": 10
     }
   ],
-  "hint": "The built-in is called clamp and takes three parameters, in the same order as yours.",
-  "solution": "func solve(value: int, low: int, high: int) -> int:\n\treturn clamp(value, low, high)"
+  "hints": [
+    "Look at solve(10, 3): which parameter holds 10?",
+    "Swap the two names in the return line."
+  ],
+  "docs": [],
+  "solution": "func solve(a, b):\n\treturn a - b"
 }

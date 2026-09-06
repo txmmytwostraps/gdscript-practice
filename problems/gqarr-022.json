@@ -4,10 +4,11 @@
   "concept": "gq-arrays",
   "difficulty": 0,
   "prompt": "Remove the last item from the array and return that item. The array has at least one item.",
-  "signature": "func solve(items: Array) -> int:",
-  "starter": "func solve(items: Array) -> int:\n\treturn items[0]",
+  "signature": "func solve(items):",
+  "starter": "func solve(items):\n\treturn items[0]",
   "tests": [
     {
+      "name": "Last of [1, 2, 3] is 3",
       "args": [
         [
           1,
@@ -18,6 +19,7 @@
       "expect": 3
     },
     {
+      "name": "The only item",
       "args": [
         [
           9
@@ -26,6 +28,15 @@
       "expect": 9
     }
   ],
-  "hint": "pop_back both removes the last item and hands it to you.",
-  "solution": "func solve(items: Array) -> int:\n\treturn items.pop_back()"
+  "hints": [
+    "pop_back both removes the last item and hands it to you.",
+    "`return items.pop_back()`"
+  ],
+  "docs": [
+    {
+      "name": "list.pop_back()",
+      "what": "Removes the last item and returns it."
+    }
+  ],
+  "solution": "func solve(items):\n\treturn items.pop_back()"
 }

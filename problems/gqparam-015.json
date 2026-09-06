@@ -1,34 +1,37 @@
 {
   "id": "gqparam-015",
-  "title": "Change to give back",
+  "title": "Two defaults",
   "concept": "gq-parameters",
-  "difficulty": 0,
-  "prompt": "A customer pays some money for something that costs a certain amount. Return the change they should get back.",
-  "signature": "func solve(paid: float, cost: float) -> float:",
-  "starter": "func solve(paid: float, cost: float) -> float:\n\treturn 0.0",
+  "difficulty": 1,
+  "prompt": "Both of solve's parameters have defaults: width is 4 and height is 3 unless the caller says otherwise. Return width times height. The tests call solve with no values, one value and two.",
+  "signature": "func solve(width = 4, height = 3):",
+  "starter": "func solve(width = 4, height = 3):\n\treturn 0",
   "tests": [
     {
-      "args": [
-        10,
-        7.5
-      ],
-      "expect": 2.5
+      "name": "No values: 4 by 3 is 12",
+      "args": [],
+      "expect": 12
     },
     {
+      "name": "One value: 5 by 3 is 15",
       "args": [
-        20,
-        20
+        5
       ],
-      "expect": 0
+      "expect": 15
     },
     {
+      "name": "Two values: 2 by 2 is 4",
       "args": [
-        5,
-        1.25
+        2,
+        2
       ],
-      "expect": 3.75
+      "expect": 4
     }
   ],
-  "hint": "Which parameter is bigger in a normal purchase? Subtract the other one from it.",
-  "solution": "func solve(paid: float, cost: float) -> float:\n\treturn paid - cost"
+  "hints": [
+    "With one value passed, only the first parameter changes; the second keeps its default.",
+    "`return width * height`"
+  ],
+  "docs": [],
+  "solution": "func solve(width = 4, height = 3):\n\treturn width * height"
 }

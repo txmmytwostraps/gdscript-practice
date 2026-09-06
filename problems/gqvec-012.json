@@ -3,11 +3,12 @@
   "title": "Vector2.UP and friends",
   "concept": "gq-vectors",
   "difficulty": 0,
-  "prompt": "Return the velocity of something moving straight up at the given speed. Godot has ready-made direction vectors such as Vector2.UP, and remember that up means a negative y on screen.",
-  "signature": "func solve(speed: float) -> Vector2:",
-  "starter": "func solve(speed: float) -> Vector2:\n\treturn Vector2.ZERO",
+  "prompt": "Return the velocity of the robot moving straight up at the given speed. Godot has ready-made direction vectors, and up means a negative y on screen. Speed 10 gives (0, -10).",
+  "signature": "func solve(speed) -> Vector2:",
+  "starter": "func solve(speed) -> Vector2:\n\treturn Vector2.ZERO",
   "tests": [
     {
+      "name": "Speed 10 is (0, -10)",
       "args": [
         10
       ],
@@ -19,6 +20,7 @@
       }
     },
     {
+      "name": "Speed 0 is (0, 0)",
       "args": [
         0
       ],
@@ -30,6 +32,7 @@
       }
     },
     {
+      "name": "Speed 2.5 is (0, -2.5)",
       "args": [
         2.5
       ],
@@ -41,6 +44,19 @@
       }
     }
   ],
-  "hint": "A direction of length 1 times a speed gives a velocity.",
-  "solution": "func solve(speed: float) -> Vector2:\n\treturn Vector2.UP * speed"
+  "hints": [
+    "A direction of length 1 times a speed gives a velocity.",
+    "`return Vector2.UP * speed`"
+  ],
+  "docs": [
+    {
+      "name": "Vector2.UP, DOWN, LEFT, RIGHT, ZERO",
+      "what": "Ready-made vectors. UP is (0, -1) because y grows downward on screen."
+    },
+    {
+      "name": "a + b, a - b, v * number, v / number",
+      "what": "Vectors add and subtract part by part, and scale by a plain number."
+    }
+  ],
+  "solution": "func solve(speed) -> Vector2:\n\treturn Vector2.UP * speed"
 }

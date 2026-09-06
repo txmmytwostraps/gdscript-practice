@@ -1,46 +1,38 @@
 {
   "id": "gqfunc-004",
-  "title": "A helper with two parameters",
+  "title": "Three steps in order",
   "concept": "gq-functions",
   "difficulty": 0,
-  "prompt": "Write `print_sum`, which takes two numbers and prints them added together. Call it from solve with a and b.",
-  "signature": "func solve(a: int, b: int) -> void:",
-  "starter": "func solve(a: int, b: int) -> void:\n\tpass",
+  "prompt": "The robot's start-up has three steps. Write `step_one`, `step_two` and `step_three`, printing \"one\", \"two\" and \"three\". Call them from `solve` so the words come out in that order.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass",
   "require_methods": [
-    "print_sum"
+    "step_one",
+    "step_two",
+    "step_three"
   ],
   "tests": [
     {
-      "args": [
-        2,
-        3
-      ],
+      "name": "one, two, three in order",
+      "args": [],
       "expect": null,
       "out": [
-        "5"
-      ]
-    },
-    {
-      "args": [
-        0,
-        0
-      ],
-      "expect": null,
-      "out": [
-        "0"
-      ]
-    },
-    {
-      "args": [
-        -1,
-        1
-      ],
-      "expect": null,
-      "out": [
-        "0"
+        "one",
+        "two",
+        "three"
       ]
     }
   ],
-  "hint": "Separate the two parameters with a comma, both when defining and when calling.",
-  "solution": "func solve(a: int, b: int) -> void:\n\tprint_sum(a, b)\n\nfunc print_sum(x: int, y: int) -> void:\n\tprint(x + y)"
+  "hints": [
+    "Calls run from top to bottom. The order you write the calls in solve is the order things happen.",
+    "Three definitions, each `func step_x():` with one print.",
+    "In solve: `step_one()`, then `step_two()`, then `step_three()`, one per line."
+  ],
+  "docs": [
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\tstep_one()\n\tstep_two()\n\tstep_three()\n\nfunc step_one():\n\tprint(\"one\")\n\nfunc step_two():\n\tprint(\"two\")\n\nfunc step_three():\n\tprint(\"three\")"
 }

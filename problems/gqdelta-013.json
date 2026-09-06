@@ -3,11 +3,12 @@
   "title": "Health regen with a cap",
   "concept": "gq-delta",
   "difficulty": 1,
-  "prompt": "Health recovers at regen points per second but can never go above max_hp. Return the health after one frame.",
-  "signature": "func solve(hp: float, regen: float, max_hp: float, delta: float) -> float:",
-  "starter": "func solve(hp: float, regen: float, max_hp: float, delta: float) -> float:\n\treturn hp + regen * delta",
+  "prompt": "The robot's health recovers at regen points per second but can never go above max_hp. Return the health after one frame. 99 health regenerating 10 per second for 0.5 s is capped at 100.",
+  "signature": "func solve(hp, regen, max_hp, delta) -> float:",
+  "starter": "func solve(hp, regen, max_hp, delta) -> float:\n\treturn hp + regen * delta",
   "tests": [
     {
+      "name": "50 plus 10 per second for 0.5 s is 55",
       "args": [
         50,
         10,
@@ -17,6 +18,7 @@
       "expect": 55
     },
     {
+      "name": "Capped at max_hp",
       "args": [
         99,
         10,
@@ -26,6 +28,7 @@
       "expect": 100
     },
     {
+      "name": "Full health stays full",
       "args": [
         100,
         10,
@@ -35,6 +38,16 @@
       "expect": 100
     }
   ],
-  "hint": "Add the regen, then cap it: min() with the maximum.",
-  "solution": "func solve(hp: float, regen: float, max_hp: float, delta: float) -> float:\n\treturn min(hp + regen * delta, max_hp)"
+  "hints": [
+    "Add the regen, then cap it.",
+    "min() keeps the smaller of two values.",
+    "`return min(hp + regen * delta, max_hp)`"
+  ],
+  "docs": [
+    {
+      "name": "min(a, b)",
+      "what": "Returns the smaller of the two numbers."
+    }
+  ],
+  "solution": "func solve(hp, regen, max_hp, delta) -> float:\n\treturn min(hp + regen * delta, max_hp)"
 }

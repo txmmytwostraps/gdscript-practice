@@ -3,41 +3,56 @@
   "title": "Sum up to n",
   "concept": "while",
   "difficulty": 0,
-  "prompt": "Return 1 + 2 + 3 + ... + n. For 0, return 0. Use a while loop.",
-  "signature": "func solve(n: int) -> int:",
-  "starter": "func solve(n: int) -> int:\n\tvar total = 0\n\treturn total",
+  "prompt": "Return 1 + 2 + 3 + ... + n using a while loop. For 0, return 0. solve(4) is 10.",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\tvar total = 0\n\treturn total",
   "tests": [
     {
+      "name": "Up to 4 is 10",
       "args": [
         4
       ],
       "expect": 10
     },
     {
+      "name": "Up to 1 is 1",
       "args": [
         1
       ],
       "expect": 1
     },
     {
+      "name": "Up to 0 is 0",
       "args": [
         0
       ],
       "expect": 0
     },
     {
+      "name": "Up to 10 is 55",
       "args": [
         10
       ],
       "expect": 55
     },
     {
+      "name": "Up to 100 is 5050",
       "args": [
         100
       ],
       "expect": 5050
     }
   ],
-  "hint": "A counter `i` from 1 up to n. Each time round the loop, `total += i` and `i += 1`.",
-  "solution": "func solve(n: int) -> int:\n\tvar total = 0\n\tvar i = 1\n\twhile i <= n:\n\t\ttotal += i\n\t\ti += 1\n\treturn total"
+  "hints": [
+    "A counter from 1 up to n, adding each value to a total.",
+    "`var i = 1` and `while i <= n:`",
+    "Inside: `total += i` and `i += 1`."
+  ],
+  "docs": [
+    {
+      "name": "while condition:",
+      "what": "Repeats the indented lines below it as long as the condition stays true."
+    }
+  ],
+  "solution": "func solve(n):\n\tvar total = 0\n\tvar i = 1\n\twhile i <= n:\n\t\ttotal += i\n\t\ti += 1\n\treturn total"
 }

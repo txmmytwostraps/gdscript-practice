@@ -1,34 +1,35 @@
 {
   "id": "gqfunc-007",
-  "title": "Name a function well",
+  "title": "Same helper, three times",
   "concept": "gq-functions",
   "difficulty": 0,
-  "prompt": "This works, but `f` tells the reader nothing. Rename the helper to `minutes_to_seconds`, both where it is defined and where it is called.",
-  "signature": "func solve(minutes: int) -> void:",
-  "starter": "func solve(minutes: int) -> void:\n\tf(minutes)\n\nfunc f(minutes: int) -> void:\n\tprint(minutes * 60)",
+  "prompt": "The robot's clock ticks. Write `tick`, which prints \"tick\", and call it three times from `solve`.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass",
   "require_methods": [
-    "minutes_to_seconds"
+    "tick"
   ],
   "tests": [
     {
-      "args": [
-        2
-      ],
+      "name": "tick printed three times",
+      "args": [],
       "expect": null,
       "out": [
-        "120"
-      ]
-    },
-    {
-      "args": [
-        0
-      ],
-      "expect": null,
-      "out": [
-        "0"
+        "tick",
+        "tick",
+        "tick"
       ]
     }
   ],
-  "hint": "A good function name says what the function does. Change it in two places.",
-  "solution": "func solve(minutes: int) -> void:\n\tminutes_to_seconds(minutes)\n\nfunc minutes_to_seconds(minutes: int) -> void:\n\tprint(minutes * 60)"
+  "hints": [
+    "Writing the print once in a function means solve only repeats the short call, not the print.",
+    "`func tick():` with `print(\"tick\")`, then `tick()` three times in solve."
+  ],
+  "docs": [
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\ttick()\n\ttick()\n\ttick()\n\nfunc tick():\n\tprint(\"tick\")"
 }

@@ -3,29 +3,45 @@
   "title": "Shout",
   "concept": "strings",
   "difficulty": 0,
-  "prompt": "Return the text in capital letters with an exclamation mark on the end. \"hi\" becomes \"HI!\".",
-  "signature": "func solve(text: String) -> String:",
-  "starter": "func solve(text: String) -> String:\n\treturn text",
+  "prompt": "Return the text in capital letters with an exclamation mark on the end.",
+  "signature": "func solve(s):",
+  "starter": "func solve(s):\n\treturn s",
   "tests": [
     {
+      "name": "hi becomes HI!",
       "args": [
         "hi"
       ],
       "expect": "HI!"
     },
     {
+      "name": "Godot becomes GODOT!",
       "args": [
         "Godot"
       ],
       "expect": "GODOT!"
     },
     {
+      "name": "Empty becomes !",
       "args": [
         ""
       ],
       "expect": "!"
     }
   ],
-  "hint": "`text.to_upper()` gives the capitals; then add \"!\".",
-  "solution": "func solve(text: String) -> String:\n\treturn text.to_upper() + \"!\""
+  "hints": [
+    "to_upper() gives the capitals; then add the mark.",
+    "`return s.to_upper() + \"!\"`"
+  ],
+  "docs": [
+    {
+      "name": "text.to_upper() / text.to_lower()",
+      "what": "Returns the text in capitals, or in small letters."
+    },
+    {
+      "name": "text + text",
+      "what": "Joins two strings into one. Numbers must be turned into text first."
+    }
+  ],
+  "solution": "func solve(s):\n\treturn s.to_upper() + \"!\""
 }

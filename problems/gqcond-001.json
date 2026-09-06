@@ -1,37 +1,50 @@
 {
   "id": "gqcond-001",
-  "title": "Return a comparison",
+  "title": "Is the robot charged",
   "concept": "gq-conditions",
   "difficulty": 0,
-  "prompt": "Return true if n is 10 or more, otherwise false. A comparison is already a true-or-false value, so no if is needed.",
-  "signature": "func solve(n: int) -> bool:",
-  "starter": "func solve(n: int) -> bool:\n\treturn false",
+  "prompt": "The robot can start when its charge is 10 or more. Return true if n is at least 10, otherwise false. A comparison is already a true-or-false value, so no if is needed.",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\treturn false",
   "tests": [
     {
+      "name": "10 is enough",
       "args": [
         10
       ],
       "expect": true
     },
     {
+      "name": "9 is not",
       "args": [
         9
       ],
       "expect": false
     },
     {
+      "name": "100 is plenty",
       "args": [
         100
       ],
       "expect": true
     },
     {
+      "name": "Negative is not",
       "args": [
         -1
       ],
       "expect": false
     }
   ],
-  "hint": "Which comparison symbol means at least?",
-  "solution": "func solve(n: int) -> bool:\n\treturn n >= 10"
+  "hints": [
+    "Which comparison symbol means at least?",
+    "`return n >= 10`"
+  ],
+  "docs": [
+    {
+      "name": "==  !=  <  <=  >  >=",
+      "what": "Comparisons. Each gives true or false."
+    }
+  ],
+  "solution": "func solve(n):\n\treturn n >= 10"
 }

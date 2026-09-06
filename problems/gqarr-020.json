@@ -4,10 +4,11 @@
   "concept": "gq-arrays",
   "difficulty": 1,
   "prompt": "Same task with the built-in reverse method. Careful: `return items.reverse()` will not even compile, because reverse() changes the array in place and gives nothing back.",
-  "signature": "func solve(items: Array) -> Array:",
-  "starter": "func solve(items: Array) -> Array:\n\treturn items",
+  "signature": "func solve(items):",
+  "starter": "func solve(items):\n\treturn items",
   "tests": [
     {
+      "name": "[1, 2, 3] becomes [3, 2, 1]",
       "args": [
         [
           1,
@@ -22,12 +23,14 @@
       ]
     },
     {
+      "name": "Empty stays empty",
       "args": [
         []
       ],
       "expect": []
     },
     {
+      "name": "One item stays",
       "args": [
         [
           7
@@ -38,6 +41,15 @@
       ]
     }
   ],
-  "hint": "Call reverse() on its own line, then return the array on the next.",
-  "solution": "func solve(items: Array) -> Array:\n\titems.reverse()\n\treturn items"
+  "hints": [
+    "Call reverse() on its own line, then return the array on the next.",
+    "`items.reverse()` then `return items`."
+  ],
+  "docs": [
+    {
+      "name": "list.reverse()",
+      "what": "Reverses the array in place. Returns nothing."
+    }
+  ],
+  "solution": "func solve(items):\n\titems.reverse()\n\treturn items"
 }

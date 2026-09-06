@@ -1,37 +1,35 @@
 {
   "id": "gqfunc-010",
-  "title": "A helper that uses a constant",
+  "title": "Two helpers, one job each",
   "concept": "gq-functions",
-  "difficulty": 1,
-  "prompt": "Declare a constant `SPEED` equal to 250 at the top of the script, outside any function. Write `print_distance`, which prints SPEED times a number of seconds, and call it from solve.",
-  "signature": "func solve(seconds: int) -> void:",
-  "starter": "func solve(seconds: int) -> void:\n\tpass",
+  "difficulty": 0,
+  "prompt": "The robot introduces itself in two parts. Write `say_name`, which prints \"Robo\", and `say_model`, which prints \"RX-7\". Call both from `solve`, name first.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass",
   "require_methods": [
-    "print_distance"
-  ],
-  "require_names": [
-    "SPEED"
+    "say_name",
+    "say_model"
   ],
   "tests": [
     {
-      "args": [
-        2
-      ],
+      "name": "Name, then model",
+      "args": [],
       "expect": null,
       "out": [
-        "500"
-      ]
-    },
-    {
-      "args": [
-        0
-      ],
-      "expect": null,
-      "out": [
-        "0"
+        "Robo",
+        "RX-7"
       ]
     }
   ],
-  "hint": "A constant declared outside the functions can be used inside every function in the script.",
-  "solution": "const SPEED = 250\n\nfunc solve(seconds: int) -> void:\n\tprint_distance(seconds)\n\nfunc print_distance(seconds: int) -> void:\n\tprint(SPEED * seconds)"
+  "hints": [
+    "Each helper does one small thing; solve just lines them up.",
+    "Two definitions with one print each, then two calls in solve."
+  ],
+  "docs": [
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\tsay_name()\n\tsay_model()\n\nfunc say_name():\n\tprint(\"Robo\")\n\nfunc say_model():\n\tprint(\"RX-7\")"
 }

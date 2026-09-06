@@ -3,32 +3,44 @@
   "title": "Return with a default",
   "concept": "gq-return",
   "difficulty": 1,
-  "prompt": "Write `scaled`, which returns n times factor, where factor has a default of 3. solve returns scaled(n) plus scaled(n, 1).",
-  "signature": "func solve(n: int) -> int:",
-  "starter": "func solve(n: int) -> int:\n\treturn n",
-  "require_methods": [
-    "scaled"
-  ],
+  "prompt": "Write `scaled`, which returns value times factor, where factor has a default of 3. `solve` returns scaled(n) plus scaled(n, 1). solve(2) is 8.",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\treturn n",
   "tests": [
     {
+      "name": "2: 6 plus 2 is 8",
       "args": [
         2
       ],
       "expect": 8
     },
     {
+      "name": "0 gives 0",
       "args": [
         0
       ],
       "expect": 0
     },
     {
+      "name": "5: 15 plus 5 is 20",
       "args": [
         5
       ],
       "expect": 20
     }
   ],
-  "hint": "Called with one value the helper uses factor 3; called with two it uses what you pass.",
-  "solution": "func solve(n: int) -> int:\n\treturn scaled(n) + scaled(n, 1)\n\nfunc scaled(value: int, factor: int = 3) -> int:\n\treturn value * factor"
+  "hints": [
+    "Called with one value the helper uses factor 3; with two it uses what you pass.",
+    "`func scaled(value, factor = 3):` returning `value * factor`."
+  ],
+  "docs": [
+    {
+      "name": "return value",
+      "what": "Ends the function and hands value back to whoever called it."
+    }
+  ],
+  "solution": "func solve(n):\n\treturn scaled(n) + scaled(n, 1)\n\nfunc scaled(value, factor = 3):\n\treturn value * factor",
+  "require_methods": [
+    "scaled"
+  ]
 }

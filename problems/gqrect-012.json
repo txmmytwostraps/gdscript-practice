@@ -4,10 +4,11 @@
   "concept": "gq-rect",
   "difficulty": 0,
   "prompt": "Return an array of the rectangle's left, top, right and bottom edge positions, in that order.",
-  "signature": "func solve(r: Rect2) -> Array:",
-  "starter": "func solve(r: Rect2) -> Array:\n\treturn []",
+  "signature": "func solve(r):",
+  "starter": "func solve(r):\n\treturn []",
   "tests": [
     {
+      "name": "(10, 20, 30, 40) gives 10, 20, 40, 60",
       "args": [
         {
           "$rect": [
@@ -26,6 +27,7 @@
       ]
     },
     {
+      "name": "Unit square at origin",
       "args": [
         {
           "$rect": [
@@ -44,6 +46,15 @@
       ]
     }
   ],
-  "hint": "Left and top come from the position; right and bottom from the end.",
-  "solution": "func solve(r: Rect2) -> Array:\n\treturn [r.position.x, r.position.y, r.end.x, r.end.y]"
+  "hints": [
+    "Left and top come from position; right and bottom from end.",
+    "`return [r.position.x, r.position.y, r.end.x, r.end.y]`"
+  ],
+  "docs": [
+    {
+      "name": "r.position, r.size, r.end",
+      "what": "The top-left corner, the width and height, and the bottom-right corner, all Vector2."
+    }
+  ],
+  "solution": "func solve(r):\n\treturn [r.position.x, r.position.y, r.end.x, r.end.y]"
 }

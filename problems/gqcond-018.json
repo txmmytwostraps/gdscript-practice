@@ -1,34 +1,47 @@
 {
   "id": "gqcond-018",
-  "title": "Guard with an early return",
+  "title": "Absolute value with if",
   "concept": "gq-conditions",
-  "difficulty": 1,
-  "prompt": "Dividing by zero is an error. Run the starter to see it. Then fix it: if b is 0, return -1 straight away; otherwise return a divided by b (whole-number division).",
-  "signature": "func solve(a: int, b: int) -> int:",
-  "starter": "func solve(a: int, b: int) -> int:\n\treturn a / b",
+  "difficulty": 0,
+  "prompt": "Return n made positive: -5 becomes 5, 5 stays 5. Use an if rather than abs().",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\treturn n",
   "tests": [
     {
+      "name": "-5 becomes 5",
       "args": [
-        10,
-        2
+        -5
       ],
       "expect": 5
     },
     {
+      "name": "3 stays 3",
       "args": [
-        7,
-        0
-      ],
-      "expect": -1
-    },
-    {
-      "args": [
-        9,
         3
       ],
       "expect": 3
+    },
+    {
+      "name": "0 stays 0",
+      "args": [
+        0
+      ],
+      "expect": 0
     }
   ],
-  "hint": "An if with a return inside stops the function early; the code after it only runs when the if was false.",
-  "solution": "func solve(a: int, b: int) -> int:\n\tif b == 0:\n\t\treturn -1\n\treturn a / b"
+  "hints": [
+    "Only negative numbers need changing.",
+    "`if n < 0:` return -n; otherwise return n."
+  ],
+  "docs": [
+    {
+      "name": "if condition:",
+      "what": "Runs the indented lines below it only when the condition is true. elif and else add more branches."
+    },
+    {
+      "name": "==  !=  <  <=  >  >=",
+      "what": "Comparisons. Each gives true or false."
+    }
+  ],
+  "solution": "func solve(n):\n\tif n < 0:\n\t\treturn -n\n\treturn n"
 }

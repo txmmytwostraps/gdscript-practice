@@ -4,28 +4,40 @@
   "concept": "gq-strings",
   "difficulty": 1,
   "prompt": "Return the text backwards, so \"abc\" becomes \"cba\".",
-  "signature": "func solve(text: String) -> String:",
-  "starter": "func solve(text: String) -> String:\n\treturn text",
+  "signature": "func solve(text):",
+  "starter": "func solve(text):\n\treturn text",
   "tests": [
     {
+      "name": "abc becomes cba",
       "args": [
         "abc"
       ],
       "expect": "cba"
     },
     {
+      "name": "Empty stays empty",
       "args": [
         ""
       ],
       "expect": ""
     },
     {
+      "name": "Godot becomes todoG",
       "args": [
         "Godot"
       ],
       "expect": "todoG"
     }
   ],
-  "hint": "Unlike arrays, a string's reverse method returns the new string rather than changing the old one.",
-  "solution": "func solve(text: String) -> String:\n\treturn text.reverse()"
+  "hints": [
+    "Unlike arrays, a string's reverse method returns the new string.",
+    "`return text.reverse()`"
+  ],
+  "docs": [
+    {
+      "name": "text.reverse()",
+      "what": "Returns the text backwards. Unlike arrays, this returns a new string."
+    }
+  ],
+  "solution": "func solve(text):\n\treturn text.reverse()"
 }

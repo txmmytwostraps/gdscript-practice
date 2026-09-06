@@ -1,36 +1,33 @@
 {
   "id": "gqfunc-013",
-  "title": "Parameters get copies",
+  "title": "The missing call",
   "concept": "gq-functions",
-  "difficulty": 1,
-  "prompt": "Write `add_ten`, which takes a number, adds 10 to its parameter with +=, and prints it. In solve, call add_ten(n) and then print n yourself with print(n). Does n change?",
-  "signature": "func solve(n: int) -> void:",
-  "starter": "func solve(n: int) -> void:\n\tpass",
+  "difficulty": 0,
+  "prompt": "The robot has a `charge` function that prints \"Charging\", but it never runs because nothing calls it. Make `solve` call it, so the output is \"Charging\".",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass\n\nfunc charge():\n\tprint(\"Charging\")",
   "require_methods": [
-    "add_ten"
+    "charge"
   ],
   "tests": [
     {
-      "args": [
-        5
-      ],
+      "name": "Charging is printed",
+      "args": [],
       "expect": null,
       "out": [
-        "15",
-        "5"
-      ]
-    },
-    {
-      "args": [
-        0
-      ],
-      "expect": null,
-      "out": [
-        "10",
-        "0"
+        "Charging"
       ]
     }
   ],
-  "hint": "A number passed to a function is copied. Changing the copy inside the helper leaves the original alone.",
-  "solution": "func solve(n: int) -> void:\n\tadd_ten(n)\n\tprint(n)\n\nfunc add_ten(value: int) -> void:\n\tvalue += 10\n\tprint(value)"
+  "hints": [
+    "Defining a function does not run it. Something has to call it.",
+    "Replace pass in solve with `charge()`."
+  ],
+  "docs": [
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\tcharge()\n\nfunc charge():\n\tprint(\"Charging\")"
 }

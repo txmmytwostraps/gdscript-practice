@@ -3,11 +3,12 @@
   "title": "Fall with gravity",
   "concept": "gq-delta",
   "difficulty": 1,
-  "prompt": "Gravity adds gravity pixels per second to a falling speed every second (down is positive). Return the vertical speed after one frame.",
-  "signature": "func solve(vy: float, gravity: float, delta: float) -> float:",
-  "starter": "func solve(vy: float, gravity: float, delta: float) -> float:\n\treturn vy",
+  "prompt": "Gravity adds gravity pixels per second to the robot's falling speed every second, and down is positive. Return the vertical speed vy after one frame. From 0 with gravity 980, a 0.1 s frame gives 98.",
+  "signature": "func solve(vy, gravity, delta) -> float:",
+  "starter": "func solve(vy, gravity, delta) -> float:\n\treturn vy",
   "tests": [
     {
+      "name": "From rest, 0.1 s of gravity is 98",
       "args": [
         0,
         980,
@@ -16,6 +17,7 @@
       "expect": 98
     },
     {
+      "name": "A jump upward slows, then turns down",
       "args": [
         -200,
         980,
@@ -24,6 +26,7 @@
       "expect": 290
     },
     {
+      "name": "No gravity keeps the speed",
       "args": [
         3,
         0,
@@ -32,6 +35,10 @@
       "expect": 3
     }
   ],
-  "hint": "Same shape as accelerating a car, with gravity as the acceleration.",
-  "solution": "func solve(vy: float, gravity: float, delta: float) -> float:\n\treturn vy + gravity * delta"
+  "hints": [
+    "Gravity is just acceleration downward.",
+    "`return vy + gravity * delta`"
+  ],
+  "docs": [],
+  "solution": "func solve(vy, gravity, delta) -> float:\n\treturn vy + gravity * delta"
 }

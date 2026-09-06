@@ -13,8 +13,8 @@ const UNLOCK_AFTER = 2;
 const $ = (id) => document.getElementById(id);
 const el = {
   topic: $("topic"), difficulty: $("difficulty"), prev: $("prev"), nextseq: $("nextseq"), position: $("position"), dots: $("dots"), todaybar: $("todaybar"),
-  eyebrow: $("eyebrow"), title: $("title"), prompt: $("prompt"), requirements: $("requirements"), hint: $("hint"), hintToggle: $("hint-toggle"),
-  solution: $("solution"), solutionToggle: $("solution-toggle"), tests: $("tests"), again: $("again"),
+  eyebrow: $("eyebrow"), title: $("title"), prompt: $("prompt"), requirements: $("requirements"), hints: $("hints"),
+  solution: $("solution"), solutionToggle: $("solution-toggle"), tests: $("tests"), docs: $("docs"), doclist: $("doclist"), again: $("again"),
   run: $("run"), reset: $("reset"), next: $("next"), saved: $("saved"), judgeStatus: $("judge-status"),
   results: $("results"), verdict: $("verdict"), count: $("count"), message: $("message"), resultTable: $("result-table"),
   output: $("output"), outputLines: $("output-lines"), errors: $("errors"), errorLines: $("error-lines"),
@@ -68,15 +68,17 @@ function highlight(code) {
 }
 
 const TYPE_WORDS = { int: "a whole number", float: "a number that can have decimals", String: "some text", bool: "true or false", Array: "an array", Dictionary: "a dictionary", Vector2: "a Vector2 (an x and a y)", Vector2i: "a Vector2i", Rect2: "a Rect2 (a rectangle)", Rect2i: "a Rect2i", Variant: "any kind of value", void: "nothing" };
-function describeSignature(sig) {
+function describeSignature(sig, printOnly = false) {
   const params = ((/\((.*)\)/.exec(sig) || [])[1] || "").split(",").map((s) => s.trim()).filter(Boolean).map((s) => {
     const [left, def] = s.split("=").map((x) => x.trim());
     const [name, type] = left.split(":").map((x) => x.trim());
-    return `<code>${esc(name)}</code>, ${type ? TYPE_WORDS[type] || type : "a value"}${def !== undefined ? ` (if left out it is <code>${esc(def)}</code>)` : ""}`;
+    return `<code>${esc(name)}</code>${type ? `, ${TYPE_WORDS[type] || type}` : ""}${def !== undefined ? ` (if left out it is <code>${esc(def)}</code>)` : ""}`;
   });
   const ret = returnType(sig);
-  const gives = ret ? (ret === "void" ? "returns nothing" : `must return ${TYPE_WORDS[ret] || ret}`) : "returns a value";
-  const receives = params.length === 0 ? "receives nothing" : params.length === 1 ? `receives ${params[0]}` : `receives ${params.slice(0, -1).join("; ")}; and ${params[params.length - 1]}`;
+  const gives = ret ? (ret === "void" ? "returns nothing" : `must return ${TYPE_WORDS[ret] || ret}`) : printOnly ? "prints instead of returning anything" : "returns a value";
+  const typed = /:\s*\w+\s*[,)=]/.test(sig);
+  const sep = typed ? "; " : ", ";
+  const receives = params.length === 0 ? "receives nothing" : params.length === 1 ? `receives ${params[0]}` : `receives ${params.slice(0, -1).join(sep)}${typed ? "; and " : " and "}${params[params.length - 1]}`;
   const hasHints = /:\s*\w+\s*[,)=]/.test(sig) || ret;
   return `The first line means: <code>solve</code> ${receives}, and ${gives}.${hasHints ? " The parts like <code>: int</code> and <code>-> int</code> are type hints — optional in GDScript; you may not have met them yet." : ""}`;
 }
@@ -158,14 +160,19 @@ function renderProblem(p) {
   el.eyebrow.textContent = `// ${t ? t.title.toLowerCase() : p.concept} · problem ${at + 1} of ${list.length} · ${DIFF[p.difficulty]}`;
   el.title.textContent = p.title;
   el.prompt.innerHTML = rich(p.prompt);
-  $("signature-help").innerHTML = describeSignature(p.signature);
+  $("signature-help").innerHTML = describeSignature(p.signature, p.tests.every((tt) => tt.expect === null && tt.out));
   const reqs = [];
   if (p.require_methods) reqs.push("Must define: " + p.require_methods.map((m) => `<code>${esc(m)}()</code>`).join(", "));
   if (p.require_names) reqs.push("Must declare: " + p.require_names.map((m) => `<code>${esc(m)}</code>`).join(", ") + (p.once_only ? ` — and ${p.once_only.map((x) => `<code>${x}</code>`).join(", ")} may appear only once` : ""));
   el.requirements.innerHTML = reqs.join("<br>"); el.requirements.hidden = reqs.length === 0;
-  el.hint.innerHTML = rich(p.hint); el.hint.hidden = true; el.hintToggle.textContent = "[+] Hint";
+  // Staged hints: each opens on its own; opening one never counts as a miss.
+  const hints = Array.isArray(p.hints) ? p.hints : (p.hint ? [p.hint] : []);
+  el.hints.innerHTML = hints.map((h, i) => `<div class="stage"><button type="button" class="linkish" data-hint="${i}">[+] Hint ${i + 1} of ${hints.length}</button><p hidden>${rich(h)}</p></div>`).join("");
   el.solution.innerHTML = highlight(p.solution); el.solution.hidden = true;
-  el.tests.innerHTML = p.tests.map((tt) => `<div class="row"><span>${esc(callStr(p, tt.args))}</span><span class="arrow">→</span><span class="exp">${expectHtml(p, tt)}</span></div>`).join("");
+  el.tests.innerHTML = p.tests.map((tt) => `<div class="row">${tt.name ? `<span class="name">${esc(tt.name)}</span>` : ""}<span>${esc(callStr(p, tt.args))}</span><span class="arrow">→</span><span class="exp">${expectHtml(p, tt)}</span></div>`).join("");
+  const docs = Array.isArray(p.docs) ? p.docs : [];
+  el.docs.hidden = docs.length === 0;
+  el.doclist.innerHTML = docs.map((d) => `<div class="row"><code>${esc(d.name)}</code><span>${esc(d.what)}</span></div>`).join("");
   el.again.hidden = !state.solved[p.id];
   updateSolutionLock(p);
   document.title = `${p.title} · GDScript Practice`;
@@ -237,7 +244,7 @@ function renderResult(result, errors) {
     const t = p.tests[i] || {};
     const yours = (t.expect === null && t.out) ? printedHtml(r.out) : esc(fmtTyped(r.got, rtype)) + (t.out ? `\n${printedHtml(r.out)}` : "");
     const err = r.error ? `<span class="out">${esc(r.error)}</span>` : "";
-    return `<tr class="${r.pass ? "pass" : "fail"}"><td class="mark">${r.pass ? "✓" : "✗"}</td><td>${esc(callStr(p, r.args))}</td><td>${expectHtml(p, t)}</td><td>${yours}${err}</td></tr>`;
+    return `<tr class="${r.pass ? "pass" : "fail"}"><td class="mark">${r.pass ? "✓" : "✗"}</td><td>${t.name ? `<span class="check">${esc(t.name)}</span>` : ""}${esc(callStr(p, r.args))}</td><td>${expectHtml(p, t)}</td><td>${yours}${err}</td></tr>`;
   }).join("");
   el.resultTable.hidden = false;
   const printed = result.results.flatMap((r, i) => r.out.map((line) => `[test ${i + 1}] ${line}`));
@@ -282,7 +289,7 @@ async function main() {
   el.run.addEventListener("click", runCode);
   el.next.addEventListener("click", pickNext);
   el.reset.addEventListener("click", () => { if (current) { clearDraft(current.id); editor.set(current.starter); el.saved.textContent = ""; clearResults(); editor.focus(); sync.push(current.id); } });
-  el.hintToggle.addEventListener("click", () => { el.hint.hidden = !el.hint.hidden; el.hintToggle.textContent = el.hint.hidden ? "[+] Hint" : "[-] Hint"; });
+  el.hints.addEventListener("click", (ev) => { const b = ev.target.closest("button[data-hint]"); if (!b) return; const p = b.nextElementSibling; p.hidden = !p.hidden; b.textContent = (p.hidden ? "[+] " : "[-] ") + b.textContent.slice(4); });
   el.solutionToggle.addEventListener("click", () => { if (el.solutionToggle.classList.contains("locked")) return; el.solution.hidden = !el.solution.hidden; updateSolutionLock(current); });
   // Practice again: back to the starter without touching the solved date.
   el.again.addEventListener("click", () => { if (current) { clearDraft(current.id); editor.set(current.starter); clearResults(); setVerdict("", "Practice again: the solved date stays as it was."); editor.focus(); } });

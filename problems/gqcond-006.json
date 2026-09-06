@@ -3,11 +3,12 @@
   "title": "Between",
   "concept": "gq-conditions",
   "difficulty": 1,
-  "prompt": "Return true if n is between low and high, including both ends.",
-  "signature": "func solve(n: int, low: int, high: int) -> bool:",
-  "starter": "func solve(n: int, low: int, high: int) -> bool:\n\treturn false",
+  "prompt": "Return true if n is between low and high, including both ends. solve(5, 1, 10) is true; solve(11, 1, 10) is false.",
+  "signature": "func solve(n, low, high):",
+  "starter": "func solve(n, low, high):\n\treturn false",
   "tests": [
     {
+      "name": "5 is between 1 and 10",
       "args": [
         5,
         1,
@@ -16,6 +17,7 @@
       "expect": true
     },
     {
+      "name": "The low end counts",
       "args": [
         1,
         1,
@@ -24,6 +26,7 @@
       "expect": true
     },
     {
+      "name": "The high end counts",
       "args": [
         10,
         1,
@@ -32,6 +35,7 @@
       "expect": true
     },
     {
+      "name": "11 is outside",
       "args": [
         11,
         1,
@@ -40,6 +44,20 @@
       "expect": false
     }
   ],
-  "hint": "Two comparisons have to hold at the same time. The word for that is and.",
-  "solution": "func solve(n: int, low: int, high: int) -> bool:\n\treturn n >= low and n <= high"
+  "hints": [
+    "Two comparisons have to hold at the same time.",
+    "The word for that is and.",
+    "`return n >= low and n <= high`"
+  ],
+  "docs": [
+    {
+      "name": "==  !=  <  <=  >  >=",
+      "what": "Comparisons. Each gives true or false."
+    },
+    {
+      "name": "and  or  not",
+      "what": "and is true when both sides are; or when at least one is; not flips true and false."
+    }
+  ],
+  "solution": "func solve(n, low, high):\n\treturn n >= low and n <= high"
 }

@@ -4,10 +4,11 @@
   "concept": "dictionaries",
   "difficulty": 1,
   "prompt": "Given an array of words, return a dictionary where each word is a key and its value is how many times it appeared. [\"a\", \"b\", \"a\"] gives {\"a\": 2, \"b\": 1}.",
-  "signature": "func solve(words: Array) -> Dictionary:",
-  "starter": "func solve(words: Array) -> Dictionary:\n\tvar counts = {}\n\treturn counts",
+  "signature": "func solve(words):",
+  "starter": "func solve(words):\n\tvar counts = {}\n\treturn counts",
   "tests": [
     {
+      "name": "a twice, b once",
       "args": [
         [
           "a",
@@ -21,12 +22,14 @@
       }
     },
     {
+      "name": "Empty gives empty",
       "args": [
         []
       ],
       "expect": {}
     },
     {
+      "name": "go three times",
       "args": [
         [
           "go",
@@ -39,6 +42,7 @@
       }
     },
     {
+      "name": "Two different words",
       "args": [
         [
           "x",
@@ -51,6 +55,20 @@
       }
     }
   ],
-  "hint": "For each word: if it is not in counts yet, set `counts[word] = 0`. Then `counts[word] += 1`.",
-  "solution": "func solve(words: Array) -> Dictionary:\n\tvar counts = {}\n\tfor word in words:\n\t\tif not word in counts:\n\t\t\tcounts[word] = 0\n\t\tcounts[word] += 1\n\treturn counts"
+  "hints": [
+    "For each word, start its count at 0 the first time you meet it.",
+    "`if not word in counts:` then `counts[word] = 0`.",
+    "Then `counts[word] += 1`."
+  ],
+  "docs": [
+    {
+      "name": "{\"key\": value}",
+      "what": "Makes a dictionary: named slots you read and write with data[\"key\"]."
+    },
+    {
+      "name": "key in data",
+      "what": "true if the dictionary has that key."
+    }
+  ],
+  "solution": "func solve(words):\n\tvar counts = {}\n\tfor word in words:\n\t\tif not word in counts:\n\t\t\tcounts[word] = 0\n\t\tcounts[word] += 1\n\treturn counts"
 }

@@ -1,13 +1,14 @@
 {
   "id": "gqarr-002",
-  "title": "An array parameter",
+  "title": "First item",
   "concept": "gq-arrays",
   "difficulty": 0,
-  "prompt": "solve receives an array with at least one item. Return the first item.",
-  "signature": "func solve(items: Array) -> int:",
-  "starter": "func solve(items: Array) -> int:\n\treturn 0",
+  "prompt": "The robot's inventory has at least one item. Return the first one.",
+  "signature": "func solve(items):",
+  "starter": "func solve(items):\n\treturn 0",
   "tests": [
     {
+      "name": "First of 5, 6, 7 is 5",
       "args": [
         [
           5,
@@ -18,6 +19,7 @@
       "expect": 5
     },
     {
+      "name": "A single item",
       "args": [
         [
           42
@@ -26,6 +28,7 @@
       "expect": 42
     },
     {
+      "name": "First can be negative",
       "args": [
         [
           -1,
@@ -35,6 +38,15 @@
       "expect": -1
     }
   ],
-  "hint": "Positions in an array start at 0, not 1.",
-  "solution": "func solve(items: Array) -> int:\n\treturn items[0]"
+  "hints": [
+    "Positions in an array start at 0, not 1.",
+    "`return items[0]`"
+  ],
+  "docs": [
+    {
+      "name": "list[i]",
+      "what": "The item at position i. Positions start at 0; -1 is the last item."
+    }
+  ],
+  "solution": "func solve(items):\n\treturn items[0]"
 }

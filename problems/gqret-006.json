@@ -4,13 +4,11 @@
   "concept": "gq-return",
   "difficulty": 1,
   "prompt": "Run the starter as it is: \"after\" is never printed, because return ends the function at once. Fix the helper so it prints both words and still returns 1.",
-  "signature": "func solve() -> int:",
-  "starter": "func solve() -> int:\n\treturn early()\n\nfunc early() -> int:\n\tprint(\"before\")\n\treturn 1\n\tprint(\"after\")",
-  "require_methods": [
-    "early"
-  ],
+  "signature": "func solve():",
+  "starter": "func solve():\n\treturn early()\n\nfunc early():\n\tprint(\"before\")\n\treturn 1\n\tprint(\"after\")",
   "tests": [
     {
+      "name": "Prints before and after, returns 1",
       "args": [],
       "expect": 1,
       "out": [
@@ -19,6 +17,22 @@
       ]
     }
   ],
-  "hint": "Anything that must happen has to come before the return line.",
-  "solution": "func solve() -> int:\n\treturn early()\n\nfunc early() -> int:\n\tprint(\"before\")\n\tprint(\"after\")\n\treturn 1"
+  "hints": [
+    "Anything that must happen has to come before the return line.",
+    "Move `print(\"after\")` above `return 1`."
+  ],
+  "docs": [
+    {
+      "name": "return value",
+      "what": "Ends the function and hands value back to whoever called it."
+    },
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\treturn early()\n\nfunc early():\n\tprint(\"before\")\n\tprint(\"after\")\n\treturn 1",
+  "require_methods": [
+    "early"
+  ]
 }

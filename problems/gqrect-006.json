@@ -3,11 +3,12 @@
   "title": "Rect around a centre",
   "concept": "gq-rect",
   "difficulty": 1,
-  "prompt": "Return a Rect2 of the given size whose middle is at center.",
-  "signature": "func solve(center: Vector2, size: Vector2) -> Rect2:",
-  "starter": "func solve(center: Vector2, size: Vector2) -> Rect2:\n\treturn Rect2(center, size)",
+  "prompt": "Return a Rect2 of the given size whose middle is at center. The starter puts the corner at the centre instead.",
+  "signature": "func solve(center, size) -> Rect2:",
+  "starter": "func solve(center, size) -> Rect2:\n\treturn Rect2(center, size)",
   "tests": [
     {
+      "name": "Centre (5, 5) size 10 starts at (0, 0)",
       "args": [
         {
           "$v2": [
@@ -32,6 +33,7 @@
       }
     },
     {
+      "name": "Centre (25, 40) size (30, 40)",
       "args": [
         {
           "$v2": [
@@ -56,6 +58,19 @@
       }
     }
   ],
-  "hint": "The starter puts the corner at the centre. Move the position back by half the size.",
-  "solution": "func solve(center: Vector2, size: Vector2) -> Rect2:\n\treturn Rect2(center - size / 2, size)"
+  "hints": [
+    "Move the position back by half the size.",
+    "`return Rect2(center - size / 2, size)`"
+  ],
+  "docs": [
+    {
+      "name": "Rect2(x, y, width, height)",
+      "what": "Makes a rectangle from a top-left corner and a size. Also Rect2(position, size) with two vectors."
+    },
+    {
+      "name": "a + b, a - b, v * number, v / number",
+      "what": "Vectors add and subtract part by part, and scale by a plain number."
+    }
+  ],
+  "solution": "func solve(center, size) -> Rect2:\n\treturn Rect2(center - size / 2, size)"
 }

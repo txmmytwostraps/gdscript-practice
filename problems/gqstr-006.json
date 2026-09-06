@@ -4,10 +4,11 @@
   "concept": "gq-strings",
   "difficulty": 0,
   "prompt": "Same task, using the built-in repeat method on the string.",
-  "signature": "func solve(text: String, times: int) -> String:",
-  "starter": "func solve(text: String, times: int) -> String:\n\treturn text",
+  "signature": "func solve(text, times):",
+  "starter": "func solve(text, times):\n\treturn text",
   "tests": [
     {
+      "name": "ab three times",
       "args": [
         "ab",
         3
@@ -15,6 +16,7 @@
       "expect": "ababab"
     },
     {
+      "name": "Zero times is empty",
       "args": [
         "x",
         0
@@ -22,6 +24,7 @@
       "expect": ""
     },
     {
+      "name": "Once is unchanged",
       "args": [
         "go",
         1
@@ -29,6 +32,15 @@
       "expect": "go"
     }
   ],
-  "hint": "One call, one argument: how many times.",
-  "solution": "func solve(text: String, times: int) -> String:\n\treturn text.repeat(times)"
+  "hints": [
+    "One call, one argument: how many times.",
+    "`return text.repeat(times)`"
+  ],
+  "docs": [
+    {
+      "name": "text.repeat(n)",
+      "what": "Returns the text repeated n times."
+    }
+  ],
+  "solution": "func solve(text, times):\n\treturn text.repeat(times)"
 }

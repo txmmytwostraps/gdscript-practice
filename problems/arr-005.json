@@ -4,10 +4,11 @@
   "concept": "arrays",
   "difficulty": 1,
   "prompt": "The array always has an odd number of items. Return the one in the middle.",
-  "signature": "func solve(items: Array) -> int:",
-  "starter": "func solve(items: Array) -> int:\n\treturn items[0]",
+  "signature": "func solve(items):",
+  "starter": "func solve(items):\n\treturn items[0]",
   "tests": [
     {
+      "name": "Middle of three",
       "args": [
         [
           1,
@@ -18,6 +19,7 @@
       "expect": 2
     },
     {
+      "name": "One item",
       "args": [
         [
           5
@@ -26,6 +28,7 @@
       "expect": 5
     },
     {
+      "name": "Middle of five",
       "args": [
         [
           4,
@@ -38,6 +41,7 @@
       "expect": 15
     },
     {
+      "name": "Middle of a countdown",
       "args": [
         [
           9,
@@ -50,6 +54,19 @@
       "expect": 5
     }
   ],
-  "hint": "The middle position is `items.size() / 2` (whole-number division: 5 / 2 is 2, and position 2 is the third item because positions start at 0).",
-  "solution": "func solve(items: Array) -> int:\n\tvar middle = items.size() / 2\n\treturn items[middle]"
+  "hints": [
+    "The middle position is size / 2 with whole-number division: 5 / 2 is 2.",
+    "`var middle = items.size() / 2` then `return items[middle]`."
+  ],
+  "docs": [
+    {
+      "name": "list.size()",
+      "what": "Returns how many items the array holds."
+    },
+    {
+      "name": "list[i]",
+      "what": "The item at position i. Positions start at 0; -1 is the last item."
+    }
+  ],
+  "solution": "func solve(items):\n\tvar middle = items.size() / 2\n\treturn items[middle]"
 }

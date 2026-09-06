@@ -3,9 +3,9 @@
   "title": "Name the coins per gem",
   "concept": "gq-readable",
   "difficulty": 0,
-  "prompt": "Each gem is worth 25 coins. Name that `COINS_PER_GEM` and use it to find the total for some gems.",
-  "signature": "func solve(gems: int) -> int:",
-  "starter": "func solve(gems: int) -> int:\n\treturn gems * 25",
+  "prompt": "Each gem the robot finds is worth 25 coins. Name that `COINS_PER_GEM` and use it to find the total for some gems.",
+  "signature": "func solve(gems):",
+  "starter": "func solve(gems):\n\treturn gems * 25",
   "require_names": [
     "COINS_PER_GEM"
   ],
@@ -14,24 +14,36 @@
   ],
   "tests": [
     {
+      "name": "2 gems is 50 coins",
       "args": [
         2
       ],
       "expect": 50
     },
     {
+      "name": "0 gems is 0",
       "args": [
         0
       ],
       "expect": 0
     },
     {
+      "name": "10 gems is 250",
       "args": [
         10
       ],
       "expect": 250
     }
   ],
-  "hint": "The name says what the number is for; the code then reads like a sentence.",
-  "solution": "func solve(gems: int) -> int:\n\tconst COINS_PER_GEM = 25\n\treturn gems * COINS_PER_GEM"
+  "hints": [
+    "The name says what the number is for; the code then reads like a sentence.",
+    "`const COINS_PER_GEM = 25`"
+  ],
+  "docs": [
+    {
+      "name": "const NAME = value",
+      "what": "Declares a named value that never changes. Written in CAPITALS by convention."
+    }
+  ],
+  "solution": "func solve(gems):\n\tconst COINS_PER_GEM = 25\n\treturn gems * COINS_PER_GEM"
 }

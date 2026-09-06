@@ -3,14 +3,12 @@
   "title": "A helper that returns nothing",
   "concept": "gq-return",
   "difficulty": 0,
-  "prompt": "Write `log_it`, which prints its parameter and returns nothing. In solve, call log_it(n), then return n. Notice the difference: the helper prints, solve returns.",
-  "signature": "func solve(n: int) -> int:",
-  "starter": "func solve(n: int) -> int:\n\treturn n",
-  "require_methods": [
-    "log_it"
-  ],
+  "prompt": "Write `log_it`, which prints its parameter and returns nothing. In `solve`, call log_it(n), then return n. The helper prints; solve returns.",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\treturn n",
   "tests": [
     {
+      "name": "Prints 5 and returns 5",
       "args": [
         5
       ],
@@ -20,6 +18,7 @@
       ]
     },
     {
+      "name": "Prints 0 and returns 0",
       "args": [
         0
       ],
@@ -29,6 +28,22 @@
       ]
     }
   ],
-  "hint": "A function with no return line (or -> void) simply finishes. Printing is not returning.",
-  "solution": "func solve(n: int) -> int:\n\tlog_it(n)\n\treturn n\n\nfunc log_it(value: int) -> void:\n\tprint(value)"
+  "hints": [
+    "A function with no return line simply finishes; printing is not returning.",
+    "`log_it(n)` then `return n` in solve."
+  ],
+  "docs": [
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    },
+    {
+      "name": "return value",
+      "what": "Ends the function and hands value back to whoever called it."
+    }
+  ],
+  "solution": "func solve(n):\n\tlog_it(n)\n\treturn n\n\nfunc log_it(value):\n\tprint(value)",
+  "require_methods": [
+    "log_it"
+  ]
 }

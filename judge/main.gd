@@ -124,9 +124,11 @@ func _check_problem(path: String, expected_id: String) -> Array[String]:
 	var p = JSON.parse_string(text)
 	if not p is Dictionary:
 		return ["file is not valid JSON"]
-	for field in ["id", "title", "concept", "difficulty", "prompt", "signature", "starter", "tests", "hint", "solution"]:
+	for field in ["id", "title", "concept", "difficulty", "prompt", "signature", "starter", "tests", "solution"]:
 		if not p.has(field):
 			errs.append("missing field: " + field)
+	if not p.has("hints") and not p.has("hint"):
+		errs.append("missing field: hints")
 	if not errs.is_empty():
 		return errs
 	if p["id"] != expected_id:

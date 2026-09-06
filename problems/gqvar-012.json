@@ -3,15 +3,20 @@
   "title": "Count up three times",
   "concept": "gq-variables",
   "difficulty": 0,
-  "prompt": "The variable `count` starts at 0. Add the number `1` to it three separate times, one line each. Return count.",
-  "signature": "func solve() -> int:",
-  "starter": "func solve() -> int:\n\tvar count = 0\n\treturn count",
+  "prompt": "The robot counts its steps. `count` starts at 0. Add the number `1` to it three separate times, one line each, and return count, which is 3.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tvar count = 0\n\treturn count",
   "tests": [
     {
+      "name": "Three additions give 3",
       "args": [],
       "expect": 3
     }
   ],
-  "hint": "Write `count += 1` on three lines in a row.",
-  "solution": "func solve() -> int:\n\tvar count = 0\n\tcount += 1\n\tcount += 1\n\tcount += 1\n\treturn count"
+  "hints": [
+    "The same line can run more than once if you write it more than once.",
+    "Write `count += 1` on three lines in a row."
+  ],
+  "docs": [],
+  "solution": "func solve():\n\tvar count = 0\n\tcount += 1\n\tcount += 1\n\tcount += 1\n\treturn count"
 }

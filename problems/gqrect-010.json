@@ -4,10 +4,11 @@
   "concept": "gq-rect",
   "difficulty": 0,
   "prompt": "Return true if the point lies inside the rectangle.",
-  "signature": "func solve(r: Rect2, point: Vector2) -> bool:",
-  "starter": "func solve(r: Rect2, point: Vector2) -> bool:\n\treturn false",
+  "signature": "func solve(r, point):",
+  "starter": "func solve(r, point):\n\treturn false",
   "tests": [
     {
+      "name": "(5, 5) is inside a 10 by 10",
       "args": [
         {
           "$rect": [
@@ -27,6 +28,7 @@
       "expect": true
     },
     {
+      "name": "(15, 5) is outside",
       "args": [
         {
           "$rect": [
@@ -46,6 +48,7 @@
       "expect": false
     },
     {
+      "name": "Inside an offset rect",
       "args": [
         {
           "$rect": [
@@ -65,6 +68,15 @@
       "expect": true
     }
   ],
-  "hint": "There is a method for this; its name mentions a point.",
-  "solution": "func solve(r: Rect2, point: Vector2) -> bool:\n\treturn r.has_point(point)"
+  "hints": [
+    "There is a method for this; its name mentions a point.",
+    "`return r.has_point(point)`"
+  ],
+  "docs": [
+    {
+      "name": "r.has_point(point)",
+      "what": "Returns true if the point lies inside the rectangle."
+    }
+  ],
+  "solution": "func solve(r, point):\n\treturn r.has_point(point)"
 }

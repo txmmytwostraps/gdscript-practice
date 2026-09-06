@@ -3,35 +3,52 @@
   "title": "Absolute value",
   "concept": "ifelse",
   "difficulty": 0,
-  "prompt": "Return n if it is zero or positive. If n is negative, return -n so the result is positive. Do it with if/else rather than the built-in abs().",
-  "signature": "func solve(n: int) -> int:",
-  "starter": "func solve(n: int) -> int:\n\treturn n",
+  "prompt": "Return n if it is zero or positive. If n is negative, return -n so the result is positive. Do it with if and else rather than abs().",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\treturn n",
   "tests": [
     {
+      "name": "-5 becomes 5",
       "args": [
         -5
       ],
       "expect": 5
     },
     {
+      "name": "3 stays 3",
       "args": [
         3
       ],
       "expect": 3
     },
     {
+      "name": "0 stays 0",
       "args": [
         0
       ],
       "expect": 0
     },
     {
+      "name": "-100 becomes 100",
       "args": [
         -100
       ],
       "expect": 100
     }
   ],
-  "hint": "`if n < 0:` then `return -n`, otherwise `return n`.",
-  "solution": "func solve(n: int) -> int:\n\tif n < 0:\n\t\treturn -n\n\telse:\n\t\treturn n"
+  "hints": [
+    "Only negative numbers need changing; a minus sign in front flips the sign.",
+    "`if n < 0:` then `return -n`, otherwise `return n`."
+  ],
+  "docs": [
+    {
+      "name": "if condition:",
+      "what": "Runs the indented lines below it only when the condition is true. elif and else add more branches."
+    },
+    {
+      "name": "==  !=  <  <=  >  >=",
+      "what": "Comparisons. Each gives true or false."
+    }
+  ],
+  "solution": "func solve(n):\n\tif n < 0:\n\t\treturn -n\n\telse:\n\t\treturn n"
 }

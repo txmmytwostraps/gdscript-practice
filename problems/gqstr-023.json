@@ -4,28 +4,40 @@
   "concept": "gq-strings",
   "difficulty": 1,
   "prompt": "Return the first three characters of the text. If it is shorter than three, return all of it.",
-  "signature": "func solve(text: String) -> String:",
-  "starter": "func solve(text: String) -> String:\n\treturn text",
+  "signature": "func solve(text):",
+  "starter": "func solve(text):\n\treturn text",
   "tests": [
     {
+      "name": "Godot gives God",
       "args": [
         "Godot"
       ],
       "expect": "God"
     },
     {
+      "name": "hi is short enough",
       "args": [
         "hi"
       ],
       "expect": "hi"
     },
     {
+      "name": "abcdef gives abc",
       "args": [
         "abcdef"
       ],
       "expect": "abc"
     }
   ],
-  "hint": "substr takes a start position and a length, and is happy to stop early.",
-  "solution": "func solve(text: String) -> String:\n\treturn text.substr(0, 3)"
+  "hints": [
+    "substr takes a start position and a length, and is happy to stop early.",
+    "`return text.substr(0, 3)`"
+  ],
+  "docs": [
+    {
+      "name": "text.substr(start, length)",
+      "what": "Returns part of the text, starting at position start, at most length characters."
+    }
+  ],
+  "solution": "func solve(text):\n\treturn text.substr(0, 3)"
 }

@@ -1,38 +1,33 @@
 {
   "id": "gqfunc-008",
-  "title": "The same helper three times",
+  "title": "Defined below, called above",
   "concept": "gq-functions",
   "difficulty": 0,
-  "prompt": "Write `print_square`, which prints a number times itself. From solve, call it with n, then n + 1, then n + 2.",
-  "signature": "func solve(n: int) -> void:",
-  "starter": "func solve(n: int) -> void:\n\tpass",
+  "prompt": "Write a function `wave` that prints \"waving\", and put its definition below `solve` in the file. Call it from solve. Godot reads the whole script before running anything, so the order of definitions does not matter.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass",
   "require_methods": [
-    "print_square"
+    "wave"
   ],
   "tests": [
     {
-      "args": [
-        1
-      ],
+      "name": "Prints waving",
+      "args": [],
       "expect": null,
       "out": [
-        "1",
-        "4",
-        "9"
-      ]
-    },
-    {
-      "args": [
-        0
-      ],
-      "expect": null,
-      "out": [
-        "0",
-        "1",
-        "4"
+        "waving"
       ]
     }
   ],
-  "hint": "Writing the squaring once in a function saves repeating it three times.",
-  "solution": "func solve(n: int) -> void:\n\tprint_square(n)\n\tprint_square(n + 1)\n\tprint_square(n + 2)\n\nfunc print_square(x: int) -> void:\n\tprint(x * x)"
+  "hints": [
+    "Definitions can sit anywhere in the script; only the order of calls matters.",
+    "Leave a blank line after solve, then `func wave():` and its print."
+  ],
+  "docs": [
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\twave()\n\nfunc wave():\n\tprint(\"waving\")"
 }

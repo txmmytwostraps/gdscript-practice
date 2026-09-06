@@ -3,11 +3,12 @@
   "title": "Nested if",
   "concept": "gq-conditions",
   "difficulty": 1,
-  "prompt": "To ride you must be at least 12 years old, and then at least 120 cm tall. Return \"too young\", \"too short\" or \"ride\". Check the age first, and only check the height inside that.",
-  "signature": "func solve(age: int, height: int) -> String:",
-  "starter": "func solve(age: int, height: int) -> String:\n\treturn \"ride\"",
+  "prompt": "To ride the robot you must be at least 12 years old, and then at least 120 cm tall. Return \"too young\", \"too short\" or \"ride\". Check the age first, and only check the height inside that.",
+  "signature": "func solve(age, height):",
+  "starter": "func solve(age, height):\n\treturn \"ride\"",
   "tests": [
     {
+      "name": "10 years old is too young",
       "args": [
         10,
         150
@@ -15,6 +16,7 @@
       "expect": "too young"
     },
     {
+      "name": "14 but 100 cm is too short",
       "args": [
         14,
         100
@@ -22,6 +24,7 @@
       "expect": "too short"
     },
     {
+      "name": "14 and 130 cm may ride",
       "args": [
         14,
         130
@@ -29,6 +32,7 @@
       "expect": "ride"
     },
     {
+      "name": "Exactly 12 and 120 may ride",
       "args": [
         12,
         120
@@ -36,6 +40,19 @@
       "expect": "ride"
     }
   ],
-  "hint": "An if can live inside another if. Indent it one level further.",
-  "solution": "func solve(age: int, height: int) -> String:\n\tif age >= 12:\n\t\tif height >= 120:\n\t\t\treturn \"ride\"\n\t\telse:\n\t\t\treturn \"too short\"\n\telse:\n\t\treturn \"too young\""
+  "hints": [
+    "An if can live inside another if, indented one level further.",
+    "`if age >= 12:` then inside it `if height >= 120:` return \"ride\" `else:` return \"too short\"; the outer `else:` returns \"too young\"."
+  ],
+  "docs": [
+    {
+      "name": "if condition:",
+      "what": "Runs the indented lines below it only when the condition is true. elif and else add more branches."
+    },
+    {
+      "name": "==  !=  <  <=  >  >=",
+      "what": "Comparisons. Each gives true or false."
+    }
+  ],
+  "solution": "func solve(age, height):\n\tif age >= 12:\n\t\tif height >= 120:\n\t\t\treturn \"ride\"\n\t\telse:\n\t\t\treturn \"too short\"\n\telse:\n\t\treturn \"too young\""
 }

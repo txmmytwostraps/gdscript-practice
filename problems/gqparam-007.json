@@ -1,37 +1,59 @@
 {
   "id": "gqparam-007",
-  "title": "Use the parameter twice",
+  "title": "Perimeter, your way",
   "concept": "gq-parameters",
-  "difficulty": 0,
-  "prompt": "A parameter can be used as many times as you like. Return n times n, plus n.",
-  "signature": "func solve(n: int) -> int:",
-  "starter": "func solve(n: int) -> int:\n\treturn n",
+  "difficulty": 1,
+  "prompt": "The robot measures a rectangular room. Write a helper called `print_perimeter` that prints the distance around a rectangle, and call it from `solve` with the width and height. You decide its parameters. solve(3, 4) prints 14.",
+  "signature": "func solve(width, height):",
+  "starter": "func solve(width, height):\n\tpass",
+  "require_methods": [
+    "print_perimeter"
+  ],
   "tests": [
     {
+      "name": "3 by 4 is 14",
       "args": [
-        3
+        3,
+        4
       ],
-      "expect": 12
+      "expect": null,
+      "out": [
+        "14"
+      ]
     },
     {
+      "name": "0 by 0 is 0",
       "args": [
+        0,
         0
       ],
-      "expect": 0
+      "expect": null,
+      "out": [
+        "0"
+      ]
     },
     {
+      "name": "5 by 5 is 20",
       "args": [
-        1
-      ],
-      "expect": 2
-    },
-    {
-      "args": [
+        5,
         5
       ],
-      "expect": 30
+      "expect": null,
+      "out": [
+        "20"
+      ]
     }
   ],
-  "hint": "Three uses of n in one expression.",
-  "solution": "func solve(n: int) -> int:\n\treturn n * n + n"
+  "hints": [
+    "The perimeter is twice the width plus twice the height, so the helper needs both.",
+    "`func print_perimeter(w, h):` printing `2 * w + 2 * h`.",
+    "solve passes its two values straight through."
+  ],
+  "docs": [
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve(width, height):\n\tprint_perimeter(width, height)\n\nfunc print_perimeter(w, h):\n\tprint(2 * w + 2 * h)"
 }

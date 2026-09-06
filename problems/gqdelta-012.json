@@ -3,11 +3,12 @@
   "title": "Same distance at any frame rate",
   "concept": "gq-delta",
   "difficulty": 1,
-  "prompt": "Simulate a run frame by frame: fps frames every second, each with delta equal to 1.0 / fps. Add speed times delta on every frame for the given number of seconds, and return the total. Notice the answer does not depend on fps.",
-  "signature": "func solve(speed: float, seconds: int, fps: int) -> float:",
-  "starter": "func solve(speed: float, seconds: int, fps: int) -> float:\n\treturn 0.0",
+  "prompt": "Simulate the robot frame by frame: fps frames every second, each with delta equal to 1.0 / fps. Add speed times delta on every frame for the given number of seconds and return the total. At 100 per second for 2 seconds the answer is 200 whether fps is 60 or 30.",
+  "signature": "func solve(speed, seconds, fps) -> float:",
+  "starter": "func solve(speed, seconds, fps) -> float:\n\treturn 0.0",
   "tests": [
     {
+      "name": "2 s at 60 fps is 200",
       "args": [
         100,
         2,
@@ -16,6 +17,7 @@
       "expect": 200
     },
     {
+      "name": "2 s at 30 fps is also 200",
       "args": [
         100,
         2,
@@ -24,6 +26,7 @@
       "expect": 200
     },
     {
+      "name": "1 s at 10 fps at 50 is 50",
       "args": [
         50,
         1,
@@ -32,6 +35,16 @@
       "expect": 50
     }
   ],
-  "hint": "Work out delta once, then loop seconds times fps times adding a little each turn.",
-  "solution": "func solve(speed: float, seconds: int, fps: int) -> float:\n\tvar delta = 1.0 / fps\n\tvar total = 0.0\n\tfor i in range(seconds * fps):\n\t\ttotal += speed * delta\n\treturn total"
+  "hints": [
+    "Work out delta once: 1.0 divided by fps.",
+    "Loop seconds times fps times, adding speed times delta each turn.",
+    "`for i in range(seconds * fps):` with `total += speed * delta` inside."
+  ],
+  "docs": [
+    {
+      "name": "range(n)",
+      "what": "Gives the numbers 0 up to n - 1, for a for loop to count through."
+    }
+  ],
+  "solution": "func solve(speed, seconds, fps) -> float:\n\tvar delta = 1.0 / fps\n\tvar total = 0.0\n\tfor i in range(seconds * fps):\n\t\ttotal += speed * delta\n\treturn total"
 }

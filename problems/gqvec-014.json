@@ -3,11 +3,12 @@
   "title": "Vector to array",
   "concept": "gq-vectors",
   "difficulty": 0,
-  "prompt": "Return an array holding the x part and then the y part of the vector.",
-  "signature": "func solve(v: Vector2) -> Array:",
-  "starter": "func solve(v: Vector2) -> Array:\n\treturn []",
+  "prompt": "Return an array holding the x part and then the y part of the vector. (3, 4) becomes [3, 4].",
+  "signature": "func solve(v):",
+  "starter": "func solve(v):\n\treturn []",
   "tests": [
     {
+      "name": "(3, 4) becomes [3, 4]",
       "args": [
         {
           "$v2": [
@@ -22,6 +23,7 @@
       ]
     },
     {
+      "name": "Decimals kept",
       "args": [
         {
           "$v2": [
@@ -36,6 +38,15 @@
       ]
     }
   ],
-  "hint": "Two values, square brackets.",
-  "solution": "func solve(v: Vector2) -> Array:\n\treturn [v.x, v.y]"
+  "hints": [
+    "Two values, square brackets.",
+    "`return [v.x, v.y]`"
+  ],
+  "docs": [
+    {
+      "name": "Vector2(x, y)",
+      "what": "Makes a vector holding an x and a y. Read them back with .x and .y."
+    }
+  ],
+  "solution": "func solve(v):\n\treturn [v.x, v.y]"
 }

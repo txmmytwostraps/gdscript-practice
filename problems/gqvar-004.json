@@ -1,21 +1,26 @@
 {
   "id": "gqvar-004",
-  "title": "Two variables, one sum",
+  "title": "Two variables, one total",
   "concept": "gq-variables",
   "difficulty": 0,
-  "prompt": "Create `apples` with the value 3 and `pears` with the value 4. Return the two added together.",
-  "signature": "func solve() -> int:",
-  "starter": "func solve() -> int:\n\treturn 0",
+  "prompt": "The robot carries bolts and gears. Create `bolts` with the value 3 and `gears` with the value 4, then return the two added together, which is 7.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\treturn 0",
   "require_names": [
-    "apples",
-    "pears"
+    "bolts",
+    "gears"
   ],
   "tests": [
     {
+      "name": "3 bolts plus 4 gears is 7",
       "args": [],
       "expect": 7
     }
   ],
-  "hint": "Variables can be used in maths just like numbers: `apples + pears`.",
-  "solution": "func solve() -> int:\n\tvar apples = 3\n\tvar pears = 4\n\treturn apples + pears"
+  "hints": [
+    "Variables can be used in maths just like numbers.",
+    "Two var lines, then `return bolts + gears`."
+  ],
+  "docs": [],
+  "solution": "func solve():\n\tvar bolts = 3\n\tvar gears = 4\n\treturn bolts + gears"
 }

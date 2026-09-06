@@ -1,23 +1,34 @@
 {
   "id": "gqfunc-001",
-  "title": "Call a helper",
+  "title": "The robot says hello",
   "concept": "gq-functions",
   "difficulty": 0,
-  "prompt": "Write a second function called `say_hello` that prints \"Hello!\". Then make solve call it. Whatever you print shows up in the output, and the tests check it.",
-  "signature": "func solve() -> void:",
-  "starter": "func solve() -> void:\n\tpass",
+  "prompt": "Your robot needs a greeting. Below `solve`, write a second function called `say_hello` that prints \"Hello, I am a robot\". Then make `solve` call it, so running solve prints that line once.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass",
   "require_methods": [
     "say_hello"
   ],
   "tests": [
     {
+      "name": "Prints the greeting once",
       "args": [],
       "expect": null,
       "out": [
-        "Hello!"
+        "Hello, I am a robot"
       ]
     }
   ],
-  "hint": "A new function starts with func, a name, brackets and a colon, then an indented body. Calling it is just its name with brackets.",
-  "solution": "func solve() -> void:\n\tsay_hello()\n\nfunc say_hello() -> void:\n\tprint(\"Hello!\")"
+  "hints": [
+    "A function is a named block of code. You define it once with func, then run it by writing its name with brackets.",
+    "The definition line is `func say_hello():` and its body is one indented print line.",
+    "Inside solve, replace pass with `say_hello()`."
+  ],
+  "docs": [
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\tsay_hello()\n\nfunc say_hello():\n\tprint(\"Hello, I am a robot\")"
 }

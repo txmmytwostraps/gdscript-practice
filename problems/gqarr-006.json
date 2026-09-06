@@ -3,11 +3,12 @@
   "title": "Change an item",
   "concept": "gq-arrays",
   "difficulty": 0,
-  "prompt": "Replace the second item of the array with value, then return the array.",
-  "signature": "func solve(items: Array, value: int) -> Array:",
-  "starter": "func solve(items: Array, value: int) -> Array:\n\treturn items",
+  "prompt": "Replace the second item of the array with value, then return the array. [1, 2, 3] with 9 becomes [1, 9, 3].",
+  "signature": "func solve(items, value):",
+  "starter": "func solve(items, value):\n\treturn items",
   "tests": [
     {
+      "name": "[1, 2, 3] with 9 becomes [1, 9, 3]",
       "args": [
         [
           1,
@@ -23,6 +24,7 @@
       ]
     },
     {
+      "name": "[0, 0] with 5 becomes [0, 5]",
       "args": [
         [
           0,
@@ -36,6 +38,15 @@
       ]
     }
   ],
-  "hint": "You can assign to a position the same way you read from it.",
-  "solution": "func solve(items: Array, value: int) -> Array:\n\titems[1] = value\n\treturn items"
+  "hints": [
+    "You can assign to a position the same way you read from it.",
+    "`items[1] = value`"
+  ],
+  "docs": [
+    {
+      "name": "list[i]",
+      "what": "The item at position i. Positions start at 0; -1 is the last item."
+    }
+  ],
+  "solution": "func solve(items, value):\n\titems[1] = value\n\treturn items"
 }

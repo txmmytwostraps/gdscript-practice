@@ -3,9 +3,9 @@
   "title": "Name the screen width",
   "concept": "gq-readable",
   "difficulty": 0,
-  "prompt": "This finds the x position where a sprite of the given width touches the right edge of a 1920-pixel-wide screen. Name the 1920 `SCREEN_WIDTH`.",
-  "signature": "func solve(width: int) -> int:",
-  "starter": "func solve(width: int) -> int:\n\treturn 1920 - width",
+  "prompt": "This finds the x where a sprite of the given width touches the right edge of a 1920-pixel screen. Name the 1920 `SCREEN_WIDTH`.",
+  "signature": "func solve(width):",
+  "starter": "func solve(width):\n\treturn 1920 - width",
   "require_names": [
     "SCREEN_WIDTH"
   ],
@@ -14,24 +14,36 @@
   ],
   "tests": [
     {
+      "name": "A 100-wide sprite sits at 1820",
       "args": [
         100
       ],
       "expect": 1820
     },
     {
+      "name": "Zero width sits at 1920",
       "args": [
         0
       ],
       "expect": 1920
     },
     {
+      "name": "Full width sits at 0",
       "args": [
         1920
       ],
       "expect": 0
     }
   ],
-  "hint": "A reader who sees SCREEN_WIDTH - width understands it at once. That is the goal.",
-  "solution": "func solve(width: int) -> int:\n\tconst SCREEN_WIDTH = 1920\n\treturn SCREEN_WIDTH - width"
+  "hints": [
+    "A reader who sees SCREEN_WIDTH - width understands it at once.",
+    "`const SCREEN_WIDTH = 1920`"
+  ],
+  "docs": [
+    {
+      "name": "const NAME = value",
+      "what": "Declares a named value that never changes. Written in CAPITALS by convention."
+    }
+  ],
+  "solution": "func solve(width):\n\tconst SCREEN_WIDTH = 1920\n\treturn SCREEN_WIDTH - width"
 }

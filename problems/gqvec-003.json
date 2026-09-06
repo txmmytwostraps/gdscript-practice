@@ -3,11 +3,12 @@
   "title": "Add two vectors",
   "concept": "gq-vectors",
   "difficulty": 0,
-  "prompt": "Return a plus b. Adding vectors adds the x parts together and the y parts together.",
-  "signature": "func solve(a: Vector2, b: Vector2) -> Vector2:",
-  "starter": "func solve(a: Vector2, b: Vector2) -> Vector2:\n\treturn a",
+  "prompt": "The robot moves by a step. Return a plus b. Adding vectors adds the x parts together and the y parts together: (1, 2) + (3, 4) is (4, 6).",
+  "signature": "func solve(a, b) -> Vector2:",
+  "starter": "func solve(a, b) -> Vector2:\n\treturn a",
   "tests": [
     {
+      "name": "(1, 2) + (3, 4) is (4, 6)",
       "args": [
         {
           "$v2": [
@@ -30,6 +31,7 @@
       }
     },
     {
+      "name": "Adding to zero gives the other",
       "args": [
         {
           "$v2": [
@@ -52,6 +54,15 @@
       }
     }
   ],
-  "hint": "The + sign works on whole vectors; no need to touch x and y yourself.",
-  "solution": "func solve(a: Vector2, b: Vector2) -> Vector2:\n\treturn a + b"
+  "hints": [
+    "The + sign works on whole vectors.",
+    "`return a + b`"
+  ],
+  "docs": [
+    {
+      "name": "a + b, a - b, v * number, v / number",
+      "what": "Vectors add and subtract part by part, and scale by a plain number."
+    }
+  ],
+  "solution": "func solve(a, b) -> Vector2:\n\treturn a + b"
 }

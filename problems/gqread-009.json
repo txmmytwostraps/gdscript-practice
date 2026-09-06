@@ -3,9 +3,9 @@
   "title": "Name the win score",
   "concept": "gq-readable",
   "difficulty": 0,
-  "prompt": "The player wins at 1000 points. This code returns how many points are still needed. Name the 1000 `WIN_SCORE`.",
-  "signature": "func solve(score: int) -> int:",
-  "starter": "func solve(score: int) -> int:\n\treturn 1000 - score",
+  "prompt": "The robot wins at 1000 points. This returns how many points are still needed. Name the 1000 `WIN_SCORE`.",
+  "signature": "func solve(score):",
+  "starter": "func solve(score):\n\treturn 1000 - score",
   "require_names": [
     "WIN_SCORE"
   ],
@@ -14,24 +14,36 @@
   ],
   "tests": [
     {
+      "name": "400 points needs 600 more",
       "args": [
         400
       ],
       "expect": 600
     },
     {
+      "name": "0 points needs 1000",
       "args": [
         0
       ],
       "expect": 1000
     },
     {
+      "name": "1000 points needs 0",
       "args": [
         1000
       ],
       "expect": 0
     }
   ],
-  "hint": "Same recipe as before: one const line, then use the name in the subtraction.",
-  "solution": "func solve(score: int) -> int:\n\tconst WIN_SCORE = 1000\n\treturn WIN_SCORE - score"
+  "hints": [
+    "Same recipe: one const line, then use the name.",
+    "`const WIN_SCORE = 1000`"
+  ],
+  "docs": [
+    {
+      "name": "const NAME = value",
+      "what": "Declares a named value that never changes. Written in CAPITALS by convention."
+    }
+  ],
+  "solution": "func solve(score):\n\tconst WIN_SCORE = 1000\n\treturn WIN_SCORE - score"
 }

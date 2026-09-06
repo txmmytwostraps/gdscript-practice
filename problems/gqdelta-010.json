@@ -3,11 +3,12 @@
   "title": "Turn over time",
   "concept": "gq-delta",
   "difficulty": 0,
-  "prompt": "Something facing angle degrees turns at turn_speed degrees per second. Return the angle after one frame.",
-  "signature": "func solve(angle: float, turn_speed: float, delta: float) -> float:",
-  "starter": "func solve(angle: float, turn_speed: float, delta: float) -> float:\n\treturn angle",
+  "prompt": "The robot faces angle degrees and turns at turn_speed degrees per second. Return the angle after one frame. From 0 at 90 per second, a 0.5 s frame gives 45.",
+  "signature": "func solve(angle, turn_speed, delta) -> float:",
+  "starter": "func solve(angle, turn_speed, delta) -> float:\n\treturn angle",
   "tests": [
     {
+      "name": "0 plus 90 per second for 0.5 s is 45",
       "args": [
         0,
         90,
@@ -16,6 +17,7 @@
       "expect": 45
     },
     {
+      "name": "Past 360 is fine here",
       "args": [
         350,
         20,
@@ -24,6 +26,7 @@
       "expect": 370
     },
     {
+      "name": "Turning the other way",
       "args": [
         10,
         -40,
@@ -32,6 +35,10 @@
       "expect": 0
     }
   ],
-  "hint": "Degrees per second times seconds gives degrees.",
-  "solution": "func solve(angle: float, turn_speed: float, delta: float) -> float:\n\treturn angle + turn_speed * delta"
+  "hints": [
+    "Degrees per second times seconds gives degrees.",
+    "`return angle + turn_speed * delta`"
+  ],
+  "docs": [],
+  "solution": "func solve(angle, turn_speed, delta) -> float:\n\treturn angle + turn_speed * delta"
 }

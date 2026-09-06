@@ -3,11 +3,12 @@
   "title": "Times table",
   "concept": "for",
   "difficulty": 0,
-  "prompt": "Return the times table for n as an array of ten numbers: [n × 1, n × 2, ..., n × 10].",
-  "signature": "func solve(n: int) -> Array:",
-  "starter": "func solve(n: int) -> Array:\n\tvar table = []\n\treturn table",
+  "prompt": "Return the times table for n as an array of ten numbers: n times 1 up to n times 10.",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\tvar table = []\n\treturn table",
   "tests": [
     {
+      "name": "2 times table",
       "args": [
         2
       ],
@@ -25,6 +26,7 @@
       ]
     },
     {
+      "name": "1 times table",
       "args": [
         1
       ],
@@ -42,6 +44,7 @@
       ]
     },
     {
+      "name": "0 times table is all zeros",
       "args": [
         0
       ],
@@ -59,6 +62,7 @@
       ]
     },
     {
+      "name": "5 times table",
       "args": [
         5
       ],
@@ -76,6 +80,23 @@
       ]
     }
   ],
-  "hint": "`for i in range(1, 11):` then `table.append(n * i)`.",
-  "solution": "func solve(n: int) -> Array:\n\tvar table = []\n\tfor i in range(1, 11):\n\t\ttable.append(n * i)\n\treturn table"
+  "hints": [
+    "`for i in range(1, 11):`",
+    "Inside: `table.append(n * i)`."
+  ],
+  "docs": [
+    {
+      "name": "for item in list:",
+      "what": "Runs the indented lines once per item, with item holding each value in turn."
+    },
+    {
+      "name": "range(a, b)",
+      "what": "The whole numbers from a up to but not including b. range(n) starts at 0."
+    },
+    {
+      "name": "list.append(value)",
+      "what": "Adds value to the end of the array. Returns nothing."
+    }
+  ],
+  "solution": "func solve(n):\n\tvar table = []\n\tfor i in range(1, 11):\n\t\ttable.append(n * i)\n\treturn table"
 }

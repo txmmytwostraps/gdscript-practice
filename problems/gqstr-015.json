@@ -4,28 +4,40 @@
   "concept": "gq-strings",
   "difficulty": 1,
   "prompt": "Return true if the text reads the same backwards as forwards, like \"level\".",
-  "signature": "func solve(text: String) -> bool:",
-  "starter": "func solve(text: String) -> bool:\n\treturn false",
+  "signature": "func solve(text):",
+  "starter": "func solve(text):\n\treturn false",
   "tests": [
     {
+      "name": "level is one",
       "args": [
         "level"
       ],
       "expect": true
     },
     {
+      "name": "hello is not",
       "args": [
         "hello"
       ],
       "expect": false
     },
     {
+      "name": "Empty counts",
       "args": [
         ""
       ],
       "expect": true
     }
   ],
-  "hint": "Compare the text with its reverse.",
-  "solution": "func solve(text: String) -> bool:\n\treturn text == text.reverse()"
+  "hints": [
+    "Compare the text with its reverse.",
+    "`return text == text.reverse()`"
+  ],
+  "docs": [
+    {
+      "name": "text.reverse()",
+      "what": "Returns the text backwards. Unlike arrays, this returns a new string."
+    }
+  ],
+  "solution": "func solve(text):\n\treturn text == text.reverse()"
 }

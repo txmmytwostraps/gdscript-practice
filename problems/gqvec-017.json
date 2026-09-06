@@ -3,11 +3,12 @@
   "title": "Standing still",
   "concept": "gq-vectors",
   "difficulty": 0,
-  "prompt": "Return true if the velocity is exactly zero in both parts.",
-  "signature": "func solve(velocity: Vector2) -> bool:",
-  "starter": "func solve(velocity: Vector2) -> bool:\n\treturn false",
+  "prompt": "Return true if the robot's velocity is exactly zero in both parts.",
+  "signature": "func solve(velocity):",
+  "starter": "func solve(velocity):\n\treturn false",
   "tests": [
     {
+      "name": "(0, 0) is still",
       "args": [
         {
           "$v2": [
@@ -19,6 +20,7 @@
       "expect": true
     },
     {
+      "name": "(0, 1) is moving",
       "args": [
         {
           "$v2": [
@@ -30,6 +32,7 @@
       "expect": false
     },
     {
+      "name": "A tiny x is moving",
       "args": [
         {
           "$v2": [
@@ -41,6 +44,15 @@
       "expect": false
     }
   ],
-  "hint": "Vectors can be compared with ==, and Vector2.ZERO is the zero vector.",
-  "solution": "func solve(velocity: Vector2) -> bool:\n\treturn velocity == Vector2.ZERO"
+  "hints": [
+    "Vectors can be compared with ==.",
+    "`return velocity == Vector2.ZERO`"
+  ],
+  "docs": [
+    {
+      "name": "Vector2.UP, DOWN, LEFT, RIGHT, ZERO",
+      "what": "Ready-made vectors. UP is (0, -1) because y grows downward on screen."
+    }
+  ],
+  "solution": "func solve(velocity):\n\treturn velocity == Vector2.ZERO"
 }

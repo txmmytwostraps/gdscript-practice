@@ -1,23 +1,38 @@
 {
   "id": "gqfunc-014",
-  "title": "Defined below, called above",
+  "title": "Patrol route",
   "concept": "gq-functions",
-  "difficulty": 0,
-  "prompt": "Write a function `hello` that prints \"hello\", and put its definition below solve in the file. Call it from solve. Godot reads the whole script before running, so the order of definitions does not matter.",
-  "signature": "func solve() -> void:",
-  "starter": "func solve() -> void:\n\tpass",
+  "difficulty": 1,
+  "prompt": "The robot patrols a corner. Write `move`, which prints \"forward\", and `turn_left`, which prints \"left\". In `solve`, make it move, turn left, move, turn left, so the output is those four words in order.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass",
   "require_methods": [
-    "hello"
+    "move",
+    "turn_left"
   ],
   "tests": [
     {
+      "name": "forward, left, forward, left",
       "args": [],
       "expect": null,
       "out": [
-        "hello"
+        "forward",
+        "left",
+        "forward",
+        "left"
       ]
     }
   ],
-  "hint": "Leave a blank line after solve, then define the new function underneath.",
-  "solution": "func solve() -> void:\n\thello()\n\nfunc hello() -> void:\n\tprint(\"hello\")"
+  "hints": [
+    "This is like driving a turtle: each call is one instruction, and the order is the route.",
+    "Two helpers with one print each.",
+    "solve has four calls: `move()`, `turn_left()`, `move()`, `turn_left()`."
+  ],
+  "docs": [
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\tmove()\n\tturn_left()\n\tmove()\n\tturn_left()\n\nfunc move():\n\tprint(\"forward\")\n\nfunc turn_left():\n\tprint(\"left\")"
 }

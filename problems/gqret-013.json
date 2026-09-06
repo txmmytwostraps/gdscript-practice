@@ -3,34 +3,46 @@
   "title": "Three helpers in a chain",
   "concept": "gq-return",
   "difficulty": 1,
-  "prompt": "Write `add_one`, `double` and `square`, each returning what its name says. solve returns the result of adding one, then doubling, then squaring n.",
-  "signature": "func solve(n: int) -> int:",
-  "starter": "func solve(n: int) -> int:\n\treturn n",
-  "require_methods": [
-    "add_one",
-    "double",
-    "square"
-  ],
+  "prompt": "Write `add_one`, `double` and `square`, each returning what its name says. `solve` returns the result of adding one, then doubling, then squaring n. solve(1) is 16.",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\treturn n",
   "tests": [
     {
+      "name": "1 becomes 16",
       "args": [
         1
       ],
       "expect": 16
     },
     {
+      "name": "0 becomes 4",
       "args": [
         0
       ],
       "expect": 4
     },
     {
+      "name": "2 becomes 36",
       "args": [
         2
       ],
       "expect": 36
     }
   ],
-  "hint": "A returned value can go straight into the next call: square(double(add_one(n))). Inner calls happen first.",
-  "solution": "func solve(n: int) -> int:\n\treturn square(double(add_one(n)))\n\nfunc add_one(v: int) -> int:\n\treturn v + 1\n\nfunc double(v: int) -> int:\n\treturn v * 2\n\nfunc square(v: int) -> int:\n\treturn v * v"
+  "hints": [
+    "A returned value can go straight into the next call; inner calls happen first.",
+    "`return square(double(add_one(n)))`"
+  ],
+  "docs": [
+    {
+      "name": "return value",
+      "what": "Ends the function and hands value back to whoever called it."
+    }
+  ],
+  "solution": "func solve(n):\n\treturn square(double(add_one(n)))\n\nfunc add_one(v):\n\treturn v + 1\n\nfunc double(v):\n\treturn v * 2\n\nfunc square(v):\n\treturn v * v",
+  "require_methods": [
+    "add_one",
+    "double",
+    "square"
+  ]
 }

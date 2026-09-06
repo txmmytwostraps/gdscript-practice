@@ -3,11 +3,12 @@
   "title": "Smallest of three",
   "concept": "gq-conditions",
   "difficulty": 1,
-  "prompt": "Return the smallest of a, b and c using comparisons, not min().",
-  "signature": "func solve(a: int, b: int, c: int) -> int:",
-  "starter": "func solve(a: int, b: int, c: int) -> int:\n\treturn a",
+  "prompt": "Return the smallest of a, b and c using comparisons, not min(). solve(3, 1, 2) is 1.",
+  "signature": "func solve(a, b, c):",
+  "starter": "func solve(a, b, c):\n\treturn a",
   "tests": [
     {
+      "name": "1 is the smallest of 3, 1, 2",
       "args": [
         3,
         1,
@@ -16,6 +17,7 @@
       "expect": 1
     },
     {
+      "name": "All equal returns 5",
       "args": [
         5,
         5,
@@ -24,6 +26,7 @@
       "expect": 5
     },
     {
+      "name": "Negative wins",
       "args": [
         -1,
         0,
@@ -32,6 +35,7 @@
       "expect": -1
     },
     {
+      "name": "The last one can win",
       "args": [
         7,
         8,
@@ -40,6 +44,20 @@
       "expect": 2
     }
   ],
-  "hint": "Keep a variable for the smallest so far. Start with a, then let b and c challenge it.",
-  "solution": "func solve(a: int, b: int, c: int) -> int:\n\tvar smallest = a\n\tif b < smallest:\n\t\tsmallest = b\n\tif c < smallest:\n\t\tsmallest = c\n\treturn smallest"
+  "hints": [
+    "Keep a variable for the smallest so far.",
+    "Start with `var smallest = a`, then `if b < smallest:` update it, then the same for c.",
+    "Return smallest at the end."
+  ],
+  "docs": [
+    {
+      "name": "if condition:",
+      "what": "Runs the indented lines below it only when the condition is true. elif and else add more branches."
+    },
+    {
+      "name": "==  !=  <  <=  >  >=",
+      "what": "Comparisons. Each gives true or false."
+    }
+  ],
+  "solution": "func solve(a, b, c):\n\tvar smallest = a\n\tif b < smallest:\n\t\tsmallest = b\n\tif c < smallest:\n\t\tsmallest = c\n\treturn smallest"
 }

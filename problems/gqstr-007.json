@@ -3,29 +3,50 @@
   "title": "First and last character",
   "concept": "gq-strings",
   "difficulty": 0,
-  "prompt": "Return the first character of the text joined to the last one. The text always has at least one character.",
-  "signature": "func solve(text: String) -> String:",
-  "starter": "func solve(text: String) -> String:\n\treturn text",
+  "prompt": "Return the first character of the text joined to the last one. \"hello\" gives \"ho\". The text always has at least one character.",
+  "signature": "func solve(text):",
+  "starter": "func solve(text):\n\treturn text",
   "tests": [
     {
+      "name": "hello gives ho",
       "args": [
         "hello"
       ],
       "expect": "ho"
     },
     {
+      "name": "One letter twice",
       "args": [
         "a"
       ],
       "expect": "aa"
     },
     {
+      "name": "Godot gives Gt",
       "args": [
         "Godot"
       ],
       "expect": "Gt"
     }
   ],
-  "hint": "Characters can be picked out by position with square brackets, just like array items.",
-  "solution": "func solve(text: String) -> String:\n\treturn text[0] + text[text.length() - 1]"
+  "hints": [
+    "Characters can be picked out by position with square brackets.",
+    "The last position is length minus 1.",
+    "`return text[0] + text[text.length() - 1]`"
+  ],
+  "docs": [
+    {
+      "name": "text[i]",
+      "what": "The character at position i, starting from 0."
+    },
+    {
+      "name": "text.length()",
+      "what": "Returns how many characters the string has."
+    },
+    {
+      "name": "text + text",
+      "what": "Joins two strings into one. Numbers must be turned into text first."
+    }
+  ],
+  "solution": "func solve(text):\n\treturn text[0] + text[text.length() - 1]"
 }

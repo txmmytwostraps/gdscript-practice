@@ -4,28 +4,44 @@
   "concept": "gq-strings",
   "difficulty": 0,
   "prompt": "Return the number followed by \"px\", so 12 gives \"12px\".",
-  "signature": "func solve(n: int) -> String:",
-  "starter": "func solve(n: int) -> String:\n\treturn \"px\"",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\treturn \"px\"",
   "tests": [
     {
+      "name": "12 gives 12px",
       "args": [
         12
       ],
       "expect": "12px"
     },
     {
+      "name": "0 gives 0px",
       "args": [
         0
       ],
       "expect": "0px"
     },
     {
+      "name": "-3 gives -3px",
       "args": [
         -3
       ],
       "expect": "-3px"
     }
   ],
-  "hint": "Turn the number into text before joining.",
-  "solution": "func solve(n: int) -> String:\n\treturn str(n) + \"px\""
+  "hints": [
+    "Turn the number into text before joining.",
+    "`return str(n) + \"px\"`"
+  ],
+  "docs": [
+    {
+      "name": "str(value)",
+      "what": "Returns the value as text."
+    },
+    {
+      "name": "text + text",
+      "what": "Joins two strings into one. Numbers must be turned into text first."
+    }
+  ],
+  "solution": "func solve(n):\n\treturn str(n) + \"px\""
 }

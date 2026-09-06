@@ -11,11 +11,35 @@ const CONCEPTS = [
   "gq-arrays", "gq-strings", "gq-vectors", "gq-delta", "gq-rect",
   "variables", "arithmetic", "functions", "ifelse", "comparisons", "while", "for", "arrays", "strings", "dictionaries",
 ];
-const REQUIRED = ["id", "title", "concept", "difficulty", "prompt", "signature", "starter", "tests", "hint", "solution"];
+const REQUIRED = ["id", "title", "concept", "difficulty", "prompt", "signature", "starter", "tests", "solution"];
+// Problems are moving to the house style (hints list, docs, named tests, no
+// type hints). Files that still have the old single `hint` are accepted but
+// counted, so the migration can go topic by topic.
+
+// House style checks. Type hints are allowed only as solve's return type.
+function styleErrors(p) {
+  const out = [];
+  if (!Array.isArray(p.hints) || p.hints.length < 2 || p.hints.length > 4 || p.hints.some((h) => typeof h !== "string" || !h.trim())) out.push("hints must be 2 to 4 strings");
+  if (!Array.isArray(p.docs) || p.docs.some((d) => !d || typeof d.name !== "string" || typeof d.what !== "string")) out.push("docs must be a list of {name, what}");
+  if (Array.isArray(p.tests) && p.tests.some((t) => typeof t.name !== "string" || !t.name.trim())) out.push("every test needs a plain-English name");
+  const sigParams = (/\((.*)\)/.exec(p.signature) || [, ""])[1];
+  if (/:/.test(sigParams)) out.push("solve's parameters must not have type hints");
+  for (const [field, code] of [["starter", p.starter], ["solution", p.solution]]) {
+    for (const line of String(code).split("\n")) {
+      const m = /^\s*func\s+(\w+)\s*\(([^)]*)\)\s*(->\s*\w+)?\s*:/.exec(line);
+      if (!m) continue;
+      if (/:/.test(m[2])) out.push(`${field}: parameters of ${m[1]}() must not have type hints`);
+      if (m[1] !== "solve" && m[3]) out.push(`${field}: ${m[1]}() must not declare a return type`);
+    }
+    if (/\bvar\s+\w+\s*:\s*\w+/.test(code) || /:=/.test(code)) out.push(`${field}: no typed variables or := (write var x = ...)`);
+  }
+  return out;
+}
 
 const entries = [];
 const errors = [];
 const seen = new Set();
+let oldStyle = 0;
 for (const f of fs.readdirSync(dir).sort()) {
   if (!f.endsWith(".json") || f === "index.json") continue;
   let p;
@@ -28,6 +52,7 @@ for (const f of fs.readdirSync(dir).sort()) {
   if (!CONCEPTS.includes(p.concept)) errors.push(`${f}: unknown concept "${p.concept}"`);
   if (![0, 1, 2, 3].includes(p.difficulty)) errors.push(`${f}: difficulty must be 0-3`);
   if (!Array.isArray(p.tests) || p.tests.length === 0) errors.push(`${f}: needs at least one test`);
+  for (const e of styleErrors(p)) errors.push(`${f}: ${e}`);
   entries.push({ id: p.id, title: p.title, concept: p.concept, difficulty: p.difficulty });
 }
 if (errors.length) { console.error(errors.join("\n")); process.exit(1); }
@@ -35,4 +60,4 @@ if (errors.length) { console.error(errors.join("\n")); process.exit(1); }
 entries.sort((a, b) => CONCEPTS.indexOf(a.concept) - CONCEPTS.indexOf(b.concept) || a.id.localeCompare(b.id));
 const out = { concepts: CONCEPTS, problems: entries };
 fs.writeFileSync(path.join(dir, "index.json"), JSON.stringify(out, null, 2) + "\n");
-console.log(`index.json: ${entries.length} problems`);
+console.log(`index.json: ${entries.length} problems` + (oldStyle ? ` (${oldStyle} still in the old format)` : ""));

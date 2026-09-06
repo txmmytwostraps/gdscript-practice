@@ -3,32 +3,48 @@
   "title": "A helper that returns true or false",
   "concept": "gq-return",
   "difficulty": 0,
-  "prompt": "Write `is_even`, which returns true when its parameter is even. solve returns is_even(n).",
-  "signature": "func solve(n: int) -> bool:",
-  "starter": "func solve(n: int) -> bool:\n\treturn false",
-  "require_methods": [
-    "is_even"
-  ],
+  "prompt": "Write `is_even`, which returns true when its parameter is even. `solve` returns is_even(n).",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\treturn false",
   "tests": [
     {
+      "name": "4 is even",
       "args": [
         4
       ],
       "expect": true
     },
     {
+      "name": "7 is not",
       "args": [
         7
       ],
       "expect": false
     },
     {
+      "name": "0 is even",
       "args": [
         0
       ],
       "expect": true
     }
   ],
-  "hint": "Functions whose names start with is_ usually return a bool. The comparison itself can be the return value.",
-  "solution": "func solve(n: int) -> bool:\n\treturn is_even(n)\n\nfunc is_even(value: int) -> bool:\n\treturn value % 2 == 0"
+  "hints": [
+    "Functions whose names start with is_ usually return a bool; the comparison itself can be the return value.",
+    "`return value % 2 == 0` inside is_even."
+  ],
+  "docs": [
+    {
+      "name": "return value",
+      "what": "Ends the function and hands value back to whoever called it."
+    },
+    {
+      "name": "a % b",
+      "what": "The remainder after dividing a by b."
+    }
+  ],
+  "solution": "func solve(n):\n\treturn is_even(n)\n\nfunc is_even(value):\n\treturn value % 2 == 0",
+  "require_methods": [
+    "is_even"
+  ]
 }

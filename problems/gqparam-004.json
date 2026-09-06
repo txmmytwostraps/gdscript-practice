@@ -1,32 +1,54 @@
 {
   "id": "gqparam-004",
-  "title": "A parameter with a default",
+  "title": "Health, damage, remaining",
   "concept": "gq-parameters",
   "difficulty": 1,
-  "prompt": "The second parameter, bonus, has a default value of 10. The tests sometimes pass only one number. Return n plus bonus.",
-  "signature": "func solve(n: int, bonus: int = 10) -> int:",
-  "starter": "func solve(n: int, bonus: int = 10) -> int:\n\treturn n",
+  "prompt": "The robot reports a hit in three lines. Write three helpers: `print_health` prints the health, `print_damage` prints the damage, and `print_remaining` takes both and prints health minus damage. Call all three from `solve` in that order, so solve(100, 30) prints 100, 30, 70.",
+  "signature": "func solve(health, damage):",
+  "starter": "func solve(health, damage):\n\tpass",
+  "require_methods": [
+    "print_health",
+    "print_damage",
+    "print_remaining"
+  ],
   "tests": [
     {
+      "name": "100 hit for 30 leaves 70",
       "args": [
-        5
+        100,
+        30
       ],
-      "expect": 15
+      "expect": null,
+      "out": [
+        "100",
+        "30",
+        "70"
+      ]
     },
     {
+      "name": "50 hit for 50 leaves 0",
       "args": [
-        5,
-        1
+        50,
+        50
       ],
-      "expect": 6
-    },
-    {
-      "args": [
-        0
-      ],
-      "expect": 10
+      "expect": null,
+      "out": [
+        "50",
+        "50",
+        "0"
+      ]
     }
   ],
-  "hint": "When the caller leaves a parameter out, it takes the default written after the = sign.",
-  "solution": "func solve(n: int, bonus: int = 10) -> int:\n\treturn n + bonus"
+  "hints": [
+    "Two helpers take one parameter; the last takes two.",
+    "`func print_remaining(h, d):` prints `h - d`.",
+    "solve: `print_health(health)`, `print_damage(damage)`, `print_remaining(health, damage)`."
+  ],
+  "docs": [
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve(health, damage):\n\tprint_health(health)\n\tprint_damage(damage)\n\tprint_remaining(health, damage)\n\nfunc print_health(h):\n\tprint(h)\n\nfunc print_damage(d):\n\tprint(d)\n\nfunc print_remaining(h, d):\n\tprint(h - d)"
 }

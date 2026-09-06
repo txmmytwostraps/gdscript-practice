@@ -1,34 +1,59 @@
 {
   "id": "gqparam-002",
-  "title": "Area from width and height",
+  "title": "Add and print",
   "concept": "gq-parameters",
   "difficulty": 0,
-  "prompt": "Return the area of a rectangle from its two sides.",
-  "signature": "func solve(width: int, height: int) -> int:",
-  "starter": "func solve(width: int, height: int) -> int:\n\treturn 0",
+  "prompt": "Write `print_sum`, which takes two numbers and prints them added together. `solve` receives a and b; call print_sum with them, so solve(2, 3) prints 5.",
+  "signature": "func solve(a, b):",
+  "starter": "func solve(a, b):\n\tpass",
+  "require_methods": [
+    "print_sum"
+  ],
   "tests": [
     {
+      "name": "2 and 3 print 5",
       "args": [
-        3,
-        4
+        2,
+        3
       ],
-      "expect": 12
+      "expect": null,
+      "out": [
+        "5"
+      ]
     },
     {
-      "args": [
-        5,
-        5
-      ],
-      "expect": 25
-    },
-    {
+      "name": "Zeros print 0",
       "args": [
         0,
-        9
+        0
       ],
-      "expect": 0
+      "expect": null,
+      "out": [
+        "0"
+      ]
+    },
+    {
+      "name": "Negative and positive cancel",
+      "args": [
+        -1,
+        1
+      ],
+      "expect": null,
+      "out": [
+        "0"
+      ]
     }
   ],
-  "hint": "Area is one side multiplied by the other.",
-  "solution": "func solve(width: int, height: int) -> int:\n\treturn width * height"
+  "hints": [
+    "Two parameters are separated by a comma, both in the definition and in the call.",
+    "`func print_sum(x, y):` printing `x + y`.",
+    "solve calls `print_sum(a, b)`."
+  ],
+  "docs": [
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve(a, b):\n\tprint_sum(a, b)\n\nfunc print_sum(x, y):\n\tprint(x + y)"
 }

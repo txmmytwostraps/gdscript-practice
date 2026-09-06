@@ -3,11 +3,12 @@
   "title": "Clamp with ifs",
   "concept": "gq-conditions",
   "difficulty": 1,
-  "prompt": "Return value, but never below low and never above high. Do it with if statements instead of the built-in clamp().",
-  "signature": "func solve(value: int, low: int, high: int) -> int:",
-  "starter": "func solve(value: int, low: int, high: int) -> int:\n\treturn value",
+  "prompt": "The robot's speed must stay between low and high. Return value, but never below low and never above high, using if statements rather than clamp(). solve(15, 0, 10) is 10.",
+  "signature": "func solve(value, low, high):",
+  "starter": "func solve(value, low, high):\n\treturn value",
   "tests": [
     {
+      "name": "Inside the limits is unchanged",
       "args": [
         5,
         0,
@@ -16,6 +17,7 @@
       "expect": 5
     },
     {
+      "name": "Too low becomes low",
       "args": [
         -3,
         0,
@@ -24,6 +26,7 @@
       "expect": 0
     },
     {
+      "name": "Too high becomes high",
       "args": [
         15,
         0,
@@ -32,6 +35,19 @@
       "expect": 10
     }
   ],
-  "hint": "Check too low, then too high, then fall through to the value itself.",
-  "solution": "func solve(value: int, low: int, high: int) -> int:\n\tif value < low:\n\t\treturn low\n\telif value > high:\n\t\treturn high\n\telse:\n\t\treturn value"
+  "hints": [
+    "Check too low, then too high, then fall through to the value itself.",
+    "`if value < low:` return low, `elif value > high:` return high, `else:` return value."
+  ],
+  "docs": [
+    {
+      "name": "if condition:",
+      "what": "Runs the indented lines below it only when the condition is true. elif and else add more branches."
+    },
+    {
+      "name": "==  !=  <  <=  >  >=",
+      "what": "Comparisons. Each gives true or false."
+    }
+  ],
+  "solution": "func solve(value, low, high):\n\tif value < low:\n\t\treturn low\n\telif value > high:\n\t\treturn high\n\telse:\n\t\treturn value"
 }

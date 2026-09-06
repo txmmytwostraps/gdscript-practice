@@ -1,34 +1,58 @@
 {
   "id": "gqcond-020",
-  "title": "Same or different",
+  "title": "Game over?",
   "concept": "gq-conditions",
-  "difficulty": 0,
-  "prompt": "Return \"same\" if a and b are equal, otherwise \"different\".",
-  "signature": "func solve(a: int, b: int) -> String:",
-  "starter": "func solve(a: int, b: int) -> String:\n\treturn \"same\"",
+  "difficulty": 1,
+  "prompt": "The robot's game is over when it has no lives left or the time has run out (zero or less). Return true if it is over.",
+  "signature": "func solve(lives, time_left):",
+  "starter": "func solve(lives, time_left):\n\treturn false",
   "tests": [
     {
-      "args": [
-        3,
-        3
-      ],
-      "expect": "same"
-    },
-    {
-      "args": [
-        3,
-        4
-      ],
-      "expect": "different"
-    },
-    {
+      "name": "No lives: over",
       "args": [
         0,
+        30
+      ],
+      "expect": true
+    },
+    {
+      "name": "No time: over",
+      "args": [
+        3,
         0
       ],
-      "expect": "same"
+      "expect": true
+    },
+    {
+      "name": "Lives and time: not over",
+      "args": [
+        3,
+        30
+      ],
+      "expect": false
+    },
+    {
+      "name": "1 life and a little time: not over",
+      "args": [
+        1,
+        0.5
+      ],
+      "expect": false
     }
   ],
-  "hint": "Equality is two equals signs; a single one assigns.",
-  "solution": "func solve(a: int, b: int) -> String:\n\tif a == b:\n\t\treturn \"same\"\n\telse:\n\t\treturn \"different\""
+  "hints": [
+    "Two ways to lose, joined by or.",
+    "`return lives <= 0 or time_left <= 0`"
+  ],
+  "docs": [
+    {
+      "name": "==  !=  <  <=  >  >=",
+      "what": "Comparisons. Each gives true or false."
+    },
+    {
+      "name": "and  or  not",
+      "what": "and is true when both sides are; or when at least one is; not flips true and false."
+    }
+  ],
+  "solution": "func solve(lives, time_left):\n\treturn lives <= 0 or time_left <= 0"
 }

@@ -4,10 +4,11 @@
   "concept": "gq-strings",
   "difficulty": 0,
   "prompt": "Same task with the built-in count method.",
-  "signature": "func solve(text: String, letter: String) -> int:",
-  "starter": "func solve(text: String, letter: String) -> int:\n\treturn 0",
+  "signature": "func solve(text, letter):",
+  "starter": "func solve(text, letter):\n\treturn 0",
   "tests": [
     {
+      "name": "banana has 3 a's",
       "args": [
         "banana",
         "a"
@@ -15,6 +16,7 @@
       "expect": 3
     },
     {
+      "name": "hello has no z",
       "args": [
         "hello",
         "z"
@@ -22,6 +24,7 @@
       "expect": 0
     },
     {
+      "name": "Empty has none",
       "args": [
         "",
         "a"
@@ -29,6 +32,15 @@
       "expect": 0
     }
   ],
-  "hint": "Strings and arrays both have count; it takes the thing to look for.",
-  "solution": "func solve(text: String, letter: String) -> int:\n\treturn text.count(letter)"
+  "hints": [
+    "Strings and arrays both have count.",
+    "`return text.count(letter)`"
+  ],
+  "docs": [
+    {
+      "name": "text.count(part)",
+      "what": "Returns how many times part appears."
+    }
+  ],
+  "solution": "func solve(text, letter):\n\treturn text.count(letter)"
 }

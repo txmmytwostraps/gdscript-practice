@@ -4,10 +4,11 @@
   "concept": "gq-rect",
   "difficulty": 0,
   "prompt": "Return the area of the rectangle: its width times its height.",
-  "signature": "func solve(r: Rect2) -> float:",
-  "starter": "func solve(r: Rect2) -> float:\n\treturn 0.0",
+  "signature": "func solve(r) -> float:",
+  "starter": "func solve(r) -> float:\n\treturn 0.0",
   "tests": [
     {
+      "name": "3 by 4 is 12",
       "args": [
         {
           "$rect": [
@@ -21,6 +22,7 @@
       "expect": 12
     },
     {
+      "name": "2.5 by 2 is 5",
       "args": [
         {
           "$rect": [
@@ -34,6 +36,7 @@
       "expect": 5
     },
     {
+      "name": "Zero width is 0",
       "args": [
         {
           "$rect": [
@@ -47,6 +50,15 @@
       "expect": 0
     }
   ],
-  "hint": "The width and height live inside r.size, or there is a method that gives the area directly.",
-  "solution": "func solve(r: Rect2) -> float:\n\treturn r.size.x * r.size.y"
+  "hints": [
+    "The width and height live inside r.size.",
+    "`return r.size.x * r.size.y`"
+  ],
+  "docs": [
+    {
+      "name": "r.position, r.size, r.end",
+      "what": "The top-left corner, the width and height, and the bottom-right corner, all Vector2."
+    }
+  ],
+  "solution": "func solve(r) -> float:\n\treturn r.size.x * r.size.y"
 }

@@ -1,31 +1,47 @@
 {
   "id": "gqcond-002",
-  "title": "Is it positive",
+  "title": "Positive or not",
   "concept": "gq-conditions",
   "difficulty": 0,
-  "prompt": "Return the text \"positive\" if n is greater than zero, otherwise \"not positive\".",
-  "signature": "func solve(n: int) -> String:",
-  "starter": "func solve(n: int) -> String:\n\treturn \"\"",
+  "prompt": "Return the text \"positive\" if n is greater than zero, otherwise \"not positive\". solve(5) is \"positive\".",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\treturn \"\"",
   "tests": [
     {
+      "name": "5 is positive",
       "args": [
         5
       ],
       "expect": "positive"
     },
     {
+      "name": "0 is not positive",
       "args": [
         0
       ],
       "expect": "not positive"
     },
     {
+      "name": "-3 is not positive",
       "args": [
         -3
       ],
       "expect": "not positive"
     }
   ],
-  "hint": "if with a comparison, an indented return, then else with its own return.",
-  "solution": "func solve(n: int) -> String:\n\tif n > 0:\n\t\treturn \"positive\"\n\telse:\n\t\treturn \"not positive\""
+  "hints": [
+    "if with a comparison, an indented return, then else with its own return.",
+    "`if n > 0:` then `return \"positive\"`, `else:` then `return \"not positive\"`."
+  ],
+  "docs": [
+    {
+      "name": "if condition:",
+      "what": "Runs the indented lines below it only when the condition is true. elif and else add more branches."
+    },
+    {
+      "name": "==  !=  <  <=  >  >=",
+      "what": "Comparisons. Each gives true or false."
+    }
+  ],
+  "solution": "func solve(n):\n\tif n > 0:\n\t\treturn \"positive\"\n\telse:\n\t\treturn \"not positive\""
 }

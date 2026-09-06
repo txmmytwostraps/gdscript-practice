@@ -3,11 +3,12 @@
   "title": "Two results",
   "concept": "functions",
   "difficulty": 0,
-  "prompt": "A function can only return one thing, so to return two numbers we put them in an array. Return [a + b, a * b].",
-  "signature": "func solve(a: int, b: int) -> Array:",
-  "starter": "func solve(a: int, b: int) -> Array:\n\treturn []",
+  "prompt": "A function can only return one thing, so put two numbers in an array. Return [a + b, a * b].",
+  "signature": "func solve(a, b):",
+  "starter": "func solve(a, b):\n\treturn []",
   "tests": [
     {
+      "name": "2 and 3 give [5, 6]",
       "args": [
         2,
         3
@@ -18,6 +19,7 @@
       ]
     },
     {
+      "name": "0 and 5 give [5, 0]",
       "args": [
         0,
         5
@@ -28,6 +30,7 @@
       ]
     },
     {
+      "name": "-1 and 4 give [3, -4]",
       "args": [
         -1,
         4
@@ -38,6 +41,7 @@
       ]
     },
     {
+      "name": "1 and 1 give [2, 1]",
       "args": [
         1,
         1
@@ -48,6 +52,15 @@
       ]
     }
   ],
-  "hint": "Square brackets make an array: `return [a + b, a * b]`.",
-  "solution": "func solve(a: int, b: int) -> Array:\n\treturn [a + b, a * b]"
+  "hints": [
+    "Square brackets make an array.",
+    "`return [a + b, a * b]`"
+  ],
+  "docs": [
+    {
+      "name": "return value",
+      "what": "Ends the function and hands value back to whoever called it."
+    }
+  ],
+  "solution": "func solve(a, b):\n\treturn [a + b, a * b]"
 }

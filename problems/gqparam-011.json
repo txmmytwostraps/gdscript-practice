@@ -1,37 +1,45 @@
 {
   "id": "gqparam-011",
-  "title": "Distance along a line",
+  "title": "Price, quantity, shipping",
   "concept": "gq-parameters",
   "difficulty": 0,
-  "prompt": "Something starts at position start and moves at speed for some seconds. Return where it ends up.",
-  "signature": "func solve(start: float, speed: float, seconds: float) -> float:",
-  "starter": "func solve(start: float, speed: float, seconds: float) -> float:\n\treturn start",
+  "prompt": "The robot shop works out a bill. `solve` receives a price, a quantity and a shipping cost. Return the total: price times quantity, plus shipping. solve(2.5, 4, 3) is 13.0.",
+  "signature": "func solve(price, quantity, shipping) -> float:",
+  "starter": "func solve(price, quantity, shipping) -> float:\n\treturn 0.0",
   "tests": [
     {
+      "name": "2.5 times 4 plus 3 is 13",
+      "args": [
+        2.5,
+        4,
+        3
+      ],
+      "expect": 13
+    },
+    {
+      "name": "Nothing bought, just shipping",
       "args": [
         0,
+        0,
+        5
+      ],
+      "expect": 5
+    },
+    {
+      "name": "One item, free shipping",
+      "args": [
         10,
-        2
+        1,
+        0
       ],
-      "expect": 20
-    },
-    {
-      "args": [
-        100,
-        -5,
-        4
-      ],
-      "expect": 80
-    },
-    {
-      "args": [
-        3,
-        0,
-        9
-      ],
-      "expect": 3
+      "expect": 10
     }
   ],
-  "hint": "Distance travelled is speed times time. Add it to where you started.",
-  "solution": "func solve(start: float, speed: float, seconds: float) -> float:\n\treturn start + speed * seconds"
+  "hints": [
+    "Three parameters, all usable by name.",
+    "Multiplication happens before addition, so no brackets are needed.",
+    "`return price * quantity + shipping`"
+  ],
+  "docs": [],
+  "solution": "func solve(price, quantity, shipping) -> float:\n\treturn price * quantity + shipping"
 }

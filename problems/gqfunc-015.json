@@ -1,39 +1,38 @@
 {
   "id": "gqfunc-015",
-  "title": "Two helpers, one job each",
+  "title": "Alarm",
   "concept": "gq-functions",
-  "difficulty": 0,
-  "prompt": "Write `print_sum` and `print_product`, which each take two numbers and print their sum or their product. Call both from solve, sum first.",
-  "signature": "func solve(a: int, b: int) -> void:",
-  "starter": "func solve(a: int, b: int) -> void:\n\tpass",
+  "difficulty": 1,
+  "prompt": "Write `blink`, which prints \"blink\". Then write `alarm`, which calls blink three times and then prints \"alarm\". `solve` calls alarm once; the output is blink, blink, blink, alarm.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass",
   "require_methods": [
-    "print_sum",
-    "print_product"
+    "blink",
+    "alarm"
   ],
   "tests": [
     {
-      "args": [
-        2,
-        3
-      ],
+      "name": "Three blinks then alarm",
+      "args": [],
       "expect": null,
       "out": [
-        "5",
-        "6"
-      ]
-    },
-    {
-      "args": [
-        0,
-        4
-      ],
-      "expect": null,
-      "out": [
-        "4",
-        "0"
+        "blink",
+        "blink",
+        "blink",
+        "alarm"
       ]
     }
   ],
-  "hint": "Each helper does one small thing. solve just calls them in order.",
-  "solution": "func solve(a: int, b: int) -> void:\n\tprint_sum(a, b)\n\tprint_product(a, b)\n\nfunc print_sum(x: int, y: int) -> void:\n\tprint(x + y)\n\nfunc print_product(x: int, y: int) -> void:\n\tprint(x * y)"
+  "hints": [
+    "A helper can both call other helpers and print on its own.",
+    "alarm has four lines: three `blink()` calls and one print.",
+    "solve is just `alarm()`."
+  ],
+  "docs": [
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\talarm()\n\nfunc blink():\n\tprint(\"blink\")\n\nfunc alarm():\n\tblink()\n\tblink()\n\tblink()\n\tprint(\"alarm\")"
 }

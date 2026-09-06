@@ -3,11 +3,12 @@
   "title": "New y position",
   "concept": "gq-delta",
   "difficulty": 0,
-  "prompt": "A jumping character has a vertical position y and a vertical speed vy in pixels per second (down is positive). Return the new y after one frame.",
-  "signature": "func solve(y: float, vy: float, delta: float) -> float:",
-  "starter": "func solve(y: float, vy: float, delta: float) -> float:\n\treturn y + vy",
+  "prompt": "The robot jumps. It has a vertical position y and a vertical speed vy in pixels per second, where down is positive. Return the new y after one frame. The starter forgets delta and moves a whole second per frame.",
+  "signature": "func solve(y, vy, delta) -> float:",
+  "starter": "func solve(y, vy, delta) -> float:\n\treturn y + vy",
   "tests": [
     {
+      "name": "From 0 at 100 down for 0.1 s is 10",
       "args": [
         0,
         100,
@@ -16,6 +17,7 @@
       "expect": 10
     },
     {
+      "name": "Moving up lowers y",
       "args": [
         50,
         -20,
@@ -24,6 +26,7 @@
       "expect": 40
     },
     {
+      "name": "No vertical speed stays put",
       "args": [
         7,
         0,
@@ -32,6 +35,10 @@
       "expect": 7
     }
   ],
-  "hint": "The starter forgets delta, so it moves a whole second per frame. Scale the speed first.",
-  "solution": "func solve(y: float, vy: float, delta: float) -> float:\n\treturn y + vy * delta"
+  "hints": [
+    "Speed must be scaled by delta before adding it.",
+    "`return y + vy * delta`"
+  ],
+  "docs": [],
+  "solution": "func solve(y, vy, delta) -> float:\n\treturn y + vy * delta"
 }

@@ -1,37 +1,50 @@
 {
   "id": "gqparam-003",
-  "title": "Price, quantity, shipping",
+  "title": "Squares, three times",
   "concept": "gq-parameters",
   "difficulty": 0,
-  "prompt": "Three parameters this time. Return the total cost: the price times the quantity, plus shipping.",
-  "signature": "func solve(price: float, quantity: int, shipping: float) -> float:",
-  "starter": "func solve(price: float, quantity: int, shipping: float) -> float:\n\treturn 0.0",
+  "prompt": "Write `print_square`, which takes a number and prints it multiplied by itself. In `solve`, call it with n, then n + 1, then n + 2, so solve(1) prints 1, 4, 9.",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\tpass",
+  "require_methods": [
+    "print_square"
+  ],
   "tests": [
     {
+      "name": "1, 4, 9 from 1",
       "args": [
-        2.5,
-        4,
-        3
+        1
       ],
-      "expect": 13
+      "expect": null,
+      "out": [
+        "1",
+        "4",
+        "9"
+      ]
     },
     {
+      "name": "0, 1, 4 from 0",
       "args": [
-        0,
-        0,
-        5
-      ],
-      "expect": 5
-    },
-    {
-      "args": [
-        10,
-        1,
         0
       ],
-      "expect": 10
+      "expect": null,
+      "out": [
+        "0",
+        "1",
+        "4"
+      ]
     }
   ],
-  "hint": "Multiplication happens before addition, so you may not need brackets.",
-  "solution": "func solve(price: float, quantity: int, shipping: float) -> float:\n\treturn price * quantity + shipping"
+  "hints": [
+    "Writing the squaring once in a function saves repeating it three times.",
+    "`print_square(x)` prints `x * x`.",
+    "Three calls: `print_square(n)`, `print_square(n + 1)`, `print_square(n + 2)`."
+  ],
+  "docs": [
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve(n):\n\tprint_square(n)\n\tprint_square(n + 1)\n\tprint_square(n + 2)\n\nfunc print_square(x):\n\tprint(x * x)"
 }

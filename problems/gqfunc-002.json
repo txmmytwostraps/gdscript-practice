@@ -1,24 +1,36 @@
 {
   "id": "gqfunc-002",
-  "title": "Call it twice",
+  "title": "Boot sequence",
   "concept": "gq-functions",
   "difficulty": 0,
-  "prompt": "Write a function `greet` that prints \"Hi\". Call it twice from solve, so \"Hi\" is printed two times.",
-  "signature": "func solve() -> void:",
-  "starter": "func solve() -> void:\n\tpass",
+  "prompt": "The robot already has a `boot` function that prints \"Booting\". Add a second function `ready` that prints \"Ready\", and make `solve` call boot and then ready, so the output is those two lines in that order.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass\n\nfunc boot():\n\tprint(\"Booting\")",
   "require_methods": [
-    "greet"
+    "boot",
+    "ready"
   ],
   "tests": [
     {
+      "name": "Booting comes first, Ready second",
       "args": [],
       "expect": null,
       "out": [
-        "Hi",
-        "Hi"
+        "Booting",
+        "Ready"
       ]
     }
   ],
-  "hint": "Once a function exists you can call it as often as you like. Two call lines.",
-  "solution": "func solve() -> void:\n\tgreet()\n\tgreet()\n\nfunc greet() -> void:\n\tprint(\"Hi\")"
+  "hints": [
+    "Look at how boot is written; ready is the same shape with a different name and text.",
+    "Add `func ready():` with `print(\"Ready\")` under it, anywhere below solve.",
+    "In solve, call `boot()` on one line and `ready()` on the next."
+  ],
+  "docs": [
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\tboot()\n\tready()\n\nfunc boot():\n\tprint(\"Booting\")\n\nfunc ready():\n\tprint(\"Ready\")"
 }

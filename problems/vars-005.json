@@ -3,41 +3,54 @@
   "title": "Sales tax",
   "concept": "variables",
   "difficulty": 1,
-  "prompt": "Inside solve(), make a constant `TAX` equal to 0.2 (that is 20%). Return the price with tax added: price + price * TAX.",
-  "signature": "func solve(price: float) -> float:",
-  "starter": "func solve(price: float) -> float:\n\treturn price",
+  "prompt": "The robot shop adds 20% tax. Inside `solve`, make a constant `TAX` equal to 0.2 and return the price with tax added: price plus price times TAX. solve(10) is 12.0.",
+  "signature": "func solve(price) -> float:",
+  "starter": "func solve(price) -> float:\n\treturn price",
+  "require_names": [
+    "TAX"
+  ],
   "tests": [
     {
+      "name": "10 with tax is 12",
       "args": [
         10
       ],
       "expect": 12
     },
     {
+      "name": "5 with tax is 6",
       "args": [
         5
       ],
       "expect": 6
     },
     {
+      "name": "100 with tax is 120",
       "args": [
         100
       ],
       "expect": 120
     },
     {
+      "name": "0 stays 0",
       "args": [
         0
       ],
       "expect": 0
     },
     {
+      "name": "7.5 with tax is 9",
       "args": [
         7.5
       ],
       "expect": 9
     }
   ],
-  "hint": "A constant is like a variable that never changes: `const TAX = 0.2`.",
-  "solution": "func solve(price: float) -> float:\n\tconst TAX = 0.2\n\treturn price + price * TAX"
+  "hints": [
+    "A constant is like a variable that never changes; it uses const instead of var.",
+    "`const TAX = 0.2`",
+    "`return price + price * TAX`"
+  ],
+  "docs": [],
+  "solution": "func solve(price) -> float:\n\tconst TAX = 0.2\n\treturn price + price * TAX"
 }

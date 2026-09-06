@@ -3,32 +3,44 @@
   "title": "A decimal from whole numbers",
   "concept": "gq-return",
   "difficulty": 1,
-  "prompt": "Write `half`, which takes a whole number and returns half of it as a float, so half(5) is 2.5. solve returns half(n).",
-  "signature": "func solve(n: int) -> float:",
-  "starter": "func solve(n: int) -> float:\n\treturn n / 2",
-  "require_methods": [
-    "half"
-  ],
+  "prompt": "Write `half`, which takes a whole number and returns half of it with decimals, so half(5) is 2.5. `solve` returns half(n).",
+  "signature": "func solve(n) -> float:",
+  "starter": "func solve(n) -> float:\n\treturn n / 2",
   "tests": [
     {
+      "name": "Half of 5 is 2.5",
       "args": [
         5
       ],
       "expect": 2.5
     },
     {
+      "name": "Half of 4 is 2.0",
       "args": [
         4
       ],
       "expect": 2
     },
     {
+      "name": "Half of -1 is -0.5",
       "args": [
         -1
       ],
       "expect": -0.5
     }
   ],
-  "hint": "Give the helper a float return type, and divide by something with a decimal point.",
-  "solution": "func solve(n: int) -> float:\n\treturn half(n)\n\nfunc half(value: int) -> float:\n\treturn value / 2.0"
+  "hints": [
+    "Divide by something with a decimal point.",
+    "`return value / 2.0` inside half."
+  ],
+  "docs": [
+    {
+      "name": "return value",
+      "what": "Ends the function and hands value back to whoever called it."
+    }
+  ],
+  "solution": "func solve(n) -> float:\n\treturn half(n)\n\nfunc half(value):\n\treturn value / 2.0",
+  "require_methods": [
+    "half"
+  ]
 }

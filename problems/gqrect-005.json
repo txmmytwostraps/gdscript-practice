@@ -4,10 +4,11 @@
   "concept": "gq-rect",
   "difficulty": 0,
   "prompt": "Return the point in the middle of the rectangle.",
-  "signature": "func solve(r: Rect2) -> Vector2:",
-  "starter": "func solve(r: Rect2) -> Vector2:\n\treturn r.position",
+  "signature": "func solve(r) -> Vector2:",
+  "starter": "func solve(r) -> Vector2:\n\treturn r.position",
   "tests": [
     {
+      "name": "10 by 10 at origin centres at (5, 5)",
       "args": [
         {
           "$rect": [
@@ -26,6 +27,7 @@
       }
     },
     {
+      "name": "(10, 20) 30 by 40 centres at (25, 40)",
       "args": [
         {
           "$rect": [
@@ -44,6 +46,15 @@
       }
     }
   ],
-  "hint": "Position plus half the size, or a method whose name says centre.",
-  "solution": "func solve(r: Rect2) -> Vector2:\n\treturn r.get_center()"
+  "hints": [
+    "Position plus half the size, or the method made for it.",
+    "`return r.get_center()`"
+  ],
+  "docs": [
+    {
+      "name": "r.get_center()",
+      "what": "Returns the middle point of the rectangle."
+    }
+  ],
+  "solution": "func solve(r) -> Vector2:\n\treturn r.get_center()"
 }

@@ -3,11 +3,12 @@
   "title": "Health bar",
   "concept": "gq-rect",
   "difficulty": 1,
-  "prompt": "A health bar at (0, 0) is max_width wide when health is full. Return the Rect2 to draw for the current hp: the same height, but only as wide as the fraction of health left.",
-  "signature": "func solve(max_width: float, height: float, hp: float, max_hp: float) -> Rect2:",
-  "starter": "func solve(max_width: float, height: float, hp: float, max_hp: float) -> Rect2:\n\treturn Rect2(0, 0, max_width, height)",
+  "prompt": "The robot's health bar at (0, 0) is max_width wide when health is full. Return the Rect2 to draw for the current hp: the same height, but only as wide as the fraction of health left. Half health is half the width.",
+  "signature": "func solve(max_width, height, hp, max_hp) -> Rect2:",
+  "starter": "func solve(max_width, height, hp, max_hp) -> Rect2:\n\treturn Rect2(0, 0, max_width, height)",
   "tests": [
     {
+      "name": "Half health is half width",
       "args": [
         200,
         20,
@@ -24,6 +25,7 @@
       }
     },
     {
+      "name": "No health is zero width",
       "args": [
         200,
         20,
@@ -40,6 +42,7 @@
       }
     },
     {
+      "name": "Full health is full width",
       "args": [
         200,
         20,
@@ -56,6 +59,15 @@
       }
     }
   ],
-  "hint": "The fraction is hp divided by max_hp. Multiply the full width by it.",
-  "solution": "func solve(max_width: float, height: float, hp: float, max_hp: float) -> Rect2:\n\treturn Rect2(0, 0, max_width * hp / max_hp, height)"
+  "hints": [
+    "The fraction is hp divided by max_hp.",
+    "`return Rect2(0, 0, max_width * hp / max_hp, height)`"
+  ],
+  "docs": [
+    {
+      "name": "Rect2(x, y, width, height)",
+      "what": "Makes a rectangle from a top-left corner and a size. Also Rect2(position, size) with two vectors."
+    }
+  ],
+  "solution": "func solve(max_width, height, hp, max_hp) -> Rect2:\n\treturn Rect2(0, 0, max_width * hp / max_hp, height)"
 }

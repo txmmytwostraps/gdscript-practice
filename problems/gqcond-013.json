@@ -3,35 +3,52 @@
   "title": "Traffic light",
   "concept": "gq-conditions",
   "difficulty": 1,
-  "prompt": "Given the colour of a traffic light as text, return \"stop\" for \"red\", \"go\" for \"green\", and \"wait\" for anything else.",
-  "signature": "func solve(colour: String) -> String:",
-  "starter": "func solve(colour: String) -> String:\n\treturn \"wait\"",
+  "prompt": "The robot reads a traffic light as text. Return \"stop\" for \"red\", \"go\" for \"green\", and \"wait\" for anything else.",
+  "signature": "func solve(colour):",
+  "starter": "func solve(colour):\n\treturn \"wait\"",
   "tests": [
     {
+      "name": "red means stop",
       "args": [
         "red"
       ],
       "expect": "stop"
     },
     {
+      "name": "green means go",
       "args": [
         "green"
       ],
       "expect": "go"
     },
     {
+      "name": "amber means wait",
       "args": [
         "amber"
       ],
       "expect": "wait"
     },
     {
+      "name": "Unknown colours wait",
       "args": [
         "blue"
       ],
       "expect": "wait"
     }
   ],
-  "hint": "Text can be compared with == just like numbers.",
-  "solution": "func solve(colour: String) -> String:\n\tif colour == \"red\":\n\t\treturn \"stop\"\n\telif colour == \"green\":\n\t\treturn \"go\"\n\telse:\n\t\treturn \"wait\""
+  "hints": [
+    "Text can be compared with == just like numbers.",
+    "`if colour == \"red\":`, `elif colour == \"green\":`, `else:`."
+  ],
+  "docs": [
+    {
+      "name": "if condition:",
+      "what": "Runs the indented lines below it only when the condition is true. elif and else add more branches."
+    },
+    {
+      "name": "==  !=  <  <=  >  >=",
+      "what": "Comparisons. Each gives true or false."
+    }
+  ],
+  "solution": "func solve(colour):\n\tif colour == \"red\":\n\t\treturn \"stop\"\n\telif colour == \"green\":\n\t\treturn \"go\"\n\telse:\n\t\treturn \"wait\""
 }

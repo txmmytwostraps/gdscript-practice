@@ -4,28 +4,44 @@
   "concept": "gq-conditions",
   "difficulty": 1,
   "prompt": "Return -1 if n is negative, 0 if it is zero, and 1 if it is positive.",
-  "signature": "func solve(n: int) -> int:",
-  "starter": "func solve(n: int) -> int:\n\treturn 0",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\treturn 0",
   "tests": [
     {
+      "name": "-7 gives -1",
       "args": [
         -7
       ],
       "expect": -1
     },
     {
+      "name": "0 gives 0",
       "args": [
         0
       ],
       "expect": 0
     },
     {
+      "name": "12 gives 1",
       "args": [
         12
       ],
       "expect": 1
     }
   ],
-  "hint": "Three outcomes need if, elif and else.",
-  "solution": "func solve(n: int) -> int:\n\tif n < 0:\n\t\treturn -1\n\telif n == 0:\n\t\treturn 0\n\telse:\n\t\treturn 1"
+  "hints": [
+    "Three outcomes need if, elif and else.",
+    "`if n < 0:` return -1, `elif n == 0:` return 0, `else:` return 1."
+  ],
+  "docs": [
+    {
+      "name": "if condition:",
+      "what": "Runs the indented lines below it only when the condition is true. elif and else add more branches."
+    },
+    {
+      "name": "==  !=  <  <=  >  >=",
+      "what": "Comparisons. Each gives true or false."
+    }
+  ],
+  "solution": "func solve(n):\n\tif n < 0:\n\t\treturn -1\n\telif n == 0:\n\t\treturn 0\n\telse:\n\t\treturn 1"
 }

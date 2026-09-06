@@ -3,11 +3,12 @@
   "title": "Count a letter with a loop",
   "concept": "gq-strings",
   "difficulty": 1,
-  "prompt": "Return how many times the letter appears in the text. Use a loop over the characters.",
-  "signature": "func solve(text: String, letter: String) -> int:",
-  "starter": "func solve(text: String, letter: String) -> int:\n\treturn 0",
+  "prompt": "Return how many times the letter appears in the text, using a loop over the characters. \"banana\" has three a's.",
+  "signature": "func solve(text, letter):",
+  "starter": "func solve(text, letter):\n\treturn 0",
   "tests": [
     {
+      "name": "banana has 3 a's",
       "args": [
         "banana",
         "a"
@@ -15,6 +16,7 @@
       "expect": 3
     },
     {
+      "name": "hello has no z",
       "args": [
         "hello",
         "z"
@@ -22,6 +24,7 @@
       "expect": 0
     },
     {
+      "name": "Empty has none",
       "args": [
         "",
         "a"
@@ -29,6 +32,15 @@
       "expect": 0
     }
   ],
-  "hint": "for c in text visits one character at a time; compare each to the letter.",
-  "solution": "func solve(text: String, letter: String) -> int:\n\tvar count = 0\n\tfor c in text:\n\t\tif c == letter:\n\t\t\tcount += 1\n\treturn count"
+  "hints": [
+    "for c in text visits one character at a time.",
+    "`if c == letter:` then `count += 1`."
+  ],
+  "docs": [
+    {
+      "name": "for c in text:",
+      "what": "Runs the indented lines once per character, with c holding each one."
+    }
+  ],
+  "solution": "func solve(text, letter):\n\tvar count = 0\n\tfor c in text:\n\t\tif c == letter:\n\t\t\tcount += 1\n\treturn count"
 }

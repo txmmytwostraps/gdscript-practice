@@ -1,37 +1,45 @@
 {
   "id": "vars-001",
-  "title": "Double it",
+  "title": "Double the reward",
   "concept": "variables",
   "difficulty": 0,
-  "prompt": "Write solve(n) so that it returns n multiplied by 2.",
-  "signature": "func solve(n: int) -> int:",
-  "starter": "func solve(n: int) -> int:\n\treturn 0",
+  "prompt": "The robot earns double rewards today. Return n multiplied by 2, so solve(2) is 4.",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\treturn 0",
   "tests": [
     {
+      "name": "2 doubles to 4",
       "args": [
         2
       ],
       "expect": 4
     },
     {
+      "name": "0 stays 0",
       "args": [
         0
       ],
       "expect": 0
     },
     {
+      "name": "-3 doubles to -6",
       "args": [
         -3
       ],
       "expect": -6
     },
     {
+      "name": "10 doubles to 20",
       "args": [
         10
       ],
       "expect": 20
     }
   ],
-  "hint": "Multiplication is the * symbol. Try `return n * 2`.",
-  "solution": "func solve(n: int) -> int:\n\treturn n * 2"
+  "hints": [
+    "Multiplication is the * symbol.",
+    "`return n * 2`"
+  ],
+  "docs": [],
+  "solution": "func solve(n):\n\treturn n * 2"
 }

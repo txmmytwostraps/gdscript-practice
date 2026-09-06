@@ -1,35 +1,43 @@
 {
   "id": "gqvar-008",
-  "title": "A variable times itself",
+  "title": "A variable from a variable",
   "concept": "gq-variables",
   "difficulty": 0,
-  "prompt": "Store n in a variable called `side`. Then make a second variable `area` equal to side times side. Return area.",
-  "signature": "func solve(n: int) -> int:",
-  "starter": "func solve(n: int) -> int:\n\treturn 0",
+  "prompt": "The robot's charging pad is square. Store n in a variable `side`, make a second variable `area` equal to side times side, and return area. solve(3) is 9.",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\treturn 0",
   "require_names": [
     "side",
     "area"
   ],
   "tests": [
     {
+      "name": "Side 3 gives area 9",
       "args": [
         3
       ],
       "expect": 9
     },
     {
+      "name": "Side 0 gives 0",
       "args": [
         0
       ],
       "expect": 0
     },
     {
+      "name": "Side 10 gives 100",
       "args": [
         10
       ],
       "expect": 100
     }
   ],
-  "hint": "A new variable can be calculated from one you already made. Two var lines, then return the second.",
-  "solution": "func solve(n: int) -> int:\n\tvar side = n\n\tvar area = side * side\n\treturn area"
+  "hints": [
+    "A new variable can be calculated from one you already made.",
+    "`var side = n` then `var area = side * side`.",
+    "Return the second one."
+  ],
+  "docs": [],
+  "solution": "func solve(n):\n\tvar side = n\n\tvar area = side * side\n\treturn area"
 }
