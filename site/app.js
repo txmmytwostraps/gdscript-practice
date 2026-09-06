@@ -7,6 +7,16 @@ import { store, state, loadBank, getDraft, setDraft, clearDraft, saveSolved, sav
 import { TOPICS } from "./route-data.js";
 import * as reviews from "./reviews.js";
 import * as auth from "./auth.js";
+import { makeParsons } from "./parsons.js";
+import { candidates } from "./mutate.js";
+
+// Problem types. ?mode=parsons puts the solution's lines in order;
+// ?mode=bug plants one bug in the solution to find and fix. Reviews pick a
+// variant by themselves so a review is not a straight repeat.
+const urlMode = new URLSearchParams(location.search).get("mode");
+let activeMode = "normal";   // normal | parsons | bug, for the problem on screen
+let parsons = null;          // the Parsons widget when active
+let bugCode = "";            // the planted-bug code when active
 
 // Review mode: practice.html?review=1#id walks through today's due reviews.
 const reviewMode = new URLSearchParams(location.search).has("review");
@@ -238,12 +248,71 @@ async function showProblem(id, { keepResults = false } = {}) {
   const draft = getDraft(id);
   // A review starts from the starter, not from the old solution.
   const inReview = reviewMode && reviewIds.includes(id);
-  editor.set(inReview ? p.starter : draft ? draft.code : p.starter);
-  el.saved.textContent = !inReview && draft ? "saved" : "";
   attemptFails = 0; reviewRecorded = false;
-  if (inReview) { el.eyebrow.textContent = `// review · ${topicOf(p.concept) ? topicOf(p.concept).title.toLowerCase() : p.concept} · ${reviewIds.indexOf(id) + 1} of ${reviewIds.length}`; el.again.hidden = true; }
+  activeMode = urlMode === "parsons" || urlMode === "bug" ? urlMode : inReview ? reviewVariant(id) : "normal";
+  if (activeMode === "normal") {
+    editor.set(inReview ? p.starter : draft ? draft.code : p.starter);
+    el.saved.textContent = !inReview && draft ? "saved" : "";
+  }
+  await applyMode(p);
+  if (inReview) { el.eyebrow.textContent = `// review · ${topicOf(p.concept) ? topicOf(p.concept).title.toLowerCase() : p.concept} · ${reviewIds.indexOf(id) + 1} of ${reviewIds.length}${activeMode !== "normal" ? " · " + modeLabel(activeMode) : ""}`; el.again.hidden = true; }
   if (!keepResults) clearResults();
+  renderModes(p);
   location.hash = id;
+}
+
+const modeLabel = (m) => (m === "parsons" ? "put the lines in order" : m === "bug" ? "fix the bug" : "");
+// Reviews rotate: the first (fresh) review is the plain problem, later ones
+// alternate between the Parsons and fix-the-bug forms.
+function reviewVariant(id) {
+  const r = reviews.all()[id];
+  if (!r || r.stage !== "spaced") return "normal";
+  return (r.step || 0) % 2 === 1 ? "parsons" : "bug";
+}
+
+async function applyMode(p) {
+  const host = $("editor-host"), pz = $("parsons");
+  const note = document.getElementById("bugnote"); if (note) note.remove();
+  parsons = null; bugCode = "";
+  if (activeMode === "parsons") {
+    host.hidden = true; pz.hidden = false;
+    parsons = makeParsons(pz, p.solution, p.id);
+    el.eyebrow.textContent += " · put the lines in order";
+    el.saved.textContent = "";
+    return;
+  }
+  pz.hidden = true; host.hidden = false;
+  if (activeMode === "bug") {
+    el.saved.textContent = "";
+    setVerdict("", "Planting a bug…");
+    const found = await plantBug(p);
+    if (!found) { activeMode = "normal"; editor.set(p.starter); setVerdict("warn", "[!] No bug variant for this problem", "Showing the normal version instead."); return; }
+    bugCode = found.code;
+    editor.set(bugCode);
+    el.eyebrow.textContent += " · fix the bug";
+    const n = document.createElement("div"); n.id = "bugnote"; n.className = "bugnote";
+    n.textContent = "This is a working solution with one bug planted in it. Find it, fix it, and run.";
+    el.requirements.insertAdjacentElement("afterend", n);
+    el.hints.insertAdjacentHTML("beforeend", `<div class="stage"><button type="button" class="linkish" data-hint="bug">[+] Hint · what kind of bug</button><p hidden>The bug is ${esc(found.kind)}.</p></div>`);
+  }
+}
+
+// Try candidate mutations until one compiles and fails at least one test.
+async function plantBug(p) {
+  for (const c of candidates(p.solution, p.id).slice(0, 12)) {
+    try {
+      const { result } = await judge.run(c.code, p);
+      if (result.status === "ok" && result.passed < result.total) return c;
+    } catch (e) { return null; }
+  }
+  return null;
+}
+
+function renderModes(p) {
+  const base = `practice.html#${p.id}`;
+  const link = (m, text) => (activeMode === m ? `<span class="dim">${text}</span>` : `<a href="practice.html?mode=${m}#${p.id}">${text}</a>`);
+  const stuck = activeMode === "normal" && (state.fails[p.id] || 0) >= UNLOCK_AFTER && !state.solved[p.id] ? `<span class="amber">[!] Stuck? Try it as a Parsons: </span>` : "";
+  $("modes").innerHTML = `${stuck}<span class="muted">Try as:</span> ${activeMode === "normal" ? `<span class="dim">normal</span>` : `<a href="${base}">normal</a>`} · ${link("parsons", "[~] put the lines in order")} · ${link("bug", "[~] fix the bug")}`;
 }
 function pickNext() {
   if (reviewMode) {   // next pending review, or back to Today when done
@@ -265,7 +334,8 @@ async function runCode() {
   if (!current || running || el.run.disabled) return;
   running = true; el.run.disabled = true;
   setVerdict("", "Running…"); editor.markError(null);
-  try { const { result, errors } = await judge.run(editor.get(), current); renderResult(result, errors); }
+  const code = activeMode === "parsons" && parsons ? parsons.get() : editor.get();
+  try { const { result, errors } = await judge.run(code, current); renderResult(result, errors); }
   catch (e) { if (!e.timedOut) setVerdict("fail", "[x] Could not run", e.message); }
   finally { running = false; if (el.judgeStatus.classList.contains("ready")) el.run.disabled = false; }
 }
@@ -304,7 +374,7 @@ function showErrors(errors, fallback) {
 function recordFail(id) {
   const wasNew = !state.solved[id];
   state.fails[id] = (state.fails[id] || 0) + 1; saveFails(); attemptFails += 1;
-  if (current && current.id === id) updateSolutionLock(current);
+  if (current && current.id === id) { updateSolutionLock(current); renderModes(current); }
   sync.push(id);
   logVerdict(id, false, wasNew);
 }
@@ -340,7 +410,7 @@ async function main() {
   editor = makeEditor();
   let saveTimer = null;
   editor.onChange(() => {
-    if (!current) return;
+    if (!current || activeMode !== "normal" || (reviewMode && reviewIds.includes(current.id))) return;   // drafts only for the plain problem
     el.saved.textContent = "…";
     clearTimeout(saveTimer);
     saveTimer = setTimeout(() => { const text = editor.get(); if (text === current.starter) { clearDraft(current.id); el.saved.textContent = ""; } else { setDraft(current.id, text); el.saved.textContent = "saved"; } sync.push(current.id); }, 300);
@@ -354,7 +424,12 @@ async function main() {
   el.prev.addEventListener("click", () => step(-1)); el.nextseq.addEventListener("click", () => step(1));
   el.run.addEventListener("click", runCode);
   el.next.addEventListener("click", pickNext);
-  el.reset.addEventListener("click", () => { if (current) { clearDraft(current.id); editor.set(current.starter); el.saved.textContent = ""; clearResults(); editor.focus(); sync.push(current.id); } });
+  el.reset.addEventListener("click", () => {
+    if (!current) return;
+    if (activeMode === "parsons" && parsons) { parsons.reset(); clearResults(); return; }
+    if (activeMode === "bug") { editor.set(bugCode); clearResults(); editor.focus(); return; }
+    clearDraft(current.id); editor.set(current.starter); el.saved.textContent = ""; clearResults(); editor.focus(); sync.push(current.id);
+  });
   el.hints.addEventListener("click", (ev) => { const b = ev.target.closest("button[data-hint]"); if (!b) return; const p = b.nextElementSibling; p.hidden = !p.hidden; b.textContent = (p.hidden ? "[+] " : "[-] ") + b.textContent.slice(4); });
   el.solutionToggle.addEventListener("click", () => { if (el.solutionToggle.classList.contains("locked")) return; el.solution.hidden = !el.solution.hidden; updateSolutionLock(current); });
   // Practice again: back to the starter without touching the solved date.

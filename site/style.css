@@ -72,6 +72,17 @@
 .cm-s-godot .cm-tab { background: linear-gradient(to right, var(--line) 1px, transparent 1px); }
 .cm-s-godot .cm-error-line { background: rgba(255, 112, 133, 0.12); }
 
+.parsons { display: flex; flex-direction: column; gap: 4px; background: var(--panel); border: 1px solid var(--line); padding: 12px; }
+.parsons-hint { margin-bottom: 6px; }
+.pline { display: grid; grid-template-columns: 20px minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 8px 10px; padding-left: calc(10px + var(--indent, 0) * 28px); background: var(--bg); border: 1px solid var(--line); cursor: grab; }
+.pline code { background: transparent; color: var(--text); padding: 0; font-size: 14px; white-space: pre; }
+.pline .grip { color: var(--dim); font-size: 12px; }
+.pline .moves { display: flex; gap: 4px; }
+.pline .moves button { width: 34px; height: 30px; background: var(--panel); border: 1px solid var(--line-strong); color: var(--text); font-size: 12px; }
+.pline .moves button:disabled { opacity: .3; }
+.pline.dragging { opacity: .5; } .pline.over { border-color: var(--accent); }
+.modes { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12px; }
+.bugnote { padding: 10px 14px; border-left: 2px solid var(--milestone); background: var(--panel); font-size: 14px; }
 .results { padding: 16px 20px; background: var(--panel); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px; }
 .results.pass { border-color: var(--accent); } .results.fail { border-color: var(--error); } .results.warn { border-color: var(--milestone); }
 .verdict-row { display: flex; justify-content: space-between; gap: 12px; font-size: 12px; }
