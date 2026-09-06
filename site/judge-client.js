@@ -64,7 +64,9 @@ export class JudgeClient {
    * in that case a fresh judge is already loading.
    */
   async run(code, problem) {
+    if (!this.ready) throw new Error("the judge has not been started");
     await this.ready;
+    if (!this.frame) throw new Error("the judge is not loaded");
     if (this.pending) throw new Error("a run is already in progress");
     return new Promise((resolve, reject) => {
       const id = this.nextId++;

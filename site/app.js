@@ -416,6 +416,7 @@ async function main() {
     saveTimer = setTimeout(() => { const text = editor.get(); if (text === current.starter) { clearDraft(current.id); el.saved.textContent = ""; } else { setDraft(current.id, text); el.saved.textContent = "saved"; } sync.push(current.id); }, 300);
   });
   await loadBank();
+  judge.load().catch((e) => setVerdict("fail", "[x] The judge could not start", e.message));   // before any problem loads: bug variants need it
 
   el.topic.addEventListener("change", () => { filters.topic = el.topic.value; store.set("filters", filters); renderFilters(); if (!current || !matches(state.byId.get(current.id))) pickNext(); });
   el.difficulty.addEventListener("change", () => { filters.difficulty = el.difficulty.value; store.set("filters", filters); renderFilters(); if (!current || !matches(state.byId.get(current.id))) pickNext(); });
@@ -460,7 +461,6 @@ async function main() {
 
   const why = sessionStorage.getItem("gdp.reloaded");
   if (why) { sessionStorage.removeItem("gdp.reloaded"); setVerdict("warn", why === "crash" ? "[!] The judge crashed on your last run and was restarted" : "[!] Your last run took more than 5 seconds — probably an infinite loop", "The judge was restarted; your code is unchanged."); }
-  onSynced((what) => { if (what === "local-changed" && current) { const d = getDraft(current.id); editor.set(d ? d.code : current.starter); updateSolutionLock(current); } renderFilters(); shell.refresh(); });
-  judge.load().catch((e) => setVerdict("fail", "[x] The judge could not start", e.message));
+  onSynced((what) => { if (what === "local-changed" && current && activeMode === "normal") { const d = getDraft(current.id); editor.set(d ? d.code : current.starter); updateSolutionLock(current); } renderFilters(); shell.refresh(); });
 }
 main().catch((e) => { setVerdict("fail", "[x] Could not load the problem bank", e.message); });
