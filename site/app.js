@@ -101,9 +101,23 @@ function makeEditor() {
     ] });
     const cm = CodeMirror.fromTextArea(ta, {
       mode: "gdscript", theme: "godot", lineNumbers: true, indentWithTabs: true, indentUnit: 4, tabSize: 4, viewportMargin: Infinity,
+      // Like Godot's script editor: typing ( [ { " ' inserts the closing one
+      // and puts the cursor between; typing the closer skips over it;
+      // backspace on an empty pair removes both.
+      autoCloseBrackets: { pairs: "()[]{}''\"\"", closeBefore: ")]}'\":;,", triples: "", explode: "()[]{}" },
       extraKeys: {
         Tab: (cm) => cm.replaceSelection("\t"), "Shift-Tab": (cm) => cm.indentSelection("subtract"),
-        Enter: (cm) => { const cur = cm.getCursor(); const line = cm.getLine(cur.line).slice(0, cur.ch); const indent = (/^\t*/.exec(line) || [""])[0]; cm.replaceSelection("\n" + indent + (/:\s*(#.*)?$/.test(line) ? "\t" : "")); },
+        Enter: (cm) => {
+          // Keep the indentation of the current line, or of the nearest
+          // non-blank line above when this one is blank; add a level after ':'.
+          const cur = cm.getCursor();
+          let n = cur.line;
+          let line = cm.getLine(n).slice(0, cur.ch);
+          while (line.trim() === "" && n > 0) { n -= 1; line = cm.getLine(n); }
+          const indent = (/^\t*/.exec(line) || [""])[0];
+          const extra = /:\s*(#.*)?$/.test(line) && n === cur.line ? "\t" : "";
+          cm.replaceSelection("\n" + indent + extra);
+        },
         "Ctrl-Enter": () => runCode(), "Cmd-Enter": () => runCode(),
       },
     });
