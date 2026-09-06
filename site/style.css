@@ -27,6 +27,16 @@ button { font: inherit; }
 .filters label { display: flex; align-items: center; gap: .4rem; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .filters select { font: inherit; font-size: .95rem; letter-spacing: 0; text-transform: none; color: var(--ink); background: var(--ground); border: 1px solid var(--line); border-radius: 4px; padding: .3rem .5rem; max-width: 22rem; }
 .progress { margin-left: auto; color: var(--muted); font-variant-numeric: tabular-nums; }
+.sequence { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .6rem; flex-basis: 100%; }
+.sequence button { font: inherit; padding: .25rem .55rem; border: 1px solid var(--line); border-radius: 4px; background: var(--ground); color: var(--ink); cursor: pointer; }
+.sequence button:hover:not(:disabled) { border-color: var(--accent); }
+.sequence button:disabled { opacity: .4; cursor: default; }
+#position { font-weight: 600; font-variant-numeric: tabular-nums; min-width: 9rem; text-align: center; }
+.dots { display: flex; flex-wrap: wrap; gap: .25rem; }
+.dots button { min-width: 2.1rem; padding: .15rem .3rem; font-size: .8rem; font-variant-numeric: tabular-nums; }
+.dots button.solved { color: var(--pass); border-color: var(--pass); }
+.dots button.current { background: var(--accent); border-color: var(--accent); color: #fff; }
+.dots button.current.solved { background: var(--pass); border-color: var(--pass); }
 .account { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; font-size: .9rem; }
 .account button, .email-form input { font: inherit; padding: .3rem .7rem; border: 1px solid var(--line); border-radius: 4px; background: var(--ground); color: var(--ink); }
 .account button { cursor: pointer; font-weight: 600; }

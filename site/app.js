@@ -65,7 +65,8 @@ let filters = store.get("filters", { topic: "gq-variables", difficulty: "any" })
 // ---------- DOM ----------
 const $ = (id) => document.getElementById(id);
 const el = {
-  topic: $("topic"), difficulty: $("difficulty"), picker: $("picker"), progress: $("progress"),
+  topic: $("topic"), difficulty: $("difficulty"), progress: $("progress"),
+  prev: $("prev"), nextseq: $("nextseq"), position: $("position"), dots: $("dots"),
   title: $("title"), pid: $("pid"), pdiff: $("pdiff"), prompt: $("prompt"), requirements: $("requirements"),
   hint: $("hint"), solution: $("solution"), solutionbox: $("solutionbox"), tests: $("tests"),
   run: $("run"), reset: $("reset"), next: $("next"), judgeStatus: $("judge-status"),
@@ -194,20 +195,26 @@ let index, problems = [], current = null, running = false;
 const byId = new Map();
 
 function matches(p) {
-  return (filters.topic === "all" || p.concept === filters.topic) && (filters.difficulty === "any" || String(p.difficulty) === filters.difficulty);
+  return p.concept === filters.topic && (filters.difficulty === "any" || String(p.difficulty) === filters.difficulty);
 }
+// The problems of the chosen topic, in bank order, after the difficulty filter.
 function pool() { return problems.filter(matches); }
 
 function renderFilters() {
   const counts = {};
   for (const p of problems) { counts[p.concept] = counts[p.concept] || { n: 0, done: 0 }; counts[p.concept].n++; if (solved[p.id]) counts[p.concept].done++; }
-  el.topic.innerHTML = [`<option value="all">All topics</option>`]
-    .concat(index.concepts.filter((c) => counts[c]).map((c) => `<option value="${c}">${esc(TOPIC_LABEL[c] || c)} (${counts[c].done}/${counts[c].n})</option>`)).join("");
+  const topics = index.concepts.filter((c) => counts[c]);
+  if (!counts[filters.topic]) filters.topic = topics[0];
+  el.topic.innerHTML = topics.map((c) => `<option value="${c}">${esc(TOPIC_LABEL[c] || c)} (${counts[c].done}/${counts[c].n})</option>`).join("");
   el.topic.value = filters.topic;
   el.difficulty.value = filters.difficulty;
+  // Numbered sequence instead of a list of titles: titles can give the answer away.
   const list = pool();
-  el.picker.innerHTML = list.map((p) => `<option value="${p.id}">${solved[p.id] ? "✓ " : ""}${esc(p.title)}</option>`).join("") || `<option value="">(no problems match)</option>`;
-  if (current) el.picker.value = current.id;
+  const at = current ? list.findIndex((p) => p.id === current.id) : -1;
+  el.position.textContent = list.length === 0 ? "No problems match" : at >= 0 ? `Problem ${at + 1} of ${list.length}` : `${list.length} problems`;
+  el.prev.disabled = at <= 0;
+  el.nextseq.disabled = at < 0 || at >= list.length - 1;
+  el.dots.innerHTML = list.map((p, i) => `<button type="button" data-id="${p.id}" class="${solved[p.id] ? "solved" : ""} ${i === at ? "current" : ""}" title="Problem ${i + 1}${solved[p.id] ? " (solved)" : ""}">${solved[p.id] ? "✓" : ""}${i + 1}</button>`).join("");
   const total = problems.length, done = Object.keys(solved).filter((id) => byId.has(id)).length;
   const streak = streakDays();
   el.progress.textContent = `${done} / ${total} solved` + (streak ? ` · ${streak}-day streak` : "");
@@ -474,7 +481,10 @@ async function main() {
 
   el.topic.addEventListener("change", () => { filters.topic = el.topic.value; store.set("filters", filters); renderFilters(); if (!current || !matches(byId.get(current.id))) pickNext(); });
   el.difficulty.addEventListener("change", () => { filters.difficulty = el.difficulty.value; store.set("filters", filters); renderFilters(); if (!current || !matches(byId.get(current.id))) pickNext(); });
-  el.picker.addEventListener("change", () => { if (el.picker.value) showProblem(el.picker.value); });
+  el.dots.addEventListener("click", (ev) => { const b = ev.target.closest("button[data-id]"); if (b) showProblem(b.dataset.id); });
+  const step = (delta) => { const list = pool(); const at = current ? list.findIndex((p) => p.id === current.id) : -1; const target = list[at + delta]; if (target) showProblem(target.id); };
+  el.prev.addEventListener("click", () => step(-1));
+  el.nextseq.addEventListener("click", () => step(1));
   el.run.addEventListener("click", runCode);
   el.next.addEventListener("click", pickNext);
   el.reset.addEventListener("click", () => { if (current) { clearDraft(current.id); editor.set(current.starter); clearResults(); editor.focus(); sync.push(current.id); } });
