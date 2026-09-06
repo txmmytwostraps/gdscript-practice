@@ -1,0 +1,40 @@
+{
+  "id": "gqret-009",
+  "title": "Return a rounded value",
+  "concept": "gq-return",
+  "difficulty": 1,
+  "prompt": "Write `nearest`, which takes a float and returns the nearest whole number as an int. solve returns nearest(x).",
+  "signature": "func solve(x: float) -> int:",
+  "starter": "func solve(x: float) -> int:\n\treturn int(x)",
+  "require_methods": [
+    "nearest"
+  ],
+  "tests": [
+    {
+      "args": [
+        2.4
+      ],
+      "expect": 2
+    },
+    {
+      "args": [
+        2.6
+      ],
+      "expect": 3
+    },
+    {
+      "args": [
+        -1.2
+      ],
+      "expect": -1
+    },
+    {
+      "args": [
+        7
+      ],
+      "expect": 7
+    }
+  ],
+  "hint": "round() gives the nearest value but as a float; int() turns a float into an int.",
+  "solution": "func solve(x: float) -> int:\n\treturn nearest(x)\n\nfunc nearest(value: float) -> int:\n\treturn int(round(value))"
+}

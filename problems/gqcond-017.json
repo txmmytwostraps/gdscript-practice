@@ -1,0 +1,34 @@
+{
+  "id": "gqcond-017",
+  "title": "A helper that returns true or false",
+  "concept": "gq-conditions",
+  "difficulty": 0,
+  "prompt": "Write `is_even`, which returns true when its parameter is even. solve returns is_even(n).",
+  "signature": "func solve(n: int) -> bool:",
+  "starter": "func solve(n: int) -> bool:\n\treturn false",
+  "require_methods": [
+    "is_even"
+  ],
+  "tests": [
+    {
+      "args": [
+        4
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        7
+      ],
+      "expect": false
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": true
+    }
+  ],
+  "hint": "Functions whose names start with is_ usually return a bool. The comparison itself can be the return value.",
+  "solution": "func solve(n: int) -> bool:\n\treturn is_even(n)\n\nfunc is_even(value: int) -> bool:\n\treturn value % 2 == 0"
+}

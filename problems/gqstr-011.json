@@ -1,0 +1,31 @@
+{
+  "id": "gqstr-011",
+  "title": "Split into words",
+  "concept": "gq-strings",
+  "difficulty": 1,
+  "prompt": "Return an array of the words in the text, which are separated by single spaces.",
+  "signature": "func solve(text: String) -> Array:",
+  "starter": "func solve(text: String) -> Array:\n\treturn [text]",
+  "tests": [
+    {
+      "args": [
+        "one two three"
+      ],
+      "expect": [
+        "one",
+        "two",
+        "three"
+      ]
+    },
+    {
+      "args": [
+        "solo"
+      ],
+      "expect": [
+        "solo"
+      ]
+    }
+  ],
+  "hint": "split takes the separator and gives back the pieces.",
+  "solution": "func solve(text: String) -> Array:\n\treturn text.split(\" \")"
+}

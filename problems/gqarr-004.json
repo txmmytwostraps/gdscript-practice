@@ -1,0 +1,37 @@
+{
+  "id": "gqarr-004",
+  "title": "How many",
+  "concept": "gq-arrays",
+  "difficulty": 0,
+  "prompt": "Return how many items are in the array.",
+  "signature": "func solve(items: Array) -> int:",
+  "starter": "func solve(items: Array) -> int:\n\treturn 0",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expect": 3
+    },
+    {
+      "args": [
+        []
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        [
+          9
+        ]
+      ],
+      "expect": 1
+    }
+  ],
+  "hint": "Arrays have a method that tells you their size.",
+  "solution": "func solve(items: Array) -> int:\n\treturn items.size()"
+}

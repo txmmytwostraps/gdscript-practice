@@ -1,0 +1,58 @@
+{
+  "id": "arith-005",
+  "title": "Hours and minutes",
+  "concept": "arithmetic",
+  "difficulty": 1,
+  "prompt": "Given a number of minutes, return an array with two numbers: [hours, leftover minutes]. For example 90 minutes is [1, 30].",
+  "signature": "func solve(total_minutes: int) -> Array:",
+  "starter": "func solve(total_minutes: int) -> Array:\n\treturn [0, 0]",
+  "tests": [
+    {
+      "args": [
+        90
+      ],
+      "expect": [
+        1,
+        30
+      ]
+    },
+    {
+      "args": [
+        60
+      ],
+      "expect": [
+        1,
+        0
+      ]
+    },
+    {
+      "args": [
+        45
+      ],
+      "expect": [
+        0,
+        45
+      ]
+    },
+    {
+      "args": [
+        150
+      ],
+      "expect": [
+        2,
+        30
+      ]
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": [
+        0,
+        0
+      ]
+    }
+  ],
+  "hint": "`total_minutes / 60` on two ints gives the whole hours (90 / 60 is 1). `total_minutes % 60` gives the minutes left over.",
+  "solution": "func solve(total_minutes: int) -> Array:\n\tvar hours = total_minutes / 60\n\tvar minutes = total_minutes % 60\n\treturn [hours, minutes]"
+}

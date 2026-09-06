@@ -1,0 +1,23 @@
+{
+  "id": "gqfunc-014",
+  "title": "Defined below, called above",
+  "concept": "gq-functions",
+  "difficulty": 0,
+  "prompt": "Write a function `hello` that prints \"hello\", and put its definition below solve in the file. Call it from solve. Godot reads the whole script before running, so the order of definitions does not matter.",
+  "signature": "func solve() -> void:",
+  "starter": "func solve() -> void:\n\tpass",
+  "require_methods": [
+    "hello"
+  ],
+  "tests": [
+    {
+      "args": [],
+      "expect": null,
+      "out": [
+        "hello"
+      ]
+    }
+  ],
+  "hint": "Leave a blank line after solve, then define the new function underneath.",
+  "solution": "func solve() -> void:\n\thello()\n\nfunc hello() -> void:\n\tprint(\"hello\")"
+}

@@ -1,0 +1,46 @@
+{
+  "id": "gqvec-012",
+  "title": "Vector2.UP and friends",
+  "concept": "gq-vectors",
+  "difficulty": 0,
+  "prompt": "Return the velocity of something moving straight up at the given speed. Godot has ready-made direction vectors such as Vector2.UP, and remember that up means a negative y on screen.",
+  "signature": "func solve(speed: float) -> Vector2:",
+  "starter": "func solve(speed: float) -> Vector2:\n\treturn Vector2.ZERO",
+  "tests": [
+    {
+      "args": [
+        10
+      ],
+      "expect": {
+        "$v2": [
+          0,
+          -10
+        ]
+      }
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": {
+        "$v2": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "args": [
+        2.5
+      ],
+      "expect": {
+        "$v2": [
+          0,
+          -2.5
+        ]
+      }
+    }
+  ],
+  "hint": "A direction of length 1 times a speed gives a velocity.",
+  "solution": "func solve(speed: float) -> Vector2:\n\treturn Vector2.UP * speed"
+}

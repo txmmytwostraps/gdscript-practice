@@ -1,0 +1,37 @@
+{
+  "id": "gqdelta-002",
+  "title": "New position on a line",
+  "concept": "gq-delta",
+  "difficulty": 0,
+  "prompt": "Something is at position x, moving at speed. Return where it is after one frame of delta seconds.",
+  "signature": "func solve(x: float, speed: float, delta: float) -> float:",
+  "starter": "func solve(x: float, speed: float, delta: float) -> float:\n\treturn x",
+  "tests": [
+    {
+      "args": [
+        0,
+        100,
+        0.1
+      ],
+      "expect": 10
+    },
+    {
+      "args": [
+        50,
+        -20,
+        0.5
+      ],
+      "expect": 40
+    },
+    {
+      "args": [
+        7,
+        0,
+        1
+      ],
+      "expect": 7
+    }
+  ],
+  "hint": "Old position plus the distance moved this frame.",
+  "solution": "func solve(x: float, speed: float, delta: float) -> float:\n\treturn x + speed * delta"
+}

@@ -1,0 +1,41 @@
+{
+  "id": "gqcond-021",
+  "title": "Game over?",
+  "concept": "gq-conditions",
+  "difficulty": 1,
+  "prompt": "The game is over when the player has no lives left or the time has run out (zero or less). Return true if it is over.",
+  "signature": "func solve(lives: int, time_left: float) -> bool:",
+  "starter": "func solve(lives: int, time_left: float) -> bool:\n\treturn false",
+  "tests": [
+    {
+      "args": [
+        0,
+        30
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        3,
+        0
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        3,
+        30
+      ],
+      "expect": false
+    },
+    {
+      "args": [
+        1,
+        0.5
+      ],
+      "expect": false
+    }
+  ],
+  "hint": "Two ways to lose, joined by or.",
+  "solution": "func solve(lives: int, time_left: float) -> bool:\n\treturn lives <= 0 or time_left <= 0"
+}

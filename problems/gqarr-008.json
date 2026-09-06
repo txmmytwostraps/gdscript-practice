@@ -1,0 +1,36 @@
+{
+  "id": "gqarr-008",
+  "title": "Empty or not",
+  "concept": "gq-arrays",
+  "difficulty": 0,
+  "prompt": "Return true if the array has no items.",
+  "signature": "func solve(items: Array) -> bool:",
+  "starter": "func solve(items: Array) -> bool:\n\treturn false",
+  "tests": [
+    {
+      "args": [
+        []
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expect": false
+    },
+    {
+      "args": [
+        [
+          0,
+          0
+        ]
+      ],
+      "expect": false
+    }
+  ],
+  "hint": "Compare the size with zero, or look for a method whose name asks the question.",
+  "solution": "func solve(items: Array) -> bool:\n\treturn items.is_empty()"
+}

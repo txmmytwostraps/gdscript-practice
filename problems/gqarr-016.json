@@ -1,0 +1,41 @@
+{
+  "id": "gqarr-016",
+  "title": "Largest, now with max()",
+  "concept": "gq-arrays",
+  "difficulty": 0,
+  "prompt": "Same task: the largest number in the array. This time use the array's built-in max method.",
+  "signature": "func solve(nums: Array) -> int:",
+  "starter": "func solve(nums: Array) -> int:\n\treturn nums[0]",
+  "tests": [
+    {
+      "args": [
+        [
+          3,
+          9,
+          2
+        ]
+      ],
+      "expect": 9
+    },
+    {
+      "args": [
+        [
+          -5,
+          -1,
+          -9
+        ]
+      ],
+      "expect": -1
+    },
+    {
+      "args": [
+        [
+          7
+        ]
+      ],
+      "expect": 7
+    }
+  ],
+  "hint": "It is a method on the array, called with no arguments.",
+  "solution": "func solve(nums: Array) -> int:\n\treturn nums.max()"
+}

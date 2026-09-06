@@ -1,0 +1,37 @@
+{
+  "id": "gqread-004",
+  "title": "Name the max health",
+  "concept": "gq-readable",
+  "difficulty": 0,
+  "prompt": "A player starts with 100 health. Name that number `MAX_HEALTH` and use it to work out the health left after damage.",
+  "signature": "func solve(damage: int) -> int:",
+  "starter": "func solve(damage: int) -> int:\n\treturn 100 - damage",
+  "require_names": [
+    "MAX_HEALTH"
+  ],
+  "once_only": [
+    100
+  ],
+  "tests": [
+    {
+      "args": [
+        30
+      ],
+      "expect": 70
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 100
+    },
+    {
+      "args": [
+        100
+      ],
+      "expect": 0
+    }
+  ],
+  "hint": "Which number in the starter is the maximum health? That is the one to name.",
+  "solution": "func solve(damage: int) -> int:\n\tconst MAX_HEALTH = 100\n\treturn MAX_HEALTH - damage"
+}

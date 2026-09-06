@@ -1,0 +1,20 @@
+{
+  "id": "gqvar-002",
+  "title": "Store and return a name",
+  "concept": "gq-variables",
+  "difficulty": 0,
+  "prompt": "Create a variable called `player_name` that holds the text \"Godot\". Return it.",
+  "signature": "func solve() -> String:",
+  "starter": "func solve() -> String:\n\treturn \"\"",
+  "require_names": [
+    "player_name"
+  ],
+  "tests": [
+    {
+      "args": [],
+      "expect": "Godot"
+    }
+  ],
+  "hint": "Text values go inside double quotes; the variable name does not.",
+  "solution": "func solve() -> String:\n\tvar player_name = \"Godot\"\n\treturn player_name"
+}

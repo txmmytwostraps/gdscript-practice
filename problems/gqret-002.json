@@ -1,0 +1,34 @@
+{
+  "id": "gqret-002",
+  "title": "Return the parameter",
+  "concept": "gq-return",
+  "difficulty": 0,
+  "prompt": "Write `same`, a function that takes a number and returns it unchanged. solve should return same(n).",
+  "signature": "func solve(n: int) -> int:",
+  "starter": "func solve(n: int) -> int:\n\treturn 0",
+  "require_methods": [
+    "same"
+  ],
+  "tests": [
+    {
+      "args": [
+        4
+      ],
+      "expect": 4
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        -9
+      ],
+      "expect": -9
+    }
+  ],
+  "hint": "The value goes in as a parameter and comes straight back out with return.",
+  "solution": "func solve(n: int) -> int:\n\treturn same(n)\n\nfunc same(value: int) -> int:\n\treturn value"
+}

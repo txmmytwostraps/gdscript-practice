@@ -1,0 +1,34 @@
+{
+  "id": "gqret-004",
+  "title": "Use a returned value",
+  "concept": "gq-return",
+  "difficulty": 0,
+  "prompt": "Write `square`, which returns its parameter times itself. In solve, store square(n) in a variable, add 1 to it, and return the result.",
+  "signature": "func solve(n: int) -> int:",
+  "starter": "func solve(n: int) -> int:\n\treturn n",
+  "require_methods": [
+    "square"
+  ],
+  "tests": [
+    {
+      "args": [
+        3
+      ],
+      "expect": 10
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 1
+    },
+    {
+      "args": [
+        -2
+      ],
+      "expect": 5
+    }
+  ],
+  "hint": "What a function returns can be caught in a variable: var something = square(n).",
+  "solution": "func solve(n: int) -> int:\n\tvar squared = square(n)\n\treturn squared + 1\n\nfunc square(value: int) -> int:\n\treturn value * value"
+}

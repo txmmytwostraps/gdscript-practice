@@ -1,0 +1,38 @@
+{
+  "id": "gqarr-018",
+  "title": "Average",
+  "concept": "gq-arrays",
+  "difficulty": 1,
+  "prompt": "Return the average of the numbers as a float. If the array is empty, return 0.0 instead of dividing by zero.",
+  "signature": "func solve(nums: Array) -> float:",
+  "starter": "func solve(nums: Array) -> float:\n\treturn 0.0",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4
+        ]
+      ],
+      "expect": 2.5
+    },
+    {
+      "args": [
+        []
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        [
+          10
+        ]
+      ],
+      "expect": 10
+    }
+  ],
+  "hint": "Guard the empty case first. Then total divided by size, making sure the division keeps decimals.",
+  "solution": "func solve(nums: Array) -> float:\n\tif nums.is_empty():\n\t\treturn 0.0\n\tvar total = 0\n\tfor n in nums:\n\t\ttotal += n\n\treturn float(total) / nums.size()"
+}

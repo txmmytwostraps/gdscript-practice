@@ -1,0 +1,31 @@
+{
+  "id": "gqstr-021",
+  "title": "Long enough password",
+  "concept": "gq-strings",
+  "difficulty": 0,
+  "prompt": "Return true if the password has at least 8 characters.",
+  "signature": "func solve(password: String) -> bool:",
+  "starter": "func solve(password: String) -> bool:\n\treturn false",
+  "tests": [
+    {
+      "args": [
+        "abcdefgh"
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        "short"
+      ],
+      "expect": false
+    },
+    {
+      "args": [
+        "longer than eight"
+      ],
+      "expect": true
+    }
+  ],
+  "hint": "Get the length, then compare it.",
+  "solution": "func solve(password: String) -> bool:\n\treturn password.length() >= 8"
+}

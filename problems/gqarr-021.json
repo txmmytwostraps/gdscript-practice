@@ -1,0 +1,36 @@
+{
+  "id": "gqarr-021",
+  "title": "Insert at the front",
+  "concept": "gq-arrays",
+  "difficulty": 0,
+  "prompt": "Put value at the start of the array, before everything else, and return the array.",
+  "signature": "func solve(items: Array, value: int) -> Array:",
+  "starter": "func solve(items: Array, value: int) -> Array:\n\titems.append(value)\n\treturn items",
+  "tests": [
+    {
+      "args": [
+        [
+          2,
+          3
+        ],
+        1
+      ],
+      "expect": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "args": [
+        [],
+        5
+      ],
+      "expect": [
+        5
+      ]
+    }
+  ],
+  "hint": "append goes to the back. There is a matching method for the front, and insert can put an item at any position.",
+  "solution": "func solve(items: Array, value: int) -> Array:\n\titems.push_front(value)\n\treturn items"
+}

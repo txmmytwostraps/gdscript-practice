@@ -1,0 +1,37 @@
+{
+  "id": "gqread-010",
+  "title": "Name the critical hit multiplier",
+  "concept": "gq-readable",
+  "difficulty": 0,
+  "prompt": "A critical hit does 1.5 times the normal damage. Name the 1.5 `CRIT_MULTIPLIER` and use it.",
+  "signature": "func solve(damage: float) -> float:",
+  "starter": "func solve(damage: float) -> float:\n\treturn damage * 1.5",
+  "require_names": [
+    "CRIT_MULTIPLIER"
+  ],
+  "once_only": [
+    1.5
+  ],
+  "tests": [
+    {
+      "args": [
+        10
+      ],
+      "expect": 15
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        7
+      ],
+      "expect": 10.5
+    }
+  ],
+  "hint": "A constant can hold a decimal just as easily as a whole number.",
+  "solution": "func solve(damage: float) -> float:\n\tconst CRIT_MULTIPLIER = 1.5\n\treturn damage * CRIT_MULTIPLIER"
+}

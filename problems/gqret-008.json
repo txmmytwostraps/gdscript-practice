@@ -1,0 +1,37 @@
+{
+  "id": "gqret-008",
+  "title": "Return the bigger with max()",
+  "concept": "gq-return",
+  "difficulty": 0,
+  "prompt": "Write `bigger`, which returns the larger of its two parameters. Godot has a built-in max() you can use inside it. solve returns bigger(a, b).",
+  "signature": "func solve(a: int, b: int) -> int:",
+  "starter": "func solve(a: int, b: int) -> int:\n\treturn a",
+  "require_methods": [
+    "bigger"
+  ],
+  "tests": [
+    {
+      "args": [
+        3,
+        7
+      ],
+      "expect": 7
+    },
+    {
+      "args": [
+        9,
+        2
+      ],
+      "expect": 9
+    },
+    {
+      "args": [
+        4,
+        4
+      ],
+      "expect": 4
+    }
+  ],
+  "hint": "Built-in functions return values too; you can return what max() returns.",
+  "solution": "func solve(a: int, b: int) -> int:\n\treturn bigger(a, b)\n\nfunc bigger(x: int, y: int) -> int:\n\treturn max(x, y)"
+}

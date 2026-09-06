@@ -1,0 +1,31 @@
+{
+  "id": "gqstr-015",
+  "title": "Palindrome",
+  "concept": "gq-strings",
+  "difficulty": 1,
+  "prompt": "Return true if the text reads the same backwards as forwards, like \"level\".",
+  "signature": "func solve(text: String) -> bool:",
+  "starter": "func solve(text: String) -> bool:\n\treturn false",
+  "tests": [
+    {
+      "args": [
+        "level"
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        "hello"
+      ],
+      "expect": false
+    },
+    {
+      "args": [
+        ""
+      ],
+      "expect": true
+    }
+  ],
+  "hint": "Compare the text with its reverse.",
+  "solution": "func solve(text: String) -> bool:\n\treturn text == text.reverse()"
+}

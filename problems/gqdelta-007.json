@@ -1,0 +1,37 @@
+{
+  "id": "gqdelta-007",
+  "title": "Accelerate",
+  "concept": "gq-delta",
+  "difficulty": 0,
+  "prompt": "A car at speed gains acceleration pixels per second every second. Return its speed after one frame.",
+  "signature": "func solve(speed: float, acceleration: float, delta: float) -> float:",
+  "starter": "func solve(speed: float, acceleration: float, delta: float) -> float:\n\treturn speed",
+  "tests": [
+    {
+      "args": [
+        0,
+        100,
+        0.1
+      ],
+      "expect": 10
+    },
+    {
+      "args": [
+        50,
+        -20,
+        0.5
+      ],
+      "expect": 40
+    },
+    {
+      "args": [
+        30,
+        0,
+        1
+      ],
+      "expect": 30
+    }
+  ],
+  "hint": "Same shape as moving a position, but for speed.",
+  "solution": "func solve(speed: float, acceleration: float, delta: float) -> float:\n\treturn speed + acceleration * delta"
+}

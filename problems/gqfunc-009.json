@@ -1,0 +1,36 @@
+{
+  "id": "gqfunc-009",
+  "title": "A helper with a default",
+  "concept": "gq-functions",
+  "difficulty": 1,
+  "prompt": "Write `show_score` with two parameters: score, and bonus with a default of 0. It prints score plus bonus. From solve, call it once with just the score, then again with the score and a bonus of 10.",
+  "signature": "func solve(score: int) -> void:",
+  "starter": "func solve(score: int) -> void:\n\tpass",
+  "require_methods": [
+    "show_score"
+  ],
+  "tests": [
+    {
+      "args": [
+        5
+      ],
+      "expect": null,
+      "out": [
+        "5",
+        "15"
+      ]
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": null,
+      "out": [
+        "0",
+        "10"
+      ]
+    }
+  ],
+  "hint": "The default goes in the definition, after an = sign. The first call leaves the bonus out.",
+  "solution": "func solve(score: int) -> void:\n\tshow_score(score)\n\tshow_score(score, 10)\n\nfunc show_score(score: int, bonus: int = 0) -> void:\n\tprint(score + bonus)"
+}

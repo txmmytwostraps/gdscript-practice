@@ -1,0 +1,37 @@
+{
+  "id": "gqread-009",
+  "title": "Name the win score",
+  "concept": "gq-readable",
+  "difficulty": 0,
+  "prompt": "The player wins at 1000 points. This code returns how many points are still needed. Name the 1000 `WIN_SCORE`.",
+  "signature": "func solve(score: int) -> int:",
+  "starter": "func solve(score: int) -> int:\n\treturn 1000 - score",
+  "require_names": [
+    "WIN_SCORE"
+  ],
+  "once_only": [
+    1000
+  ],
+  "tests": [
+    {
+      "args": [
+        400
+      ],
+      "expect": 600
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 1000
+    },
+    {
+      "args": [
+        1000
+      ],
+      "expect": 0
+    }
+  ],
+  "hint": "Same recipe as before: one const line, then use the name in the subtraction.",
+  "solution": "func solve(score: int) -> int:\n\tconst WIN_SCORE = 1000\n\treturn WIN_SCORE - score"
+}

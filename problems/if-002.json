@@ -1,0 +1,37 @@
+{
+  "id": "if-002",
+  "title": "Even or odd",
+  "concept": "ifelse",
+  "difficulty": 0,
+  "prompt": "Return the text \"even\" if n is even, or \"odd\" if it is odd.",
+  "signature": "func solve(n: int) -> String:",
+  "starter": "func solve(n: int) -> String:\n\treturn \"\"",
+  "tests": [
+    {
+      "args": [
+        4
+      ],
+      "expect": "even"
+    },
+    {
+      "args": [
+        7
+      ],
+      "expect": "odd"
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": "even"
+    },
+    {
+      "args": [
+        -3
+      ],
+      "expect": "odd"
+    }
+  ],
+  "hint": "A number is even when the remainder after dividing by 2 is zero: `n % 2 == 0`.",
+  "solution": "func solve(n: int) -> String:\n\tif n % 2 == 0:\n\t\treturn \"even\"\n\telse:\n\t\treturn \"odd\""
+}

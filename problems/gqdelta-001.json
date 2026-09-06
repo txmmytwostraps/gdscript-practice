@@ -1,0 +1,34 @@
+{
+  "id": "gqdelta-001",
+  "title": "Distance moved this frame",
+  "concept": "gq-delta",
+  "difficulty": 0,
+  "prompt": "delta is how many seconds the last frame took. Return how far something moving at speed pixels per second travels during that frame.",
+  "signature": "func solve(speed: float, delta: float) -> float:",
+  "starter": "func solve(speed: float, delta: float) -> float:\n\treturn speed",
+  "tests": [
+    {
+      "args": [
+        100,
+        0.016
+      ],
+      "expect": 1.6
+    },
+    {
+      "args": [
+        250,
+        0.5
+      ],
+      "expect": 125
+    },
+    {
+      "args": [
+        0,
+        1
+      ],
+      "expect": 0
+    }
+  ],
+  "hint": "Pixels per second times seconds gives pixels.",
+  "solution": "func solve(speed: float, delta: float) -> float:\n\treturn speed * delta"
+}

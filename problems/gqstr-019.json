@@ -1,0 +1,31 @@
+{
+  "id": "gqstr-019",
+  "title": "Trim the spaces",
+  "concept": "gq-strings",
+  "difficulty": 0,
+  "prompt": "Return the text with any spaces removed from the start and the end. Spaces in the middle stay.",
+  "signature": "func solve(text: String) -> String:",
+  "starter": "func solve(text: String) -> String:\n\treturn text",
+  "tests": [
+    {
+      "args": [
+        "  hi  "
+      ],
+      "expect": "hi"
+    },
+    {
+      "args": [
+        "a b "
+      ],
+      "expect": "a b"
+    },
+    {
+      "args": [
+        "ok"
+      ],
+      "expect": "ok"
+    }
+  ],
+  "hint": "The method is called strip_edges.",
+  "solution": "func solve(text: String) -> String:\n\treturn text.strip_edges()"
+}

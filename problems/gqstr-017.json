@@ -1,0 +1,31 @@
+{
+  "id": "gqstr-017",
+  "title": "Text to number",
+  "concept": "gq-strings",
+  "difficulty": 1,
+  "prompt": "The text holds a whole number, like \"41\". Return that number plus one, as an int.",
+  "signature": "func solve(text: String) -> int:",
+  "starter": "func solve(text: String) -> int:\n\treturn 0",
+  "tests": [
+    {
+      "args": [
+        "41"
+      ],
+      "expect": 42
+    },
+    {
+      "args": [
+        "0"
+      ],
+      "expect": 1
+    },
+    {
+      "args": [
+        "-5"
+      ],
+      "expect": -4
+    }
+  ],
+  "hint": "Strings have a to_int method. Adding one to text would not work.",
+  "solution": "func solve(text: String) -> int:\n\treturn text.to_int() + 1"
+}

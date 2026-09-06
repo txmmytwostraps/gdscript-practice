@@ -1,0 +1,20 @@
+{
+  "id": "gqvar-003",
+  "title": "Store a true or false",
+  "concept": "gq-variables",
+  "difficulty": 0,
+  "prompt": "Create a variable called `is_alive` and set it to true. Return it.",
+  "signature": "func solve() -> bool:",
+  "starter": "func solve() -> bool:\n\treturn false",
+  "require_names": [
+    "is_alive"
+  ],
+  "tests": [
+    {
+      "args": [],
+      "expect": true
+    }
+  ],
+  "hint": "true and false are written without quotes.",
+  "solution": "func solve() -> bool:\n\tvar is_alive = true\n\treturn is_alive"
+}

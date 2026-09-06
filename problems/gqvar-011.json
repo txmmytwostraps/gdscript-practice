@@ -1,0 +1,37 @@
+{
+  "id": "gqvar-011",
+  "title": "Health after damage",
+  "concept": "gq-variables",
+  "difficulty": 0,
+  "prompt": "Make a variable called `remaining` equal to health minus damage. Return remaining.",
+  "signature": "func solve(health: int, damage: int) -> int:",
+  "starter": "func solve(health: int, damage: int) -> int:\n\treturn health",
+  "require_names": [
+    "remaining"
+  ],
+  "tests": [
+    {
+      "args": [
+        100,
+        30
+      ],
+      "expect": 70
+    },
+    {
+      "args": [
+        50,
+        50
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        10,
+        25
+      ],
+      "expect": -15
+    }
+  ],
+  "hint": "The value of a new variable can be a subtraction. Which of the two numbers comes first?",
+  "solution": "func solve(health: int, damage: int) -> int:\n\tvar remaining = health - damage\n\treturn remaining"
+}

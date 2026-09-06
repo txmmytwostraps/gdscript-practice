@@ -1,0 +1,41 @@
+{
+  "id": "gqrect-013",
+  "title": "Tile rect from a cell",
+  "concept": "gq-rect",
+  "difficulty": 0,
+  "prompt": "Tiles are 64 by 64 pixels. Return the Rect2 that covers the tile at the given column and row.",
+  "signature": "func solve(column: int, row: int) -> Rect2:",
+  "starter": "func solve(column: int, row: int) -> Rect2:\n\treturn Rect2()",
+  "tests": [
+    {
+      "args": [
+        0,
+        0
+      ],
+      "expect": {
+        "$rect": [
+          0,
+          0,
+          64,
+          64
+        ]
+      }
+    },
+    {
+      "args": [
+        2,
+        1
+      ],
+      "expect": {
+        "$rect": [
+          128,
+          64,
+          64,
+          64
+        ]
+      }
+    }
+  ],
+  "hint": "Position is the cell scaled by 64; size is always 64 by 64.",
+  "solution": "func solve(column: int, row: int) -> Rect2:\n\treturn Rect2(Vector2(column, row) * 64, Vector2(64, 64))"
+}

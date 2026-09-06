@@ -1,0 +1,76 @@
+{
+  "id": "gqrect-011",
+  "title": "Do they overlap",
+  "concept": "gq-rect",
+  "difficulty": 1,
+  "prompt": "Return true if the two rectangles overlap. This is how simple games spot collisions.",
+  "signature": "func solve(a: Rect2, b: Rect2) -> bool:",
+  "starter": "func solve(a: Rect2, b: Rect2) -> bool:\n\treturn false",
+  "tests": [
+    {
+      "args": [
+        {
+          "$rect": [
+            0,
+            0,
+            10,
+            10
+          ]
+        },
+        {
+          "$rect": [
+            5,
+            5,
+            10,
+            10
+          ]
+        }
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        {
+          "$rect": [
+            0,
+            0,
+            10,
+            10
+          ]
+        },
+        {
+          "$rect": [
+            20,
+            20,
+            5,
+            5
+          ]
+        }
+      ],
+      "expect": false
+    },
+    {
+      "args": [
+        {
+          "$rect": [
+            0,
+            0,
+            10,
+            10
+          ]
+        },
+        {
+          "$rect": [
+            10,
+            0,
+            5,
+            5
+          ]
+        }
+      ],
+      "expect": false
+    }
+  ],
+  "hint": "Look for a method whose name means to cross or overlap.",
+  "solution": "func solve(a: Rect2, b: Rect2) -> bool:\n\treturn a.intersects(b)"
+}

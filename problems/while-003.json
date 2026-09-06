@@ -1,0 +1,43 @@
+{
+  "id": "while-003",
+  "title": "Count the digits",
+  "concept": "while",
+  "difficulty": 1,
+  "prompt": "Return how many digits the number n has. n is never negative. Treat 0 as having one digit.",
+  "signature": "func solve(n: int) -> int:",
+  "starter": "func solve(n: int) -> int:\n\treturn 1",
+  "tests": [
+    {
+      "args": [
+        12345
+      ],
+      "expect": 5
+    },
+    {
+      "args": [
+        7
+      ],
+      "expect": 1
+    },
+    {
+      "args": [
+        100
+      ],
+      "expect": 3
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 1
+    },
+    {
+      "args": [
+        99999
+      ],
+      "expect": 5
+    }
+  ],
+  "hint": "Dividing an int by 10 drops the last digit: 123 / 10 is 12. Keep dividing while n > 0 and count how many times.",
+  "solution": "func solve(n: int) -> int:\n\tif n == 0:\n\t\treturn 1\n\tvar count = 0\n\twhile n > 0:\n\t\tn = n / 10\n\t\tcount += 1\n\treturn count"
+}

@@ -1,0 +1,43 @@
+{
+  "id": "for-003",
+  "title": "Sum of squares",
+  "concept": "for",
+  "difficulty": 1,
+  "prompt": "Return 1² + 2² + ... + n². For n = 3 that is 1 + 4 + 9 = 14. For 0, return 0.",
+  "signature": "func solve(n: int) -> int:",
+  "starter": "func solve(n: int) -> int:\n\treturn 0",
+  "tests": [
+    {
+      "args": [
+        3
+      ],
+      "expect": 14
+    },
+    {
+      "args": [
+        1
+      ],
+      "expect": 1
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        5
+      ],
+      "expect": 55
+    },
+    {
+      "args": [
+        10
+      ],
+      "expect": 385
+    }
+  ],
+  "hint": "`for i in range(1, n + 1):` counts from 1 up to n (range stops just before the second number).",
+  "solution": "func solve(n: int) -> int:\n\tvar total = 0\n\tfor i in range(1, n + 1):\n\t\ttotal += i * i\n\treturn total"
+}

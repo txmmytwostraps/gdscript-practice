@@ -1,0 +1,61 @@
+{
+  "id": "gqrect-002",
+  "title": "Rect from position and size",
+  "concept": "gq-rect",
+  "difficulty": 0,
+  "prompt": "Return a Rect2 from a position vector and a size vector.",
+  "signature": "func solve(position: Vector2, size: Vector2) -> Rect2:",
+  "starter": "func solve(position: Vector2, size: Vector2) -> Rect2:\n\treturn Rect2()",
+  "tests": [
+    {
+      "args": [
+        {
+          "$v2": [
+            10,
+            20
+          ]
+        },
+        {
+          "$v2": [
+            30,
+            40
+          ]
+        }
+      ],
+      "expect": {
+        "$rect": [
+          10,
+          20,
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "args": [
+        {
+          "$v2": [
+            -5,
+            0
+          ]
+        },
+        {
+          "$v2": [
+            5,
+            5
+          ]
+        }
+      ],
+      "expect": {
+        "$rect": [
+          -5,
+          0,
+          5,
+          5
+        ]
+      }
+    }
+  ],
+  "hint": "Rect2 also accepts two vectors.",
+  "solution": "func solve(position: Vector2, size: Vector2) -> Rect2:\n\treturn Rect2(position, size)"
+}

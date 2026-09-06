@@ -1,0 +1,24 @@
+{
+  "id": "gqfunc-002",
+  "title": "Call it twice",
+  "concept": "gq-functions",
+  "difficulty": 0,
+  "prompt": "Write a function `greet` that prints \"Hi\". Call it twice from solve, so \"Hi\" is printed two times.",
+  "signature": "func solve() -> void:",
+  "starter": "func solve() -> void:\n\tpass",
+  "require_methods": [
+    "greet"
+  ],
+  "tests": [
+    {
+      "args": [],
+      "expect": null,
+      "out": [
+        "Hi",
+        "Hi"
+      ]
+    }
+  ],
+  "hint": "Once a function exists you can call it as often as you like. Two call lines.",
+  "solution": "func solve() -> void:\n\tgreet()\n\tgreet()\n\nfunc greet() -> void:\n\tprint(\"Hi\")"
+}

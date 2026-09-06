@@ -1,0 +1,37 @@
+{
+  "id": "gqparam-007",
+  "title": "Use the parameter twice",
+  "concept": "gq-parameters",
+  "difficulty": 0,
+  "prompt": "A parameter can be used as many times as you like. Return n times n, plus n.",
+  "signature": "func solve(n: int) -> int:",
+  "starter": "func solve(n: int) -> int:\n\treturn n",
+  "tests": [
+    {
+      "args": [
+        3
+      ],
+      "expect": 12
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        1
+      ],
+      "expect": 2
+    },
+    {
+      "args": [
+        5
+      ],
+      "expect": 30
+    }
+  ],
+  "hint": "Three uses of n in one expression.",
+  "solution": "func solve(n: int) -> int:\n\treturn n * n + n"
+}

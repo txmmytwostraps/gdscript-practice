@@ -1,0 +1,41 @@
+{
+  "id": "gqcond-008",
+  "title": "Either is enough",
+  "concept": "gq-conditions",
+  "difficulty": 1,
+  "prompt": "Shipping is free if the order total is 50 or more, OR if the customer is a member. Return true if shipping is free.",
+  "signature": "func solve(total: float, is_member: bool) -> bool:",
+  "starter": "func solve(total: float, is_member: bool) -> bool:\n\treturn false",
+  "tests": [
+    {
+      "args": [
+        60,
+        false
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        10,
+        true
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        10,
+        false
+      ],
+      "expect": false
+    },
+    {
+      "args": [
+        50,
+        false
+      ],
+      "expect": true
+    }
+  ],
+  "hint": "or is true when at least one side is true.",
+  "solution": "func solve(total: float, is_member: bool) -> bool:\n\treturn total >= 50 or is_member"
+}

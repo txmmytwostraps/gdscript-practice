@@ -1,0 +1,45 @@
+{
+  "id": "gqcond-006",
+  "title": "Between",
+  "concept": "gq-conditions",
+  "difficulty": 1,
+  "prompt": "Return true if n is between low and high, including both ends.",
+  "signature": "func solve(n: int, low: int, high: int) -> bool:",
+  "starter": "func solve(n: int, low: int, high: int) -> bool:\n\treturn false",
+  "tests": [
+    {
+      "args": [
+        5,
+        1,
+        10
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        1,
+        1,
+        10
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        10,
+        1,
+        10
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        11,
+        1,
+        10
+      ],
+      "expect": false
+    }
+  ],
+  "hint": "Two comparisons have to hold at the same time. The word for that is and.",
+  "solution": "func solve(n: int, low: int, high: int) -> bool:\n\treturn n >= low and n <= high"
+}

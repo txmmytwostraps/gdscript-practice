@@ -1,0 +1,31 @@
+{
+  "id": "gqstr-023",
+  "title": "Part of a string",
+  "concept": "gq-strings",
+  "difficulty": 1,
+  "prompt": "Return the first three characters of the text. If it is shorter than three, return all of it.",
+  "signature": "func solve(text: String) -> String:",
+  "starter": "func solve(text: String) -> String:\n\treturn text",
+  "tests": [
+    {
+      "args": [
+        "Godot"
+      ],
+      "expect": "God"
+    },
+    {
+      "args": [
+        "hi"
+      ],
+      "expect": "hi"
+    },
+    {
+      "args": [
+        "abcdef"
+      ],
+      "expect": "abc"
+    }
+  ],
+  "hint": "substr takes a start position and a length, and is happy to stop early.",
+  "solution": "func solve(text: String) -> String:\n\treturn text.substr(0, 3)"
+}

@@ -1,0 +1,40 @@
+{
+  "id": "gqdelta-013",
+  "title": "Health regen with a cap",
+  "concept": "gq-delta",
+  "difficulty": 1,
+  "prompt": "Health recovers at regen points per second but can never go above max_hp. Return the health after one frame.",
+  "signature": "func solve(hp: float, regen: float, max_hp: float, delta: float) -> float:",
+  "starter": "func solve(hp: float, regen: float, max_hp: float, delta: float) -> float:\n\treturn hp + regen * delta",
+  "tests": [
+    {
+      "args": [
+        50,
+        10,
+        100,
+        0.5
+      ],
+      "expect": 55
+    },
+    {
+      "args": [
+        99,
+        10,
+        100,
+        0.5
+      ],
+      "expect": 100
+    },
+    {
+      "args": [
+        100,
+        10,
+        100,
+        1
+      ],
+      "expect": 100
+    }
+  ],
+  "hint": "Add the regen, then cap it: min() with the maximum.",
+  "solution": "func solve(hp: float, regen: float, max_hp: float, delta: float) -> float:\n\treturn min(hp + regen * delta, max_hp)"
+}

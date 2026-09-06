@@ -1,0 +1,43 @@
+{
+  "id": "while-004",
+  "title": "Halve until small",
+  "concept": "while",
+  "difficulty": 1,
+  "prompt": "Keep dividing n by 2 (whole-number division, so 25 becomes 12) until it is less than 10. Return how many divisions that took.",
+  "signature": "func solve(n: int) -> int:",
+  "starter": "func solve(n: int) -> int:\n\treturn 0",
+  "tests": [
+    {
+      "args": [
+        100
+      ],
+      "expect": 4
+    },
+    {
+      "args": [
+        9
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        10
+      ],
+      "expect": 1
+    },
+    {
+      "args": [
+        1000
+      ],
+      "expect": 7
+    },
+    {
+      "args": [
+        19
+      ],
+      "expect": 1
+    }
+  ],
+  "hint": "`while n >= 10:` divide, and add one to a counter.",
+  "solution": "func solve(n: int) -> int:\n\tvar count = 0\n\twhile n >= 10:\n\t\tn = n / 2\n\t\tcount += 1\n\treturn count"
+}

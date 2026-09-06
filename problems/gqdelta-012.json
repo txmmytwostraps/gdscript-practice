@@ -1,0 +1,37 @@
+{
+  "id": "gqdelta-012",
+  "title": "Same distance at any frame rate",
+  "concept": "gq-delta",
+  "difficulty": 1,
+  "prompt": "Simulate a run frame by frame: fps frames every second, each with delta equal to 1.0 / fps. Add speed times delta on every frame for the given number of seconds, and return the total. Notice the answer does not depend on fps.",
+  "signature": "func solve(speed: float, seconds: int, fps: int) -> float:",
+  "starter": "func solve(speed: float, seconds: int, fps: int) -> float:\n\treturn 0.0",
+  "tests": [
+    {
+      "args": [
+        100,
+        2,
+        60
+      ],
+      "expect": 200
+    },
+    {
+      "args": [
+        100,
+        2,
+        30
+      ],
+      "expect": 200
+    },
+    {
+      "args": [
+        50,
+        1,
+        10
+      ],
+      "expect": 50
+    }
+  ],
+  "hint": "Work out delta once, then loop seconds times fps times adding a little each turn.",
+  "solution": "func solve(speed: float, seconds: int, fps: int) -> float:\n\tvar delta = 1.0 / fps\n\tvar total = 0.0\n\tfor i in range(seconds * fps):\n\t\ttotal += speed * delta\n\treturn total"
+}

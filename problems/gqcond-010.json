@@ -1,0 +1,31 @@
+{
+  "id": "gqcond-010",
+  "title": "Sign of a number",
+  "concept": "gq-conditions",
+  "difficulty": 1,
+  "prompt": "Return -1 if n is negative, 0 if it is zero, and 1 if it is positive.",
+  "signature": "func solve(n: int) -> int:",
+  "starter": "func solve(n: int) -> int:\n\treturn 0",
+  "tests": [
+    {
+      "args": [
+        -7
+      ],
+      "expect": -1
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        12
+      ],
+      "expect": 1
+    }
+  ],
+  "hint": "Three outcomes need if, elif and else.",
+  "solution": "func solve(n: int) -> int:\n\tif n < 0:\n\t\treturn -1\n\telif n == 0:\n\t\treturn 0\n\telse:\n\t\treturn 1"
+}

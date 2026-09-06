@@ -1,0 +1,43 @@
+{
+  "id": "while-002",
+  "title": "Sum up to n",
+  "concept": "while",
+  "difficulty": 0,
+  "prompt": "Return 1 + 2 + 3 + ... + n. For 0, return 0. Use a while loop.",
+  "signature": "func solve(n: int) -> int:",
+  "starter": "func solve(n: int) -> int:\n\tvar total = 0\n\treturn total",
+  "tests": [
+    {
+      "args": [
+        4
+      ],
+      "expect": 10
+    },
+    {
+      "args": [
+        1
+      ],
+      "expect": 1
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        10
+      ],
+      "expect": 55
+    },
+    {
+      "args": [
+        100
+      ],
+      "expect": 5050
+    }
+  ],
+  "hint": "A counter `i` from 1 up to n. Each time round the loop, `total += i` and `i += 1`.",
+  "solution": "func solve(n: int) -> int:\n\tvar total = 0\n\tvar i = 1\n\twhile i <= n:\n\t\ttotal += i\n\t\ti += 1\n\treturn total"
+}

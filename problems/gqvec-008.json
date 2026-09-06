@@ -1,0 +1,61 @@
+{
+  "id": "gqvec-008",
+  "title": "Direction of length 1",
+  "concept": "gq-vectors",
+  "difficulty": 1,
+  "prompt": "Return a vector pointing the same way as v but with length exactly 1. Games use these to say which way something faces.",
+  "signature": "func solve(v: Vector2) -> Vector2:",
+  "starter": "func solve(v: Vector2) -> Vector2:\n\treturn v",
+  "tests": [
+    {
+      "args": [
+        {
+          "$v2": [
+            3,
+            4
+          ]
+        }
+      ],
+      "expect": {
+        "$v2": [
+          0.6,
+          0.8
+        ]
+      }
+    },
+    {
+      "args": [
+        {
+          "$v2": [
+            0,
+            5
+          ]
+        }
+      ],
+      "expect": {
+        "$v2": [
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "args": [
+        {
+          "$v2": [
+            -2,
+            0
+          ]
+        }
+      ],
+      "expect": {
+        "$v2": [
+          -1,
+          0
+        ]
+      }
+    }
+  ],
+  "hint": "This is called normalizing, and there is a method named after it.",
+  "solution": "func solve(v: Vector2) -> Vector2:\n\treturn v.normalized()"
+}

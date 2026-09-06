@@ -1,0 +1,57 @@
+{
+  "id": "gqvec-003",
+  "title": "Add two vectors",
+  "concept": "gq-vectors",
+  "difficulty": 0,
+  "prompt": "Return a plus b. Adding vectors adds the x parts together and the y parts together.",
+  "signature": "func solve(a: Vector2, b: Vector2) -> Vector2:",
+  "starter": "func solve(a: Vector2, b: Vector2) -> Vector2:\n\treturn a",
+  "tests": [
+    {
+      "args": [
+        {
+          "$v2": [
+            1,
+            2
+          ]
+        },
+        {
+          "$v2": [
+            3,
+            4
+          ]
+        }
+      ],
+      "expect": {
+        "$v2": [
+          4,
+          6
+        ]
+      }
+    },
+    {
+      "args": [
+        {
+          "$v2": [
+            0,
+            0
+          ]
+        },
+        {
+          "$v2": [
+            5,
+            -5
+          ]
+        }
+      ],
+      "expect": {
+        "$v2": [
+          5,
+          -5
+        ]
+      }
+    }
+  ],
+  "hint": "The + sign works on whole vectors; no need to touch x and y yourself.",
+  "solution": "func solve(a: Vector2, b: Vector2) -> Vector2:\n\treturn a + b"
+}

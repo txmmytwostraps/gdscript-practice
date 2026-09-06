@@ -1,0 +1,49 @@
+{
+  "id": "gqvec-015",
+  "title": "Grid to pixels",
+  "concept": "gq-vectors",
+  "difficulty": 0,
+  "prompt": "A grid has cells 64 pixels wide and tall. Return the pixel position of the top-left corner of the cell at the given column and row.",
+  "signature": "func solve(column: int, row: int) -> Vector2:",
+  "starter": "func solve(column: int, row: int) -> Vector2:\n\treturn Vector2(column, row)",
+  "tests": [
+    {
+      "args": [
+        0,
+        0
+      ],
+      "expect": {
+        "$v2": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "args": [
+        2,
+        1
+      ],
+      "expect": {
+        "$v2": [
+          128,
+          64
+        ]
+      }
+    },
+    {
+      "args": [
+        1,
+        3
+      ],
+      "expect": {
+        "$v2": [
+          64,
+          192
+        ]
+      }
+    }
+  ],
+  "hint": "Make a vector from the column and row, then scale it.",
+  "solution": "func solve(column: int, row: int) -> Vector2:\n\treturn Vector2(column, row) * 64"
+}

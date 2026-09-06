@@ -1,0 +1,37 @@
+{
+  "id": "gqcond-011",
+  "title": "Clamp with ifs",
+  "concept": "gq-conditions",
+  "difficulty": 1,
+  "prompt": "Return value, but never below low and never above high. Do it with if statements instead of the built-in clamp().",
+  "signature": "func solve(value: int, low: int, high: int) -> int:",
+  "starter": "func solve(value: int, low: int, high: int) -> int:\n\treturn value",
+  "tests": [
+    {
+      "args": [
+        5,
+        0,
+        10
+      ],
+      "expect": 5
+    },
+    {
+      "args": [
+        -3,
+        0,
+        10
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        15,
+        0,
+        10
+      ],
+      "expect": 10
+    }
+  ],
+  "hint": "Check too low, then too high, then fall through to the value itself.",
+  "solution": "func solve(value: int, low: int, high: int) -> int:\n\tif value < low:\n\t\treturn low\n\telif value > high:\n\t\treturn high\n\telse:\n\t\treturn value"
+}

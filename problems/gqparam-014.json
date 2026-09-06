@@ -1,0 +1,34 @@
+{
+  "id": "gqparam-014",
+  "title": "Total seconds",
+  "concept": "gq-parameters",
+  "difficulty": 0,
+  "prompt": "A time is given as minutes and seconds. Return the total number of seconds.",
+  "signature": "func solve(minutes: int, seconds: int) -> int:",
+  "starter": "func solve(minutes: int, seconds: int) -> int:\n\treturn seconds",
+  "tests": [
+    {
+      "args": [
+        1,
+        30
+      ],
+      "expect": 90
+    },
+    {
+      "args": [
+        0,
+        45
+      ],
+      "expect": 45
+    },
+    {
+      "args": [
+        2,
+        0
+      ],
+      "expect": 120
+    }
+  ],
+  "hint": "Convert the minutes first, then add the leftover seconds.",
+  "solution": "func solve(minutes: int, seconds: int) -> int:\n\treturn minutes * 60 + seconds"
+}

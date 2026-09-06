@@ -1,0 +1,31 @@
+{
+  "id": "str-003",
+  "title": "Shout",
+  "concept": "strings",
+  "difficulty": 0,
+  "prompt": "Return the text in capital letters with an exclamation mark on the end. \"hi\" becomes \"HI!\".",
+  "signature": "func solve(text: String) -> String:",
+  "starter": "func solve(text: String) -> String:\n\treturn text",
+  "tests": [
+    {
+      "args": [
+        "hi"
+      ],
+      "expect": "HI!"
+    },
+    {
+      "args": [
+        "Godot"
+      ],
+      "expect": "GODOT!"
+    },
+    {
+      "args": [
+        ""
+      ],
+      "expect": "!"
+    }
+  ],
+  "hint": "`text.to_upper()` gives the capitals; then add \"!\".",
+  "solution": "func solve(text: String) -> String:\n\treturn text.to_upper() + \"!\""
+}

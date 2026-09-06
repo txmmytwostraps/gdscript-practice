@@ -1,0 +1,49 @@
+{
+  "id": "gqdelta-009",
+  "title": "Move toward without overshooting",
+  "concept": "gq-delta",
+  "difficulty": 1,
+  "prompt": "Move x toward target at speed, but never past it. Return the new x.",
+  "signature": "func solve(x: float, target: float, speed: float, delta: float) -> float:",
+  "starter": "func solve(x: float, target: float, speed: float, delta: float) -> float:\n\treturn x + speed * delta",
+  "tests": [
+    {
+      "args": [
+        0,
+        10,
+        4,
+        0.5
+      ],
+      "expect": 2
+    },
+    {
+      "args": [
+        9,
+        10,
+        4,
+        0.5
+      ],
+      "expect": 10
+    },
+    {
+      "args": [
+        10,
+        0,
+        4,
+        0.25
+      ],
+      "expect": 9
+    },
+    {
+      "args": [
+        5,
+        5,
+        4,
+        1
+      ],
+      "expect": 5
+    }
+  ],
+  "hint": "Godot has move_toward(from, to, step). The step is how far you may go this frame.",
+  "solution": "func solve(x: float, target: float, speed: float, delta: float) -> float:\n\treturn move_toward(x, target, speed * delta)"
+}

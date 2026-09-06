@@ -1,0 +1,37 @@
+{
+  "id": "gqvar-010",
+  "title": "Swap two variables",
+  "concept": "gq-variables",
+  "difficulty": 1,
+  "prompt": "Swap the values of a and b using a third variable called `temp`. After the swap, return a (it should now hold what b had).",
+  "signature": "func solve(a: int, b: int) -> int:",
+  "starter": "func solve(a: int, b: int) -> int:\n\treturn a",
+  "require_names": [
+    "temp"
+  ],
+  "tests": [
+    {
+      "args": [
+        1,
+        2
+      ],
+      "expect": 2
+    },
+    {
+      "args": [
+        5,
+        5
+      ],
+      "expect": 5
+    },
+    {
+      "args": [
+        0,
+        -1
+      ],
+      "expect": -1
+    }
+  ],
+  "hint": "Three steps: put a into temp, put b into a, put temp into b.",
+  "solution": "func solve(a: int, b: int) -> int:\n\tvar temp = a\n\ta = b\n\tb = temp\n\treturn a"
+}

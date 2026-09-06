@@ -1,0 +1,41 @@
+{
+  "id": "str-004",
+  "title": "Repeat",
+  "concept": "strings",
+  "difficulty": 1,
+  "prompt": "Return text repeated `times` times, joined together. (\"ab\", 3) gives \"ababab\". Zero times gives an empty string.",
+  "signature": "func solve(text: String, times: int) -> String:",
+  "starter": "func solve(text: String, times: int) -> String:\n\treturn text",
+  "tests": [
+    {
+      "args": [
+        "ab",
+        3
+      ],
+      "expect": "ababab"
+    },
+    {
+      "args": [
+        "x",
+        0
+      ],
+      "expect": ""
+    },
+    {
+      "args": [
+        "go",
+        1
+      ],
+      "expect": "go"
+    },
+    {
+      "args": [
+        "-",
+        5
+      ],
+      "expect": "-----"
+    }
+  ],
+  "hint": "Start with `result = \"\"` and in a loop do `result += text`. (There is also a built-in `text.repeat(times)`.)",
+  "solution": "func solve(text: String, times: int) -> String:\n\tvar result = \"\"\n\tfor i in range(times):\n\t\tresult += text\n\treturn result"
+}

@@ -1,0 +1,43 @@
+{
+  "id": "vars-005",
+  "title": "Sales tax",
+  "concept": "variables",
+  "difficulty": 1,
+  "prompt": "Inside solve(), make a constant `TAX` equal to 0.2 (that is 20%). Return the price with tax added: price + price * TAX.",
+  "signature": "func solve(price: float) -> float:",
+  "starter": "func solve(price: float) -> float:\n\treturn price",
+  "tests": [
+    {
+      "args": [
+        10
+      ],
+      "expect": 12
+    },
+    {
+      "args": [
+        5
+      ],
+      "expect": 6
+    },
+    {
+      "args": [
+        100
+      ],
+      "expect": 120
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        7.5
+      ],
+      "expect": 9
+    }
+  ],
+  "hint": "A constant is like a variable that never changes: `const TAX = 0.2`.",
+  "solution": "func solve(price: float) -> float:\n\tconst TAX = 0.2\n\treturn price + price * TAX"
+}

@@ -1,0 +1,41 @@
+{
+  "id": "if-004",
+  "title": "Larger of two",
+  "concept": "ifelse",
+  "difficulty": 0,
+  "prompt": "Return whichever of a and b is larger. If they are equal, return either one.",
+  "signature": "func solve(a: int, b: int) -> int:",
+  "starter": "func solve(a: int, b: int) -> int:\n\treturn a",
+  "tests": [
+    {
+      "args": [
+        3,
+        7
+      ],
+      "expect": 7
+    },
+    {
+      "args": [
+        9,
+        2
+      ],
+      "expect": 9
+    },
+    {
+      "args": [
+        4,
+        4
+      ],
+      "expect": 4
+    },
+    {
+      "args": [
+        -1,
+        -5
+      ],
+      "expect": -1
+    }
+  ],
+  "hint": "`if a > b:` return a, `else:` return b.",
+  "solution": "func solve(a: int, b: int) -> int:\n\tif a > b:\n\t\treturn a\n\telse:\n\t\treturn b"
+}

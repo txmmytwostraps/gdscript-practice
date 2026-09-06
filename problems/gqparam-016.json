@@ -1,0 +1,37 @@
+{
+  "id": "gqparam-016",
+  "title": "Digits into a number",
+  "concept": "gq-parameters",
+  "difficulty": 1,
+  "prompt": "Three single digits arrive in order: first, second, third. Return the three-digit number they make, so solve(1, 2, 3) is 123.",
+  "signature": "func solve(first: int, second: int, third: int) -> int:",
+  "starter": "func solve(first: int, second: int, third: int) -> int:\n\treturn first + second + third",
+  "tests": [
+    {
+      "args": [
+        1,
+        2,
+        3
+      ],
+      "expect": 123
+    },
+    {
+      "args": [
+        0,
+        0,
+        7
+      ],
+      "expect": 7
+    },
+    {
+      "args": [
+        9,
+        9,
+        9
+      ],
+      "expect": 999
+    }
+  ],
+  "hint": "The first digit is worth a hundred times itself, the second ten times.",
+  "solution": "func solve(first: int, second: int, third: int) -> int:\n\treturn first * 100 + second * 10 + third"
+}

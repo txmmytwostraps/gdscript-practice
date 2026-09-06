@@ -1,0 +1,37 @@
+{
+  "id": "gqread-011",
+  "title": "Name the frames per second",
+  "concept": "gq-readable",
+  "difficulty": 0,
+  "prompt": "This turns a number of frames into seconds, assuming 60 frames every second. Name the 60.0 `FRAMES_PER_SECOND`.",
+  "signature": "func solve(frames: int) -> float:",
+  "starter": "func solve(frames: int) -> float:\n\treturn frames / 60.0",
+  "require_names": [
+    "FRAMES_PER_SECOND"
+  ],
+  "once_only": [
+    60
+  ],
+  "tests": [
+    {
+      "args": [
+        60
+      ],
+      "expect": 1
+    },
+    {
+      "args": [
+        30
+      ],
+      "expect": 0.5
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 0
+    }
+  ],
+  "hint": "Keep the .0 in the constant, or the division will throw away the decimals.",
+  "solution": "func solve(frames: int) -> float:\n\tconst FRAMES_PER_SECOND = 60.0\n\treturn frames / FRAMES_PER_SECOND"
+}

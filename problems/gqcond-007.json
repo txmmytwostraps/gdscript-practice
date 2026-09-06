@@ -1,0 +1,41 @@
+{
+  "id": "gqcond-007",
+  "title": "Both must be true",
+  "concept": "gq-conditions",
+  "difficulty": 1,
+  "prompt": "Someone can enter the concert only if they are at least 18 AND they have a ticket. Return true if they can enter.",
+  "signature": "func solve(age: int, has_ticket: bool) -> bool:",
+  "starter": "func solve(age: int, has_ticket: bool) -> bool:\n\treturn has_ticket",
+  "tests": [
+    {
+      "args": [
+        20,
+        true
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        20,
+        false
+      ],
+      "expect": false
+    },
+    {
+      "args": [
+        16,
+        true
+      ],
+      "expect": false
+    },
+    {
+      "args": [
+        18,
+        true
+      ],
+      "expect": true
+    }
+  ],
+  "hint": "has_ticket is already true or false; you can put it straight into an and.",
+  "solution": "func solve(age: int, has_ticket: bool) -> bool:\n\treturn age >= 18 and has_ticket"
+}

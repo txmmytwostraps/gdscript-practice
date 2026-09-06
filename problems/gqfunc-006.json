@@ -1,0 +1,25 @@
+{
+  "id": "gqfunc-006",
+  "title": "A helper that calls a helper",
+  "concept": "gq-functions",
+  "difficulty": 1,
+  "prompt": "Write `beep`, which prints \"beep\". Then write `double_beep`, which calls beep twice. From solve, call double_beep once.",
+  "signature": "func solve() -> void:",
+  "starter": "func solve() -> void:\n\tpass",
+  "require_methods": [
+    "beep",
+    "double_beep"
+  ],
+  "tests": [
+    {
+      "args": [],
+      "expect": null,
+      "out": [
+        "beep",
+        "beep"
+      ]
+    }
+  ],
+  "hint": "Any function can call any other. solve calls one function, which calls another.",
+  "solution": "func solve() -> void:\n\tdouble_beep()\n\nfunc beep() -> void:\n\tprint(\"beep\")\n\nfunc double_beep() -> void:\n\tbeep()\n\tbeep()"
+}

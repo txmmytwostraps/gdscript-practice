@@ -1,0 +1,39 @@
+{
+  "id": "gqfunc-011",
+  "title": "Print before and after",
+  "concept": "gq-functions",
+  "difficulty": 0,
+  "prompt": "Write `announce_start`, which prints \"start\", and `announce_end`, which prints \"done\". In solve: call the first one, print n with print(), then call the second one.",
+  "signature": "func solve(n: int) -> void:",
+  "starter": "func solve(n: int) -> void:\n\tprint(n)",
+  "require_methods": [
+    "announce_start",
+    "announce_end"
+  ],
+  "tests": [
+    {
+      "args": [
+        7
+      ],
+      "expect": null,
+      "out": [
+        "start",
+        "7",
+        "done"
+      ]
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": null,
+      "out": [
+        "start",
+        "0",
+        "done"
+      ]
+    }
+  ],
+  "hint": "Three lines in solve, in the order the output should appear.",
+  "solution": "func solve(n: int) -> void:\n\tannounce_start()\n\tprint(n)\n\tannounce_end()\n\nfunc announce_start() -> void:\n\tprint(\"start\")\n\nfunc announce_end() -> void:\n\tprint(\"done\")"
+}

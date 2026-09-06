@@ -1,0 +1,34 @@
+{
+  "id": "gqstr-024",
+  "title": "Same word, any case",
+  "concept": "gq-strings",
+  "difficulty": 1,
+  "prompt": "Return true if a and b are the same word ignoring capital letters, so \"Godot\" and \"GODOT\" match.",
+  "signature": "func solve(a: String, b: String) -> bool:",
+  "starter": "func solve(a: String, b: String) -> bool:\n\treturn a == b",
+  "tests": [
+    {
+      "args": [
+        "Godot",
+        "GODOT"
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        "cat",
+        "dog"
+      ],
+      "expect": false
+    },
+    {
+      "args": [
+        "Hi",
+        "hi"
+      ],
+      "expect": true
+    }
+  ],
+  "hint": "Make both the same case before comparing.",
+  "solution": "func solve(a: String, b: String) -> bool:\n\treturn a.to_lower() == b.to_lower()"
+}

@@ -1,0 +1,27 @@
+{
+  "id": "gqstr-018",
+  "title": "Format with %",
+  "concept": "gq-strings",
+  "difficulty": 1,
+  "prompt": "Return \"NAME has N hp\" using a format string instead of joining pieces: \"%s has %d hp\" % [name, hp].",
+  "signature": "func solve(name: String, hp: int) -> String:",
+  "starter": "func solve(name: String, hp: int) -> String:\n\treturn name",
+  "tests": [
+    {
+      "args": [
+        "Tim",
+        100
+      ],
+      "expect": "Tim has 100 hp"
+    },
+    {
+      "args": [
+        "Bob",
+        0
+      ],
+      "expect": "Bob has 0 hp"
+    }
+  ],
+  "hint": "%s is a slot for text and %d a slot for a whole number. The values come after the % in an array, in order.",
+  "solution": "func solve(name: String, hp: int) -> String:\n\treturn \"%s has %d hp\" % [name, hp]"
+}

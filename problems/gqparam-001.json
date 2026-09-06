@@ -1,0 +1,41 @@
+{
+  "id": "gqparam-001",
+  "title": "Add two numbers",
+  "concept": "gq-parameters",
+  "difficulty": 0,
+  "prompt": "solve receives two numbers, a and b. Return them added together.",
+  "signature": "func solve(a: int, b: int) -> int:",
+  "starter": "func solve(a: int, b: int) -> int:\n\treturn 0",
+  "tests": [
+    {
+      "args": [
+        1,
+        2
+      ],
+      "expect": 3
+    },
+    {
+      "args": [
+        0,
+        0
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        -5,
+        5
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        10,
+        20
+      ],
+      "expect": 30
+    }
+  ],
+  "hint": "Inside the function, a and b are ready to use like any variable.",
+  "solution": "func solve(a: int, b: int) -> int:\n\treturn a + b"
+}

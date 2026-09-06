@@ -1,0 +1,32 @@
+{
+  "id": "gqparam-004",
+  "title": "A parameter with a default",
+  "concept": "gq-parameters",
+  "difficulty": 1,
+  "prompt": "The second parameter, bonus, has a default value of 10. The tests sometimes pass only one number. Return n plus bonus.",
+  "signature": "func solve(n: int, bonus: int = 10) -> int:",
+  "starter": "func solve(n: int, bonus: int = 10) -> int:\n\treturn n",
+  "tests": [
+    {
+      "args": [
+        5
+      ],
+      "expect": 15
+    },
+    {
+      "args": [
+        5,
+        1
+      ],
+      "expect": 6
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 10
+    }
+  ],
+  "hint": "When the caller leaves a parameter out, it takes the default written after the = sign.",
+  "solution": "func solve(n: int, bonus: int = 10) -> int:\n\treturn n + bonus"
+}

@@ -1,0 +1,37 @@
+{
+  "id": "gqfunc-010",
+  "title": "A helper that uses a constant",
+  "concept": "gq-functions",
+  "difficulty": 1,
+  "prompt": "Declare a constant `SPEED` equal to 250 at the top of the script, outside any function. Write `print_distance`, which prints SPEED times a number of seconds, and call it from solve.",
+  "signature": "func solve(seconds: int) -> void:",
+  "starter": "func solve(seconds: int) -> void:\n\tpass",
+  "require_methods": [
+    "print_distance"
+  ],
+  "require_names": [
+    "SPEED"
+  ],
+  "tests": [
+    {
+      "args": [
+        2
+      ],
+      "expect": null,
+      "out": [
+        "500"
+      ]
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": null,
+      "out": [
+        "0"
+      ]
+    }
+  ],
+  "hint": "A constant declared outside the functions can be used inside every function in the script.",
+  "solution": "const SPEED = 250\n\nfunc solve(seconds: int) -> void:\n\tprint_distance(seconds)\n\nfunc print_distance(seconds: int) -> void:\n\tprint(SPEED * seconds)"
+}

@@ -1,0 +1,43 @@
+{
+  "id": "gqarr-007",
+  "title": "Return two values in an array",
+  "concept": "gq-arrays",
+  "difficulty": 0,
+  "prompt": "A function can only return one thing, so return an array holding two: a plus b, then a minus b.",
+  "signature": "func solve(a: int, b: int) -> Array:",
+  "starter": "func solve(a: int, b: int) -> Array:\n\treturn []",
+  "tests": [
+    {
+      "args": [
+        5,
+        3
+      ],
+      "expect": [
+        8,
+        2
+      ]
+    },
+    {
+      "args": [
+        0,
+        0
+      ],
+      "expect": [
+        0,
+        0
+      ]
+    },
+    {
+      "args": [
+        1,
+        4
+      ],
+      "expect": [
+        5,
+        -3
+      ]
+    }
+  ],
+  "hint": "Calculations can go straight inside the square brackets.",
+  "solution": "func solve(a: int, b: int) -> Array:\n\treturn [a + b, a - b]"
+}

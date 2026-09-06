@@ -1,0 +1,34 @@
+{
+  "id": "gqstr-006",
+  "title": "Repeat, now with repeat()",
+  "concept": "gq-strings",
+  "difficulty": 0,
+  "prompt": "Same task, using the built-in repeat method on the string.",
+  "signature": "func solve(text: String, times: int) -> String:",
+  "starter": "func solve(text: String, times: int) -> String:\n\treturn text",
+  "tests": [
+    {
+      "args": [
+        "ab",
+        3
+      ],
+      "expect": "ababab"
+    },
+    {
+      "args": [
+        "x",
+        0
+      ],
+      "expect": ""
+    },
+    {
+      "args": [
+        "go",
+        1
+      ],
+      "expect": "go"
+    }
+  ],
+  "hint": "One call, one argument: how many times.",
+  "solution": "func solve(text: String, times: int) -> String:\n\treturn text.repeat(times)"
+}

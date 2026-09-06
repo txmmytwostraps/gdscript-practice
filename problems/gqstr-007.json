@@ -1,0 +1,31 @@
+{
+  "id": "gqstr-007",
+  "title": "First and last character",
+  "concept": "gq-strings",
+  "difficulty": 0,
+  "prompt": "Return the first character of the text joined to the last one. The text always has at least one character.",
+  "signature": "func solve(text: String) -> String:",
+  "starter": "func solve(text: String) -> String:\n\treturn text",
+  "tests": [
+    {
+      "args": [
+        "hello"
+      ],
+      "expect": "ho"
+    },
+    {
+      "args": [
+        "a"
+      ],
+      "expect": "aa"
+    },
+    {
+      "args": [
+        "Godot"
+      ],
+      "expect": "Gt"
+    }
+  ],
+  "hint": "Characters can be picked out by position with square brackets, just like array items.",
+  "solution": "func solve(text: String) -> String:\n\treturn text[0] + text[text.length() - 1]"
+}

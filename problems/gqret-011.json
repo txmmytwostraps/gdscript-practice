@@ -1,0 +1,37 @@
+{
+  "id": "gqret-011",
+  "title": "Store the result first",
+  "concept": "gq-return",
+  "difficulty": 0,
+  "prompt": "Write `area`, which returns width times height. In solve, store area(width, height) in a variable, then return twice that (two identical rooms).",
+  "signature": "func solve(width: int, height: int) -> int:",
+  "starter": "func solve(width: int, height: int) -> int:\n\treturn 0",
+  "require_methods": [
+    "area"
+  ],
+  "tests": [
+    {
+      "args": [
+        3,
+        4
+      ],
+      "expect": 24
+    },
+    {
+      "args": [
+        0,
+        5
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        1,
+        1
+      ],
+      "expect": 2
+    }
+  ],
+  "hint": "Catch the returned value in a variable, then use the variable in the return line.",
+  "solution": "func solve(width: int, height: int) -> int:\n\tvar one_room = area(width, height)\n\treturn one_room * 2\n\nfunc area(w: int, h: int) -> int:\n\treturn w * h"
+}

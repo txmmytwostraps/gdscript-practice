@@ -1,0 +1,37 @@
+{
+  "id": "gqcond-013",
+  "title": "Traffic light",
+  "concept": "gq-conditions",
+  "difficulty": 1,
+  "prompt": "Given the colour of a traffic light as text, return \"stop\" for \"red\", \"go\" for \"green\", and \"wait\" for anything else.",
+  "signature": "func solve(colour: String) -> String:",
+  "starter": "func solve(colour: String) -> String:\n\treturn \"wait\"",
+  "tests": [
+    {
+      "args": [
+        "red"
+      ],
+      "expect": "stop"
+    },
+    {
+      "args": [
+        "green"
+      ],
+      "expect": "go"
+    },
+    {
+      "args": [
+        "amber"
+      ],
+      "expect": "wait"
+    },
+    {
+      "args": [
+        "blue"
+      ],
+      "expect": "wait"
+    }
+  ],
+  "hint": "Text can be compared with == just like numbers.",
+  "solution": "func solve(colour: String) -> String:\n\tif colour == \"red\":\n\t\treturn \"stop\"\n\telif colour == \"green\":\n\t\treturn \"go\"\n\telse:\n\t\treturn \"wait\""
+}

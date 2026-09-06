@@ -1,0 +1,62 @@
+{
+  "id": "for-004",
+  "title": "Largest number",
+  "concept": "for",
+  "difficulty": 1,
+  "prompt": "Return the largest number in the array. The array always has at least one number. Do it with a loop rather than the built-in max().",
+  "signature": "func solve(nums: Array) -> int:",
+  "starter": "func solve(nums: Array) -> int:\n\treturn nums[0]",
+  "tests": [
+    {
+      "args": [
+        [
+          3,
+          9,
+          2
+        ]
+      ],
+      "expect": 9
+    },
+    {
+      "args": [
+        [
+          -5,
+          -1,
+          -9
+        ]
+      ],
+      "expect": -1
+    },
+    {
+      "args": [
+        [
+          7
+        ]
+      ],
+      "expect": 7
+    },
+    {
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expect": 5
+    },
+    {
+      "args": [
+        [
+          10,
+          10
+        ]
+      ],
+      "expect": 10
+    }
+  ],
+  "hint": "Start with `biggest = nums[0]`. For each number, `if n > biggest:` remember it.",
+  "solution": "func solve(nums: Array) -> int:\n\tvar biggest = nums[0]\n\tfor n in nums:\n\t\tif n > biggest:\n\t\t\tbiggest = n\n\treturn biggest"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "cmp-005",
+  "title": "Same sign",
+  "concept": "comparisons",
+  "difficulty": 1,
+  "prompt": "Return true if a and b are both zero-or-positive, or both negative. Otherwise return false.",
+  "signature": "func solve(a: int, b: int) -> bool:",
+  "starter": "func solve(a: int, b: int) -> bool:\n\treturn false",
+  "tests": [
+    {
+      "args": [
+        3,
+        5
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        -3,
+        -5
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        3,
+        -5
+      ],
+      "expect": false
+    },
+    {
+      "args": [
+        0,
+        4
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        0,
+        -4
+      ],
+      "expect": false
+    }
+  ],
+  "hint": "Combine `and` and `or`, using parentheses to group: `(a >= 0 and b >= 0) or (a < 0 and b < 0)`.",
+  "solution": "func solve(a: int, b: int) -> bool:\n\treturn (a >= 0 and b >= 0) or (a < 0 and b < 0)"
+}

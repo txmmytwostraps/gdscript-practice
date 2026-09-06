@@ -1,0 +1,37 @@
+{
+  "id": "gqread-008",
+  "title": "Name the screen width",
+  "concept": "gq-readable",
+  "difficulty": 0,
+  "prompt": "This finds the x position where a sprite of the given width touches the right edge of a 1920-pixel-wide screen. Name the 1920 `SCREEN_WIDTH`.",
+  "signature": "func solve(width: int) -> int:",
+  "starter": "func solve(width: int) -> int:\n\treturn 1920 - width",
+  "require_names": [
+    "SCREEN_WIDTH"
+  ],
+  "once_only": [
+    1920
+  ],
+  "tests": [
+    {
+      "args": [
+        100
+      ],
+      "expect": 1820
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 1920
+    },
+    {
+      "args": [
+        1920
+      ],
+      "expect": 0
+    }
+  ],
+  "hint": "A reader who sees SCREEN_WIDTH - width understands it at once. That is the goal.",
+  "solution": "func solve(width: int) -> int:\n\tconst SCREEN_WIDTH = 1920\n\treturn SCREEN_WIDTH - width"
+}

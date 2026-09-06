@@ -1,0 +1,34 @@
+{
+  "id": "gqstr-012",
+  "title": "Count a letter with a loop",
+  "concept": "gq-strings",
+  "difficulty": 1,
+  "prompt": "Return how many times the letter appears in the text. Use a loop over the characters.",
+  "signature": "func solve(text: String, letter: String) -> int:",
+  "starter": "func solve(text: String, letter: String) -> int:\n\treturn 0",
+  "tests": [
+    {
+      "args": [
+        "banana",
+        "a"
+      ],
+      "expect": 3
+    },
+    {
+      "args": [
+        "hello",
+        "z"
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        "",
+        "a"
+      ],
+      "expect": 0
+    }
+  ],
+  "hint": "for c in text visits one character at a time; compare each to the letter.",
+  "solution": "func solve(text: String, letter: String) -> int:\n\tvar count = 0\n\tfor c in text:\n\t\tif c == letter:\n\t\t\tcount += 1\n\treturn count"
+}

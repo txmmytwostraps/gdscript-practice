@@ -1,0 +1,34 @@
+{
+  "id": "gqret-007",
+  "title": "A decimal from whole numbers",
+  "concept": "gq-return",
+  "difficulty": 1,
+  "prompt": "Write `half`, which takes a whole number and returns half of it as a float, so half(5) is 2.5. solve returns half(n).",
+  "signature": "func solve(n: int) -> float:",
+  "starter": "func solve(n: int) -> float:\n\treturn n / 2",
+  "require_methods": [
+    "half"
+  ],
+  "tests": [
+    {
+      "args": [
+        5
+      ],
+      "expect": 2.5
+    },
+    {
+      "args": [
+        4
+      ],
+      "expect": 2
+    },
+    {
+      "args": [
+        -1
+      ],
+      "expect": -0.5
+    }
+  ],
+  "hint": "Give the helper a float return type, and divide by something with a decimal point.",
+  "solution": "func solve(n: int) -> float:\n\treturn half(n)\n\nfunc half(value: int) -> float:\n\treturn value / 2.0"
+}

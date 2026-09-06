@@ -1,0 +1,43 @@
+{
+  "id": "arith-004",
+  "title": "Celsius to Fahrenheit",
+  "concept": "arithmetic",
+  "difficulty": 1,
+  "prompt": "Convert a temperature from Celsius to Fahrenheit. The formula is: F = C × 9 / 5 + 32.",
+  "signature": "func solve(c: float) -> float:",
+  "starter": "func solve(c: float) -> float:\n\treturn c",
+  "tests": [
+    {
+      "args": [
+        0
+      ],
+      "expect": 32
+    },
+    {
+      "args": [
+        100
+      ],
+      "expect": 212
+    },
+    {
+      "args": [
+        -40
+      ],
+      "expect": -40
+    },
+    {
+      "args": [
+        37
+      ],
+      "expect": 98.6
+    },
+    {
+      "args": [
+        25
+      ],
+      "expect": 77
+    }
+  ],
+  "hint": "Write the formula with * for times and / for divide: `c * 9 / 5 + 32`. Because c is a float, the whole result stays a float.",
+  "solution": "func solve(c: float) -> float:\n\treturn c * 9.0 / 5.0 + 32.0"
+}

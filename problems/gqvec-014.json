@@ -1,0 +1,41 @@
+{
+  "id": "gqvec-014",
+  "title": "Vector to array",
+  "concept": "gq-vectors",
+  "difficulty": 0,
+  "prompt": "Return an array holding the x part and then the y part of the vector.",
+  "signature": "func solve(v: Vector2) -> Array:",
+  "starter": "func solve(v: Vector2) -> Array:\n\treturn []",
+  "tests": [
+    {
+      "args": [
+        {
+          "$v2": [
+            3,
+            4
+          ]
+        }
+      ],
+      "expect": [
+        3,
+        4
+      ]
+    },
+    {
+      "args": [
+        {
+          "$v2": [
+            -1,
+            0.5
+          ]
+        }
+      ],
+      "expect": [
+        -1,
+        0.5
+      ]
+    }
+  ],
+  "hint": "Two values, square brackets.",
+  "solution": "func solve(v: Vector2) -> Array:\n\treturn [v.x, v.y]"
+}

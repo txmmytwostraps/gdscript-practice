@@ -1,0 +1,42 @@
+{
+  "id": "gqarr-009",
+  "title": "Contains",
+  "concept": "gq-arrays",
+  "difficulty": 0,
+  "prompt": "Return true if value is somewhere in the array.",
+  "signature": "func solve(items: Array, value: int) -> bool:",
+  "starter": "func solve(items: Array, value: int) -> bool:\n\treturn false",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        2
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        5
+      ],
+      "expect": false
+    },
+    {
+      "args": [
+        [],
+        1
+      ],
+      "expect": false
+    }
+  ],
+  "hint": "The word in works on arrays: value in items.",
+  "solution": "func solve(items: Array, value: int) -> bool:\n\treturn value in items"
+}

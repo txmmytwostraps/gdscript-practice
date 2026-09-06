@@ -1,0 +1,37 @@
+{
+  "id": "gqret-017",
+  "title": "Return an average",
+  "concept": "gq-return",
+  "difficulty": 1,
+  "prompt": "Write `average`, which returns the average of two whole numbers as a float, so average(1, 2) is 1.5. solve returns average(a, b).",
+  "signature": "func solve(a: int, b: int) -> float:",
+  "starter": "func solve(a: int, b: int) -> float:\n\treturn (a + b) / 2",
+  "require_methods": [
+    "average"
+  ],
+  "tests": [
+    {
+      "args": [
+        1,
+        2
+      ],
+      "expect": 1.5
+    },
+    {
+      "args": [
+        4,
+        4
+      ],
+      "expect": 4
+    },
+    {
+      "args": [
+        -3,
+        3
+      ],
+      "expect": 0
+    }
+  ],
+  "hint": "Same trap as before: dividing two ints drops the decimals. Divide by a float.",
+  "solution": "func solve(a: int, b: int) -> float:\n\treturn average(a, b)\n\nfunc average(x: int, y: int) -> float:\n\treturn (x + y) / 2.0"
+}

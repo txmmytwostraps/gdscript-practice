@@ -1,0 +1,36 @@
+{
+  "id": "gqfunc-013",
+  "title": "Parameters get copies",
+  "concept": "gq-functions",
+  "difficulty": 1,
+  "prompt": "Write `add_ten`, which takes a number, adds 10 to its parameter with +=, and prints it. In solve, call add_ten(n) and then print n yourself with print(n). Does n change?",
+  "signature": "func solve(n: int) -> void:",
+  "starter": "func solve(n: int) -> void:\n\tpass",
+  "require_methods": [
+    "add_ten"
+  ],
+  "tests": [
+    {
+      "args": [
+        5
+      ],
+      "expect": null,
+      "out": [
+        "15",
+        "5"
+      ]
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": null,
+      "out": [
+        "10",
+        "0"
+      ]
+    }
+  ],
+  "hint": "A number passed to a function is copied. Changing the copy inside the helper leaves the original alone.",
+  "solution": "func solve(n: int) -> void:\n\tadd_ten(n)\n\tprint(n)\n\nfunc add_ten(value: int) -> void:\n\tvalue += 10\n\tprint(value)"
+}

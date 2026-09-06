@@ -1,0 +1,34 @@
+{
+  "id": "gqfunc-007",
+  "title": "Name a function well",
+  "concept": "gq-functions",
+  "difficulty": 0,
+  "prompt": "This works, but `f` tells the reader nothing. Rename the helper to `minutes_to_seconds`, both where it is defined and where it is called.",
+  "signature": "func solve(minutes: int) -> void:",
+  "starter": "func solve(minutes: int) -> void:\n\tf(minutes)\n\nfunc f(minutes: int) -> void:\n\tprint(minutes * 60)",
+  "require_methods": [
+    "minutes_to_seconds"
+  ],
+  "tests": [
+    {
+      "args": [
+        2
+      ],
+      "expect": null,
+      "out": [
+        "120"
+      ]
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": null,
+      "out": [
+        "0"
+      ]
+    }
+  ],
+  "hint": "A good function name says what the function does. Change it in two places.",
+  "solution": "func solve(minutes: int) -> void:\n\tminutes_to_seconds(minutes)\n\nfunc minutes_to_seconds(minutes: int) -> void:\n\tprint(minutes * 60)"
+}

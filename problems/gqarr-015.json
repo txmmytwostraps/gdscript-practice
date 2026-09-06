@@ -1,0 +1,41 @@
+{
+  "id": "gqarr-015",
+  "title": "Largest with a loop",
+  "concept": "gq-arrays",
+  "difficulty": 1,
+  "prompt": "Return the largest number in the array using a loop. The array always has at least one item.",
+  "signature": "func solve(nums: Array) -> int:",
+  "starter": "func solve(nums: Array) -> int:\n\treturn nums[0]",
+  "tests": [
+    {
+      "args": [
+        [
+          3,
+          9,
+          2
+        ]
+      ],
+      "expect": 9
+    },
+    {
+      "args": [
+        [
+          -5,
+          -1,
+          -9
+        ]
+      ],
+      "expect": -1
+    },
+    {
+      "args": [
+        [
+          7
+        ]
+      ],
+      "expect": 7
+    }
+  ],
+  "hint": "Keep the biggest seen so far, starting from the first item, and let each item challenge it.",
+  "solution": "func solve(nums: Array) -> int:\n\tvar biggest = nums[0]\n\tfor n in nums:\n\t\tif n > biggest:\n\t\t\tbiggest = n\n\treturn biggest"
+}

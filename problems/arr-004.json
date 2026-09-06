@@ -1,0 +1,64 @@
+{
+  "id": "arr-004",
+  "title": "Remove every copy",
+  "concept": "arrays",
+  "difficulty": 1,
+  "prompt": "Return a new array that has everything from items except any item equal to value.",
+  "signature": "func solve(items: Array, value) -> Array:",
+  "starter": "func solve(items: Array, value) -> Array:\n\treturn items",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          1,
+          3
+        ],
+        1
+      ],
+      "expect": [
+        2,
+        3
+      ]
+    },
+    {
+      "args": [
+        [
+          1,
+          1
+        ],
+        1
+      ],
+      "expect": []
+    },
+    {
+      "args": [
+        [
+          4,
+          5
+        ],
+        9
+      ],
+      "expect": [
+        4,
+        5
+      ]
+    },
+    {
+      "args": [
+        [
+          "a",
+          "b",
+          "a"
+        ],
+        "a"
+      ],
+      "expect": [
+        "b"
+      ]
+    }
+  ],
+  "hint": "Make a new empty array. For each item, `if x != value:` append it.",
+  "solution": "func solve(items: Array, value) -> Array:\n\tvar result = []\n\tfor x in items:\n\t\tif x != value:\n\t\t\tresult.append(x)\n\treturn result"
+}

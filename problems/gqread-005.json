@@ -1,0 +1,37 @@
+{
+  "id": "gqread-005",
+  "title": "Name the seconds per minute",
+  "concept": "gq-readable",
+  "difficulty": 0,
+  "prompt": "Everyone knows a minute has 60 seconds, but a name still helps. Call it `SECONDS_PER_MINUTE` and use it.",
+  "signature": "func solve(minutes: int) -> int:",
+  "starter": "func solve(minutes: int) -> int:\n\treturn minutes * 60",
+  "require_names": [
+    "SECONDS_PER_MINUTE"
+  ],
+  "once_only": [
+    60
+  ],
+  "tests": [
+    {
+      "args": [
+        2
+      ],
+      "expect": 120
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        1
+      ],
+      "expect": 60
+    }
+  ],
+  "hint": "Long names are fine and often better. Declare it, then use it in the multiplication.",
+  "solution": "func solve(minutes: int) -> int:\n\tconst SECONDS_PER_MINUTE = 60\n\treturn minutes * SECONDS_PER_MINUTE"
+}

@@ -1,0 +1,79 @@
+{
+  "id": "gqvec-010",
+  "title": "Midpoint",
+  "concept": "gq-vectors",
+  "difficulty": 1,
+  "prompt": "Return the point exactly halfway between a and b.",
+  "signature": "func solve(a: Vector2, b: Vector2) -> Vector2:",
+  "starter": "func solve(a: Vector2, b: Vector2) -> Vector2:\n\treturn a",
+  "tests": [
+    {
+      "args": [
+        {
+          "$v2": [
+            0,
+            0
+          ]
+        },
+        {
+          "$v2": [
+            4,
+            6
+          ]
+        }
+      ],
+      "expect": {
+        "$v2": [
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "args": [
+        {
+          "$v2": [
+            -2,
+            -2
+          ]
+        },
+        {
+          "$v2": [
+            2,
+            2
+          ]
+        }
+      ],
+      "expect": {
+        "$v2": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "args": [
+        {
+          "$v2": [
+            1,
+            0
+          ]
+        },
+        {
+          "$v2": [
+            2,
+            0
+          ]
+        }
+      ],
+      "expect": {
+        "$v2": [
+          1.5,
+          0
+        ]
+      }
+    }
+  ],
+  "hint": "Add them, then halve the result. Dividing a vector by a number is allowed.",
+  "solution": "func solve(a: Vector2, b: Vector2) -> Vector2:\n\treturn (a + b) / 2"
+}

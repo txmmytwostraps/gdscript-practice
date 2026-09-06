@@ -1,0 +1,31 @@
+{
+  "id": "gqstr-001",
+  "title": "Greet by name",
+  "concept": "gq-strings",
+  "difficulty": 0,
+  "prompt": "Return \"Hello, \" followed by the name and an exclamation mark, so \"Tim\" gives \"Hello, Tim!\".",
+  "signature": "func solve(name: String) -> String:",
+  "starter": "func solve(name: String) -> String:\n\treturn name",
+  "tests": [
+    {
+      "args": [
+        "Tim"
+      ],
+      "expect": "Hello, Tim!"
+    },
+    {
+      "args": [
+        "Godot"
+      ],
+      "expect": "Hello, Godot!"
+    },
+    {
+      "args": [
+        ""
+      ],
+      "expect": "Hello, !"
+    }
+  ],
+  "hint": "Pieces of text join together with +. Mind the space after the comma.",
+  "solution": "func solve(name: String) -> String:\n\treturn \"Hello, \" + name + \"!\""
+}

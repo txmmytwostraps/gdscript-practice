@@ -1,0 +1,41 @@
+{
+  "id": "arith-003",
+  "title": "Remainder",
+  "concept": "arithmetic",
+  "difficulty": 0,
+  "prompt": "Return the remainder when a is divided by b. For example 10 divided by 3 is 3 remainder 1, so the answer is 1.",
+  "signature": "func solve(a: int, b: int) -> int:",
+  "starter": "func solve(a: int, b: int) -> int:\n\treturn 0",
+  "tests": [
+    {
+      "args": [
+        10,
+        3
+      ],
+      "expect": 1
+    },
+    {
+      "args": [
+        9,
+        3
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        7,
+        10
+      ],
+      "expect": 7
+    },
+    {
+      "args": [
+        25,
+        7
+      ],
+      "expect": 4
+    }
+  ],
+  "hint": "The % symbol gives the remainder: `10 % 3` is 1.",
+  "solution": "func solve(a: int, b: int) -> int:\n\treturn a % b"
+}

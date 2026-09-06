@@ -1,0 +1,37 @@
+{
+  "id": "gqstr-010",
+  "title": "Replace",
+  "concept": "gq-strings",
+  "difficulty": 0,
+  "prompt": "Return the text with every copy of old swapped for new.",
+  "signature": "func solve(text: String, old: String, new: String) -> String:",
+  "starter": "func solve(text: String, old: String, new: String) -> String:\n\treturn text",
+  "tests": [
+    {
+      "args": [
+        "a-b-c",
+        "-",
+        " "
+      ],
+      "expect": "a b c"
+    },
+    {
+      "args": [
+        "hello",
+        "l",
+        "L"
+      ],
+      "expect": "heLLo"
+    },
+    {
+      "args": [
+        "hi",
+        "z",
+        "q"
+      ],
+      "expect": "hi"
+    }
+  ],
+  "hint": "The replace method takes what to look for and what to put in its place.",
+  "solution": "func solve(text: String, old: String, new: String) -> String:\n\treturn text.replace(old, new)"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "gqarr-001",
+  "title": "Make an array of three",
+  "concept": "gq-arrays",
+  "difficulty": 0,
+  "prompt": "Return an array holding the numbers 10, 20 and 30, in that order.",
+  "signature": "func solve() -> Array:",
+  "starter": "func solve() -> Array:\n\treturn []",
+  "tests": [
+    {
+      "args": [],
+      "expect": [
+        10,
+        20,
+        30
+      ]
+    }
+  ],
+  "hint": "Square brackets with commas between the items.",
+  "solution": "func solve() -> Array:\n\treturn [10, 20, 30]"
+}

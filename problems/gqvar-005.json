@@ -1,0 +1,17 @@
+{
+  "id": "gqvar-005",
+  "title": "Reassign a variable",
+  "concept": "gq-variables",
+  "difficulty": 0,
+  "prompt": "The variable `score` starts at 5. On a new line, change it to 10. Then return score.",
+  "signature": "func solve() -> int:",
+  "starter": "func solve() -> int:\n\tvar score = 5\n\treturn score",
+  "tests": [
+    {
+      "args": [],
+      "expect": 10
+    }
+  ],
+  "hint": "Changing an existing variable does not need var again: `score = 10`.",
+  "solution": "func solve() -> int:\n\tvar score = 5\n\tscore = 10\n\treturn score"
+}

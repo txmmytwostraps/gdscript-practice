@@ -1,0 +1,37 @@
+{
+  "id": "if-001",
+  "title": "Absolute value",
+  "concept": "ifelse",
+  "difficulty": 0,
+  "prompt": "Return n if it is zero or positive. If n is negative, return -n so the result is positive. Do it with if/else rather than the built-in abs().",
+  "signature": "func solve(n: int) -> int:",
+  "starter": "func solve(n: int) -> int:\n\treturn n",
+  "tests": [
+    {
+      "args": [
+        -5
+      ],
+      "expect": 5
+    },
+    {
+      "args": [
+        3
+      ],
+      "expect": 3
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        -100
+      ],
+      "expect": 100
+    }
+  ],
+  "hint": "`if n < 0:` then `return -n`, otherwise `return n`.",
+  "solution": "func solve(n: int) -> int:\n\tif n < 0:\n\t\treturn -n\n\telse:\n\t\treturn n"
+}

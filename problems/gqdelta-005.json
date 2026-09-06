@@ -1,0 +1,34 @@
+{
+  "id": "gqdelta-005",
+  "title": "Countdown timer",
+  "concept": "gq-delta",
+  "difficulty": 1,
+  "prompt": "A timer has time_left seconds to go. Return the time left after this frame, but never less than zero.",
+  "signature": "func solve(time_left: float, delta: float) -> float:",
+  "starter": "func solve(time_left: float, delta: float) -> float:\n\treturn time_left - delta",
+  "tests": [
+    {
+      "args": [
+        5,
+        0.5
+      ],
+      "expect": 4.5
+    },
+    {
+      "args": [
+        0.2,
+        0.5
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        0,
+        0.1
+      ],
+      "expect": 0
+    }
+  ],
+  "hint": "Subtract, then stop it going negative: an if, or max() with zero.",
+  "solution": "func solve(time_left: float, delta: float) -> float:\n\treturn max(time_left - delta, 0.0)"
+}

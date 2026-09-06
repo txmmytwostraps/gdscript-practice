@@ -1,0 +1,59 @@
+{
+  "id": "arr-003",
+  "title": "Reverse",
+  "concept": "arrays",
+  "difficulty": 1,
+  "prompt": "Return a new array with the items in reverse order.",
+  "signature": "func solve(items: Array) -> Array:",
+  "starter": "func solve(items: Array) -> Array:\n\treturn items",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expect": [
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "args": [
+        []
+      ],
+      "expect": []
+    },
+    {
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expect": [
+        1
+      ]
+    },
+    {
+      "args": [
+        [
+          "a",
+          "b",
+          "c",
+          "d"
+        ]
+      ],
+      "expect": [
+        "d",
+        "c",
+        "b",
+        "a"
+      ]
+    }
+  ],
+  "hint": "Loop over items and insert each one at the front of a new array with `result.push_front(x)` — or look up the reverse() method.",
+  "solution": "func solve(items: Array) -> Array:\n\tvar result = []\n\tfor x in items:\n\t\tresult.push_front(x)\n\treturn result"
+}

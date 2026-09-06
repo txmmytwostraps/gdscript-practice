@@ -1,0 +1,37 @@
+{
+  "id": "gqcond-001",
+  "title": "Return a comparison",
+  "concept": "gq-conditions",
+  "difficulty": 0,
+  "prompt": "Return true if n is 10 or more, otherwise false. A comparison is already a true-or-false value, so no if is needed.",
+  "signature": "func solve(n: int) -> bool:",
+  "starter": "func solve(n: int) -> bool:\n\treturn false",
+  "tests": [
+    {
+      "args": [
+        10
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        9
+      ],
+      "expect": false
+    },
+    {
+      "args": [
+        100
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        -1
+      ],
+      "expect": false
+    }
+  ],
+  "hint": "Which comparison symbol means at least?",
+  "solution": "func solve(n: int) -> bool:\n\treturn n >= 10"
+}

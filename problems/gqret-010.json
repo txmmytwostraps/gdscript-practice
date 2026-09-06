@@ -1,0 +1,37 @@
+{
+  "id": "gqret-010",
+  "title": "Return the remainder",
+  "concept": "gq-return",
+  "difficulty": 0,
+  "prompt": "Write `leftover`, which returns the remainder when its first parameter is divided by the second. solve returns leftover(a, b).",
+  "signature": "func solve(a: int, b: int) -> int:",
+  "starter": "func solve(a: int, b: int) -> int:\n\treturn 0",
+  "require_methods": [
+    "leftover"
+  ],
+  "tests": [
+    {
+      "args": [
+        10,
+        3
+      ],
+      "expect": 1
+    },
+    {
+      "args": [
+        9,
+        3
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        7,
+        10
+      ],
+      "expect": 7
+    }
+  ],
+  "hint": "The remainder operator is the percent sign.",
+  "solution": "func solve(a: int, b: int) -> int:\n\treturn leftover(a, b)\n\nfunc leftover(x: int, y: int) -> int:\n\treturn x % y"
+}

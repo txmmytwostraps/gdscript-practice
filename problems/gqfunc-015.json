@@ -1,0 +1,39 @@
+{
+  "id": "gqfunc-015",
+  "title": "Two helpers, one job each",
+  "concept": "gq-functions",
+  "difficulty": 0,
+  "prompt": "Write `print_sum` and `print_product`, which each take two numbers and print their sum or their product. Call both from solve, sum first.",
+  "signature": "func solve(a: int, b: int) -> void:",
+  "starter": "func solve(a: int, b: int) -> void:\n\tpass",
+  "require_methods": [
+    "print_sum",
+    "print_product"
+  ],
+  "tests": [
+    {
+      "args": [
+        2,
+        3
+      ],
+      "expect": null,
+      "out": [
+        "5",
+        "6"
+      ]
+    },
+    {
+      "args": [
+        0,
+        4
+      ],
+      "expect": null,
+      "out": [
+        "4",
+        "0"
+      ]
+    }
+  ],
+  "hint": "Each helper does one small thing. solve just calls them in order.",
+  "solution": "func solve(a: int, b: int) -> void:\n\tprint_sum(a, b)\n\tprint_product(a, b)\n\nfunc print_sum(x: int, y: int) -> void:\n\tprint(x + y)\n\nfunc print_product(x: int, y: int) -> void:\n\tprint(x * y)"
+}

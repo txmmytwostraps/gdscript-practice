@@ -1,0 +1,34 @@
+{
+  "id": "gqdelta-015",
+  "title": "Speed from distance and time",
+  "concept": "gq-delta",
+  "difficulty": 0,
+  "prompt": "Something moved distance pixels during a frame that lasted delta seconds. Return its speed in pixels per second.",
+  "signature": "func solve(distance: float, delta: float) -> float:",
+  "starter": "func solve(distance: float, delta: float) -> float:\n\treturn distance * delta",
+  "tests": [
+    {
+      "args": [
+        2,
+        0.5
+      ],
+      "expect": 4
+    },
+    {
+      "args": [
+        0,
+        1
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        1.5,
+        0.25
+      ],
+      "expect": 6
+    }
+  ],
+  "hint": "The opposite of the first problem in this topic.",
+  "solution": "func solve(distance: float, delta: float) -> float:\n\treturn distance / delta"
+}

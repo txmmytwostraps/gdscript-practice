@@ -1,0 +1,37 @@
+{
+  "id": "vars-001",
+  "title": "Double it",
+  "concept": "variables",
+  "difficulty": 0,
+  "prompt": "Write solve(n) so that it returns n multiplied by 2.",
+  "signature": "func solve(n: int) -> int:",
+  "starter": "func solve(n: int) -> int:\n\treturn 0",
+  "tests": [
+    {
+      "args": [
+        2
+      ],
+      "expect": 4
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        -3
+      ],
+      "expect": -6
+    },
+    {
+      "args": [
+        10
+      ],
+      "expect": 20
+    }
+  ],
+  "hint": "Multiplication is the * symbol. Try `return n * 2`.",
+  "solution": "func solve(n: int) -> int:\n\treturn n * 2"
+}

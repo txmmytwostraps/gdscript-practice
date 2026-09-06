@@ -1,0 +1,42 @@
+{
+  "id": "gqfunc-012",
+  "title": "A helper for each step",
+  "concept": "gq-functions",
+  "difficulty": 1,
+  "prompt": "Write three helpers: `print_health` prints the health, `print_damage` prints the damage, and `print_remaining` takes both and prints health minus damage. Call all three from solve in that order.",
+  "signature": "func solve(health: int, damage: int) -> void:",
+  "starter": "func solve(health: int, damage: int) -> void:\n\tpass",
+  "require_methods": [
+    "print_health",
+    "print_damage",
+    "print_remaining"
+  ],
+  "tests": [
+    {
+      "args": [
+        100,
+        30
+      ],
+      "expect": null,
+      "out": [
+        "100",
+        "30",
+        "70"
+      ]
+    },
+    {
+      "args": [
+        50,
+        50
+      ],
+      "expect": null,
+      "out": [
+        "50",
+        "50",
+        "0"
+      ]
+    }
+  ],
+  "hint": "Two of the helpers take one parameter; the last takes two.",
+  "solution": "func solve(health: int, damage: int) -> void:\n\tprint_health(health)\n\tprint_damage(damage)\n\tprint_remaining(health, damage)\n\nfunc print_health(health: int) -> void:\n\tprint(health)\n\nfunc print_damage(damage: int) -> void:\n\tprint(damage)\n\nfunc print_remaining(health: int, damage: int) -> void:\n\tprint(health - damage)"
+}

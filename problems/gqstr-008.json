@@ -1,0 +1,34 @@
+{
+  "id": "gqstr-008",
+  "title": "Contains",
+  "concept": "gq-strings",
+  "difficulty": 0,
+  "prompt": "Return true if part appears somewhere inside text.",
+  "signature": "func solve(text: String, part: String) -> bool:",
+  "starter": "func solve(text: String, part: String) -> bool:\n\treturn false",
+  "tests": [
+    {
+      "args": [
+        "concatenate",
+        "cat"
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        "dog",
+        "cat"
+      ],
+      "expect": false
+    },
+    {
+      "args": [
+        "",
+        "a"
+      ],
+      "expect": false
+    }
+  ],
+  "hint": "The word in works on strings as well as arrays.",
+  "solution": "func solve(text: String, part: String) -> bool:\n\treturn part in text"
+}

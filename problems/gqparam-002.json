@@ -1,0 +1,34 @@
+{
+  "id": "gqparam-002",
+  "title": "Area from width and height",
+  "concept": "gq-parameters",
+  "difficulty": 0,
+  "prompt": "Return the area of a rectangle from its two sides.",
+  "signature": "func solve(width: int, height: int) -> int:",
+  "starter": "func solve(width: int, height: int) -> int:\n\treturn 0",
+  "tests": [
+    {
+      "args": [
+        3,
+        4
+      ],
+      "expect": 12
+    },
+    {
+      "args": [
+        5,
+        5
+      ],
+      "expect": 25
+    },
+    {
+      "args": [
+        0,
+        9
+      ],
+      "expect": 0
+    }
+  ],
+  "hint": "Area is one side multiplied by the other.",
+  "solution": "func solve(width: int, height: int) -> int:\n\treturn width * height"
+}

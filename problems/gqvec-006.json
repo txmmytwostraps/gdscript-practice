@@ -1,0 +1,46 @@
+{
+  "id": "gqvec-006",
+  "title": "Length",
+  "concept": "gq-vectors",
+  "difficulty": 0,
+  "prompt": "Return how long the vector is: the straight-line distance from (0, 0) to its tip. Vector2(3, 4) has length 5.",
+  "signature": "func solve(v: Vector2) -> float:",
+  "starter": "func solve(v: Vector2) -> float:\n\treturn v.x + v.y",
+  "tests": [
+    {
+      "args": [
+        {
+          "$v2": [
+            3,
+            4
+          ]
+        }
+      ],
+      "expect": 5
+    },
+    {
+      "args": [
+        {
+          "$v2": [
+            0,
+            0
+          ]
+        }
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        {
+          "$v2": [
+            0,
+            -7
+          ]
+        }
+      ],
+      "expect": 7
+    }
+  ],
+  "hint": "Vectors have a length method; no need for the square-root formula.",
+  "solution": "func solve(v: Vector2) -> float:\n\treturn v.length()"
+}

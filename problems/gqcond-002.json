@@ -1,0 +1,31 @@
+{
+  "id": "gqcond-002",
+  "title": "Is it positive",
+  "concept": "gq-conditions",
+  "difficulty": 0,
+  "prompt": "Return the text \"positive\" if n is greater than zero, otherwise \"not positive\".",
+  "signature": "func solve(n: int) -> String:",
+  "starter": "func solve(n: int) -> String:\n\treturn \"\"",
+  "tests": [
+    {
+      "args": [
+        5
+      ],
+      "expect": "positive"
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": "not positive"
+    },
+    {
+      "args": [
+        -3
+      ],
+      "expect": "not positive"
+    }
+  ],
+  "hint": "if with a comparison, an indented return, then else with its own return.",
+  "solution": "func solve(n: int) -> String:\n\tif n > 0:\n\t\treturn \"positive\"\n\telse:\n\t\treturn \"not positive\""
+}

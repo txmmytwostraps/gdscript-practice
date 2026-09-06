@@ -1,0 +1,43 @@
+{
+  "id": "gqarr-003",
+  "title": "Last item",
+  "concept": "gq-arrays",
+  "difficulty": 0,
+  "prompt": "Return the last item of the array. The array always has at least one item.",
+  "signature": "func solve(items: Array) -> int:",
+  "starter": "func solve(items: Array) -> int:\n\treturn items[0]",
+  "tests": [
+    {
+      "args": [
+        [
+          5,
+          6,
+          7
+        ]
+      ],
+      "expect": 7
+    },
+    {
+      "args": [
+        [
+          42
+        ]
+      ],
+      "expect": 42
+    },
+    {
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expect": 5
+    }
+  ],
+  "hint": "The last position is one less than the size. Godot also lets you count from the end with a negative position.",
+  "solution": "func solve(items: Array) -> int:\n\treturn items[items.size() - 1]"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "gqret-006",
+  "title": "Code after return never runs",
+  "concept": "gq-return",
+  "difficulty": 1,
+  "prompt": "Run the starter as it is: \"after\" is never printed, because return ends the function at once. Fix the helper so it prints both words and still returns 1.",
+  "signature": "func solve() -> int:",
+  "starter": "func solve() -> int:\n\treturn early()\n\nfunc early() -> int:\n\tprint(\"before\")\n\treturn 1\n\tprint(\"after\")",
+  "require_methods": [
+    "early"
+  ],
+  "tests": [
+    {
+      "args": [],
+      "expect": 1,
+      "out": [
+        "before",
+        "after"
+      ]
+    }
+  ],
+  "hint": "Anything that must happen has to come before the return line.",
+  "solution": "func solve() -> int:\n\treturn early()\n\nfunc early() -> int:\n\tprint(\"before\")\n\tprint(\"after\")\n\treturn 1"
+}

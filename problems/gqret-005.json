@@ -1,0 +1,36 @@
+{
+  "id": "gqret-005",
+  "title": "Print, then return",
+  "concept": "gq-return",
+  "difficulty": 0,
+  "prompt": "Write `add`, which prints \"adding\" and then returns its two parameters added together. solve returns add(a, b). Both the printed line and the returned value are checked.",
+  "signature": "func solve(a: int, b: int) -> int:",
+  "starter": "func solve(a: int, b: int) -> int:\n\treturn a + b",
+  "require_methods": [
+    "add"
+  ],
+  "tests": [
+    {
+      "args": [
+        2,
+        3
+      ],
+      "expect": 5,
+      "out": [
+        "adding"
+      ]
+    },
+    {
+      "args": [
+        0,
+        0
+      ],
+      "expect": 0,
+      "out": [
+        "adding"
+      ]
+    }
+  ],
+  "hint": "A function can do things before it returns. Printing is a thing; returning is the last thing.",
+  "solution": "func solve(a: int, b: int) -> int:\n\treturn add(a, b)\n\nfunc add(x: int, y: int) -> int:\n\tprint(\"adding\")\n\treturn x + y"
+}

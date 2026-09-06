@@ -1,0 +1,37 @@
+{
+  "id": "gqread-016",
+  "title": "The same number twice",
+  "concept": "gq-readable",
+  "difficulty": 1,
+  "prompt": "This finds the centre of a grid tile, and the tile size 64 appears twice. Name it once as `TILE_SIZE` and use the name in both places, so changing the tile size later only takes one edit.",
+  "signature": "func solve(column: int) -> int:",
+  "starter": "func solve(column: int) -> int:\n\treturn 64 * column + 64 / 2",
+  "require_names": [
+    "TILE_SIZE"
+  ],
+  "once_only": [
+    64
+  ],
+  "tests": [
+    {
+      "args": [
+        0
+      ],
+      "expect": 32
+    },
+    {
+      "args": [
+        1
+      ],
+      "expect": 96
+    },
+    {
+      "args": [
+        3
+      ],
+      "expect": 224
+    }
+  ],
+  "hint": "One declaration, two uses. The judge checks that 64 now appears only once in your code.",
+  "solution": "func solve(column: int) -> int:\n\tconst TILE_SIZE = 64\n\treturn TILE_SIZE * column + TILE_SIZE / 2"
+}

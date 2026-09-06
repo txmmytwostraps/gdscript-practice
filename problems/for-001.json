@@ -1,0 +1,47 @@
+{
+  "id": "for-001",
+  "title": "Sum of a list",
+  "concept": "for",
+  "difficulty": 0,
+  "prompt": "Return the sum of all the numbers in the array. An empty array sums to 0.",
+  "signature": "func solve(nums: Array) -> int:",
+  "starter": "func solve(nums: Array) -> int:\n\tvar total = 0\n\treturn total",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expect": 6
+    },
+    {
+      "args": [
+        []
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        [
+          -5,
+          5,
+          10
+        ]
+      ],
+      "expect": 10
+    },
+    {
+      "args": [
+        [
+          100
+        ]
+      ],
+      "expect": 100
+    }
+  ],
+  "hint": "`for n in nums:` visits each number in turn. Add it to total.",
+  "solution": "func solve(nums: Array) -> int:\n\tvar total = 0\n\tfor n in nums:\n\t\ttotal += n\n\treturn total"
+}

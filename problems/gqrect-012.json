@@ -1,0 +1,49 @@
+{
+  "id": "gqrect-012",
+  "title": "The four edges",
+  "concept": "gq-rect",
+  "difficulty": 0,
+  "prompt": "Return an array of the rectangle's left, top, right and bottom edge positions, in that order.",
+  "signature": "func solve(r: Rect2) -> Array:",
+  "starter": "func solve(r: Rect2) -> Array:\n\treturn []",
+  "tests": [
+    {
+      "args": [
+        {
+          "$rect": [
+            10,
+            20,
+            30,
+            40
+          ]
+        }
+      ],
+      "expect": [
+        10,
+        20,
+        40,
+        60
+      ]
+    },
+    {
+      "args": [
+        {
+          "$rect": [
+            0,
+            0,
+            5,
+            5
+          ]
+        }
+      ],
+      "expect": [
+        0,
+        0,
+        5,
+        5
+      ]
+    }
+  ],
+  "hint": "Left and top come from the position; right and bottom from the end.",
+  "solution": "func solve(r: Rect2) -> Array:\n\treturn [r.position.x, r.position.y, r.end.x, r.end.y]"
+}

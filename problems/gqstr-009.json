@@ -1,0 +1,34 @@
+{
+  "id": "gqstr-009",
+  "title": "Starts with",
+  "concept": "gq-strings",
+  "difficulty": 0,
+  "prompt": "Return true if the text begins with the given prefix.",
+  "signature": "func solve(text: String, prefix: String) -> bool:",
+  "starter": "func solve(text: String, prefix: String) -> bool:\n\treturn false",
+  "tests": [
+    {
+      "args": [
+        "https://godotengine.org",
+        "https"
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        "ftp://x",
+        "https"
+      ],
+      "expect": false
+    },
+    {
+      "args": [
+        "abc",
+        ""
+      ],
+      "expect": true
+    }
+  ],
+  "hint": "Godot names this method begins_with, not starts_with.",
+  "solution": "func solve(text: String, prefix: String) -> bool:\n\treturn text.begins_with(prefix)"
+}

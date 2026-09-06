@@ -1,0 +1,25 @@
+{
+  "id": "gqcond-009",
+  "title": "Not",
+  "concept": "gq-conditions",
+  "difficulty": 0,
+  "prompt": "Return true if the door is closed. You are told whether it is open.",
+  "signature": "func solve(is_open: bool) -> bool:",
+  "starter": "func solve(is_open: bool) -> bool:\n\treturn is_open",
+  "tests": [
+    {
+      "args": [
+        true
+      ],
+      "expect": false
+    },
+    {
+      "args": [
+        false
+      ],
+      "expect": true
+    }
+  ],
+  "hint": "The word not flips a true to a false and a false to a true.",
+  "solution": "func solve(is_open: bool) -> bool:\n\treturn not is_open"
+}

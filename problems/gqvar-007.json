@@ -1,0 +1,31 @@
+{
+  "id": "gqvar-007",
+  "title": "Update with -=",
+  "concept": "gq-variables",
+  "difficulty": 0,
+  "prompt": "The variable `health` starts with the value of hp. Take away 20 using -=. Return health.",
+  "signature": "func solve(hp: int) -> int:",
+  "starter": "func solve(hp: int) -> int:\n\tvar health = hp\n\treturn health",
+  "tests": [
+    {
+      "args": [
+        100
+      ],
+      "expect": 80
+    },
+    {
+      "args": [
+        20
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        15
+      ],
+      "expect": -5
+    }
+  ],
+  "hint": "`health -= 20` takes 20 away from health.",
+  "solution": "func solve(hp: int) -> int:\n\tvar health = hp\n\thealth -= 20\n\treturn health"
+}

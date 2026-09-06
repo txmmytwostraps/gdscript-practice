@@ -1,0 +1,56 @@
+{
+  "id": "dict-004",
+  "title": "Count the words",
+  "concept": "dictionaries",
+  "difficulty": 1,
+  "prompt": "Given an array of words, return a dictionary where each word is a key and its value is how many times it appeared. [\"a\", \"b\", \"a\"] gives {\"a\": 2, \"b\": 1}.",
+  "signature": "func solve(words: Array) -> Dictionary:",
+  "starter": "func solve(words: Array) -> Dictionary:\n\tvar counts = {}\n\treturn counts",
+  "tests": [
+    {
+      "args": [
+        [
+          "a",
+          "b",
+          "a"
+        ]
+      ],
+      "expect": {
+        "a": 2,
+        "b": 1
+      }
+    },
+    {
+      "args": [
+        []
+      ],
+      "expect": {}
+    },
+    {
+      "args": [
+        [
+          "go",
+          "go",
+          "go"
+        ]
+      ],
+      "expect": {
+        "go": 3
+      }
+    },
+    {
+      "args": [
+        [
+          "x",
+          "y"
+        ]
+      ],
+      "expect": {
+        "x": 1,
+        "y": 1
+      }
+    }
+  ],
+  "hint": "For each word: if it is not in counts yet, set `counts[word] = 0`. Then `counts[word] += 1`.",
+  "solution": "func solve(words: Array) -> Dictionary:\n\tvar counts = {}\n\tfor word in words:\n\t\tif not word in counts:\n\t\t\tcounts[word] = 0\n\t\tcounts[word] += 1\n\treturn counts"
+}

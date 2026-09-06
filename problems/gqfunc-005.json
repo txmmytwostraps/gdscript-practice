@@ -1,0 +1,27 @@
+{
+  "id": "gqfunc-005",
+  "title": "Functions run in order",
+  "concept": "gq-functions",
+  "difficulty": 0,
+  "prompt": "Write three functions, `first`, `second` and `third`, that print \"one\", \"two\" and \"three\". Call them from solve so the words come out in that order.",
+  "signature": "func solve() -> void:",
+  "starter": "func solve() -> void:\n\tpass",
+  "require_methods": [
+    "first",
+    "second",
+    "third"
+  ],
+  "tests": [
+    {
+      "args": [],
+      "expect": null,
+      "out": [
+        "one",
+        "two",
+        "three"
+      ]
+    }
+  ],
+  "hint": "Calls happen top to bottom. The order you define the functions in does not matter; the order you call them does.",
+  "solution": "func solve() -> void:\n\tfirst()\n\tsecond()\n\tthird()\n\nfunc first() -> void:\n\tprint(\"one\")\n\nfunc second() -> void:\n\tprint(\"two\")\n\nfunc third() -> void:\n\tprint(\"three\")"
+}

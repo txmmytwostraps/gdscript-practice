@@ -1,0 +1,70 @@
+{
+  "id": "gqrect-010",
+  "title": "Is the point inside",
+  "concept": "gq-rect",
+  "difficulty": 0,
+  "prompt": "Return true if the point lies inside the rectangle.",
+  "signature": "func solve(r: Rect2, point: Vector2) -> bool:",
+  "starter": "func solve(r: Rect2, point: Vector2) -> bool:\n\treturn false",
+  "tests": [
+    {
+      "args": [
+        {
+          "$rect": [
+            0,
+            0,
+            10,
+            10
+          ]
+        },
+        {
+          "$v2": [
+            5,
+            5
+          ]
+        }
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        {
+          "$rect": [
+            0,
+            0,
+            10,
+            10
+          ]
+        },
+        {
+          "$v2": [
+            15,
+            5
+          ]
+        }
+      ],
+      "expect": false
+    },
+    {
+      "args": [
+        {
+          "$rect": [
+            10,
+            10,
+            5,
+            5
+          ]
+        },
+        {
+          "$v2": [
+            12,
+            14
+          ]
+        }
+      ],
+      "expect": true
+    }
+  ],
+  "hint": "There is a method for this; its name mentions a point.",
+  "solution": "func solve(r: Rect2, point: Vector2) -> bool:\n\treturn r.has_point(point)"
+}

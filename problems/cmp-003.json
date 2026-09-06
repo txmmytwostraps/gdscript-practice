@@ -1,0 +1,53 @@
+{
+  "id": "cmp-003",
+  "title": "In range",
+  "concept": "comparisons",
+  "difficulty": 1,
+  "prompt": "Return true if n is between low and high, including both ends.",
+  "signature": "func solve(n: int, low: int, high: int) -> bool:",
+  "starter": "func solve(n: int, low: int, high: int) -> bool:\n\treturn false",
+  "tests": [
+    {
+      "args": [
+        5,
+        1,
+        10
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        1,
+        1,
+        10
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        10,
+        1,
+        10
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        11,
+        1,
+        10
+      ],
+      "expect": false
+    },
+    {
+      "args": [
+        0,
+        1,
+        10
+      ],
+      "expect": false
+    }
+  ],
+  "hint": "Two conditions joined with `and`: `low <= n and n <= high`.",
+  "solution": "func solve(n: int, low: int, high: int) -> bool:\n\treturn low <= n and n <= high"
+}

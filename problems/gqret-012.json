@@ -1,0 +1,34 @@
+{
+  "id": "gqret-012",
+  "title": "Return the absolute value",
+  "concept": "gq-return",
+  "difficulty": 0,
+  "prompt": "Write `distance_from_zero`, which returns how far a number is from zero, always positive. The built-in abs() does this. solve returns distance_from_zero(n).",
+  "signature": "func solve(n: int) -> int:",
+  "starter": "func solve(n: int) -> int:\n\treturn n",
+  "require_methods": [
+    "distance_from_zero"
+  ],
+  "tests": [
+    {
+      "args": [
+        -5
+      ],
+      "expect": 5
+    },
+    {
+      "args": [
+        3
+      ],
+      "expect": 3
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 0
+    }
+  ],
+  "hint": "Wrapping a built-in in your own well-named function is a normal thing to do.",
+  "solution": "func solve(n: int) -> int:\n\treturn distance_from_zero(n)\n\nfunc distance_from_zero(value: int) -> int:\n\treturn abs(value)"
+}

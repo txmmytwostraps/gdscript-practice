@@ -1,0 +1,34 @@
+{
+  "id": "gqstr-005",
+  "title": "Repeat with a loop",
+  "concept": "gq-strings",
+  "difficulty": 1,
+  "prompt": "Return text repeated times times in a row, built with a loop. Zero times gives an empty string.",
+  "signature": "func solve(text: String, times: int) -> String:",
+  "starter": "func solve(text: String, times: int) -> String:\n\treturn text",
+  "tests": [
+    {
+      "args": [
+        "ab",
+        3
+      ],
+      "expect": "ababab"
+    },
+    {
+      "args": [
+        "x",
+        0
+      ],
+      "expect": ""
+    },
+    {
+      "args": [
+        "go",
+        1
+      ],
+      "expect": "go"
+    }
+  ],
+  "hint": "Start with an empty string and add text to it once per loop turn. range(times) runs that many turns.",
+  "solution": "func solve(text: String, times: int) -> String:\n\tvar result = \"\"\n\tfor i in range(times):\n\t\tresult += text\n\treturn result"
+}

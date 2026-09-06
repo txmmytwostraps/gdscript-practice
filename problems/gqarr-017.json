@@ -1,0 +1,45 @@
+{
+  "id": "gqarr-017",
+  "title": "Double each",
+  "concept": "gq-arrays",
+  "difficulty": 1,
+  "prompt": "Return a new array where every number is doubled. Leave the original alone.",
+  "signature": "func solve(nums: Array) -> Array:",
+  "starter": "func solve(nums: Array) -> Array:\n\treturn nums",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expect": [
+        2,
+        4,
+        6
+      ]
+    },
+    {
+      "args": [
+        []
+      ],
+      "expect": []
+    },
+    {
+      "args": [
+        [
+          -1,
+          0
+        ]
+      ],
+      "expect": [
+        -2,
+        0
+      ]
+    }
+  ],
+  "hint": "Make an empty result array, then append each doubled number as you loop.",
+  "solution": "func solve(nums: Array) -> Array:\n\tvar result = []\n\tfor n in nums:\n\t\tresult.append(n * 2)\n\treturn result"
+}

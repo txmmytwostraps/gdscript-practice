@@ -1,0 +1,129 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Judge bridge test</title>
+<style>
+  body { font: 14px/1.4 system-ui, sans-serif; margin: 1.5rem; max-width: 60rem; }
+  pre  { background: #f4f4f4; padding: .75rem; overflow-x: auto; white-space: pre-wrap; margin: .25rem 0; }
+  .ok { color: #1a7f37; } .bad { color: #b42318; }
+  #frame iframe { width: 320px; height: 120px; border: 1px solid #ccc; }
+  button { font: inherit; padding: .4rem .8rem; }
+  table { border-collapse: collapse; } td, th { border: 1px solid #ddd; padding: .2rem .5rem; text-align: left; }
+</style>
+
+<h1>Judge bridge test</h1>
+<p>Status: <b id="status">loading engine…</b> &nbsp; <span id="tick"></span></p>
+<div id="frame"></div>
+
+<h2>Bridge cases</h2>
+<div id="results"></div>
+
+<h2>Problem bank</h2>
+<p><button id="runall">Run every problem solution + starter through the browser judge</button></p>
+<div id="bank"></div>
+
+<script type="module">
+import { JudgeClient, tidyError } from "./judge-client.js";
+import { loadIndex, loadProblem } from "./problems.js";
+
+const statusEl = document.getElementById("status");
+const resultsEl = document.getElementById("results");
+const bankEl = document.getElementById("bank");
+
+// A ticking counter proves this page is alive while the judge is frozen.
+let ticks = 0;
+setInterval(() => { document.getElementById("tick").textContent = "page alive: " + (++ticks); }, 100);
+
+// Recovery test: when the judge really hangs (the "hang" case below defeats
+// the loop budget), the page reloads itself once and re-checks the judge.
+const recovering = sessionStorage.getItem("judge-test-recovering") === "1";
+
+const judge = new JudgeClient({
+  src: "../web/index.html",
+  container: document.getElementById("frame"),
+  timeoutMs: 5000,
+  onStatus: (s) => { statusEl.textContent = s; },
+  onTimeout: () => {
+    if (recovering) return;                       // do not loop forever
+    sessionStorage.setItem("judge-test-recovering", "1");
+    setTimeout(() => location.reload(), 500);     // give the page a moment to show the timeout line
+  },
+});
+
+const sumProblem = { tests: [
+  { args: [[1, 2, 3]], expect: 6 },
+  { args: [[]], expect: 0 },
+  { args: [[-5, 5, 10]], expect: 10 },
+]};
+const allCases = {
+  good:     "func solve(nums: Array) -> int:\n\tvar s := 0\n\tfor n in nums:\n\t\ts += n\n\tout(\"sum was %d\" % s)\n\treturn s\n",
+  wrong:    "func solve(nums: Array) -> int:\n\treturn 42\n",
+  broken:   "func solve(nums: Array) -> int:\n\treturn nums +\n",
+  infinite: "func solve(nums: Array) -> int:\n\twhile true:\n\t\tpass\n\treturn 0\n",
+  oneliner: "func solve(nums: Array) -> int:\n\twhile true: pass\n\treturn 0\n",
+  // A for-loop over an array that keeps growing never ends and is NOT caught
+  // by the loop budget - this is the case the iframe watchdog exists for.
+  hang:     "func solve(nums: Array) -> int:\n\tvar a := [1]\n\tfor x in a:\n\t\ta.append(x)\n\treturn 0\n",
+  after:    "func solve(nums: Array) -> int:\n\tvar s := 0\n\tfor n in nums:\n\t\ts += n\n\treturn s\n",
+};
+if (location.search.includes("nohang")) delete allCases.hang;   // ?nohang skips the reload test
+const cases = recovering ? { "after (page reloaded after hang)": allCases.after } : allCases;
+if (recovering) sessionStorage.removeItem("judge-test-recovering");
+
+function show(name, r) {
+  const el = document.createElement("div");
+  if (r.timedOut) {
+    el.innerHTML = `<h3>${name} — <span class="bad">${r.message}</span></h3>`;
+  } else if (!r.result) {
+    el.innerHTML = `<h3>${name} — <span class="bad">ERROR: ${r.message || r}</span></h3>`;
+  } else {
+    const res = r.result;
+    const summary = res.status === "ok" ? `${res.passed}/${res.total} passed` : `${res.status}: ${res.error}`;
+    const good = res.status === "ok" && res.passed === res.total;
+    el.innerHTML = `<h3>${name} (${r.ms} ms) — <span class="${good ? "ok" : "bad"}">${summary}</span></h3>
+      <pre>${JSON.stringify(res)}</pre>
+      ${r.errors.length ? `<b>errors:</b><pre>${r.errors.map(tidyError).join("\n")}</pre>` : ""}`;
+  }
+  resultsEl.appendChild(el);
+}
+
+async function runBridgeCases() {
+  const t0 = performance.now();
+  await judge.load();
+  statusEl.textContent = `engine ready in ${((performance.now() - t0) / 1000).toFixed(1)} s`;
+  for (const [name, code] of Object.entries(cases)) {
+    const t1 = performance.now();
+    const label = () => `${name} [${((performance.now() - t1) / 1000).toFixed(1)} s wall]`;
+    try {
+      show(label(), await judge.run(code, sumProblem));
+    } catch (e) {
+      show(label(), e);
+      if (!e.timedOut) throw e;
+    }
+  }
+  statusEl.textContent = "all bridge cases done";
+  window.testDone = true;
+}
+
+document.getElementById("runall").onclick = async () => {
+  const index = await loadIndex();
+  const rows = [];
+  let bad = 0;
+  for (const { id } of index.problems) {
+    const p = await loadProblem(id);
+    bankEl.textContent = "running " + id + " (solution)";
+    const sol = await judge.run(p.solution, p);
+    bankEl.textContent = "running " + id + " (starter)";
+    const st = await judge.run(p.starter, p);
+    const solOk = sol.result.status === "ok" && sol.result.passed === sol.result.total;
+    const stOk = st.result.status !== "compile_error" && !(st.result.status === "ok" && st.result.passed === st.result.total);
+    if (!solOk || !stOk) bad++;
+    rows.push(`<tr><td>${id}</td><td class="${solOk ? "ok" : "bad"}">${sol.result.status} ${sol.result.passed ?? ""}/${sol.result.total ?? ""}</td><td class="${stOk ? "ok" : "bad"}">${st.result.status} ${st.result.passed ?? ""}/${st.result.total ?? ""}</td></tr>`);
+  }
+  bankEl.innerHTML = `<p><b>${index.problems.length} problems, ${bad} with issues</b></p><table><tr><th>id</th><th>solution</th><th>starter</th></tr>${rows.join("")}</table>`;
+  window.bankDone = { total: index.problems.length, bad };
+};
+
+runBridgeCases()
+  .then(() => { if (location.search.includes("runall")) document.getElementById("runall").click(); })  // ?runall starts the bank check
+  .catch((e) => { statusEl.textContent = "FAILED: " + e.message; statusEl.className = "bad"; });
+</script>

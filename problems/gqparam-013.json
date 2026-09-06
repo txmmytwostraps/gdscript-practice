@@ -1,0 +1,34 @@
+{
+  "id": "gqparam-013",
+  "title": "Percent of an amount",
+  "concept": "gq-parameters",
+  "difficulty": 0,
+  "prompt": "Return percent percent of amount. For example 10 percent of 200 is 20.",
+  "signature": "func solve(amount: float, percent: float) -> float:",
+  "starter": "func solve(amount: float, percent: float) -> float:\n\treturn amount",
+  "tests": [
+    {
+      "args": [
+        200,
+        10
+      ],
+      "expect": 20
+    },
+    {
+      "args": [
+        50,
+        50
+      ],
+      "expect": 25
+    },
+    {
+      "args": [
+        0,
+        99
+      ],
+      "expect": 0
+    }
+  ],
+  "hint": "Percent means per hundred: multiply, then divide by 100.",
+  "solution": "func solve(amount: float, percent: float) -> float:\n\treturn amount * percent / 100"
+}

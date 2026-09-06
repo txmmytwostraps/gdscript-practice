@@ -1,0 +1,49 @@
+{
+  "id": "gqrect-004",
+  "title": "Right and bottom edges",
+  "concept": "gq-rect",
+  "difficulty": 0,
+  "prompt": "Return the bottom-right corner of the rectangle as a Vector2.",
+  "signature": "func solve(r: Rect2) -> Vector2:",
+  "starter": "func solve(r: Rect2) -> Vector2:\n\treturn r.position",
+  "tests": [
+    {
+      "args": [
+        {
+          "$rect": [
+            10,
+            20,
+            30,
+            40
+          ]
+        }
+      ],
+      "expect": {
+        "$v2": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "args": [
+        {
+          "$rect": [
+            0,
+            0,
+            5,
+            5
+          ]
+        }
+      ],
+      "expect": {
+        "$v2": [
+          5,
+          5
+        ]
+      }
+    }
+  ],
+  "hint": "Position plus size, or the rect property called end.",
+  "solution": "func solve(r: Rect2) -> Vector2:\n\treturn r.end"
+}

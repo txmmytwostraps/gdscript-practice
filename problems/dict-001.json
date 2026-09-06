@@ -1,0 +1,33 @@
+{
+  "id": "dict-001",
+  "title": "Make a player",
+  "concept": "dictionaries",
+  "difficulty": 0,
+  "prompt": "Return a dictionary with two entries: \"name\" set to name, and \"hp\" set to hp.",
+  "signature": "func solve(name: String, hp: int) -> Dictionary:",
+  "starter": "func solve(name: String, hp: int) -> Dictionary:\n\treturn {}",
+  "tests": [
+    {
+      "args": [
+        "Tim",
+        100
+      ],
+      "expect": {
+        "name": "Tim",
+        "hp": 100
+      }
+    },
+    {
+      "args": [
+        "Bob",
+        0
+      ],
+      "expect": {
+        "name": "Bob",
+        "hp": 0
+      }
+    }
+  ],
+  "hint": "Curly braces make a dictionary: `{\"name\": name, \"hp\": hp}`.",
+  "solution": "func solve(name: String, hp: int) -> Dictionary:\n\treturn {\"name\": name, \"hp\": hp}"
+}

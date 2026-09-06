@@ -1,0 +1,37 @@
+{
+  "id": "gqread-006",
+  "title": "Name the tile size",
+  "concept": "gq-readable",
+  "difficulty": 0,
+  "prompt": "The game grid uses tiles that are 64 pixels wide. Name that `TILE_SIZE` and use it to turn a column number into a pixel position.",
+  "signature": "func solve(column: int) -> int:",
+  "starter": "func solve(column: int) -> int:\n\treturn column * 64",
+  "require_names": [
+    "TILE_SIZE"
+  ],
+  "once_only": [
+    64
+  ],
+  "tests": [
+    {
+      "args": [
+        0
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        3
+      ],
+      "expect": 192
+    },
+    {
+      "args": [
+        10
+      ],
+      "expect": 640
+    }
+  ],
+  "hint": "After naming it, the only place 64 should appear is the const line.",
+  "solution": "func solve(column: int) -> int:\n\tconst TILE_SIZE = 64\n\treturn column * TILE_SIZE"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "gqrect-003",
+  "title": "Area of a rect",
+  "concept": "gq-rect",
+  "difficulty": 0,
+  "prompt": "Return the area of the rectangle: its width times its height.",
+  "signature": "func solve(r: Rect2) -> float:",
+  "starter": "func solve(r: Rect2) -> float:\n\treturn 0.0",
+  "tests": [
+    {
+      "args": [
+        {
+          "$rect": [
+            0,
+            0,
+            3,
+            4
+          ]
+        }
+      ],
+      "expect": 12
+    },
+    {
+      "args": [
+        {
+          "$rect": [
+            10,
+            10,
+            2.5,
+            2
+          ]
+        }
+      ],
+      "expect": 5
+    },
+    {
+      "args": [
+        {
+          "$rect": [
+            0,
+            0,
+            0,
+            9
+          ]
+        }
+      ],
+      "expect": 0
+    }
+  ],
+  "hint": "The width and height live inside r.size, or there is a method that gives the area directly.",
+  "solution": "func solve(r: Rect2) -> float:\n\treturn r.size.x * r.size.y"
+}

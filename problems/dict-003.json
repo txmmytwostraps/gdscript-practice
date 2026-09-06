@@ -1,0 +1,38 @@
+{
+  "id": "dict-003",
+  "title": "Sum of values",
+  "concept": "dictionaries",
+  "difficulty": 0,
+  "prompt": "Return the sum of all the values in the dictionary (ignore the keys). An empty dictionary sums to 0.",
+  "signature": "func solve(data: Dictionary) -> int:",
+  "starter": "func solve(data: Dictionary) -> int:\n\treturn 0",
+  "tests": [
+    {
+      "args": [
+        {
+          "x": 1,
+          "y": 2
+        }
+      ],
+      "expect": 3
+    },
+    {
+      "args": [
+        {}
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        {
+          "a": 10,
+          "b": 20,
+          "c": 30
+        }
+      ],
+      "expect": 60
+    }
+  ],
+  "hint": "`for key in data:` gives you each key; `data[key]` is its value.",
+  "solution": "func solve(data: Dictionary) -> int:\n\tvar total = 0\n\tfor key in data:\n\t\ttotal += data[key]\n\treturn total"
+}

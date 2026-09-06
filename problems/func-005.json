@@ -1,0 +1,40 @@
+{
+  "id": "func-005",
+  "title": "Print then return",
+  "concept": "functions",
+  "difficulty": 1,
+  "prompt": "Call print(n) to print the value of n, then return n × 10. The tests check what you print as well as what you return.",
+  "signature": "func solve(n: int) -> int:",
+  "starter": "func solve(n: int) -> int:\n\treturn n * 10",
+  "tests": [
+    {
+      "args": [
+        3
+      ],
+      "expect": 30,
+      "out": [
+        "3"
+      ]
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 0,
+      "out": [
+        "0"
+      ]
+    },
+    {
+      "args": [
+        -2
+      ],
+      "expect": -20,
+      "out": [
+        "-2"
+      ]
+    }
+  ],
+  "hint": "Two lines: first `print(n)`, then `return n * 10`.",
+  "solution": "func solve(n: int) -> int:\n\tprint(n)\n\treturn n * 10"
+}

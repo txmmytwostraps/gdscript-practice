@@ -1,0 +1,37 @@
+{
+  "id": "gqparam-011",
+  "title": "Distance along a line",
+  "concept": "gq-parameters",
+  "difficulty": 0,
+  "prompt": "Something starts at position start and moves at speed for some seconds. Return where it ends up.",
+  "signature": "func solve(start: float, speed: float, seconds: float) -> float:",
+  "starter": "func solve(start: float, speed: float, seconds: float) -> float:\n\treturn start",
+  "tests": [
+    {
+      "args": [
+        0,
+        10,
+        2
+      ],
+      "expect": 20
+    },
+    {
+      "args": [
+        100,
+        -5,
+        4
+      ],
+      "expect": 80
+    },
+    {
+      "args": [
+        3,
+        0,
+        9
+      ],
+      "expect": 3
+    }
+  ],
+  "hint": "Distance travelled is speed times time. Add it to where you started.",
+  "solution": "func solve(start: float, speed: float, seconds: float) -> float:\n\treturn start + speed * seconds"
+}

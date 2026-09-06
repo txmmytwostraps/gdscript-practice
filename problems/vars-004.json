@@ -1,0 +1,43 @@
+{
+  "id": "vars-004",
+  "title": "Halve it",
+  "concept": "variables",
+  "difficulty": 1,
+  "prompt": "Return n divided by 2. The answer must keep its decimal part: 5 should give 2.5, not 2.",
+  "signature": "func solve(n: int) -> float:",
+  "starter": "func solve(n: int) -> float:\n\treturn n / 2",
+  "tests": [
+    {
+      "args": [
+        5
+      ],
+      "expect": 2.5
+    },
+    {
+      "args": [
+        4
+      ],
+      "expect": 2
+    },
+    {
+      "args": [
+        1
+      ],
+      "expect": 0.5
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        -3
+      ],
+      "expect": -1.5
+    }
+  ],
+  "hint": "Dividing two whole numbers (ints) throws away the remainder: 5 / 2 is 2. Divide by 2.0 instead, and the result becomes a float (a number with decimals).",
+  "solution": "func solve(n: int) -> float:\n\treturn n / 2.0"
+}

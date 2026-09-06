@@ -1,0 +1,38 @@
+{
+  "id": "gqfunc-008",
+  "title": "The same helper three times",
+  "concept": "gq-functions",
+  "difficulty": 0,
+  "prompt": "Write `print_square`, which prints a number times itself. From solve, call it with n, then n + 1, then n + 2.",
+  "signature": "func solve(n: int) -> void:",
+  "starter": "func solve(n: int) -> void:\n\tpass",
+  "require_methods": [
+    "print_square"
+  ],
+  "tests": [
+    {
+      "args": [
+        1
+      ],
+      "expect": null,
+      "out": [
+        "1",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": null,
+      "out": [
+        "0",
+        "1",
+        "4"
+      ]
+    }
+  ],
+  "hint": "Writing the squaring once in a function saves repeating it three times.",
+  "solution": "func solve(n: int) -> void:\n\tprint_square(n)\n\tprint_square(n + 1)\n\tprint_square(n + 2)\n\nfunc print_square(x: int) -> void:\n\tprint(x * x)"
+}

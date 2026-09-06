@@ -1,0 +1,37 @@
+{
+  "id": "gqread-007",
+  "title": "Name the jump height",
+  "concept": "gq-readable",
+  "difficulty": 0,
+  "prompt": "The player jumps 120 pixels up from the ground (up means a smaller y). Name that number `JUMP_HEIGHT` and use it.",
+  "signature": "func solve(ground_y: int) -> int:",
+  "starter": "func solve(ground_y: int) -> int:\n\treturn ground_y - 120",
+  "require_names": [
+    "JUMP_HEIGHT"
+  ],
+  "once_only": [
+    120
+  ],
+  "tests": [
+    {
+      "args": [
+        500
+      ],
+      "expect": 380
+    },
+    {
+      "args": [
+        120
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": -120
+    }
+  ],
+  "hint": "Keep the subtraction as it is; just replace the number with the name.",
+  "solution": "func solve(ground_y: int) -> int:\n\tconst JUMP_HEIGHT = 120\n\treturn ground_y - JUMP_HEIGHT"
+}

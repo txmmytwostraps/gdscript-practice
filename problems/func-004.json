@@ -1,0 +1,53 @@
+{
+  "id": "func-004",
+  "title": "Two results",
+  "concept": "functions",
+  "difficulty": 0,
+  "prompt": "A function can only return one thing, so to return two numbers we put them in an array. Return [a + b, a * b].",
+  "signature": "func solve(a: int, b: int) -> Array:",
+  "starter": "func solve(a: int, b: int) -> Array:\n\treturn []",
+  "tests": [
+    {
+      "args": [
+        2,
+        3
+      ],
+      "expect": [
+        5,
+        6
+      ]
+    },
+    {
+      "args": [
+        0,
+        5
+      ],
+      "expect": [
+        5,
+        0
+      ]
+    },
+    {
+      "args": [
+        -1,
+        4
+      ],
+      "expect": [
+        3,
+        -4
+      ]
+    },
+    {
+      "args": [
+        1,
+        1
+      ],
+      "expect": [
+        2,
+        1
+      ]
+    }
+  ],
+  "hint": "Square brackets make an array: `return [a + b, a * b]`.",
+  "solution": "func solve(a: int, b: int) -> Array:\n\treturn [a + b, a * b]"
+}

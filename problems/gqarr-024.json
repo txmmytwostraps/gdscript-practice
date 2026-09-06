@@ -1,0 +1,37 @@
+{
+  "id": "gqarr-024",
+  "title": "Arrays are shared, not copied",
+  "concept": "gq-arrays",
+  "difficulty": 1,
+  "prompt": "Earlier you saw that a number passed to a function is a copy. Arrays are different. Write `add_item`, which takes an array and appends 99 to it, returning nothing. In solve, call add_item(items) and then return items. Has the original changed?",
+  "signature": "func solve(items: Array) -> Array:",
+  "starter": "func solve(items: Array) -> Array:\n\treturn items",
+  "require_methods": [
+    "add_item"
+  ],
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2
+        ]
+      ],
+      "expect": [
+        1,
+        2,
+        99
+      ]
+    },
+    {
+      "args": [
+        []
+      ],
+      "expect": [
+        99
+      ]
+    }
+  ],
+  "hint": "The helper does not need to return anything: both names point at the same array, so changes made through one show up in the other.",
+  "solution": "func solve(items: Array) -> Array:\n\tadd_item(items)\n\treturn items\n\nfunc add_item(arr: Array) -> void:\n\tarr.append(99)"
+}

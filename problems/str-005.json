@@ -1,0 +1,43 @@
+{
+  "id": "str-005",
+  "title": "Count the vowels",
+  "concept": "strings",
+  "difficulty": 1,
+  "prompt": "Return how many vowels (a, e, i, o, u) are in the text. The text is always lowercase.",
+  "signature": "func solve(text: String) -> int:",
+  "starter": "func solve(text: String) -> int:\n\treturn 0",
+  "tests": [
+    {
+      "args": [
+        "hello"
+      ],
+      "expect": 2
+    },
+    {
+      "args": [
+        "xyz"
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        "aeiou"
+      ],
+      "expect": 5
+    },
+    {
+      "args": [
+        "gdscript"
+      ],
+      "expect": 1
+    },
+    {
+      "args": [
+        ""
+      ],
+      "expect": 0
+    }
+  ],
+  "hint": "`for c in text:` goes through it one letter at a time. `c in \"aeiou\"` is true when c is a vowel.",
+  "solution": "func solve(text: String) -> int:\n\tvar count = 0\n\tfor c in text:\n\t\tif c in \"aeiou\":\n\t\t\tcount += 1\n\treturn count"
+}

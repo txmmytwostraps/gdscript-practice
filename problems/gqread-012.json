@@ -1,0 +1,37 @@
+{
+  "id": "gqread-012",
+  "title": "Name the starting lives",
+  "concept": "gq-readable",
+  "difficulty": 0,
+  "prompt": "The player begins with 3 lives. This returns how many are left. Name the 3 `STARTING_LIVES`.",
+  "signature": "func solve(lives_lost: int) -> int:",
+  "starter": "func solve(lives_lost: int) -> int:\n\treturn 3 - lives_lost",
+  "require_names": [
+    "STARTING_LIVES"
+  ],
+  "once_only": [
+    3
+  ],
+  "tests": [
+    {
+      "args": [
+        1
+      ],
+      "expect": 2
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 3
+    },
+    {
+      "args": [
+        3
+      ],
+      "expect": 0
+    }
+  ],
+  "hint": "Even a small number like 3 deserves a name when it means something.",
+  "solution": "func solve(lives_lost: int) -> int:\n\tconst STARTING_LIVES = 3\n\treturn STARTING_LIVES - lives_lost"
+}

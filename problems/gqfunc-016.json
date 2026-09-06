@@ -1,0 +1,46 @@
+{
+  "id": "gqfunc-016",
+  "title": "A helper you design",
+  "concept": "gq-functions",
+  "difficulty": 1,
+  "prompt": "solve is given a rectangle's width and height. Write a helper called `print_perimeter` that prints the distance around the rectangle, and call it. You decide what parameters it needs.",
+  "signature": "func solve(width: int, height: int) -> void:",
+  "starter": "func solve(width: int, height: int) -> void:\n\tpass",
+  "require_methods": [
+    "print_perimeter"
+  ],
+  "tests": [
+    {
+      "args": [
+        3,
+        4
+      ],
+      "expect": null,
+      "out": [
+        "14"
+      ]
+    },
+    {
+      "args": [
+        0,
+        0
+      ],
+      "expect": null,
+      "out": [
+        "0"
+      ]
+    },
+    {
+      "args": [
+        5,
+        5
+      ],
+      "expect": null,
+      "out": [
+        "20"
+      ]
+    }
+  ],
+  "hint": "The perimeter is twice the width plus twice the height. Your helper needs to know both.",
+  "solution": "func solve(width: int, height: int) -> void:\n\tprint_perimeter(width, height)\n\nfunc print_perimeter(w: int, h: int) -> void:\n\tprint(2 * w + 2 * h)"
+}

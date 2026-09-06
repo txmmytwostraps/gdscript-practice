@@ -1,0 +1,82 @@
+{
+  "id": "gqdelta-003",
+  "title": "New position in 2D",
+  "concept": "gq-delta",
+  "difficulty": 0,
+  "prompt": "Same idea with vectors: return the new position after one frame, given the current position and a velocity in pixels per second.",
+  "signature": "func solve(position: Vector2, velocity: Vector2, delta: float) -> Vector2:",
+  "starter": "func solve(position: Vector2, velocity: Vector2, delta: float) -> Vector2:\n\treturn position + velocity",
+  "tests": [
+    {
+      "args": [
+        {
+          "$v2": [
+            0,
+            0
+          ]
+        },
+        {
+          "$v2": [
+            100,
+            50
+          ]
+        },
+        0.1
+      ],
+      "expect": {
+        "$v2": [
+          10,
+          5
+        ]
+      }
+    },
+    {
+      "args": [
+        {
+          "$v2": [
+            5,
+            5
+          ]
+        },
+        {
+          "$v2": [
+            0,
+            -10
+          ]
+        },
+        0.5
+      ],
+      "expect": {
+        "$v2": [
+          5,
+          0
+        ]
+      }
+    },
+    {
+      "args": [
+        {
+          "$v2": [
+            1,
+            1
+          ]
+        },
+        {
+          "$v2": [
+            3,
+            3
+          ]
+        },
+        0
+      ],
+      "expect": {
+        "$v2": [
+          1,
+          1
+        ]
+      }
+    }
+  ],
+  "hint": "The starter forgets delta, so it moves a whole second per frame. Scale the velocity first.",
+  "solution": "func solve(position: Vector2, velocity: Vector2, delta: float) -> Vector2:\n\treturn position + velocity * delta"
+}

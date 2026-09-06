@@ -1,0 +1,43 @@
+{
+  "id": "gqarr-019",
+  "title": "Reverse with a loop",
+  "concept": "gq-arrays",
+  "difficulty": 1,
+  "prompt": "Return a new array with the items in the opposite order. Build it with a loop.",
+  "signature": "func solve(items: Array) -> Array:",
+  "starter": "func solve(items: Array) -> Array:\n\treturn items",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expect": [
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "args": [
+        []
+      ],
+      "expect": []
+    },
+    {
+      "args": [
+        [
+          7
+        ]
+      ],
+      "expect": [
+        7
+      ]
+    }
+  ],
+  "hint": "Adding each item to the FRONT of a new array reverses the order. Look for a method that does that.",
+  "solution": "func solve(items: Array) -> Array:\n\tvar result = []\n\tfor item in items:\n\t\tresult.push_front(item)\n\treturn result"
+}

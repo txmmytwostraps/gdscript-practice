@@ -1,0 +1,55 @@
+{
+  "id": "gqrect-008",
+  "title": "Grow",
+  "concept": "gq-rect",
+  "difficulty": 1,
+  "prompt": "Return the rectangle made bigger by margin on every side, so it stays centred where it was.",
+  "signature": "func solve(r: Rect2, margin: float) -> Rect2:",
+  "starter": "func solve(r: Rect2, margin: float) -> Rect2:\n\treturn r",
+  "tests": [
+    {
+      "args": [
+        {
+          "$rect": [
+            10,
+            10,
+            20,
+            20
+          ]
+        },
+        5
+      ],
+      "expect": {
+        "$rect": [
+          5,
+          5,
+          30,
+          30
+        ]
+      }
+    },
+    {
+      "args": [
+        {
+          "$rect": [
+            0,
+            0,
+            10,
+            10
+          ]
+        },
+        0
+      ],
+      "expect": {
+        "$rect": [
+          0,
+          0,
+          10,
+          10
+        ]
+      }
+    }
+  ],
+  "hint": "Rect2 has a grow method. Note the position moves up-left while the size grows by twice the margin.",
+  "solution": "func solve(r: Rect2, margin: float) -> Rect2:\n\treturn r.grow(margin)"
+}

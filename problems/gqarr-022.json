@@ -1,0 +1,31 @@
+{
+  "id": "gqarr-022",
+  "title": "Pop the last",
+  "concept": "gq-arrays",
+  "difficulty": 0,
+  "prompt": "Remove the last item from the array and return that item. The array has at least one item.",
+  "signature": "func solve(items: Array) -> int:",
+  "starter": "func solve(items: Array) -> int:\n\treturn items[0]",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expect": 3
+    },
+    {
+      "args": [
+        [
+          9
+        ]
+      ],
+      "expect": 9
+    }
+  ],
+  "hint": "pop_back both removes the last item and hands it to you.",
+  "solution": "func solve(items: Array) -> int:\n\treturn items.pop_back()"
+}

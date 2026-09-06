@@ -1,0 +1,34 @@
+{
+  "id": "gqvar-016",
+  "title": "Minutes to seconds",
+  "concept": "gq-variables",
+  "difficulty": 0,
+  "prompt": "Create a variable `seconds` equal to minutes times 60. Return seconds.",
+  "signature": "func solve(minutes: int) -> int:",
+  "starter": "func solve(minutes: int) -> int:\n\treturn minutes",
+  "require_names": [
+    "seconds"
+  ],
+  "tests": [
+    {
+      "args": [
+        2
+      ],
+      "expect": 120
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        10
+      ],
+      "expect": 600
+    }
+  ],
+  "hint": "How many seconds are in one minute? Multiply by that.",
+  "solution": "func solve(minutes: int) -> int:\n\tvar seconds = minutes * 60\n\treturn seconds"
+}

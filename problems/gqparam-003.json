@@ -1,0 +1,37 @@
+{
+  "id": "gqparam-003",
+  "title": "Price, quantity, shipping",
+  "concept": "gq-parameters",
+  "difficulty": 0,
+  "prompt": "Three parameters this time. Return the total cost: the price times the quantity, plus shipping.",
+  "signature": "func solve(price: float, quantity: int, shipping: float) -> float:",
+  "starter": "func solve(price: float, quantity: int, shipping: float) -> float:\n\treturn 0.0",
+  "tests": [
+    {
+      "args": [
+        2.5,
+        4,
+        3
+      ],
+      "expect": 13
+    },
+    {
+      "args": [
+        0,
+        0,
+        5
+      ],
+      "expect": 5
+    },
+    {
+      "args": [
+        10,
+        1,
+        0
+      ],
+      "expect": 10
+    }
+  ],
+  "hint": "Multiplication happens before addition, so you may not need brackets.",
+  "solution": "func solve(price: float, quantity: int, shipping: float) -> float:\n\treturn price * quantity + shipping"
+}

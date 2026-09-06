@@ -1,0 +1,41 @@
+{
+  "id": "gqcond-015",
+  "title": "Nested if",
+  "concept": "gq-conditions",
+  "difficulty": 1,
+  "prompt": "To ride you must be at least 12 years old, and then at least 120 cm tall. Return \"too young\", \"too short\" or \"ride\". Check the age first, and only check the height inside that.",
+  "signature": "func solve(age: int, height: int) -> String:",
+  "starter": "func solve(age: int, height: int) -> String:\n\treturn \"ride\"",
+  "tests": [
+    {
+      "args": [
+        10,
+        150
+      ],
+      "expect": "too young"
+    },
+    {
+      "args": [
+        14,
+        100
+      ],
+      "expect": "too short"
+    },
+    {
+      "args": [
+        14,
+        130
+      ],
+      "expect": "ride"
+    },
+    {
+      "args": [
+        12,
+        120
+      ],
+      "expect": "ride"
+    }
+  ],
+  "hint": "An if can live inside another if. Indent it one level further.",
+  "solution": "func solve(age: int, height: int) -> String:\n\tif age >= 12:\n\t\tif height >= 120:\n\t\t\treturn \"ride\"\n\t\telse:\n\t\t\treturn \"too short\"\n\telse:\n\t\treturn \"too young\""
+}

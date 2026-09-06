@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>$GODOT_PROJECT_NAME</title>
+	<style>
+		html, body { margin: 0; padding: 0; background: #1d1f27; overflow: hidden; }
+		#canvas { display: block; width: 100%; height: 100%; outline: none; }
+	</style>
+	$GODOT_HEAD_INCLUDE
+</head>
+<body>
+	<canvas id="canvas" tabindex="0">Your browser does not support the canvas tag.</canvas>
+	<script src="$GODOT_URL"></script>
+	<script>
+	// Custom shell for the judge. The page embeds this file in a SANDBOXED
+	// iframe, so it cannot reach in and read our variables. Everything goes
+	// through postMessage instead:
+	//   page -> us : {type:"run", id, code, problem}   (problem is a JSON string)
+	//   us -> page : {type:"ready"} | {type:"result", id, result, errors, ms} | {type:"error", error}
+	const post = (msg) => window.parent.postMessage(msg, "*");
+	const errorLines = [];
+	const config = Object.assign({}, $GODOT_CONFIG, {
+		persistentPaths: [],            // no IndexedDB: not allowed in a sandboxed frame, not needed
+		onPrint: (...a) => console.log(...a),
+		onPrintError: (...a) => {       // this is where GDScript compile/runtime errors arrive
+			const s = a.map(String).join(" ");
+			errorLines.push(s);
+			console.error(s);
+		},
+	});
+	const engine = new Engine(config);
+	const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+	window.addEventListener("message", async (ev) => {
+		const m = ev.data;
+		if (!m || m.type !== "run") return;
+		if (!window.gdjudge_ready) {
+			post({ type: "result", id: m.id, result: { status: "error", error: "engine not ready" }, errors: [], ms: 0 });
+			return;
+		}
+		errorLines.length = 0;
+		window.gdjudge_result = null;
+		const t0 = performance.now();
+		window.gdjudge(m.code, m.problem);            // GDScript answers on a later frame...
+		while (window.gdjudge_result == null) await sleep(10);   // ...so we poll for it
+		post({ type: "result", id: m.id, result: JSON.parse(window.gdjudge_result), errors: errorLines.slice(), ms: Math.round(performance.now() - t0) });
+	});
+
+	// If the engine aborts (a WebAssembly trap, e.g. integer division by zero
+	// in a release build), tell the page at once instead of letting it wait
+	// for its watchdog. The engine cannot recover; the page must reload us.
+	const crashed = (msg) => post({ type: "crash", error: String(msg) });
+	window.addEventListener("error", (ev) => crashed(ev.message || ev.error));
+	window.addEventListener("unhandledrejection", (ev) => crashed(ev.reason));
+	config.onExit = (code) => crashed("engine exited with code " + code);
+
+	engine.startGame().catch((e) => post({ type: "error", error: String(e) }));
+	const readyPoll = setInterval(() => {
+		if (window.gdjudge_ready) { clearInterval(readyPoll); post({ type: "ready" }); }
+	}, 30);
+	</script>
+</body>
+</html>

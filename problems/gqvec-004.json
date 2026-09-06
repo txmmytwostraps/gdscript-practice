@@ -1,0 +1,79 @@
+{
+  "id": "gqvec-004",
+  "title": "From a to b",
+  "concept": "gq-vectors",
+  "difficulty": 1,
+  "prompt": "Return the vector that takes you from point a to point b. Starting at a and adding your answer should land on b.",
+  "signature": "func solve(a: Vector2, b: Vector2) -> Vector2:",
+  "starter": "func solve(a: Vector2, b: Vector2) -> Vector2:\n\treturn a - b",
+  "tests": [
+    {
+      "args": [
+        {
+          "$v2": [
+            1,
+            1
+          ]
+        },
+        {
+          "$v2": [
+            4,
+            5
+          ]
+        }
+      ],
+      "expect": {
+        "$v2": [
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "args": [
+        {
+          "$v2": [
+            5,
+            5
+          ]
+        },
+        {
+          "$v2": [
+            5,
+            5
+          ]
+        }
+      ],
+      "expect": {
+        "$v2": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "args": [
+        {
+          "$v2": [
+            2,
+            0
+          ]
+        },
+        {
+          "$v2": [
+            0,
+            2
+          ]
+        }
+      ],
+      "expect": {
+        "$v2": [
+          -2,
+          2
+        ]
+      }
+    }
+  ],
+  "hint": "Destination minus start. The starter has them the wrong way round.",
+  "solution": "func solve(a: Vector2, b: Vector2) -> Vector2:\n\treturn b - a"
+}

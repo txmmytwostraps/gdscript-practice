@@ -1,0 +1,41 @@
+{
+  "id": "arith-001",
+  "title": "Rectangle area",
+  "concept": "arithmetic",
+  "difficulty": 0,
+  "prompt": "Return the area of a rectangle: width times height.",
+  "signature": "func solve(width: int, height: int) -> int:",
+  "starter": "func solve(width: int, height: int) -> int:\n\treturn 0",
+  "tests": [
+    {
+      "args": [
+        3,
+        4
+      ],
+      "expect": 12
+    },
+    {
+      "args": [
+        5,
+        5
+      ],
+      "expect": 25
+    },
+    {
+      "args": [
+        0,
+        9
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        7,
+        1
+      ],
+      "expect": 7
+    }
+  ],
+  "hint": "`return width * height`",
+  "solution": "func solve(width: int, height: int) -> int:\n\treturn width * height"
+}

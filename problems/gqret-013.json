@@ -1,0 +1,36 @@
+{
+  "id": "gqret-013",
+  "title": "Three helpers in a chain",
+  "concept": "gq-return",
+  "difficulty": 1,
+  "prompt": "Write `add_one`, `double` and `square`, each returning what its name says. solve returns the result of adding one, then doubling, then squaring n.",
+  "signature": "func solve(n: int) -> int:",
+  "starter": "func solve(n: int) -> int:\n\treturn n",
+  "require_methods": [
+    "add_one",
+    "double",
+    "square"
+  ],
+  "tests": [
+    {
+      "args": [
+        1
+      ],
+      "expect": 16
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 4
+    },
+    {
+      "args": [
+        2
+      ],
+      "expect": 36
+    }
+  ],
+  "hint": "A returned value can go straight into the next call: square(double(add_one(n))). Inner calls happen first.",
+  "solution": "func solve(n: int) -> int:\n\treturn square(double(add_one(n)))\n\nfunc add_one(v: int) -> int:\n\treturn v + 1\n\nfunc double(v: int) -> int:\n\treturn v * 2\n\nfunc square(v: int) -> int:\n\treturn v * v"
+}

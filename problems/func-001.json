@@ -1,0 +1,37 @@
+{
+  "id": "func-001",
+  "title": "Square",
+  "concept": "functions",
+  "difficulty": 0,
+  "prompt": "Return n squared (n times itself).",
+  "signature": "func solve(n: int) -> int:",
+  "starter": "func solve(n: int) -> int:\n\treturn 0",
+  "tests": [
+    {
+      "args": [
+        3
+      ],
+      "expect": 9
+    },
+    {
+      "args": [
+        -4
+      ],
+      "expect": 16
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        12
+      ],
+      "expect": 144
+    }
+  ],
+  "hint": "`return n * n`",
+  "solution": "func solve(n: int) -> int:\n\treturn n * n"
+}

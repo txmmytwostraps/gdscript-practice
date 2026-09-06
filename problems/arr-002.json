@@ -1,0 +1,49 @@
+{
+  "id": "arr-002",
+  "title": "Build a list",
+  "concept": "arrays",
+  "difficulty": 0,
+  "prompt": "Start with an empty array. Append a, then b, then c to it. Return the array.",
+  "signature": "func solve(a, b, c) -> Array:",
+  "starter": "func solve(a, b, c) -> Array:\n\tvar items = []\n\treturn items",
+  "tests": [
+    {
+      "args": [
+        1,
+        2,
+        3
+      ],
+      "expect": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "args": [
+        "x",
+        "y",
+        "z"
+      ],
+      "expect": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    {
+      "args": [
+        0,
+        0,
+        0
+      ],
+      "expect": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "hint": "`items.append(a)` adds a to the end.",
+  "solution": "func solve(a, b, c) -> Array:\n\tvar items = []\n\titems.append(a)\n\titems.append(b)\n\titems.append(c)\n\treturn items"
+}

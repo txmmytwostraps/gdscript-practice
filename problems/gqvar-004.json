@@ -1,0 +1,21 @@
+{
+  "id": "gqvar-004",
+  "title": "Two variables, one sum",
+  "concept": "gq-variables",
+  "difficulty": 0,
+  "prompt": "Create `apples` with the value 3 and `pears` with the value 4. Return the two added together.",
+  "signature": "func solve() -> int:",
+  "starter": "func solve() -> int:\n\treturn 0",
+  "require_names": [
+    "apples",
+    "pears"
+  ],
+  "tests": [
+    {
+      "args": [],
+      "expect": 7
+    }
+  ],
+  "hint": "Variables can be used in maths just like numbers: `apples + pears`.",
+  "solution": "func solve() -> int:\n\tvar apples = 3\n\tvar pears = 4\n\treturn apples + pears"
+}

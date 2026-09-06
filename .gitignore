@@ -1,0 +1,11 @@
+# Build output: the judge export is rebuilt by CI, never committed.
+web/
+
+# Godot editor cache
+judge/.godot/
+
+# Local-only settings
+.claude/settings.local.json
+
+# Generated review page
+review.html

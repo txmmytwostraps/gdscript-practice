@@ -1,0 +1,43 @@
+{
+  "id": "gqarr-014",
+  "title": "Count the matches, now with count()",
+  "concept": "gq-arrays",
+  "difficulty": 0,
+  "prompt": "Same task as before: how many items equal value. This time use the built-in count method instead of a loop.",
+  "signature": "func solve(items: Array, value: int) -> int:",
+  "starter": "func solve(items: Array, value: int) -> int:\n\treturn 0",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          1,
+          1
+        ],
+        1
+      ],
+      "expect": 3
+    },
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        9
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        [],
+        1
+      ],
+      "expect": 0
+    }
+  ],
+  "hint": "One line. The method takes the value to look for.",
+  "solution": "func solve(items: Array, value: int) -> int:\n\treturn items.count(value)"
+}

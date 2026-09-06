@@ -1,0 +1,39 @@
+{
+  "id": "gqarr-012",
+  "title": "Sum with a loop",
+  "concept": "gq-arrays",
+  "difficulty": 0,
+  "prompt": "Return the total of all the numbers in the array. An empty array totals 0.",
+  "signature": "func solve(nums: Array) -> int:",
+  "starter": "func solve(nums: Array) -> int:\n\tvar total = 0\n\treturn total",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expect": 6
+    },
+    {
+      "args": [
+        []
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        [
+          -5,
+          5,
+          10
+        ]
+      ],
+      "expect": 10
+    }
+  ],
+  "hint": "A for loop visits each item once. Add each one to the total.",
+  "solution": "func solve(nums: Array) -> int:\n\tvar total = 0\n\tfor n in nums:\n\t\ttotal += n\n\treturn total"
+}

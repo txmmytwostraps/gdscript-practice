@@ -1,0 +1,37 @@
+{
+  "id": "gqdelta-014",
+  "title": "Blink timer wraps around",
+  "concept": "gq-delta",
+  "difficulty": 1,
+  "prompt": "A blinking light keeps a timer t that grows by delta each frame and wraps back to the start every period seconds. Return the new t after adding delta and wrapping if it reached the period.",
+  "signature": "func solve(t: float, delta: float, period: float) -> float:",
+  "starter": "func solve(t: float, delta: float, period: float) -> float:\n\treturn t + delta",
+  "tests": [
+    {
+      "args": [
+        0.9,
+        0.2,
+        1
+      ],
+      "expect": 0.1
+    },
+    {
+      "args": [
+        0.5,
+        0.2,
+        1
+      ],
+      "expect": 0.7
+    },
+    {
+      "args": [
+        0,
+        1,
+        1
+      ],
+      "expect": 0
+    }
+  ],
+  "hint": "Add first. Then, if the result is at least the period, subtract the period.",
+  "solution": "func solve(t: float, delta: float, period: float) -> float:\n\tvar result = t + delta\n\tif result >= period:\n\t\tresult -= period\n\treturn result"
+}

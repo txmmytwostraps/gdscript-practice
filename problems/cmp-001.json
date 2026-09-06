@@ -1,0 +1,37 @@
+{
+  "id": "cmp-001",
+  "title": "Old enough",
+  "concept": "comparisons",
+  "difficulty": 0,
+  "prompt": "Return true if age is 18 or more, otherwise false.",
+  "signature": "func solve(age: int) -> bool:",
+  "starter": "func solve(age: int) -> bool:\n\treturn false",
+  "tests": [
+    {
+      "args": [
+        18
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        17
+      ],
+      "expect": false
+    },
+    {
+      "args": [
+        40
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": false
+    }
+  ],
+  "hint": "A comparison like `age >= 18` is already true or false, so you can return it directly.",
+  "solution": "func solve(age: int) -> bool:\n\treturn age >= 18"
+}

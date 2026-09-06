@@ -1,0 +1,37 @@
+{
+  "id": "gqread-014",
+  "title": "Name the coins per gem",
+  "concept": "gq-readable",
+  "difficulty": 0,
+  "prompt": "Each gem is worth 25 coins. Name that `COINS_PER_GEM` and use it to find the total for some gems.",
+  "signature": "func solve(gems: int) -> int:",
+  "starter": "func solve(gems: int) -> int:\n\treturn gems * 25",
+  "require_names": [
+    "COINS_PER_GEM"
+  ],
+  "once_only": [
+    25
+  ],
+  "tests": [
+    {
+      "args": [
+        2
+      ],
+      "expect": 50
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        10
+      ],
+      "expect": 250
+    }
+  ],
+  "hint": "The name says what the number is for; the code then reads like a sentence.",
+  "solution": "func solve(gems: int) -> int:\n\tconst COINS_PER_GEM = 25\n\treturn gems * COINS_PER_GEM"
+}

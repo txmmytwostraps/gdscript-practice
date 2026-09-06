@@ -1,0 +1,38 @@
+{
+  "id": "gqret-015",
+  "title": "Two helpers, one answer",
+  "concept": "gq-return",
+  "difficulty": 1,
+  "prompt": "Write `perimeter` and `area` for a rectangle. solve returns the perimeter plus the area.",
+  "signature": "func solve(width: int, height: int) -> int:",
+  "starter": "func solve(width: int, height: int) -> int:\n\treturn 0",
+  "require_methods": [
+    "perimeter",
+    "area"
+  ],
+  "tests": [
+    {
+      "args": [
+        3,
+        4
+      ],
+      "expect": 26
+    },
+    {
+      "args": [
+        1,
+        1
+      ],
+      "expect": 5
+    },
+    {
+      "args": [
+        0,
+        0
+      ],
+      "expect": 0
+    }
+  ],
+  "hint": "Two returned values can be added together in one expression.",
+  "solution": "func solve(width: int, height: int) -> int:\n\treturn perimeter(width, height) + area(width, height)\n\nfunc perimeter(w: int, h: int) -> int:\n\treturn 2 * w + 2 * h\n\nfunc area(w: int, h: int) -> int:\n\treturn w * h"
+}

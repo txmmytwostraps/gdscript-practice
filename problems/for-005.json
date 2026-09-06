@@ -1,0 +1,81 @@
+{
+  "id": "for-005",
+  "title": "Times table",
+  "concept": "for",
+  "difficulty": 0,
+  "prompt": "Return the times table for n as an array of ten numbers: [n × 1, n × 2, ..., n × 10].",
+  "signature": "func solve(n: int) -> Array:",
+  "starter": "func solve(n: int) -> Array:\n\tvar table = []\n\treturn table",
+  "tests": [
+    {
+      "args": [
+        2
+      ],
+      "expect": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18,
+        20
+      ]
+    },
+    {
+      "args": [
+        1
+      ],
+      "expect": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "args": [
+        5
+      ],
+      "expect": [
+        5,
+        10,
+        15,
+        20,
+        25,
+        30,
+        35,
+        40,
+        45,
+        50
+      ]
+    }
+  ],
+  "hint": "`for i in range(1, 11):` then `table.append(n * i)`.",
+  "solution": "func solve(n: int) -> Array:\n\tvar table = []\n\tfor i in range(1, 11):\n\t\ttable.append(n * i)\n\treturn table"
+}

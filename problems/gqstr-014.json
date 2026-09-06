@@ -1,0 +1,31 @@
+{
+  "id": "gqstr-014",
+  "title": "Reverse a string",
+  "concept": "gq-strings",
+  "difficulty": 1,
+  "prompt": "Return the text backwards, so \"abc\" becomes \"cba\".",
+  "signature": "func solve(text: String) -> String:",
+  "starter": "func solve(text: String) -> String:\n\treturn text",
+  "tests": [
+    {
+      "args": [
+        "abc"
+      ],
+      "expect": "cba"
+    },
+    {
+      "args": [
+        ""
+      ],
+      "expect": ""
+    },
+    {
+      "args": [
+        "Godot"
+      ],
+      "expect": "todoG"
+    }
+  ],
+  "hint": "Unlike arrays, a string's reverse method returns the new string rather than changing the old one.",
+  "solution": "func solve(text: String) -> String:\n\treturn text.reverse()"
+}

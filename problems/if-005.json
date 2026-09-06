@@ -1,0 +1,55 @@
+{
+  "id": "if-005",
+  "title": "FizzBuzz for one number",
+  "concept": "ifelse",
+  "difficulty": 1,
+  "prompt": "If n is divisible by both 3 and 5 return \"FizzBuzz\". If only by 3 return \"Fizz\". If only by 5 return \"Buzz\". Otherwise return the number itself as text, e.g. \"7\".",
+  "signature": "func solve(n: int) -> String:",
+  "starter": "func solve(n: int) -> String:\n\treturn str(n)",
+  "tests": [
+    {
+      "args": [
+        3
+      ],
+      "expect": "Fizz"
+    },
+    {
+      "args": [
+        5
+      ],
+      "expect": "Buzz"
+    },
+    {
+      "args": [
+        15
+      ],
+      "expect": "FizzBuzz"
+    },
+    {
+      "args": [
+        7
+      ],
+      "expect": "7"
+    },
+    {
+      "args": [
+        30
+      ],
+      "expect": "FizzBuzz"
+    },
+    {
+      "args": [
+        9
+      ],
+      "expect": "Fizz"
+    },
+    {
+      "args": [
+        10
+      ],
+      "expect": "Buzz"
+    }
+  ],
+  "hint": "Check the \"both\" case first (`n % 15 == 0`), or the later checks will steal it. `str(n)` turns a number into text.",
+  "solution": "func solve(n: int) -> String:\n\tif n % 15 == 0:\n\t\treturn \"FizzBuzz\"\n\telif n % 3 == 0:\n\t\treturn \"Fizz\"\n\telif n % 5 == 0:\n\t\treturn \"Buzz\"\n\telse:\n\t\treturn str(n)"
+}

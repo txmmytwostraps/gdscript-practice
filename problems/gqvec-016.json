@@ -1,0 +1,67 @@
+{
+  "id": "gqvec-016",
+  "title": "Keep inside a box",
+  "concept": "gq-vectors",
+  "difficulty": 1,
+  "prompt": "Return the position pushed back inside a box that runs from (0, 0) to (width, height). Each part is clamped separately.",
+  "signature": "func solve(position: Vector2, width: float, height: float) -> Vector2:",
+  "starter": "func solve(position: Vector2, width: float, height: float) -> Vector2:\n\treturn position",
+  "tests": [
+    {
+      "args": [
+        {
+          "$v2": [
+            5,
+            5
+          ]
+        },
+        10,
+        10
+      ],
+      "expect": {
+        "$v2": [
+          5,
+          5
+        ]
+      }
+    },
+    {
+      "args": [
+        {
+          "$v2": [
+            -3,
+            12
+          ]
+        },
+        10,
+        10
+      ],
+      "expect": {
+        "$v2": [
+          0,
+          10
+        ]
+      }
+    },
+    {
+      "args": [
+        {
+          "$v2": [
+            15,
+            -1
+          ]
+        },
+        10,
+        8
+      ],
+      "expect": {
+        "$v2": [
+          10,
+          0
+        ]
+      }
+    }
+  ],
+  "hint": "clamp() on x and clamp() on y, or the vector's own clamp method with two corner vectors.",
+  "solution": "func solve(position: Vector2, width: float, height: float) -> Vector2:\n\treturn Vector2(clamp(position.x, 0, width), clamp(position.y, 0, height))"
+}

@@ -1,0 +1,53 @@
+{
+  "id": "arith-002",
+  "title": "Average of three",
+  "concept": "arithmetic",
+  "difficulty": 1,
+  "prompt": "Return the average of a, b and c: add them together and divide by three. Watch out — the answer can have decimals.",
+  "signature": "func solve(a: int, b: int, c: int) -> float:",
+  "starter": "func solve(a: int, b: int, c: int) -> float:\n\treturn 0.0",
+  "tests": [
+    {
+      "args": [
+        1,
+        2,
+        3
+      ],
+      "expect": 2
+    },
+    {
+      "args": [
+        10,
+        20,
+        30
+      ],
+      "expect": 20
+    },
+    {
+      "args": [
+        1,
+        1,
+        2
+      ],
+      "expect": 1.3333333333
+    },
+    {
+      "args": [
+        0,
+        0,
+        0
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        2,
+        3,
+        4
+      ],
+      "expect": 3
+    }
+  ],
+  "hint": "If you divide by 3 (an int) you lose the decimals. Divide by 3.0 instead.",
+  "solution": "func solve(a: int, b: int, c: int) -> float:\n\treturn (a + b + c) / 3.0"
+}

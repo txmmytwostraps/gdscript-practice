@@ -1,0 +1,49 @@
+{
+  "id": "if-003",
+  "title": "Letter grade",
+  "concept": "ifelse",
+  "difficulty": 1,
+  "prompt": "Turn a score into a letter: 90 or more is \"A\", 80 or more is \"B\", 70 or more is \"C\", anything lower is \"F\".",
+  "signature": "func solve(score: int) -> String:",
+  "starter": "func solve(score: int) -> String:\n\treturn \"F\"",
+  "tests": [
+    {
+      "args": [
+        95
+      ],
+      "expect": "A"
+    },
+    {
+      "args": [
+        90
+      ],
+      "expect": "A"
+    },
+    {
+      "args": [
+        85
+      ],
+      "expect": "B"
+    },
+    {
+      "args": [
+        70
+      ],
+      "expect": "C"
+    },
+    {
+      "args": [
+        69
+      ],
+      "expect": "F"
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": "F"
+    }
+  ],
+  "hint": "Check the biggest number first, using `if`, then `elif` (else-if), then `else`.",
+  "solution": "func solve(score: int) -> String:\n\tif score >= 90:\n\t\treturn \"A\"\n\telif score >= 80:\n\t\treturn \"B\"\n\telif score >= 70:\n\t\treturn \"C\"\n\telse:\n\t\treturn \"F\""
+}

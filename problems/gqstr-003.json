@@ -1,0 +1,31 @@
+{
+  "id": "gqstr-003",
+  "title": "Length",
+  "concept": "gq-strings",
+  "difficulty": 0,
+  "prompt": "Return the number of characters in the text. Spaces count.",
+  "signature": "func solve(text: String) -> int:",
+  "starter": "func solve(text: String) -> int:\n\treturn 0",
+  "tests": [
+    {
+      "args": [
+        "hello"
+      ],
+      "expect": 5
+    },
+    {
+      "args": [
+        ""
+      ],
+      "expect": 0
+    },
+    {
+      "args": [
+        "a b"
+      ],
+      "expect": 3
+    }
+  ],
+  "hint": "Strings have a length method, much like arrays have size.",
+  "solution": "func solve(text: String) -> int:\n\treturn text.length()"
+}

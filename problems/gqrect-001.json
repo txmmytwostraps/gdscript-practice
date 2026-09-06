@@ -1,0 +1,45 @@
+{
+  "id": "gqrect-001",
+  "title": "Rect from four numbers",
+  "concept": "gq-rect",
+  "difficulty": 0,
+  "prompt": "Return a Rect2 whose top-left corner is at (x, y) and which is width wide and height tall. This is what draw_rect() takes.",
+  "signature": "func solve(x: float, y: float, width: float, height: float) -> Rect2:",
+  "starter": "func solve(x: float, y: float, width: float, height: float) -> Rect2:\n\treturn Rect2()",
+  "tests": [
+    {
+      "args": [
+        10,
+        20,
+        30,
+        40
+      ],
+      "expect": {
+        "$rect": [
+          10,
+          20,
+          30,
+          40
+        ]
+      }
+    },
+    {
+      "args": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "expect": {
+        "$rect": [
+          0,
+          0,
+          1,
+          1
+        ]
+      }
+    }
+  ],
+  "hint": "Rect2 can be built from four numbers in the same order as the parameters.",
+  "solution": "func solve(x: float, y: float, width: float, height: float) -> Rect2:\n\treturn Rect2(x, y, width, height)"
+}

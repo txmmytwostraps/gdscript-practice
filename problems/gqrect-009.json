@@ -1,0 +1,55 @@
+{
+  "id": "gqrect-009",
+  "title": "Shrink",
+  "concept": "gq-rect",
+  "difficulty": 1,
+  "prompt": "Return the rectangle made smaller by margin on every side.",
+  "signature": "func solve(r: Rect2, margin: float) -> Rect2:",
+  "starter": "func solve(r: Rect2, margin: float) -> Rect2:\n\treturn r",
+  "tests": [
+    {
+      "args": [
+        {
+          "$rect": [
+            5,
+            5,
+            30,
+            30
+          ]
+        },
+        5
+      ],
+      "expect": {
+        "$rect": [
+          10,
+          10,
+          20,
+          20
+        ]
+      }
+    },
+    {
+      "args": [
+        {
+          "$rect": [
+            0,
+            0,
+            10,
+            10
+          ]
+        },
+        1
+      ],
+      "expect": {
+        "$rect": [
+          1,
+          1,
+          8,
+          8
+        ]
+      }
+    }
+  ],
+  "hint": "Growing by a negative amount shrinks.",
+  "solution": "func solve(r: Rect2, margin: float) -> Rect2:\n\treturn r.grow(-margin)"
+}

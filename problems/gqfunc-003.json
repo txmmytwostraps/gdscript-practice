@@ -1,0 +1,46 @@
+{
+  "id": "gqfunc-003",
+  "title": "A helper with a parameter",
+  "concept": "gq-functions",
+  "difficulty": 0,
+  "prompt": "Write a function `show` that takes one number and prints it. From solve, call show with n, then call it again with n times 2.",
+  "signature": "func solve(n: int) -> void:",
+  "starter": "func solve(n: int) -> void:\n\tpass",
+  "require_methods": [
+    "show"
+  ],
+  "tests": [
+    {
+      "args": [
+        3
+      ],
+      "expect": null,
+      "out": [
+        "3",
+        "6"
+      ]
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": null,
+      "out": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "args": [
+        -2
+      ],
+      "expect": null,
+      "out": [
+        "-2",
+        "-4"
+      ]
+    }
+  ],
+  "hint": "Parameters on your own functions work exactly like the ones on solve.",
+  "solution": "func solve(n: int) -> void:\n\tshow(n)\n\tshow(n * 2)\n\nfunc show(value: int) -> void:\n\tprint(value)"
+}

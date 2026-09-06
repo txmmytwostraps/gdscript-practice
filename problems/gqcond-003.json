@@ -1,0 +1,37 @@
+{
+  "id": "gqcond-003",
+  "title": "Even or odd",
+  "concept": "gq-conditions",
+  "difficulty": 0,
+  "prompt": "Return \"even\" if n is even and \"odd\" if it is odd.",
+  "signature": "func solve(n: int) -> String:",
+  "starter": "func solve(n: int) -> String:\n\treturn \"\"",
+  "tests": [
+    {
+      "args": [
+        4
+      ],
+      "expect": "even"
+    },
+    {
+      "args": [
+        7
+      ],
+      "expect": "odd"
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": "even"
+    },
+    {
+      "args": [
+        -3
+      ],
+      "expect": "odd"
+    }
+  ],
+  "hint": "A number is even when dividing by 2 leaves no remainder. The remainder operator is %.",
+  "solution": "func solve(n: int) -> String:\n\tif n % 2 == 0:\n\t\treturn \"even\"\n\telse:\n\t\treturn \"odd\""
+}

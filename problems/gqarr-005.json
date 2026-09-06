@@ -1,0 +1,43 @@
+{
+  "id": "gqarr-005",
+  "title": "Append",
+  "concept": "gq-arrays",
+  "difficulty": 0,
+  "prompt": "Start with an empty array. Add a to the end, then b. Return the array.",
+  "signature": "func solve(a: int, b: int) -> Array:",
+  "starter": "func solve(a: int, b: int) -> Array:\n\tvar items = []\n\treturn items",
+  "tests": [
+    {
+      "args": [
+        1,
+        2
+      ],
+      "expect": [
+        1,
+        2
+      ]
+    },
+    {
+      "args": [
+        7,
+        7
+      ],
+      "expect": [
+        7,
+        7
+      ]
+    },
+    {
+      "args": [
+        0,
+        -1
+      ],
+      "expect": [
+        0,
+        -1
+      ]
+    }
+  ],
+  "hint": "append adds one item to the end. Call it twice.",
+  "solution": "func solve(a: int, b: int) -> Array:\n\tvar items = []\n\titems.append(a)\n\titems.append(b)\n\treturn items"
+}

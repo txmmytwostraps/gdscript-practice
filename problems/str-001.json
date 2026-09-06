@@ -1,0 +1,31 @@
+{
+  "id": "str-001",
+  "title": "Greeting",
+  "concept": "strings",
+  "difficulty": 0,
+  "prompt": "Return \"Hello, \" followed by the name and an exclamation mark. For \"Tim\" that is \"Hello, Tim!\".",
+  "signature": "func solve(name: String) -> String:",
+  "starter": "func solve(name: String) -> String:\n\treturn name",
+  "tests": [
+    {
+      "args": [
+        "Tim"
+      ],
+      "expect": "Hello, Tim!"
+    },
+    {
+      "args": [
+        "Godot"
+      ],
+      "expect": "Hello, Godot!"
+    },
+    {
+      "args": [
+        ""
+      ],
+      "expect": "Hello, !"
+    }
+  ],
+  "hint": "Text joins together with +: `\"Hello, \" + name + \"!\"`.",
+  "solution": "func solve(name: String) -> String:\n\treturn \"Hello, \" + name + \"!\""
+}

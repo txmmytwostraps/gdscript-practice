@@ -1,0 +1,40 @@
+{
+  "id": "gqarr-002",
+  "title": "An array parameter",
+  "concept": "gq-arrays",
+  "difficulty": 0,
+  "prompt": "solve receives an array with at least one item. Return the first item.",
+  "signature": "func solve(items: Array) -> int:",
+  "starter": "func solve(items: Array) -> int:\n\treturn 0",
+  "tests": [
+    {
+      "args": [
+        [
+          5,
+          6,
+          7
+        ]
+      ],
+      "expect": 5
+    },
+    {
+      "args": [
+        [
+          42
+        ]
+      ],
+      "expect": 42
+    },
+    {
+      "args": [
+        [
+          -1,
+          0
+        ]
+      ],
+      "expect": -1
+    }
+  ],
+  "hint": "Positions in an array start at 0, not 1.",
+  "solution": "func solve(items: Array) -> int:\n\treturn items[0]"
+}

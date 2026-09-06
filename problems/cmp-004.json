@@ -1,0 +1,41 @@
+{
+  "id": "cmp-004",
+  "title": "Can ride",
+  "concept": "comparisons",
+  "difficulty": 1,
+  "prompt": "You can ride the roller coaster if you are at least 120 cm tall OR you are with an adult. Return true if the person can ride.",
+  "signature": "func solve(height_cm: int, with_adult: bool) -> bool:",
+  "starter": "func solve(height_cm: int, with_adult: bool) -> bool:\n\treturn false",
+  "tests": [
+    {
+      "args": [
+        130,
+        false
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        100,
+        true
+      ],
+      "expect": true
+    },
+    {
+      "args": [
+        100,
+        false
+      ],
+      "expect": false
+    },
+    {
+      "args": [
+        120,
+        false
+      ],
+      "expect": true
+    }
+  ],
+  "hint": "`or` is true if either side is true: `height_cm >= 120 or with_adult`.",
+  "solution": "func solve(height_cm: int, with_adult: bool) -> bool:\n\treturn height_cm >= 120 or with_adult"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "gqstr-020",
+  "title": "Capitalize",
+  "concept": "gq-strings",
+  "difficulty": 0,
+  "prompt": "Return the text with the first letter of each word in capitals: \"hello world\" becomes \"Hello World\".",
+  "signature": "func solve(text: String) -> String:",
+  "starter": "func solve(text: String) -> String:\n\treturn text",
+  "tests": [
+    {
+      "args": [
+        "hello world"
+      ],
+      "expect": "Hello World"
+    },
+    {
+      "args": [
+        "godot"
+      ],
+      "expect": "Godot"
+    }
+  ],
+  "hint": "One built-in method does the whole job.",
+  "solution": "func solve(text: String) -> String:\n\treturn text.capitalize()"
+}

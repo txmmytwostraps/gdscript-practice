@@ -1,0 +1,64 @@
+{
+  "id": "gqvec-005",
+  "title": "Scale by a number",
+  "concept": "gq-vectors",
+  "difficulty": 0,
+  "prompt": "Return the vector multiplied by factor. Both parts get multiplied.",
+  "signature": "func solve(v: Vector2, factor: float) -> Vector2:",
+  "starter": "func solve(v: Vector2, factor: float) -> Vector2:\n\treturn v",
+  "tests": [
+    {
+      "args": [
+        {
+          "$v2": [
+            1,
+            2
+          ]
+        },
+        3
+      ],
+      "expect": {
+        "$v2": [
+          3,
+          6
+        ]
+      }
+    },
+    {
+      "args": [
+        {
+          "$v2": [
+            4,
+            -2
+          ]
+        },
+        0.5
+      ],
+      "expect": {
+        "$v2": [
+          2,
+          -1
+        ]
+      }
+    },
+    {
+      "args": [
+        {
+          "$v2": [
+            1,
+            1
+          ]
+        },
+        0
+      ],
+      "expect": {
+        "$v2": [
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  "hint": "A vector times a plain number is allowed with the * sign.",
+  "solution": "func solve(v: Vector2, factor: float) -> Vector2:\n\treturn v * factor"
+}

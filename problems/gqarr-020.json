@@ -1,0 +1,43 @@
+{
+  "id": "gqarr-020",
+  "title": "Reverse, now with reverse()",
+  "concept": "gq-arrays",
+  "difficulty": 1,
+  "prompt": "Same task with the built-in reverse method. Careful: `return items.reverse()` will not even compile, because reverse() changes the array in place and gives nothing back.",
+  "signature": "func solve(items: Array) -> Array:",
+  "starter": "func solve(items: Array) -> Array:\n\treturn items",
+  "tests": [
+    {
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expect": [
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "args": [
+        []
+      ],
+      "expect": []
+    },
+    {
+      "args": [
+        [
+          7
+        ]
+      ],
+      "expect": [
+        7
+      ]
+    }
+  ],
+  "hint": "Call reverse() on its own line, then return the array on the next.",
+  "solution": "func solve(items: Array) -> Array:\n\titems.reverse()\n\treturn items"
+}

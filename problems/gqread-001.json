@@ -1,0 +1,37 @@
+{
+  "id": "gqread-001",
+  "title": "Name the speed",
+  "concept": "gq-readable",
+  "difficulty": 0,
+  "prompt": "This code works, but what is 250? Give it a name: create a constant called `SPEED` and use it instead of the bare number.",
+  "signature": "func solve(seconds: float) -> float:",
+  "starter": "func solve(seconds: float) -> float:\n\treturn 250 * seconds",
+  "require_names": [
+    "SPEED"
+  ],
+  "once_only": [
+    250
+  ],
+  "tests": [
+    {
+      "args": [
+        1
+      ],
+      "expect": 250
+    },
+    {
+      "args": [
+        0.5
+      ],
+      "expect": 125
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 0
+    }
+  ],
+  "hint": "A constant is made with the word const, on its own line above the return. Then the return line should not contain 250 any more.",
+  "solution": "func solve(seconds: float) -> float:\n\tconst SPEED = 250\n\treturn SPEED * seconds"
+}

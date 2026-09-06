@@ -1,0 +1,55 @@
+{
+  "id": "gqrect-016",
+  "title": "Scale a rect",
+  "concept": "gq-rect",
+  "difficulty": 1,
+  "prompt": "Return the rectangle with both its position and its size multiplied by factor, as if the whole drawing were zoomed from the top-left corner of the screen.",
+  "signature": "func solve(r: Rect2, factor: float) -> Rect2:",
+  "starter": "func solve(r: Rect2, factor: float) -> Rect2:\n\treturn Rect2(r.position, r.size * factor)",
+  "tests": [
+    {
+      "args": [
+        {
+          "$rect": [
+            10,
+            20,
+            30,
+            40
+          ]
+        },
+        2
+      ],
+      "expect": {
+        "$rect": [
+          20,
+          40,
+          60,
+          80
+        ]
+      }
+    },
+    {
+      "args": [
+        {
+          "$rect": [
+            10,
+            20,
+            30,
+            40
+          ]
+        },
+        0.5
+      ],
+      "expect": {
+        "$rect": [
+          5,
+          10,
+          15,
+          20
+        ]
+      }
+    }
+  ],
+  "hint": "The starter scales only the size. The position needs the same treatment.",
+  "solution": "func solve(r: Rect2, factor: float) -> Rect2:\n\treturn Rect2(r.position * factor, r.size * factor)"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "gqfunc-001",
+  "title": "Call a helper",
+  "concept": "gq-functions",
+  "difficulty": 0,
+  "prompt": "Write a second function called `say_hello` that prints \"Hello!\". Then make solve call it. Whatever you print shows up in the output, and the tests check it.",
+  "signature": "func solve() -> void:",
+  "starter": "func solve() -> void:\n\tpass",
+  "require_methods": [
+    "say_hello"
+  ],
+  "tests": [
+    {
+      "args": [],
+      "expect": null,
+      "out": [
+        "Hello!"
+      ]
+    }
+  ],
+  "hint": "A new function starts with func, a name, brackets and a colon, then an indented body. Calling it is just its name with brackets.",
+  "solution": "func solve() -> void:\n\tsay_hello()\n\nfunc say_hello() -> void:\n\tprint(\"Hello!\")"
+}

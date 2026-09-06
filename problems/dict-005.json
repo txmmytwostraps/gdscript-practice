@@ -1,0 +1,49 @@
+{
+  "id": "dict-005",
+  "title": "Keys with a value",
+  "concept": "dictionaries",
+  "difficulty": 1,
+  "prompt": "Return an array of every key whose value equals value, in the order they appear in the dictionary.",
+  "signature": "func solve(data: Dictionary, value: int) -> Array:",
+  "starter": "func solve(data: Dictionary, value: int) -> Array:\n\treturn []",
+  "tests": [
+    {
+      "args": [
+        {
+          "a": 1,
+          "b": 2,
+          "c": 1
+        },
+        1
+      ],
+      "expect": [
+        "a",
+        "c"
+      ]
+    },
+    {
+      "args": [
+        {
+          "a": 1
+        },
+        5
+      ],
+      "expect": []
+    },
+    {
+      "args": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        0
+      ],
+      "expect": [
+        "x",
+        "y"
+      ]
+    }
+  ],
+  "hint": "Loop over the keys; `if data[key] == value:` append the key to your result array.",
+  "solution": "func solve(data: Dictionary, value: int) -> Array:\n\tvar result = []\n\tfor key in data:\n\t\tif data[key] == value:\n\t\t\tresult.append(key)\n\treturn result"
+}

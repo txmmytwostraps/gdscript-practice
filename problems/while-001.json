@@ -1,0 +1,49 @@
+{
+  "id": "while-001",
+  "title": "Count down",
+  "concept": "while",
+  "difficulty": 0,
+  "prompt": "Return an array counting down from n to 1, like [3, 2, 1]. For 0, return an empty array. Use a while loop.",
+  "signature": "func solve(n: int) -> Array:",
+  "starter": "func solve(n: int) -> Array:\n\tvar result = []\n\treturn result",
+  "tests": [
+    {
+      "args": [
+        3
+      ],
+      "expect": [
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "args": [
+        1
+      ],
+      "expect": [
+        1
+      ]
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": []
+    },
+    {
+      "args": [
+        5
+      ],
+      "expect": [
+        5,
+        4,
+        3,
+        2,
+        1
+      ]
+    }
+  ],
+  "hint": "Keep a counter `i` starting at n. `while i > 0:` append i to the array, then `i -= 1`.",
+  "solution": "func solve(n: int) -> Array:\n\tvar result = []\n\tvar i = n\n\twhile i > 0:\n\t\tresult.append(i)\n\t\ti -= 1\n\treturn result"
+}

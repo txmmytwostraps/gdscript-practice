@@ -1,0 +1,45 @@
+{
+  "id": "gqcond-016",
+  "title": "Smallest of three",
+  "concept": "gq-conditions",
+  "difficulty": 1,
+  "prompt": "Return the smallest of a, b and c using comparisons, not min().",
+  "signature": "func solve(a: int, b: int, c: int) -> int:",
+  "starter": "func solve(a: int, b: int, c: int) -> int:\n\treturn a",
+  "tests": [
+    {
+      "args": [
+        3,
+        1,
+        2
+      ],
+      "expect": 1
+    },
+    {
+      "args": [
+        5,
+        5,
+        5
+      ],
+      "expect": 5
+    },
+    {
+      "args": [
+        -1,
+        0,
+        9
+      ],
+      "expect": -1
+    },
+    {
+      "args": [
+        7,
+        8,
+        2
+      ],
+      "expect": 2
+    }
+  ],
+  "hint": "Keep a variable for the smallest so far. Start with a, then let b and c challenge it.",
+  "solution": "func solve(a: int, b: int, c: int) -> int:\n\tvar smallest = a\n\tif b < smallest:\n\t\tsmallest = b\n\tif c < smallest:\n\t\tsmallest = c\n\treturn smallest"
+}

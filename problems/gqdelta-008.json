@@ -1,0 +1,67 @@
+{
+  "id": "gqdelta-008",
+  "title": "Fall with gravity",
+  "concept": "gq-delta",
+  "difficulty": 1,
+  "prompt": "Gravity pulls down at gravity pixels per second every second, and down is positive y. Return the velocity after one frame.",
+  "signature": "func solve(velocity: Vector2, gravity: float, delta: float) -> Vector2:",
+  "starter": "func solve(velocity: Vector2, gravity: float, delta: float) -> Vector2:\n\treturn velocity",
+  "tests": [
+    {
+      "args": [
+        {
+          "$v2": [
+            0,
+            0
+          ]
+        },
+        980,
+        0.1
+      ],
+      "expect": {
+        "$v2": [
+          0,
+          98
+        ]
+      }
+    },
+    {
+      "args": [
+        {
+          "$v2": [
+            50,
+            -200
+          ]
+        },
+        980,
+        0.5
+      ],
+      "expect": {
+        "$v2": [
+          50,
+          290
+        ]
+      }
+    },
+    {
+      "args": [
+        {
+          "$v2": [
+            3,
+            3
+          ]
+        },
+        0,
+        1
+      ],
+      "expect": {
+        "$v2": [
+          3,
+          3
+        ]
+      }
+    }
+  ],
+  "hint": "Only y changes. Either add to velocity.y, or add Vector2.DOWN times gravity times delta.",
+  "solution": "func solve(velocity: Vector2, gravity: float, delta: float) -> Vector2:\n\treturn velocity + Vector2.DOWN * gravity * delta"
+}

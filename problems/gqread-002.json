@@ -1,0 +1,40 @@
+{
+  "id": "gqread-002",
+  "title": "Name the gravity",
+  "concept": "gq-readable",
+  "difficulty": 0,
+  "prompt": "980 is how fast things fall in this game. Name it `GRAVITY` and use the name in the calculation.",
+  "signature": "func solve(velocity: float, seconds: float) -> float:",
+  "starter": "func solve(velocity: float, seconds: float) -> float:\n\treturn velocity + 980 * seconds",
+  "require_names": [
+    "GRAVITY"
+  ],
+  "once_only": [
+    980
+  ],
+  "tests": [
+    {
+      "args": [
+        0,
+        1
+      ],
+      "expect": 980
+    },
+    {
+      "args": [
+        100,
+        0.5
+      ],
+      "expect": 590
+    },
+    {
+      "args": [
+        0,
+        0
+      ],
+      "expect": 0
+    }
+  ],
+  "hint": "Declare the constant first, then swap the number for the name. Only the name changes; the maths stays the same.",
+  "solution": "func solve(velocity: float, seconds: float) -> float:\n\tconst GRAVITY = 980\n\treturn velocity + GRAVITY * seconds"
+}

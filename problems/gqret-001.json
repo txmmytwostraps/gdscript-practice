@@ -1,0 +1,20 @@
+{
+  "id": "gqret-001",
+  "title": "Return a fixed number",
+  "concept": "gq-return",
+  "difficulty": 0,
+  "prompt": "Write a function `lucky_number` that returns 7. Then make solve return whatever lucky_number gives back.",
+  "signature": "func solve() -> int:",
+  "starter": "func solve() -> int:\n\treturn 0",
+  "require_methods": [
+    "lucky_number"
+  ],
+  "tests": [
+    {
+      "args": [],
+      "expect": 7
+    }
+  ],
+  "hint": "A call to a function that returns something can be used anywhere a value can, including right after the word return.",
+  "solution": "func solve() -> int:\n\treturn lucky_number()\n\nfunc lucky_number() -> int:\n\treturn 7"
+}

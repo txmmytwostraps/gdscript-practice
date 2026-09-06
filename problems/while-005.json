@@ -1,0 +1,48 @@
+{
+  "id": "while-005",
+  "title": "First multiple",
+  "concept": "while",
+  "difficulty": 1,
+  "prompt": "Return the smallest multiple of n that is at least limit. For n = 7 and limit = 30 the multiples are 7, 14, 21, 28, 35 — so the answer is 35. Both numbers are positive.",
+  "signature": "func solve(n: int, limit: int) -> int:",
+  "starter": "func solve(n: int, limit: int) -> int:\n\treturn n",
+  "tests": [
+    {
+      "args": [
+        7,
+        30
+      ],
+      "expect": 35
+    },
+    {
+      "args": [
+        5,
+        20
+      ],
+      "expect": 20
+    },
+    {
+      "args": [
+        3,
+        1
+      ],
+      "expect": 3
+    },
+    {
+      "args": [
+        4,
+        10
+      ],
+      "expect": 12
+    },
+    {
+      "args": [
+        10,
+        95
+      ],
+      "expect": 100
+    }
+  ],
+  "hint": "Start with `m = n` and `while m < limit:` add n to m.",
+  "solution": "func solve(n: int, limit: int) -> int:\n\tvar m = n\n\twhile m < limit:\n\t\tm += n\n\treturn m"
+}

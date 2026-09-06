@@ -1,0 +1,46 @@
+{
+  "id": "gqfunc-004",
+  "title": "A helper with two parameters",
+  "concept": "gq-functions",
+  "difficulty": 0,
+  "prompt": "Write `print_sum`, which takes two numbers and prints them added together. Call it from solve with a and b.",
+  "signature": "func solve(a: int, b: int) -> void:",
+  "starter": "func solve(a: int, b: int) -> void:\n\tpass",
+  "require_methods": [
+    "print_sum"
+  ],
+  "tests": [
+    {
+      "args": [
+        2,
+        3
+      ],
+      "expect": null,
+      "out": [
+        "5"
+      ]
+    },
+    {
+      "args": [
+        0,
+        0
+      ],
+      "expect": null,
+      "out": [
+        "0"
+      ]
+    },
+    {
+      "args": [
+        -1,
+        1
+      ],
+      "expect": null,
+      "out": [
+        "0"
+      ]
+    }
+  ],
+  "hint": "Separate the two parameters with a comma, both when defining and when calling.",
+  "solution": "func solve(a: int, b: int) -> void:\n\tprint_sum(a, b)\n\nfunc print_sum(x: int, y: int) -> void:\n\tprint(x + y)"
+}

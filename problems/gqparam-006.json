@@ -1,0 +1,31 @@
+{
+  "id": "gqparam-006",
+  "title": "A decimal parameter",
+  "concept": "gq-parameters",
+  "difficulty": 0,
+  "prompt": "speed is a float, so it can hold decimals. Return half of it.",
+  "signature": "func solve(speed: float) -> float:",
+  "starter": "func solve(speed: float) -> float:\n\treturn speed",
+  "tests": [
+    {
+      "args": [
+        10
+      ],
+      "expect": 5
+    },
+    {
+      "args": [
+        3
+      ],
+      "expect": 1.5
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 0
+    }
+  ],
+  "hint": "Because speed is already a float, dividing by 2 keeps the decimals.",
+  "solution": "func solve(speed: float) -> float:\n\treturn speed / 2"
+}

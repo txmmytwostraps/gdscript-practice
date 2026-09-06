@@ -1,0 +1,31 @@
+{
+  "id": "gqcond-019",
+  "title": "Absolute value with if",
+  "concept": "gq-conditions",
+  "difficulty": 0,
+  "prompt": "Return n made positive: -5 becomes 5, 5 stays 5. Use an if rather than abs().",
+  "signature": "func solve(n: int) -> int:",
+  "starter": "func solve(n: int) -> int:\n\treturn n",
+  "tests": [
+    {
+      "args": [
+        -5
+      ],
+      "expect": 5
+    },
+    {
+      "args": [
+        3
+      ],
+      "expect": 3
+    },
+    {
+      "args": [
+        0
+      ],
+      "expect": 0
+    }
+  ],
+  "hint": "Only negative numbers need changing. What do you multiply by to flip the sign?",
+  "solution": "func solve(n: int) -> int:\n\tif n < 0:\n\t\treturn -n\n\treturn n"
+}

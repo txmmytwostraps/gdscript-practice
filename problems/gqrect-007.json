@@ -1,0 +1,65 @@
+{
+  "id": "gqrect-007",
+  "title": "Move a rect",
+  "concept": "gq-rect",
+  "difficulty": 0,
+  "prompt": "Return the rectangle shifted by offset. Its size does not change.",
+  "signature": "func solve(r: Rect2, offset: Vector2) -> Rect2:",
+  "starter": "func solve(r: Rect2, offset: Vector2) -> Rect2:\n\treturn r",
+  "tests": [
+    {
+      "args": [
+        {
+          "$rect": [
+            0,
+            0,
+            10,
+            10
+          ]
+        },
+        {
+          "$v2": [
+            5,
+            -5
+          ]
+        }
+      ],
+      "expect": {
+        "$rect": [
+          5,
+          -5,
+          10,
+          10
+        ]
+      }
+    },
+    {
+      "args": [
+        {
+          "$rect": [
+            1,
+            1,
+            2,
+            2
+          ]
+        },
+        {
+          "$v2": [
+            0,
+            0
+          ]
+        }
+      ],
+      "expect": {
+        "$rect": [
+          1,
+          1,
+          2,
+          2
+        ]
+      }
+    }
+  ],
+  "hint": "Build a new Rect2 from the moved position and the old size.",
+  "solution": "func solve(r: Rect2, offset: Vector2) -> Rect2:\n\treturn Rect2(r.position + offset, r.size)"
+}

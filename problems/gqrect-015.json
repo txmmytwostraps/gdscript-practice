@@ -1,0 +1,79 @@
+{
+  "id": "gqrect-015",
+  "title": "Keep on screen",
+  "concept": "gq-rect",
+  "difficulty": 1,
+  "prompt": "The screen runs from (0, 0) to (screen_w, screen_h). Return the rectangle moved the smallest amount needed so it is fully on screen. Its size stays the same.",
+  "signature": "func solve(r: Rect2, screen_w: float, screen_h: float) -> Rect2:",
+  "starter": "func solve(r: Rect2, screen_w: float, screen_h: float) -> Rect2:\n\treturn r",
+  "tests": [
+    {
+      "args": [
+        {
+          "$rect": [
+            -10,
+            5,
+            50,
+            50
+          ]
+        },
+        800,
+        600
+      ],
+      "expect": {
+        "$rect": [
+          0,
+          5,
+          50,
+          50
+        ]
+      }
+    },
+    {
+      "args": [
+        {
+          "$rect": [
+            790,
+            580,
+            50,
+            50
+          ]
+        },
+        800,
+        600
+      ],
+      "expect": {
+        "$rect": [
+          750,
+          550,
+          50,
+          50
+        ]
+      }
+    },
+    {
+      "args": [
+        {
+          "$rect": [
+            100,
+            100,
+            50,
+            50
+          ]
+        },
+        800,
+        600
+      ],
+      "expect": {
+        "$rect": [
+          100,
+          100,
+          50,
+          50
+        ]
+      }
+    }
+  ],
+  "hint": "Clamp x between 0 and screen_w minus the width; same for y with the height.",
+  "solution": "func solve(r: Rect2, screen_w: float, screen_h: float) -> Rect2:\n\tvar x = clamp(r.position.x, 0, screen_w - r.size.x)\n\tvar y = clamp(r.position.y, 0, screen_h - r.size.y)\n\treturn Rect2(x, y, r.size.x, r.size.y)"
+}

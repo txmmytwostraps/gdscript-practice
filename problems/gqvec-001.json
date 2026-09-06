@@ -1,0 +1,49 @@
+{
+  "id": "gqvec-001",
+  "title": "Make a vector",
+  "concept": "gq-vectors",
+  "difficulty": 0,
+  "prompt": "Return a Vector2 whose x is x and whose y is y. A Vector2 holds two numbers together, usually a position or a direction.",
+  "signature": "func solve(x: float, y: float) -> Vector2:",
+  "starter": "func solve(x: float, y: float) -> Vector2:\n\treturn Vector2.ZERO",
+  "tests": [
+    {
+      "args": [
+        3,
+        4
+      ],
+      "expect": {
+        "$v2": [
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "args": [
+        0,
+        0
+      ],
+      "expect": {
+        "$v2": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "args": [
+        -1.5,
+        2
+      ],
+      "expect": {
+        "$v2": [
+          -1.5,
+          2
+        ]
+      }
+    }
+  ],
+  "hint": "Vector2 is built by calling it with two values, like a function.",
+  "solution": "func solve(x: float, y: float) -> Vector2:\n\treturn Vector2(x, y)"
+}
