@@ -28,9 +28,10 @@ export const TOPICS = [
 ];
 
 export const MILESTONES = [
-  { id: "m1", number: 1, title: "A character with health", after: "gq-return",
-    uses: "Uses variables, functions, return values. 4 steps in the browser, then the same build in Godot on your machine.", steps: 4 },
-  { id: "m2", number: 2, title: "Make the character move", after: "gq-delta", uses: "Uses delta and 2D vectors.", steps: 4, planned: true },
+  { id: "m1", number: 1, title: "Make the character move", after: "gq-delta",
+    uses: "Uses functions, parameters, variables and delta. 4 steps in the browser, then the same build in Godot on your machine.", steps: 4 },
+  { id: "m2", number: 2, title: "A character with health", after: "gq-conditions",
+    uses: "Uses variables, functions and conditions.", steps: 4, planned: true },
 ];
 
 // The full lesson list of the course, as numbered in the app. Topics not in

@@ -44,7 +44,7 @@ function render() {
       if (milestone) {
         const planned = milestone.planned;
         const afterTitle = t.title;
-        rows.push(`<div class="ms ${planned ? "planned" : ""}" id="${milestone.id}"><div class="icon">${planned ? arrow : person("#e2b153")}</div><div style="display:flex;flex-direction:column;gap:3px;flex-grow:1"><div class="k">${planned ? "" : "[!] "}Milestone ${String(milestone.number).padStart(2, "0")}</div><div class="t">${esc(milestone.title)}</div>${planned ? "" : `<div class="u">${esc(milestone.uses)}</div>`}</div>${planned ? "" : `<div class="when">unlocks after ${esc(afterTitle)}</div>`}</div>`);
+        rows.push(`<div class="ms ${planned ? "planned" : ""}" id="${milestone.id}"><div class="icon">${planned ? arrow : person("#e2b153")}</div><div style="display:flex;flex-direction:column;gap:3px;flex-grow:1"><div class="k">${planned ? "" : "[!] "}Milestone ${String(milestone.number).padStart(2, "0")}</div><div class="t">${esc(milestone.title)}</div><div class="u">${esc(milestone.uses)}</div></div><div class="when">unlocks after ${esc(afterTitle)}</div></div>`);
       }
     }
   }
