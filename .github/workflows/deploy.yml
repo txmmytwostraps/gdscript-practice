@@ -1,0 +1,91 @@
+name: Build and deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+env:
+  GODOT_VERSION: 4.7.2
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # The full template pack is ~1.3 GB, so keep it cached between runs.
+      - name: Cache Godot and export templates
+        id: cache-godot
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/godot
+            ~/.local/share/godot/export_templates
+          key: godot-${{ env.GODOT_VERSION }}-web-nothreads-v1
+
+      - name: Download Godot headless and the web export templates
+        if: steps.cache-godot.outputs.cache-hit != 'true'
+        run: |
+          set -e
+          mkdir -p ~/godot ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+          base="https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable"
+          curl -sSL -o godot.zip "$base/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip"
+          unzip -q godot.zip -d ~/godot
+          mv ~/godot/Godot_v${GODOT_VERSION}-stable_linux.x86_64 ~/godot/godot
+          chmod +x ~/godot/godot
+          curl -sSL -o templates.tpz "$base/Godot_v${GODOT_VERSION}-stable_export_templates.tpz"
+          unzip -j -q templates.tpz \
+            templates/web_nothreads_debug.zip templates/web_nothreads_release.zip templates/version.txt \
+            -d ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+          rm -f godot.zip templates.tpz
+
+      - name: Import the judge project
+        run: ~/godot/godot --headless --path judge --import --quit || true
+
+      - name: Validate every problem
+        run: |
+          node tools/build-index.js
+          ~/godot/godot --headless --path judge -- --problems
+
+      # Debug template on purpose: it keeps Godot's runtime checks (division
+      # by zero etc.), so the site behaves like the editor.
+      - name: Export the judge to web/
+        run: |
+          mkdir -p web
+          ~/godot/godot --headless --path judge --export-debug WebNoThreads
+          ls -la web
+
+      - name: Assemble the site
+        run: |
+          mkdir -p _site
+          cp -r site problems web _site/
+          cp index.html .nojekyll _site/
+
+      # Turns Pages on with "GitHub Actions" as the source if it is not yet.
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
