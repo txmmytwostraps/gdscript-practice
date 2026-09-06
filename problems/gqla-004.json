@@ -1,0 +1,49 @@
+{
+  "id": "gqla-004",
+  "title": "Count the items",
+  "concept": "gq-looparrays",
+  "difficulty": 0,
+  "prompt": "Return how many items the array has, by counting in a loop rather than using size().",
+  "signature": "func solve(items):",
+  "starter": "func solve(items):\n\treturn 0",
+  "tests": [
+    {
+      "name": "Three items",
+      "args": [
+        [
+          "a",
+          "b",
+          "c"
+        ]
+      ],
+      "expect": 3
+    },
+    {
+      "name": "Empty is 0",
+      "args": [
+        []
+      ],
+      "expect": 0
+    },
+    {
+      "name": "One item",
+      "args": [
+        [
+          9
+        ]
+      ],
+      "expect": 1
+    }
+  ],
+  "hints": [
+    "Add one to a counter on every turn of the loop.",
+    "`count += 1` inside the loop."
+  ],
+  "docs": [
+    {
+      "name": "for item in list:",
+      "what": "Runs the indented lines once per item, with item holding each value in turn."
+    }
+  ],
+  "solution": "func solve(items):\n\tvar count = 0\n\tfor item in items:\n\t\tcount += 1\n\treturn count"
+}

@@ -1,0 +1,43 @@
+{
+  "id": "gqmul-004",
+  "title": "Damage scales with level",
+  "concept": "gq-multiply",
+  "difficulty": 0,
+  "prompt": "The robot deals 10 damage times its level. Return the damage for the given level. solve(3) is 30.",
+  "signature": "func solve(level):",
+  "starter": "func solve(level):\n\treturn 10",
+  "tests": [
+    {
+      "name": "Level 3 deals 30",
+      "args": [
+        3
+      ],
+      "expect": 30
+    },
+    {
+      "name": "Level 1 deals 10",
+      "args": [
+        1
+      ],
+      "expect": 10
+    },
+    {
+      "name": "Level 0 deals 0",
+      "args": [
+        0
+      ],
+      "expect": 0
+    }
+  ],
+  "hints": [
+    "Base damage times level.",
+    "`return 10 * level`"
+  ],
+  "docs": [
+    {
+      "name": "a * b",
+      "what": "Multiplies two numbers. * with a float keeps decimals."
+    }
+  ],
+  "solution": "func solve(level):\n\treturn 10 * level"
+}

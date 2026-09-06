@@ -1,0 +1,30 @@
+{
+  "id": "gqmem-012",
+  "title": "Position as members",
+  "concept": "gq-members",
+  "difficulty": 0,
+  "prompt": "Members `x` at 0 and `y` at 0 are the robot's position. Write `move_by`, which takes dx and dy and adds them to x and y. solve calls move_by(3, 4) then returns x plus y, which is 7.",
+  "signature": "func solve():",
+  "starter": "var x = 0\nvar y = 0\n\nfunc solve():\n\treturn x + y",
+  "tests": [
+    {
+      "name": "Moved by 3 and 4, x plus y is 7",
+      "args": [],
+      "expect": 7
+    }
+  ],
+  "hints": [
+    "Two members, two additions.",
+    "`func move_by(dx, dy):` with `x += dx` and `y += dy`."
+  ],
+  "docs": [
+    {
+      "name": "var name = value (outside any function)",
+      "what": "A member variable: every function in the script can read and change it."
+    }
+  ],
+  "solution": "var x = 0\nvar y = 0\n\nfunc solve():\n\tmove_by(3, 4)\n\treturn x + y\n\nfunc move_by(dx, dy):\n\tx += dx\n\ty += dy",
+  "require_methods": [
+    "move_by"
+  ]
+}

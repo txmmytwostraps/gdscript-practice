@@ -1,0 +1,46 @@
+{
+  "id": "gqvt-006",
+  "title": "Whole number to decimal",
+  "concept": "gq-valuetypes",
+  "difficulty": 1,
+  "prompt": "Return a divided by b keeping decimals, by converting first. solve(7, 2) is 3.5.",
+  "signature": "func solve(a, b) -> float:",
+  "starter": "func solve(a, b) -> float:\n\treturn a / b",
+  "tests": [
+    {
+      "name": "7 over 2 is 3.5",
+      "args": [
+        7,
+        2
+      ],
+      "expect": 3.5
+    },
+    {
+      "name": "1 over 4 is 0.25",
+      "args": [
+        1,
+        4
+      ],
+      "expect": 0.25
+    },
+    {
+      "name": "9 over 3 is 3.0",
+      "args": [
+        9,
+        3
+      ],
+      "expect": 3
+    }
+  ],
+  "hints": [
+    "Two ints divide to an int; one float makes the result a float.",
+    "`return float(a) / b`"
+  ],
+  "docs": [
+    {
+      "name": "float(value)",
+      "what": "Returns the value as a decimal number."
+    }
+  ],
+  "solution": "func solve(a, b) -> float:\n\treturn float(a) / b"
+}

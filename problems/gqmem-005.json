@@ -1,0 +1,27 @@
+{
+  "id": "gqmem-005",
+  "title": "Damage, then heal",
+  "concept": "gq-members",
+  "difficulty": 1,
+  "prompt": "Using the starter's members and helpers, make `solve` take 40 damage, then heal 15, and return health. From 100 that leaves 75.",
+  "signature": "func solve():",
+  "starter": "var health = 100\n\nfunc solve():\n\treturn health\n\nfunc take_damage(amount):\n\thealth -= amount\n\nfunc heal(amount):\n\thealth += amount",
+  "tests": [
+    {
+      "name": "100, minus 40, plus 15, is 75",
+      "args": [],
+      "expect": 75
+    }
+  ],
+  "hints": [
+    "Each helper changes the same member variable in turn.",
+    "`take_damage(40)`, `heal(15)`, `return health`."
+  ],
+  "docs": [
+    {
+      "name": "var name = value (outside any function)",
+      "what": "A member variable: every function in the script can read and change it."
+    }
+  ],
+  "solution": "var health = 100\n\nfunc solve():\n\ttake_damage(40)\n\theal(15)\n\treturn health\n\nfunc take_damage(amount):\n\thealth -= amount\n\nfunc heal(amount):\n\thealth += amount"
+}

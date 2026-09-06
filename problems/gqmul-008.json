@@ -1,0 +1,43 @@
+{
+  "id": "gqmul-008",
+  "title": "Coins for a level",
+  "concept": "gq-multiply",
+  "difficulty": 0,
+  "prompt": "Beating a level pays 50 coins times the level number. Return the coins for level n.",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\treturn 50",
+  "tests": [
+    {
+      "name": "Level 4 pays 200",
+      "args": [
+        4
+      ],
+      "expect": 200
+    },
+    {
+      "name": "Level 1 pays 50",
+      "args": [
+        1
+      ],
+      "expect": 50
+    },
+    {
+      "name": "Level 10 pays 500",
+      "args": [
+        10
+      ],
+      "expect": 500
+    }
+  ],
+  "hints": [
+    "Reward per level times the level.",
+    "`return 50 * n`"
+  ],
+  "docs": [
+    {
+      "name": "a * b",
+      "what": "Multiplies two numbers. * with a float keeps decimals."
+    }
+  ],
+  "solution": "func solve(n):\n\treturn 50 * n"
+}

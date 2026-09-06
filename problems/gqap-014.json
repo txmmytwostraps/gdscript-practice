@@ -1,0 +1,55 @@
+{
+  "id": "gqap-014",
+  "title": "Move the top crate",
+  "concept": "gq-appendpop",
+  "difficulty": 1,
+  "prompt": "Take the top crate off pile a with pop_back and put it on top of pile b with append. Return pile b.",
+  "signature": "func solve(a, b):",
+  "starter": "func solve(a, b):\n\treturn b",
+  "tests": [
+    {
+      "name": "3 moves from a to b",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          9
+        ]
+      ],
+      "expect": [
+        9,
+        3
+      ]
+    },
+    {
+      "name": "Onto an empty pile",
+      "args": [
+        [
+          5
+        ],
+        []
+      ],
+      "expect": [
+        5
+      ]
+    }
+  ],
+  "hints": [
+    "pop_back gives you the crate; append puts it down.",
+    "`b.append(a.pop_back())`"
+  ],
+  "docs": [
+    {
+      "name": "list.pop_back()",
+      "what": "Removes the last item and returns it."
+    },
+    {
+      "name": "list.append(value)",
+      "what": "Adds value to the end of the array. Returns nothing."
+    }
+  ],
+  "solution": "func solve(a, b):\n\tb.append(a.pop_back())\n\treturn b"
+}

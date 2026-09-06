@@ -1,0 +1,38 @@
+{
+  "id": "gqmul-015",
+  "title": "Report after levelling",
+  "concept": "gq-multiply",
+  "difficulty": 1,
+  "prompt": "Members `level` at 1 and `max_health` at 100, with a working `level_up`. Write `report`, which prints level and then max_health. solve calls level_up, then report.",
+  "signature": "func solve():",
+  "starter": "var level = 1\nvar max_health = 100\n\nfunc solve():\n\tpass\n\nfunc level_up():\n\tlevel += 1\n\tmax_health *= 2",
+  "tests": [
+    {
+      "name": "Prints 2 then 200",
+      "args": [],
+      "expect": null,
+      "out": [
+        "2",
+        "200"
+      ]
+    }
+  ],
+  "hints": [
+    "report reads the members after the change.",
+    "`print(level)` then `print(max_health)` inside report."
+  ],
+  "docs": [
+    {
+      "name": "var name = value (outside any function)",
+      "what": "A member variable: every function in the script can read and change it."
+    },
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "var level = 1\nvar max_health = 100\n\nfunc solve():\n\tlevel_up()\n\treport()\n\nfunc level_up():\n\tlevel += 1\n\tmax_health *= 2\n\nfunc report():\n\tprint(level)\n\tprint(max_health)",
+  "require_methods": [
+    "report"
+  ]
+}

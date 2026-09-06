@@ -1,0 +1,44 @@
+{
+  "id": "gqtype-002",
+  "title": "A typed parameter",
+  "concept": "gq-types",
+  "difficulty": 0,
+  "prompt": "Write `double`, whose parameter is hinted as an int and which returns the parameter times 2. solve returns double(n).",
+  "signature": "func solve(n: int) -> int:",
+  "starter": "func solve(n: int) -> int:\n\treturn n",
+  "tests": [
+    {
+      "name": "4 doubles to 8",
+      "args": [
+        4
+      ],
+      "expect": 8
+    },
+    {
+      "name": "0 doubles to 0",
+      "args": [
+        0
+      ],
+      "expect": 0
+    }
+  ],
+  "hints": [
+    "The hint sits inside the brackets after the parameter name.",
+    "`func double(value: int) -> int:`"
+  ],
+  "docs": [
+    {
+      "name": "func f(a: int, b: float):",
+      "what": "Parameter type hints: Godot checks what is passed in."
+    },
+    {
+      "name": "func f() -> int:",
+      "what": "Return type hint: the function promises to return that type."
+    }
+  ],
+  "solution": "func solve(n: int) -> int:\n\treturn double(n)\n\nfunc double(value: int) -> int:\n\treturn value * 2",
+  "allow_type_hints": true,
+  "require_methods": [
+    "double"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "id": "gqidx-004",
+  "title": "Any slot",
+  "concept": "gq-indices",
+  "difficulty": 0,
+  "prompt": "Return the item at position i.",
+  "signature": "func solve(inventory, i):",
+  "starter": "func solve(inventory, i):\n\treturn inventory[0]",
+  "tests": [
+    {
+      "name": "Position 1 is gear",
+      "args": [
+        [
+          "bolt",
+          "gear",
+          "wire"
+        ],
+        1
+      ],
+      "expect": "gear"
+    },
+    {
+      "name": "Position 0 is bolt",
+      "args": [
+        [
+          "bolt",
+          "gear",
+          "wire"
+        ],
+        0
+      ],
+      "expect": "bolt"
+    },
+    {
+      "name": "Position 2 is wire",
+      "args": [
+        [
+          "bolt",
+          "gear",
+          "wire"
+        ],
+        2
+      ],
+      "expect": "wire"
+    }
+  ],
+  "hints": [
+    "The number inside the brackets can be a variable.",
+    "`return inventory[i]`"
+  ],
+  "docs": [
+    {
+      "name": "list[i]",
+      "what": "The item at position i. Positions start at 0; -1 is the last item."
+    }
+  ],
+  "solution": "func solve(inventory, i):\n\treturn inventory[i]"
+}

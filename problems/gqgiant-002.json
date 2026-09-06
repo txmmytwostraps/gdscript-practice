@@ -1,0 +1,31 @@
+{
+  "id": "gqgiant-002",
+  "title": "Hide, then show",
+  "concept": "gq-giants",
+  "difficulty": 0,
+  "prompt": "Call `hide` and then `show`, so the robot blinks off and back on. The order matters.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass",
+  "tests": [
+    {
+      "name": "hide first, then show",
+      "args": [],
+      "expect": null,
+      "out": [
+        "hide",
+        "show"
+      ]
+    }
+  ],
+  "hints": [
+    "Two calls, one per line, top to bottom.",
+    "`hide()` then `show()`."
+  ],
+  "docs": [
+    {
+      "name": "show() / hide()",
+      "what": "Makes the robot visible or invisible. No arguments; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\thide()\n\tshow()"
+}

@@ -1,0 +1,43 @@
+{
+  "id": "gqmul-001",
+  "title": "Double the max health",
+  "concept": "gq-multiply",
+  "difficulty": 0,
+  "prompt": "The robot levels up and its max health doubles. Return max_health times 2. solve(100) is 200.",
+  "signature": "func solve(max_health):",
+  "starter": "func solve(max_health):\n\treturn max_health",
+  "tests": [
+    {
+      "name": "100 doubles to 200",
+      "args": [
+        100
+      ],
+      "expect": 200
+    },
+    {
+      "name": "0 stays 0",
+      "args": [
+        0
+      ],
+      "expect": 0
+    },
+    {
+      "name": "75 doubles to 150",
+      "args": [
+        75
+      ],
+      "expect": 150
+    }
+  ],
+  "hints": [
+    "Multiplication is the * symbol.",
+    "`return max_health * 2`"
+  ],
+  "docs": [
+    {
+      "name": "a * b",
+      "what": "Multiplies two numbers. * with a float keeps decimals."
+    }
+  ],
+  "solution": "func solve(max_health):\n\treturn max_health * 2"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "gqgiant-005",
+  "title": "Turn back",
+  "concept": "gq-giants",
+  "difficulty": 0,
+  "prompt": "The robot turned 45 degrees too far. Call `rotate` with -45 to turn it back.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass",
+  "tests": [
+    {
+      "name": "rotate is called with -45",
+      "args": [],
+      "expect": null,
+      "out": [
+        "rotate -45"
+      ]
+    }
+  ],
+  "hints": [
+    "Negative numbers turn the other way.",
+    "`rotate(-45)`"
+  ],
+  "docs": [
+    {
+      "name": "rotate(degrees)",
+      "what": "Turns the robot by that many degrees. Takes one number; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\trotate(-45)"
+}

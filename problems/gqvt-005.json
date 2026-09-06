@@ -1,0 +1,43 @@
+{
+  "id": "gqvt-005",
+  "title": "Drop the decimals",
+  "concept": "gq-valuetypes",
+  "difficulty": 0,
+  "prompt": "The robot's energy is a decimal but the display wants a whole number. Return energy as an int, dropping the decimals: 7.9 becomes 7.",
+  "signature": "func solve(energy):",
+  "starter": "func solve(energy):\n\treturn energy",
+  "tests": [
+    {
+      "name": "7.9 becomes 7",
+      "args": [
+        7.9
+      ],
+      "expect": 7
+    },
+    {
+      "name": "3.1 becomes 3",
+      "args": [
+        3.1
+      ],
+      "expect": 3
+    },
+    {
+      "name": "5.0 becomes 5",
+      "args": [
+        5
+      ],
+      "expect": 5
+    }
+  ],
+  "hints": [
+    "int() on a float drops the fraction, it does not round.",
+    "`return int(energy)`"
+  ],
+  "docs": [
+    {
+      "name": "int(value)",
+      "what": "Returns the value as a whole number; decimals are dropped, text like \"42\" is read."
+    }
+  ],
+  "solution": "func solve(energy):\n\treturn int(energy)"
+}

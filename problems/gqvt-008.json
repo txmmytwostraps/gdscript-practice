@@ -1,0 +1,50 @@
+{
+  "id": "gqvt-008",
+  "title": "Name the type",
+  "concept": "gq-valuetypes",
+  "difficulty": 1,
+  "prompt": "Return \"int\", \"float\", \"String\" or \"other\" depending on the type of value.",
+  "signature": "func solve(value):",
+  "starter": "func solve(value):\n\treturn \"other\"",
+  "tests": [
+    {
+      "name": "5 is int",
+      "args": [
+        5
+      ],
+      "expect": "int"
+    },
+    {
+      "name": "2.5 is float",
+      "args": [
+        2.5
+      ],
+      "expect": "float"
+    },
+    {
+      "name": "\"x\" is String",
+      "args": [
+        "x"
+      ],
+      "expect": "String"
+    },
+    {
+      "name": "true is other",
+      "args": [
+        true
+      ],
+      "expect": "other"
+    }
+  ],
+  "hints": [
+    "Chain of if / elif using is.",
+    "`if value is int:` ... `elif value is float:` ... `elif value is String:` ... else."
+  ],
+  "docs": [
+    {
+      "name": "value is String",
+      "what": "true if the value is of that type. Also is int, is float, is bool."
+    }
+  ],
+  "solution": "func solve(value):\n\tif value is int:\n\t\treturn \"int\"\n\telif value is float:\n\t\treturn \"float\"\n\telif value is String:\n\t\treturn \"String\"\n\telse:\n\t\treturn \"other\""
+}

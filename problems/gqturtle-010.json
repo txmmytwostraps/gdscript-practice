@@ -1,0 +1,45 @@
+{
+  "id": "gqturtle-010",
+  "title": "A corner helper",
+  "concept": "gq-turtle",
+  "difficulty": 1,
+  "prompt": "Write a helper called `corner` that moves forward 40 and turns left. Then draw a square by calling corner four times from `solve`.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass",
+  "tests": [
+    {
+      "name": "Four corners make a square",
+      "args": [],
+      "expect": null,
+      "out": [
+        "forward 40",
+        "left",
+        "forward 40",
+        "left",
+        "forward 40",
+        "left",
+        "forward 40",
+        "left"
+      ]
+    }
+  ],
+  "hints": [
+    "Anything you repeat can become a function.",
+    "`func corner():` with the two calls inside.",
+    "solve: `corner()` four times."
+  ],
+  "docs": [
+    {
+      "name": "move_forward(distance)",
+      "what": "Drives the turtle forward that many pixels, drawing a line. Takes one number; returns nothing."
+    },
+    {
+      "name": "turn_left()",
+      "what": "Turns the turtle 90 degrees to the left. Give it a number to turn by a different angle."
+    }
+  ],
+  "solution": "func solve():\n\tcorner()\n\tcorner()\n\tcorner()\n\tcorner()\n\nfunc corner():\n\tmove_forward(40)\n\tturn_left()",
+  "require_methods": [
+    "corner"
+  ]
+}

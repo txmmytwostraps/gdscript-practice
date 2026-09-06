@@ -1,0 +1,48 @@
+{
+  "id": "gqap-005",
+  "title": "Three orders in",
+  "concept": "gq-appendpop",
+  "difficulty": 0,
+  "prompt": "Start with an empty queue and append a, b and c in order. Return the queue.",
+  "signature": "func solve(a, b, c):",
+  "starter": "func solve(a, b, c):\n\tvar queue = []\n\treturn queue",
+  "tests": [
+    {
+      "name": "Three meals in order",
+      "args": [
+        "soup",
+        "pie",
+        "tea"
+      ],
+      "expect": [
+        "soup",
+        "pie",
+        "tea"
+      ]
+    },
+    {
+      "name": "Numbers work too",
+      "args": [
+        1,
+        2,
+        3
+      ],
+      "expect": [
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "hints": [
+    "Three append lines.",
+    "`queue.append(a)`, then b, then c."
+  ],
+  "docs": [
+    {
+      "name": "list.append(value)",
+      "what": "Adds value to the end of the array. Returns nothing."
+    }
+  ],
+  "solution": "func solve(a, b, c):\n\tvar queue = []\n\tqueue.append(a)\n\tqueue.append(b)\n\tqueue.append(c)\n\treturn queue"
+}

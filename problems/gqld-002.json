@@ -1,0 +1,56 @@
+{
+  "id": "gqld-002",
+  "title": "Print name and amount",
+  "concept": "gq-loopdicts",
+  "difficulty": 0,
+  "prompt": "Print each entry as \"name: amount\", like \"bolt: 3\".",
+  "signature": "func solve(inventory):",
+  "starter": "func solve(inventory):\n\tpass",
+  "tests": [
+    {
+      "name": "Two entries",
+      "args": [
+        {
+          "bolt": 3,
+          "gear": 1
+        }
+      ],
+      "expect": null,
+      "out": [
+        "bolt: 3",
+        "gear: 1"
+      ]
+    },
+    {
+      "name": "Empty prints nothing",
+      "args": [
+        {}
+      ],
+      "expect": null,
+      "out": []
+    }
+  ],
+  "hints": [
+    "Inside the loop, inventory[item] is the amount.",
+    "`print(item + \": \" + str(inventory[item]))`"
+  ],
+  "docs": [
+    {
+      "name": "for key in data:",
+      "what": "Runs once per key; data[key] gives its value."
+    },
+    {
+      "name": "data[key]",
+      "what": "The value stored under key. Assigning to it changes or adds the entry."
+    },
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    },
+    {
+      "name": "str(value)",
+      "what": "Returns the value as text."
+    }
+  ],
+  "solution": "func solve(inventory):\n\tfor item in inventory:\n\t\tprint(item + \": \" + str(inventory[item]))"
+}

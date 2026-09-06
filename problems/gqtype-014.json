@@ -1,0 +1,39 @@
+{
+  "id": "gqtype-014",
+  "title": "Members with types",
+  "concept": "gq-types",
+  "difficulty": 1,
+  "prompt": "Declare members `level: int = 1` and `max_health: float = 100.0`. Write `level_up`, hinted void, which adds 1 to level and multiplies max_health by 1.5. solve calls it twice and returns max_health.",
+  "signature": "func solve() -> float:",
+  "starter": "func solve() -> float:\n\treturn 0.0",
+  "tests": [
+    {
+      "name": "Two level-ups give 225",
+      "args": [],
+      "expect": 225
+    }
+  ],
+  "hints": [
+    "Hint both members; use -> void on the helper.",
+    "`func level_up() -> void:` with `level += 1` and `max_health *= 1.5`."
+  ],
+  "docs": [
+    {
+      "name": "var name: int = value",
+      "what": "Declares a variable that can only hold that type. Also float, String, bool, Vector2, Array."
+    },
+    {
+      "name": "func f() -> int:",
+      "what": "Return type hint: the function promises to return that type."
+    }
+  ],
+  "solution": "var level: int = 1\nvar max_health: float = 100.0\n\nfunc solve() -> float:\n\tlevel_up()\n\tlevel_up()\n\treturn max_health\n\nfunc level_up() -> void:\n\tlevel += 1\n\tmax_health *= 1.5",
+  "allow_type_hints": true,
+  "require_names": [
+    "level",
+    "max_health"
+  ],
+  "require_methods": [
+    "level_up"
+  ]
+}

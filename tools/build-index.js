@@ -7,9 +7,10 @@ const dir = path.resolve(__dirname, "..", "problems");
 // Order matters: the site lists concepts in this order. The gq-* tags follow
 // the lesson order of GDQuest's "Learn GDScript From Zero".
 const CONCEPTS = [
-  "gq-variables", "gq-readable", "gq-parameters", "gq-functions", "gq-return", "gq-conditions",
-  "gq-arrays", "gq-strings", "gq-vectors", "gq-delta", "gq-rect",
-  "variables", "arithmetic", "functions", "ifelse", "comparisons", "while", "for", "arrays", "strings", "dictionaries",
+  "gq-errors", "gq-giants", "gq-turtle", "gq-functions", "gq-parameters", "gq-members", "gq-variables", "variables", "arithmetic",
+  "gq-loop", "gq-delta", "gq-readable", "gq-conditions", "ifelse", "comparisons", "gq-multiply", "gq-vectors", "gq-rect",
+  "while", "for", "gq-arrays", "arrays", "gq-looparrays", "gq-strings", "strings", "gq-return", "functions",
+  "gq-appendpop", "gq-indices", "dictionaries", "gq-loopdicts", "gq-valuetypes", "gq-types",
 ];
 const REQUIRED = ["id", "title", "concept", "difficulty", "prompt", "signature", "starter", "tests", "solution"];
 // Problems are moving to the house style (hints list, docs, named tests, no
@@ -22,6 +23,7 @@ function styleErrors(p) {
   if (!Array.isArray(p.hints) || p.hints.length < 2 || p.hints.length > 4 || p.hints.some((h) => typeof h !== "string" || !h.trim())) out.push("hints must be 2 to 4 strings");
   if (!Array.isArray(p.docs) || p.docs.some((d) => !d || typeof d.name !== "string" || typeof d.what !== "string")) out.push("docs must be a list of {name, what}");
   if (Array.isArray(p.tests) && p.tests.some((t) => typeof t.name !== "string" || !t.name.trim())) out.push("every test needs a plain-English name");
+  if (p.allow_type_hints) return out;   // the type-hints lesson itself
   const sigParams = (/\((.*)\)/.exec(p.signature) || [, ""])[1];
   if (/:/.test(sigParams)) out.push("solve's parameters must not have type hints");
   for (const [field, code] of [["starter", p.starter], ["solution", p.solution]]) {

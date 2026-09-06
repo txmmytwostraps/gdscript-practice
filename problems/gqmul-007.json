@@ -1,0 +1,43 @@
+{
+  "id": "gqmul-007",
+  "title": "Reduce damage by a percentage",
+  "concept": "gq-multiply",
+  "difficulty": 1,
+  "prompt": "Armour reduces damage by 25%. Return the damage that gets through: damage times 0.75. solve(40) is 30.0.",
+  "signature": "func solve(damage) -> float:",
+  "starter": "func solve(damage) -> float:\n\treturn damage",
+  "tests": [
+    {
+      "name": "40 becomes 30",
+      "args": [
+        40
+      ],
+      "expect": 30
+    },
+    {
+      "name": "100 becomes 75",
+      "args": [
+        100
+      ],
+      "expect": 75
+    },
+    {
+      "name": "0 stays 0",
+      "args": [
+        0
+      ],
+      "expect": 0
+    }
+  ],
+  "hints": [
+    "25% off means 75% remains.",
+    "`return damage * 0.75`"
+  ],
+  "docs": [
+    {
+      "name": "a * b",
+      "what": "Multiplies two numbers. * with a float keeps decimals."
+    }
+  ],
+  "solution": "func solve(damage) -> float:\n\treturn damage * 0.75"
+}

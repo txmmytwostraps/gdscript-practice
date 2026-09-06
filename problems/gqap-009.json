@@ -1,0 +1,47 @@
+{
+  "id": "gqap-009",
+  "title": "Priority order",
+  "concept": "gq-appendpop",
+  "difficulty": 0,
+  "prompt": "A VIP order goes to the front of the queue, not the back. Add it at the front and return the queue.",
+  "signature": "func solve(queue, order):",
+  "starter": "func solve(queue, order):\n\tqueue.append(order)\n\treturn queue",
+  "tests": [
+    {
+      "name": "VIP goes first",
+      "args": [
+        [
+          "soup",
+          "pie"
+        ],
+        "cake"
+      ],
+      "expect": [
+        "cake",
+        "soup",
+        "pie"
+      ]
+    },
+    {
+      "name": "Into an empty queue",
+      "args": [
+        [],
+        "cake"
+      ],
+      "expect": [
+        "cake"
+      ]
+    }
+  ],
+  "hints": [
+    "append goes to the back; push_front goes to the front.",
+    "`queue.push_front(order)`"
+  ],
+  "docs": [
+    {
+      "name": "list.push_front(value)",
+      "what": "Adds value at the start. Returns nothing."
+    }
+  ],
+  "solution": "func solve(queue, order):\n\tqueue.push_front(order)\n\treturn queue"
+}

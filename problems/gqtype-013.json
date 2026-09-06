@@ -1,0 +1,44 @@
+{
+  "id": "gqtype-013",
+  "title": "Float parameter, float result",
+  "concept": "gq-types",
+  "difficulty": 0,
+  "prompt": "Write `half`, taking a float and returning a float that is half of it. solve returns half(x).",
+  "signature": "func solve(x: float) -> float:",
+  "starter": "func solve(x: float) -> float:\n\treturn x",
+  "tests": [
+    {
+      "name": "5 halves to 2.5",
+      "args": [
+        5
+      ],
+      "expect": 2.5
+    },
+    {
+      "name": "0 halves to 0",
+      "args": [
+        0
+      ],
+      "expect": 0
+    }
+  ],
+  "hints": [
+    "Because the parameter is a float, dividing by 2 keeps decimals.",
+    "`func half(value: float) -> float:` with `return value / 2`."
+  ],
+  "docs": [
+    {
+      "name": "func f(a: int, b: float):",
+      "what": "Parameter type hints: Godot checks what is passed in."
+    },
+    {
+      "name": "func f() -> int:",
+      "what": "Return type hint: the function promises to return that type."
+    }
+  ],
+  "solution": "func solve(x: float) -> float:\n\treturn half(x)\n\nfunc half(value: float) -> float:\n\treturn value / 2",
+  "allow_type_hints": true,
+  "require_methods": [
+    "half"
+  ]
+}

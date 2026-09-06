@@ -1,0 +1,53 @@
+{
+  "id": "gqla-009",
+  "title": "Largest",
+  "concept": "gq-looparrays",
+  "difficulty": 1,
+  "prompt": "Return the largest number in the array with a loop. The array has at least one item.",
+  "signature": "func solve(nums):",
+  "starter": "func solve(nums):\n\treturn nums[0]",
+  "tests": [
+    {
+      "name": "9 is largest",
+      "args": [
+        [
+          3,
+          9,
+          2
+        ]
+      ],
+      "expect": 9
+    },
+    {
+      "name": "-1 is largest of negatives",
+      "args": [
+        [
+          -5,
+          -1,
+          -9
+        ]
+      ],
+      "expect": -1
+    },
+    {
+      "name": "One item",
+      "args": [
+        [
+          7
+        ]
+      ],
+      "expect": 7
+    }
+  ],
+  "hints": [
+    "Keep the biggest seen so far, starting with the first item.",
+    "`if n > biggest:` then `biggest = n`."
+  ],
+  "docs": [
+    {
+      "name": "for item in list:",
+      "what": "Runs the indented lines once per item, with item holding each value in turn."
+    }
+  ],
+  "solution": "func solve(nums):\n\tvar biggest = nums[0]\n\tfor n in nums:\n\t\tif n > biggest:\n\t\t\tbiggest = n\n\treturn biggest"
+}

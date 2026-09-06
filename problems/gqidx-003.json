@@ -1,0 +1,55 @@
+{
+  "id": "gqidx-003",
+  "title": "The last slot",
+  "concept": "gq-indices",
+  "difficulty": 0,
+  "prompt": "Return the last item, whatever the size of the inventory.",
+  "signature": "func solve(inventory):",
+  "starter": "func solve(inventory):\n\treturn inventory[0]",
+  "tests": [
+    {
+      "name": "Last of three",
+      "args": [
+        [
+          "bolt",
+          "gear",
+          "wire"
+        ]
+      ],
+      "expect": "wire"
+    },
+    {
+      "name": "Last of five",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expect": 5
+    },
+    {
+      "name": "Only item",
+      "args": [
+        [
+          7
+        ]
+      ],
+      "expect": 7
+    }
+  ],
+  "hints": [
+    "Negative positions count from the end.",
+    "`return inventory[-1]`"
+  ],
+  "docs": [
+    {
+      "name": "list[i]",
+      "what": "The item at position i. Positions start at 0; -1 is the last item."
+    }
+  ],
+  "solution": "func solve(inventory):\n\treturn inventory[-1]"
+}

@@ -1,0 +1,45 @@
+{
+  "id": "gqloop-007",
+  "title": "Fall",
+  "concept": "gq-loop",
+  "difficulty": 1,
+  "prompt": "Members `y` at 0.0 and `vy` at 0.0. Gravity is 100 per second per second. In `_process`, add 100 times delta to vy, then add vy times delta to y. After 60 frames solve returns vy rounded, 100.",
+  "signature": "func solve():",
+  "starter": "var y = 0.0\nvar vy = 0.0\n\nfunc solve():\n\treturn round(vy)",
+  "tests": [
+    {
+      "name": "After one second the fall speed is 100",
+      "args": [],
+      "expect": 100,
+      "frames": 60
+    },
+    {
+      "name": "After two seconds it is 200",
+      "args": [],
+      "expect": 200,
+      "frames": 120
+    }
+  ],
+  "hints": [
+    "Two lines per frame: speed changes, then position changes.",
+    "`vy += 100 * delta` then `y += vy * delta`."
+  ],
+  "docs": [
+    {
+      "name": "func _process(delta):",
+      "what": "Godot calls this once per frame, about 60 times a second. delta is the frame time in seconds."
+    },
+    {
+      "name": "var name = value (outside any function)",
+      "what": "A member variable keeps its value from one frame to the next."
+    },
+    {
+      "name": "round(x)",
+      "what": "Returns the nearest whole number as a float."
+    }
+  ],
+  "solution": "var y = 0.0\nvar vy = 0.0\n\nfunc _process(delta):\n\tvy += 100 * delta\n\ty += vy * delta\n\nfunc solve():\n\treturn round(vy)",
+  "require_methods": [
+    "_process"
+  ]
+}

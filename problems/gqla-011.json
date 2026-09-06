@@ -1,0 +1,81 @@
+{
+  "id": "gqla-011",
+  "title": "Draw squares of each size",
+  "concept": "gq-looparrays",
+  "difficulty": 1,
+  "prompt": "For each size in the array, draw a square: forward that size then turn left, four times. [10] gives eight instructions; [10, 20] gives sixteen.",
+  "signature": "func solve(sizes):",
+  "starter": "func solve(sizes):\n\tpass",
+  "tests": [
+    {
+      "name": "One square of 10",
+      "args": [
+        [
+          10
+        ]
+      ],
+      "expect": null,
+      "out": [
+        "forward 10",
+        "left",
+        "forward 10",
+        "left",
+        "forward 10",
+        "left",
+        "forward 10",
+        "left"
+      ]
+    },
+    {
+      "name": "Two squares",
+      "args": [
+        [
+          10,
+          20
+        ]
+      ],
+      "expect": null,
+      "out": [
+        "forward 10",
+        "left",
+        "forward 10",
+        "left",
+        "forward 10",
+        "left",
+        "forward 10",
+        "left",
+        "forward 20",
+        "left",
+        "forward 20",
+        "left",
+        "forward 20",
+        "left",
+        "forward 20",
+        "left"
+      ]
+    }
+  ],
+  "hints": [
+    "A loop inside a loop: the outer picks the size, the inner draws four sides.",
+    "`for size in sizes:` then `for i in range(4):` with the two calls."
+  ],
+  "docs": [
+    {
+      "name": "for item in list:",
+      "what": "Runs the indented lines once per item, with item holding each value in turn."
+    },
+    {
+      "name": "move_forward(distance)",
+      "what": "Drives the turtle forward that many pixels, drawing a line."
+    },
+    {
+      "name": "turn_left()",
+      "what": "Turns the turtle 90 degrees to the left."
+    },
+    {
+      "name": "range(n)",
+      "what": "The numbers 0 up to n - 1, for a for loop to count through."
+    }
+  ],
+  "solution": "func solve(sizes):\n\tfor size in sizes:\n\t\tfor i in range(4):\n\t\t\tmove_forward(size)\n\t\t\tturn_left()"
+}

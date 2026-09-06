@@ -1,0 +1,46 @@
+{
+  "id": "gqvt-009",
+  "title": "Add as numbers, not text",
+  "concept": "gq-valuetypes",
+  "difficulty": 1,
+  "prompt": "Both values arrive as text, like \"2\" and \"3\". Return their sum as a number, 5, not the joined text \"23\".",
+  "signature": "func solve(a, b):",
+  "starter": "func solve(a, b):\n\treturn a + b",
+  "tests": [
+    {
+      "name": "2 and 3 is 5",
+      "args": [
+        "2",
+        "3"
+      ],
+      "expect": 5
+    },
+    {
+      "name": "10 and 20 is 30",
+      "args": [
+        "10",
+        "20"
+      ],
+      "expect": 30
+    },
+    {
+      "name": "0 and 0 is 0",
+      "args": [
+        "0",
+        "0"
+      ],
+      "expect": 0
+    }
+  ],
+  "hints": [
+    "Plus on two strings joins them; convert both first.",
+    "`return int(a) + int(b)`"
+  ],
+  "docs": [
+    {
+      "name": "int(value)",
+      "what": "Returns the value as a whole number; decimals are dropped, text like \"42\" is read."
+    }
+  ],
+  "solution": "func solve(a, b):\n\treturn int(a) + int(b)"
+}

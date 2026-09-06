@@ -1,0 +1,45 @@
+{
+  "id": "gqloop-008",
+  "title": "Stop at a wall",
+  "concept": "gq-loop",
+  "difficulty": 1,
+  "prompt": "A member `x` starts at 0.0 and moves 200 per second, but must never pass 150. In `_process`, move x, then if it went past 150, set it to 150. After 60 frames solve returns x rounded, 150.",
+  "signature": "func solve():",
+  "starter": "var x = 0.0\n\nfunc solve():\n\treturn round(x)",
+  "tests": [
+    {
+      "name": "After one second, stopped at 150",
+      "args": [],
+      "expect": 150,
+      "frames": 60
+    },
+    {
+      "name": "After a quarter second, 50",
+      "args": [],
+      "expect": 50,
+      "frames": 15
+    }
+  ],
+  "hints": [
+    "Move first, then clamp.",
+    "`x += 200 * delta` then `if x > 150:` set `x = 150`."
+  ],
+  "docs": [
+    {
+      "name": "func _process(delta):",
+      "what": "Godot calls this once per frame, about 60 times a second. delta is the frame time in seconds."
+    },
+    {
+      "name": "var name = value (outside any function)",
+      "what": "A member variable keeps its value from one frame to the next."
+    },
+    {
+      "name": "round(x)",
+      "what": "Returns the nearest whole number as a float."
+    }
+  ],
+  "solution": "var x = 0.0\n\nfunc _process(delta):\n\tx += 200 * delta\n\tif x > 150:\n\t\tx = 150\n\nfunc solve():\n\treturn round(x)",
+  "require_methods": [
+    "_process"
+  ]
+}

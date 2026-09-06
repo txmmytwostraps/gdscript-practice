@@ -1,0 +1,54 @@
+{
+  "id": "gqidx-015",
+  "title": "Fill a slot from another",
+  "concept": "gq-indices",
+  "difficulty": 1,
+  "prompt": "Copy the item in slot 0 into slot 2, leaving slot 0 as it is, and return the array. The array has at least three items.",
+  "signature": "func solve(items):",
+  "starter": "func solve(items):\n\treturn items",
+  "tests": [
+    {
+      "name": "Slot 2 becomes a copy of slot 0",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expect": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "name": "Works with text",
+      "args": [
+        [
+          "a",
+          "b",
+          "c",
+          "d"
+        ]
+      ],
+      "expect": [
+        "a",
+        "b",
+        "a",
+        "d"
+      ]
+    }
+  ],
+  "hints": [
+    "Read one slot and write another in the same line.",
+    "`items[2] = items[0]`"
+  ],
+  "docs": [
+    {
+      "name": "list[i]",
+      "what": "The item at position i. Positions start at 0; -1 is the last item."
+    }
+  ],
+  "solution": "func solve(items):\n\titems[2] = items[0]\n\treturn items"
+}

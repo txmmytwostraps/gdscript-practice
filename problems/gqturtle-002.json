@@ -1,0 +1,36 @@
+{
+  "id": "gqturtle-002",
+  "title": "A corner",
+  "concept": "gq-turtle",
+  "difficulty": 0,
+  "prompt": "Draw a corner: move forward 50, turn left, move forward 50 again.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass",
+  "tests": [
+    {
+      "name": "Forward, left, forward",
+      "args": [],
+      "expect": null,
+      "out": [
+        "forward 50",
+        "left",
+        "forward 50"
+      ]
+    }
+  ],
+  "hints": [
+    "Three instructions, one per line.",
+    "`move_forward(50)`, `turn_left()`, `move_forward(50)`."
+  ],
+  "docs": [
+    {
+      "name": "move_forward(distance)",
+      "what": "Drives the turtle forward that many pixels, drawing a line. Takes one number; returns nothing."
+    },
+    {
+      "name": "turn_left()",
+      "what": "Turns the turtle 90 degrees to the left. Give it a number to turn by a different angle."
+    }
+  ],
+  "solution": "func solve():\n\tmove_forward(50)\n\tturn_left()\n\tmove_forward(50)"
+}

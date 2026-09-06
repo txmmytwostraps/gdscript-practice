@@ -87,6 +87,13 @@ func _selftest() -> void:
 	return first + 1
 "
 	print("CASE beginner_hard_error: ", JSON.stringify(runner.run_submission(hard, beginner_problem)))
+	# Recorders (show/rotate/turtle) and the frame harness for _process().
+	var rec_problem := {"tests": [{"name": "calls", "args": [], "expect": null, "out": ["show", "rotate 45", "forward 30", "left", "right 45", "move 10 20"]}]}
+	var rec_code := "func solve():\n\tshow()\n\trotate(45)\n\tmove_forward(30)\n\tturn_left()\n\tturn_right(45)\n\tmove(10, 20)\n"
+	print("CASE recorders: ", JSON.stringify(runner.run_submission(rec_code, rec_problem)))
+	var frame_problem := {"tests": [{"name": "60 frames", "args": [], "expect": 100, "frames": 60}, {"name": "no frames", "args": [], "expect": 0, "frames": 0}]}
+	var frame_code := "var x = 0.0\n\nfunc _process(delta):\n\tx += 100 * delta\n\nfunc solve():\n\treturn round(x)\n"
+	print("CASE frames: ", JSON.stringify(runner.run_submission(frame_code, frame_problem)))
 	print("CASE vector: ", JSON.stringify(runner.run_submission(vec_code, vec_problem)))
 	print("CASE vector_i: ", JSON.stringify(runner.run_submission(vec_i_code, vec_problem)))
 	print("CASE rect: ", JSON.stringify(runner.run_submission(rect_code, rect_problem)))
@@ -142,7 +149,7 @@ func _check_problem(path: String, expected_id: String) -> Array[String]:
 		if not (t is Dictionary) or not t.has("args") or not (t["args"] is Array) or not t.has("expect"):
 			errs.append("each test needs \"args\" (array) and \"expect\"")
 			return errs
-	if not str(p["starter"]).begins_with(p["signature"]):
+	if not p.get("starter_broken", false) and not str(p["starter"]).contains(p["signature"]):
 		errs.append("starter should begin with the signature")
 	var sol := runner.run_submission(p["solution"], p)
 	if sol["status"] != "ok":
@@ -153,7 +160,11 @@ func _check_problem(path: String, expected_id: String) -> Array[String]:
 			if not r["pass"]:
 				errs.append("  args=%s expect=%s got=%s" % [JSON.stringify(r["args"]), JSON.stringify(r["expect"]), JSON.stringify(r["got"])])
 	var st := runner.run_submission(p["starter"], p)
-	if st["status"] == "compile_error":
+	if p.get("starter_broken", false):
+		# Fix-the-error problems: the starter must NOT compile.
+		if st["status"] != "compile_error":
+			errs.append("starter_broken is set but the starter compiles")
+	elif st["status"] == "compile_error":
 		errs.append("starter does not compile: " + str(st.get("error")))
 	elif st["status"] == "ok" and st["passed"] == st["total"]:
 		errs.append("starter already passes every test")

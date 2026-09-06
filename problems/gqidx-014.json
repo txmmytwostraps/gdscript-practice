@@ -1,0 +1,44 @@
+{
+  "id": "gqidx-014",
+  "title": "Second to last",
+  "concept": "gq-indices",
+  "difficulty": 0,
+  "prompt": "Return the second-to-last item. The array has at least two items.",
+  "signature": "func solve(items):",
+  "starter": "func solve(items):\n\treturn items[-1]",
+  "tests": [
+    {
+      "name": "Second to last of four",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4
+        ]
+      ],
+      "expect": 3
+    },
+    {
+      "name": "Of two",
+      "args": [
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "expect": "a"
+    }
+  ],
+  "hints": [
+    "-1 is the last; go one further back.",
+    "`return items[-2]`"
+  ],
+  "docs": [
+    {
+      "name": "list[i]",
+      "what": "The item at position i. Positions start at 0; -1 is the last item."
+    }
+  ],
+  "solution": "func solve(items):\n\treturn items[-2]"
+}

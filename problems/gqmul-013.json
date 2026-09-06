@@ -1,0 +1,49 @@
+{
+  "id": "gqmul-013",
+  "title": "Damage per second",
+  "concept": "gq-multiply",
+  "difficulty": 1,
+  "prompt": "The robot hits for damage, hits_per_second times a second. Return the damage dealt over the given seconds. solve(5, 2, 3.0) is 30.0.",
+  "signature": "func solve(damage, hits_per_second, seconds) -> float:",
+  "starter": "func solve(damage, hits_per_second, seconds) -> float:\n\treturn damage",
+  "tests": [
+    {
+      "name": "5 damage, 2 per second, 3 seconds is 30",
+      "args": [
+        5,
+        2,
+        3
+      ],
+      "expect": 30
+    },
+    {
+      "name": "Half a second",
+      "args": [
+        10,
+        4,
+        0.5
+      ],
+      "expect": 20
+    },
+    {
+      "name": "No time is 0",
+      "args": [
+        5,
+        2,
+        0
+      ],
+      "expect": 0
+    }
+  ],
+  "hints": [
+    "Three things multiplied together.",
+    "`return damage * hits_per_second * seconds`"
+  ],
+  "docs": [
+    {
+      "name": "a * b",
+      "what": "Multiplies two numbers. * with a float keeps decimals."
+    }
+  ],
+  "solution": "func solve(damage, hits_per_second, seconds) -> float:\n\treturn damage * hits_per_second * seconds"
+}

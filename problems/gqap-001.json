@@ -1,0 +1,45 @@
+{
+  "id": "gqap-001",
+  "title": "Take an order",
+  "concept": "gq-appendpop",
+  "difficulty": 0,
+  "prompt": "The kitchen queue is an array of meals. Add the new order to the end and return the queue. [\"soup\"] plus \"pie\" is [\"soup\", \"pie\"].",
+  "signature": "func solve(queue, order):",
+  "starter": "func solve(queue, order):\n\treturn queue",
+  "tests": [
+    {
+      "name": "pie joins the queue",
+      "args": [
+        [
+          "soup"
+        ],
+        "pie"
+      ],
+      "expect": [
+        "soup",
+        "pie"
+      ]
+    },
+    {
+      "name": "First order into an empty queue",
+      "args": [
+        [],
+        "tea"
+      ],
+      "expect": [
+        "tea"
+      ]
+    }
+  ],
+  "hints": [
+    "append adds to the end.",
+    "`queue.append(order)` then return queue."
+  ],
+  "docs": [
+    {
+      "name": "list.append(value)",
+      "what": "Adds value to the end of the array. Returns nothing."
+    }
+  ],
+  "solution": "func solve(queue, order):\n\tqueue.append(order)\n\treturn queue"
+}

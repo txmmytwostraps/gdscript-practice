@@ -1,0 +1,31 @@
+{
+  "id": "gqmem-006",
+  "title": "Level up",
+  "concept": "gq-members",
+  "difficulty": 0,
+  "prompt": "The robot's `level` is a member starting at 1. Write `level_up`, which adds 1 to level. In `solve`, call it twice and return level, which is 3.",
+  "signature": "func solve():",
+  "starter": "var level = 1\n\nfunc solve():\n\treturn level",
+  "tests": [
+    {
+      "name": "Two level-ups from 1 is 3",
+      "args": [],
+      "expect": 3
+    }
+  ],
+  "hints": [
+    "The helper needs no parameter; it always adds one.",
+    "`func level_up():` with `level += 1`.",
+    "Call it twice in solve."
+  ],
+  "docs": [
+    {
+      "name": "var name = value (outside any function)",
+      "what": "A member variable: every function in the script can read and change it."
+    }
+  ],
+  "solution": "var level = 1\n\nfunc solve():\n\tlevel_up()\n\tlevel_up()\n\treturn level\n\nfunc level_up():\n\tlevel += 1",
+  "require_methods": [
+    "level_up"
+  ]
+}

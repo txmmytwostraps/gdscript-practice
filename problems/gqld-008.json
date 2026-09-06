@@ -1,0 +1,46 @@
+{
+  "id": "gqld-008",
+  "title": "Double every amount",
+  "concept": "gq-loopdicts",
+  "difficulty": 1,
+  "prompt": "Double every amount in the inventory and return the dictionary.",
+  "signature": "func solve(inventory):",
+  "starter": "func solve(inventory):\n\treturn inventory",
+  "tests": [
+    {
+      "name": "3 and 1 become 6 and 2",
+      "args": [
+        {
+          "bolt": 3,
+          "gear": 1
+        }
+      ],
+      "expect": {
+        "bolt": 6,
+        "gear": 2
+      }
+    },
+    {
+      "name": "Empty stays empty",
+      "args": [
+        {}
+      ],
+      "expect": {}
+    }
+  ],
+  "hints": [
+    "Assigning to inventory[item] changes that entry.",
+    "`inventory[item] = inventory[item] * 2`"
+  ],
+  "docs": [
+    {
+      "name": "for key in data:",
+      "what": "Runs once per key; data[key] gives its value."
+    },
+    {
+      "name": "data[key]",
+      "what": "The value stored under key. Assigning to it changes or adds the entry."
+    }
+  ],
+  "solution": "func solve(inventory):\n\tfor item in inventory:\n\t\tinventory[item] = inventory[item] * 2\n\treturn inventory"
+}

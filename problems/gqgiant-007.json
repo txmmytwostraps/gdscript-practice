@@ -1,0 +1,30 @@
+{
+  "id": "gqgiant-007",
+  "title": "Move up",
+  "concept": "gq-giants",
+  "difficulty": 1,
+  "prompt": "On screen, up is a negative y. Move the robot 0 across and 50 up.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass",
+  "tests": [
+    {
+      "name": "move is called with 0 and -50",
+      "args": [],
+      "expect": null,
+      "out": [
+        "move 0 -50"
+      ]
+    }
+  ],
+  "hints": [
+    "The second argument is the vertical amount, and up is negative.",
+    "`move(0, -50)`"
+  ],
+  "docs": [
+    {
+      "name": "move(x, y)",
+      "what": "Moves the robot by x across and y down. Takes two numbers; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\tmove(0, -50)"
+}

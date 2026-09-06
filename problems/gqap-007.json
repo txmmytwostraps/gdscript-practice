@@ -1,0 +1,58 @@
+{
+  "id": "gqap-007",
+  "title": "Unstack the crates",
+  "concept": "gq-appendpop",
+  "difficulty": 1,
+  "prompt": "Take crates off the pile one at a time, printing each, until the pile is empty. The last one added comes off first.",
+  "signature": "func solve(pile):",
+  "starter": "func solve(pile):\n\tpass",
+  "tests": [
+    {
+      "name": "3, 2, 1 come off",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expect": null,
+      "out": [
+        "3",
+        "2",
+        "1"
+      ]
+    },
+    {
+      "name": "Empty pile prints nothing",
+      "args": [
+        []
+      ],
+      "expect": null,
+      "out": []
+    }
+  ],
+  "hints": [
+    "pop_back from a while loop.",
+    "`while not pile.is_empty():` then `print(pile.pop_back())`."
+  ],
+  "docs": [
+    {
+      "name": "while condition:",
+      "what": "Repeats the indented lines as long as the condition stays true."
+    },
+    {
+      "name": "list.pop_back()",
+      "what": "Removes the last item and returns it."
+    },
+    {
+      "name": "list.is_empty()",
+      "what": "Returns true when the array has no items."
+    },
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve(pile):\n\twhile not pile.is_empty():\n\t\tprint(pile.pop_back())"
+}

@@ -1,0 +1,43 @@
+{
+  "id": "gqvt-007",
+  "title": "Is it text",
+  "concept": "gq-valuetypes",
+  "difficulty": 0,
+  "prompt": "Return true if the value is a String, otherwise false.",
+  "signature": "func solve(value):",
+  "starter": "func solve(value):\n\treturn false",
+  "tests": [
+    {
+      "name": "\"hi\" is text",
+      "args": [
+        "hi"
+      ],
+      "expect": true
+    },
+    {
+      "name": "5 is not",
+      "args": [
+        5
+      ],
+      "expect": false
+    },
+    {
+      "name": "true is not",
+      "args": [
+        true
+      ],
+      "expect": false
+    }
+  ],
+  "hints": [
+    "The is keyword checks a value's type.",
+    "`return value is String`"
+  ],
+  "docs": [
+    {
+      "name": "value is String",
+      "what": "true if the value is of that type. Also is int, is float, is bool."
+    }
+  ],
+  "solution": "func solve(value):\n\treturn value is String"
+}

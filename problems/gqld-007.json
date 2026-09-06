@@ -1,0 +1,60 @@
+{
+  "id": "gqld-007",
+  "title": "Items that are running out",
+  "concept": "gq-loopdicts",
+  "difficulty": 1,
+  "prompt": "Return an array of the names whose amount is below 2, in order.",
+  "signature": "func solve(inventory):",
+  "starter": "func solve(inventory):\n\treturn []",
+  "tests": [
+    {
+      "name": "gear is low",
+      "args": [
+        {
+          "bolt": 3,
+          "gear": 1
+        }
+      ],
+      "expect": [
+        "gear"
+      ]
+    },
+    {
+      "name": "Nothing low",
+      "args": [
+        {
+          "bolt": 3
+        }
+      ],
+      "expect": []
+    },
+    {
+      "name": "Both low",
+      "args": [
+        {
+          "a": 0,
+          "b": 1
+        }
+      ],
+      "expect": [
+        "a",
+        "b"
+      ]
+    }
+  ],
+  "hints": [
+    "Loop over keys, test the value, append the key.",
+    "`if inventory[item] < 2:` then `result.append(item)`."
+  ],
+  "docs": [
+    {
+      "name": "for key in data:",
+      "what": "Runs once per key; data[key] gives its value."
+    },
+    {
+      "name": "data[key]",
+      "what": "The value stored under key. Assigning to it changes or adds the entry."
+    }
+  ],
+  "solution": "func solve(inventory):\n\tvar result = []\n\tfor item in inventory:\n\t\tif inventory[item] < 2:\n\t\t\tresult.append(item)\n\treturn result"
+}

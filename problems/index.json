@@ -1,314 +1,230 @@
 {
   "concepts": [
-    "gq-variables",
-    "gq-readable",
-    "gq-parameters",
+    "gq-errors",
+    "gq-giants",
+    "gq-turtle",
     "gq-functions",
-    "gq-return",
-    "gq-conditions",
-    "gq-arrays",
-    "gq-strings",
-    "gq-vectors",
-    "gq-delta",
-    "gq-rect",
+    "gq-parameters",
+    "gq-members",
+    "gq-variables",
     "variables",
     "arithmetic",
-    "functions",
+    "gq-loop",
+    "gq-delta",
+    "gq-readable",
+    "gq-conditions",
     "ifelse",
     "comparisons",
+    "gq-multiply",
+    "gq-vectors",
+    "gq-rect",
     "while",
     "for",
+    "gq-arrays",
     "arrays",
+    "gq-looparrays",
+    "gq-strings",
     "strings",
-    "dictionaries"
+    "gq-return",
+    "functions",
+    "gq-appendpop",
+    "gq-indices",
+    "dictionaries",
+    "gq-loopdicts",
+    "gq-valuetypes",
+    "gq-types"
   ],
   "problems": [
     {
-      "id": "gqvar-001",
-      "title": "The robot's lives",
-      "concept": "gq-variables",
+      "id": "gqerr-001",
+      "title": "A missing bracket",
+      "concept": "gq-errors",
       "difficulty": 0
     },
     {
-      "id": "gqvar-002",
-      "title": "The robot's name",
-      "concept": "gq-variables",
+      "id": "gqerr-002",
+      "title": "A missing colon",
+      "concept": "gq-errors",
       "difficulty": 0
     },
     {
-      "id": "gqvar-003",
-      "title": "Powered on",
-      "concept": "gq-variables",
+      "id": "gqerr-003",
+      "title": "Not indented",
+      "concept": "gq-errors",
       "difficulty": 0
     },
     {
-      "id": "gqvar-004",
-      "title": "Two variables, one total",
-      "concept": "gq-variables",
+      "id": "gqerr-004",
+      "title": "A misspelt function",
+      "concept": "gq-errors",
       "difficulty": 0
     },
     {
-      "id": "gqvar-005",
-      "title": "Change a variable",
-      "concept": "gq-variables",
+      "id": "gqerr-005",
+      "title": "An unclosed string",
+      "concept": "gq-errors",
       "difficulty": 0
     },
     {
-      "id": "gqvar-006",
-      "title": "Pick up coins",
-      "concept": "gq-variables",
+      "id": "gqerr-006",
+      "title": "A misspelt keyword",
+      "concept": "gq-errors",
       "difficulty": 0
     },
     {
-      "id": "gqvar-007",
-      "title": "Take a hit",
-      "concept": "gq-variables",
+      "id": "gqerr-007",
+      "title": "Missing quotes",
+      "concept": "gq-errors",
       "difficulty": 0
     },
     {
-      "id": "gqvar-008",
-      "title": "A variable from a variable",
-      "concept": "gq-variables",
+      "id": "gqerr-008",
+      "title": "Calling a name that does not exist",
+      "concept": "gq-errors",
       "difficulty": 0
     },
     {
-      "id": "gqvar-009",
-      "title": "Copy, then change the original",
-      "concept": "gq-variables",
+      "id": "gqerr-009",
+      "title": "One bracket too many",
+      "concept": "gq-errors",
+      "difficulty": 0
+    },
+    {
+      "id": "gqerr-010",
+      "title": "Two errors in a row",
+      "concept": "gq-errors",
+      "difficulty": 0
+    },
+    {
+      "id": "gqgiant-001",
+      "title": "Make the robot visible",
+      "concept": "gq-giants",
+      "difficulty": 0
+    },
+    {
+      "id": "gqgiant-002",
+      "title": "Hide, then show",
+      "concept": "gq-giants",
+      "difficulty": 0
+    },
+    {
+      "id": "gqgiant-003",
+      "title": "Turn the robot upright",
+      "concept": "gq-giants",
+      "difficulty": 0
+    },
+    {
+      "id": "gqgiant-004",
+      "title": "Two quarter turns",
+      "concept": "gq-giants",
+      "difficulty": 0
+    },
+    {
+      "id": "gqgiant-005",
+      "title": "Turn back",
+      "concept": "gq-giants",
+      "difficulty": 0
+    },
+    {
+      "id": "gqgiant-006",
+      "title": "Move to the right",
+      "concept": "gq-giants",
+      "difficulty": 0
+    },
+    {
+      "id": "gqgiant-007",
+      "title": "Move up",
+      "concept": "gq-giants",
       "difficulty": 1
     },
     {
-      "id": "gqvar-010",
-      "title": "Swap two variables",
-      "concept": "gq-variables",
+      "id": "gqgiant-008",
+      "title": "Wrong order",
+      "concept": "gq-giants",
+      "difficulty": 0
+    },
+    {
+      "id": "gqgiant-009",
+      "title": "Show, turn, move",
+      "concept": "gq-giants",
       "difficulty": 1
     },
     {
-      "id": "gqvar-011",
-      "title": "Health after damage",
-      "concept": "gq-variables",
-      "difficulty": 0
-    },
-    {
-      "id": "gqvar-012",
-      "title": "Count up three times",
-      "concept": "gq-variables",
-      "difficulty": 0
-    },
-    {
-      "id": "gqvar-013",
-      "title": "Whole number or decimal",
-      "concept": "gq-variables",
+      "id": "gqgiant-010",
+      "title": "A missing argument",
+      "concept": "gq-giants",
       "difficulty": 1
     },
     {
-      "id": "gqvar-014",
-      "title": "Add to a decimal",
-      "concept": "gq-variables",
+      "id": "gqturtle-001",
+      "title": "One line",
+      "concept": "gq-turtle",
       "difficulty": 0
     },
     {
-      "id": "gqvar-015",
-      "title": "Read a variable three times",
-      "concept": "gq-variables",
+      "id": "gqturtle-002",
+      "title": "A corner",
+      "concept": "gq-turtle",
       "difficulty": 0
     },
     {
-      "id": "gqvar-016",
-      "title": "Minutes to seconds",
-      "concept": "gq-variables",
+      "id": "gqturtle-003",
+      "title": "A square",
+      "concept": "gq-turtle",
       "difficulty": 0
     },
     {
-      "id": "gqread-001",
-      "title": "Name the speed",
-      "concept": "gq-readable",
+      "id": "gqturtle-004",
+      "title": "A rectangle",
+      "concept": "gq-turtle",
       "difficulty": 0
     },
     {
-      "id": "gqread-002",
-      "title": "Name the gravity",
-      "concept": "gq-readable",
+      "id": "gqturtle-005",
+      "title": "Turn right instead",
+      "concept": "gq-turtle",
       "difficulty": 0
     },
     {
-      "id": "gqread-003",
-      "title": "Name the tax rate",
-      "concept": "gq-readable",
+      "id": "gqturtle-006",
+      "title": "The wrong turn",
+      "concept": "gq-turtle",
       "difficulty": 0
     },
     {
-      "id": "gqread-004",
-      "title": "Name the max health",
-      "concept": "gq-readable",
-      "difficulty": 0
-    },
-    {
-      "id": "gqread-005",
-      "title": "Name the seconds per minute",
-      "concept": "gq-readable",
-      "difficulty": 0
-    },
-    {
-      "id": "gqread-006",
-      "title": "Name the tile size",
-      "concept": "gq-readable",
-      "difficulty": 0
-    },
-    {
-      "id": "gqread-007",
-      "title": "Name the jump height",
-      "concept": "gq-readable",
-      "difficulty": 0
-    },
-    {
-      "id": "gqread-008",
-      "title": "Name the screen width",
-      "concept": "gq-readable",
-      "difficulty": 0
-    },
-    {
-      "id": "gqread-009",
-      "title": "Name the win score",
-      "concept": "gq-readable",
-      "difficulty": 0
-    },
-    {
-      "id": "gqread-010",
-      "title": "Name the critical hit multiplier",
-      "concept": "gq-readable",
-      "difficulty": 0
-    },
-    {
-      "id": "gqread-011",
-      "title": "Name the frames per second",
-      "concept": "gq-readable",
-      "difficulty": 0
-    },
-    {
-      "id": "gqread-012",
-      "title": "Name the starting lives",
-      "concept": "gq-readable",
-      "difficulty": 0
-    },
-    {
-      "id": "gqread-013",
-      "title": "Name the discount",
-      "concept": "gq-readable",
-      "difficulty": 0
-    },
-    {
-      "id": "gqread-014",
-      "title": "Name the coins per gem",
-      "concept": "gq-readable",
-      "difficulty": 0
-    },
-    {
-      "id": "gqread-015",
-      "title": "Two numbers to name",
-      "concept": "gq-readable",
+      "id": "gqturtle-007",
+      "title": "A gap in the line",
+      "concept": "gq-turtle",
       "difficulty": 1
     },
     {
-      "id": "gqread-016",
-      "title": "The same number twice",
-      "concept": "gq-readable",
-      "difficulty": 0
-    },
-    {
-      "id": "gqparam-001",
-      "title": "Show a value",
-      "concept": "gq-parameters",
-      "difficulty": 0
-    },
-    {
-      "id": "gqparam-002",
-      "title": "Add and print",
-      "concept": "gq-parameters",
-      "difficulty": 0
-    },
-    {
-      "id": "gqparam-003",
-      "title": "Squares, three times",
-      "concept": "gq-parameters",
-      "difficulty": 0
-    },
-    {
-      "id": "gqparam-004",
-      "title": "Health, damage, remaining",
-      "concept": "gq-parameters",
+      "id": "gqturtle-008",
+      "title": "Two squares side by side",
+      "concept": "gq-turtle",
       "difficulty": 1
     },
     {
-      "id": "gqparam-005",
-      "title": "A default value",
-      "concept": "gq-parameters",
+      "id": "gqturtle-009",
+      "title": "A triangle",
+      "concept": "gq-turtle",
       "difficulty": 1
     },
     {
-      "id": "gqparam-006",
-      "title": "Parameters are copies",
-      "concept": "gq-parameters",
+      "id": "gqturtle-010",
+      "title": "A corner helper",
+      "concept": "gq-turtle",
       "difficulty": 1
     },
     {
-      "id": "gqparam-007",
-      "title": "Perimeter, your way",
-      "concept": "gq-parameters",
+      "id": "gqturtle-011",
+      "title": "Two helpers",
+      "concept": "gq-turtle",
       "difficulty": 1
     },
     {
-      "id": "gqparam-008",
-      "title": "Repeat a message",
-      "concept": "gq-parameters",
-      "difficulty": 0
-    },
-    {
-      "id": "gqparam-009",
-      "title": "Add two numbers",
-      "concept": "gq-parameters",
-      "difficulty": 0
-    },
-    {
-      "id": "gqparam-010",
-      "title": "Order matters",
-      "concept": "gq-parameters",
-      "difficulty": 0
-    },
-    {
-      "id": "gqparam-011",
-      "title": "Price, quantity, shipping",
-      "concept": "gq-parameters",
-      "difficulty": 0
-    },
-    {
-      "id": "gqparam-012",
-      "title": "Use the parameter twice",
-      "concept": "gq-parameters",
-      "difficulty": 0
-    },
-    {
-      "id": "gqparam-013",
-      "title": "Whole numbers in, decimal out",
-      "concept": "gq-parameters",
-      "difficulty": 1
-    },
-    {
-      "id": "gqparam-014",
-      "title": "Clamp with parameters",
-      "concept": "gq-parameters",
-      "difficulty": 1
-    },
-    {
-      "id": "gqparam-015",
-      "title": "Two defaults",
-      "concept": "gq-parameters",
-      "difficulty": 1
-    },
-    {
-      "id": "gqparam-016",
-      "title": "Digits into a number",
-      "concept": "gq-parameters",
+      "id": "gqturtle-012",
+      "title": "A staircase",
+      "concept": "gq-turtle",
       "difficulty": 1
     },
     {
@@ -408,111 +324,591 @@
       "difficulty": 1
     },
     {
-      "id": "gqret-001",
-      "title": "Return a fixed number",
-      "concept": "gq-return",
+      "id": "gqparam-001",
+      "title": "Display a value",
+      "concept": "gq-parameters",
       "difficulty": 0
     },
     {
-      "id": "gqret-002",
-      "title": "Return the parameter",
-      "concept": "gq-return",
+      "id": "gqparam-002",
+      "title": "Add and print",
+      "concept": "gq-parameters",
       "difficulty": 0
     },
     {
-      "id": "gqret-003",
-      "title": "Return an expression",
-      "concept": "gq-return",
+      "id": "gqparam-003",
+      "title": "Squares, three times",
+      "concept": "gq-parameters",
       "difficulty": 0
     },
     {
-      "id": "gqret-004",
-      "title": "Use a returned value",
-      "concept": "gq-return",
-      "difficulty": 0
-    },
-    {
-      "id": "gqret-005",
-      "title": "Print, then return",
-      "concept": "gq-return",
-      "difficulty": 0
-    },
-    {
-      "id": "gqret-006",
-      "title": "Code after return never runs",
-      "concept": "gq-return",
+      "id": "gqparam-004",
+      "title": "Health, damage, remaining",
+      "concept": "gq-parameters",
       "difficulty": 1
     },
     {
-      "id": "gqret-007",
-      "title": "A decimal from whole numbers",
-      "concept": "gq-return",
+      "id": "gqparam-005",
+      "title": "A default value",
+      "concept": "gq-parameters",
       "difficulty": 1
     },
     {
-      "id": "gqret-008",
-      "title": "Return the bigger with max()",
-      "concept": "gq-return",
+      "id": "gqparam-006",
+      "title": "Parameters are copies",
+      "concept": "gq-parameters",
+      "difficulty": 1
+    },
+    {
+      "id": "gqparam-007",
+      "title": "Perimeter, your way",
+      "concept": "gq-parameters",
+      "difficulty": 1
+    },
+    {
+      "id": "gqparam-008",
+      "title": "Repeat a message",
+      "concept": "gq-parameters",
       "difficulty": 0
     },
     {
-      "id": "gqret-009",
-      "title": "Return a rounded value",
-      "concept": "gq-return",
-      "difficulty": 1
-    },
-    {
-      "id": "gqret-010",
-      "title": "Return the remainder",
-      "concept": "gq-return",
+      "id": "gqparam-009",
+      "title": "Add two numbers",
+      "concept": "gq-parameters",
       "difficulty": 0
     },
     {
-      "id": "gqret-011",
-      "title": "Store the result first",
-      "concept": "gq-return",
+      "id": "gqparam-010",
+      "title": "Order matters",
+      "concept": "gq-parameters",
       "difficulty": 0
     },
     {
-      "id": "gqret-012",
-      "title": "Return the absolute value",
-      "concept": "gq-return",
+      "id": "gqparam-011",
+      "title": "Price, quantity, shipping",
+      "concept": "gq-parameters",
       "difficulty": 0
     },
     {
-      "id": "gqret-013",
-      "title": "Three helpers in a chain",
-      "concept": "gq-return",
-      "difficulty": 1
-    },
-    {
-      "id": "gqret-014",
-      "title": "A helper that returns nothing",
-      "concept": "gq-return",
+      "id": "gqparam-012",
+      "title": "Use the parameter twice",
+      "concept": "gq-parameters",
       "difficulty": 0
     },
     {
-      "id": "gqret-015",
-      "title": "Two helpers, one answer",
-      "concept": "gq-return",
+      "id": "gqparam-013",
+      "title": "Whole numbers in, decimal out",
+      "concept": "gq-parameters",
       "difficulty": 1
     },
     {
-      "id": "gqret-016",
-      "title": "Return with a default",
-      "concept": "gq-return",
+      "id": "gqparam-014",
+      "title": "Clamp with parameters",
+      "concept": "gq-parameters",
       "difficulty": 1
     },
     {
-      "id": "gqret-017",
-      "title": "Return an average",
-      "concept": "gq-return",
+      "id": "gqparam-015",
+      "title": "Two defaults",
+      "concept": "gq-parameters",
       "difficulty": 1
     },
     {
-      "id": "gqret-018",
-      "title": "A helper that returns true or false",
-      "concept": "gq-return",
+      "id": "gqparam-016",
+      "title": "Digits into a number",
+      "concept": "gq-parameters",
+      "difficulty": 1
+    },
+    {
+      "id": "gqmem-001",
+      "title": "The robot's health",
+      "concept": "gq-members",
+      "difficulty": 0
+    },
+    {
+      "id": "gqmem-002",
+      "title": "Two members",
+      "concept": "gq-members",
+      "difficulty": 0
+    },
+    {
+      "id": "gqmem-003",
+      "title": "A helper changes a member",
+      "concept": "gq-members",
+      "difficulty": 1
+    },
+    {
+      "id": "gqmem-004",
+      "title": "Heal",
+      "concept": "gq-members",
+      "difficulty": 1
+    },
+    {
+      "id": "gqmem-005",
+      "title": "Damage, then heal",
+      "concept": "gq-members",
+      "difficulty": 1
+    },
+    {
+      "id": "gqmem-006",
+      "title": "Level up",
+      "concept": "gq-members",
+      "difficulty": 0
+    },
+    {
+      "id": "gqmem-007",
+      "title": "Local or member",
+      "concept": "gq-members",
+      "difficulty": 1
+    },
+    {
+      "id": "gqmem-008",
+      "title": "Counting calls",
+      "concept": "gq-members",
+      "difficulty": 1
+    },
+    {
+      "id": "gqmem-009",
+      "title": "Report the members",
+      "concept": "gq-members",
+      "difficulty": 0
+    },
+    {
+      "id": "gqmem-010",
+      "title": "Max health",
+      "concept": "gq-members",
+      "difficulty": 1
+    },
+    {
+      "id": "gqmem-011",
+      "title": "Never below zero",
+      "concept": "gq-members",
+      "difficulty": 1
+    },
+    {
+      "id": "gqmem-012",
+      "title": "Position as members",
+      "concept": "gq-members",
+      "difficulty": 0
+    },
+    {
+      "id": "gqmem-013",
+      "title": "Reset",
+      "concept": "gq-members",
+      "difficulty": 0
+    },
+    {
+      "id": "gqmem-014",
+      "title": "Members keep state between helpers",
+      "concept": "gq-members",
+      "difficulty": 1
+    },
+    {
+      "id": "gqmem-015",
+      "title": "Name for the robot",
+      "concept": "gq-members",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvar-001",
+      "title": "The robot's lives",
+      "concept": "gq-variables",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvar-002",
+      "title": "The robot's name",
+      "concept": "gq-variables",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvar-003",
+      "title": "Powered on",
+      "concept": "gq-variables",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvar-004",
+      "title": "Two variables, one total",
+      "concept": "gq-variables",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvar-005",
+      "title": "Change a variable",
+      "concept": "gq-variables",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvar-006",
+      "title": "Pick up coins",
+      "concept": "gq-variables",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvar-007",
+      "title": "Take a hit",
+      "concept": "gq-variables",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvar-008",
+      "title": "A variable from a variable",
+      "concept": "gq-variables",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvar-009",
+      "title": "Copy, then change the original",
+      "concept": "gq-variables",
+      "difficulty": 1
+    },
+    {
+      "id": "gqvar-010",
+      "title": "Swap two variables",
+      "concept": "gq-variables",
+      "difficulty": 1
+    },
+    {
+      "id": "gqvar-011",
+      "title": "Health after damage",
+      "concept": "gq-variables",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvar-012",
+      "title": "Count up three times",
+      "concept": "gq-variables",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvar-013",
+      "title": "Whole number or decimal",
+      "concept": "gq-variables",
+      "difficulty": 1
+    },
+    {
+      "id": "gqvar-014",
+      "title": "Add to a decimal",
+      "concept": "gq-variables",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvar-015",
+      "title": "Read a variable three times",
+      "concept": "gq-variables",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvar-016",
+      "title": "Minutes to seconds",
+      "concept": "gq-variables",
+      "difficulty": 0
+    },
+    {
+      "id": "vars-001",
+      "title": "Double the reward",
+      "concept": "variables",
+      "difficulty": 0
+    },
+    {
+      "id": "vars-002",
+      "title": "Store and return a greeting",
+      "concept": "variables",
+      "difficulty": 0
+    },
+    {
+      "id": "vars-003",
+      "title": "Score bonus",
+      "concept": "variables",
+      "difficulty": 0
+    },
+    {
+      "id": "vars-004",
+      "title": "Halve it, keep the decimals",
+      "concept": "variables",
+      "difficulty": 1
+    },
+    {
+      "id": "vars-005",
+      "title": "Sales tax",
+      "concept": "variables",
+      "difficulty": 1
+    },
+    {
+      "id": "arith-001",
+      "title": "Room area",
+      "concept": "arithmetic",
+      "difficulty": 0
+    },
+    {
+      "id": "arith-002",
+      "title": "Average of three readings",
+      "concept": "arithmetic",
+      "difficulty": 1
+    },
+    {
+      "id": "arith-003",
+      "title": "Remainder",
+      "concept": "arithmetic",
+      "difficulty": 0
+    },
+    {
+      "id": "arith-004",
+      "title": "Celsius to Fahrenheit",
+      "concept": "arithmetic",
+      "difficulty": 1
+    },
+    {
+      "id": "arith-005",
+      "title": "Hours and minutes",
+      "concept": "arithmetic",
+      "difficulty": 1
+    },
+    {
+      "id": "gqloop-001",
+      "title": "Count the frames",
+      "concept": "gq-loop",
+      "difficulty": 0
+    },
+    {
+      "id": "gqloop-002",
+      "title": "Add up the time",
+      "concept": "gq-loop",
+      "difficulty": 1
+    },
+    {
+      "id": "gqloop-003",
+      "title": "Move every frame",
+      "concept": "gq-loop",
+      "difficulty": 1
+    },
+    {
+      "id": "gqloop-004",
+      "title": "Forgetting delta",
+      "concept": "gq-loop",
+      "difficulty": 1
+    },
+    {
+      "id": "gqloop-005",
+      "title": "Countdown in the loop",
+      "concept": "gq-loop",
+      "difficulty": 1
+    },
+    {
+      "id": "gqloop-006",
+      "title": "Spin",
+      "concept": "gq-loop",
+      "difficulty": 0
+    },
+    {
+      "id": "gqloop-007",
+      "title": "Fall",
+      "concept": "gq-loop",
+      "difficulty": 1
+    },
+    {
+      "id": "gqloop-008",
+      "title": "Stop at a wall",
+      "concept": "gq-loop",
+      "difficulty": 1
+    },
+    {
+      "id": "gqloop-009",
+      "title": "Only while running",
+      "concept": "gq-loop",
+      "difficulty": 1
+    },
+    {
+      "id": "gqloop-010",
+      "title": "A helper called from the loop",
+      "concept": "gq-loop",
+      "difficulty": 1
+    },
+    {
+      "id": "gqdelta-001",
+      "title": "Distance this frame",
+      "concept": "gq-delta",
+      "difficulty": 0
+    },
+    {
+      "id": "gqdelta-002",
+      "title": "New position",
+      "concept": "gq-delta",
+      "difficulty": 0
+    },
+    {
+      "id": "gqdelta-003",
+      "title": "New y position",
+      "concept": "gq-delta",
+      "difficulty": 0
+    },
+    {
+      "id": "gqdelta-004",
+      "title": "Frames to seconds",
+      "concept": "gq-delta",
+      "difficulty": 0
+    },
+    {
+      "id": "gqdelta-005",
+      "title": "Countdown timer",
+      "concept": "gq-delta",
+      "difficulty": 1
+    },
+    {
+      "id": "gqdelta-006",
+      "title": "Frames until the timer ends",
+      "concept": "gq-delta",
+      "difficulty": 1
+    },
+    {
+      "id": "gqdelta-007",
+      "title": "Speed up",
+      "concept": "gq-delta",
+      "difficulty": 0
+    },
+    {
+      "id": "gqdelta-008",
+      "title": "Fall with gravity",
+      "concept": "gq-delta",
+      "difficulty": 1
+    },
+    {
+      "id": "gqdelta-009",
+      "title": "Move toward a target",
+      "concept": "gq-delta",
+      "difficulty": 1
+    },
+    {
+      "id": "gqdelta-010",
+      "title": "Turn over time",
+      "concept": "gq-delta",
+      "difficulty": 0
+    },
+    {
+      "id": "gqdelta-011",
+      "title": "Distance over many frames",
+      "concept": "gq-delta",
+      "difficulty": 0
+    },
+    {
+      "id": "gqdelta-012",
+      "title": "Same distance at any frame rate",
+      "concept": "gq-delta",
+      "difficulty": 1
+    },
+    {
+      "id": "gqdelta-013",
+      "title": "Health regen with a cap",
+      "concept": "gq-delta",
+      "difficulty": 1
+    },
+    {
+      "id": "gqdelta-014",
+      "title": "Blink timer wraps around",
+      "concept": "gq-delta",
+      "difficulty": 1
+    },
+    {
+      "id": "gqdelta-015",
+      "title": "Speed from distance and time",
+      "concept": "gq-delta",
+      "difficulty": 0
+    },
+    {
+      "id": "gqread-001",
+      "title": "Name the speed",
+      "concept": "gq-readable",
+      "difficulty": 0
+    },
+    {
+      "id": "gqread-002",
+      "title": "Name the gravity",
+      "concept": "gq-readable",
+      "difficulty": 0
+    },
+    {
+      "id": "gqread-003",
+      "title": "Name the tax rate",
+      "concept": "gq-readable",
+      "difficulty": 0
+    },
+    {
+      "id": "gqread-004",
+      "title": "Name the max health",
+      "concept": "gq-readable",
+      "difficulty": 0
+    },
+    {
+      "id": "gqread-005",
+      "title": "Name the seconds per minute",
+      "concept": "gq-readable",
+      "difficulty": 0
+    },
+    {
+      "id": "gqread-006",
+      "title": "Name the tile size",
+      "concept": "gq-readable",
+      "difficulty": 0
+    },
+    {
+      "id": "gqread-007",
+      "title": "Name the jump height",
+      "concept": "gq-readable",
+      "difficulty": 0
+    },
+    {
+      "id": "gqread-008",
+      "title": "Name the screen width",
+      "concept": "gq-readable",
+      "difficulty": 0
+    },
+    {
+      "id": "gqread-009",
+      "title": "Name the win score",
+      "concept": "gq-readable",
+      "difficulty": 0
+    },
+    {
+      "id": "gqread-010",
+      "title": "Name the critical hit multiplier",
+      "concept": "gq-readable",
+      "difficulty": 0
+    },
+    {
+      "id": "gqread-011",
+      "title": "Name the frames per second",
+      "concept": "gq-readable",
+      "difficulty": 0
+    },
+    {
+      "id": "gqread-012",
+      "title": "Name the starting lives",
+      "concept": "gq-readable",
+      "difficulty": 0
+    },
+    {
+      "id": "gqread-013",
+      "title": "Name the discount",
+      "concept": "gq-readable",
+      "difficulty": 0
+    },
+    {
+      "id": "gqread-014",
+      "title": "Name the coins per gem",
+      "concept": "gq-readable",
+      "difficulty": 0
+    },
+    {
+      "id": "gqread-015",
+      "title": "Two numbers to name",
+      "concept": "gq-readable",
+      "difficulty": 1
+    },
+    {
+      "id": "gqread-016",
+      "title": "The same number twice",
+      "concept": "gq-readable",
       "difficulty": 0
     },
     {
@@ -634,6 +1030,414 @@
       "title": "Game over?",
       "concept": "gq-conditions",
       "difficulty": 1
+    },
+    {
+      "id": "if-001",
+      "title": "Absolute value",
+      "concept": "ifelse",
+      "difficulty": 0
+    },
+    {
+      "id": "if-002",
+      "title": "Even or odd",
+      "concept": "ifelse",
+      "difficulty": 0
+    },
+    {
+      "id": "if-003",
+      "title": "Letter grade",
+      "concept": "ifelse",
+      "difficulty": 1
+    },
+    {
+      "id": "if-004",
+      "title": "Larger of two",
+      "concept": "ifelse",
+      "difficulty": 0
+    },
+    {
+      "id": "if-005",
+      "title": "FizzBuzz for one number",
+      "concept": "ifelse",
+      "difficulty": 1
+    },
+    {
+      "id": "cmp-001",
+      "title": "Old enough",
+      "concept": "comparisons",
+      "difficulty": 0
+    },
+    {
+      "id": "cmp-002",
+      "title": "Not the same",
+      "concept": "comparisons",
+      "difficulty": 0
+    },
+    {
+      "id": "cmp-003",
+      "title": "In range",
+      "concept": "comparisons",
+      "difficulty": 1
+    },
+    {
+      "id": "cmp-004",
+      "title": "Can ride",
+      "concept": "comparisons",
+      "difficulty": 1
+    },
+    {
+      "id": "cmp-005",
+      "title": "Same sign",
+      "concept": "comparisons",
+      "difficulty": 1
+    },
+    {
+      "id": "gqmul-001",
+      "title": "Double the max health",
+      "concept": "gq-multiply",
+      "difficulty": 0
+    },
+    {
+      "id": "gqmul-002",
+      "title": "Level up the member",
+      "concept": "gq-multiply",
+      "difficulty": 1
+    },
+    {
+      "id": "gqmul-003",
+      "title": "Three level-ups",
+      "concept": "gq-multiply",
+      "difficulty": 1
+    },
+    {
+      "id": "gqmul-004",
+      "title": "Damage scales with level",
+      "concept": "gq-multiply",
+      "difficulty": 0
+    },
+    {
+      "id": "gqmul-005",
+      "title": "Critical hit",
+      "concept": "gq-multiply",
+      "difficulty": 0
+    },
+    {
+      "id": "gqmul-006",
+      "title": "Halve the damage",
+      "concept": "gq-multiply",
+      "difficulty": 1
+    },
+    {
+      "id": "gqmul-007",
+      "title": "Reduce damage by a percentage",
+      "concept": "gq-multiply",
+      "difficulty": 1
+    },
+    {
+      "id": "gqmul-008",
+      "title": "Coins for a level",
+      "concept": "gq-multiply",
+      "difficulty": 0
+    },
+    {
+      "id": "gqmul-009",
+      "title": "Grow by ten percent",
+      "concept": "gq-multiply",
+      "difficulty": 1
+    },
+    {
+      "id": "gqmul-010",
+      "title": "Square the level",
+      "concept": "gq-multiply",
+      "difficulty": 0
+    },
+    {
+      "id": "gqmul-011",
+      "title": "Multiply in place",
+      "concept": "gq-multiply",
+      "difficulty": 1
+    },
+    {
+      "id": "gqmul-012",
+      "title": "Area of the arena",
+      "concept": "gq-multiply",
+      "difficulty": 0
+    },
+    {
+      "id": "gqmul-013",
+      "title": "Damage per second",
+      "concept": "gq-multiply",
+      "difficulty": 1
+    },
+    {
+      "id": "gqmul-014",
+      "title": "Level up with a cap",
+      "concept": "gq-multiply",
+      "difficulty": 1
+    },
+    {
+      "id": "gqmul-015",
+      "title": "Report after levelling",
+      "concept": "gq-multiply",
+      "difficulty": 1
+    },
+    {
+      "id": "gqvec-001",
+      "title": "Make a vector",
+      "concept": "gq-vectors",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvec-002",
+      "title": "Read x and y",
+      "concept": "gq-vectors",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvec-003",
+      "title": "Add two vectors",
+      "concept": "gq-vectors",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvec-004",
+      "title": "From a to b",
+      "concept": "gq-vectors",
+      "difficulty": 1
+    },
+    {
+      "id": "gqvec-005",
+      "title": "Scale by a number",
+      "concept": "gq-vectors",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvec-006",
+      "title": "Length",
+      "concept": "gq-vectors",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvec-007",
+      "title": "Distance between points",
+      "concept": "gq-vectors",
+      "difficulty": 1
+    },
+    {
+      "id": "gqvec-008",
+      "title": "Direction of length 1",
+      "concept": "gq-vectors",
+      "difficulty": 1
+    },
+    {
+      "id": "gqvec-009",
+      "title": "Step along a direction",
+      "concept": "gq-vectors",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvec-010",
+      "title": "Midpoint",
+      "concept": "gq-vectors",
+      "difficulty": 1
+    },
+    {
+      "id": "gqvec-011",
+      "title": "Mirror left to right",
+      "concept": "gq-vectors",
+      "difficulty": 1
+    },
+    {
+      "id": "gqvec-012",
+      "title": "Vector2.UP and friends",
+      "concept": "gq-vectors",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvec-013",
+      "title": "Which is farther",
+      "concept": "gq-vectors",
+      "difficulty": 1
+    },
+    {
+      "id": "gqvec-014",
+      "title": "Vector to array",
+      "concept": "gq-vectors",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvec-015",
+      "title": "Grid to pixels",
+      "concept": "gq-vectors",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvec-016",
+      "title": "Keep inside a box",
+      "concept": "gq-vectors",
+      "difficulty": 1
+    },
+    {
+      "id": "gqvec-017",
+      "title": "Standing still",
+      "concept": "gq-vectors",
+      "difficulty": 0
+    },
+    {
+      "id": "gqrect-001",
+      "title": "Rect from four numbers",
+      "concept": "gq-rect",
+      "difficulty": 0
+    },
+    {
+      "id": "gqrect-002",
+      "title": "Rect from position and size",
+      "concept": "gq-rect",
+      "difficulty": 0
+    },
+    {
+      "id": "gqrect-003",
+      "title": "Area of a rect",
+      "concept": "gq-rect",
+      "difficulty": 0
+    },
+    {
+      "id": "gqrect-004",
+      "title": "Right and bottom edges",
+      "concept": "gq-rect",
+      "difficulty": 0
+    },
+    {
+      "id": "gqrect-005",
+      "title": "Centre of a rect",
+      "concept": "gq-rect",
+      "difficulty": 0
+    },
+    {
+      "id": "gqrect-006",
+      "title": "Rect around a centre",
+      "concept": "gq-rect",
+      "difficulty": 1
+    },
+    {
+      "id": "gqrect-007",
+      "title": "Move a rect",
+      "concept": "gq-rect",
+      "difficulty": 0
+    },
+    {
+      "id": "gqrect-008",
+      "title": "Grow",
+      "concept": "gq-rect",
+      "difficulty": 1
+    },
+    {
+      "id": "gqrect-009",
+      "title": "Shrink",
+      "concept": "gq-rect",
+      "difficulty": 1
+    },
+    {
+      "id": "gqrect-010",
+      "title": "Is the point inside",
+      "concept": "gq-rect",
+      "difficulty": 0
+    },
+    {
+      "id": "gqrect-011",
+      "title": "Do they overlap",
+      "concept": "gq-rect",
+      "difficulty": 1
+    },
+    {
+      "id": "gqrect-012",
+      "title": "The four edges",
+      "concept": "gq-rect",
+      "difficulty": 0
+    },
+    {
+      "id": "gqrect-013",
+      "title": "Tile rect from a cell",
+      "concept": "gq-rect",
+      "difficulty": 0
+    },
+    {
+      "id": "gqrect-014",
+      "title": "Health bar",
+      "concept": "gq-rect",
+      "difficulty": 1
+    },
+    {
+      "id": "gqrect-015",
+      "title": "Keep on screen",
+      "concept": "gq-rect",
+      "difficulty": 1
+    },
+    {
+      "id": "gqrect-016",
+      "title": "Scale a rect",
+      "concept": "gq-rect",
+      "difficulty": 1
+    },
+    {
+      "id": "while-001",
+      "title": "Count down",
+      "concept": "while",
+      "difficulty": 0
+    },
+    {
+      "id": "while-002",
+      "title": "Sum up to n",
+      "concept": "while",
+      "difficulty": 0
+    },
+    {
+      "id": "while-003",
+      "title": "Count the digits",
+      "concept": "while",
+      "difficulty": 1
+    },
+    {
+      "id": "while-004",
+      "title": "Halve until small",
+      "concept": "while",
+      "difficulty": 1
+    },
+    {
+      "id": "while-005",
+      "title": "First multiple",
+      "concept": "while",
+      "difficulty": 1
+    },
+    {
+      "id": "for-001",
+      "title": "Sum of a list",
+      "concept": "for",
+      "difficulty": 0
+    },
+    {
+      "id": "for-002",
+      "title": "Count the evens",
+      "concept": "for",
+      "difficulty": 0
+    },
+    {
+      "id": "for-003",
+      "title": "Sum of squares",
+      "concept": "for",
+      "difficulty": 1
+    },
+    {
+      "id": "for-004",
+      "title": "Largest number",
+      "concept": "for",
+      "difficulty": 1
+    },
+    {
+      "id": "for-005",
+      "title": "Times table",
+      "concept": "for",
+      "difficulty": 0
     },
     {
       "id": "gqarr-001",
@@ -777,6 +1581,126 @@
       "id": "gqarr-024",
       "title": "Arrays are shared, not copied",
       "concept": "gq-arrays",
+      "difficulty": 1
+    },
+    {
+      "id": "arr-001",
+      "title": "First and last",
+      "concept": "arrays",
+      "difficulty": 0
+    },
+    {
+      "id": "arr-002",
+      "title": "Build a list",
+      "concept": "arrays",
+      "difficulty": 0
+    },
+    {
+      "id": "arr-003",
+      "title": "Reverse",
+      "concept": "arrays",
+      "difficulty": 1
+    },
+    {
+      "id": "arr-004",
+      "title": "Remove every copy",
+      "concept": "arrays",
+      "difficulty": 1
+    },
+    {
+      "id": "arr-005",
+      "title": "Middle item",
+      "concept": "arrays",
+      "difficulty": 1
+    },
+    {
+      "id": "gqla-001",
+      "title": "Print each item",
+      "concept": "gq-looparrays",
+      "difficulty": 0
+    },
+    {
+      "id": "gqla-002",
+      "title": "Sum of an array",
+      "concept": "gq-looparrays",
+      "difficulty": 0
+    },
+    {
+      "id": "gqla-003",
+      "title": "Draw the path",
+      "concept": "gq-looparrays",
+      "difficulty": 1
+    },
+    {
+      "id": "gqla-004",
+      "title": "Count the items",
+      "concept": "gq-looparrays",
+      "difficulty": 0
+    },
+    {
+      "id": "gqla-005",
+      "title": "Double each",
+      "concept": "gq-looparrays",
+      "difficulty": 1
+    },
+    {
+      "id": "gqla-006",
+      "title": "Total damage",
+      "concept": "gq-looparrays",
+      "difficulty": 0
+    },
+    {
+      "id": "gqla-007",
+      "title": "Health after all hits",
+      "concept": "gq-looparrays",
+      "difficulty": 1
+    },
+    {
+      "id": "gqla-008",
+      "title": "Count the evens",
+      "concept": "gq-looparrays",
+      "difficulty": 0
+    },
+    {
+      "id": "gqla-009",
+      "title": "Largest",
+      "concept": "gq-looparrays",
+      "difficulty": 1
+    },
+    {
+      "id": "gqla-010",
+      "title": "Print with a label",
+      "concept": "gq-looparrays",
+      "difficulty": 0
+    },
+    {
+      "id": "gqla-011",
+      "title": "Draw squares of each size",
+      "concept": "gq-looparrays",
+      "difficulty": 1
+    },
+    {
+      "id": "gqla-012",
+      "title": "Only the positives",
+      "concept": "gq-looparrays",
+      "difficulty": 1
+    },
+    {
+      "id": "gqla-013",
+      "title": "Is it there",
+      "concept": "gq-looparrays",
+      "difficulty": 0
+    },
+    {
+      "id": "gqla-014",
+      "title": "Average",
+      "concept": "gq-looparrays",
+      "difficulty": 1
+    },
+    {
+      "id": "gqla-015",
+      "title": "Print with numbers",
+      "concept": "gq-looparrays",
       "difficulty": 1
     },
     {
@@ -924,352 +1848,142 @@
       "difficulty": 1
     },
     {
-      "id": "gqvec-001",
-      "title": "Make a vector",
-      "concept": "gq-vectors",
+      "id": "str-001",
+      "title": "Greeting",
+      "concept": "strings",
       "difficulty": 0
     },
     {
-      "id": "gqvec-002",
-      "title": "Read x and y",
-      "concept": "gq-vectors",
-      "difficulty": 0
-    },
-    {
-      "id": "gqvec-003",
-      "title": "Add two vectors",
-      "concept": "gq-vectors",
-      "difficulty": 0
-    },
-    {
-      "id": "gqvec-004",
-      "title": "From a to b",
-      "concept": "gq-vectors",
-      "difficulty": 1
-    },
-    {
-      "id": "gqvec-005",
-      "title": "Scale by a number",
-      "concept": "gq-vectors",
-      "difficulty": 0
-    },
-    {
-      "id": "gqvec-006",
+      "id": "str-002",
       "title": "Length",
-      "concept": "gq-vectors",
+      "concept": "strings",
       "difficulty": 0
     },
     {
-      "id": "gqvec-007",
-      "title": "Distance between points",
-      "concept": "gq-vectors",
+      "id": "str-003",
+      "title": "Shout",
+      "concept": "strings",
+      "difficulty": 0
+    },
+    {
+      "id": "str-004",
+      "title": "Repeat",
+      "concept": "strings",
       "difficulty": 1
     },
     {
-      "id": "gqvec-008",
-      "title": "Direction of length 1",
-      "concept": "gq-vectors",
+      "id": "str-005",
+      "title": "Count the vowels",
+      "concept": "strings",
       "difficulty": 1
     },
     {
-      "id": "gqvec-009",
-      "title": "Step along a direction",
-      "concept": "gq-vectors",
+      "id": "gqret-001",
+      "title": "Return a fixed number",
+      "concept": "gq-return",
       "difficulty": 0
     },
     {
-      "id": "gqvec-010",
-      "title": "Midpoint",
-      "concept": "gq-vectors",
+      "id": "gqret-002",
+      "title": "Return the parameter",
+      "concept": "gq-return",
+      "difficulty": 0
+    },
+    {
+      "id": "gqret-003",
+      "title": "Return an expression",
+      "concept": "gq-return",
+      "difficulty": 0
+    },
+    {
+      "id": "gqret-004",
+      "title": "Use a returned value",
+      "concept": "gq-return",
+      "difficulty": 0
+    },
+    {
+      "id": "gqret-005",
+      "title": "Print, then return",
+      "concept": "gq-return",
+      "difficulty": 0
+    },
+    {
+      "id": "gqret-006",
+      "title": "Code after return never runs",
+      "concept": "gq-return",
       "difficulty": 1
     },
     {
-      "id": "gqvec-011",
-      "title": "Mirror left to right",
-      "concept": "gq-vectors",
+      "id": "gqret-007",
+      "title": "A decimal from whole numbers",
+      "concept": "gq-return",
       "difficulty": 1
     },
     {
-      "id": "gqvec-012",
-      "title": "Vector2.UP and friends",
-      "concept": "gq-vectors",
+      "id": "gqret-008",
+      "title": "Return the bigger with max()",
+      "concept": "gq-return",
       "difficulty": 0
     },
     {
-      "id": "gqvec-013",
-      "title": "Which is farther",
-      "concept": "gq-vectors",
+      "id": "gqret-009",
+      "title": "Return a rounded value",
+      "concept": "gq-return",
       "difficulty": 1
     },
     {
-      "id": "gqvec-014",
-      "title": "Vector to array",
-      "concept": "gq-vectors",
+      "id": "gqret-010",
+      "title": "Return the remainder",
+      "concept": "gq-return",
       "difficulty": 0
     },
     {
-      "id": "gqvec-015",
-      "title": "Grid to pixels",
-      "concept": "gq-vectors",
+      "id": "gqret-011",
+      "title": "Store the result first",
+      "concept": "gq-return",
       "difficulty": 0
     },
     {
-      "id": "gqvec-016",
-      "title": "Keep inside a box",
-      "concept": "gq-vectors",
+      "id": "gqret-012",
+      "title": "Return the absolute value",
+      "concept": "gq-return",
+      "difficulty": 0
+    },
+    {
+      "id": "gqret-013",
+      "title": "Three helpers in a chain",
+      "concept": "gq-return",
       "difficulty": 1
     },
     {
-      "id": "gqvec-017",
-      "title": "Standing still",
-      "concept": "gq-vectors",
+      "id": "gqret-014",
+      "title": "A helper that returns nothing",
+      "concept": "gq-return",
       "difficulty": 0
     },
     {
-      "id": "gqdelta-001",
-      "title": "Distance this frame",
-      "concept": "gq-delta",
-      "difficulty": 0
-    },
-    {
-      "id": "gqdelta-002",
-      "title": "New position",
-      "concept": "gq-delta",
-      "difficulty": 0
-    },
-    {
-      "id": "gqdelta-003",
-      "title": "New y position",
-      "concept": "gq-delta",
-      "difficulty": 0
-    },
-    {
-      "id": "gqdelta-004",
-      "title": "Frames to seconds",
-      "concept": "gq-delta",
-      "difficulty": 0
-    },
-    {
-      "id": "gqdelta-005",
-      "title": "Countdown timer",
-      "concept": "gq-delta",
+      "id": "gqret-015",
+      "title": "Two helpers, one answer",
+      "concept": "gq-return",
       "difficulty": 1
     },
     {
-      "id": "gqdelta-006",
-      "title": "Frames until the timer ends",
-      "concept": "gq-delta",
+      "id": "gqret-016",
+      "title": "Return with a default",
+      "concept": "gq-return",
       "difficulty": 1
     },
     {
-      "id": "gqdelta-007",
-      "title": "Speed up",
-      "concept": "gq-delta",
-      "difficulty": 0
-    },
-    {
-      "id": "gqdelta-008",
-      "title": "Fall with gravity",
-      "concept": "gq-delta",
+      "id": "gqret-017",
+      "title": "Return an average",
+      "concept": "gq-return",
       "difficulty": 1
     },
     {
-      "id": "gqdelta-009",
-      "title": "Move toward a target",
-      "concept": "gq-delta",
-      "difficulty": 1
-    },
-    {
-      "id": "gqdelta-010",
-      "title": "Turn over time",
-      "concept": "gq-delta",
+      "id": "gqret-018",
+      "title": "A helper that returns true or false",
+      "concept": "gq-return",
       "difficulty": 0
-    },
-    {
-      "id": "gqdelta-011",
-      "title": "Distance over many frames",
-      "concept": "gq-delta",
-      "difficulty": 0
-    },
-    {
-      "id": "gqdelta-012",
-      "title": "Same distance at any frame rate",
-      "concept": "gq-delta",
-      "difficulty": 1
-    },
-    {
-      "id": "gqdelta-013",
-      "title": "Health regen with a cap",
-      "concept": "gq-delta",
-      "difficulty": 1
-    },
-    {
-      "id": "gqdelta-014",
-      "title": "Blink timer wraps around",
-      "concept": "gq-delta",
-      "difficulty": 1
-    },
-    {
-      "id": "gqdelta-015",
-      "title": "Speed from distance and time",
-      "concept": "gq-delta",
-      "difficulty": 0
-    },
-    {
-      "id": "gqrect-001",
-      "title": "Rect from four numbers",
-      "concept": "gq-rect",
-      "difficulty": 0
-    },
-    {
-      "id": "gqrect-002",
-      "title": "Rect from position and size",
-      "concept": "gq-rect",
-      "difficulty": 0
-    },
-    {
-      "id": "gqrect-003",
-      "title": "Area of a rect",
-      "concept": "gq-rect",
-      "difficulty": 0
-    },
-    {
-      "id": "gqrect-004",
-      "title": "Right and bottom edges",
-      "concept": "gq-rect",
-      "difficulty": 0
-    },
-    {
-      "id": "gqrect-005",
-      "title": "Centre of a rect",
-      "concept": "gq-rect",
-      "difficulty": 0
-    },
-    {
-      "id": "gqrect-006",
-      "title": "Rect around a centre",
-      "concept": "gq-rect",
-      "difficulty": 1
-    },
-    {
-      "id": "gqrect-007",
-      "title": "Move a rect",
-      "concept": "gq-rect",
-      "difficulty": 0
-    },
-    {
-      "id": "gqrect-008",
-      "title": "Grow",
-      "concept": "gq-rect",
-      "difficulty": 1
-    },
-    {
-      "id": "gqrect-009",
-      "title": "Shrink",
-      "concept": "gq-rect",
-      "difficulty": 1
-    },
-    {
-      "id": "gqrect-010",
-      "title": "Is the point inside",
-      "concept": "gq-rect",
-      "difficulty": 0
-    },
-    {
-      "id": "gqrect-011",
-      "title": "Do they overlap",
-      "concept": "gq-rect",
-      "difficulty": 1
-    },
-    {
-      "id": "gqrect-012",
-      "title": "The four edges",
-      "concept": "gq-rect",
-      "difficulty": 0
-    },
-    {
-      "id": "gqrect-013",
-      "title": "Tile rect from a cell",
-      "concept": "gq-rect",
-      "difficulty": 0
-    },
-    {
-      "id": "gqrect-014",
-      "title": "Health bar",
-      "concept": "gq-rect",
-      "difficulty": 1
-    },
-    {
-      "id": "gqrect-015",
-      "title": "Keep on screen",
-      "concept": "gq-rect",
-      "difficulty": 1
-    },
-    {
-      "id": "gqrect-016",
-      "title": "Scale a rect",
-      "concept": "gq-rect",
-      "difficulty": 1
-    },
-    {
-      "id": "vars-001",
-      "title": "Double the reward",
-      "concept": "variables",
-      "difficulty": 0
-    },
-    {
-      "id": "vars-002",
-      "title": "Store and return a greeting",
-      "concept": "variables",
-      "difficulty": 0
-    },
-    {
-      "id": "vars-003",
-      "title": "Score bonus",
-      "concept": "variables",
-      "difficulty": 0
-    },
-    {
-      "id": "vars-004",
-      "title": "Halve it, keep the decimals",
-      "concept": "variables",
-      "difficulty": 1
-    },
-    {
-      "id": "vars-005",
-      "title": "Sales tax",
-      "concept": "variables",
-      "difficulty": 1
-    },
-    {
-      "id": "arith-001",
-      "title": "Room area",
-      "concept": "arithmetic",
-      "difficulty": 0
-    },
-    {
-      "id": "arith-002",
-      "title": "Average of three readings",
-      "concept": "arithmetic",
-      "difficulty": 1
-    },
-    {
-      "id": "arith-003",
-      "title": "Remainder",
-      "concept": "arithmetic",
-      "difficulty": 0
-    },
-    {
-      "id": "arith-004",
-      "title": "Celsius to Fahrenheit",
-      "concept": "arithmetic",
-      "difficulty": 1
-    },
-    {
-      "id": "arith-005",
-      "title": "Hours and minutes",
-      "concept": "arithmetic",
-      "difficulty": 1
     },
     {
       "id": "func-001",
@@ -1302,183 +2016,183 @@
       "difficulty": 1
     },
     {
-      "id": "if-001",
-      "title": "Absolute value",
-      "concept": "ifelse",
+      "id": "gqap-001",
+      "title": "Take an order",
+      "concept": "gq-appendpop",
       "difficulty": 0
     },
     {
-      "id": "if-002",
-      "title": "Even or odd",
-      "concept": "ifelse",
+      "id": "gqap-002",
+      "title": "Serve the first order",
+      "concept": "gq-appendpop",
       "difficulty": 0
     },
     {
-      "id": "if-003",
-      "title": "Letter grade",
-      "concept": "ifelse",
+      "id": "gqap-003",
+      "title": "Take from the top of the pile",
+      "concept": "gq-appendpop",
+      "difficulty": 0
+    },
+    {
+      "id": "gqap-004",
+      "title": "What is left",
+      "concept": "gq-appendpop",
+      "difficulty": 0
+    },
+    {
+      "id": "gqap-005",
+      "title": "Three orders in",
+      "concept": "gq-appendpop",
+      "difficulty": 0
+    },
+    {
+      "id": "gqap-006",
+      "title": "Serve everything",
+      "concept": "gq-appendpop",
       "difficulty": 1
     },
     {
-      "id": "if-004",
-      "title": "Larger of two",
-      "concept": "ifelse",
-      "difficulty": 0
-    },
-    {
-      "id": "if-005",
-      "title": "FizzBuzz for one number",
-      "concept": "ifelse",
+      "id": "gqap-007",
+      "title": "Unstack the crates",
+      "concept": "gq-appendpop",
       "difficulty": 1
     },
     {
-      "id": "cmp-001",
-      "title": "Old enough",
-      "concept": "comparisons",
+      "id": "gqap-008",
+      "title": "Is the queue empty",
+      "concept": "gq-appendpop",
       "difficulty": 0
     },
     {
-      "id": "cmp-002",
-      "title": "Not the same",
-      "concept": "comparisons",
+      "id": "gqap-009",
+      "title": "Priority order",
+      "concept": "gq-appendpop",
       "difficulty": 0
     },
     {
-      "id": "cmp-003",
-      "title": "In range",
-      "concept": "comparisons",
+      "id": "gqap-010",
+      "title": "Cancel an order",
+      "concept": "gq-appendpop",
       "difficulty": 1
     },
     {
-      "id": "cmp-004",
-      "title": "Can ride",
-      "concept": "comparisons",
-      "difficulty": 1
-    },
-    {
-      "id": "cmp-005",
-      "title": "Same sign",
-      "concept": "comparisons",
-      "difficulty": 1
-    },
-    {
-      "id": "while-001",
-      "title": "Count down",
-      "concept": "while",
+      "id": "gqap-011",
+      "title": "Clear the kitchen",
+      "concept": "gq-appendpop",
       "difficulty": 0
     },
     {
-      "id": "while-002",
-      "title": "Sum up to n",
-      "concept": "while",
+      "id": "gqap-012",
+      "title": "How many waiting",
+      "concept": "gq-appendpop",
       "difficulty": 0
     },
     {
-      "id": "while-003",
-      "title": "Count the digits",
-      "concept": "while",
+      "id": "gqap-013",
+      "title": "Serve two, keep the rest",
+      "concept": "gq-appendpop",
       "difficulty": 1
     },
     {
-      "id": "while-004",
-      "title": "Halve until small",
-      "concept": "while",
+      "id": "gqap-014",
+      "title": "Move the top crate",
+      "concept": "gq-appendpop",
       "difficulty": 1
     },
     {
-      "id": "while-005",
-      "title": "First multiple",
-      "concept": "while",
+      "id": "gqap-015",
+      "title": "Collect the served meals",
+      "concept": "gq-appendpop",
       "difficulty": 1
     },
     {
-      "id": "for-001",
-      "title": "Sum of a list",
-      "concept": "for",
+      "id": "gqidx-001",
+      "title": "The first slot",
+      "concept": "gq-indices",
       "difficulty": 0
     },
     {
-      "id": "for-002",
-      "title": "Count the evens",
-      "concept": "for",
+      "id": "gqidx-002",
+      "title": "The third slot",
+      "concept": "gq-indices",
       "difficulty": 0
     },
     {
-      "id": "for-003",
-      "title": "Sum of squares",
-      "concept": "for",
+      "id": "gqidx-003",
+      "title": "The last slot",
+      "concept": "gq-indices",
+      "difficulty": 0
+    },
+    {
+      "id": "gqidx-004",
+      "title": "Any slot",
+      "concept": "gq-indices",
+      "difficulty": 0
+    },
+    {
+      "id": "gqidx-005",
+      "title": "Replace a slot",
+      "concept": "gq-indices",
+      "difficulty": 0
+    },
+    {
+      "id": "gqidx-006",
+      "title": "First plus last",
+      "concept": "gq-indices",
+      "difficulty": 0
+    },
+    {
+      "id": "gqidx-007",
+      "title": "Swap two slots",
+      "concept": "gq-indices",
       "difficulty": 1
     },
     {
-      "id": "for-004",
-      "title": "Largest number",
-      "concept": "for",
+      "id": "gqidx-008",
+      "title": "Middle of three",
+      "concept": "gq-indices",
+      "difficulty": 0
+    },
+    {
+      "id": "gqidx-009",
+      "title": "Print by position",
+      "concept": "gq-indices",
       "difficulty": 1
     },
     {
-      "id": "for-005",
-      "title": "Times table",
-      "concept": "for",
-      "difficulty": 0
-    },
-    {
-      "id": "arr-001",
-      "title": "First and last",
-      "concept": "arrays",
-      "difficulty": 0
-    },
-    {
-      "id": "arr-002",
-      "title": "Build a list",
-      "concept": "arrays",
-      "difficulty": 0
-    },
-    {
-      "id": "arr-003",
-      "title": "Reverse",
-      "concept": "arrays",
+      "id": "gqidx-010",
+      "title": "Where is the crystal",
+      "concept": "gq-indices",
       "difficulty": 1
     },
     {
-      "id": "arr-004",
-      "title": "Remove every copy",
-      "concept": "arrays",
+      "id": "gqidx-011",
+      "title": "Every second item",
+      "concept": "gq-indices",
       "difficulty": 1
     },
     {
-      "id": "arr-005",
-      "title": "Middle item",
-      "concept": "arrays",
+      "id": "gqidx-012",
+      "title": "Out of range guard",
+      "concept": "gq-indices",
       "difficulty": 1
     },
     {
-      "id": "str-001",
-      "title": "Greeting",
-      "concept": "strings",
-      "difficulty": 0
-    },
-    {
-      "id": "str-002",
-      "title": "Length",
-      "concept": "strings",
-      "difficulty": 0
-    },
-    {
-      "id": "str-003",
-      "title": "Shout",
-      "concept": "strings",
-      "difficulty": 0
-    },
-    {
-      "id": "str-004",
-      "title": "Repeat",
-      "concept": "strings",
+      "id": "gqidx-013",
+      "title": "Align the tracks",
+      "concept": "gq-indices",
       "difficulty": 1
     },
     {
-      "id": "str-005",
-      "title": "Count the vowels",
-      "concept": "strings",
+      "id": "gqidx-014",
+      "title": "Second to last",
+      "concept": "gq-indices",
+      "difficulty": 0
+    },
+    {
+      "id": "gqidx-015",
+      "title": "Fill a slot from another",
+      "concept": "gq-indices",
       "difficulty": 1
     },
     {
@@ -1510,6 +2224,246 @@
       "title": "Keys with a value",
       "concept": "dictionaries",
       "difficulty": 1
+    },
+    {
+      "id": "gqld-001",
+      "title": "Print every key",
+      "concept": "gq-loopdicts",
+      "difficulty": 0
+    },
+    {
+      "id": "gqld-002",
+      "title": "Print name and amount",
+      "concept": "gq-loopdicts",
+      "difficulty": 0
+    },
+    {
+      "id": "gqld-003",
+      "title": "Total items",
+      "concept": "gq-loopdicts",
+      "difficulty": 0
+    },
+    {
+      "id": "gqld-004",
+      "title": "How many kinds",
+      "concept": "gq-loopdicts",
+      "difficulty": 0
+    },
+    {
+      "id": "gqld-005",
+      "title": "The keys as an array",
+      "concept": "gq-loopdicts",
+      "difficulty": 0
+    },
+    {
+      "id": "gqld-006",
+      "title": "The values as an array",
+      "concept": "gq-loopdicts",
+      "difficulty": 0
+    },
+    {
+      "id": "gqld-007",
+      "title": "Items that are running out",
+      "concept": "gq-loopdicts",
+      "difficulty": 1
+    },
+    {
+      "id": "gqld-008",
+      "title": "Double every amount",
+      "concept": "gq-loopdicts",
+      "difficulty": 1
+    },
+    {
+      "id": "gqld-009",
+      "title": "The most of anything",
+      "concept": "gq-loopdicts",
+      "difficulty": 1
+    },
+    {
+      "id": "gqld-010",
+      "title": "Place the units",
+      "concept": "gq-loopdicts",
+      "difficulty": 1
+    },
+    {
+      "id": "gqvt-001",
+      "title": "Health as text",
+      "concept": "gq-valuetypes",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvt-002",
+      "title": "Fix the type error",
+      "concept": "gq-valuetypes",
+      "difficulty": 1
+    },
+    {
+      "id": "gqvt-003",
+      "title": "Text to a whole number",
+      "concept": "gq-valuetypes",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvt-004",
+      "title": "Text to a decimal",
+      "concept": "gq-valuetypes",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvt-005",
+      "title": "Drop the decimals",
+      "concept": "gq-valuetypes",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvt-006",
+      "title": "Whole number to decimal",
+      "concept": "gq-valuetypes",
+      "difficulty": 1
+    },
+    {
+      "id": "gqvt-007",
+      "title": "Is it text",
+      "concept": "gq-valuetypes",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvt-008",
+      "title": "Name the type",
+      "concept": "gq-valuetypes",
+      "difficulty": 1
+    },
+    {
+      "id": "gqvt-009",
+      "title": "Add as numbers, not text",
+      "concept": "gq-valuetypes",
+      "difficulty": 1
+    },
+    {
+      "id": "gqvt-010",
+      "title": "Format a score line",
+      "concept": "gq-valuetypes",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvt-011",
+      "title": "Bool to text",
+      "concept": "gq-valuetypes",
+      "difficulty": 0
+    },
+    {
+      "id": "gqvt-012",
+      "title": "Round, do not truncate",
+      "concept": "gq-valuetypes",
+      "difficulty": 1
+    },
+    {
+      "id": "gqvt-013",
+      "title": "Digits of a number",
+      "concept": "gq-valuetypes",
+      "difficulty": 1
+    },
+    {
+      "id": "gqvt-014",
+      "title": "Percent as text",
+      "concept": "gq-valuetypes",
+      "difficulty": 1
+    },
+    {
+      "id": "gqvt-015",
+      "title": "Same value, different types",
+      "concept": "gq-valuetypes",
+      "difficulty": 1
+    },
+    {
+      "id": "gqtype-001",
+      "title": "A typed variable",
+      "concept": "gq-types",
+      "difficulty": 0
+    },
+    {
+      "id": "gqtype-002",
+      "title": "A typed parameter",
+      "concept": "gq-types",
+      "difficulty": 0
+    },
+    {
+      "id": "gqtype-003",
+      "title": "A return type",
+      "concept": "gq-types",
+      "difficulty": 0
+    },
+    {
+      "id": "gqtype-004",
+      "title": "Infer the type",
+      "concept": "gq-types",
+      "difficulty": 0
+    },
+    {
+      "id": "gqtype-005",
+      "title": "Fix the wrong hint",
+      "concept": "gq-types",
+      "difficulty": 1
+    },
+    {
+      "id": "gqtype-006",
+      "title": "Fix the type error",
+      "concept": "gq-types",
+      "difficulty": 1
+    },
+    {
+      "id": "gqtype-007",
+      "title": "Typed Vector2",
+      "concept": "gq-types",
+      "difficulty": 0
+    },
+    {
+      "id": "gqtype-008",
+      "title": "Grid to world",
+      "concept": "gq-types",
+      "difficulty": 1
+    },
+    {
+      "id": "gqtype-009",
+      "title": "A typed array",
+      "concept": "gq-types",
+      "difficulty": 0
+    },
+    {
+      "id": "gqtype-010",
+      "title": "A typed bool",
+      "concept": "gq-types",
+      "difficulty": 0
+    },
+    {
+      "id": "gqtype-011",
+      "title": "void means nothing back",
+      "concept": "gq-types",
+      "difficulty": 0
+    },
+    {
+      "id": "gqtype-012",
+      "title": "Convert to satisfy the hint",
+      "concept": "gq-types",
+      "difficulty": 1
+    },
+    {
+      "id": "gqtype-013",
+      "title": "Float parameter, float result",
+      "concept": "gq-types",
+      "difficulty": 0
+    },
+    {
+      "id": "gqtype-014",
+      "title": "Members with types",
+      "concept": "gq-types",
+      "difficulty": 1
+    },
+    {
+      "id": "gqtype-015",
+      "title": "Read a hinted signature",
+      "concept": "gq-types",
+      "difficulty": 0
     }
   ]
 }

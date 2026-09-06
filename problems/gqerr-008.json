@@ -1,0 +1,39 @@
+{
+  "id": "gqerr-008",
+  "title": "Calling a name that does not exist",
+  "concept": "gq-errors",
+  "difficulty": 0,
+  "prompt": "solve calls a helper called `beep`, but the helper below is named `bleep`. Godot cannot find beep. Make the two names match so the output is \"beep\". Change only the helper's name.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tbeep()\n\nfunc bleep():\n\tprint(\"beep\")",
+  "starter_broken": true,
+  "tests": [
+    {
+      "name": "Prints beep",
+      "args": [],
+      "expect": null,
+      "out": [
+        "beep"
+      ]
+    }
+  ],
+  "hints": [
+    "A call only works if a function with exactly that name exists.",
+    "The error names the function it could not find.",
+    "Rename bleep to beep in the definition."
+  ],
+  "docs": [
+    {
+      "name": "The error panel",
+      "what": "Godot's message plus the line it happened on, counted from the top of your code."
+    },
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\tbeep()\n\nfunc beep():\n\tprint(\"beep\")",
+  "require_methods": [
+    "beep"
+  ]
+}

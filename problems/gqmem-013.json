@@ -1,0 +1,30 @@
+{
+  "id": "gqmem-013",
+  "title": "Reset",
+  "concept": "gq-members",
+  "difficulty": 0,
+  "prompt": "Members `health` at 35 and `max_health` at 100. Write `reset`, which sets health back to max_health. solve calls reset and returns health, 100.",
+  "signature": "func solve():",
+  "starter": "var health = 35\nvar max_health = 100\n\nfunc solve():\n\treturn health",
+  "tests": [
+    {
+      "name": "After reset, health is 100",
+      "args": [],
+      "expect": 100
+    }
+  ],
+  "hints": [
+    "One member can be set from another.",
+    "`health = max_health` inside reset."
+  ],
+  "docs": [
+    {
+      "name": "var name = value (outside any function)",
+      "what": "A member variable: every function in the script can read and change it."
+    }
+  ],
+  "solution": "var health = 35\nvar max_health = 100\n\nfunc solve():\n\treset()\n\treturn health\n\nfunc reset():\n\thealth = max_health",
+  "require_methods": [
+    "reset"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "gqmem-003",
+  "title": "A helper changes a member",
+  "concept": "gq-members",
+  "difficulty": 1,
+  "prompt": "`health` is a member variable starting at 100. Write `take_damage`, which takes an amount and subtracts it from health. In `solve`, call take_damage(30) and return health, which is then 70.",
+  "signature": "func solve():",
+  "starter": "var health = 100\n\nfunc solve():\n\treturn health",
+  "tests": [
+    {
+      "name": "After 30 damage, health is 70",
+      "args": [],
+      "expect": 70
+    }
+  ],
+  "hints": [
+    "Because health is a member, a helper can change it and solve sees the change.",
+    "`func take_damage(amount):` with `health -= amount`.",
+    "solve: `take_damage(30)` then `return health`."
+  ],
+  "docs": [
+    {
+      "name": "var name = value (outside any function)",
+      "what": "A member variable: every function in the script can read and change it."
+    }
+  ],
+  "solution": "var health = 100\n\nfunc solve():\n\ttake_damage(30)\n\treturn health\n\nfunc take_damage(amount):\n\thealth -= amount",
+  "require_methods": [
+    "take_damage"
+  ]
+}

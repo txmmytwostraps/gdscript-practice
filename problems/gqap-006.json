@@ -1,0 +1,56 @@
+{
+  "id": "gqap-006",
+  "title": "Serve everything",
+  "concept": "gq-appendpop",
+  "difficulty": 1,
+  "prompt": "Serve every order in turn, printing each as it is served, until the queue is empty. Use a while loop with pop_front.",
+  "signature": "func solve(queue):",
+  "starter": "func solve(queue):\n\tpass",
+  "tests": [
+    {
+      "name": "Serves soup then pie",
+      "args": [
+        [
+          "soup",
+          "pie"
+        ]
+      ],
+      "expect": null,
+      "out": [
+        "soup",
+        "pie"
+      ]
+    },
+    {
+      "name": "Empty queue prints nothing",
+      "args": [
+        []
+      ],
+      "expect": null,
+      "out": []
+    }
+  ],
+  "hints": [
+    "Keep going while there is something left.",
+    "`while queue.size() > 0:` then `print(queue.pop_front())`."
+  ],
+  "docs": [
+    {
+      "name": "while condition:",
+      "what": "Repeats the indented lines as long as the condition stays true."
+    },
+    {
+      "name": "list.pop_front()",
+      "what": "Removes the first item and returns it."
+    },
+    {
+      "name": "list.size()",
+      "what": "Returns how many items the array holds."
+    },
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve(queue):\n\twhile queue.size() > 0:\n\t\tprint(queue.pop_front())"
+}

@@ -1,0 +1,36 @@
+{
+  "id": "gqvt-011",
+  "title": "Bool to text",
+  "concept": "gq-valuetypes",
+  "difficulty": 0,
+  "prompt": "Return \"on\" if the switch is true and \"off\" if it is false.",
+  "signature": "func solve(is_on):",
+  "starter": "func solve(is_on):\n\treturn \"\"",
+  "tests": [
+    {
+      "name": "true is on",
+      "args": [
+        true
+      ],
+      "expect": "on"
+    },
+    {
+      "name": "false is off",
+      "args": [
+        false
+      ],
+      "expect": "off"
+    }
+  ],
+  "hints": [
+    "A bool is its own type; an if turns it into the text you want.",
+    "`if is_on:` return \"on\", else \"off\"."
+  ],
+  "docs": [
+    {
+      "name": "value is String",
+      "what": "true if the value is of that type. Also is int, is float, is bool."
+    }
+  ],
+  "solution": "func solve(is_on):\n\tif is_on:\n\t\treturn \"on\"\n\telse:\n\t\treturn \"off\""
+}

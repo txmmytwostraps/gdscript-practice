@@ -1,0 +1,45 @@
+{
+  "id": "gqloop-006",
+  "title": "Spin",
+  "concept": "gq-loop",
+  "difficulty": 0,
+  "prompt": "A member `angle` starts at 0.0. In `_process`, turn by 90 degrees per second. After 60 frames solve returns angle rounded, 90.",
+  "signature": "func solve():",
+  "starter": "var angle = 0.0\n\nfunc solve():\n\treturn round(angle)",
+  "tests": [
+    {
+      "name": "One second turns 90",
+      "args": [],
+      "expect": 90,
+      "frames": 60
+    },
+    {
+      "name": "Two seconds turn 180",
+      "args": [],
+      "expect": 180,
+      "frames": 120
+    }
+  ],
+  "hints": [
+    "Degrees per second times delta.",
+    "`angle += 90 * delta`"
+  ],
+  "docs": [
+    {
+      "name": "func _process(delta):",
+      "what": "Godot calls this once per frame, about 60 times a second. delta is the frame time in seconds."
+    },
+    {
+      "name": "var name = value (outside any function)",
+      "what": "A member variable keeps its value from one frame to the next."
+    },
+    {
+      "name": "round(x)",
+      "what": "Returns the nearest whole number as a float."
+    }
+  ],
+  "solution": "var angle = 0.0\n\nfunc _process(delta):\n\tangle += 90 * delta\n\nfunc solve():\n\treturn round(angle)",
+  "require_methods": [
+    "_process"
+  ]
+}

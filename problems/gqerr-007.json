@@ -1,0 +1,36 @@
+{
+  "id": "gqerr-007",
+  "title": "Missing quotes",
+  "concept": "gq-errors",
+  "difficulty": 0,
+  "prompt": "The robot wants to print the word Hello, but without quotes Godot thinks Hello is the name of something, and there is nothing by that name. Fix it so it prints \"Hello\".",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tprint(Hello)",
+  "starter_broken": true,
+  "tests": [
+    {
+      "name": "Prints Hello",
+      "args": [],
+      "expect": null,
+      "out": [
+        "Hello"
+      ]
+    }
+  ],
+  "hints": [
+    "Text you want shown as-is needs double quotes around it.",
+    "The error says Hello is not declared.",
+    "Write print(\"Hello\")."
+  ],
+  "docs": [
+    {
+      "name": "The error panel",
+      "what": "Godot's message plus the line it happened on, counted from the top of your code."
+    },
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\tprint(\"Hello\")"
+}

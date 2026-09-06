@@ -1,0 +1,31 @@
+{
+  "id": "gqmem-001",
+  "title": "The robot's health",
+  "concept": "gq-members",
+  "difficulty": 0,
+  "prompt": "Declare a member variable `health` equal to 100 at the top of the script, outside any function. Then make `solve` return it.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\treturn 0",
+  "tests": [
+    {
+      "name": "Returns the member health, 100",
+      "args": [],
+      "expect": 100
+    }
+  ],
+  "hints": [
+    "A variable written outside every function belongs to the whole script.",
+    "`var health = 100` on the first line, above solve.",
+    "solve: `return health`."
+  ],
+  "docs": [
+    {
+      "name": "var name = value (outside any function)",
+      "what": "A member variable: every function in the script can read and change it."
+    }
+  ],
+  "solution": "var health = 100\n\nfunc solve():\n\treturn health",
+  "require_names": [
+    "health"
+  ]
+}

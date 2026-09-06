@@ -1,0 +1,59 @@
+{
+  "id": "gqidx-012",
+  "title": "Out of range guard",
+  "concept": "gq-indices",
+  "difficulty": 1,
+  "prompt": "Return the item at position i, or \"none\" if i is not a valid position (negative or too big).",
+  "signature": "func solve(items, i):",
+  "starter": "func solve(items, i):\n\treturn items[i]",
+  "tests": [
+    {
+      "name": "Valid position",
+      "args": [
+        [
+          "a",
+          "b"
+        ],
+        1
+      ],
+      "expect": "b"
+    },
+    {
+      "name": "Too big",
+      "args": [
+        [
+          "a",
+          "b"
+        ],
+        5
+      ],
+      "expect": "none"
+    },
+    {
+      "name": "Negative",
+      "args": [
+        [
+          "a",
+          "b"
+        ],
+        -1
+      ],
+      "expect": "none"
+    }
+  ],
+  "hints": [
+    "A position is valid when it is at least 0 and less than the size.",
+    "`if i < 0 or i >= items.size():` return \"none\"."
+  ],
+  "docs": [
+    {
+      "name": "list[i]",
+      "what": "The item at position i. Positions start at 0; -1 is the last item."
+    },
+    {
+      "name": "list.size()",
+      "what": "Returns how many items the array holds."
+    }
+  ],
+  "solution": "func solve(items, i):\n\tif i < 0 or i >= items.size():\n\t\treturn \"none\"\n\treturn items[i]"
+}

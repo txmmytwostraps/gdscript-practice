@@ -1,0 +1,40 @@
+{
+  "id": "gqvt-002",
+  "title": "Fix the type error",
+  "concept": "gq-valuetypes",
+  "difficulty": 1,
+  "prompt": "The starter tries to join a number to text and fails. Fix it with a conversion so solve(3) returns \"Level 3\".",
+  "signature": "func solve(level):",
+  "starter": "func solve(level):\n\treturn \"Level \" + level",
+  "tests": [
+    {
+      "name": "3 gives Level 3",
+      "args": [
+        3
+      ],
+      "expect": "Level 3"
+    },
+    {
+      "name": "10 gives Level 10",
+      "args": [
+        10
+      ],
+      "expect": "Level 10"
+    }
+  ],
+  "hints": [
+    "Run it and read the error: it says the types do not go together.",
+    "`\"Level \" + str(level)`"
+  ],
+  "docs": [
+    {
+      "name": "str(value)",
+      "what": "Returns the value as text (a String)."
+    },
+    {
+      "name": "text + text",
+      "what": "Joins two strings. Joining text to a number is an error; convert first."
+    }
+  ],
+  "solution": "func solve(level):\n\treturn \"Level \" + str(level)"
+}

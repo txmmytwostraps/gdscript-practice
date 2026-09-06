@@ -1,0 +1,32 @@
+{
+  "id": "gqtype-007",
+  "title": "Typed Vector2",
+  "concept": "gq-types",
+  "difficulty": 0,
+  "prompt": "Declare `position` with the type Vector2 and the value Vector2(3, 4). Return its x plus its y.",
+  "signature": "func solve() -> float:",
+  "starter": "func solve() -> float:\n\treturn 0.0",
+  "tests": [
+    {
+      "name": "3 plus 4 is 7",
+      "args": [],
+      "expect": 7
+    }
+  ],
+  "hints": [
+    "Types are not only int and float; Vector2 is one too.",
+    "`var position: Vector2 = Vector2(3, 4)`",
+    "`return position.x + position.y`"
+  ],
+  "docs": [
+    {
+      "name": "var name: int = value",
+      "what": "Declares a variable that can only hold that type. Also float, String, bool, Vector2, Array."
+    }
+  ],
+  "solution": "func solve() -> float:\n\tvar position: Vector2 = Vector2(3, 4)\n\treturn position.x + position.y",
+  "allow_type_hints": true,
+  "require_names": [
+    "position"
+  ]
+}

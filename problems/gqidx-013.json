@@ -1,0 +1,59 @@
+{
+  "id": "gqidx-013",
+  "title": "Align the tracks",
+  "concept": "gq-indices",
+  "difficulty": 1,
+  "prompt": "Two arrays, left and right, have the same length. Return a new array where each item is left[i] plus right[i].",
+  "signature": "func solve(left, right):",
+  "starter": "func solve(left, right):\n\treturn left",
+  "tests": [
+    {
+      "name": "[1, 2] plus [10, 20]",
+      "args": [
+        [
+          1,
+          2
+        ],
+        [
+          10,
+          20
+        ]
+      ],
+      "expect": [
+        11,
+        22
+      ]
+    },
+    {
+      "name": "Empty pair",
+      "args": [
+        [],
+        []
+      ],
+      "expect": []
+    }
+  ],
+  "hints": [
+    "Loop over positions so you can read both arrays at the same i.",
+    "`result.append(left[i] + right[i])`"
+  ],
+  "docs": [
+    {
+      "name": "for i in range(n):",
+      "what": "Runs the indented lines with i counting 0, 1, 2 and so on."
+    },
+    {
+      "name": "range(n)",
+      "what": "The numbers 0 up to n - 1, for a for loop to count through."
+    },
+    {
+      "name": "list[i]",
+      "what": "The item at position i. Positions start at 0; -1 is the last item."
+    },
+    {
+      "name": "list.size()",
+      "what": "Returns how many items the array holds."
+    }
+  ],
+  "solution": "func solve(left, right):\n\tvar result = []\n\tfor i in range(left.size()):\n\t\tresult.append(left[i] + right[i])\n\treturn result"
+}

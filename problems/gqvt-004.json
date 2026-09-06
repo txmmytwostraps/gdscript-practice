@@ -1,0 +1,43 @@
+{
+  "id": "gqvt-004",
+  "title": "Text to a decimal",
+  "concept": "gq-valuetypes",
+  "difficulty": 0,
+  "prompt": "The speed was typed as text like \"2.5\". Return it as a number doubled, so \"2.5\" gives 5.0.",
+  "signature": "func solve(text) -> float:",
+  "starter": "func solve(text) -> float:\n\treturn 0.0",
+  "tests": [
+    {
+      "name": "2.5 doubles to 5.0",
+      "args": [
+        "2.5"
+      ],
+      "expect": 5
+    },
+    {
+      "name": "0.25 doubles to 0.5",
+      "args": [
+        "0.25"
+      ],
+      "expect": 0.5
+    },
+    {
+      "name": "3 doubles to 6.0",
+      "args": [
+        "3"
+      ],
+      "expect": 6
+    }
+  ],
+  "hints": [
+    "float() reads a decimal out of text.",
+    "`return float(text) * 2`"
+  ],
+  "docs": [
+    {
+      "name": "float(value)",
+      "what": "Returns the value as a decimal number."
+    }
+  ],
+  "solution": "func solve(text) -> float:\n\treturn float(text) * 2"
+}

@@ -1,0 +1,47 @@
+{
+  "id": "gqvt-013",
+  "title": "Digits of a number",
+  "concept": "gq-valuetypes",
+  "difficulty": 1,
+  "prompt": "Return how many digits the whole number has by turning it into text and measuring the length. 12345 has 5.",
+  "signature": "func solve(n):",
+  "starter": "func solve(n):\n\treturn 0",
+  "tests": [
+    {
+      "name": "12345 has 5",
+      "args": [
+        12345
+      ],
+      "expect": 5
+    },
+    {
+      "name": "7 has 1",
+      "args": [
+        7
+      ],
+      "expect": 1
+    },
+    {
+      "name": "100 has 3",
+      "args": [
+        100
+      ],
+      "expect": 3
+    }
+  ],
+  "hints": [
+    "Converting to text makes counting easy.",
+    "`return str(n).length()`"
+  ],
+  "docs": [
+    {
+      "name": "str(value)",
+      "what": "Returns the value as text (a String)."
+    },
+    {
+      "name": "text.length()",
+      "what": "Returns how many characters the string has."
+    }
+  ],
+  "solution": "func solve(n):\n\treturn str(n).length()"
+}

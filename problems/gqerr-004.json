@@ -1,0 +1,36 @@
+{
+  "id": "gqerr-004",
+  "title": "A misspelt function",
+  "concept": "gq-errors",
+  "difficulty": 0,
+  "prompt": "The robot tries to print, but the function name is spelt wrong, so Godot cannot find it. Fix the spelling so it prints \"Scanning\".",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tprnt(\"Scanning\")",
+  "starter_broken": true,
+  "tests": [
+    {
+      "name": "Prints Scanning",
+      "args": [],
+      "expect": null,
+      "out": [
+        "Scanning"
+      ]
+    }
+  ],
+  "hints": [
+    "Godot only knows functions spelt exactly right.",
+    "Compare the name in the error with the real name of the print function.",
+    "Change prnt to print."
+  ],
+  "docs": [
+    {
+      "name": "The error panel",
+      "what": "Godot's message plus the line it happened on, counted from the top of your code."
+    },
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\tprint(\"Scanning\")"
+}

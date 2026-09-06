@@ -1,0 +1,41 @@
+{
+  "id": "gqturtle-004",
+  "title": "A rectangle",
+  "concept": "gq-turtle",
+  "difficulty": 0,
+  "prompt": "Draw a rectangle 80 wide and 30 tall, turning left at each corner: 80, left, 30, left, 80, left, 30, left.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass",
+  "tests": [
+    {
+      "name": "Long, short, long, short with left turns",
+      "args": [],
+      "expect": null,
+      "out": [
+        "forward 80",
+        "left",
+        "forward 30",
+        "left",
+        "forward 80",
+        "left",
+        "forward 30",
+        "left"
+      ]
+    }
+  ],
+  "hints": [
+    "Opposite sides of a rectangle are equal.",
+    "Alternate 80 and 30 with a turn_left() after each."
+  ],
+  "docs": [
+    {
+      "name": "move_forward(distance)",
+      "what": "Drives the turtle forward that many pixels, drawing a line. Takes one number; returns nothing."
+    },
+    {
+      "name": "turn_left()",
+      "what": "Turns the turtle 90 degrees to the left. Give it a number to turn by a different angle."
+    }
+  ],
+  "solution": "func solve():\n\tmove_forward(80)\n\tturn_left()\n\tmove_forward(30)\n\tturn_left()\n\tmove_forward(80)\n\tturn_left()\n\tmove_forward(30)\n\tturn_left()"
+}

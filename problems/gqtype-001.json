@@ -1,0 +1,32 @@
+{
+  "id": "gqtype-001",
+  "title": "A typed variable",
+  "concept": "gq-types",
+  "difficulty": 0,
+  "prompt": "Declare a member `health` with the type int and the value 100, written `var health: int = 100`. Return it from solve.",
+  "signature": "func solve() -> int:",
+  "starter": "func solve() -> int:\n\treturn 0",
+  "tests": [
+    {
+      "name": "Returns 100",
+      "args": [],
+      "expect": 100
+    }
+  ],
+  "hints": [
+    "A type hint goes after the name, separated by a colon.",
+    "`var health: int = 100` above solve.",
+    "`return health`"
+  ],
+  "docs": [
+    {
+      "name": "var name: int = value",
+      "what": "Declares a variable that can only hold that type. Also float, String, bool, Vector2, Array."
+    }
+  ],
+  "solution": "var health: int = 100\n\nfunc solve() -> int:\n\treturn health",
+  "allow_type_hints": true,
+  "require_names": [
+    "health"
+  ]
+}

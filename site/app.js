@@ -43,6 +43,8 @@ const callStr = (p, args) => {
 };
 // Printed output is shown as stacked lines, exactly as Godot's Output panel would.
 const printedHtml = (lines) => lines.length ? `<span class="p">prints</span>\n${lines.map(esc).join("\n")}` : `<span class="p">prints nothing</span>`;
+// Game-loop tests run _process(delta) N times before calling solve.
+const framesLabel = (t) => (t.frames != null ? `<span class="muted">after ${t.frames} frame${t.frames === 1 ? "" : "s"} · </span>` : "");
 const expectHtml = (p, t) => (t.expect === null && t.out) ? printedHtml(t.out) : esc(fmtTyped(t.expect, returnType(p.signature))) + (t.out ? `\n${printedHtml(t.out)}` : "");
 
 const KW = /^(func|return|var|const|if|elif|else|while|for|in|not|and|or|pass|break|continue|true|false|null|extends|class_name|match|is|self)$/;
@@ -80,7 +82,9 @@ function describeSignature(sig, printOnly = false) {
   const sep = typed ? "; " : ", ";
   const receives = params.length === 0 ? "receives nothing" : params.length === 1 ? `receives ${params[0]}` : `receives ${params.slice(0, -1).join(sep)}${typed ? "; and " : " and "}${params[params.length - 1]}`;
   const hasHints = /:\s*\w+\s*[,)=]/.test(sig) || ret;
-  return `The first line means: <code>solve</code> ${receives}, and ${gives}.${hasHints ? " The parts like <code>: int</code> and <code>-> int</code> are type hints — optional in GDScript; you may not have met them yet." : ""}`;
+  const typesTopic = state.problems.find((p) => p.concept === "gq-types");
+  const hintNote = typesTopic ? ` The parts like <code>-> int</code> are type hints — optional in GDScript, covered in <a href="practice.html#${typesTopic.id}">lesson 27</a>.` : " The parts like <code>-> int</code> are type hints — optional in GDScript; you may not have met them yet.";
+  return `The first line means: <code>solve</code> ${receives}, and ${gives}.${hasHints ? hintNote : ""}`;
 }
 
 // ---------- editor ----------
@@ -169,7 +173,7 @@ function renderProblem(p) {
   const hints = Array.isArray(p.hints) ? p.hints : (p.hint ? [p.hint] : []);
   el.hints.innerHTML = hints.map((h, i) => `<div class="stage"><button type="button" class="linkish" data-hint="${i}">[+] Hint ${i + 1} of ${hints.length}</button><p hidden>${rich(h)}</p></div>`).join("");
   el.solution.innerHTML = highlight(p.solution); el.solution.hidden = true;
-  el.tests.innerHTML = p.tests.map((tt) => `<div class="row">${tt.name ? `<span class="name">${esc(tt.name)}</span>` : ""}<span>${esc(callStr(p, tt.args))}</span><span class="arrow">→</span><span class="exp">${expectHtml(p, tt)}</span></div>`).join("");
+  el.tests.innerHTML = p.tests.map((tt) => `<div class="row">${tt.name ? `<span class="name">${esc(tt.name)}</span>` : ""}<span>${framesLabel(tt)}${esc(callStr(p, tt.args))}</span><span class="arrow">→</span><span class="exp">${expectHtml(p, tt)}</span></div>`).join("");
   const docs = Array.isArray(p.docs) ? p.docs : [];
   el.docs.hidden = docs.length === 0;
   el.doclist.innerHTML = docs.map((d) => `<div class="row"><code>${esc(d.name)}</code><span>${esc(d.what)}</span></div>`).join("");
@@ -244,7 +248,7 @@ function renderResult(result, errors) {
     const t = p.tests[i] || {};
     const yours = (t.expect === null && t.out) ? printedHtml(r.out) : esc(fmtTyped(r.got, rtype)) + (t.out ? `\n${printedHtml(r.out)}` : "");
     const err = r.error ? `<span class="out">${esc(r.error)}</span>` : "";
-    return `<tr class="${r.pass ? "pass" : "fail"}"><td class="mark">${r.pass ? "✓" : "✗"}</td><td>${t.name ? `<span class="check">${esc(t.name)}</span>` : ""}${esc(callStr(p, r.args))}</td><td>${expectHtml(p, t)}</td><td>${yours}${err}</td></tr>`;
+    return `<tr class="${r.pass ? "pass" : "fail"}"><td class="mark">${r.pass ? "✓" : "✗"}</td><td>${t.name ? `<span class="check">${esc(t.name)}</span>` : ""}${framesLabel(t)}${esc(callStr(p, r.args))}</td><td>${expectHtml(p, t)}</td><td>${yours}${err}</td></tr>`;
   }).join("");
   el.resultTable.hidden = false;
   const printed = result.results.flatMap((r, i) => r.out.map((line) => `[test ${i + 1}] ${line}`));

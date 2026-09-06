@@ -1,0 +1,42 @@
+{
+  "id": "gqidx-001",
+  "title": "The first slot",
+  "concept": "gq-indices",
+  "difficulty": 0,
+  "prompt": "The robot's inventory is an array. Return what is in the first slot.",
+  "signature": "func solve(inventory):",
+  "starter": "func solve(inventory):\n\treturn \"\"",
+  "tests": [
+    {
+      "name": "First of three",
+      "args": [
+        [
+          "bolt",
+          "gear",
+          "wire"
+        ]
+      ],
+      "expect": "bolt"
+    },
+    {
+      "name": "Only item",
+      "args": [
+        [
+          "gem"
+        ]
+      ],
+      "expect": "gem"
+    }
+  ],
+  "hints": [
+    "Positions start at 0.",
+    "`return inventory[0]`"
+  ],
+  "docs": [
+    {
+      "name": "list[i]",
+      "what": "The item at position i. Positions start at 0; -1 is the last item."
+    }
+  ],
+  "solution": "func solve(inventory):\n\treturn inventory[0]"
+}

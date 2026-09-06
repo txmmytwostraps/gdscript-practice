@@ -1,0 +1,54 @@
+{
+  "id": "gqla-013",
+  "title": "Is it there",
+  "concept": "gq-looparrays",
+  "difficulty": 0,
+  "prompt": "Return true if target is in the array, using a loop rather than the in keyword.",
+  "signature": "func solve(items, target):",
+  "starter": "func solve(items, target):\n\treturn false",
+  "tests": [
+    {
+      "name": "2 is in [1, 2, 3]",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        2
+      ],
+      "expect": true
+    },
+    {
+      "name": "5 is not",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        5
+      ],
+      "expect": false
+    },
+    {
+      "name": "Empty has nothing",
+      "args": [
+        [],
+        1
+      ],
+      "expect": false
+    }
+  ],
+  "hints": [
+    "Start with false; switch to true when you see a match.",
+    "`if item == target:` then `found = true`."
+  ],
+  "docs": [
+    {
+      "name": "for item in list:",
+      "what": "Runs the indented lines once per item, with item holding each value in turn."
+    }
+  ],
+  "solution": "func solve(items, target):\n\tvar found = false\n\tfor item in items:\n\t\tif item == target:\n\t\t\tfound = true\n\treturn found"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "gqturtle-001",
+  "title": "One line",
+  "concept": "gq-turtle",
+  "difficulty": 0,
+  "prompt": "The turtle draws where it walks. In `solve`, call `move_forward` with 100 to draw a single line 100 pixels long.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass",
+  "tests": [
+    {
+      "name": "Moves forward 100",
+      "args": [],
+      "expect": null,
+      "out": [
+        "forward 100"
+      ]
+    }
+  ],
+  "hints": [
+    "The turtle only draws when you tell it to move.",
+    "`move_forward(100)`"
+  ],
+  "docs": [
+    {
+      "name": "move_forward(distance)",
+      "what": "Drives the turtle forward that many pixels, drawing a line. Takes one number; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\tmove_forward(100)"
+}

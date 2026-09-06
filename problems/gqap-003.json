@@ -1,0 +1,42 @@
+{
+  "id": "gqap-003",
+  "title": "Take from the top of the pile",
+  "concept": "gq-appendpop",
+  "difficulty": 0,
+  "prompt": "Crates are stacked; the last one put on is the first one taken. Remove the last crate and return it.",
+  "signature": "func solve(pile):",
+  "starter": "func solve(pile):\n\treturn pile[0]",
+  "tests": [
+    {
+      "name": "Top crate is 3",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expect": 3
+    },
+    {
+      "name": "The only crate",
+      "args": [
+        [
+          9
+        ]
+      ],
+      "expect": 9
+    }
+  ],
+  "hints": [
+    "pop_back removes and returns the last item.",
+    "`return pile.pop_back()`"
+  ],
+  "docs": [
+    {
+      "name": "list.pop_back()",
+      "what": "Removes the last item and returns it."
+    }
+  ],
+  "solution": "func solve(pile):\n\treturn pile.pop_back()"
+}

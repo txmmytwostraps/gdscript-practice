@@ -1,0 +1,45 @@
+{
+  "id": "gqidx-002",
+  "title": "The third slot",
+  "concept": "gq-indices",
+  "difficulty": 0,
+  "prompt": "Return what is in the third slot of the inventory. The array has at least three items.",
+  "signature": "func solve(inventory):",
+  "starter": "func solve(inventory):\n\treturn inventory[3]",
+  "tests": [
+    {
+      "name": "Third of three is wire",
+      "args": [
+        [
+          "bolt",
+          "gear",
+          "wire"
+        ]
+      ],
+      "expect": "wire"
+    },
+    {
+      "name": "Third of four",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4
+        ]
+      ],
+      "expect": 3
+    }
+  ],
+  "hints": [
+    "The third slot is position 2, because counting starts at 0.",
+    "`return inventory[2]`"
+  ],
+  "docs": [
+    {
+      "name": "list[i]",
+      "what": "The item at position i. Positions start at 0; -1 is the last item."
+    }
+  ],
+  "solution": "func solve(inventory):\n\treturn inventory[2]"
+}

@@ -1,0 +1,36 @@
+{
+  "id": "gqerr-003",
+  "title": "Not indented",
+  "concept": "gq-errors",
+  "difficulty": 0,
+  "prompt": "The print line belongs inside solve, but it is not indented, so Godot does not know it is part of the function. Fix it so the robot prints \"Beep\".",
+  "signature": "func solve():",
+  "starter": "func solve():\nprint(\"Beep\")",
+  "starter_broken": true,
+  "tests": [
+    {
+      "name": "Prints Beep",
+      "args": [],
+      "expect": null,
+      "out": [
+        "Beep"
+      ]
+    }
+  ],
+  "hints": [
+    "Everything inside a function is indented one level with a tab.",
+    "The error mentions an expected indented block.",
+    "Put a tab in front of the print line."
+  ],
+  "docs": [
+    {
+      "name": "The error panel",
+      "what": "Godot's message plus the line it happened on, counted from the top of your code."
+    },
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\tprint(\"Beep\")"
+}

@@ -1,0 +1,48 @@
+{
+  "id": "gqld-001",
+  "title": "Print every key",
+  "concept": "gq-loopdicts",
+  "difficulty": 0,
+  "prompt": "The inventory is a dictionary of item names to amounts. Print each item name on its own line, in order.",
+  "signature": "func solve(inventory):",
+  "starter": "func solve(inventory):\n\tpass",
+  "tests": [
+    {
+      "name": "Two names",
+      "args": [
+        {
+          "bolt": 3,
+          "gear": 1
+        }
+      ],
+      "expect": null,
+      "out": [
+        "bolt",
+        "gear"
+      ]
+    },
+    {
+      "name": "Empty prints nothing",
+      "args": [
+        {}
+      ],
+      "expect": null,
+      "out": []
+    }
+  ],
+  "hints": [
+    "Looping over a dictionary gives you its keys.",
+    "`for item in inventory:` then `print(item)`."
+  ],
+  "docs": [
+    {
+      "name": "for key in data:",
+      "what": "Runs once per key; data[key] gives its value."
+    },
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve(inventory):\n\tfor item in inventory:\n\t\tprint(item)"
+}

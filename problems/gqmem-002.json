@@ -1,0 +1,32 @@
+{
+  "id": "gqmem-002",
+  "title": "Two members",
+  "concept": "gq-members",
+  "difficulty": 0,
+  "prompt": "Declare `health` equal to 100 and `level` equal to 1 as member variables. Return health plus level.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\treturn 0",
+  "tests": [
+    {
+      "name": "100 plus 1 is 101",
+      "args": [],
+      "expect": 101
+    }
+  ],
+  "hints": [
+    "Member variables are declared one per line, outside the functions.",
+    "`var health = 100` and `var level = 1` at the top.",
+    "`return health + level`"
+  ],
+  "docs": [
+    {
+      "name": "var name = value (outside any function)",
+      "what": "A member variable: every function in the script can read and change it."
+    }
+  ],
+  "solution": "var health = 100\nvar level = 1\n\nfunc solve():\n\treturn health + level",
+  "require_names": [
+    "health",
+    "level"
+  ]
+}

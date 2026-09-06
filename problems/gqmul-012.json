@@ -1,0 +1,46 @@
+{
+  "id": "gqmul-012",
+  "title": "Area of the arena",
+  "concept": "gq-multiply",
+  "difficulty": 0,
+  "prompt": "The arena is width by height tiles, each tile 64 pixels. Return the arena's width in pixels times its height in pixels. solve(2, 3) is 24576.",
+  "signature": "func solve(width, height):",
+  "starter": "func solve(width, height):\n\treturn width * height",
+  "tests": [
+    {
+      "name": "2 by 3 tiles",
+      "args": [
+        2,
+        3
+      ],
+      "expect": 24576
+    },
+    {
+      "name": "1 by 1 tile",
+      "args": [
+        1,
+        1
+      ],
+      "expect": 4096
+    },
+    {
+      "name": "0 wide",
+      "args": [
+        0,
+        5
+      ],
+      "expect": 0
+    }
+  ],
+  "hints": [
+    "Convert each side to pixels first.",
+    "`return (width * 64) * (height * 64)`"
+  ],
+  "docs": [
+    {
+      "name": "a * b",
+      "what": "Multiplies two numbers. * with a float keeps decimals."
+    }
+  ],
+  "solution": "func solve(width, height):\n\treturn (width * 64) * (height * 64)"
+}

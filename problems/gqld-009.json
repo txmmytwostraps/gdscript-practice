@@ -1,0 +1,45 @@
+{
+  "id": "gqld-009",
+  "title": "The most of anything",
+  "concept": "gq-loopdicts",
+  "difficulty": 1,
+  "prompt": "Return the largest amount in the inventory. The inventory has at least one entry.",
+  "signature": "func solve(inventory):",
+  "starter": "func solve(inventory):\n\treturn 0",
+  "tests": [
+    {
+      "name": "3 is the most",
+      "args": [
+        {
+          "bolt": 3,
+          "gear": 1
+        }
+      ],
+      "expect": 3
+    },
+    {
+      "name": "One entry",
+      "args": [
+        {
+          "gem": 7
+        }
+      ],
+      "expect": 7
+    }
+  ],
+  "hints": [
+    "Track the biggest value seen so far, starting from 0 or the first value.",
+    "`if inventory[item] > biggest:` then update biggest."
+  ],
+  "docs": [
+    {
+      "name": "for key in data:",
+      "what": "Runs once per key; data[key] gives its value."
+    },
+    {
+      "name": "data[key]",
+      "what": "The value stored under key. Assigning to it changes or adds the entry."
+    }
+  ],
+  "solution": "func solve(inventory):\n\tvar biggest = 0\n\tfor item in inventory:\n\t\tif inventory[item] > biggest:\n\t\t\tbiggest = inventory[item]\n\treturn biggest"
+}

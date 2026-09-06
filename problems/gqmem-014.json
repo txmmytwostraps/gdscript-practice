@@ -1,0 +1,31 @@
+{
+  "id": "gqmem-014",
+  "title": "Members keep state between helpers",
+  "concept": "gq-members",
+  "difficulty": 1,
+  "prompt": "Members `coins` at 0. Write `earn`, which adds an amount, and `spend`, which subtracts one. solve earns 50, spends 20, earns 5 and returns coins, 35.",
+  "signature": "func solve():",
+  "starter": "var coins = 0\n\nfunc solve():\n\treturn coins",
+  "tests": [
+    {
+      "name": "50 minus 20 plus 5 is 35",
+      "args": [],
+      "expect": 35
+    }
+  ],
+  "hints": [
+    "Both helpers work on the same member.",
+    "`earn(50)`, `spend(20)`, `earn(5)`, `return coins`."
+  ],
+  "docs": [
+    {
+      "name": "var name = value (outside any function)",
+      "what": "A member variable: every function in the script can read and change it."
+    }
+  ],
+  "solution": "var coins = 0\n\nfunc solve():\n\tearn(50)\n\tspend(20)\n\tearn(5)\n\treturn coins\n\nfunc earn(amount):\n\tcoins += amount\n\nfunc spend(amount):\n\tcoins -= amount",
+  "require_methods": [
+    "earn",
+    "spend"
+  ]
+}

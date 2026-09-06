@@ -1,0 +1,66 @@
+{
+  "id": "gqidx-011",
+  "title": "Every second item",
+  "concept": "gq-indices",
+  "difficulty": 1,
+  "prompt": "Return a new array with the items at positions 0, 2, 4 and so on.",
+  "signature": "func solve(items):",
+  "starter": "func solve(items):\n\treturn items",
+  "tests": [
+    {
+      "name": "Positions 0, 2, 4",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expect": [
+        1,
+        3,
+        5
+      ]
+    },
+    {
+      "name": "Empty stays empty",
+      "args": [
+        []
+      ],
+      "expect": []
+    },
+    {
+      "name": "Two items keep the first",
+      "args": [
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "expect": [
+        "a"
+      ]
+    }
+  ],
+  "hints": [
+    "range can take a step: range(0, size, 2).",
+    "`for i in range(0, items.size(), 2):` then `result.append(items[i])`."
+  ],
+  "docs": [
+    {
+      "name": "for i in range(n):",
+      "what": "Runs the indented lines with i counting 0, 1, 2 and so on."
+    },
+    {
+      "name": "range(start, stop, step)",
+      "what": "Counts from start toward stop, moving by step each time."
+    },
+    {
+      "name": "list[i]",
+      "what": "The item at position i. Positions start at 0; -1 is the last item."
+    }
+  ],
+  "solution": "func solve(items):\n\tvar result = []\n\tfor i in range(0, items.size(), 2):\n\t\tresult.append(items[i])\n\treturn result"
+}

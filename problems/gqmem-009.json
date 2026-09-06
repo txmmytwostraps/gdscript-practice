@@ -1,0 +1,38 @@
+{
+  "id": "gqmem-009",
+  "title": "Report the members",
+  "concept": "gq-members",
+  "difficulty": 0,
+  "prompt": "Members `health` at 80 and `level` at 2 exist. Write `report`, which prints health and then level, and call it from `solve`.",
+  "signature": "func solve():",
+  "starter": "var health = 80\nvar level = 2\n\nfunc solve():\n\tpass",
+  "tests": [
+    {
+      "name": "Prints 80 then 2",
+      "args": [],
+      "expect": null,
+      "out": [
+        "80",
+        "2"
+      ]
+    }
+  ],
+  "hints": [
+    "Any function can read the members directly.",
+    "`func report():` with `print(health)` and `print(level)`."
+  ],
+  "docs": [
+    {
+      "name": "var name = value (outside any function)",
+      "what": "A member variable: every function in the script can read and change it."
+    },
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "var health = 80\nvar level = 2\n\nfunc solve():\n\treport()\n\nfunc report():\n\tprint(health)\n\tprint(level)",
+  "require_methods": [
+    "report"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "id": "gqvt-010",
+  "title": "Format a score line",
+  "concept": "gq-valuetypes",
+  "difficulty": 0,
+  "prompt": "Return \"Score: N / M\" from two numbers, so solve(7, 10) is \"Score: 7 / 10\".",
+  "signature": "func solve(score, best):",
+  "starter": "func solve(score, best):\n\treturn \"Score: \"",
+  "tests": [
+    {
+      "name": "7 of 10",
+      "args": [
+        7,
+        10
+      ],
+      "expect": "Score: 7 / 10"
+    },
+    {
+      "name": "0 of 0",
+      "args": [
+        0,
+        0
+      ],
+      "expect": "Score: 0 / 0"
+    }
+  ],
+  "hints": [
+    "Two conversions, joined with the text in between.",
+    "`return \"Score: \" + str(score) + \" / \" + str(best)`"
+  ],
+  "docs": [
+    {
+      "name": "str(value)",
+      "what": "Returns the value as text (a String)."
+    },
+    {
+      "name": "text + text",
+      "what": "Joins two strings. Joining text to a number is an error; convert first."
+    }
+  ],
+  "solution": "func solve(score, best):\n\treturn \"Score: \" + str(score) + \" / \" + str(best)"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "gqgiant-006",
+  "title": "Move to the right",
+  "concept": "gq-giants",
+  "difficulty": 0,
+  "prompt": "`move` takes two arguments: how far across, then how far down. Move the robot 100 to the right and 0 down.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass",
+  "tests": [
+    {
+      "name": "move is called with 100 and 0",
+      "args": [],
+      "expect": null,
+      "out": [
+        "move 100 0"
+      ]
+    }
+  ],
+  "hints": [
+    "Two arguments are separated by a comma inside the brackets.",
+    "`move(100, 0)`"
+  ],
+  "docs": [
+    {
+      "name": "move(x, y)",
+      "what": "Moves the robot by x across and y down. Takes two numbers; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\tmove(100, 0)"
+}

@@ -1,0 +1,44 @@
+{
+  "id": "gqidx-008",
+  "title": "Middle of three",
+  "concept": "gq-indices",
+  "difficulty": 0,
+  "prompt": "The array always has exactly three items. Return the middle one.",
+  "signature": "func solve(items):",
+  "starter": "func solve(items):\n\treturn items[0]",
+  "tests": [
+    {
+      "name": "Middle of 1, 2, 3",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expect": 2
+    },
+    {
+      "name": "Middle of a, b, c",
+      "args": [
+        [
+          "a",
+          "b",
+          "c"
+        ]
+      ],
+      "expect": "b"
+    }
+  ],
+  "hints": [
+    "Three items sit at positions 0, 1 and 2.",
+    "`return items[1]`"
+  ],
+  "docs": [
+    {
+      "name": "list[i]",
+      "what": "The item at position i. Positions start at 0; -1 is the last item."
+    }
+  ],
+  "solution": "func solve(items):\n\treturn items[1]"
+}

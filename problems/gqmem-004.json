@@ -1,0 +1,31 @@
+{
+  "id": "gqmem-004",
+  "title": "Heal",
+  "concept": "gq-members",
+  "difficulty": 1,
+  "prompt": "The starter has a member `health` at 50 and a `take_damage` helper. Add a `heal` helper that adds an amount to health. In `solve`, call heal(20) and return health, which is 70.",
+  "signature": "func solve():",
+  "starter": "var health = 50\n\nfunc solve():\n\treturn health\n\nfunc take_damage(amount):\n\thealth -= amount",
+  "tests": [
+    {
+      "name": "50 healed by 20 is 70",
+      "args": [],
+      "expect": 70
+    }
+  ],
+  "hints": [
+    "heal is the mirror of take_damage.",
+    "`func heal(amount):` with `health += amount`.",
+    "solve: `heal(20)` then `return health`."
+  ],
+  "docs": [
+    {
+      "name": "var name = value (outside any function)",
+      "what": "A member variable: every function in the script can read and change it."
+    }
+  ],
+  "solution": "var health = 50\n\nfunc solve():\n\theal(20)\n\treturn health\n\nfunc take_damage(amount):\n\thealth -= amount\n\nfunc heal(amount):\n\thealth += amount",
+  "require_methods": [
+    "heal"
+  ]
+}

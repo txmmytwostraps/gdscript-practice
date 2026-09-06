@@ -1,0 +1,51 @@
+{
+  "id": "gqtype-010",
+  "title": "A typed bool",
+  "concept": "gq-types",
+  "difficulty": 0,
+  "prompt": "Write `is_alive`, which takes health hinted as int and returns a bool: true when health is above 0. solve returns is_alive(hp).",
+  "signature": "func solve(hp: int) -> bool:",
+  "starter": "func solve(hp: int) -> bool:\n\treturn true",
+  "tests": [
+    {
+      "name": "10 is alive",
+      "args": [
+        10
+      ],
+      "expect": true
+    },
+    {
+      "name": "0 is not",
+      "args": [
+        0
+      ],
+      "expect": false
+    },
+    {
+      "name": "-5 is not",
+      "args": [
+        -5
+      ],
+      "expect": false
+    }
+  ],
+  "hints": [
+    "Return type bool; the comparison is the returned value.",
+    "`func is_alive(health: int) -> bool:` with `return health > 0`."
+  ],
+  "docs": [
+    {
+      "name": "func f(a: int, b: float):",
+      "what": "Parameter type hints: Godot checks what is passed in."
+    },
+    {
+      "name": "func f() -> int:",
+      "what": "Return type hint: the function promises to return that type."
+    }
+  ],
+  "solution": "func solve(hp: int) -> bool:\n\treturn is_alive(hp)\n\nfunc is_alive(health: int) -> bool:\n\treturn health > 0",
+  "allow_type_hints": true,
+  "require_methods": [
+    "is_alive"
+  ]
+}

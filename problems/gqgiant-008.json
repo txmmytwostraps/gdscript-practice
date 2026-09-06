@@ -1,0 +1,30 @@
+{
+  "id": "gqgiant-008",
+  "title": "Wrong order",
+  "concept": "gq-giants",
+  "difficulty": 0,
+  "prompt": "The starter moves the robot 20 across and 80 down, but it should be 80 across and 20 down. Swap the arguments.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tmove(20, 80)",
+  "tests": [
+    {
+      "name": "move is called with 80 and 20",
+      "args": [],
+      "expect": null,
+      "out": [
+        "move 80 20"
+      ]
+    }
+  ],
+  "hints": [
+    "The first argument always means across, the second down.",
+    "`move(80, 20)`"
+  ],
+  "docs": [
+    {
+      "name": "move(x, y)",
+      "what": "Moves the robot by x across and y down. Takes two numbers; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\tmove(80, 20)"
+}

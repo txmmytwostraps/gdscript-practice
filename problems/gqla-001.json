@@ -1,0 +1,50 @@
+{
+  "id": "gqla-001",
+  "title": "Print each item",
+  "concept": "gq-looparrays",
+  "difficulty": 0,
+  "prompt": "The robot reads out its inventory. Print each item in the array on its own line, in order.",
+  "signature": "func solve(items):",
+  "starter": "func solve(items):\n\tpass",
+  "tests": [
+    {
+      "name": "Three items printed",
+      "args": [
+        [
+          "bolt",
+          "gear",
+          "wire"
+        ]
+      ],
+      "expect": null,
+      "out": [
+        "bolt",
+        "gear",
+        "wire"
+      ]
+    },
+    {
+      "name": "Empty prints nothing",
+      "args": [
+        []
+      ],
+      "expect": null,
+      "out": []
+    }
+  ],
+  "hints": [
+    "A for loop gives you each item in turn.",
+    "`for item in items:` then `print(item)`."
+  ],
+  "docs": [
+    {
+      "name": "for item in list:",
+      "what": "Runs the indented lines once per item, with item holding each value in turn."
+    },
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve(items):\n\tfor item in items:\n\t\tprint(item)"
+}

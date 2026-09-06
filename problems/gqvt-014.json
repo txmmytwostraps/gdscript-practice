@@ -1,0 +1,51 @@
+{
+  "id": "gqvt-014",
+  "title": "Percent as text",
+  "concept": "gq-valuetypes",
+  "difficulty": 1,
+  "prompt": "Return the fraction done as a percentage string with no decimals: 0.5 gives \"50%\", 0.25 gives \"25%\".",
+  "signature": "func solve(fraction):",
+  "starter": "func solve(fraction):\n\treturn \"%\"",
+  "tests": [
+    {
+      "name": "0.5 is 50%",
+      "args": [
+        0.5
+      ],
+      "expect": "50%"
+    },
+    {
+      "name": "0.25 is 25%",
+      "args": [
+        0.25
+      ],
+      "expect": "25%"
+    },
+    {
+      "name": "1 is 100%",
+      "args": [
+        1
+      ],
+      "expect": "100%"
+    }
+  ],
+  "hints": [
+    "Multiply by 100, make it a whole number, then text.",
+    "`return str(int(fraction * 100)) + \"%\"`"
+  ],
+  "docs": [
+    {
+      "name": "int(value)",
+      "what": "Returns the value as a whole number; decimals are dropped, text like \"42\" is read."
+    },
+    {
+      "name": "str(value)",
+      "what": "Returns the value as text (a String)."
+    },
+    {
+      "name": "text + text",
+      "what": "Joins two strings. Joining text to a number is an error; convert first."
+    }
+  ],
+  "solution": "func solve(fraction):\n\treturn str(int(fraction * 100)) + \"%\""
+}

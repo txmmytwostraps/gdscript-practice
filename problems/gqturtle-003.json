@@ -1,0 +1,42 @@
+{
+  "id": "gqturtle-003",
+  "title": "A square",
+  "concept": "gq-turtle",
+  "difficulty": 0,
+  "prompt": "Draw a square with sides of 40: forward 40 then turn left, four times over.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass",
+  "tests": [
+    {
+      "name": "Four sides, four left turns",
+      "args": [],
+      "expect": null,
+      "out": [
+        "forward 40",
+        "left",
+        "forward 40",
+        "left",
+        "forward 40",
+        "left",
+        "forward 40",
+        "left"
+      ]
+    }
+  ],
+  "hints": [
+    "A square is the same corner four times.",
+    "One side is `move_forward(40)` then `turn_left()`.",
+    "Write that pair four times, eight lines in all."
+  ],
+  "docs": [
+    {
+      "name": "move_forward(distance)",
+      "what": "Drives the turtle forward that many pixels, drawing a line. Takes one number; returns nothing."
+    },
+    {
+      "name": "turn_left()",
+      "what": "Turns the turtle 90 degrees to the left. Give it a number to turn by a different angle."
+    }
+  ],
+  "solution": "func solve():\n\tmove_forward(40)\n\tturn_left()\n\tmove_forward(40)\n\tturn_left()\n\tmove_forward(40)\n\tturn_left()\n\tmove_forward(40)\n\tturn_left()"
+}

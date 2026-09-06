@@ -1,0 +1,52 @@
+{
+  "id": "gqld-003",
+  "title": "Total items",
+  "concept": "gq-loopdicts",
+  "difficulty": 0,
+  "prompt": "Return the total amount of everything in the inventory. {\"bolt\": 3, \"gear\": 1} totals 4.",
+  "signature": "func solve(inventory):",
+  "starter": "func solve(inventory):\n\treturn 0",
+  "tests": [
+    {
+      "name": "3 plus 1 is 4",
+      "args": [
+        {
+          "bolt": 3,
+          "gear": 1
+        }
+      ],
+      "expect": 4
+    },
+    {
+      "name": "Empty is 0",
+      "args": [
+        {}
+      ],
+      "expect": 0
+    },
+    {
+      "name": "One entry",
+      "args": [
+        {
+          "gem": 7
+        }
+      ],
+      "expect": 7
+    }
+  ],
+  "hints": [
+    "Add each value to a running total.",
+    "`total += inventory[item]`"
+  ],
+  "docs": [
+    {
+      "name": "for key in data:",
+      "what": "Runs once per key; data[key] gives its value."
+    },
+    {
+      "name": "data[key]",
+      "what": "The value stored under key. Assigning to it changes or adds the entry."
+    }
+  ],
+  "solution": "func solve(inventory):\n\tvar total = 0\n\tfor item in inventory:\n\t\ttotal += inventory[item]\n\treturn total"
+}

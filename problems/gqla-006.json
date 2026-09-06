@@ -1,0 +1,49 @@
+{
+  "id": "gqla-006",
+  "title": "Total damage",
+  "concept": "gq-looparrays",
+  "difficulty": 0,
+  "prompt": "The robot took several hits, listed in an array. Return the total damage taken.",
+  "signature": "func solve(hits):",
+  "starter": "func solve(hits):\n\treturn 0",
+  "tests": [
+    {
+      "name": "10, 20, 5 total 35",
+      "args": [
+        [
+          10,
+          20,
+          5
+        ]
+      ],
+      "expect": 35
+    },
+    {
+      "name": "No hits is 0",
+      "args": [
+        []
+      ],
+      "expect": 0
+    },
+    {
+      "name": "One big hit",
+      "args": [
+        [
+          99
+        ]
+      ],
+      "expect": 99
+    }
+  ],
+  "hints": [
+    "Same shape as summing numbers.",
+    "`total += hit` inside the loop."
+  ],
+  "docs": [
+    {
+      "name": "for item in list:",
+      "what": "Runs the indented lines once per item, with item holding each value in turn."
+    }
+  ],
+  "solution": "func solve(hits):\n\tvar total = 0\n\tfor hit in hits:\n\t\ttotal += hit\n\treturn total"
+}

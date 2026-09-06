@@ -1,13 +1,13 @@
 {
   "id": "gqparam-001",
-  "title": "Show a value",
+  "title": "Display a value",
   "concept": "gq-parameters",
   "difficulty": 0,
-  "prompt": "The robot needs a way to display any number. Write `show`, which takes one value and prints it. `solve` receives n; make it call show with n, then with n times 2, so solve(3) prints 3 and then 6.",
+  "prompt": "The robot needs a way to display any number. Write `display`, which takes one value and prints it. `solve` receives n; make it call display with n, then with n times 2, so solve(3) prints 3 and then 6.",
   "signature": "func solve(n):",
   "starter": "func solve(n):\n\tpass",
   "require_methods": [
-    "show"
+    "display"
   ],
   "tests": [
     {
@@ -46,8 +46,8 @@
   ],
   "hints": [
     "A parameter is a name in the brackets of the definition; whatever the caller passes in is stored under that name.",
-    "`func show(value):` with `print(value)` inside.",
-    "In solve: `show(n)` then `show(n * 2)`."
+    "`func display(value):` with `print(value)` inside.",
+    "In solve: `display(n)` then `display(n * 2)`."
   ],
   "docs": [
     {
@@ -55,5 +55,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve(n):\n\tshow(n)\n\tshow(n * 2)\n\nfunc show(value):\n\tprint(value)"
+  "solution": "func solve(n):\n\tdisplay(n)\n\tdisplay(n * 2)\n\nfunc display(value):\n\tprint(value)"
 }

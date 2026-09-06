@@ -1,0 +1,43 @@
+{
+  "id": "gqmul-006",
+  "title": "Halve the damage",
+  "concept": "gq-multiply",
+  "difficulty": 1,
+  "prompt": "A shield halves incoming damage. Return damage divided by 2, keeping decimals, so 7 becomes 3.5.",
+  "signature": "func solve(damage) -> float:",
+  "starter": "func solve(damage) -> float:\n\treturn damage / 2",
+  "tests": [
+    {
+      "name": "10 halves to 5.0",
+      "args": [
+        10
+      ],
+      "expect": 5
+    },
+    {
+      "name": "7 halves to 3.5",
+      "args": [
+        7
+      ],
+      "expect": 3.5
+    },
+    {
+      "name": "0 halves to 0.0",
+      "args": [
+        0
+      ],
+      "expect": 0
+    }
+  ],
+  "hints": [
+    "Dividing by a whole number drops decimals; divide by 2.0.",
+    "`return damage / 2.0`"
+  ],
+  "docs": [
+    {
+      "name": "a / b",
+      "what": "Divides. Two whole numbers give a whole number; use a decimal to keep the fraction."
+    }
+  ],
+  "solution": "func solve(damage) -> float:\n\treturn damage / 2.0"
+}

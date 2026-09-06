@@ -1,0 +1,30 @@
+{
+  "id": "gqgiant-003",
+  "title": "Turn the robot upright",
+  "concept": "gq-giants",
+  "difficulty": 0,
+  "prompt": "The robot is lying on its side. Call `rotate` with 90 as the argument to stand it up.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass",
+  "tests": [
+    {
+      "name": "rotate is called with 90",
+      "args": [],
+      "expect": null,
+      "out": [
+        "rotate 90"
+      ]
+    }
+  ],
+  "hints": [
+    "An argument is a value you put inside the brackets when calling.",
+    "`rotate(90)`"
+  ],
+  "docs": [
+    {
+      "name": "rotate(degrees)",
+      "what": "Turns the robot by that many degrees. Takes one number; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\trotate(90)"
+}

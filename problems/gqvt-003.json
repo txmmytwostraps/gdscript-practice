@@ -1,0 +1,43 @@
+{
+  "id": "gqvt-003",
+  "title": "Text to a whole number",
+  "concept": "gq-valuetypes",
+  "difficulty": 0,
+  "prompt": "The player typed their age as text. Return it as a whole number plus 1, so \"41\" gives 42.",
+  "signature": "func solve(text):",
+  "starter": "func solve(text):\n\treturn 0",
+  "tests": [
+    {
+      "name": "41 becomes 42",
+      "args": [
+        "41"
+      ],
+      "expect": 42
+    },
+    {
+      "name": "0 becomes 1",
+      "args": [
+        "0"
+      ],
+      "expect": 1
+    },
+    {
+      "name": "-5 becomes -4",
+      "args": [
+        "-5"
+      ],
+      "expect": -4
+    }
+  ],
+  "hints": [
+    "int() reads a number out of text.",
+    "`return int(text) + 1`"
+  ],
+  "docs": [
+    {
+      "name": "int(value)",
+      "what": "Returns the value as a whole number; decimals are dropped, text like \"42\" is read."
+    }
+  ],
+  "solution": "func solve(text):\n\treturn int(text) + 1"
+}

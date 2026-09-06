@@ -1,0 +1,54 @@
+{
+  "id": "gqap-015",
+  "title": "Collect the served meals",
+  "concept": "gq-appendpop",
+  "difficulty": 1,
+  "prompt": "Serve every order from the queue in turn and append each to a new array called served. Return served, which has the same meals in the same order.",
+  "signature": "func solve(queue):",
+  "starter": "func solve(queue):\n\tvar served = []\n\treturn served",
+  "tests": [
+    {
+      "name": "Both meals served in order",
+      "args": [
+        [
+          "soup",
+          "pie"
+        ]
+      ],
+      "expect": [
+        "soup",
+        "pie"
+      ]
+    },
+    {
+      "name": "Empty queue serves nothing",
+      "args": [
+        []
+      ],
+      "expect": []
+    }
+  ],
+  "hints": [
+    "A while loop that moves items from one array to another.",
+    "`while not queue.is_empty():` then `served.append(queue.pop_front())`."
+  ],
+  "docs": [
+    {
+      "name": "while condition:",
+      "what": "Repeats the indented lines as long as the condition stays true."
+    },
+    {
+      "name": "list.pop_front()",
+      "what": "Removes the first item and returns it."
+    },
+    {
+      "name": "list.append(value)",
+      "what": "Adds value to the end of the array. Returns nothing."
+    },
+    {
+      "name": "list.is_empty()",
+      "what": "Returns true when the array has no items."
+    }
+  ],
+  "solution": "func solve(queue):\n\tvar served = []\n\twhile not queue.is_empty():\n\t\tserved.append(queue.pop_front())\n\treturn served"
+}

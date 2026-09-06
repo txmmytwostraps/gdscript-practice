@@ -1,0 +1,50 @@
+{
+  "id": "gqtype-011",
+  "title": "void means nothing back",
+  "concept": "gq-types",
+  "difficulty": 0,
+  "prompt": "Write `log_health`, hinted to return void, which prints the health. solve calls it and returns the health unchanged.",
+  "signature": "func solve(health: int) -> int:",
+  "starter": "func solve(health: int) -> int:\n\treturn health",
+  "tests": [
+    {
+      "name": "Prints 80 and returns 80",
+      "args": [
+        80
+      ],
+      "expect": 80,
+      "out": [
+        "80"
+      ]
+    },
+    {
+      "name": "Prints 0 and returns 0",
+      "args": [
+        0
+      ],
+      "expect": 0,
+      "out": [
+        "0"
+      ]
+    }
+  ],
+  "hints": [
+    "-> void promises the function returns nothing.",
+    "`func log_health(health: int) -> void:` with a print inside."
+  ],
+  "docs": [
+    {
+      "name": "func f() -> int:",
+      "what": "Return type hint: the function promises to return that type."
+    },
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output."
+    }
+  ],
+  "solution": "func solve(health: int) -> int:\n\tlog_health(health)\n\treturn health\n\nfunc log_health(health: int) -> void:\n\tprint(health)",
+  "allow_type_hints": true,
+  "require_methods": [
+    "log_health"
+  ]
+}

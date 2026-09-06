@@ -1,0 +1,41 @@
+{
+  "id": "gqmem-015",
+  "title": "Name for the robot",
+  "concept": "gq-members",
+  "difficulty": 0,
+  "prompt": "Declare a member `robot_name` holding \"Robo\" and a helper `greet` that prints \"I am \" followed by the name. solve calls greet.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass",
+  "tests": [
+    {
+      "name": "Prints I am Robo",
+      "args": [],
+      "expect": null,
+      "out": [
+        "I am Robo"
+      ]
+    }
+  ],
+  "hints": [
+    "Members can hold text as well as numbers.",
+    "`var robot_name = \"Robo\"` at the top.",
+    "greet: `print(\"I am \" + robot_name)`."
+  ],
+  "docs": [
+    {
+      "name": "var name = value (outside any function)",
+      "what": "A member variable: every function in the script can read and change it."
+    },
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "var robot_name = \"Robo\"\n\nfunc solve():\n\tgreet()\n\nfunc greet():\n\tprint(\"I am \" + robot_name)",
+  "require_methods": [
+    "greet"
+  ],
+  "require_names": [
+    "robot_name"
+  ]
+}

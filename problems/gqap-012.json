@@ -1,0 +1,44 @@
+{
+  "id": "gqap-012",
+  "title": "How many waiting",
+  "concept": "gq-appendpop",
+  "difficulty": 0,
+  "prompt": "Add the new order, then return how many orders are now waiting.",
+  "signature": "func solve(queue, order):",
+  "starter": "func solve(queue, order):\n\treturn 0",
+  "tests": [
+    {
+      "name": "One plus one is 2",
+      "args": [
+        [
+          "soup"
+        ],
+        "pie"
+      ],
+      "expect": 2
+    },
+    {
+      "name": "First order makes 1",
+      "args": [
+        [],
+        "tea"
+      ],
+      "expect": 1
+    }
+  ],
+  "hints": [
+    "Append first, then count.",
+    "`queue.append(order)` then `return queue.size()`."
+  ],
+  "docs": [
+    {
+      "name": "list.append(value)",
+      "what": "Adds value to the end of the array. Returns nothing."
+    },
+    {
+      "name": "list.size()",
+      "what": "Returns how many items the array holds."
+    }
+  ],
+  "solution": "func solve(queue, order):\n\tqueue.append(order)\n\treturn queue.size()"
+}

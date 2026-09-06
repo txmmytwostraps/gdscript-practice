@@ -1,0 +1,39 @@
+{
+  "id": "gqld-004",
+  "title": "How many kinds",
+  "concept": "gq-loopdicts",
+  "difficulty": 0,
+  "prompt": "Return how many different items the inventory holds, by counting in a loop.",
+  "signature": "func solve(inventory):",
+  "starter": "func solve(inventory):\n\treturn 0",
+  "tests": [
+    {
+      "name": "Two kinds",
+      "args": [
+        {
+          "bolt": 3,
+          "gear": 1
+        }
+      ],
+      "expect": 2
+    },
+    {
+      "name": "Empty is 0",
+      "args": [
+        {}
+      ],
+      "expect": 0
+    }
+  ],
+  "hints": [
+    "One turn of the loop per key.",
+    "`count += 1` inside the loop."
+  ],
+  "docs": [
+    {
+      "name": "for key in data:",
+      "what": "Runs once per key; data[key] gives its value."
+    }
+  ],
+  "solution": "func solve(inventory):\n\tvar count = 0\n\tfor item in inventory:\n\t\tcount += 1\n\treturn count"
+}

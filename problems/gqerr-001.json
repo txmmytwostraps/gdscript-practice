@@ -1,0 +1,36 @@
+{
+  "id": "gqerr-001",
+  "title": "A missing bracket",
+  "concept": "gq-errors",
+  "difficulty": 0,
+  "prompt": "The robot should print \"Hello\", but the code will not run. Press Run, read the error, and fix the one thing wrong on that line.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tprint(\"Hello\"",
+  "starter_broken": true,
+  "tests": [
+    {
+      "name": "Prints Hello",
+      "args": [],
+      "expect": null,
+      "out": [
+        "Hello"
+      ]
+    }
+  ],
+  "hints": [
+    "Every opening bracket needs a closing one.",
+    "The error says what it expected and on which line.",
+    "Add the missing ) at the end of the print line."
+  ],
+  "docs": [
+    {
+      "name": "The error panel",
+      "what": "Godot's message plus the line it happened on, counted from the top of your code."
+    },
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\tprint(\"Hello\")"
+}

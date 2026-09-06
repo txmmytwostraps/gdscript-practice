@@ -1,0 +1,51 @@
+{
+  "id": "gqla-002",
+  "title": "Sum of an array",
+  "concept": "gq-looparrays",
+  "difficulty": 0,
+  "prompt": "Return the total of the numbers in the array, using a loop. An empty array totals 0.",
+  "signature": "func solve(nums):",
+  "starter": "func solve(nums):\n\tvar total = 0\n\treturn total",
+  "tests": [
+    {
+      "name": "1, 2, 3 total 6",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expect": 6
+    },
+    {
+      "name": "Empty totals 0",
+      "args": [
+        []
+      ],
+      "expect": 0
+    },
+    {
+      "name": "Negatives count",
+      "args": [
+        [
+          -5,
+          5,
+          10
+        ]
+      ],
+      "expect": 10
+    }
+  ],
+  "hints": [
+    "Add each item to a running total.",
+    "`total += n` inside the loop."
+  ],
+  "docs": [
+    {
+      "name": "for item in list:",
+      "what": "Runs the indented lines once per item, with item holding each value in turn."
+    }
+  ],
+  "solution": "func solve(nums):\n\tvar total = 0\n\tfor n in nums:\n\t\ttotal += n\n\treturn total"
+}

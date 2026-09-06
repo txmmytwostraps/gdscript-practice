@@ -34,7 +34,16 @@ func run_submission(user_code: String, problem: Dictionary) -> Dictionary:
 	for t in tests:
 		var args: Array = normalize(t.get("args", []))
 		var expect = normalize(t.get("expect"))
+		inst = script.new()   # a fresh instance per test, so member variables start over
 		inst._judge_reset()
+		# Frame harness: a test with "frames": N runs the user's _process(delta)
+		# N times first, so game-loop problems can be checked through solve().
+		if t.has("frames"):
+			if not inst.has_method("_process"):
+				return {"status": "error", "error": "missing function: _process(delta)"}
+			var delta: float = float(t.get("delta", 1.0 / 60.0))
+			for i in int(t["frames"]):
+				inst.call("_process", delta)
 		var got = inst.callv("solve", args)
 		var out_lines: Array = inst._out.duplicate()  # copy: _out is cleared before the next test
 		var ok := values_equal(got, expect)

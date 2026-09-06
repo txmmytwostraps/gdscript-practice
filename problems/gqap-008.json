@@ -1,0 +1,38 @@
+{
+  "id": "gqap-008",
+  "title": "Is the queue empty",
+  "concept": "gq-appendpop",
+  "difficulty": 0,
+  "prompt": "Return true if there are no orders waiting.",
+  "signature": "func solve(queue):",
+  "starter": "func solve(queue):\n\treturn false",
+  "tests": [
+    {
+      "name": "Empty is true",
+      "args": [
+        []
+      ],
+      "expect": true
+    },
+    {
+      "name": "One order is false",
+      "args": [
+        [
+          "soup"
+        ]
+      ],
+      "expect": false
+    }
+  ],
+  "hints": [
+    "is_empty asks exactly this.",
+    "`return queue.is_empty()`"
+  ],
+  "docs": [
+    {
+      "name": "list.is_empty()",
+      "what": "Returns true when the array has no items."
+    }
+  ],
+  "solution": "func solve(queue):\n\treturn queue.is_empty()"
+}

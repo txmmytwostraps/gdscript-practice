@@ -1,0 +1,50 @@
+{
+  "id": "gqidx-007",
+  "title": "Swap two slots",
+  "concept": "gq-indices",
+  "difficulty": 1,
+  "prompt": "Swap the items in slots 0 and 1 and return the array. [1, 2, 3] becomes [2, 1, 3].",
+  "signature": "func solve(items):",
+  "starter": "func solve(items):\n\treturn items",
+  "tests": [
+    {
+      "name": "First two swapped",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expect": [
+        2,
+        1,
+        3
+      ]
+    },
+    {
+      "name": "Two items swapped",
+      "args": [
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "expect": [
+        "b",
+        "a"
+      ]
+    }
+  ],
+  "hints": [
+    "You need a temporary variable to hold one of them.",
+    "`var temp = items[0]`, `items[0] = items[1]`, `items[1] = temp`."
+  ],
+  "docs": [
+    {
+      "name": "list[i]",
+      "what": "The item at position i. Positions start at 0; -1 is the last item."
+    }
+  ],
+  "solution": "func solve(items):\n\tvar temp = items[0]\n\titems[0] = items[1]\n\titems[1] = temp\n\treturn items"
+}

@@ -1,0 +1,76 @@
+{
+  "id": "gqla-003",
+  "title": "Draw the path",
+  "concept": "gq-looparrays",
+  "difficulty": 1,
+  "prompt": "The robot's path is an array of distances. For each one, move forward that far and then turn left. [30, 40] gives forward 30, left, forward 40, left.",
+  "signature": "func solve(path):",
+  "starter": "func solve(path):\n\tpass",
+  "tests": [
+    {
+      "name": "Two legs",
+      "args": [
+        [
+          30,
+          40
+        ]
+      ],
+      "expect": null,
+      "out": [
+        "forward 30",
+        "left",
+        "forward 40",
+        "left"
+      ]
+    },
+    {
+      "name": "Square from four equal legs",
+      "args": [
+        [
+          20,
+          20,
+          20,
+          20
+        ]
+      ],
+      "expect": null,
+      "out": [
+        "forward 20",
+        "left",
+        "forward 20",
+        "left",
+        "forward 20",
+        "left",
+        "forward 20",
+        "left"
+      ]
+    },
+    {
+      "name": "Empty path does nothing",
+      "args": [
+        []
+      ],
+      "expect": null,
+      "out": []
+    }
+  ],
+  "hints": [
+    "The loop variable is the distance for this leg.",
+    "`for distance in path:` then `move_forward(distance)` and `turn_left()`."
+  ],
+  "docs": [
+    {
+      "name": "for item in list:",
+      "what": "Runs the indented lines once per item, with item holding each value in turn."
+    },
+    {
+      "name": "move_forward(distance)",
+      "what": "Drives the turtle forward that many pixels, drawing a line."
+    },
+    {
+      "name": "turn_left()",
+      "what": "Turns the turtle 90 degrees to the left."
+    }
+  ],
+  "solution": "func solve(path):\n\tfor distance in path:\n\t\tmove_forward(distance)\n\t\tturn_left()"
+}

@@ -1,0 +1,64 @@
+{
+  "id": "gqidx-009",
+  "title": "Print by position",
+  "concept": "gq-indices",
+  "difficulty": 1,
+  "prompt": "Print each item with its position in front, using a counting loop: \"0 bolt\", \"1 gear\".",
+  "signature": "func solve(items):",
+  "starter": "func solve(items):\n\tpass",
+  "tests": [
+    {
+      "name": "Two items with positions",
+      "args": [
+        [
+          "bolt",
+          "gear"
+        ]
+      ],
+      "expect": null,
+      "out": [
+        "0 bolt",
+        "1 gear"
+      ]
+    },
+    {
+      "name": "Empty prints nothing",
+      "args": [
+        []
+      ],
+      "expect": null,
+      "out": []
+    }
+  ],
+  "hints": [
+    "range(items.size()) gives you every position.",
+    "`for i in range(items.size()):` then `print(str(i) + \" \" + items[i])`."
+  ],
+  "docs": [
+    {
+      "name": "for i in range(n):",
+      "what": "Runs the indented lines with i counting 0, 1, 2 and so on."
+    },
+    {
+      "name": "range(n)",
+      "what": "The numbers 0 up to n - 1, for a for loop to count through."
+    },
+    {
+      "name": "list.size()",
+      "what": "Returns how many items the array holds."
+    },
+    {
+      "name": "list[i]",
+      "what": "The item at position i. Positions start at 0; -1 is the last item."
+    },
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    },
+    {
+      "name": "str(value)",
+      "what": "Returns the value as text."
+    }
+  ],
+  "solution": "func solve(items):\n\tfor i in range(items.size()):\n\t\tprint(str(i) + \" \" + items[i])"
+}

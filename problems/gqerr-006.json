@@ -1,0 +1,36 @@
+{
+  "id": "gqerr-006",
+  "title": "A misspelt keyword",
+  "concept": "gq-errors",
+  "difficulty": 0,
+  "prompt": "The word that starts a function is spelt wrong, so Godot does not know what this line means. Fix it so the robot prints \"Online\".",
+  "signature": "func solve():",
+  "starter": "fnc solve():\n\tprint(\"Online\")",
+  "starter_broken": true,
+  "tests": [
+    {
+      "name": "Prints Online",
+      "args": [],
+      "expect": null,
+      "out": [
+        "Online"
+      ]
+    }
+  ],
+  "hints": [
+    "Keywords like func, var and return must be spelt exactly.",
+    "The error points at the first line.",
+    "Change fnc to func."
+  ],
+  "docs": [
+    {
+      "name": "The error panel",
+      "what": "Godot's message plus the line it happened on, counted from the top of your code."
+    },
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\tprint(\"Online\")"
+}

@@ -1,0 +1,47 @@
+{
+  "id": "gqvt-012",
+  "title": "Round, do not truncate",
+  "concept": "gq-valuetypes",
+  "difficulty": 1,
+  "prompt": "Return the value as the nearest whole number, so 7.9 becomes 8 and 7.2 becomes 7. Remember int() alone drops decimals.",
+  "signature": "func solve(value):",
+  "starter": "func solve(value):\n\treturn int(value)",
+  "tests": [
+    {
+      "name": "7.9 rounds to 8",
+      "args": [
+        7.9
+      ],
+      "expect": 8
+    },
+    {
+      "name": "7.2 rounds to 7",
+      "args": [
+        7.2
+      ],
+      "expect": 7
+    },
+    {
+      "name": "2.5 rounds to 3",
+      "args": [
+        2.5
+      ],
+      "expect": 3
+    }
+  ],
+  "hints": [
+    "round() first, then int() to get a whole-number type.",
+    "`return int(round(value))`"
+  ],
+  "docs": [
+    {
+      "name": "int(value)",
+      "what": "Returns the value as a whole number; decimals are dropped, text like \"42\" is read."
+    },
+    {
+      "name": "round(x)",
+      "what": "Returns the nearest whole number as a float."
+    }
+  ],
+  "solution": "func solve(value):\n\treturn int(round(value))"
+}

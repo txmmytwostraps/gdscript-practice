@@ -1,0 +1,49 @@
+{
+  "id": "gqap-010",
+  "title": "Cancel an order",
+  "concept": "gq-appendpop",
+  "difficulty": 1,
+  "prompt": "A customer cancels. Remove the first matching order from the queue and return the queue. If it is not there, the queue is unchanged.",
+  "signature": "func solve(queue, order):",
+  "starter": "func solve(queue, order):\n\treturn queue",
+  "tests": [
+    {
+      "name": "pie removed",
+      "args": [
+        [
+          "soup",
+          "pie",
+          "tea"
+        ],
+        "pie"
+      ],
+      "expect": [
+        "soup",
+        "tea"
+      ]
+    },
+    {
+      "name": "Nothing to cancel",
+      "args": [
+        [
+          "soup"
+        ],
+        "cake"
+      ],
+      "expect": [
+        "soup"
+      ]
+    }
+  ],
+  "hints": [
+    "erase removes by value.",
+    "`queue.erase(order)`"
+  ],
+  "docs": [
+    {
+      "name": "list.erase(value)",
+      "what": "Removes the first copy of value. Returns nothing."
+    }
+  ],
+  "solution": "func solve(queue, order):\n\tqueue.erase(order)\n\treturn queue"
+}

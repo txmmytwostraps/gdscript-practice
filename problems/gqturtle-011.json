@@ -1,0 +1,57 @@
+{
+  "id": "gqturtle-011",
+  "title": "Two helpers",
+  "concept": "gq-turtle",
+  "difficulty": 1,
+  "prompt": "Write `square`, which draws a square of 20 with four corners, and use it twice from `solve` with a `jump` of 30 in between.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass",
+  "tests": [
+    {
+      "name": "Square, jump 30, square",
+      "args": [],
+      "expect": null,
+      "out": [
+        "forward 20",
+        "left",
+        "forward 20",
+        "left",
+        "forward 20",
+        "left",
+        "forward 20",
+        "left",
+        "jump 30",
+        "forward 20",
+        "left",
+        "forward 20",
+        "left",
+        "forward 20",
+        "left",
+        "forward 20",
+        "left"
+      ]
+    }
+  ],
+  "hints": [
+    "square is eight calls in a function; solve is three lines.",
+    "`square()`, `jump(30)`, `square()`."
+  ],
+  "docs": [
+    {
+      "name": "move_forward(distance)",
+      "what": "Drives the turtle forward that many pixels, drawing a line. Takes one number; returns nothing."
+    },
+    {
+      "name": "turn_left()",
+      "what": "Turns the turtle 90 degrees to the left. Give it a number to turn by a different angle."
+    },
+    {
+      "name": "jump(distance)",
+      "what": "Moves forward without drawing."
+    }
+  ],
+  "solution": "func solve():\n\tsquare()\n\tjump(30)\n\tsquare()\n\nfunc square():\n\tmove_forward(20)\n\tturn_left()\n\tmove_forward(20)\n\tturn_left()\n\tmove_forward(20)\n\tturn_left()\n\tmove_forward(20)\n\tturn_left()",
+  "require_methods": [
+    "square"
+  ]
+}

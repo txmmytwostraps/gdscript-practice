@@ -1,0 +1,58 @@
+{
+  "id": "gqla-014",
+  "title": "Average",
+  "concept": "gq-looparrays",
+  "difficulty": 1,
+  "prompt": "Return the average of the numbers as a float. If the array is empty, return 0.0.",
+  "signature": "func solve(nums) -> float:",
+  "starter": "func solve(nums) -> float:\n\treturn 0.0",
+  "tests": [
+    {
+      "name": "[1, 2, 3, 4] averages 2.5",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4
+        ]
+      ],
+      "expect": 2.5
+    },
+    {
+      "name": "Empty is 0.0",
+      "args": [
+        []
+      ],
+      "expect": 0
+    },
+    {
+      "name": "One item is itself",
+      "args": [
+        [
+          10
+        ]
+      ],
+      "expect": 10
+    }
+  ],
+  "hints": [
+    "Guard the empty case, then total divided by count with decimals kept.",
+    "`return float(total) / nums.size()`"
+  ],
+  "docs": [
+    {
+      "name": "for item in list:",
+      "what": "Runs the indented lines once per item, with item holding each value in turn."
+    },
+    {
+      "name": "list.size()",
+      "what": "Returns how many items the array holds."
+    },
+    {
+      "name": "float(number)",
+      "what": "Returns the number as a float, so dividing keeps decimals."
+    }
+  ],
+  "solution": "func solve(nums) -> float:\n\tif nums.size() == 0:\n\t\treturn 0.0\n\tvar total = 0\n\tfor n in nums:\n\t\ttotal += n\n\treturn float(total) / nums.size()"
+}

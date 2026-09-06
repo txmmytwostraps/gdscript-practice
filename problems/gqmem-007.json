@@ -1,0 +1,44 @@
+{
+  "id": "gqmem-007",
+  "title": "Local or member",
+  "concept": "gq-members",
+  "difficulty": 1,
+  "prompt": "The starter has a member `score` at 0, but `add_points` creates its own local `score` instead of using the member, so solve still returns 0. Fix add_points so it changes the member, and solve(10) returns 10.",
+  "signature": "func solve(points):",
+  "starter": "var score = 0\n\nfunc solve(points):\n\tadd_points(points)\n\treturn score\n\nfunc add_points(amount):\n\tvar score = amount",
+  "tests": [
+    {
+      "name": "Adding 10 gives 10",
+      "args": [
+        10
+      ],
+      "expect": 10
+    },
+    {
+      "name": "Adding 0 gives 0",
+      "args": [
+        0
+      ],
+      "expect": 0
+    },
+    {
+      "name": "Adding 25 gives 25",
+      "args": [
+        25
+      ],
+      "expect": 25
+    }
+  ],
+  "hints": [
+    "Writing var inside a function makes a new, separate variable with the same name.",
+    "Remove var so the line changes the member.",
+    "`score += amount`"
+  ],
+  "docs": [
+    {
+      "name": "var name = value (outside any function)",
+      "what": "A member variable: every function in the script can read and change it."
+    }
+  ],
+  "solution": "var score = 0\n\nfunc solve(points):\n\tadd_points(points)\n\treturn score\n\nfunc add_points(amount):\n\tscore += amount"
+}

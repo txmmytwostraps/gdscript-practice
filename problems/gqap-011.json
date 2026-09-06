@@ -1,0 +1,39 @@
+{
+  "id": "gqap-011",
+  "title": "Clear the kitchen",
+  "concept": "gq-appendpop",
+  "difficulty": 0,
+  "prompt": "Closing time: remove every order and return the empty queue.",
+  "signature": "func solve(queue):",
+  "starter": "func solve(queue):\n\treturn queue",
+  "tests": [
+    {
+      "name": "Everything gone",
+      "args": [
+        [
+          "soup",
+          "pie"
+        ]
+      ],
+      "expect": []
+    },
+    {
+      "name": "Already empty",
+      "args": [
+        []
+      ],
+      "expect": []
+    }
+  ],
+  "hints": [
+    "One method empties an array.",
+    "`queue.clear()` then return it."
+  ],
+  "docs": [
+    {
+      "name": "list.clear()",
+      "what": "Removes every item. Returns nothing."
+    }
+  ],
+  "solution": "func solve(queue):\n\tqueue.clear()\n\treturn queue"
+}

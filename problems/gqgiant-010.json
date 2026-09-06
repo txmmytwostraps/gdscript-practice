@@ -1,0 +1,31 @@
+{
+  "id": "gqgiant-010",
+  "title": "A missing argument",
+  "concept": "gq-giants",
+  "difficulty": 1,
+  "prompt": "The starter calls rotate with nothing inside the brackets, which is an error because rotate needs a number. Give it 90 so the robot turns.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\trotate()",
+  "tests": [
+    {
+      "name": "rotate is called with 90",
+      "args": [],
+      "expect": null,
+      "out": [
+        "rotate 90"
+      ]
+    }
+  ],
+  "hints": [
+    "A function that needs an argument will not run without one; the error tells you how many it expects.",
+    "`rotate(90)`"
+  ],
+  "docs": [
+    {
+      "name": "rotate(degrees)",
+      "what": "Turns the robot by that many degrees. Takes one number; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\trotate(90)",
+  "starter_broken": true
+}

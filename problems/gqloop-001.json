@@ -1,0 +1,48 @@
+{
+  "id": "gqloop-001",
+  "title": "Count the frames",
+  "concept": "gq-loop",
+  "difficulty": 0,
+  "prompt": "A member `frames` starts at 0. Write `_process`, which takes delta and adds 1 to frames every time it runs. The judge runs 60 frames, then `solve` returns frames.",
+  "signature": "func solve():",
+  "starter": "var frames = 0\n\nfunc solve():\n\treturn frames",
+  "tests": [
+    {
+      "name": "60 frames counted",
+      "args": [],
+      "expect": 60,
+      "frames": 60
+    },
+    {
+      "name": "No frames, still 0",
+      "args": [],
+      "expect": 0,
+      "frames": 0
+    },
+    {
+      "name": "10 frames counted",
+      "args": [],
+      "expect": 10,
+      "frames": 10
+    }
+  ],
+  "hints": [
+    "_process is a function Godot calls for you, again and again.",
+    "`func _process(delta):` with `frames += 1` inside.",
+    "You do not call it yourself; leave solve as it is."
+  ],
+  "docs": [
+    {
+      "name": "func _process(delta):",
+      "what": "Godot calls this once per frame, about 60 times a second. delta is the frame time in seconds."
+    },
+    {
+      "name": "var name = value (outside any function)",
+      "what": "A member variable keeps its value from one frame to the next."
+    }
+  ],
+  "solution": "var frames = 0\n\nfunc _process(delta):\n\tframes += 1\n\nfunc solve():\n\treturn frames",
+  "require_methods": [
+    "_process"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "id": "gqld-010",
+  "title": "Place the units",
+  "concept": "gq-loopdicts",
+  "difficulty": 1,
+  "prompt": "units maps a unit name to how many to place. Print the name once per unit, so {\"knight\": 2} prints knight twice.",
+  "signature": "func solve(units):",
+  "starter": "func solve(units):\n\tpass",
+  "tests": [
+    {
+      "name": "knight twice, archer once",
+      "args": [
+        {
+          "knight": 2,
+          "archer": 1
+        }
+      ],
+      "expect": null,
+      "out": [
+        "knight",
+        "knight",
+        "archer"
+      ]
+    },
+    {
+      "name": "Empty prints nothing",
+      "args": [
+        {}
+      ],
+      "expect": null,
+      "out": []
+    }
+  ],
+  "hints": [
+    "A loop inside the loop: the inner one repeats by the amount.",
+    "`for i in range(units[name]):` then `print(name)`."
+  ],
+  "docs": [
+    {
+      "name": "for key in data:",
+      "what": "Runs once per key; data[key] gives its value."
+    },
+    {
+      "name": "data[key]",
+      "what": "The value stored under key. Assigning to it changes or adds the entry."
+    },
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    },
+    {
+      "name": "range(n)",
+      "what": "The numbers 0 up to n - 1, for a for loop to count through."
+    }
+  ],
+  "solution": "func solve(units):\n\tfor name in units:\n\t\tfor i in range(units[name]):\n\t\t\tprint(name)"
+}

@@ -1,0 +1,40 @@
+{
+  "id": "gqvt-001",
+  "title": "Health as text",
+  "concept": "gq-valuetypes",
+  "difficulty": 0,
+  "prompt": "The screen needs the robot's health as text. Return \"Health: \" followed by the number, so 80 gives \"Health: 80\". Joining a number straight onto text is an error.",
+  "signature": "func solve(health):",
+  "starter": "func solve(health):\n\treturn \"Health: \"",
+  "tests": [
+    {
+      "name": "80 gives Health: 80",
+      "args": [
+        80
+      ],
+      "expect": "Health: 80"
+    },
+    {
+      "name": "0 gives Health: 0",
+      "args": [
+        0
+      ],
+      "expect": "Health: 0"
+    }
+  ],
+  "hints": [
+    "Text and numbers are different types; convert the number first.",
+    "`return \"Health: \" + str(health)`"
+  ],
+  "docs": [
+    {
+      "name": "str(value)",
+      "what": "Returns the value as text (a String)."
+    },
+    {
+      "name": "text + text",
+      "what": "Joins two strings. Joining text to a number is an error; convert first."
+    }
+  ],
+  "solution": "func solve(health):\n\treturn \"Health: \" + str(health)"
+}

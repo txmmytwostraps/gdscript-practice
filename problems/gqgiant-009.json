@@ -1,0 +1,40 @@
+{
+  "id": "gqgiant-009",
+  "title": "Show, turn, move",
+  "concept": "gq-giants",
+  "difficulty": 1,
+  "prompt": "Do three things in order: show the robot, turn it 180 degrees, then move it 30 across and 30 down.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass",
+  "tests": [
+    {
+      "name": "show, rotate 180, move 30 30",
+      "args": [],
+      "expect": null,
+      "out": [
+        "show",
+        "rotate 180",
+        "move 30 30"
+      ]
+    }
+  ],
+  "hints": [
+    "Each call goes on its own line, in the order the robot should do them.",
+    "`show()`, `rotate(180)`, `move(30, 30)`."
+  ],
+  "docs": [
+    {
+      "name": "show() / hide()",
+      "what": "Makes the robot visible or invisible. No arguments; returns nothing."
+    },
+    {
+      "name": "rotate(degrees)",
+      "what": "Turns the robot by that many degrees. Takes one number; returns nothing."
+    },
+    {
+      "name": "move(x, y)",
+      "what": "Moves the robot by x across and y down. Takes two numbers; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\tshow()\n\trotate(180)\n\tmove(30, 30)"
+}

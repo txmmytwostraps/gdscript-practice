@@ -1,0 +1,36 @@
+{
+  "id": "gqerr-002",
+  "title": "A missing colon",
+  "concept": "gq-errors",
+  "difficulty": 0,
+  "prompt": "A function's first line must end with a colon. This one does not, so nothing runs. Fix it so the robot prints \"Ready\".",
+  "signature": "func solve():",
+  "starter": "func solve()\n\tprint(\"Ready\")",
+  "starter_broken": true,
+  "tests": [
+    {
+      "name": "Prints Ready",
+      "args": [],
+      "expect": null,
+      "out": [
+        "Ready"
+      ]
+    }
+  ],
+  "hints": [
+    "Lines that open a block, like func and if, end with a colon.",
+    "Look at the very first line.",
+    "Add : after the closing bracket of solve()."
+  ],
+  "docs": [
+    {
+      "name": "The error panel",
+      "what": "Godot's message plus the line it happened on, counted from the top of your code."
+    },
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\tprint(\"Ready\")"
+}

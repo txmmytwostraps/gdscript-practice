@@ -1,0 +1,36 @@
+{
+  "id": "gqerr-009",
+  "title": "One bracket too many",
+  "concept": "gq-errors",
+  "difficulty": 0,
+  "prompt": "There is an extra closing bracket on the print line. Remove it so the robot prints \"Done\".",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tprint(\"Done\"))",
+  "starter_broken": true,
+  "tests": [
+    {
+      "name": "Prints Done",
+      "args": [],
+      "expect": null,
+      "out": [
+        "Done"
+      ]
+    }
+  ],
+  "hints": [
+    "Brackets must come in matching pairs.",
+    "Count the ( and ) on the print line.",
+    "Delete one of the two closing brackets."
+  ],
+  "docs": [
+    {
+      "name": "The error panel",
+      "what": "Godot's message plus the line it happened on, counted from the top of your code."
+    },
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve():\n\tprint(\"Done\")"
+}

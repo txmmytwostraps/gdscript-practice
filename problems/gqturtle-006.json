@@ -1,0 +1,41 @@
+{
+  "id": "gqturtle-006",
+  "title": "The wrong turn",
+  "concept": "gq-turtle",
+  "difficulty": 0,
+  "prompt": "This square goes wrong at the third corner: one of the turns is a right turn. Change it to a left turn so all four turns match.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tmove_forward(40)\n\tturn_left()\n\tmove_forward(40)\n\tturn_left()\n\tmove_forward(40)\n\tturn_right()\n\tmove_forward(40)\n\tturn_left()",
+  "tests": [
+    {
+      "name": "All four turns are left",
+      "args": [],
+      "expect": null,
+      "out": [
+        "forward 40",
+        "left",
+        "forward 40",
+        "left",
+        "forward 40",
+        "left",
+        "forward 40",
+        "left"
+      ]
+    }
+  ],
+  "hints": [
+    "Read the calls from top to bottom and find the one that differs.",
+    "Change the turn_right() to turn_left()."
+  ],
+  "docs": [
+    {
+      "name": "move_forward(distance)",
+      "what": "Drives the turtle forward that many pixels, drawing a line. Takes one number; returns nothing."
+    },
+    {
+      "name": "turn_left()",
+      "what": "Turns the turtle 90 degrees to the left. Give it a number to turn by a different angle."
+    }
+  ],
+  "solution": "func solve():\n\tmove_forward(40)\n\tturn_left()\n\tmove_forward(40)\n\tturn_left()\n\tmove_forward(40)\n\tturn_left()\n\tmove_forward(40)\n\tturn_left()"
+}

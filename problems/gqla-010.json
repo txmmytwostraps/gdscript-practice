@@ -1,0 +1,48 @@
+{
+  "id": "gqla-010",
+  "title": "Print with a label",
+  "concept": "gq-looparrays",
+  "difficulty": 0,
+  "prompt": "Print each name in the array with \"Robot: \" in front, one per line.",
+  "signature": "func solve(names):",
+  "starter": "func solve(names):\n\tpass",
+  "tests": [
+    {
+      "name": "Two names",
+      "args": [
+        [
+          "Robo",
+          "Bit"
+        ]
+      ],
+      "expect": null,
+      "out": [
+        "Robot: Robo",
+        "Robot: Bit"
+      ]
+    },
+    {
+      "name": "Empty prints nothing",
+      "args": [
+        []
+      ],
+      "expect": null,
+      "out": []
+    }
+  ],
+  "hints": [
+    "Join the label and the item with +.",
+    "`print(\"Robot: \" + name)`"
+  ],
+  "docs": [
+    {
+      "name": "for item in list:",
+      "what": "Runs the indented lines once per item, with item holding each value in turn."
+    },
+    {
+      "name": "print(value)",
+      "what": "Shows value in the output. Takes anything; returns nothing."
+    }
+  ],
+  "solution": "func solve(names):\n\tfor name in names:\n\t\tprint(\"Robot: \" + name)"
+}

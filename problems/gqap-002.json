@@ -1,0 +1,50 @@
+{
+  "id": "gqap-002",
+  "title": "Serve the first order",
+  "concept": "gq-appendpop",
+  "difficulty": 0,
+  "prompt": "Serve the meal that was ordered first: remove it from the front of the queue. Return an array of two things: the meal you served, then the queue that remains. [\"soup\", \"pie\"] gives [\"soup\", [\"pie\"]].",
+  "signature": "func solve(queue):",
+  "starter": "func solve(queue):\n\treturn [queue[0], queue]",
+  "tests": [
+    {
+      "name": "soup served, pie remains",
+      "args": [
+        [
+          "soup",
+          "pie"
+        ]
+      ],
+      "expect": [
+        "soup",
+        [
+          "pie"
+        ]
+      ]
+    },
+    {
+      "name": "The only order served, nothing remains",
+      "args": [
+        [
+          "tea"
+        ]
+      ],
+      "expect": [
+        "tea",
+        []
+      ]
+    }
+  ],
+  "hints": [
+    "Reading queue[0] does not remove it; pop_front does.",
+    "`var meal = queue.pop_front()`",
+    "`return [meal, queue]`"
+  ],
+  "docs": [
+    {
+      "name": "list.pop_front()",
+      "what": "Removes the first item and returns it."
+    }
+  ],
+  "solution": "func solve(queue):\n\tvar meal = queue.pop_front()\n\treturn [meal, queue]"
+}

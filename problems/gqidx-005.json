@@ -1,0 +1,52 @@
+{
+  "id": "gqidx-005",
+  "title": "Replace a slot",
+  "concept": "gq-indices",
+  "difficulty": 0,
+  "prompt": "Put item into slot i of the inventory and return the inventory.",
+  "signature": "func solve(inventory, i, item):",
+  "starter": "func solve(inventory, i, item):\n\treturn inventory",
+  "tests": [
+    {
+      "name": "Slot 1 becomes gem",
+      "args": [
+        [
+          "bolt",
+          "gear",
+          "wire"
+        ],
+        1,
+        "gem"
+      ],
+      "expect": [
+        "bolt",
+        "gem",
+        "wire"
+      ]
+    },
+    {
+      "name": "Slot 0 becomes gem",
+      "args": [
+        [
+          "bolt"
+        ],
+        0,
+        "gem"
+      ],
+      "expect": [
+        "gem"
+      ]
+    }
+  ],
+  "hints": [
+    "Square brackets work on the left of = too.",
+    "`inventory[i] = item`"
+  ],
+  "docs": [
+    {
+      "name": "list[i]",
+      "what": "The item at position i. Positions start at 0; -1 is the last item."
+    }
+  ],
+  "solution": "func solve(inventory, i, item):\n\tinventory[i] = item\n\treturn inventory"
+}

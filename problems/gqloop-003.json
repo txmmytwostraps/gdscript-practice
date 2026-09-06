@@ -1,0 +1,51 @@
+{
+  "id": "gqloop-003",
+  "title": "Move every frame",
+  "concept": "gq-loop",
+  "difficulty": 1,
+  "prompt": "A member `x` starts at 0.0 and the robot drives at 120 pixels per second. In `_process`, move x by 120 times delta. After 60 frames solve returns x rounded, which is 120.",
+  "signature": "func solve():",
+  "starter": "var x = 0.0\n\nfunc solve():\n\treturn round(x)",
+  "tests": [
+    {
+      "name": "One second moves 120",
+      "args": [],
+      "expect": 120,
+      "frames": 60
+    },
+    {
+      "name": "Half a second moves 60",
+      "args": [],
+      "expect": 60,
+      "frames": 30
+    },
+    {
+      "name": "No frames, no movement",
+      "args": [],
+      "expect": 0,
+      "frames": 0
+    }
+  ],
+  "hints": [
+    "Speed times delta is the distance for one frame.",
+    "`x += 120 * delta` inside _process."
+  ],
+  "docs": [
+    {
+      "name": "func _process(delta):",
+      "what": "Godot calls this once per frame, about 60 times a second. delta is the frame time in seconds."
+    },
+    {
+      "name": "var name = value (outside any function)",
+      "what": "A member variable keeps its value from one frame to the next."
+    },
+    {
+      "name": "round(x)",
+      "what": "Returns the nearest whole number as a float."
+    }
+  ],
+  "solution": "var x = 0.0\n\nfunc _process(delta):\n\tx += 120 * delta\n\nfunc solve():\n\treturn round(x)",
+  "require_methods": [
+    "_process"
+  ]
+}

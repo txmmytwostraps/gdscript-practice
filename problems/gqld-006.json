@@ -1,0 +1,42 @@
+{
+  "id": "gqld-006",
+  "title": "The values as an array",
+  "concept": "gq-loopdicts",
+  "difficulty": 0,
+  "prompt": "Return an array of the amounts, in order.",
+  "signature": "func solve(inventory):",
+  "starter": "func solve(inventory):\n\treturn []",
+  "tests": [
+    {
+      "name": "Two amounts",
+      "args": [
+        {
+          "bolt": 3,
+          "gear": 1
+        }
+      ],
+      "expect": [
+        3,
+        1
+      ]
+    },
+    {
+      "name": "Empty gives empty",
+      "args": [
+        {}
+      ],
+      "expect": []
+    }
+  ],
+  "hints": [
+    "The matching method for values.",
+    "`return inventory.values()`"
+  ],
+  "docs": [
+    {
+      "name": "data.values()",
+      "what": "Returns an array of every value."
+    }
+  ],
+  "solution": "func solve(inventory):\n\treturn inventory.values()"
+}

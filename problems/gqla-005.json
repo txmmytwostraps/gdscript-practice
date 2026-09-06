@@ -1,0 +1,61 @@
+{
+  "id": "gqla-005",
+  "title": "Double each",
+  "concept": "gq-looparrays",
+  "difficulty": 1,
+  "prompt": "Return a new array with every number doubled, leaving the original alone.",
+  "signature": "func solve(nums):",
+  "starter": "func solve(nums):\n\treturn nums",
+  "tests": [
+    {
+      "name": "[1, 2, 3] becomes [2, 4, 6]",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expect": [
+        2,
+        4,
+        6
+      ]
+    },
+    {
+      "name": "Empty stays empty",
+      "args": [
+        []
+      ],
+      "expect": []
+    },
+    {
+      "name": "Negative and zero",
+      "args": [
+        [
+          -1,
+          0
+        ]
+      ],
+      "expect": [
+        -2,
+        0
+      ]
+    }
+  ],
+  "hints": [
+    "Start an empty result array and append as you go.",
+    "`result.append(n * 2)`"
+  ],
+  "docs": [
+    {
+      "name": "for item in list:",
+      "what": "Runs the indented lines once per item, with item holding each value in turn."
+    },
+    {
+      "name": "list.append(value)",
+      "what": "Adds value to the end of the array. Returns nothing."
+    }
+  ],
+  "solution": "func solve(nums):\n\tvar result = []\n\tfor n in nums:\n\t\tresult.append(n * 2)\n\treturn result"
+}

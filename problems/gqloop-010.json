@@ -1,0 +1,47 @@
+{
+  "id": "gqloop-010",
+  "title": "A helper called from the loop",
+  "concept": "gq-loop",
+  "difficulty": 1,
+  "prompt": "A member `health` starts at 100. Write `regen`, which takes delta and adds 10 times delta to health. Write `_process`, which calls regen(delta). After 60 frames solve returns health rounded, 110.",
+  "signature": "func solve():",
+  "starter": "var health = 100.0\n\nfunc solve():\n\treturn round(health)",
+  "tests": [
+    {
+      "name": "One second regenerates 10",
+      "args": [],
+      "expect": 110,
+      "frames": 60
+    },
+    {
+      "name": "Three seconds regenerate 30",
+      "args": [],
+      "expect": 130,
+      "frames": 180
+    }
+  ],
+  "hints": [
+    "_process can hand delta on to other functions.",
+    "`func regen(delta):` with `health += 10 * delta`.",
+    "`func _process(delta):` with `regen(delta)`."
+  ],
+  "docs": [
+    {
+      "name": "func _process(delta):",
+      "what": "Godot calls this once per frame, about 60 times a second. delta is the frame time in seconds."
+    },
+    {
+      "name": "var name = value (outside any function)",
+      "what": "A member variable keeps its value from one frame to the next."
+    },
+    {
+      "name": "round(x)",
+      "what": "Returns the nearest whole number as a float."
+    }
+  ],
+  "solution": "var health = 100.0\n\nfunc _process(delta):\n\tregen(delta)\n\nfunc regen(delta):\n\thealth += 10 * delta\n\nfunc solve():\n\treturn round(health)",
+  "require_methods": [
+    "_process",
+    "regen"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "gqturtle-012",
+  "title": "A staircase",
+  "concept": "gq-turtle",
+  "difficulty": 1,
+  "prompt": "Draw three steps: forward 20, turn left, forward 20, turn right, and repeat that three times in all.",
+  "signature": "func solve():",
+  "starter": "func solve():\n\tpass",
+  "tests": [
+    {
+      "name": "Three steps",
+      "args": [],
+      "expect": null,
+      "out": [
+        "forward 20",
+        "left",
+        "forward 20",
+        "right",
+        "forward 20",
+        "left",
+        "forward 20",
+        "right",
+        "forward 20",
+        "left",
+        "forward 20",
+        "right"
+      ]
+    }
+  ],
+  "hints": [
+    "One step is up then across: left turn, then right turn.",
+    "Four calls make one step; write them three times, or put them in a helper."
+  ],
+  "docs": [
+    {
+      "name": "move_forward(distance)",
+      "what": "Drives the turtle forward that many pixels, drawing a line. Takes one number; returns nothing."
+    },
+    {
+      "name": "turn_left()",
+      "what": "Turns the turtle 90 degrees to the left. Give it a number to turn by a different angle."
+    },
+    {
+      "name": "turn_right()",
+      "what": "Turns the turtle 90 degrees to the right. Give it a number to turn by a different angle."
+    }
+  ],
+  "solution": "func solve():\n\tstep()\n\tstep()\n\tstep()\n\nfunc step():\n\tmove_forward(20)\n\tturn_left()\n\tmove_forward(20)\n\tturn_right()"
+}

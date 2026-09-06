@@ -1,0 +1,61 @@
+{
+  "id": "gqla-008",
+  "title": "Count the evens",
+  "concept": "gq-looparrays",
+  "difficulty": 0,
+  "prompt": "Return how many numbers in the array are even.",
+  "signature": "func solve(nums):",
+  "starter": "func solve(nums):\n\treturn 0",
+  "tests": [
+    {
+      "name": "Two evens",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4
+        ]
+      ],
+      "expect": 2
+    },
+    {
+      "name": "None",
+      "args": [
+        [
+          1,
+          3,
+          5
+        ]
+      ],
+      "expect": 0
+    },
+    {
+      "name": "All four",
+      "args": [
+        [
+          2,
+          4,
+          6,
+          8
+        ]
+      ],
+      "expect": 4
+    }
+  ],
+  "hints": [
+    "A counter that only goes up inside an if.",
+    "`if n % 2 == 0:` then `count += 1`."
+  ],
+  "docs": [
+    {
+      "name": "for item in list:",
+      "what": "Runs the indented lines once per item, with item holding each value in turn."
+    },
+    {
+      "name": "a % b",
+      "what": "The remainder after dividing a by b."
+    }
+  ],
+  "solution": "func solve(nums):\n\tvar count = 0\n\tfor n in nums:\n\t\tif n % 2 == 0:\n\t\t\tcount += 1\n\treturn count"
+}

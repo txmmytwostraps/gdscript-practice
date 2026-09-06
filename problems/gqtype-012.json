@@ -1,0 +1,44 @@
+{
+  "id": "gqtype-012",
+  "title": "Convert to satisfy the hint",
+  "concept": "gq-types",
+  "difficulty": 1,
+  "prompt": "Write `to_label`, which takes an int and returns a String of it with \"hp\" on the end. solve returns to_label(n). The return hint means you must convert the number.",
+  "signature": "func solve(n: int) -> String:",
+  "starter": "func solve(n: int) -> String:\n\treturn \"hp\"",
+  "tests": [
+    {
+      "name": "80 gives 80hp",
+      "args": [
+        80
+      ],
+      "expect": "80hp"
+    },
+    {
+      "name": "0 gives 0hp",
+      "args": [
+        0
+      ],
+      "expect": "0hp"
+    }
+  ],
+  "hints": [
+    "A String return type will not accept a number.",
+    "`return str(value) + \"hp\"`"
+  ],
+  "docs": [
+    {
+      "name": "func f() -> int:",
+      "what": "Return type hint: the function promises to return that type."
+    },
+    {
+      "name": "str(value)",
+      "what": "Returns the value as text."
+    }
+  ],
+  "solution": "func solve(n: int) -> String:\n\treturn to_label(n)\n\nfunc to_label(value: int) -> String:\n\treturn str(value) + \"hp\"",
+  "allow_type_hints": true,
+  "require_methods": [
+    "to_label"
+  ]
+}

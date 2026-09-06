@@ -1,0 +1,61 @@
+{
+  "id": "gqidx-010",
+  "title": "Where is the crystal",
+  "concept": "gq-indices",
+  "difficulty": 1,
+  "prompt": "Return the position of the first \"crystal\" in the array, using a loop over positions, or -1 if there is none.",
+  "signature": "func solve(items):",
+  "starter": "func solve(items):\n\treturn -1",
+  "tests": [
+    {
+      "name": "crystal at position 2",
+      "args": [
+        [
+          "rock",
+          "rock",
+          "crystal"
+        ]
+      ],
+      "expect": 2
+    },
+    {
+      "name": "crystal at position 0",
+      "args": [
+        [
+          "crystal",
+          "rock"
+        ]
+      ],
+      "expect": 0
+    },
+    {
+      "name": "No crystal",
+      "args": [
+        [
+          "rock"
+        ]
+      ],
+      "expect": -1
+    }
+  ],
+  "hints": [
+    "Loop over positions and compare items[i].",
+    "`if items[i] == \"crystal\":` then `return i`.",
+    "After the loop, `return -1`."
+  ],
+  "docs": [
+    {
+      "name": "for i in range(n):",
+      "what": "Runs the indented lines with i counting 0, 1, 2 and so on."
+    },
+    {
+      "name": "range(n)",
+      "what": "The numbers 0 up to n - 1, for a for loop to count through."
+    },
+    {
+      "name": "list[i]",
+      "what": "The item at position i. Positions start at 0; -1 is the last item."
+    }
+  ],
+  "solution": "func solve(items):\n\tfor i in range(items.size()):\n\t\tif items[i] == \"crystal\":\n\t\t\treturn i\n\treturn -1"
+}

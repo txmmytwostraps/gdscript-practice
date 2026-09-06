@@ -1,0 +1,34 @@
+{
+  "id": "gqmul-011",
+  "title": "Multiply in place",
+  "concept": "gq-multiply",
+  "difficulty": 1,
+  "prompt": "A member `speed` starts at 10. Write `boost`, which multiplies speed by 3 using `*=`. solve calls boost and returns speed, 30.",
+  "signature": "func solve():",
+  "starter": "var speed = 10\n\nfunc solve():\n\treturn speed",
+  "tests": [
+    {
+      "name": "Boosted speed is 30",
+      "args": [],
+      "expect": 30
+    }
+  ],
+  "hints": [
+    "`*=` multiplies a variable and stores the result back.",
+    "`speed *= 3` inside boost."
+  ],
+  "docs": [
+    {
+      "name": "a * b",
+      "what": "Multiplies two numbers. * with a float keeps decimals."
+    },
+    {
+      "name": "var name = value (outside any function)",
+      "what": "A member variable: every function in the script can read and change it."
+    }
+  ],
+  "solution": "var speed = 10\n\nfunc solve():\n\tboost()\n\treturn speed\n\nfunc boost():\n\tspeed *= 3",
+  "require_methods": [
+    "boost"
+  ]
+}
