@@ -40,7 +40,13 @@ export function setDraft(id, code) { const d = { code, at: new Date().toISOStrin
 export function clearDraft(id) { store.remove("draft." + id); store.remove("code." + id); }
 
 // ---- dates ----
-export const dayKey = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+// "Today" can be overridden for testing with ?today=YYYY-MM-DD (kept for the
+// tab in sessionStorage), so tomorrow's reviews can be checked today.
+export function today() {
+  try { const o = sessionStorage.getItem("gdp.today"); if (o) return new Date(o + "T12:00:00"); } catch (e) {}
+  return new Date();
+}
+export const dayKey = (d = today()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 export function solvesOn(key) { return Object.entries(state.solved).filter(([, iso]) => dayKey(new Date(iso)) === key).map(([id]) => id); }
 
 // ---- course lock ----
@@ -106,6 +112,7 @@ function positionText(run) {
 }
 export function dayDone(key) {
   const run = store.get("run." + key, null);
+  if (run && run.done !== undefined) return run.done;   // set by the Today page once reviews are counted
   if (run) return run.newIds.length > 0 && run.newIds.every((id) => state.solved[id]) && (!run.extraId || state.solved[run.extraId]);
   return solvesOn(key).length >= NEW_PER_DAY + 1;   // a day worked on another machine
 }

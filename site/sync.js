@@ -4,6 +4,7 @@
 // larger, drafts take whichever was edited last. A sync never deletes.
 import * as auth from "./auth.js";
 import { state, store, getDraft, saveSolved, saveFails } from "./progress.js";
+import * as reviews from "./reviews.js";
 
 const listeners = [];
 export function onSynced(fn) { listeners.push(fn); }
@@ -64,6 +65,12 @@ export const sync = {
     }
     saveSolved(); saveFails();
     if (toUpload.length) await auth.upsertProgress(this.user.id, toUpload);
+    // The review queue lives only in the account: pull it, then schedule any
+    // topic that turned out to be complete (a solve from the other machine).
+    try {
+      await reviews.refresh();
+      for (const concept of new Set(state.problems.map((p) => p.concept))) await reviews.scheduleTopicIfCleared(this.user, concept);
+    } catch (e) { this.note("Reviews unavailable: " + e.message); }
     this.note(toUpload.length ? `Synced: ${toUpload.length} problem${toUpload.length === 1 ? "" : "s"} updated in your account.` : "Synced.");
     notify(changedLocal ? "local-changed" : "merged");
   },

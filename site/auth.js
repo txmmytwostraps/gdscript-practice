@@ -55,10 +55,33 @@ export async function fetchProgress() {
   return map;
 }
 
+/** The user's review queue, as { problem_id: row }. */
+export async function fetchReviews() {
+  const { data, error } = await client.from("reviews").select("problem_id, topic, stage, due_on, step, clean_streak, last_result, reviewed_at");
+  if (error) throw new Error(error.message);
+  const map = {};
+  for (const row of data) map[row.problem_id] = row;
+  return map;
+}
+
+export async function upsertReviews(rowsToWrite) {
+  if (!rowsToWrite.length) return;
+  const { error } = await client.from("reviews").upsert(rowsToWrite, { onConflict: "user_id,problem_id" });
+  if (error) throw new Error(error.message);
+}
+
+/** One run that reached a verdict. kind: new | review | practice; result: pass | miss. */
+export async function insertAttempt(userId, problemId, kind, result) {
+  const { error } = await client.from("attempts").insert({ user_id: userId, problem_id: problemId, kind, result });
+  if (error) throw new Error(error.message);
+}
+
 /** Remove every progress row of this user (the "clear progress" control). */
 export async function deleteAllProgress(userId) {
-  const { error } = await client.from("progress").delete().eq("user_id", userId);
-  if (error) throw new Error(error.message);
+  for (const table of ["progress", "reviews", "attempts"]) {
+    const { error } = await client.from(table).delete().eq("user_id", userId);
+    if (error) throw new Error(error.message);
+  }
 }
 
 /** Insert-or-update rows. Each row: { problem_id, solved_at?, fails?, draft?, draft_updated_at? }. */

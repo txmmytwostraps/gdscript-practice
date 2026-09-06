@@ -6,6 +6,9 @@ import { sync, onSynced } from "./sync.js";
 const NAV = [["Today", "./"], ["Route", "route.html"], ["Practice", "practice.html"], ["Stats", "stats.html"]];
 
 export function mountShell(active, { stats = true } = {}) {
+  // Testing aid: ?today=YYYY-MM-DD makes every page believe it is that day.
+  const t = new URLSearchParams(location.search).get("today");
+  if (t !== null) { try { if (t) sessionStorage.setItem("gdp.today", t); else sessionStorage.removeItem("gdp.today"); } catch (e) {} }
   const header = document.createElement("header");
   header.className = "top";
   header.innerHTML = `

@@ -5,6 +5,14 @@ import { mountShell } from "./shell.js";
 import { sync, onSynced, exportProgress, clearProgress } from "./sync.js";
 import { store, state, loadBank, getDraft, setDraft, clearDraft, saveSolved, saveFails, todayRun, routeTopics, currentTopic } from "./progress.js";
 import { TOPICS } from "./route-data.js";
+import * as reviews from "./reviews.js";
+import * as auth from "./auth.js";
+
+// Review mode: practice.html?review=1#id walks through today's due reviews.
+const reviewMode = new URLSearchParams(location.search).has("review");
+let reviewIds = [];          // today's pending reviews, in order
+let attemptFails = 0;        // misses since this problem was opened
+let reviewRecorded = false;  // the first verdict of a review decides it
 
 const DIFF = ["novice", "beginner", "intermediate", "advanced"];
 const MAX_ERROR_LINES = 20;
@@ -167,6 +175,11 @@ function renderFilters() {
   renderTodayBar();
 }
 function renderTodayBar() {
+  if (reviewMode) {
+    const at = current ? reviewIds.indexOf(current.id) : -1;
+    el.todaybar.innerHTML = reviewIds.length ? `<span class="accent">Review</span><div class="segs">${reviewIds.map((id) => `<div class="${reviews.all()[id] && reviews.all()[id].reviewed_at && reviews.dueToday().doneToday.some((r) => r.problem_id === id) ? "on" : ""}"></div>`).join("")}</div><b>${at >= 0 ? at + 1 : "–"} / ${reviewIds.length} due today</b>` : `<span class="accent">Review</span><b>nothing due</b>`;
+    return;
+  }
   const run = todayRun();
   const n = run.newIds.length;
   el.todaybar.innerHTML = n ? `<span>${esc(run.topicTitle)}</span><div class="segs">${run.newIds.map((id) => `<div class="${state.solved[id] ? "on" : ""}"></div>`).join("")}</div><b>${run.newDone} / ${n} today</b>` : "";
@@ -223,12 +236,21 @@ async function showProblem(id, { keepResults = false } = {}) {
   renderFilters();
   renderProblem(p);
   const draft = getDraft(id);
-  editor.set(draft ? draft.code : p.starter);
-  el.saved.textContent = draft ? "saved" : "";
+  // A review starts from the starter, not from the old solution.
+  const inReview = reviewMode && reviewIds.includes(id);
+  editor.set(inReview ? p.starter : draft ? draft.code : p.starter);
+  el.saved.textContent = !inReview && draft ? "saved" : "";
+  attemptFails = 0; reviewRecorded = false;
+  if (inReview) { el.eyebrow.textContent = `// review · ${topicOf(p.concept) ? topicOf(p.concept).title.toLowerCase() : p.concept} · ${reviewIds.indexOf(id) + 1} of ${reviewIds.length}`; el.again.hidden = true; }
   if (!keepResults) clearResults();
   location.hash = id;
 }
 function pickNext() {
+  if (reviewMode) {   // next pending review, or back to Today when done
+    const next = reviews.dueToday().pending.find((r) => !current || r.problem_id !== current.id);
+    if (next) showProblem(next.problem_id); else location.href = "./";
+    return;
+  }
   const list = pool();
   if (list.length === 0) return;
   const unsolved = list.filter((p) => !state.solved[p.id] && (!current || p.id !== current.id));
@@ -279,11 +301,37 @@ function showErrors(errors, fallback) {
   const m = /line (\d+)/.exec(shown.join("\n"));
   if (m) editor.markError(Number(m[1]) - 1);
 }
-function recordFail(id) { state.fails[id] = (state.fails[id] || 0) + 1; saveFails(); if (current && current.id === id) updateSolutionLock(current); sync.push(id); }
+function recordFail(id) {
+  const wasNew = !state.solved[id];
+  state.fails[id] = (state.fails[id] || 0) + 1; saveFails(); attemptFails += 1;
+  if (current && current.id === id) updateSolutionLock(current);
+  sync.push(id);
+  logVerdict(id, false, wasNew);
+}
 function markSolved(id) {
-  if (!state.solved[id]) { state.solved[id] = new Date().toISOString(); saveSolved(); sync.push(id); }
+  const first = !state.solved[id];
+  if (first) { state.solved[id] = new Date().toISOString(); saveSolved(); sync.push(id); }
   if (current && current.id === id) { updateSolutionLock(current); el.again.hidden = false; }
   renderFilters();
+  logVerdict(id, true, first);
+  // Completing a topic starts its review week.
+  if (first && sync.user && current) reviews.scheduleTopicIfCleared(sync.user, current.concept).then((started) => { if (started) setVerdict("pass", "[x] Topic cleared", "Reviews for this topic start tomorrow: two a day for a week."); }).catch(() => {});
+}
+// Every verdict is an attempt; a review's first verdict decides its schedule.
+function logVerdict(id, passed, wasNew) {
+  if (!sync.user) return;
+  const inReview = reviewMode && reviewIds.includes(id);
+  const kind = inReview ? "review" : wasNew ? "new" : "practice";
+  auth.insertAttempt(sync.user.id, id, kind, passed ? "pass" : "miss").catch(() => {});
+  if (inReview && !reviewRecorded) {
+    reviewRecorded = true;
+    const clean = passed && attemptFails === 0;
+    reviews.recordResult(sync.user, id, passed, clean).then(() => {
+      renderTodayBar();
+      if (passed) setVerdict("pass", clean ? "[x] Review passed cleanly" : "[x] Passed after a miss", clean ? "Next review in a few days." : "This one comes back tomorrow until it is solved cleanly twice.");
+      else setVerdict("fail", `[x] Review missed · ${missText(id)}`, "It comes back tomorrow. You can keep working on it now; that will not change the schedule.");
+    }).catch((e) => sync.note("Could not save the review: " + e.message));
+  }
 }
 
 // ---------- wiring ----------
@@ -324,8 +372,16 @@ async function main() {
   });
 
   const fromHash = location.hash.slice(1);
-  const startId = state.byId.has(fromHash) ? fromHash : store.get("current", null);
-  if (startId && state.byId.has(startId)) await showProblem(startId); else pickNext();
+  if (reviewMode) {
+    try { await reviews.refresh(); } catch (e) { /* use the cached queue */ }
+    reviewIds = reviews.dueToday().pending.map((r) => r.problem_id);
+    el.next.textContent = "Next review ›";
+    if (reviewIds.length === 0) { setVerdict("pass", "[x] No reviews due", "Nothing to review right now."); location.href = "./"; return; }
+    await showProblem(reviewIds.includes(fromHash) ? fromHash : reviewIds[0]);
+  } else {
+    const startId = state.byId.has(fromHash) ? fromHash : store.get("current", null);
+    if (startId && state.byId.has(startId)) await showProblem(startId); else pickNext();
+  }
 
   const why = sessionStorage.getItem("gdp.reloaded");
   if (why) { sessionStorage.removeItem("gdp.reloaded"); setVerdict("warn", why === "crash" ? "[!] The judge crashed on your last run and was restarted" : "[!] Your last run took more than 5 seconds — probably an infinite loop", "The judge was restarted; your code is unchanged."); }
