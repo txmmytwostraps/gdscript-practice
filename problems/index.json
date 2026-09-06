@@ -510,6 +510,12 @@
       "difficulty": 1
     },
     {
+      "id": "gqret-018",
+      "title": "A helper that returns true or false",
+      "concept": "gq-return",
+      "difficulty": 0
+    },
+    {
       "id": "gqcond-001",
       "title": "Return a comparison",
       "concept": "gq-conditions",
@@ -604,12 +610,6 @@
       "title": "Smallest of three",
       "concept": "gq-conditions",
       "difficulty": 1
-    },
-    {
-      "id": "gqcond-017",
-      "title": "A helper that returns true or false",
-      "concept": "gq-conditions",
-      "difficulty": 0
     },
     {
       "id": "gqcond-018",
@@ -1039,7 +1039,7 @@
     },
     {
       "id": "gqdelta-003",
-      "title": "New position in 2D",
+      "title": "New y position",
       "concept": "gq-delta",
       "difficulty": 0
     },
@@ -1057,7 +1057,7 @@
     },
     {
       "id": "gqdelta-006",
-      "title": "Timer finished?",
+      "title": "Frames until the timer ends",
       "concept": "gq-delta",
       "difficulty": 0
     },

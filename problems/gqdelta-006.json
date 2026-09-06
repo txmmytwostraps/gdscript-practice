@@ -1,34 +1,34 @@
 {
   "id": "gqdelta-006",
-  "title": "Timer finished?",
+  "title": "Frames until the timer ends",
   "concept": "gq-delta",
   "difficulty": 0,
-  "prompt": "Return true if the timer runs out during this frame, that is, if time_left minus delta is zero or less.",
-  "signature": "func solve(time_left: float, delta: float) -> bool:",
-  "starter": "func solve(time_left: float, delta: float) -> bool:\n\treturn false",
+  "prompt": "A timer has time_left seconds to go and every frame lasts delta seconds. Return how many whole frames fit into the time left.",
+  "signature": "func solve(time_left: float, delta: float) -> int:",
+  "starter": "func solve(time_left: float, delta: float) -> int:\n\treturn 0",
   "tests": [
     {
       "args": [
         1,
-        0.5
+        0.25
       ],
-      "expect": false
-    },
-    {
-      "args": [
-        0.3,
-        0.5
-      ],
-      "expect": true
+      "expect": 4
     },
     {
       "args": [
         0.5,
-        0.5
+        0.2
       ],
-      "expect": true
+      "expect": 2
+    },
+    {
+      "args": [
+        0,
+        0.1
+      ],
+      "expect": 0
     }
   ],
-  "hint": "One subtraction and one comparison.",
-  "solution": "func solve(time_left: float, delta: float) -> bool:\n\treturn time_left - delta <= 0"
+  "hint": "Divide, then turn the result into a whole number with int(), which drops the decimals.",
+  "solution": "func solve(time_left: float, delta: float) -> int:\n\treturn int(time_left / delta)"
 }

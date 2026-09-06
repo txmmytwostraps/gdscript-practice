@@ -3,9 +3,3 @@ web/
 
 # Godot editor cache
 judge/.godot/
-
-# Local working files that stay out of the repository
-.claude/
-gdscript-practice-site-plan*.md
-review.html
-tools/build-review.js

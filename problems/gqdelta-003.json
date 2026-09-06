@@ -1,82 +1,37 @@
 {
   "id": "gqdelta-003",
-  "title": "New position in 2D",
+  "title": "New y position",
   "concept": "gq-delta",
   "difficulty": 0,
-  "prompt": "Same idea with vectors: return the new position after one frame, given the current position and a velocity in pixels per second.",
-  "signature": "func solve(position: Vector2, velocity: Vector2, delta: float) -> Vector2:",
-  "starter": "func solve(position: Vector2, velocity: Vector2, delta: float) -> Vector2:\n\treturn position + velocity",
+  "prompt": "A jumping character has a vertical position y and a vertical speed vy in pixels per second (down is positive). Return the new y after one frame.",
+  "signature": "func solve(y: float, vy: float, delta: float) -> float:",
+  "starter": "func solve(y: float, vy: float, delta: float) -> float:\n\treturn y + vy",
   "tests": [
     {
       "args": [
-        {
-          "$v2": [
-            0,
-            0
-          ]
-        },
-        {
-          "$v2": [
-            100,
-            50
-          ]
-        },
+        0,
+        100,
         0.1
       ],
-      "expect": {
-        "$v2": [
-          10,
-          5
-        ]
-      }
+      "expect": 10
     },
     {
       "args": [
-        {
-          "$v2": [
-            5,
-            5
-          ]
-        },
-        {
-          "$v2": [
-            0,
-            -10
-          ]
-        },
+        50,
+        -20,
         0.5
       ],
-      "expect": {
-        "$v2": [
-          5,
-          0
-        ]
-      }
+      "expect": 40
     },
     {
       "args": [
-        {
-          "$v2": [
-            1,
-            1
-          ]
-        },
-        {
-          "$v2": [
-            3,
-            3
-          ]
-        },
-        0
+        7,
+        0,
+        1
       ],
-      "expect": {
-        "$v2": [
-          1,
-          1
-        ]
-      }
+      "expect": 7
     }
   ],
-  "hint": "The starter forgets delta, so it moves a whole second per frame. Scale the velocity first.",
-  "solution": "func solve(position: Vector2, velocity: Vector2, delta: float) -> Vector2:\n\treturn position + velocity * delta"
+  "hint": "The starter forgets delta, so it moves a whole second per frame. Scale the speed first.",
+  "solution": "func solve(y: float, vy: float, delta: float) -> float:\n\treturn y + vy * delta"
 }

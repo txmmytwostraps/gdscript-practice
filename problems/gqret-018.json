@@ -1,7 +1,7 @@
 {
-  "id": "gqcond-017",
+  "id": "gqret-018",
   "title": "A helper that returns true or false",
-  "concept": "gq-conditions",
+  "concept": "gq-return",
   "difficulty": 0,
   "prompt": "Write `is_even`, which returns true when its parameter is even. solve returns is_even(n).",
   "signature": "func solve(n: int) -> bool:",

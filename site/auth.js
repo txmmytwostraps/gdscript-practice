@@ -5,9 +5,9 @@ import { SUPABASE_URL, SUPABASE_ANON_KEY } from "./config.js";
 export const enabled = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY && window.supabase);
 const client = enabled ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 
-// Where GitHub sends the user back to after signing in: this page, without
-// the problem hash (supabase-js puts its ?code= on the URL, then we clean it).
-const redirectTo = location.origin + location.pathname;
+// Where GitHub sends the user back to after signing in: the site folder
+// (the one address registered with Supabase), never a sub-page.
+const redirectTo = location.origin + location.pathname.replace(/[^/]*$/, "");
 
 export async function currentUser() {
   if (!client) return null;
@@ -53,6 +53,12 @@ export async function fetchProgress() {
   const map = {};
   for (const row of data) map[row.problem_id] = row;
   return map;
+}
+
+/** Remove every progress row of this user (the "clear progress" control). */
+export async function deleteAllProgress(userId) {
+  const { error } = await client.from("progress").delete().eq("user_id", userId);
+  if (error) throw new Error(error.message);
 }
 
 /** Insert-or-update rows. Each row: { problem_id, solved_at?, fails?, draft?, draft_updated_at? }. */

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practice · GDScript Practice</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="subbar">
+  <div class="pick">
+    <label class="label">Topic <select id="topic"></select></label>
+    <label class="label">Difficulty
+      <select id="difficulty"><option value="any">any</option><option value="0">novice</option><option value="1">beginner</option></select>
+    </label>
+    <div class="sequence">
+      <button type="button" class="btn small" id="prev" title="Previous problem">‹</button>
+      <span id="position">Problem – of –</span>
+      <button type="button" class="btn small" id="nextseq" title="Next problem in order">›</button>
+    </div>
+  </div>
+  <div class="dots" id="dots"></div>
+  <div class="today caps" id="todaybar"></div>
+</div>
+
+<main class="page workspace">
+  <section class="problem">
+    <div class="hero">
+      <div class="eyebrow" id="eyebrow">// loading</div>
+      <h2 id="title">Loading…</h2>
+    </div>
+    <p class="prompt" id="prompt"></p>
+    <div class="explain" id="signature-help"></div>
+    <p class="note" id="requirements" hidden></p>
+    <div class="toggles caps">
+      <button type="button" class="linkish" id="hint-toggle">[+] Hint</button>
+      <button type="button" class="linkish" id="solution-toggle">[#] Reference solution</button>
+    </div>
+    <p class="hint" id="hint" hidden></p>
+    <pre class="code" id="solution" hidden></pre>
+    <div class="tests">
+      <div class="label">Tests — the judge calls solve with each of these</div>
+      <div class="testlist" id="tests"></div>
+    </div>
+    <div class="tools caps">
+      <button type="button" class="linkish" id="again" hidden>[~] Practice again</button>
+      <button type="button" class="linkish" id="export">[v] Export progress</button>
+      <button type="button" class="linkish danger" id="clear">[x] Clear progress</button>
+    </div>
+  </section>
+
+  <section class="editor-pane">
+    <div class="toolbar">
+      <button id="run" class="btn primary" title="Ctrl+Enter">Run ⏎</button>
+      <button id="reset" class="btn">Reset</button>
+      <button id="next" class="btn">Next ›</button>
+      <span class="saved caps" id="saved"></span>
+      <span class="judge-status caps" id="judge-status">judge: loading…</span>
+    </div>
+    <div class="editor-host" id="editor-host">
+      <textarea id="editor" spellcheck="false"></textarea>
+    </div>
+    <section class="results" id="results" aria-live="polite">
+      <div class="verdict-row caps"><span class="verdict" id="verdict">Run your code to check it against the tests.</span><span class="count dim" id="count"></span></div>
+      <div id="message" class="message" hidden></div>
+      <table id="result-table" hidden></table>
+      <div id="output" hidden><div class="label">Printed output</div><pre id="output-lines"></pre></div>
+      <div id="errors" hidden><div class="label">Errors</div><pre id="error-lines"></pre></div>
+    </section>
+  </section>
+</main>
+
+<div id="judge-frame" class="judge-frame" aria-hidden="true"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/mode/simple.min.js"></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>

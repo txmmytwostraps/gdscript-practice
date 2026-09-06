@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stats · GDScript Practice</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="theme.css">
+<style>.page { grid-template-columns: 1fr; }</style>
+</head>
+<body>
+<main class="page">
+  <div style="display: flex; flex-direction: column; gap: 10px;">
+    <div class="eyebrow">// stats</div>
+    <h1>Stats</h1>
+    <div class="muted" style="font-size: 14px; max-width: 60ch;">Solves per topic, miss rates and streak history will appear here. For now the numbers live in the header and on the Route.</div>
+  </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script type="module">
+  import { mountShell } from "./shell.js";
+  import { loadBank } from "./progress.js";
+  const shell = mountShell("stats");
+  loadBank().then(() => shell.refresh());
+</script>
+</body>
+</html>
