@@ -28,6 +28,24 @@
     </label>
   </div>
   <div class="progress" id="progress"></div>
+  <div class="account">
+    <div id="account-off" hidden><span class="muted">Accounts not set up: progress stays in this browser.</span></div>
+    <div id="account-out" hidden>
+      <button type="button" id="github-signin">Sign in with GitHub</button>
+      <button type="button" id="email-toggle">Email</button>
+      <form id="email-form" class="email-form" hidden onsubmit="return false">
+        <input id="email" type="email" placeholder="email" autocomplete="username">
+        <input id="password" type="password" placeholder="password" autocomplete="current-password">
+        <button type="button" id="email-signin">Sign in</button>
+        <button type="button" id="email-signup">Create account</button>
+      </form>
+    </div>
+    <div id="account-in" hidden>
+      <span id="account-name"></span>
+      <button type="button" id="signout">Sign out</button>
+    </div>
+    <div id="account-note" class="muted" hidden></div>
+  </div>
 </header>
 
 <main class="workspace">
@@ -71,6 +89,7 @@
 
 <div id="judge-frame" class="judge-frame" aria-hidden="true"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/mode/simple.min.js"></script>
 <script type="module" src="app.js"></script>

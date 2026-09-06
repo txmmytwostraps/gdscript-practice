@@ -3,6 +3,7 @@
 // localStorage until accounts arrive.
 import { JudgeClient, tidyError } from "./judge-client.js";
 import { loadIndex, loadProblem } from "./problems.js";
+import * as auth from "./auth.js";
 
 const TOPIC_LABEL = {
   "gq-variables": "GDQuest 1: Introduction to variables",
@@ -31,6 +32,34 @@ const store = {
 let solved = store.get("solved", {});           // { id: ISO date }
 let fails = store.get("fails", {});             // { id: number of failed runs }
 const UNLOCK_AFTER = 2;                          // failed runs before the reference solution opens
+
+// Drafts: gdp.draft.<id> = { code, at } where at is an ISO time, so two
+// machines can be merged by "last edited wins". Older builds stored the bare
+// text under gdp.code.<id>; convert those on first sight.
+function getDraft(id) {
+  const d = store.get("draft." + id, null);
+  if (d && typeof d === "object") return d;
+  const old = store.get("code." + id, null);
+  if (typeof old === "string") { const conv = { code: old, at: new Date().toISOString() }; store.set("draft." + id, conv); store.remove("code." + id); return conv; }
+  return null;
+}
+function setDraft(id, code) {
+  const d = { code, at: new Date().toISOString() };
+  store.set("draft." + id, d);
+  return d;
+}
+function clearDraft(id) { store.remove("draft." + id); store.remove("code." + id); }
+
+// Days in a row with at least one solve, counting back from today (or from
+// yesterday, so a streak is not lost until a whole day is missed).
+function streakDays() {
+  const days = new Set(Object.values(solved).map((iso) => new Date(iso).toDateString()));
+  let count = 0;
+  const day = new Date();
+  if (!days.has(day.toDateString())) day.setDate(day.getDate() - 1);
+  while (days.has(day.toDateString())) { count++; day.setDate(day.getDate() - 1); }
+  return count;
+}
 let filters = store.get("filters", { topic: "gq-variables", difficulty: "any" });
 
 // ---------- DOM ----------
@@ -180,7 +209,8 @@ function renderFilters() {
   el.picker.innerHTML = list.map((p) => `<option value="${p.id}">${solved[p.id] ? "✓ " : ""}${esc(p.title)}</option>`).join("") || `<option value="">(no problems match)</option>`;
   if (current) el.picker.value = current.id;
   const total = problems.length, done = Object.keys(solved).filter((id) => byId.has(id)).length;
-  el.progress.textContent = `${done} / ${total} solved`;
+  const streak = streakDays();
+  el.progress.textContent = `${done} / ${total} solved` + (streak ? ` · ${streak}-day streak` : "");
 }
 
 // Plain-English reading of the first line, for readers who have not met
@@ -243,6 +273,7 @@ function recordFail(id) {
   fails[id] = (fails[id] || 0) + 1;
   store.set("fails", fails);
   if (current && current.id === id) updateSolutionLock(current);
+  sync.push(id);
 }
 
 function clearResults() {
@@ -258,7 +289,8 @@ async function showProblem(id, { keepResults = false } = {}) {
   current = p;
   store.set("current", id);
   renderProblem(p);
-  editor.set(store.get("code." + id, p.starter));
+  const draft = getDraft(id);
+  editor.set(draft ? draft.code : p.starter);
   if (!keepResults) clearResults();
   renderFilters();
   location.hash = id;
@@ -337,8 +369,89 @@ function showErrors(errors, fallback) {
 }
 
 function markSolved(id) {
-  if (!solved[id]) { solved[id] = new Date().toISOString(); store.set("solved", solved); renderFilters(); }
+  if (!solved[id]) { solved[id] = new Date().toISOString(); store.set("solved", solved); renderFilters(); sync.push(id); }
   if (current && current.id === id) updateSolutionLock(current);
+}
+
+// ---------- account + sync ----------
+// Local storage is always the working copy. When signed in, every change is
+// also written to the progress table, and on sign-in the two are MERGED:
+// solves are a union (earliest date kept), fail counts take the larger,
+// drafts take whichever was edited last. A sync never deletes anything.
+const sync = {
+  user: null,
+  pending: new Set(),
+  timer: null,
+  rowFor(id) {
+    const d = getDraft(id);
+    return { problem_id: id, solved_at: solved[id] || null, fails: fails[id] || 0, draft: d ? d.code : null, draft_updated_at: d ? d.at : null };
+  },
+  push(id) {
+    if (!this.user) return;
+    this.pending.add(id);
+    clearTimeout(this.timer);
+    this.timer = setTimeout(() => this.flush(), 800);
+  },
+  async flush() {
+    if (!this.user || this.pending.size === 0) return;
+    const ids = [...this.pending]; this.pending.clear();
+    try { await auth.upsertProgress(this.user.id, ids.map((id) => this.rowFor(id))); setAccountNote(""); }
+    catch (e) { ids.forEach((id) => this.pending.add(id)); setAccountNote("Could not save to your account: " + e.message); }
+  },
+  async mergeOnLogin() {
+    setAccountNote("Syncing…");
+    const remote = await auth.fetchProgress();
+    const ids = new Set([...Object.keys(remote), ...Object.keys(solved), ...Object.keys(fails)]);
+    for (const key of Object.keys(localStorage)) if (key.startsWith("gdp.draft.") || key.startsWith("gdp.code.")) ids.add(key.replace(/^gdp\.(draft|code)\./, ""));
+    const toUpload = [];
+    let changedLocal = false;
+    for (const id of ids) {
+      const r = remote[id] || {};
+      const localDraft = getDraft(id);
+      // solves: union, earliest wins
+      const dates = [solved[id], r.solved_at].filter(Boolean).sort();
+      const solvedAt = dates[0] || null;
+      // fails: max
+      const failCount = Math.max(fails[id] || 0, r.fails || 0);
+      // draft: latest edit wins
+      let draft = localDraft;
+      if (r.draft && (!localDraft || (r.draft_updated_at || "") > (localDraft.at || ""))) draft = { code: r.draft, at: r.draft_updated_at };
+      // apply locally
+      if (solvedAt && solved[id] !== solvedAt) { solved[id] = solvedAt; changedLocal = true; }
+      if (failCount !== (fails[id] || 0)) { fails[id] = failCount; changedLocal = true; }
+      if (draft && (!localDraft || draft.code !== localDraft.code)) { store.set("draft." + id, draft); changedLocal = true; }
+      // upload if remote differs
+      const remoteDraftAt = r.draft_updated_at || null;
+      if ((r.solved_at || null) !== solvedAt || (r.fails || 0) !== failCount || (r.draft || null) !== (draft ? draft.code : null) || (draft && remoteDraftAt !== draft.at)) {
+        toUpload.push({ problem_id: id, solved_at: solvedAt, fails: failCount, draft: draft ? draft.code : null, draft_updated_at: draft ? draft.at : null });
+      }
+    }
+    store.set("solved", solved); store.set("fails", fails);
+    if (toUpload.length) await auth.upsertProgress(this.user.id, toUpload);
+    if (changedLocal && current) { const d = getDraft(current.id); editor.set(d ? d.code : current.starter); updateSolutionLock(current); }
+    renderFilters();
+    setAccountNote(toUpload.length ? `Synced: ${toUpload.length} problem${toUpload.length === 1 ? "" : "s"} updated in your account.` : "Synced.");
+  },
+};
+
+function setAccountNote(text) { const n = $("account-note"); n.textContent = text; n.hidden = !text; }
+
+function renderAccount() {
+  const u = sync.user;
+  $("account-out").hidden = Boolean(u) || !auth.enabled;
+  $("account-in").hidden = !u;
+  $("account-off").hidden = auth.enabled;
+  if (u) $("account-name").textContent = auth.displayName(u);
+  $("email-form").hidden = true;
+}
+
+async function setUser(u) {
+  const was = sync.user && sync.user.id;
+  sync.user = u;
+  renderAccount();
+  if (u && u.id !== was) {
+    try { await sync.mergeOnLogin(); } catch (e) { setAccountNote("Sync failed: " + e.message); }
+  }
 }
 
 // ---------- wiring ----------
@@ -350,7 +463,8 @@ async function main() {
     clearTimeout(saveTimer);
     saveTimer = setTimeout(() => {
       const text = editor.get();
-      if (text === current.starter) store.remove("code." + current.id); else store.set("code." + current.id, text);
+      if (text === current.starter) clearDraft(current.id); else setDraft(current.id, text);
+      sync.push(current.id);
     }, 300);
   });
 
@@ -363,7 +477,22 @@ async function main() {
   el.picker.addEventListener("change", () => { if (el.picker.value) showProblem(el.picker.value); });
   el.run.addEventListener("click", runCode);
   el.next.addEventListener("click", pickNext);
-  el.reset.addEventListener("click", () => { if (current) { store.remove("code." + current.id); editor.set(current.starter); clearResults(); editor.focus(); } });
+  el.reset.addEventListener("click", () => { if (current) { clearDraft(current.id); editor.set(current.starter); clearResults(); editor.focus(); sync.push(current.id); } });
+
+  // Account UI
+  renderAccount();
+  if (auth.enabled) {
+    $("github-signin").addEventListener("click", () => auth.signInWithGitHub());
+    $("email-toggle").addEventListener("click", () => { const f = $("email-form"); f.hidden = !f.hidden; if (!f.hidden) $("email").focus(); });
+    $("email-signin").addEventListener("click", async () => { const err = await auth.signInWithEmail($("email").value.trim(), $("password").value); setAccountNote(err || ""); });
+    $("email-signup").addEventListener("click", async () => { const err = await auth.signUpWithEmail($("email").value.trim(), $("password").value); setAccountNote(err || "Account created."); });
+    $("signout").addEventListener("click", async () => { await sync.flush(); await auth.signOut(); setAccountNote("Signed out. Progress stays in this browser."); });
+    auth.onAuthChange((u) => { setUser(u); });
+    const u = await auth.currentUser();
+    if (u) await setUser(u);
+    if (location.search.includes("code=")) history.replaceState(null, "", location.pathname + location.hash);   // tidy the OAuth return URL
+  }
+  window.addEventListener("beforeunload", () => { sync.flush(); });
 
   const fromHash = location.hash.slice(1);
   const startId = byId.has(fromHash) ? fromHash : store.get("current", null);
