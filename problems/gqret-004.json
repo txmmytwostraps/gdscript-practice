@@ -3,7 +3,7 @@
   "title": "Use a returned value",
   "concept": "gq-return",
   "difficulty": 0,
-  "prompt": "Write `square`, which returns its parameter times itself. In solve, store square(n) in a variable, add 1 to it, and return the result.",
+  "prompt": "Write `square`, which returns its parameter times itself. In solve, store square(n) in a variable, add the number `1` to it, and return the result.",
   "signature": "func solve(n: int) -> int:",
   "starter": "func solve(n: int) -> int:\n\treturn n",
   "require_methods": [

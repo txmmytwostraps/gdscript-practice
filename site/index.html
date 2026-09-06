@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GDScript Practice</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <h1>GDScript Practice</h1>
+  <div class="filters">
+    <label>Topic
+      <select id="topic"></select>
+    </label>
+    <label>Difficulty
+      <select id="difficulty">
+        <option value="any">any</option>
+        <option value="0">novice</option>
+        <option value="1">beginner</option>
+      </select>
+    </label>
+    <label>Problem
+      <select id="picker"></select>
+    </label>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
+
+<main class="workspace">
+  <section class="problem" id="problem">
+    <header>
+      <h2 id="title">Loading…</h2>
+      <span class="id" id="pid"></span>
+      <span class="diff" id="pdiff"></span>
+    </header>
+    <p class="prompt" id="prompt"></p>
+    <p class="note signature-help" id="signature-help"></p>
+    <p class="note" id="requirements" hidden></p>
+    <details id="hintbox"><summary>Hint</summary><p id="hint"></p></details>
+    <p class="note locked" id="solution-locked" hidden></p>
+    <details id="solutionbox"><summary>Reference solution</summary><pre class="code" id="solution"></pre></details>
+    <div class="tests">
+      <div class="label">Tests</div>
+      <p class="note">When you press Run, the judge calls your <code>solve</code> with each of these values and checks what comes back.</p>
+      <table id="tests"></table>
+    </div>
+  </section>
+
+  <section class="editor-pane">
+    <div class="toolbar">
+      <button id="run" class="primary" title="Ctrl+Enter">Run</button>
+      <button id="reset">Reset to starter</button>
+      <button id="next">Next problem</button>
+      <span class="judge-status" id="judge-status">judge: loading…</span>
+    </div>
+    <div class="editor-host" id="editor-host">
+      <textarea id="editor" spellcheck="false"></textarea>
+    </div>
+    <section class="results" id="results" aria-live="polite">
+      <div class="verdict" id="verdict">Run your code to check it against the tests.</div>
+      <table id="result-table" hidden></table>
+      <div id="output" hidden><div class="label">Printed output</div><pre id="output-lines"></pre></div>
+      <div id="errors" hidden><div class="label">Errors</div><pre id="error-lines"></pre></div>
+    </section>
+  </section>
+</main>
+
+<div id="judge-frame" class="judge-frame" aria-hidden="true"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/mode/simple.min.js"></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>

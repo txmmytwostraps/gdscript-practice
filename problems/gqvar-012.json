@@ -3,7 +3,7 @@
   "title": "Count up three times",
   "concept": "gq-variables",
   "difficulty": 0,
-  "prompt": "The variable `count` starts at 0. Add 1 to it three separate times, one line each. Return count.",
+  "prompt": "The variable `count` starts at 0. Add the number `1` to it three separate times, one line each. Return count.",
   "signature": "func solve() -> int:",
   "starter": "func solve() -> int:\n\tvar count = 0\n\treturn count",
   "tests": [

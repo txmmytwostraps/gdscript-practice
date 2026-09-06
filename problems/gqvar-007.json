@@ -3,7 +3,7 @@
   "title": "Update with -=",
   "concept": "gq-variables",
   "difficulty": 0,
-  "prompt": "The variable `health` starts with the value of hp. Take away 20 using -=. Return health.",
+  "prompt": "The variable `health` starts with the value of hp. Take away the number `20` from it using `-=`. Return health.",
   "signature": "func solve(hp: int) -> int:",
   "starter": "func solve(hp: int) -> int:\n\tvar health = hp\n\treturn health",
   "tests": [

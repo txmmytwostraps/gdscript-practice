@@ -3,7 +3,7 @@
   "title": "Copy a variable, then change the original",
   "concept": "gq-variables",
   "difficulty": 1,
-  "prompt": "The variable `a` starts as n. Make a second variable `b` equal to a. Then add 1 to a, and return b. Does b change too?",
+  "prompt": "The variable `a` starts as n. Make a second variable `b` equal to a. Then add the number `1` to a, and return b. Does b change too?",
   "signature": "func solve(n: int) -> int:",
   "starter": "func solve(n: int) -> int:\n\tvar a = n\n\tvar b = a\n\ta += 1\n\treturn a",
   "tests": [

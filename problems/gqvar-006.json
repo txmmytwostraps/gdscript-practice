@@ -3,7 +3,7 @@
   "title": "Update with +=",
   "concept": "gq-variables",
   "difficulty": 0,
-  "prompt": "The variable `coins` starts with the value of n. Add 5 to it using +=. Return coins.",
+  "prompt": "The variable `coins` starts with the value of n. Add the number `5` to it using `+=`. Return coins.",
   "signature": "func solve(n: int) -> int:",
   "starter": "func solve(n: int) -> int:\n\tvar coins = n\n\treturn coins",
   "tests": [

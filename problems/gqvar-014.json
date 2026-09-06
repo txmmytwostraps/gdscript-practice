@@ -3,7 +3,7 @@
   "title": "Add to a decimal",
   "concept": "gq-variables",
   "difficulty": 0,
-  "prompt": "The variable `distance` starts at 1.5. Add 2.25 to it twice using +=. Return distance.",
+  "prompt": "The variable `distance` starts at 1.5. Add the number `2.25` to it twice using `+=`. Return distance.",
   "signature": "func solve() -> float:",
   "starter": "func solve() -> float:\n\tvar distance = 1.5\n\treturn distance",
   "tests": [

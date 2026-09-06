@@ -3,7 +3,7 @@
   "title": "Add ten",
   "concept": "variables",
   "difficulty": 0,
-  "prompt": "A variable `score` starts out equal to n. Add 10 to it, then return score.",
+  "prompt": "A variable `score` starts out equal to n. Add the number `10` to it, then return score.",
   "signature": "func solve(n: int) -> int:",
   "starter": "func solve(n: int) -> int:\n\tvar score = n\n\treturn score",
   "tests": [

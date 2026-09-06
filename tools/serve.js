@@ -27,7 +27,7 @@ http.createServer((req, res) => {
     if (err) { res.writeHead(404); return res.end("404 " + p); }
     // The judge runs in a sandboxed iframe (opaque origin), so its requests count as
     // cross-origin and need this header. GitHub Pages sends it too.
-    res.writeHead(200, { "Content-Type": mime[path.extname(file)] || "application/octet-stream", "Access-Control-Allow-Origin": "*" });
+    res.writeHead(200, { "Content-Type": mime[path.extname(file)] || "application/octet-stream", "Access-Control-Allow-Origin": "*", "Cache-Control": "no-cache" });
     res.end(data);
   });
 }).listen(port, () => console.log(`serving ${root} at http://localhost:${port}/`));
