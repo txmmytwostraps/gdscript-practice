@@ -33,35 +33,76 @@
       <div class="eyebrow" id="eyebrow">// loading</div>
       <h2 id="title">Loading…</h2>
     </div>
-    <p class="prompt" id="prompt"></p>
-    <div class="explain" id="signature-help"></div>
-    <p class="note" id="requirements" hidden></p>
-    <div class="hints" id="hints"></div>
-    <div class="nudge" id="nudge">
-      <div class="toggles caps"><button type="button" class="linkish" id="nudge-btn">[?] Nudge — a pointer, not the answer</button><span class="dim" id="nudge-note"></span></div>
-      <div class="nudge-reply" id="nudge-reply" hidden></div>
-    </div>
-    <div class="toggles caps">
-      <button type="button" class="linkish" id="solution-toggle">[#] Reference solution</button>
-    </div>
-    <pre class="code" id="solution" hidden></pre>
-    <div class="tests">
-      <div class="label">Tests — each row is one call the judge makes</div>
-      <div class="testlist" id="tests"></div>
-    </div>
-    <div class="docs" id="docs" hidden>
-      <div class="label">Documentation — what this problem uses</div>
-      <div class="doclist" id="doclist"></div>
-    </div>
-    <div class="caps" id="cardlinks" style="font-size: 12px;"></div>
-    <div class="notebox">
-      <div class="label" style="display: flex; justify-content: space-between; gap: 12px;"><span>Notes — what I don't get / what I missed</span><a href="notes.html" style="text-transform: none; letter-spacing: 0;">All notes ›</a></div>
-      <textarea id="note" rows="3" spellcheck="true" placeholder="Write it down while it is fresh. It is saved as you type."></textarea>
-      <div class="caps" style="display: flex; gap: 14px; align-items: center; font-size: 12px;">
-        <label class="muted" style="display: flex; gap: 6px; align-items: center;"><input type="checkbox" id="note-resolved"> Resolved</label>
-        <span class="dim" id="note-saved"></span>
+
+    <section class="block">
+      <div class="h2">Goal</div>
+      <div class="goal">
+        <div class="writeline" id="writeline"></div>
+        <p class="prompt" id="prompt"></p>
+        <p class="note" id="requirements" hidden></p>
+        <div class="explain" id="signature-help" hidden></div>
       </div>
+    </section>
+
+    <section class="block">
+      <div class="h2">Tests</div>
+      <div class="testlist" id="tests"></div>
+    </section>
+
+    <details class="fold" id="help-fold">
+      <summary><span>Help <span class="dim">—</span> <span id="help-summary" class="muted">…</span></span><span class="dim" id="help-level"></span></summary>
+      <div class="fold-body">
+        <div class="nudge" id="nudge">
+          <div class="toggles caps"><button type="button" class="linkish" id="nudge-btn">[?] Nudge — a pointer, not the answer</button><span class="dim" id="nudge-note"></span></div>
+          <div class="nudge-reply" id="nudge-reply" hidden></div>
+        </div>
+        <div class="hints" id="hints"></div>
+        <div class="toggles caps">
+          <button type="button" class="linkish" id="solution-toggle">[#] Reference solution</button>
+        </div>
+        <pre class="code" id="solution" hidden></pre>
+        <div class="docs" id="docs" hidden>
+          <div class="label">Documentation — what this problem uses</div>
+          <div class="doclist" id="doclist"></div>
+        </div>
+        <div class="caps" id="cardlinks" style="font-size: 12px;"></div>
+      </div>
+    </details>
+
+    <details class="fold" id="note-fold">
+      <summary><span id="note-summary" class="muted">Add a note</span><a href="notes.html" class="dim">All notes ›</a></summary>
+      <div class="fold-body">
+        <div class="notebox">
+          <textarea id="note" rows="3" spellcheck="true" placeholder="What you did not get, or what you missed. Saved as you type."></textarea>
+          <div class="caps" style="display: flex; gap: 14px; align-items: center; font-size: 12px;">
+            <label class="muted" style="display: flex; gap: 6px; align-items: center;"><input type="checkbox" id="note-resolved"> Resolved</label>
+            <span class="dim" id="note-saved"></span>
+          </div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <section class="editor-pane">
+    <div class="toolbar">
+      <button id="run" class="btn primary" title="Ctrl+Enter">Run ⏎</button>
+      <button id="reset" class="btn">Reset</button>
+      <button id="next" class="btn">Next ›</button>
+      <div class="seg" id="modes"></div>
+      <span class="saved caps" id="saved"></span>
+      <span class="judge-status caps" id="judge-status">judge: loading…</span>
     </div>
+    <div class="editor-host" id="editor-host">
+      <textarea id="editor" spellcheck="false"></textarea>
+    </div>
+    <div class="parsons" id="parsons" hidden></div>
+    <section class="results idle" id="results" aria-live="polite">
+      <div class="verdict-head"><div class="verdict" id="verdict">Run to check</div><div class="verdict-sub caps" id="verdict-sub" hidden></div><div class="count caps dim" id="count"></div></div>
+      <div id="message" class="message" hidden></div>
+      <table id="result-table" hidden></table>
+      <div id="output" hidden><div class="label">Printed output</div><pre id="output-lines"></pre></div>
+      <div id="errors" hidden><div class="label">Errors</div><pre id="error-lines"></pre></div>
+    </section>
     <div class="tools caps">
       <button type="button" class="linkish" id="ask">[?] Ask Claude — copy a prompt</button>
       <span class="dim" id="ask-note"></span>
@@ -71,28 +112,6 @@
       <button type="button" class="linkish" id="export">[v] Export progress</button>
       <button type="button" class="linkish danger" id="clear">[x] Clear progress</button>
     </div>
-  </section>
-
-  <section class="editor-pane">
-    <div class="toolbar">
-      <button id="run" class="btn primary" title="Ctrl+Enter">Run ⏎</button>
-      <button id="reset" class="btn">Reset</button>
-      <button id="next" class="btn">Next ›</button>
-      <span class="saved caps" id="saved"></span>
-      <span class="judge-status caps" id="judge-status">judge: loading…</span>
-    </div>
-    <div class="editor-host" id="editor-host">
-      <textarea id="editor" spellcheck="false"></textarea>
-    </div>
-    <div class="parsons" id="parsons" hidden></div>
-    <div class="modes caps" id="modes"></div>
-    <section class="results" id="results" aria-live="polite">
-      <div class="verdict-head"><div class="verdict" id="verdict">Run your code to check it against the tests.</div><div class="verdict-sub caps" id="verdict-sub" hidden></div><div class="count caps dim" id="count"></div></div>
-      <div id="message" class="message" hidden></div>
-      <table id="result-table" hidden></table>
-      <div id="output" hidden><div class="label">Printed output</div><pre id="output-lines"></pre></div>
-      <div id="errors" hidden><div class="label">Errors</div><pre id="error-lines"></pre></div>
-    </section>
   </section>
   <section class="side" id="side" hidden></section>
 </main>

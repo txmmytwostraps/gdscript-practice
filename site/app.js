@@ -197,6 +197,7 @@ function renderProblem(p) {
   el.eyebrow.textContent = `// ${t ? t.title.toLowerCase() : p.concept} · problem ${at + 1} of ${list.length} · ${DIFF[p.difficulty]}`;
   el.title.textContent = p.title;
   el.prompt.innerHTML = rich(p.prompt);
+  $("writeline").innerHTML = `Write a function called <code>${esc(fnName(p))}</code>.`;
   $("signature-help").innerHTML = hasInputs(p) ? describeSignature(p.signature, p.tests.every((tt) => tt.expect === null && tt.out), fnName(p)) : "";
   $("signature-help").hidden = !hasInputs(p);
   const reqs = [];
@@ -207,7 +208,7 @@ function renderProblem(p) {
   const hints = Array.isArray(p.hints) ? p.hints : (p.hint ? [p.hint] : []);
   const level = scaffold.levelFor(p.concept);
   el.hints.innerHTML = hints.map((h, i) => `<div class="stage"><button type="button" class="linkish" data-hint="${i}">[+] Hint ${i + 1} of ${hints.length}</button><p hidden>${rich(h)}</p></div>`).join("")
-    + (hints.length ? `<div class="caps dim" id="hintlevel" style="font-size:11px"></div>` : "");
+    + "";
   renderHintLocks(p);
   el.solution.innerHTML = highlight(p.solution); el.solution.hidden = true;
   const many = p.tests.length > 1, inputs = showsCall(p);
@@ -221,6 +222,7 @@ function renderProblem(p) {
   el.doclist.innerHTML = docs.map((d) => `<div class="row"><code>${esc(d.name)}</code><span>${esc(d.what)}</span></div>`).join("");
   const cards = cardsForConcept(p.concept);
   $("cardlinks").innerHTML = cards.length ? `<span class="muted">Concept cards:</span> ${cards.map((c) => `<a href="concepts.html#${c.id}">${esc(c.name)}</a>`).join(" · ")}` : "";
+  $("help-summary").textContent = [`${hints.length} hint${hints.length === 1 ? "" : "s"}`, "reference", docs.length ? `${docs.length} doc${docs.length === 1 ? "" : "s"}` : "", cards.length ? `${cards.length} card${cards.length === 1 ? "" : "s"}` : ""].filter(Boolean).join(" · ");
   el.again.hidden = !state.solved[p.id];
   updateSolutionLock(p);
   document.title = `${p.title} · GDScript Practice`;
@@ -247,8 +249,8 @@ function renderHintLocks(p) {
     if (!open) { b.nextElementSibling.hidden = true; b.textContent = `[#] Hint ${i + 1} of ${total} — ${scaffold.hintLockText(level, i)}`; }
     else if (b.textContent.startsWith("[#]")) b.textContent = `[+] Hint ${i + 1} of ${total}`;
   });
-  const lv = $("hintlevel");
-  if (lv) lv.innerHTML = `Hints: <b>${level}</b>${scaffold.overrideFor(p.concept) ? " (set by hand)" : ""} · <a href="route.html#${p.concept}">change on the route</a>`;
+  const lv = $("help-level");
+  if (lv) lv.innerHTML = `<span title="hint level">${level}${scaffold.overrideFor(p.concept) ? " (by hand)" : ""}</span> · <a href="route.html#${p.concept}">change</a>`;
 }
 // A pass or a miss gets a large heading; the detail goes on the line under it.
 function setVerdict(kind, text, message) {
@@ -259,11 +261,11 @@ function setVerdict(kind, text, message) {
   setVerdictRest(kind, text, message);
 }
 function setVerdictRest(kind, text, message) {
-  el.results.className = "results " + kind;
+  el.results.className = "results " + (kind || "");
   el.message.textContent = message || ""; el.message.hidden = !message;
 }
 function clearResults() {
-  setVerdict("", "Run your code to check it against the tests.");
+  setVerdict("idle", "Run to check");
   el.count.textContent = ""; el.resultTable.hidden = true; el.output.hidden = true; el.errors.hidden = true;
   editor.markError(null);
 }
@@ -309,12 +311,15 @@ function renderNote(p) {
   el.note.value = n ? n.text : "";
   el.noteResolved.checked = Boolean(n && n.resolved);
   el.noteSaved.textContent = n && n.text ? `saved ${n.updated_at ? dayKey(new Date(n.updated_at)) : ""}` : "";
+  const first = n && n.text.trim() ? n.text.trim().split("\n")[0] : "";
+  $("note-summary").textContent = first ? (first.length > 70 ? first.slice(0, 70) + "…" : first) : "Add a note";
+  $("note-summary").classList.toggle("muted", !first);
   el.askNote.textContent = "";
 }
 async function saveNote(patch) {
   if (!current) return;
   el.noteSaved.textContent = "…";
-  try { await notes.save(sync.user, current.id, patch); el.noteSaved.textContent = sync.user ? "saved to your account" : "saved in this browser"; }
+  try { await notes.save(sync.user, current.id, patch); el.noteSaved.textContent = sync.user ? "saved to your account" : "saved in this browser"; const first = el.note.value.trim().split("\n")[0]; $("note-summary").textContent = first ? (first.length > 70 ? first.slice(0, 70) + "…" : first) : "Add a note"; $("note-summary").classList.toggle("muted", !first); }
   catch (e) { el.noteSaved.textContent = "saved here only: " + e.message; }
 }
 // The prompt Tim pastes into a Claude chat: the problem, the code as it is,
@@ -416,10 +421,15 @@ async function plantBug(p) {
 function renderModes(p) {
   const base = `practice.html#${p.id}`;
   const link = (m, text) => (activeMode === m ? `<span class="dim">${text}</span>` : `<a href="practice.html?mode=${m}#${p.id}">${text}</a>`);
-  const stuck = activeMode === "normal" && (state.fails[p.id] || 0) >= unlockAfter(p) && !state.solved[p.id] ? `<span class="amber">[!] Stuck? Try it as a Parsons: </span>` : "";
+
   const canDrill = state.problems.some((x) => x.concept === p.concept && x.variants);
-  if (drillTopic) { $("modes").innerHTML = `<span class="muted">Drilling this topic with fresh numbers.</span> <a href="practice.html#${p.id}">Back to the problems</a>`; return; }
-  $("modes").innerHTML = `${stuck}<span class="muted">Try as:</span> ${activeMode === "normal" ? `<span class="dim">normal</span>` : `<a href="${base}">normal</a>`} · ${link("parsons", "[~] put the lines in order")} · ${link("bug", "[~] fix the bug")}${canDrill ? ` · <a href="practice.html?drill=${p.concept}">[~] drill this topic</a>` : ""}`;
+  if (drillTopic) { $("modes").innerHTML = `<span class="on">Drill</span><a href="practice.html#${p.id}">Back</a>`; return; }
+  const inReviewNow = reviewMode && reviewIds.includes(p.id);
+  const orderOk = !inReviewNow && p.solution.split("\n").filter((l) => l.trim()).length >= 2;
+  const bugOk = !inReviewNow && candidates(p.solution, p.id).length > 0;
+  const segItem = (m, text, ok) => activeMode === m ? `<span class="on">${text}</span>` : ok ? `<a href="${m === "normal" ? base : `practice.html?mode=${m}#${p.id}`}">${text}</a>` : `<span class="off" title="not available for this problem">${text}</span>`;
+  $("modes").innerHTML = segItem("normal", "Normal", !inReviewNow) + segItem("parsons", "Order", orderOk) + segItem("bug", "Bug", bugOk) + (canDrill && !inReviewNow ? `<a href="practice.html?drill=${p.concept}" title="fresh numbers, endlessly">Drill</a>` : "");
+
 }
 // ---------- drill ----------
 function drillVerdict(passed, id) {
@@ -488,6 +498,8 @@ async function runCode() {
   catch (e) { if (!e.timedOut) setVerdict("fail", "Could not run", e.message); }
   finally { running = false; if (el.judgeStatus.classList.contains("ready")) el.run.disabled = false; }
 }
+// After enough misses, the miss verdict points at the Order mode.
+function stuckText(p) { return activeMode === "normal" && (state.fails[p.id] || 0) >= unlockAfter(p) && !state.solved[p.id] ? "Stuck? Try it as Order: put the solution's lines back in order." : ""; }
 function missText(id) { const after = current ? unlockAfter(current) : 2; return `miss ${Math.min(state.fails[id] || 0, after)} of ${after}`; }
 function renderResult(result, errors) {
   el.resultTable.hidden = true; el.output.hidden = true; el.errors.hidden = true;
@@ -498,7 +510,7 @@ function renderResult(result, errors) {
   if (result.status === "error") { miss(p.id); setVerdict("fail", drill ? "Not yet" : `${missText(p.id)}`, result.error); el.count.textContent = `0 / ${p.tests.length} tests`; showErrors(errors); return; }
   const allPass = result.passed === result.total;
   if (!allPass) miss(p.id);
-  setVerdict(allPass ? "pass" : "fail", allPass ? (drill ? "Variant solved · counts as practice" : "All tests pass · solved") : drill ? "Not yet" : `Not yet · ${missText(p.id)}`, allPass && drill ? "" : "");
+  setVerdict(allPass ? "pass" : "fail", allPass ? (drill ? "Variant solved · counts as practice" : "All tests pass · solved") : drill ? "Not yet" : `Not yet · ${missText(p.id)}`, allPass && drill ? "" : allPass ? "" : stuckText(p));
   if (allPass && drill) { el.message.innerHTML = `<button type="button" class="btn primary" id="drill-next">Next variant →</button>`; el.message.hidden = false; el.run.disabled = true; el.run.classList.add("dim"); }
   el.count.textContent = `${result.passed} / ${result.total} tests`;
   const printOnly = p.tests.some((t) => t.expect === null && t.out);
@@ -570,14 +582,15 @@ function layout() {
   if (wide === wideLayout) return;
   wideLayout = wide;
   const side = $("side"), problem = document.querySelector(".problem"), pane = document.querySelector(".editor-pane");
-  const movers = [el.results, document.querySelector(".notebox"), el.ask.closest(".tools"), el.again.closest(".tools")];
+  const movers = [el.results, el.ask.closest(".tools"), el.again.closest(".tools")];
   if (wide) { for (const m of movers) side.appendChild(m); side.hidden = false; }
-  else { side.hidden = true; pane.appendChild(el.results); for (const m of movers.slice(1)) problem.appendChild(m); }
+  else { side.hidden = true; for (const m of movers) pane.appendChild(m); }
 }
 
 // ---------- wiring ----------
 async function main() {
   const shell = mountShell("practice", { stats: true });
+  for (const id of ["help-fold", "note-fold"]) { const d = $(id); d.open = Boolean(store.get("fold." + id, false)); d.addEventListener("toggle", () => store.set("fold." + id, d.open)); }
   layout();
   matchMedia("(min-width: 1700px)").addEventListener("change", layout);
   window.addEventListener("resize", layout);

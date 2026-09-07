@@ -142,3 +142,48 @@
 .testlist .check { grid-column: 1 / -1; font-size: 11px; color: var(--dim); margin-top: 2px; text-transform: none; letter-spacing: 0; }
 .testlist .verb, #result-table .verb { color: var(--muted); font-size: 12px; }
 #result-table .check { display: block; text-transform: none; letter-spacing: 0; color: var(--dim); margin-top: 2px; }
+
+
+/* reading order: goal → tests → editor → result */
+.label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dim); }
+.block { display: flex; flex-direction: column; gap: 8px; }
+.h2 { font-family: var(--head); font-weight: 700; font-size: 18px; }
+.goal { padding: 14px 16px; background: var(--panel); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px; }
+.writeline { font-size: 13px; color: var(--muted); } .writeline code { background: var(--line); color: var(--accent); padding: 1px 6px; }
+.writeline:empty { display: none; }
+.goal .explain { padding: 0; border: 0; background: transparent; color: var(--dim); font-size: 12px; }
+.goal .explain code { color: var(--muted); background: transparent; padding: 0; }
+.testlist { border-left: 3px solid var(--accent); }
+.fold { border: 1px solid var(--line); background: var(--panel); }
+.fold summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 12px; align-items: baseline; padding: 12px 16px; font-size: 13px; }
+.fold summary::-webkit-details-marker { display: none; }
+.fold summary > span:first-child::before { content: "[+] "; color: var(--accent); }
+.fold[open] summary > span:first-child::before { content: "[-] "; }
+.fold summary a { color: var(--dim); font-size: 12px; text-transform: none; letter-spacing: 0; }
+.fold .fold-body { display: flex; flex-direction: column; gap: 16px; padding: 4px 16px 16px; border-top: 1px solid var(--line); }
+.fold .fold-body > *:first-child { margin-top: 12px; }
+.hints .stage button { text-align: left; align-self: flex-start; }
+.editor-host { border-left: 3px solid var(--accent); }
+.CodeMirror { min-height: 26rem; } .CodeMirror-scroll { min-height: 26rem; }
+.seg { display: inline-flex; border: 1px solid var(--line-strong); }
+.seg a, .seg span { padding: 6px 12px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); border-right: 1px solid var(--line-strong); }
+.seg > :last-child { border-right: 0; }
+.seg .on { background: var(--line); color: var(--text); font-weight: 600; }
+.seg .off { color: var(--dim); cursor: default; }
+.results.idle { border: 0; background: transparent; padding: 4px 0; }
+.results.idle .verdict { color: var(--dim); }
+@media (min-width: 1400px) {
+  .subbar { flex-wrap: nowrap; }
+  .subbar .dots { flex: 1; flex-wrap: nowrap; overflow-x: auto; min-width: 0; }
+  .subbar .today { flex-shrink: 0; }
+}
+/* header on one row: the chips take the slack and scroll, the pickers stay compact */
+@media (min-width: 1400px) {
+  .subbar .pick { flex: 0 0 auto; }
+  .subbar .pick select { max-width: 15rem; }
+  .subbar .dots { flex: 1 1 260px; min-width: 200px; }
+  .subbar .dots button { flex: 0 0 auto; }
+}
+.fold summary { font-size: 12px; }
+.fold summary > span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fold summary > span:last-child, .fold summary > a { flex-shrink: 0; white-space: nowrap; }
