@@ -42,5 +42,20 @@
       "what": "Returns how many times part appears."
     }
   ],
-  "solution": "func solve(text, letter):\n\treturn text.count(letter)"
+  "solution": "func solve(text, letter):\n\treturn text.count(letter)",
+  "generator": [
+    {
+      "pick": [
+        "banana",
+        "hello",
+        ""
+      ]
+    },
+    {
+      "pick": [
+        "a",
+        "z"
+      ]
+    }
+  ]
 }

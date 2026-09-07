@@ -45,5 +45,19 @@
     "`return width * height`"
   ],
   "docs": [],
-  "solution": "func solve(width, height):\n\treturn width * height"
+  "solution": "func solve(width, height):\n\treturn width * height",
+  "generator": [
+    {
+      "int": [
+        0,
+        11
+      ]
+    },
+    {
+      "int": [
+        1,
+        13
+      ]
+    }
+  ]
 }

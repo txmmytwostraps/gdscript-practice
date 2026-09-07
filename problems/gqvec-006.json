@@ -54,5 +54,20 @@
       "what": "Returns the length of the vector as a float."
     }
   ],
-  "solution": "func solve(v) -> float:\n\treturn v.length()"
+  "solution": "func solve(v) -> float:\n\treturn v.length()",
+  "generator": [
+    {
+      "v2": [
+        [
+          0,
+          5
+        ],
+        [
+          -13,
+          10
+        ],
+        0
+      ]
+    }
+  ]
 }

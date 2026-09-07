@@ -39,5 +39,14 @@
       "what": "Returns part of the text, starting at position start, at most length characters."
     }
   ],
-  "solution": "func solve(text):\n\treturn text.substr(0, 3)"
+  "solution": "func solve(text):\n\treturn text.substr(0, 3)",
+  "generator": [
+    {
+      "pick": [
+        "Godot",
+        "hi",
+        "abcdef"
+      ]
+    }
+  ]
 }

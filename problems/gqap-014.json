@@ -51,5 +51,35 @@
       "what": "Adds value to the end of the array. Returns nothing."
     }
   ],
-  "solution": "func solve(a, b):\n\tb.append(a.pop_back())\n\treturn b"
+  "solution": "func solve(a, b):\n\tb.append(a.pop_back())\n\treturn b",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          1,
+          5
+        ],
+        "of": {
+          "int": [
+            1,
+            7
+          ]
+        }
+      }
+    },
+    {
+      "array": {
+        "len": [
+          0,
+          3
+        ],
+        "of": {
+          "int": [
+            7,
+            11
+          ]
+        }
+      }
+    }
+  ]
 }

@@ -39,5 +39,13 @@
       "what": "Multiplies two numbers. * with a float keeps decimals."
     }
   ],
-  "solution": "func solve(n):\n\treturn n * n * 100"
+  "solution": "func solve(n):\n\treturn n * n * 100",
+  "generator": [
+    {
+      "int": [
+        1,
+        7
+      ]
+    }
+  ]
 }

@@ -54,5 +54,20 @@
       "what": "Ready-made vectors. UP is (0, -1) because y grows downward on screen."
     }
   ],
-  "solution": "func solve(velocity):\n\treturn velocity == Vector2.ZERO"
+  "solution": "func solve(velocity):\n\treturn velocity == Vector2.ZERO",
+  "generator": [
+    {
+      "v2": [
+        [
+          -2.1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        1
+      ]
+    }
+  ]
 }

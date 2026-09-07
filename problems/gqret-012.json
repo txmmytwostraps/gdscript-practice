@@ -46,5 +46,13 @@
   "solution": "func solve(n):\n\treturn distance_from_zero(n)\n\nfunc distance_from_zero(value):\n\treturn abs(value)",
   "require_methods": [
     "distance_from_zero"
+  ],
+  "generator": [
+    {
+      "int": [
+        -9,
+        7
+      ]
+    }
   ]
 }

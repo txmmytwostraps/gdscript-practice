@@ -46,5 +46,19 @@
     "`return [a + b, a - b]`"
   ],
   "docs": [],
-  "solution": "func solve(a, b):\n\treturn [a + b, a - b]"
+  "solution": "func solve(a, b):\n\treturn [a + b, a - b]",
+  "generator": [
+    {
+      "int": [
+        0,
+        8
+      ]
+    },
+    {
+      "int": [
+        0,
+        6
+      ]
+    }
+  ]
 }

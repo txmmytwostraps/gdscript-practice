@@ -43,5 +43,13 @@
       "what": "Returns the text padded with zeros on the left to at least n digits."
     }
   ],
-  "solution": "func solve(n):\n\treturn str(n).pad_zeros(2)"
+  "solution": "func solve(n):\n\treturn str(n).pad_zeros(2)",
+  "generator": [
+    {
+      "int": [
+        0,
+        18
+      ]
+    }
+  ]
 }

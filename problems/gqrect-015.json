@@ -96,5 +96,39 @@
       "what": "Makes a rectangle from a top-left corner and a size. Also Rect2(position, size) with two vectors."
     }
   ],
-  "solution": "func solve(r, screen_w, screen_h) -> Rect2:\n\tvar x = clamp(r.position.x, 0, screen_w - r.size.x)\n\tvar y = clamp(r.position.y, 0, screen_h - r.size.y)\n\treturn Rect2(x, y, r.size.x, r.size.y)"
+  "solution": "func solve(r, screen_w, screen_h) -> Rect2:\n\tvar x = clamp(r.position.x, 0, screen_w - r.size.x)\n\tvar y = clamp(r.position.y, 0, screen_h - r.size.y)\n\treturn Rect2(x, y, r.size.x, r.size.y)",
+  "generator": [
+    {
+      "rect": [
+        [
+          -410,
+          1190
+        ],
+        [
+          1,
+          868
+        ],
+        [
+          48,
+          52
+        ],
+        [
+          48,
+          52
+        ]
+      ]
+    },
+    {
+      "int": [
+        798,
+        802
+      ]
+    },
+    {
+      "int": [
+        598,
+        602
+      ]
+    }
+  ]
 }

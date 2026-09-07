@@ -40,5 +40,19 @@
       "what": "Makes a dictionary: named slots you read and write with data[\"key\"]."
     }
   ],
-  "solution": "func solve(name, hp):\n\treturn {\"name\": name, \"hp\": hp}"
+  "solution": "func solve(name, hp):\n\treturn {\"name\": name, \"hp\": hp}",
+  "generator": [
+    {
+      "pick": [
+        "Tim",
+        "Bob"
+      ]
+    },
+    {
+      "int": [
+        0,
+        150
+      ]
+    }
+  ]
 }

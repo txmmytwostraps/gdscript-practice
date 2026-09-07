@@ -49,5 +49,13 @@
     "`return c * 9.0 / 5.0 + 32`"
   ],
   "docs": [],
-  "solution": "func solve(c) -> float:\n\treturn c * 9.0 / 5.0 + 32.0"
+  "solution": "func solve(c) -> float:\n\treturn c * 9.0 / 5.0 + 32.0",
+  "generator": [
+    {
+      "int": [
+        -110,
+        170
+      ]
+    }
+  ]
 }

@@ -87,5 +87,33 @@
       "what": "Vectors add and subtract part by part, and scale by a plain number."
     }
   ],
-  "solution": "func solve(a, b) -> Vector2:\n\treturn b - a"
+  "solution": "func solve(a, b) -> Vector2:\n\treturn b - a",
+  "generator": [
+    {
+      "v2": [
+        [
+          1,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        0
+      ]
+    },
+    {
+      "v2": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          7
+        ],
+        0
+      ]
+    }
+  ]
 }

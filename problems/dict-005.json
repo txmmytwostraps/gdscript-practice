@@ -57,5 +57,29 @@
       "what": "Runs once per key; data[key] gives its value."
     }
   ],
-  "solution": "func solve(data, value):\n\tvar result = []\n\tfor key in data:\n\t\tif data[key] == value:\n\t\t\tresult.append(key)\n\treturn result"
+  "solution": "func solve(data, value):\n\tvar result = []\n\tfor key in data:\n\t\tif data[key] == value:\n\t\t\tresult.append(key)\n\treturn result",
+  "generator": [
+    {
+      "pick": [
+        {
+          "a": 1,
+          "b": 2,
+          "c": 1
+        },
+        {
+          "a": 1
+        },
+        {
+          "x": 0,
+          "y": 0
+        }
+      ]
+    },
+    {
+      "int": [
+        0,
+        8
+      ]
+    }
+  ]
 }

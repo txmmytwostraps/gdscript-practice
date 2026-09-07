@@ -90,5 +90,39 @@
       "what": "Vectors add and subtract part by part, and scale by a plain number."
     }
   ],
-  "solution": "func solve(position, direction, step) -> Vector2:\n\treturn position + direction * step"
+  "solution": "func solve(position, direction, step) -> Vector2:\n\treturn position + direction * step",
+  "generator": [
+    {
+      "v2": [
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          4
+        ],
+        0
+      ]
+    },
+    {
+      "v2": [
+        [
+          0,
+          3
+        ],
+        [
+          -3,
+          2.8
+        ],
+        1
+      ]
+    },
+    {
+      "int": [
+        1,
+        14
+      ]
+    }
+  ]
 }

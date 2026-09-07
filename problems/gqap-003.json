@@ -38,5 +38,21 @@
       "what": "Removes the last item and returns it."
     }
   ],
-  "solution": "func solve(pile):\n\treturn pile.pop_back()"
+  "solution": "func solve(pile):\n\treturn pile.pop_back()",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          1,
+          5
+        ],
+        "of": {
+          "int": [
+            1,
+            13
+          ]
+        }
+      }
+    }
+  ]
 }

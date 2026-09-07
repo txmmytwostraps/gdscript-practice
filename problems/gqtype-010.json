@@ -47,5 +47,13 @@
   "allow_type_hints": true,
   "require_methods": [
     "is_alive"
+  ],
+  "generator": [
+    {
+      "int": [
+        -13,
+        18
+      ]
+    }
   ]
 }

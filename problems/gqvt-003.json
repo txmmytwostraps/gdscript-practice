@@ -39,5 +39,14 @@
       "what": "Returns the value as a whole number; decimals are dropped, text like \"42\" is read."
     }
   ],
-  "solution": "func solve(text):\n\treturn int(text) + 1"
+  "solution": "func solve(text):\n\treturn int(text) + 1",
+  "generator": [
+    {
+      "pick": [
+        "41",
+        "0",
+        "-5"
+      ]
+    }
+  ]
 }

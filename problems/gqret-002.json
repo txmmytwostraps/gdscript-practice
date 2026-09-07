@@ -42,5 +42,13 @@
   "solution": "func solve(n):\n\treturn same(n)\n\nfunc same(value):\n\treturn value",
   "require_methods": [
     "same"
+  ],
+  "generator": [
+    {
+      "int": [
+        -16,
+        11
+      ]
+    }
   ]
 }

@@ -57,5 +57,21 @@
       "what": "The item at position i. Positions start at 0; -1 is the last item."
     }
   ],
-  "solution": "func solve(items):\n\tfor i in range(items.size()):\n\t\tif items[i] == \"crystal\":\n\t\t\treturn i\n\treturn -1"
+  "solution": "func solve(items):\n\tfor i in range(items.size()):\n\t\tif items[i] == \"crystal\":\n\t\t\treturn i\n\treturn -1",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          1,
+          5
+        ],
+        "of": {
+          "pick": [
+            "rock",
+            "crystal"
+          ]
+        }
+      }
+    }
+  ]
 }

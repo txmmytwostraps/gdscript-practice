@@ -62,5 +62,30 @@
       "what": "Returns the value for key, or default when the key is missing."
     }
   ],
-  "solution": "func solve(data, key):\n\tif key in data:\n\t\treturn data[key]\n\telse:\n\t\treturn -1"
+  "solution": "func solve(data, key):\n\tif key in data:\n\t\treturn data[key]\n\telse:\n\t\treturn -1",
+  "generator": [
+    {
+      "pick": [
+        {
+          "a": 1
+        },
+        {
+          "a": 1
+        },
+        {},
+        {
+          "gold": 50,
+          "gems": 3
+        }
+      ]
+    },
+    {
+      "pick": [
+        "a",
+        "b",
+        "x",
+        "gems"
+      ]
+    }
+  ]
 }

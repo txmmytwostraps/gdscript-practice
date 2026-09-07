@@ -73,5 +73,21 @@
       "what": "The remainder after dividing a by b."
     }
   ],
-  "solution": "func solve(nums):\n\tvar count = 0\n\tfor n in nums:\n\t\tif n % 2 == 0:\n\t\t\tcount += 1\n\treturn count"
+  "solution": "func solve(nums):\n\tvar count = 0\n\tfor n in nums:\n\t\tif n % 2 == 0:\n\t\t\tcount += 1\n\treturn count",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          0,
+          6
+        ],
+        "of": {
+          "int": [
+            0,
+            12
+          ]
+        }
+      }
+    }
+  ]
 }

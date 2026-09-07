@@ -46,5 +46,13 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(age):\n\treturn age >= 18"
+  "solution": "func solve(age):\n\treturn age >= 18",
+  "generator": [
+    {
+      "int": [
+        0,
+        60
+      ]
+    }
+  ]
 }

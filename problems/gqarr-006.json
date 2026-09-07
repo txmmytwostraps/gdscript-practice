@@ -48,5 +48,27 @@
       "what": "The item at position i. Positions start at 0; -1 is the last item."
     }
   ],
-  "solution": "func solve(items, value):\n\titems[1] = value\n\treturn items"
+  "solution": "func solve(items, value):\n\titems[1] = value\n\treturn items",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          2,
+          5
+        ],
+        "of": {
+          "int": [
+            0,
+            5
+          ]
+        }
+      }
+    },
+    {
+      "int": [
+        3,
+        11
+      ]
+    }
+  ]
 }

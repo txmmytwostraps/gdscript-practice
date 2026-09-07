@@ -42,5 +42,13 @@
   "solution": "func solve(n):\n\treturn double(n)\n\nfunc double(value):\n\treturn value * 2",
   "require_methods": [
     "double"
+  ],
+  "generator": [
+    {
+      "int": [
+        -7,
+        8
+      ]
+    }
   ]
 }

@@ -41,5 +41,26 @@
     "`return price * quantity + shipping`"
   ],
   "docs": [],
-  "solution": "func solve(price, quantity, shipping) -> float:\n\treturn price * quantity + shipping"
+  "solution": "func solve(price, quantity, shipping) -> float:\n\treturn price * quantity + shipping",
+  "generator": [
+    {
+      "float": [
+        0,
+        15,
+        1
+      ]
+    },
+    {
+      "int": [
+        0,
+        6
+      ]
+    },
+    {
+      "int": [
+        0,
+        8
+      ]
+    }
+  ]
 }

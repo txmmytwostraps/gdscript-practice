@@ -48,5 +48,20 @@
       "what": "Makes a vector holding an x and a y. Read them back with .x and .y."
     }
   ],
-  "solution": "func solve(v):\n\treturn [v.x, v.y]"
+  "solution": "func solve(v):\n\treturn [v.x, v.y]",
+  "generator": [
+    {
+      "v2": [
+        [
+          -3,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        1
+      ]
+    }
+  ]
 }

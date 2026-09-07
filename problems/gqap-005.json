@@ -44,5 +44,25 @@
       "what": "Adds value to the end of the array. Returns nothing."
     }
   ],
-  "solution": "func solve(a, b, c):\n\tvar queue = []\n\tqueue.append(a)\n\tqueue.append(b)\n\tqueue.append(c)\n\treturn queue"
+  "solution": "func solve(a, b, c):\n\tvar queue = []\n\tqueue.append(a)\n\tqueue.append(b)\n\tqueue.append(c)\n\treturn queue",
+  "generator": [
+    {
+      "pick": [
+        "soup",
+        1
+      ]
+    },
+    {
+      "pick": [
+        "pie",
+        2
+      ]
+    },
+    {
+      "pick": [
+        "tea",
+        3
+      ]
+    }
+  ]
 }

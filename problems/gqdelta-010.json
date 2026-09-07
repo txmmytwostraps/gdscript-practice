@@ -40,5 +40,26 @@
     "`return angle + turn_speed * delta`"
   ],
   "docs": [],
-  "solution": "func solve(angle, turn_speed, delta) -> float:\n\treturn angle + turn_speed * delta"
+  "solution": "func solve(angle, turn_speed, delta) -> float:\n\treturn angle + turn_speed * delta",
+  "generator": [
+    {
+      "int": [
+        0,
+        525
+      ]
+    },
+    {
+      "int": [
+        -105,
+        155
+      ]
+    },
+    {
+      "float": [
+        1,
+        3,
+        2
+      ]
+    }
+  ]
 }

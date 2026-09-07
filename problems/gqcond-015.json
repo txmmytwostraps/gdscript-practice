@@ -54,5 +54,19 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(age, height):\n\tif age >= 12:\n\t\tif height >= 120:\n\t\t\treturn \"ride\"\n\t\telse:\n\t\t\treturn \"too short\"\n\telse:\n\t\treturn \"too young\""
+  "solution": "func solve(age, height):\n\tif age >= 12:\n\t\tif height >= 120:\n\t\t\treturn \"ride\"\n\t\telse:\n\t\t\treturn \"too short\"\n\telse:\n\t\treturn \"too young\"",
+  "generator": [
+    {
+      "int": [
+        8,
+        16
+      ]
+    },
+    {
+      "int": [
+        75,
+        175
+      ]
+    }
+  ]
 }

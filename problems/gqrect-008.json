@@ -62,5 +62,33 @@
       "what": "Returns the rectangle made bigger by amount on every side (negative shrinks)."
     }
   ],
-  "solution": "func solve(r, margin) -> Rect2:\n\treturn r.grow(margin)"
+  "solution": "func solve(r, margin) -> Rect2:\n\treturn r.grow(margin)",
+  "generator": [
+    {
+      "rect": [
+        [
+          0,
+          15
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          5,
+          25
+        ],
+        [
+          5,
+          25
+        ]
+      ]
+    },
+    {
+      "int": [
+        0,
+        8
+      ]
+    }
+  ]
 }

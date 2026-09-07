@@ -40,5 +40,13 @@
       "what": "A variable at the top of the script (a member variable): every function in the script can read and change it."
     }
   ],
-  "solution": "var score = 0\n\nfunc solve(points):\n\tadd_points(points)\n\treturn score\n\nfunc add_points(amount):\n\tscore += amount"
+  "solution": "var score = 0\n\nfunc solve(points):\n\tadd_points(points)\n\treturn score\n\nfunc add_points(amount):\n\tscore += amount",
+  "generator": [
+    {
+      "int": [
+        0,
+        38
+      ]
+    }
+  ]
 }

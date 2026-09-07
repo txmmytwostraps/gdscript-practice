@@ -46,5 +46,15 @@
       "what": "Returns how many characters the string has."
     }
   ],
-  "solution": "func solve(s):\n\treturn s.length()"
+  "solution": "func solve(s):\n\treturn s.length()",
+  "generator": [
+    {
+      "pick": [
+        "hello",
+        "",
+        "a b",
+        "GDScript"
+      ]
+    }
+  ]
 }

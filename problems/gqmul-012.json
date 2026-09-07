@@ -42,5 +42,19 @@
       "what": "Multiplies two numbers. * with a float keeps decimals."
     }
   ],
-  "solution": "func solve(width, height):\n\treturn (width * 64) * (height * 64)"
+  "solution": "func solve(width, height):\n\treturn (width * 64) * (height * 64)",
+  "generator": [
+    {
+      "int": [
+        0,
+        4
+      ]
+    },
+    {
+      "int": [
+        1,
+        7
+      ]
+    }
+  ]
 }

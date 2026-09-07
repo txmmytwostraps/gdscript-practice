@@ -39,5 +39,14 @@
       "what": "Returns the text backwards. Unlike arrays, this returns a new string."
     }
   ],
-  "solution": "func solve(text):\n\treturn text.reverse()"
+  "solution": "func solve(text):\n\treturn text.reverse()",
+  "generator": [
+    {
+      "pick": [
+        "abc",
+        "",
+        "Godot"
+      ]
+    }
+  ]
 }

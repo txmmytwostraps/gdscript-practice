@@ -49,5 +49,19 @@
   "solution": "func solve(a, b):\n\treturn bigger(a, b)\n\nfunc bigger(x, y):\n\treturn max(x, y)",
   "require_methods": [
     "bigger"
+  ],
+  "generator": [
+    {
+      "int": [
+        1,
+        12
+      ]
+    },
+    {
+      "int": [
+        1,
+        10
+      ]
+    }
   ]
 }

@@ -50,5 +50,13 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(total) -> float:\n\tif total >= 100:\n\t\treturn total * 0.8\n\telif total >= 50:\n\t\treturn total * 0.9\n\telse:\n\t\treturn total"
+  "solution": "func solve(total) -> float:\n\tif total >= 100:\n\t\treturn total * 0.8\n\telif total >= 50:\n\t\treturn total * 0.9\n\telse:\n\t\treturn total",
+  "generator": [
+    {
+      "int": [
+        1,
+        290
+      ]
+    }
+  ]
 }

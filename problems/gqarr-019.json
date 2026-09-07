@@ -55,5 +55,21 @@
       "what": "Adds value at the start. Returns nothing."
     }
   ],
-  "solution": "func solve(items):\n\tvar result = []\n\tfor item in items:\n\t\tresult.push_front(item)\n\treturn result"
+  "solution": "func solve(items):\n\tvar result = []\n\tfor item in items:\n\t\tresult.push_front(item)\n\treturn result",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          0,
+          5
+        ],
+        "of": {
+          "int": [
+            1,
+            10
+          ]
+        }
+      }
+    }
+  ]
 }

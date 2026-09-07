@@ -49,5 +49,25 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(value, low, high):\n\tif value < low:\n\t\treturn low\n\telif value > high:\n\t\treturn high\n\telse:\n\t\treturn value"
+  "solution": "func solve(value, low, high):\n\tif value < low:\n\t\treturn low\n\telif value > high:\n\t\treturn high\n\telse:\n\t\treturn value",
+  "generator": [
+    {
+      "int": [
+        -12,
+        24
+      ]
+    },
+    {
+      "int": [
+        0,
+        2
+      ]
+    },
+    {
+      "int": [
+        8,
+        12
+      ]
+    }
+  ]
 }

@@ -6,6 +6,7 @@ extends Control
 ##          problem file (solution passes, starter compiles but does not pass).
 
 var runner := preload("res://runner.gd").new()
+const VariantRoller := preload("res://variants.gd")
 var _js_cb: JavaScriptObject  # must stay referenced or the callback is freed
 
 func _ready() -> void:
@@ -217,6 +218,24 @@ func _check_problem(path: String, expected_id: String) -> Array[String]:
 		for r in sol["results"]:
 			if not r["pass"]:
 				errs.append("  args=%s expect=%s got=%s" % [JSON.stringify(r["args"]), JSON.stringify(r["expect"]), JSON.stringify(r["got"])])
+	# Variants: the solution must run cleanly on anything the generator rolls.
+	if p.has("generator") and p["generator"] is Array:
+		var rng := RandomNumberGenerator.new()
+		rng.seed = hash(expected_id)
+		var rolled := []
+		for i in 12:
+			rolled.append({"args": VariantRoller.roll_args(p["generator"], rng), "expect": null})
+		var vp: Dictionary = p.duplicate()
+		vp["tests"] = rolled
+		var vr := runner.run_submission(p["solution"], vp)
+		if vr["status"] != "ok":
+			errs.append("generator: solution failed on rolled arguments: " + str(vr.get("error")))
+		else:
+			for r in vr["results"]:
+				if r.has("error"):
+					errs.append("generator: args=%s -> %s" % [JSON.stringify(r["args"]), r["error"]])
+				elif r["got"] == null and r["out"].is_empty():
+					errs.append("generator: args=%s -> the solution returned nothing" % JSON.stringify(r["args"]))
 	var st := runner.run_submission(p["starter"], p)
 	if p.get("starter_broken", false):
 		# Fix-the-error problems: the starter must NOT compile.

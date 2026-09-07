@@ -43,5 +43,21 @@
       "what": "Returns the larger of the two numbers."
     }
   ],
-  "solution": "func solve(time_left, delta) -> float:\n\treturn max(time_left - delta, 0.0)"
+  "solution": "func solve(time_left, delta) -> float:\n\treturn max(time_left - delta, 0.0)",
+  "generator": [
+    {
+      "float": [
+        0,
+        8,
+        1
+      ]
+    },
+    {
+      "float": [
+        1,
+        2.5,
+        1
+      ]
+    }
+  ]
 }

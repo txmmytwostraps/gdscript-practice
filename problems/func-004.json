@@ -62,5 +62,19 @@
       "what": "Ends the function and hands value back to whoever called it."
     }
   ],
-  "solution": "func solve(a, b):\n\treturn [a + b, a * b]"
+  "solution": "func solve(a, b):\n\treturn [a + b, a * b]",
+  "generator": [
+    {
+      "int": [
+        -3,
+        4
+      ]
+    },
+    {
+      "int": [
+        1,
+        7
+      ]
+    }
+  ]
 }

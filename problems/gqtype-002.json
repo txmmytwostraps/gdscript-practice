@@ -40,5 +40,13 @@
   "allow_type_hints": true,
   "require_methods": [
     "double"
+  ],
+  "generator": [
+    {
+      "int": [
+        0,
+        6
+      ]
+    }
   ]
 }

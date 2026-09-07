@@ -49,5 +49,21 @@
       "what": "Returns the largest item."
     }
   ],
-  "solution": "func solve(nums):\n\treturn nums.max()"
+  "solution": "func solve(nums):\n\treturn nums.max()",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          1,
+          5
+        ],
+        "of": {
+          "int": [
+            -18,
+            18
+          ]
+        }
+      }
+    }
+  ]
 }

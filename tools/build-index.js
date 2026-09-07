@@ -55,7 +55,7 @@ for (const f of fs.readdirSync(dir).sort()) {
   if (![0, 1, 2, 3].includes(p.difficulty)) errors.push(`${f}: difficulty must be 0-3`);
   if (!Array.isArray(p.tests) || p.tests.length === 0) errors.push(`${f}: needs at least one test`);
   for (const e of styleErrors(p)) errors.push(`${f}: ${e}`);
-  entries.push({ id: p.id, title: p.title, concept: p.concept, difficulty: p.difficulty });
+  entries.push({ id: p.id, title: p.title, concept: p.concept, difficulty: p.difficulty, ...(Array.isArray(p.generator) ? { variants: true } : {}) });
 }
 // Milestone steps follow the same house style (hints, docs, named checks, no type hints).
 const mdir = path.resolve(__dirname, "..", "milestones");

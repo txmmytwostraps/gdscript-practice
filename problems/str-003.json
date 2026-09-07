@@ -43,5 +43,14 @@
       "what": "Joins two strings into one. Numbers must be turned into text first."
     }
   ],
-  "solution": "func solve(s):\n\treturn s.to_upper() + \"!\""
+  "solution": "func solve(s):\n\treturn s.to_upper() + \"!\"",
+  "generator": [
+    {
+      "pick": [
+        "hi",
+        "Godot",
+        ""
+      ]
+    }
+  ]
 }

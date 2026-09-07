@@ -69,5 +69,20 @@
       "what": "Returns a vector pointing the same way with length 1."
     }
   ],
-  "solution": "func solve(v) -> Vector2:\n\treturn v.normalized()"
+  "solution": "func solve(v) -> Vector2:\n\treturn v.normalized()",
+  "generator": [
+    {
+      "v2": [
+        [
+          -5,
+          6
+        ],
+        [
+          0,
+          8
+        ],
+        0
+      ]
+    }
+  ]
 }

@@ -49,5 +49,19 @@
   "solution": "func solve(a, b):\n\treturn leftover(a, b)\n\nfunc leftover(x, y):\n\treturn x % y",
   "require_methods": [
     "leftover"
+  ],
+  "generator": [
+    {
+      "int": [
+        5,
+        12
+      ]
+    },
+    {
+      "int": [
+        1,
+        14
+      ]
+    }
   ]
 }

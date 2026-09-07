@@ -43,5 +43,13 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(n):\n\tif n > 0:\n\t\treturn \"positive\"\n\telse:\n\t\treturn \"not positive\""
+  "solution": "func solve(n):\n\tif n > 0:\n\t\treturn \"positive\"\n\telse:\n\t\treturn \"not positive\"",
+  "generator": [
+    {
+      "int": [
+        -7,
+        9
+      ]
+    }
+  ]
 }

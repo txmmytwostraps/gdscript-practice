@@ -46,5 +46,13 @@
   "allow_type_hints": true,
   "require_methods": [
     "log_health"
+  ],
+  "generator": [
+    {
+      "int": [
+        0,
+        120
+      ]
+    }
   ]
 }

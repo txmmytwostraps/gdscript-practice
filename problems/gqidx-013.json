@@ -55,5 +55,6 @@
       "what": "Returns how many items the array holds."
     }
   ],
-  "solution": "func solve(left, right):\n\tvar result = []\n\tfor i in range(left.size()):\n\t\tresult.append(left[i] + right[i])\n\treturn result"
+  "solution": "func solve(left, right):\n\tvar result = []\n\tfor i in range(left.size()):\n\t\tresult.append(left[i] + right[i])\n\treturn result",
+  "variants": false
 }

@@ -11,6 +11,7 @@ import { makeParsons } from "./parsons.js";
 import { makeEditor } from "./editor.js";
 import { candidates } from "./mutate.js";
 import * as notes from "./notes.js";
+import { makeVariant } from "./variants.js";
 
 // Problem types. ?mode=parsons puts the solution's lines in order;
 // ?mode=bug plants one bug in the solution to find and fix. Reviews pick a
@@ -25,6 +26,15 @@ const reviewMode = new URLSearchParams(location.search).has("review");
 let reviewIds = [];          // today's pending reviews, in order
 let attemptFails = 0;        // misses since this problem was opened
 let reviewRecorded = false;  // the first verdict of a review decides it
+
+// Drill mode: practice.html?drill=<concept> serves variants of that topic's
+// problems (fresh arguments, answers from the reference solution) endlessly.
+// A variant counts as practice: no solve, no miss, just an attempt.
+const drillTopic = new URLSearchParams(location.search).get("drill");
+let drillIds = [];               // problems in the topic that have a generator
+const drillServed = [];          // ids served, newest last, to avoid repeats
+let drillCount = 0;
+const drillStart = Date.now();
 
 const DIFF = ["novice", "beginner", "intermediate", "advanced"];
 const MAX_ERROR_LINES = 20;
@@ -317,9 +327,51 @@ function renderModes(p) {
   const base = `practice.html#${p.id}`;
   const link = (m, text) => (activeMode === m ? `<span class="dim">${text}</span>` : `<a href="practice.html?mode=${m}#${p.id}">${text}</a>`);
   const stuck = activeMode === "normal" && (state.fails[p.id] || 0) >= UNLOCK_AFTER && !state.solved[p.id] ? `<span class="amber">[!] Stuck? Try it as a Parsons: </span>` : "";
-  $("modes").innerHTML = `${stuck}<span class="muted">Try as:</span> ${activeMode === "normal" ? `<span class="dim">normal</span>` : `<a href="${base}">normal</a>`} · ${link("parsons", "[~] put the lines in order")} · ${link("bug", "[~] fix the bug")}`;
+  const canDrill = state.problems.some((x) => x.concept === p.concept && x.variants);
+  if (drillTopic) { $("modes").innerHTML = `<span class="muted">Drilling this topic with fresh numbers.</span> <a href="practice.html#${p.id}">Back to the problems</a>`; return; }
+  $("modes").innerHTML = `${stuck}<span class="muted">Try as:</span> ${activeMode === "normal" ? `<span class="dim">normal</span>` : `<a href="${base}">normal</a>`} · ${link("parsons", "[~] put the lines in order")} · ${link("bug", "[~] fix the bug")}${canDrill ? ` · <a href="practice.html?drill=${p.concept}">[~] drill this topic</a>` : ""}`;
+}
+// ---------- drill ----------
+function drillVerdict(passed, id) {
+  if (sync.user) auth.insertAttempt(sync.user.id, id, "drill", passed ? "pass" : "miss").catch(() => {});
+  renderDrillBar();
+}
+function renderDrillBar() {
+  const t = topicOf(drillTopic);
+  const mins = Math.round((Date.now() - drillStart) / 60000);
+  el.todaybar.innerHTML = `<span class="accent">Drill</span><b>${esc(t ? t.title : drillTopic)} · ${drillCount} variant${drillCount === 1 ? "" : "s"} · ${mins} min</b>`;
+}
+async function nextDrill() {
+  if (!drillIds.length) { setVerdict("warn", "[!] Nothing to drill in this topic yet", "No problem here can roll fresh arguments."); return; }
+  setVerdict("", "Rolling fresh numbers…");
+  const recent = drillServed.slice(-Math.min(3, drillIds.length - 1));
+  const pool = drillIds.filter((id) => !recent.includes(id));
+  for (let tries = 0; tries < 6; tries++) {
+    const id = pool[Math.floor(Math.random() * pool.length)];
+    try {
+      const v = await makeVariant(await loadProblem(id), judge, Date.now() + tries);
+      if (v) { drillServed.push(id); drillCount += 1; showVariant(v); return; }
+    } catch (e) { if (e.timedOut) return; }
+  }
+  setVerdict("warn", "[!] Could not roll a variant", "Try again in a moment.");
+}
+function showVariant(v) {
+  current = v; activeMode = "normal"; parsons = null; bugCode = "";
+  if (v.concept !== filters.topic) { filters.topic = v.concept; store.set("filters", filters); }
+  renderFilters();
+  renderProblem(v);
+  const t = topicOf(v.concept);
+  el.eyebrow.textContent = `// drill · ${t ? t.title.toLowerCase() : v.concept} · ${esc(v.title.toLowerCase())} · fresh numbers`;
+  el.again.hidden = true;
+  editor.set(v.starter); el.saved.textContent = "";
+  clearResults();
+  renderModes(v);
+  renderNote(v);
+  renderDrillBar();
+  location.hash = v.id;
 }
 function pickNext() {
+  if (drillTopic) { nextDrill(); return; }
   if (reviewMode) {   // next pending review, or back to Today when done
     const next = reviews.dueToday().pending.find((r) => !current || r.problem_id !== current.id);
     if (next) showProblem(next.problem_id); else location.href = "./";
@@ -348,11 +400,13 @@ function missText(id) { return `miss ${Math.min(state.fails[id] || 0, UNLOCK_AFT
 function renderResult(result, errors) {
   el.resultTable.hidden = true; el.output.hidden = true; el.errors.hidden = true;
   const p = current, rtype = returnType(p.signature);
-  if (result.status === "compile_error") { recordFail(p.id); setVerdict("fail", `[x] Did not compile · ${missText(p.id)}`); el.count.textContent = `0 / ${p.tests.length} tests`; showErrors(errors, "Parse error"); return; }
-  if (result.status === "error") { recordFail(p.id); setVerdict("fail", `[x] ${missText(p.id)}`, result.error); el.count.textContent = `0 / ${p.tests.length} tests`; showErrors(errors); return; }
+  const drill = Boolean(drillTopic && p.variant);
+  const miss = drill ? drillVerdict.bind(null, false) : recordFail;
+  if (result.status === "compile_error") { miss(p.id); setVerdict("fail", `[x] Did not compile${drill ? "" : " · " + missText(p.id)}`); el.count.textContent = `0 / ${p.tests.length} tests`; showErrors(errors, "Parse error"); return; }
+  if (result.status === "error") { miss(p.id); setVerdict("fail", drill ? "[x] Not yet" : `[x] ${missText(p.id)}`, result.error); el.count.textContent = `0 / ${p.tests.length} tests`; showErrors(errors); return; }
   const allPass = result.passed === result.total;
-  if (!allPass) recordFail(p.id);
-  setVerdict(allPass ? "pass" : "fail", allPass ? "[x] All tests pass · solved" : `[x] Not yet · ${missText(p.id)}`);
+  if (!allPass) miss(p.id);
+  setVerdict(allPass ? "pass" : "fail", allPass ? (drill ? "[x] Variant solved · counts as practice" : "[x] All tests pass · solved") : drill ? "[x] Not yet" : `[x] Not yet · ${missText(p.id)}`, allPass && drill ? "Next variant when you are ready." : "");
   el.count.textContent = `${result.passed} / ${result.total} tests`;
   const printOnly = p.tests.some((t) => t.expect === null && t.out);
   el.resultTable.innerHTML = `<tr><th></th><th>The judge called</th><th>${printOnly ? "Expected output" : "Correct answer"}</th><th>${printOnly ? "Your output" : "Your code returned"}</th></tr>` + result.results.map((r, i) => {
@@ -365,7 +419,7 @@ function renderResult(result, errors) {
   const printed = result.results.flatMap((r, i) => r.out.map((line) => `[test ${i + 1}] ${line}`));
   if (printed.length && !printOnly) { el.outputLines.textContent = printed.join("\n"); el.output.hidden = false; }
   if (errors.length) showErrors(errors);
-  if (allPass) markSolved(p.id);
+  if (allPass) { if (drill) drillVerdict(true, p.id); else markSolved(p.id); }
 }
 function showErrors(errors, fallback) {
   const lines = errors.map(tidyError).filter((l) => !/GDScript backtrace|^\s*\[\d+\]/.test(l));
@@ -432,7 +486,7 @@ async function main() {
   editor = makeEditor($("editor"), { onRun: runCode });
   let saveTimer = null;
   editor.onChange(() => {
-    if (!current || activeMode !== "normal" || (reviewMode && reviewIds.includes(current.id))) return;   // drafts only for the plain problem
+    if (!current || drillTopic || activeMode !== "normal" || (reviewMode && reviewIds.includes(current.id))) return;   // drafts only for the plain problem
     el.saved.textContent = "…";
     clearTimeout(saveTimer);
     saveTimer = setTimeout(() => { const text = editor.get(); if (text === current.starter) { clearDraft(current.id); el.saved.textContent = ""; } else { setDraft(current.id, text); el.saved.textContent = "saved"; } sync.push(current.id); }, 300);
@@ -476,7 +530,12 @@ async function main() {
   const fromHash = location.hash.slice(1);
   const topicParam = new URLSearchParams(location.search).get("topic");   // links from Stats: practice.html?topic=<concept>
   if (topicParam && state.problems.some((p) => p.concept === topicParam)) { filters.topic = topicParam; filters.difficulty = "any"; store.set("filters", filters); store.remove("current"); }
-  if (reviewMode) {
+  if (drillTopic) {
+    drillIds = state.problems.filter((p) => p.concept === drillTopic && p.variants).map((p) => p.id);
+    filters.topic = drillTopic; store.set("filters", filters); renderFilters();
+    el.next.textContent = "Next variant ›";
+    await nextDrill();
+  } else if (reviewMode) {
     try { await reviews.refresh(); } catch (e) { /* use the cached queue */ }
     reviewIds = reviews.dueToday().pending.map((r) => r.problem_id);
     el.next.textContent = "Next review ›";

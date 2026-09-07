@@ -39,5 +39,13 @@
       "what": "Multiplies two numbers. * with a float keeps decimals."
     }
   ],
-  "solution": "func solve(max_health) -> float:\n\treturn max_health * 1.1"
+  "solution": "func solve(max_health) -> float:\n\treturn max_health * 1.1",
+  "generator": [
+    {
+      "int": [
+        0,
+        300
+      ]
+    }
+  ]
 }

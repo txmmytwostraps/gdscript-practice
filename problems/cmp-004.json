@@ -54,5 +54,16 @@
       "what": "and is true when both sides are; or when at least one is; not flips true and false."
     }
   ],
-  "solution": "func solve(height_cm, with_adult):\n\treturn height_cm >= 120 or with_adult"
+  "solution": "func solve(height_cm, with_adult):\n\treturn height_cm >= 120 or with_adult",
+  "generator": [
+    {
+      "int": [
+        85,
+        145
+      ]
+    },
+    {
+      "bool": true
+    }
+  ]
 }

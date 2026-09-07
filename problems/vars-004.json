@@ -48,5 +48,13 @@
     "Divide by 2.0 instead, and the result becomes a float."
   ],
   "docs": [],
-  "solution": "func solve(n) -> float:\n\treturn n / 2.0"
+  "solution": "func solve(n) -> float:\n\treturn n / 2.0",
+  "generator": [
+    {
+      "int": [
+        -7,
+        9
+      ]
+    }
+  ]
 }

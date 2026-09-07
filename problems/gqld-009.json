@@ -41,5 +41,18 @@
       "what": "The value stored under key. Assigning to it changes or adds the entry."
     }
   ],
-  "solution": "func solve(inventory):\n\tvar biggest = 0\n\tfor item in inventory:\n\t\tif inventory[item] > biggest:\n\t\t\tbiggest = inventory[item]\n\treturn biggest"
+  "solution": "func solve(inventory):\n\tvar biggest = 0\n\tfor item in inventory:\n\t\tif inventory[item] > biggest:\n\t\t\tbiggest = inventory[item]\n\treturn biggest",
+  "generator": [
+    {
+      "pick": [
+        {
+          "bolt": 3,
+          "gear": 1
+        },
+        {
+          "gem": 7
+        }
+      ]
+    }
+  ]
 }

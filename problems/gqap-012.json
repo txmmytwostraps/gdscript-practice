@@ -40,5 +40,26 @@
       "what": "Returns how many items the array holds."
     }
   ],
-  "solution": "func solve(queue, order):\n\tqueue.append(order)\n\treturn queue.size()"
+  "solution": "func solve(queue, order):\n\tqueue.append(order)\n\treturn queue.size()",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          0,
+          3
+        ],
+        "of": {
+          "pick": [
+            "soup"
+          ]
+        }
+      }
+    },
+    {
+      "pick": [
+        "pie",
+        "tea"
+      ]
+    }
+  ]
 }

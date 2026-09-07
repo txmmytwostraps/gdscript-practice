@@ -43,5 +43,19 @@
       "what": "Returns the number as a float, so dividing keeps decimals."
     }
   ],
-  "solution": "func solve(a, b) -> float:\n\treturn float(a) / b"
+  "solution": "func solve(a, b) -> float:\n\treturn float(a) / b",
+  "generator": [
+    {
+      "int": [
+        1,
+        13
+      ]
+    },
+    {
+      "int": [
+        1,
+        6
+      ]
+    }
+  ]
 }

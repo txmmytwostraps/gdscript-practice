@@ -51,5 +51,21 @@
       "what": "Reverses the array in place. Returns nothing."
     }
   ],
-  "solution": "func solve(items):\n\titems.reverse()\n\treturn items"
+  "solution": "func solve(items):\n\titems.reverse()\n\treturn items",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          0,
+          5
+        ],
+        "of": {
+          "int": [
+            1,
+            10
+          ]
+        }
+      }
+    }
+  ]
 }

@@ -57,5 +57,28 @@
       "what": "Adds value to the end of the array. Returns nothing."
     }
   ],
-  "solution": "func solve(a, b, c):\n\tvar items = []\n\titems.append(a)\n\titems.append(b)\n\titems.append(c)\n\treturn items"
+  "solution": "func solve(a, b, c):\n\tvar items = []\n\titems.append(a)\n\titems.append(b)\n\titems.append(c)\n\treturn items",
+  "generator": [
+    {
+      "pick": [
+        1,
+        "x",
+        0
+      ]
+    },
+    {
+      "pick": [
+        2,
+        "y",
+        0
+      ]
+    },
+    {
+      "pick": [
+        3,
+        "z",
+        0
+      ]
+    }
+  ]
 }

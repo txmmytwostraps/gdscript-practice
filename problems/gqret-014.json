@@ -45,5 +45,13 @@
   "solution": "func solve(n):\n\tlog_it(n)\n\treturn n\n\nfunc log_it(value):\n\tprint(value)",
   "require_methods": [
     "log_it"
+  ],
+  "generator": [
+    {
+      "int": [
+        0,
+        8
+      ]
+    }
   ]
 }

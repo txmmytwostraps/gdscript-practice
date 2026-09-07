@@ -42,5 +42,20 @@
       "what": "Returns the text repeated n times."
     }
   ],
-  "solution": "func solve(text, times):\n\treturn text.repeat(times)"
+  "solution": "func solve(text, times):\n\treturn text.repeat(times)",
+  "generator": [
+    {
+      "pick": [
+        "ab",
+        "x",
+        "go"
+      ]
+    },
+    {
+      "int": [
+        0,
+        5
+      ]
+    }
+  ]
 }

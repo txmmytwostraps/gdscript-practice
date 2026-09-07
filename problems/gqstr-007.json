@@ -48,5 +48,14 @@
       "what": "Joins two strings into one. Numbers must be turned into text first."
     }
   ],
-  "solution": "func solve(text):\n\treturn text[0] + text[text.length() - 1]"
+  "solution": "func solve(text):\n\treturn text[0] + text[text.length() - 1]",
+  "generator": [
+    {
+      "pick": [
+        "hello",
+        "a",
+        "Godot"
+      ]
+    }
+  ]
 }

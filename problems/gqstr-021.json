@@ -39,5 +39,14 @@
       "what": "Returns how many characters the string has."
     }
   ],
-  "solution": "func solve(password):\n\treturn password.length() >= 8"
+  "solution": "func solve(password):\n\treturn password.length() >= 8",
+  "generator": [
+    {
+      "pick": [
+        "abcdefgh",
+        "short",
+        "longer than eight"
+      ]
+    }
+  ]
 }

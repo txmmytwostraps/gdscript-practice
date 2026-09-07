@@ -43,5 +43,27 @@
       "what": "Adds value at the start. Returns nothing."
     }
   ],
-  "solution": "func solve(items, value):\n\titems.push_front(value)\n\treturn items"
+  "solution": "func solve(items, value):\n\titems.push_front(value)\n\treturn items",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          0,
+          4
+        ],
+        "of": {
+          "int": [
+            1,
+            5
+          ]
+        }
+      }
+    },
+    {
+      "int": [
+        1,
+        7
+      ]
+    }
+  ]
 }

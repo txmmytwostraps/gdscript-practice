@@ -42,5 +42,13 @@
   "solution": "func solve(n) -> float:\n\treturn half(n)\n\nfunc half(value):\n\treturn value / 2.0",
   "require_methods": [
     "half"
+  ],
+  "generator": [
+    {
+      "int": [
+        -4,
+        8
+      ]
+    }
   ]
 }

@@ -63,5 +63,13 @@
       "what": "Adds value to the end of the array. Returns nothing."
     }
   ],
-  "solution": "func solve(n):\n\tvar result = []\n\tvar i = n\n\twhile i > 0:\n\t\tresult.append(i)\n\t\ti -= 1\n\treturn result"
+  "solution": "func solve(n):\n\tvar result = []\n\tvar i = n\n\twhile i > 0:\n\t\tresult.append(i)\n\t\ti -= 1\n\treturn result",
+  "generator": [
+    {
+      "int": [
+        0,
+        8
+      ]
+    }
+  ]
 }

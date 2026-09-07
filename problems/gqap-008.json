@@ -34,5 +34,20 @@
       "what": "Returns true when the array has no items."
     }
   ],
-  "solution": "func solve(queue):\n\treturn queue.is_empty()"
+  "solution": "func solve(queue):\n\treturn queue.is_empty()",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          0,
+          3
+        ],
+        "of": {
+          "pick": [
+            "soup"
+          ]
+        }
+      }
+    }
+  ]
 }

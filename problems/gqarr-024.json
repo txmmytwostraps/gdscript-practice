@@ -45,5 +45,21 @@
   "solution": "func solve(items):\n\tadd_item(items)\n\treturn items\n\nfunc add_item(arr):\n\tarr.append(99)",
   "require_methods": [
     "add_item"
+  ],
+  "generator": [
+    {
+      "array": {
+        "len": [
+          0,
+          4
+        ],
+        "of": {
+          "int": [
+            1,
+            4
+          ]
+        }
+      }
+    }
   ]
 }

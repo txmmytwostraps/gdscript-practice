@@ -36,5 +36,13 @@
       "what": "Joins two strings. Joining text to a number is an error; convert first."
     }
   ],
-  "solution": "func solve(health):\n\treturn \"Health: \" + str(health)"
+  "solution": "func solve(health):\n\treturn \"Health: \" + str(health)",
+  "generator": [
+    {
+      "int": [
+        0,
+        120
+      ]
+    }
+  ]
 }

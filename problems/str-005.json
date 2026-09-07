@@ -57,5 +57,16 @@
       "what": "true if part appears somewhere in text."
     }
   ],
-  "solution": "func solve(s):\n\tvar count = 0\n\tfor c in s:\n\t\tif c in \"aeiou\":\n\t\t\tcount += 1\n\treturn count"
+  "solution": "func solve(s):\n\tvar count = 0\n\tfor c in s:\n\t\tif c in \"aeiou\":\n\t\t\tcount += 1\n\treturn count",
+  "generator": [
+    {
+      "pick": [
+        "hello",
+        "xyz",
+        "aeiou",
+        "gdscript",
+        ""
+      ]
+    }
+  ]
 }

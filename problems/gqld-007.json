@@ -56,5 +56,22 @@
       "what": "The value stored under key. Assigning to it changes or adds the entry."
     }
   ],
-  "solution": "func solve(inventory):\n\tvar result = []\n\tfor item in inventory:\n\t\tif inventory[item] < 2:\n\t\t\tresult.append(item)\n\treturn result"
+  "solution": "func solve(inventory):\n\tvar result = []\n\tfor item in inventory:\n\t\tif inventory[item] < 2:\n\t\t\tresult.append(item)\n\treturn result",
+  "generator": [
+    {
+      "pick": [
+        {
+          "bolt": 3,
+          "gear": 1
+        },
+        {
+          "bolt": 3
+        },
+        {
+          "a": 0,
+          "b": 1
+        }
+      ]
+    }
+  ]
 }

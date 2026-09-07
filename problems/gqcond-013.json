@@ -50,5 +50,15 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(colour):\n\tif colour == \"red\":\n\t\treturn \"stop\"\n\telif colour == \"green\":\n\t\treturn \"go\"\n\telse:\n\t\treturn \"wait\""
+  "solution": "func solve(colour):\n\tif colour == \"red\":\n\t\treturn \"stop\"\n\telif colour == \"green\":\n\t\treturn \"go\"\n\telse:\n\t\treturn \"wait\"",
+  "generator": [
+    {
+      "pick": [
+        "red",
+        "green",
+        "amber",
+        "blue"
+      ]
+    }
+  ]
 }

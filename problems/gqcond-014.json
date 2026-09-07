@@ -42,5 +42,16 @@
       "what": "Runs the indented lines below it only when the condition is true. elif and else add more branches."
     }
   ],
-  "solution": "func solve(damage, has_shield):\n\tif has_shield:\n\t\treturn damage / 2\n\telse:\n\t\treturn damage"
+  "solution": "func solve(damage, has_shield):\n\tif has_shield:\n\t\treturn damage / 2\n\telse:\n\t\treturn damage",
+  "generator": [
+    {
+      "int": [
+        0,
+        15
+      ]
+    },
+    {
+      "bool": true
+    }
+  ]
 }

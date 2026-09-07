@@ -40,5 +40,21 @@
       "what": "The item at position i. Positions start at 0; -1 is the last item."
     }
   ],
-  "solution": "func solve(items):\n\treturn items[1]"
+  "solution": "func solve(items):\n\treturn items[1]",
+  "generator": [
+    {
+      "pick": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          "a",
+          "b",
+          "c"
+        ]
+      ]
+    }
+  ]
 }

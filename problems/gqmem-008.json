@@ -47,5 +47,13 @@
   "solution": "var count = 0\n\nfunc solve(n):\n\tfor i in range(n):\n\t\ttick()\n\treturn count\n\nfunc tick():\n\tcount += 1",
   "require_methods": [
     "tick"
+  ],
+  "generator": [
+    {
+      "int": [
+        0,
+        15
+      ]
+    }
   ]
 }

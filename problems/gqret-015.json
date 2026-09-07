@@ -46,5 +46,19 @@
   "require_methods": [
     "perimeter",
     "area"
+  ],
+  "generator": [
+    {
+      "int": [
+        0,
+        5
+      ]
+    },
+    {
+      "int": [
+        0,
+        6
+      ]
+    }
   ]
 }

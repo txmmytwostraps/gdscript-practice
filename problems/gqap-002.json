@@ -46,5 +46,22 @@
       "what": "Removes the first item and returns it."
     }
   ],
-  "solution": "func solve(queue):\n\tvar meal = queue.pop_front()\n\treturn [meal, queue]"
+  "solution": "func solve(queue):\n\tvar meal = queue.pop_front()\n\treturn [meal, queue]",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          1,
+          4
+        ],
+        "of": {
+          "pick": [
+            "soup",
+            "pie",
+            "tea"
+          ]
+        }
+      }
+    }
+  ]
 }

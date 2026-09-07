@@ -45,5 +45,19 @@
   "solution": "func solve(width, height):\n\tvar one_room = area(width, height)\n\treturn one_room * 2\n\nfunc area(w, h):\n\treturn w * h",
   "require_methods": [
     "area"
+  ],
+  "generator": [
+    {
+      "int": [
+        0,
+        5
+      ]
+    },
+    {
+      "int": [
+        1,
+        7
+      ]
+    }
   ]
 }

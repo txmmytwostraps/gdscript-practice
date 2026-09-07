@@ -78,5 +78,40 @@
       "what": "Returns true if the point lies inside the rectangle."
     }
   ],
-  "solution": "func solve(r, point):\n\treturn r.has_point(point)"
+  "solution": "func solve(r, point):\n\treturn r.has_point(point)",
+  "generator": [
+    {
+      "rect": [
+        [
+          0,
+          15
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          2,
+          13
+        ],
+        [
+          2,
+          13
+        ]
+      ]
+    },
+    {
+      "v2": [
+        [
+          1,
+          20
+        ],
+        [
+          1,
+          19
+        ],
+        0
+      ]
+    }
+  ]
 }

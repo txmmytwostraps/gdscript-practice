@@ -39,5 +39,14 @@
       "what": "Returns how many characters the string has."
     }
   ],
-  "solution": "func solve(text):\n\treturn text.length()"
+  "solution": "func solve(text):\n\treturn text.length()",
+  "generator": [
+    {
+      "pick": [
+        "hello",
+        "",
+        "a b"
+      ]
+    }
+  ]
 }

@@ -72,5 +72,13 @@
       "what": "Returns the value as text."
     }
   ],
-  "solution": "func solve(n):\n\tif n % 15 == 0:\n\t\treturn \"FizzBuzz\"\n\telif n % 3 == 0:\n\t\treturn \"Fizz\"\n\telif n % 5 == 0:\n\t\treturn \"Buzz\"\n\telse:\n\t\treturn str(n)"
+  "solution": "func solve(n):\n\tif n % 15 == 0:\n\t\treturn \"FizzBuzz\"\n\telif n % 3 == 0:\n\t\treturn \"Fizz\"\n\telif n % 5 == 0:\n\t\treturn \"Buzz\"\n\telse:\n\t\treturn str(n)",
+  "generator": [
+    {
+      "int": [
+        1,
+        44
+      ]
+    }
+  ]
 }

@@ -42,5 +42,20 @@
       "what": "Returns true if the text starts with prefix."
     }
   ],
-  "solution": "func solve(text, prefix):\n\treturn text.begins_with(prefix)"
+  "solution": "func solve(text, prefix):\n\treturn text.begins_with(prefix)",
+  "generator": [
+    {
+      "pick": [
+        "https://godotengine.org",
+        "ftp://x",
+        "abc"
+      ]
+    },
+    {
+      "pick": [
+        "https",
+        ""
+      ]
+    }
+  ]
 }

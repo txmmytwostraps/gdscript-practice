@@ -42,5 +42,20 @@
       "what": "true if part appears somewhere in text."
     }
   ],
-  "solution": "func solve(text, part):\n\treturn part in text"
+  "solution": "func solve(text, part):\n\treturn part in text",
+  "generator": [
+    {
+      "pick": [
+        "concatenate",
+        "dog",
+        ""
+      ]
+    },
+    {
+      "pick": [
+        "cat",
+        "a"
+      ]
+    }
+  ]
 }

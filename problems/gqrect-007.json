@@ -76,5 +76,40 @@
       "what": "The top-left corner, the width and height, and the bottom-right corner, all Vector2."
     }
   ],
-  "solution": "func solve(r, offset) -> Rect2:\n\treturn Rect2(r.position + offset, r.size)"
+  "solution": "func solve(r, offset) -> Rect2:\n\treturn Rect2(r.position + offset, r.size)",
+  "generator": [
+    {
+      "rect": [
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          14
+        ],
+        [
+          1,
+          14
+        ]
+      ]
+    },
+    {
+      "v2": [
+        [
+          0,
+          8
+        ],
+        [
+          -8,
+          3
+        ],
+        0
+      ]
+    }
+  ]
 }

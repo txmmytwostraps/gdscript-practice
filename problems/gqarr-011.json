@@ -59,5 +59,27 @@
       "what": "Removes the first copy of value. Returns nothing."
     }
   ],
-  "solution": "func solve(items, value):\n\titems.erase(value)\n\treturn items"
+  "solution": "func solve(items, value):\n\titems.erase(value)\n\treturn items",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          1,
+          6
+        ],
+        "of": {
+          "int": [
+            1,
+            6
+          ]
+        }
+      }
+    },
+    {
+      "int": [
+        1,
+        13
+      ]
+    }
+  ]
 }

@@ -35,5 +35,16 @@
       "what": "Runs once per key; data[key] gives its value."
     }
   ],
-  "solution": "func solve(inventory):\n\tvar count = 0\n\tfor item in inventory:\n\t\tcount += 1\n\treturn count"
+  "solution": "func solve(inventory):\n\tvar count = 0\n\tfor item in inventory:\n\t\tcount += 1\n\treturn count",
+  "generator": [
+    {
+      "pick": [
+        {
+          "bolt": 3,
+          "gear": 1
+        },
+        {}
+      ]
+    }
+  ]
 }

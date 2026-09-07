@@ -39,5 +39,22 @@
       "what": "Removes the first item and returns it."
     }
   ],
-  "solution": "func solve(queue):\n\tqueue.pop_front()\n\treturn queue"
+  "solution": "func solve(queue):\n\tqueue.pop_front()\n\treturn queue",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          1,
+          4
+        ],
+        "of": {
+          "pick": [
+            "soup",
+            "pie",
+            "tea"
+          ]
+        }
+      }
+    }
+  ]
 }

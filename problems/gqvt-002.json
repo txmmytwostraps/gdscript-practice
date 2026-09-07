@@ -36,5 +36,13 @@
       "what": "Joins two strings. Joining text to a number is an error; convert first."
     }
   ],
-  "solution": "func solve(level):\n\treturn \"Level \" + str(level)"
+  "solution": "func solve(level):\n\treturn \"Level \" + str(level)",
+  "generator": [
+    {
+      "int": [
+        1,
+        14
+      ]
+    }
+  ]
 }

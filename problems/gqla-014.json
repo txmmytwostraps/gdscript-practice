@@ -54,5 +54,21 @@
       "what": "Returns the number as a float, so dividing keeps decimals."
     }
   ],
-  "solution": "func solve(nums) -> float:\n\tif nums.size() == 0:\n\t\treturn 0.0\n\tvar total = 0\n\tfor n in nums:\n\t\ttotal += n\n\treturn float(total) / nums.size()"
+  "solution": "func solve(nums) -> float:\n\tif nums.size() == 0:\n\t\treturn 0.0\n\tvar total = 0\n\tfor n in nums:\n\t\ttotal += n\n\treturn float(total) / nums.size()",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          0,
+          6
+        ],
+        "of": {
+          "int": [
+            1,
+            15
+          ]
+        }
+      }
+    }
+  ]
 }

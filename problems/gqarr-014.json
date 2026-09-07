@@ -51,5 +51,27 @@
       "what": "Returns how many items equal value."
     }
   ],
-  "solution": "func solve(items, value):\n\treturn items.count(value)"
+  "solution": "func solve(items, value):\n\treturn items.count(value)",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          0,
+          6
+        ],
+        "of": {
+          "int": [
+            1,
+            5
+          ]
+        }
+      }
+    },
+    {
+      "int": [
+        1,
+        13
+      ]
+    }
+  ]
 }

@@ -43,5 +43,14 @@
       "what": "Returns the nearest whole number as a float."
     }
   ],
-  "solution": "func solve(value):\n\treturn int(round(value))"
+  "solution": "func solve(value):\n\treturn int(round(value))",
+  "generator": [
+    {
+      "float": [
+        1,
+        10.9,
+        1
+      ]
+    }
+  ]
 }

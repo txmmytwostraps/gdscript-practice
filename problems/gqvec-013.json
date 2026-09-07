@@ -72,5 +72,33 @@
       "what": "Returns the length of the vector as a float."
     }
   ],
-  "solution": "func solve(a, b):\n\tif a.length() > b.length():\n\t\treturn \"a\"\n\telse:\n\t\treturn \"b\""
+  "solution": "func solve(a, b):\n\tif a.length() > b.length():\n\t\treturn \"a\"\n\telse:\n\t\treturn \"b\"",
+  "generator": [
+    {
+      "v2": [
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        0
+      ]
+    },
+    {
+      "v2": [
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        0
+      ]
+    }
+  ]
 }

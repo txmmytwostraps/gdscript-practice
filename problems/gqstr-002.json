@@ -38,5 +38,19 @@
       "what": "Returns the value as text."
     }
   ],
-  "solution": "func solve(name, hp):\n\treturn name + \" has \" + str(hp) + \" hp\""
+  "solution": "func solve(name, hp):\n\treturn name + \" has \" + str(hp) + \" hp\"",
+  "generator": [
+    {
+      "pick": [
+        "Robo",
+        "Bob"
+      ]
+    },
+    {
+      "int": [
+        0,
+        150
+      ]
+    }
+  ]
 }

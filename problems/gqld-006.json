@@ -38,5 +38,16 @@
       "what": "Returns an array of every value."
     }
   ],
-  "solution": "func solve(inventory):\n\treturn inventory.values()"
+  "solution": "func solve(inventory):\n\treturn inventory.values()",
+  "generator": [
+    {
+      "pick": [
+        {
+          "bolt": 3,
+          "gear": 1
+        },
+        {}
+      ]
+    }
+  ]
 }

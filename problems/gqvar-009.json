@@ -34,5 +34,13 @@
     "The starter returns the wrong one. Return b."
   ],
   "docs": [],
-  "solution": "func solve(n):\n\tvar a = n\n\tvar b = a\n\ta += 1\n\treturn b"
+  "solution": "func solve(n):\n\tvar a = n\n\tvar b = a\n\ta += 1\n\treturn b",
+  "generator": [
+    {
+      "int": [
+        -6,
+        9
+      ]
+    }
+  ]
 }

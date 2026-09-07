@@ -76,5 +76,26 @@
       "what": "Reverses the array in place. Returns nothing."
     }
   ],
-  "solution": "func solve(items):\n\tvar result = []\n\tfor x in items:\n\t\tresult.push_front(x)\n\treturn result"
+  "solution": "func solve(items):\n\tvar result = []\n\tfor x in items:\n\t\tresult.push_front(x)\n\treturn result",
+  "generator": [
+    {
+      "pick": [
+        [
+          1,
+          2,
+          3
+        ],
+        [],
+        [
+          1
+        ],
+        [
+          "a",
+          "b",
+          "c",
+          "d"
+        ]
+      ]
+    }
+  ]
 }

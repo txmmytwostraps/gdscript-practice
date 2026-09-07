@@ -72,5 +72,27 @@
       "what": "Vectors add and subtract part by part, and scale by a plain number."
     }
   ],
-  "solution": "func solve(v, factor) -> Vector2:\n\treturn v * factor"
+  "solution": "func solve(v, factor) -> Vector2:\n\treturn v * factor",
+  "generator": [
+    {
+      "v2": [
+        [
+          1,
+          6
+        ],
+        [
+          -4,
+          4
+        ],
+        0
+      ]
+    },
+    {
+      "float": [
+        0,
+        5,
+        1
+      ]
+    }
+  ]
 }

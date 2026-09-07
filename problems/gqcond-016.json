@@ -59,5 +59,25 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(a, b, c):\n\tvar smallest = a\n\tif b < smallest:\n\t\tsmallest = b\n\tif c < smallest:\n\t\tsmallest = c\n\treturn smallest"
+  "solution": "func solve(a, b, c):\n\tvar smallest = a\n\tif b < smallest:\n\t\tsmallest = b\n\tif c < smallest:\n\t\tsmallest = c\n\treturn smallest",
+  "generator": [
+    {
+      "int": [
+        -5,
+        11
+      ]
+    },
+    {
+      "int": [
+        0,
+        12
+      ]
+    },
+    {
+      "int": [
+        1,
+        13
+      ]
+    }
+  ]
 }

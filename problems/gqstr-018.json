@@ -34,5 +34,19 @@
       "what": "Fills the slots: %s takes text, %d a whole number. Values come after the % in an array."
     }
   ],
-  "solution": "func solve(name, hp):\n\treturn \"%s has %d hp\" % [name, hp]"
+  "solution": "func solve(name, hp):\n\treturn \"%s has %d hp\" % [name, hp]",
+  "generator": [
+    {
+      "pick": [
+        "Robo",
+        "Bob"
+      ]
+    },
+    {
+      "int": [
+        0,
+        150
+      ]
+    }
+  ]
 }

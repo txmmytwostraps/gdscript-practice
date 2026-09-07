@@ -54,5 +54,21 @@
       "what": "Runs the indented lines once per character, with c holding each one."
     }
   ],
-  "solution": "func solve(text, n):\n\tvar result = \"\"\n\tfor i in range(n):\n\t\tresult += text\n\treturn result"
+  "solution": "func solve(text, n):\n\tvar result = \"\"\n\tfor i in range(n):\n\t\tresult += text\n\treturn result",
+  "generator": [
+    {
+      "pick": [
+        "ab",
+        "x",
+        "go",
+        "-"
+      ]
+    },
+    {
+      "int": [
+        0,
+        8
+      ]
+    }
+  ]
 }

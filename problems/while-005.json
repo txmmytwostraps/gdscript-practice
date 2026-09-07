@@ -58,5 +58,19 @@
       "what": "Repeats the indented lines below it as long as the condition stays true."
     }
   ],
-  "solution": "func solve(n, limit):\n\tvar m = n\n\twhile m < limit:\n\t\tm += n\n\treturn m"
+  "solution": "func solve(n, limit):\n\tvar m = n\n\twhile m < limit:\n\t\tm += n\n\treturn m",
+  "generator": [
+    {
+      "int": [
+        1,
+        14
+      ]
+    },
+    {
+      "int": [
+        1,
+        142
+      ]
+    }
+  ]
 }

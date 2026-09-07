@@ -62,5 +62,19 @@
       "what": "and is true when both sides are; or when at least one is; not flips true and false."
     }
   ],
-  "solution": "func solve(a, b):\n\treturn (a >= 0 and b >= 0) or (a < 0 and b < 0)"
+  "solution": "func solve(a, b):\n\treturn (a >= 0 and b >= 0) or (a < 0 and b < 0)",
+  "generator": [
+    {
+      "int": [
+        -6,
+        6
+      ]
+    },
+    {
+      "int": [
+        -10,
+        10
+      ]
+    }
+  ]
 }

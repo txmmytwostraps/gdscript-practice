@@ -44,5 +44,13 @@
     "add_one",
     "double",
     "square"
+  ],
+  "generator": [
+    {
+      "int": [
+        0,
+        4
+      ]
+    }
   ]
 }

@@ -35,5 +35,21 @@
       "what": "Removes every item. Returns nothing."
     }
   ],
-  "solution": "func solve(queue):\n\tqueue.clear()\n\treturn queue"
+  "solution": "func solve(queue):\n\tqueue.clear()\n\treturn queue",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          0,
+          4
+        ],
+        "of": {
+          "pick": [
+            "soup",
+            "pie"
+          ]
+        }
+      }
+    }
+  ]
 }

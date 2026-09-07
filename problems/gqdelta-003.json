@@ -40,5 +40,26 @@
     "`return y + vy * delta`"
   ],
   "docs": [],
-  "solution": "func solve(y, vy, delta) -> float:\n\treturn y + vy * delta"
+  "solution": "func solve(y, vy, delta) -> float:\n\treturn y + vy * delta",
+  "generator": [
+    {
+      "int": [
+        0,
+        75
+      ]
+    },
+    {
+      "int": [
+        -80,
+        160
+      ]
+    },
+    {
+      "float": [
+        1,
+        3,
+        1
+      ]
+    }
+  ]
 }

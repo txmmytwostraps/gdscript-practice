@@ -45,5 +45,28 @@
       "what": "Returns the text with every copy of old swapped for new."
     }
   ],
-  "solution": "func solve(text, old, new):\n\treturn text.replace(old, new)"
+  "solution": "func solve(text, old, new):\n\treturn text.replace(old, new)",
+  "generator": [
+    {
+      "pick": [
+        "a-b-c",
+        "hello",
+        "hi"
+      ]
+    },
+    {
+      "pick": [
+        "-",
+        "l",
+        "z"
+      ]
+    },
+    {
+      "pick": [
+        " ",
+        "L",
+        "q"
+      ]
+    }
+  ]
 }

@@ -47,5 +47,19 @@
   "solution": "func solve(a, b):\n\treturn add(a, b)\n\nfunc add(x, y):\n\tprint(\"adding\")\n\treturn x + y",
   "require_methods": [
     "add"
+  ],
+  "generator": [
+    {
+      "int": [
+        0,
+        4
+      ]
+    },
+    {
+      "int": [
+        0,
+        5
+      ]
+    }
   ]
 }

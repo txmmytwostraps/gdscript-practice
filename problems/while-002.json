@@ -54,5 +54,13 @@
       "what": "Repeats the indented lines below it as long as the condition stays true."
     }
   ],
-  "solution": "func solve(n):\n\tvar total = 0\n\tvar i = 1\n\twhile i <= n:\n\t\ttotal += i\n\t\ti += 1\n\treturn total"
+  "solution": "func solve(n):\n\tvar total = 0\n\tvar i = 1\n\twhile i <= n:\n\t\ttotal += i\n\t\ti += 1\n\treturn total",
+  "generator": [
+    {
+      "int": [
+        0,
+        150
+      ]
+    }
+  ]
 }

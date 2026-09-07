@@ -61,5 +61,20 @@
   "allow_type_hints": true,
   "require_methods": [
     "grid_to_world"
+  ],
+  "generator": [
+    {
+      "v2": [
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          3
+        ],
+        0
+      ]
+    }
   ]
 }

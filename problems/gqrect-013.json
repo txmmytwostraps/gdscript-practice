@@ -52,5 +52,19 @@
       "what": "Makes a vector holding an x and a y. Read them back with .x and .y."
     }
   ],
-  "solution": "func solve(column, row) -> Rect2:\n\treturn Rect2(Vector2(column, row) * 64, Vector2(64, 64))"
+  "solution": "func solve(column, row) -> Rect2:\n\treturn Rect2(Vector2(column, row) * 64, Vector2(64, 64))",
+  "generator": [
+    {
+      "int": [
+        0,
+        4
+      ]
+    },
+    {
+      "int": [
+        0,
+        3
+      ]
+    }
+  ]
 }

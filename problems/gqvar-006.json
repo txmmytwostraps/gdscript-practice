@@ -35,5 +35,13 @@
     "Put that line between the var line and the return."
   ],
   "docs": [],
-  "solution": "func solve(n):\n\tvar coins = n\n\tcoins += 5\n\treturn coins"
+  "solution": "func solve(n):\n\tvar coins = n\n\tcoins += 5\n\treturn coins",
+  "generator": [
+    {
+      "int": [
+        -13,
+        18
+      ]
+    }
+  ]
 }

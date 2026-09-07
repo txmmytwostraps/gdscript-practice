@@ -50,5 +50,20 @@
       "what": "Joins two strings into one. Numbers must be turned into text first."
     }
   ],
-  "solution": "func solve(text, times):\n\tvar result = \"\"\n\tfor i in range(times):\n\t\tresult += text\n\treturn result"
+  "solution": "func solve(text, times):\n\tvar result = \"\"\n\tfor i in range(times):\n\t\tresult += text\n\treturn result",
+  "generator": [
+    {
+      "pick": [
+        "ab",
+        "x",
+        "go"
+      ]
+    },
+    {
+      "int": [
+        0,
+        5
+      ]
+    }
+  ]
 }

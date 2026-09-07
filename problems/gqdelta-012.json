@@ -46,5 +46,25 @@
       "what": "Gives the numbers 0 up to n - 1, for a for loop to count through."
     }
   ],
-  "solution": "func solve(speed, seconds, fps) -> float:\n\tvar delta = 1.0 / fps\n\tvar total = 0.0\n\tfor i in range(seconds * fps):\n\t\ttotal += speed * delta\n\treturn total"
+  "solution": "func solve(speed, seconds, fps) -> float:\n\tvar delta = 1.0 / fps\n\tvar total = 0.0\n\tfor i in range(seconds * fps):\n\t\ttotal += speed * delta\n\treturn total",
+  "generator": [
+    {
+      "int": [
+        25,
+        125
+      ]
+    },
+    {
+      "int": [
+        1,
+        4
+      ]
+    },
+    {
+      "int": [
+        1,
+        85
+      ]
+    }
+  ]
 }

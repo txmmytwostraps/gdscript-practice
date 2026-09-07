@@ -43,5 +43,13 @@
       "what": "Returns how many characters the string has."
     }
   ],
-  "solution": "func solve(n):\n\treturn str(n).length()"
+  "solution": "func solve(n):\n\treturn str(n).length()",
+  "generator": [
+    {
+      "int": [
+        1,
+        18514
+      ]
+    }
+  ]
 }

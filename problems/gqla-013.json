@@ -50,5 +50,27 @@
       "what": "Runs the indented lines once per item, with item holding each value in turn."
     }
   ],
-  "solution": "func solve(items, target):\n\tvar found = false\n\tfor item in items:\n\t\tif item == target:\n\t\t\tfound = true\n\treturn found"
+  "solution": "func solve(items, target):\n\tvar found = false\n\tfor item in items:\n\t\tif item == target:\n\t\t\tfound = true\n\treturn found",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          0,
+          5
+        ],
+        "of": {
+          "int": [
+            1,
+            5
+          ]
+        }
+      }
+    },
+    {
+      "int": [
+        1,
+        7
+      ]
+    }
+  ]
 }

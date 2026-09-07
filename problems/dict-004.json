@@ -70,5 +70,24 @@
       "what": "true if the dictionary has that key."
     }
   ],
-  "solution": "func solve(words):\n\tvar counts = {}\n\tfor word in words:\n\t\tif not word in counts:\n\t\t\tcounts[word] = 0\n\t\tcounts[word] += 1\n\treturn counts"
+  "solution": "func solve(words):\n\tvar counts = {}\n\tfor word in words:\n\t\tif not word in counts:\n\t\t\tcounts[word] = 0\n\t\tcounts[word] += 1\n\treturn counts",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          0,
+          5
+        ],
+        "of": {
+          "pick": [
+            "a",
+            "b",
+            "go",
+            "x",
+            "y"
+          ]
+        }
+      }
+    }
+  ]
 }

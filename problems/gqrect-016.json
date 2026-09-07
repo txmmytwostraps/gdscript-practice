@@ -70,5 +70,34 @@
       "what": "Vectors add and subtract part by part, and scale by a plain number."
     }
   ],
-  "solution": "func solve(r, factor) -> Rect2:\n\treturn Rect2(r.position * factor, r.size * factor)"
+  "solution": "func solve(r, factor) -> Rect2:\n\treturn Rect2(r.position * factor, r.size * factor)",
+  "generator": [
+    {
+      "rect": [
+        [
+          8,
+          12
+        ],
+        [
+          18,
+          22
+        ],
+        [
+          28,
+          32
+        ],
+        [
+          38,
+          42
+        ]
+      ]
+    },
+    {
+      "float": [
+        1,
+        4,
+        1
+      ]
+    }
+  ]
 }

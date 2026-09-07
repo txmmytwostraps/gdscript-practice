@@ -69,5 +69,13 @@
       "what": "The remainder after dividing a by b. 90 % 60 is 30."
     }
   ],
-  "solution": "func solve(total_minutes):\n\tvar hours = total_minutes / 60\n\tvar minutes = total_minutes % 60\n\treturn [hours, minutes]"
+  "solution": "func solve(total_minutes):\n\tvar hours = total_minutes / 60\n\tvar minutes = total_minutes % 60\n\treturn [hours, minutes]",
+  "generator": [
+    {
+      "int": [
+        0,
+        225
+      ]
+    }
+  ]
 }

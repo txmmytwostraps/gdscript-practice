@@ -48,5 +48,19 @@
       "what": "The value stored under key. Assigning to it changes or adds the entry."
     }
   ],
-  "solution": "func solve(inventory):\n\tvar total = 0\n\tfor item in inventory:\n\t\ttotal += inventory[item]\n\treturn total"
+  "solution": "func solve(inventory):\n\tvar total = 0\n\tfor item in inventory:\n\t\ttotal += inventory[item]\n\treturn total",
+  "generator": [
+    {
+      "pick": [
+        {
+          "bolt": 3,
+          "gear": 1
+        },
+        {},
+        {
+          "gem": 7
+        }
+      ]
+    }
+  ]
 }

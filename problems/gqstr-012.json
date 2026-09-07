@@ -42,5 +42,20 @@
       "what": "Runs the indented lines once per character, with c holding each one."
     }
   ],
-  "solution": "func solve(text, letter):\n\tvar count = 0\n\tfor c in text:\n\t\tif c == letter:\n\t\t\tcount += 1\n\treturn count"
+  "solution": "func solve(text, letter):\n\tvar count = 0\n\tfor c in text:\n\t\tif c == letter:\n\t\t\tcount += 1\n\treturn count",
+  "generator": [
+    {
+      "pick": [
+        "banana",
+        "hello",
+        ""
+      ]
+    },
+    {
+      "pick": [
+        "a",
+        "z"
+      ]
+    }
+  ]
 }

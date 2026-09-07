@@ -52,5 +52,13 @@
       "what": "Ends the function and hands value back to whoever called it."
     }
   ],
-  "solution": "func solve(n):\n\tprint(n)\n\treturn n * 10"
+  "solution": "func solve(n):\n\tprint(n)\n\treturn n * 10",
+  "generator": [
+    {
+      "int": [
+        -5,
+        6
+      ]
+    }
+  ]
 }

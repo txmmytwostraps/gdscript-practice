@@ -50,5 +50,13 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(n):\n\tif n < 0:\n\t\treturn -n\n\telse:\n\t\treturn n"
+  "solution": "func solve(n):\n\tif n < 0:\n\t\treturn -n\n\telse:\n\t\treturn n",
+  "generator": [
+    {
+      "int": [
+        -152,
+        55
+      ]
+    }
+  ]
 }

@@ -69,5 +69,20 @@
       "what": "Makes a vector holding an x and a y. Read them back with .x and .y."
     }
   ],
-  "solution": "func solve(v) -> Vector2:\n\treturn Vector2(-v.x, v.y)"
+  "solution": "func solve(v) -> Vector2:\n\treturn Vector2(-v.x, v.y)",
+  "generator": [
+    {
+      "v2": [
+        [
+          -3,
+          5
+        ],
+        [
+          -4,
+          7
+        ],
+        0
+      ]
+    }
+  ]
 }

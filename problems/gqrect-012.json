@@ -56,5 +56,27 @@
       "what": "The top-left corner, the width and height, and the bottom-right corner, all Vector2."
     }
   ],
-  "solution": "func solve(r):\n\treturn [r.position.x, r.position.y, r.end.x, r.end.y]"
+  "solution": "func solve(r):\n\treturn [r.position.x, r.position.y, r.end.x, r.end.y]",
+  "generator": [
+    {
+      "rect": [
+        [
+          0,
+          15
+        ],
+        [
+          0,
+          30
+        ],
+        [
+          1,
+          43
+        ],
+        [
+          1,
+          58
+        ]
+      ]
+    }
+  ]
 }

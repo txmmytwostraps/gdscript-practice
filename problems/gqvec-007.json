@@ -76,5 +76,33 @@
       "what": "Returns the length of the vector as a float."
     }
   ],
-  "solution": "func solve(a, b) -> float:\n\treturn a.distance_to(b)"
+  "solution": "func solve(a, b) -> float:\n\treturn a.distance_to(b)",
+  "generator": [
+    {
+      "v2": [
+        [
+          -3,
+          3
+        ],
+        [
+          0,
+          3
+        ],
+        0
+      ]
+    },
+    {
+      "v2": [
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        0
+      ]
+    }
+  ]
 }

@@ -58,5 +58,14 @@
       "what": "Vectors add and subtract part by part, and scale by a plain number."
     }
   ],
-  "solution": "func solve(speed) -> Vector2:\n\treturn Vector2.UP * speed"
+  "solution": "func solve(speed) -> Vector2:\n\treturn Vector2.UP * speed",
+  "generator": [
+    {
+      "float": [
+        0,
+        15,
+        1
+      ]
+    }
+  ]
 }

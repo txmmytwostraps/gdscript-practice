@@ -46,5 +46,25 @@
       "what": "Returns value, but never lower than low or higher than high."
     }
   ],
-  "solution": "func solve(value, low, high):\n\treturn clamp(value, low, high)"
+  "solution": "func solve(value, low, high):\n\treturn clamp(value, low, high)",
+  "generator": [
+    {
+      "int": [
+        -12,
+        24
+      ]
+    },
+    {
+      "int": [
+        0,
+        2
+      ]
+    },
+    {
+      "int": [
+        8,
+        12
+      ]
+    }
+  ]
 }

@@ -79,5 +79,32 @@
       "what": "Makes a vector holding an x and a y. Read them back with .x and .y."
     }
   ],
-  "solution": "func solve(position, width, height) -> Vector2:\n\treturn Vector2(clamp(position.x, 0, width), clamp(position.y, 0, height))"
+  "solution": "func solve(position, width, height) -> Vector2:\n\treturn Vector2(clamp(position.x, 0, width), clamp(position.y, 0, height))",
+  "generator": [
+    {
+      "v2": [
+        [
+          -12,
+          24
+        ],
+        [
+          -8,
+          19
+        ],
+        0
+      ]
+    },
+    {
+      "int": [
+        8,
+        12
+      ]
+    },
+    {
+      "int": [
+        6,
+        12
+      ]
+    }
+  ]
 }

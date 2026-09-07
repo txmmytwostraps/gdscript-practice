@@ -51,5 +51,13 @@
       "what": "The remainder after dividing a by b."
     }
   ],
-  "solution": "func solve(n):\n\tif n % 2 == 0:\n\t\treturn \"even\"\n\telse:\n\t\treturn \"odd\""
+  "solution": "func solve(n):\n\tif n % 2 == 0:\n\t\treturn \"even\"\n\telse:\n\t\treturn \"odd\"",
+  "generator": [
+    {
+      "int": [
+        -8,
+        12
+      ]
+    }
+  ]
 }

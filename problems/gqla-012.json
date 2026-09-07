@@ -59,5 +59,21 @@
       "what": "Adds value to the end of the array. Returns nothing."
     }
   ],
-  "solution": "func solve(nums):\n\tvar result = []\n\tfor n in nums:\n\t\tif n > 0:\n\t\t\tresult.append(n)\n\treturn result"
+  "solution": "func solve(nums):\n\tvar result = []\n\tfor n in nums:\n\t\tif n > 0:\n\t\t\tresult.append(n)\n\treturn result",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          2,
+          5
+        ],
+        "of": {
+          "int": [
+            -6,
+            9
+          ]
+        }
+      }
+    }
+  ]
 }

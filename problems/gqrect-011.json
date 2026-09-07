@@ -84,5 +84,47 @@
       "what": "Returns true if the two rectangles overlap."
     }
   ],
-  "solution": "func solve(a, b):\n\treturn a.intersects(b)"
+  "solution": "func solve(a, b):\n\treturn a.intersects(b)",
+  "generator": [
+    {
+      "rect": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          8,
+          12
+        ],
+        [
+          8,
+          12
+        ]
+      ]
+    },
+    {
+      "rect": [
+        [
+          1,
+          28
+        ],
+        [
+          0,
+          30
+        ],
+        [
+          2,
+          13
+        ],
+        [
+          2,
+          13
+        ]
+      ]
+    }
+  ]
 }

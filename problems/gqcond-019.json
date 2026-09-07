@@ -46,5 +46,19 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(a, b):\n\tif a == b:\n\t\treturn \"same\"\n\telse:\n\t\treturn \"different\""
+  "solution": "func solve(a, b):\n\tif a == b:\n\t\treturn \"same\"\n\telse:\n\t\treturn \"different\"",
+  "generator": [
+    {
+      "int": [
+        0,
+        5
+      ]
+    },
+    {
+      "int": [
+        0,
+        6
+      ]
+    }
+  ]
 }

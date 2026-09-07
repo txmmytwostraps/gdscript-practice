@@ -39,5 +39,14 @@
       "what": "Returns the value as a whole number; decimals are dropped, text like \"42\" is read."
     }
   ],
-  "solution": "func solve(energy):\n\treturn int(energy)"
+  "solution": "func solve(energy):\n\treturn int(energy)",
+  "generator": [
+    {
+      "float": [
+        1,
+        10.9,
+        1
+      ]
+    }
+  ]
 }

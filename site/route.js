@@ -2,6 +2,7 @@ import { mountShell } from "./shell.js";
 import { onSynced } from "./sync.js";
 import { loadBank, state, routeTopics, markerFor, currentTopic, courseLock, setCourseLock, nextMilestone, milestoneStatus, milestones } from "./progress.js";
 import { MILESTONES, LESSONS } from "./route-data.js";
+import { requestPrompt } from "./content-rules.js";
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -39,7 +40,9 @@ function render() {
         : `L${String(t.lesson).padStart(2, "0")} · ${t.done}/${t.total}`;
       const note = t.note ? ` · ${esc(t.note)}` : "";
       const next = t.list.find((p) => !state.solved[p.id]);
-      rows.push(`<div class="row ${cls}" id="${t.concept}"><div class="box">${m}</div><div class="${isCur ? "grow" : ""}"><div class="t">${esc(t.title.toUpperCase())}</div><div class="s">${sub}${note}</div></div>${isCur && next ? `<a class="btn primary" href="practice.html#${next.id}">Continue</a>` : ""}</div>`);
+      const canDrill = t.list.some((p) => p.variants);
+      const more = t.locked ? "" : `<div class="more caps">${canDrill ? `<a href="practice.html?drill=${t.concept}">[~] Drill</a>` : ""}<button type="button" class="linkish" data-request="${t.concept}">[+] Request more</button></div>`;
+      rows.push(`<div class="row ${cls}" id="${t.concept}"><div class="box">${m}</div><div class="${isCur ? "grow" : ""}"><div class="t">${esc(t.title.toUpperCase())}</div><div class="s">${sub}${note}</div>${more}</div>${isCur && next ? `<a class="btn primary" href="practice.html#${next.id}">Continue</a>` : ""}</div>`);
       const milestone = MILESTONES.find((x) => x.after === t.concept);
       if (milestone) {
         const planned = milestone.planned;
@@ -64,6 +67,15 @@ async function main() {
   await loadBank();
   render();
   $("lock").addEventListener("change", () => { setCourseLock(Number($("lock").value)); render(); shell.refresh(); });
+  // Request more problems: copies a written brief for the topic to the clipboard.
+  $("rows").addEventListener("click", async (ev) => {
+    const b = ev.target.closest("button[data-request]"); if (!b) return;
+    const t = routeTopics().find((x) => x.concept === b.dataset.request); if (!t) return;
+    const text = requestPrompt({ title: t.title, concept: t.concept, lesson: t.lesson, titles: t.list.map((p) => p.title) });
+    try { await navigator.clipboard.writeText(text); b.textContent = "[+] Copied to the clipboard"; }
+    catch (e) { b.textContent = "[+] Could not copy"; }
+    setTimeout(() => { b.textContent = "[+] Request more"; }, 4000);
+  });
   onSynced(() => { render(); shell.refresh(); });
 }
 main().catch((e) => { $("rows").innerHTML = `<div class="error">Could not load: ${esc(e.message)}</div>`; });

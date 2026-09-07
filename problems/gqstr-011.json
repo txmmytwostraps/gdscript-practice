@@ -38,5 +38,13 @@
       "what": "Returns an array of the pieces between each separator."
     }
   ],
-  "solution": "func solve(text):\n\treturn text.split(\" \")"
+  "solution": "func solve(text):\n\treturn text.split(\" \")",
+  "generator": [
+    {
+      "pick": [
+        "one two three",
+        "solo"
+      ]
+    }
+  ]
 }

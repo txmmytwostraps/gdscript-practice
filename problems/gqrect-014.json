@@ -69,5 +69,31 @@
       "what": "Makes a rectangle from a top-left corner and a size. Also Rect2(position, size) with two vectors."
     }
   ],
-  "solution": "func solve(max_width, height, hp, max_hp) -> Rect2:\n\treturn Rect2(0, 0, max_width * hp / max_hp, height)"
+  "solution": "func solve(max_width, height, hp, max_hp) -> Rect2:\n\treturn Rect2(0, 0, max_width * hp / max_hp, height)",
+  "generator": [
+    {
+      "int": [
+        198,
+        202
+      ]
+    },
+    {
+      "int": [
+        18,
+        22
+      ]
+    },
+    {
+      "int": [
+        0,
+        150
+      ]
+    },
+    {
+      "int": [
+        98,
+        102
+      ]
+    }
+  ]
 }

@@ -39,5 +39,14 @@
       "what": "Returns the text without spaces at the start and end."
     }
   ],
-  "solution": "func solve(text):\n\treturn text.strip_edges()"
+  "solution": "func solve(text):\n\treturn text.strip_edges()",
+  "generator": [
+    {
+      "pick": [
+        "  hi  ",
+        "a b ",
+        "ok"
+      ]
+    }
+  ]
 }

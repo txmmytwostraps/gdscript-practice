@@ -47,5 +47,19 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(a, b):\n\tif b == 0:\n\t\treturn -1\n\treturn a / b"
+  "solution": "func solve(a, b):\n\tif b == 0:\n\t\treturn -1\n\treturn a / b",
+  "generator": [
+    {
+      "int": [
+        5,
+        12
+      ]
+    },
+    {
+      "int": [
+        0,
+        5
+      ]
+    }
+  ]
 }

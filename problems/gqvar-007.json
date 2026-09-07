@@ -34,5 +34,13 @@
     "`health -= 20` on the line after the var line."
   ],
   "docs": [],
-  "solution": "func solve(hp):\n\tvar health = hp\n\thealth -= 20\n\treturn health"
+  "solution": "func solve(hp):\n\tvar health = hp\n\thealth -= 20\n\treturn health",
+  "generator": [
+    {
+      "int": [
+        1,
+        143
+      ]
+    }
+  ]
 }

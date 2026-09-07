@@ -32,5 +32,10 @@
       "what": "and is true when both sides are; or when at least one is; not flips true and false."
     }
   ],
-  "solution": "func solve(is_open):\n\treturn not is_open"
+  "solution": "func solve(is_open):\n\treturn not is_open",
+  "generator": [
+    {
+      "bool": true
+    }
+  ]
 }

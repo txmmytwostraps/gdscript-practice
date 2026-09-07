@@ -50,5 +50,19 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(a, b):\n\treturn a != b"
+  "solution": "func solve(a, b):\n\treturn a != b",
+  "generator": [
+    {
+      "int": [
+        -3,
+        5
+      ]
+    },
+    {
+      "int": [
+        0,
+        5
+      ]
+    }
+  ]
 }

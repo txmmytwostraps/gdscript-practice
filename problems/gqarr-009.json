@@ -50,5 +50,27 @@
       "what": "true if value is one of the items."
     }
   ],
-  "solution": "func solve(items, value):\n\treturn value in items"
+  "solution": "func solve(items, value):\n\treturn value in items",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          0,
+          5
+        ],
+        "of": {
+          "int": [
+            1,
+            5
+          ]
+        }
+      }
+    },
+    {
+      "int": [
+        1,
+        7
+      ]
+    }
+  ]
 }

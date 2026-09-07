@@ -47,5 +47,14 @@
       "what": "Joins two strings. Joining text to a number is an error; convert first."
     }
   ],
-  "solution": "func solve(fraction):\n\treturn str(int(fraction * 100)) + \"%\""
+  "solution": "func solve(fraction):\n\treturn str(int(fraction * 100)) + \"%\"",
+  "generator": [
+    {
+      "float": [
+        1,
+        3,
+        2
+      ]
+    }
+  ]
 }

@@ -57,5 +57,14 @@
   "solution": "func solve(x):\n\treturn nearest(x)\n\nfunc nearest(value):\n\treturn int(round(value))",
   "require_methods": [
     "nearest"
+  ],
+  "generator": [
+    {
+      "float": [
+        -6.2,
+        12,
+        1
+      ]
+    }
   ]
 }

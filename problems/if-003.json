@@ -64,5 +64,13 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(score):\n\tif score >= 90:\n\t\treturn \"A\"\n\telif score >= 80:\n\t\treturn \"B\"\n\telif score >= 70:\n\t\treturn \"C\"\n\telse:\n\t\treturn \"F\""
+  "solution": "func solve(score):\n\tif score >= 90:\n\t\treturn \"A\"\n\telif score >= 80:\n\t\treturn \"B\"\n\telif score >= 70:\n\t\treturn \"C\"\n\telse:\n\t\treturn \"F\"",
+  "generator": [
+    {
+      "int": [
+        0,
+        143
+      ]
+    }
+  ]
 }

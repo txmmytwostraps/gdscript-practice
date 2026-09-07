@@ -51,5 +51,19 @@
       "what": "Adds value to the end of the array. Returns nothing."
     }
   ],
-  "solution": "func solve(a, b):\n\tvar items = []\n\titems.append(a)\n\titems.append(b)\n\treturn items"
+  "solution": "func solve(a, b):\n\tvar items = []\n\titems.append(a)\n\titems.append(b)\n\treturn items",
+  "generator": [
+    {
+      "int": [
+        0,
+        11
+      ]
+    },
+    {
+      "int": [
+        -5,
+        11
+      ]
+    }
+  ]
 }

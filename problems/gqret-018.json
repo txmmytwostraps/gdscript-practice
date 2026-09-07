@@ -46,5 +46,13 @@
   "solution": "func solve(n):\n\treturn is_even(n)\n\nfunc is_even(value):\n\treturn value % 2 == 0",
   "require_methods": [
     "is_even"
+  ],
+  "generator": [
+    {
+      "int": [
+        0,
+        11
+      ]
+    }
   ]
 }

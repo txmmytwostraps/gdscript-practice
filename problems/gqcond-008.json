@@ -54,5 +54,16 @@
       "what": "and is true when both sides are; or when at least one is; not flips true and false."
     }
   ],
-  "solution": "func solve(total, is_member):\n\treturn total >= 50 or is_member"
+  "solution": "func solve(total, is_member):\n\treturn total >= 50 or is_member",
+  "generator": [
+    {
+      "int": [
+        1,
+        85
+      ]
+    },
+    {
+      "bool": true
+    }
+  ]
 }

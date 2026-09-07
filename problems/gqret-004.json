@@ -42,5 +42,13 @@
   "solution": "func solve(n):\n\tvar squared = square(n)\n\treturn squared + 1\n\nfunc square(value):\n\treturn value * value",
   "require_methods": [
     "square"
+  ],
+  "generator": [
+    {
+      "int": [
+        -5,
+        6
+      ]
+    }
   ]
 }

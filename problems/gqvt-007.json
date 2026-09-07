@@ -39,5 +39,14 @@
       "what": "true if the value is of that type. Also is int, is float, is bool."
     }
   ],
-  "solution": "func solve(value):\n\treturn value is String"
+  "solution": "func solve(value):\n\treturn value is String",
+  "generator": [
+    {
+      "pick": [
+        "hi",
+        5,
+        true
+      ]
+    }
+  ]
 }

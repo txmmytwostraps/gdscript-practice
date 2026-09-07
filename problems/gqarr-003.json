@@ -55,5 +55,21 @@
       "what": "Returns how many items the array holds."
     }
   ],
-  "solution": "func solve(items):\n\treturn items[items.size() - 1]"
+  "solution": "func solve(items):\n\treturn items[items.size() - 1]",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          1,
+          7
+        ],
+        "of": {
+          "int": [
+            1,
+            63
+          ]
+        }
+      }
+    }
+  ]
 }

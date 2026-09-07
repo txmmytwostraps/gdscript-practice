@@ -45,5 +45,21 @@
       "what": "Runs the indented lines once per item, with item holding each value in turn."
     }
   ],
-  "solution": "func solve(hits):\n\tvar total = 0\n\tfor hit in hits:\n\t\ttotal += hit\n\treturn total"
+  "solution": "func solve(hits):\n\tvar total = 0\n\tfor hit in hits:\n\t\ttotal += hit\n\treturn total",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          0,
+          5
+        ],
+        "of": {
+          "int": [
+            1,
+            146
+          ]
+        }
+      }
+    }
+  ]
 }

@@ -32,5 +32,13 @@
       "what": "Returns the text with the first letter of each word in capitals."
     }
   ],
-  "solution": "func solve(text):\n\treturn text.capitalize()"
+  "solution": "func solve(text):\n\treturn text.capitalize()",
+  "generator": [
+    {
+      "pick": [
+        "hello world",
+        "godot"
+      ]
+    }
+  ]
 }

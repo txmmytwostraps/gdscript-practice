@@ -39,5 +39,14 @@
       "what": "Returns the value as a decimal number."
     }
   ],
-  "solution": "func solve(text) -> float:\n\treturn float(text) * 2"
+  "solution": "func solve(text) -> float:\n\treturn float(text) * 2",
+  "generator": [
+    {
+      "pick": [
+        "2.5",
+        "0.25",
+        "3"
+      ]
+    }
+  ]
 }

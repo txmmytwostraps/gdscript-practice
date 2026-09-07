@@ -42,5 +42,19 @@
       "what": "Returns the value as a decimal number."
     }
   ],
-  "solution": "func solve(a, b) -> float:\n\treturn float(a) / b"
+  "solution": "func solve(a, b) -> float:\n\treturn float(a) / b",
+  "generator": [
+    {
+      "int": [
+        1,
+        13
+      ]
+    },
+    {
+      "int": [
+        1,
+        6
+      ]
+    }
+  ]
 }

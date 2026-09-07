@@ -39,5 +39,14 @@
       "what": "Returns the whole number written in the text."
     }
   ],
-  "solution": "func solve(text):\n\treturn text.to_int() + 1"
+  "solution": "func solve(text):\n\treturn text.to_int() + 1",
+  "generator": [
+    {
+      "pick": [
+        "41",
+        "0",
+        "-5"
+      ]
+    }
+  ]
 }

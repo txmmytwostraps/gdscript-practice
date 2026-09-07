@@ -54,5 +54,16 @@
       "what": "and is true when both sides are; or when at least one is; not flips true and false."
     }
   ],
-  "solution": "func solve(age, has_ticket):\n\treturn age >= 18 and has_ticket"
+  "solution": "func solve(age, has_ticket):\n\treturn age >= 18 and has_ticket",
+  "generator": [
+    {
+      "int": [
+        14,
+        22
+      ]
+    },
+    {
+      "bool": true
+    }
+  ]
 }

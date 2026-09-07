@@ -49,5 +49,32 @@
       "what": "Returns the smaller of the two numbers."
     }
   ],
-  "solution": "func solve(hp, regen, max_hp, delta) -> float:\n\treturn min(hp + regen * delta, max_hp)"
+  "solution": "func solve(hp, regen, max_hp, delta) -> float:\n\treturn min(hp + regen * delta, max_hp)",
+  "generator": [
+    {
+      "int": [
+        25,
+        125
+      ]
+    },
+    {
+      "int": [
+        8,
+        12
+      ]
+    },
+    {
+      "int": [
+        98,
+        102
+      ]
+    },
+    {
+      "float": [
+        1,
+        3,
+        1
+      ]
+    }
+  ]
 }

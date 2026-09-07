@@ -49,5 +49,21 @@
       "what": "Runs the indented lines once per item, with item holding each value in turn."
     }
   ],
-  "solution": "func solve(nums):\n\tvar biggest = nums[0]\n\tfor n in nums:\n\t\tif n > biggest:\n\t\t\tbiggest = n\n\treturn biggest"
+  "solution": "func solve(nums):\n\tvar biggest = nums[0]\n\tfor n in nums:\n\t\tif n > biggest:\n\t\t\tbiggest = n\n\treturn biggest",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          1,
+          5
+        ],
+        "of": {
+          "int": [
+            -18,
+            18
+          ]
+        }
+      }
+    }
+  ]
 }

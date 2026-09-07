@@ -45,5 +45,26 @@
       "what": "Multiplies two numbers. * with a float keeps decimals."
     }
   ],
-  "solution": "func solve(damage, hits_per_second, seconds) -> float:\n\treturn damage * hits_per_second * seconds"
+  "solution": "func solve(damage, hits_per_second, seconds) -> float:\n\treturn damage * hits_per_second * seconds",
+  "generator": [
+    {
+      "int": [
+        2,
+        13
+      ]
+    },
+    {
+      "int": [
+        1,
+        6
+      ]
+    },
+    {
+      "float": [
+        0,
+        5,
+        1
+      ]
+    }
+  ]
 }

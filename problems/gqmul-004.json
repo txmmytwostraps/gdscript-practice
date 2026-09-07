@@ -39,5 +39,13 @@
       "what": "Multiplies two numbers. * with a float keeps decimals."
     }
   ],
-  "solution": "func solve(level):\n\treturn 10 * level"
+  "solution": "func solve(level):\n\treturn 10 * level",
+  "generator": [
+    {
+      "int": [
+        0,
+        5
+      ]
+    }
+  ]
 }

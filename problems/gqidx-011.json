@@ -62,5 +62,23 @@
       "what": "The item at position i. Positions start at 0; -1 is the last item."
     }
   ],
-  "solution": "func solve(items):\n\tvar result = []\n\tfor i in range(0, items.size(), 2):\n\t\tresult.append(items[i])\n\treturn result"
+  "solution": "func solve(items):\n\tvar result = []\n\tfor i in range(0, items.size(), 2):\n\t\tresult.append(items[i])\n\treturn result",
+  "generator": [
+    {
+      "pick": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        [],
+        [
+          "a",
+          "b"
+        ]
+      ]
+    }
+  ]
 }

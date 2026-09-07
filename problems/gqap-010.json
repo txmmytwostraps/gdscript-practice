@@ -45,5 +45,28 @@
       "what": "Removes the first copy of value. Returns nothing."
     }
   ],
-  "solution": "func solve(queue, order):\n\tqueue.erase(order)\n\treturn queue"
+  "solution": "func solve(queue, order):\n\tqueue.erase(order)\n\treturn queue",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          1,
+          5
+        ],
+        "of": {
+          "pick": [
+            "soup",
+            "pie",
+            "tea"
+          ]
+        }
+      }
+    },
+    {
+      "pick": [
+        "pie",
+        "cake"
+      ]
+    }
+  ]
 }

@@ -41,5 +41,13 @@
     "`return n * 2`"
   ],
   "docs": [],
-  "solution": "func solve(n):\n\treturn n * 2"
+  "solution": "func solve(n):\n\treturn n * 2",
+  "generator": [
+    {
+      "int": [
+        -10,
+        17
+      ]
+    }
+  ]
 }

@@ -46,5 +46,20 @@
       "what": "The item at position i. Positions start at 0; -1 is the last item."
     }
   ],
-  "solution": "func solve(items):\n\tvar temp = items[0]\n\titems[0] = items[1]\n\titems[1] = temp\n\treturn items"
+  "solution": "func solve(items):\n\tvar temp = items[0]\n\titems[0] = items[1]\n\titems[1] = temp\n\treturn items",
+  "generator": [
+    {
+      "pick": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          "a",
+          "b"
+        ]
+      ]
+    }
+  ]
 }

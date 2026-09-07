@@ -45,5 +45,19 @@
   "solution": "func solve(a, b) -> float:\n\treturn average(a, b)\n\nfunc average(x, y):\n\treturn (x + y) / 2.0",
   "require_methods": [
     "average"
+  ],
+  "generator": [
+    {
+      "int": [
+        -7,
+        8
+      ]
+    },
+    {
+      "int": [
+        1,
+        6
+      ]
+    }
   ]
 }

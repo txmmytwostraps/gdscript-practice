@@ -57,5 +57,13 @@
       "what": "The whole numbers from a up to but not including b. range(n) starts at 0."
     }
   ],
-  "solution": "func solve(n):\n\tvar total = 0\n\tfor i in range(1, n + 1):\n\t\ttotal += i * i\n\treturn total"
+  "solution": "func solve(n):\n\tvar total = 0\n\tfor i in range(1, n + 1):\n\t\ttotal += i * i\n\treturn total",
+  "generator": [
+    {
+      "int": [
+        0,
+        15
+      ]
+    }
+  ]
 }

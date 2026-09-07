@@ -46,5 +46,13 @@
       "what": "Ends the function and hands value back to whoever called it."
     }
   ],
-  "solution": "func solve(n):\n\treturn n * n"
+  "solution": "func solve(n):\n\treturn n * n",
+  "generator": [
+    {
+      "int": [
+        -12,
+        20
+      ]
+    }
+  ]
 }

@@ -41,5 +41,26 @@
       "what": "Adds value to the end of the array. Returns nothing."
     }
   ],
-  "solution": "func solve(queue, order):\n\tqueue.append(order)\n\treturn queue"
+  "solution": "func solve(queue, order):\n\tqueue.append(order)\n\treturn queue",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          0,
+          3
+        ],
+        "of": {
+          "pick": [
+            "soup"
+          ]
+        }
+      }
+    },
+    {
+      "pick": [
+        "pie",
+        "tea"
+      ]
+    }
+  ]
 }

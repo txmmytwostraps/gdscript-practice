@@ -39,5 +39,13 @@
       "what": "Divides. Two whole numbers give a whole number; use a decimal to keep the fraction."
     }
   ],
-  "solution": "func solve(damage) -> float:\n\treturn damage / 2.0"
+  "solution": "func solve(damage) -> float:\n\treturn damage / 2.0",
+  "generator": [
+    {
+      "int": [
+        0,
+        15
+      ]
+    }
+  ]
 }

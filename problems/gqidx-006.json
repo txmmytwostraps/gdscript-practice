@@ -50,5 +50,21 @@
       "what": "The item at position i. Positions start at 0; -1 is the last item."
     }
   ],
-  "solution": "func solve(nums):\n\treturn nums[0] + nums[-1]"
+  "solution": "func solve(nums):\n\treturn nums[0] + nums[-1]",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          1,
+          6
+        ],
+        "of": {
+          "int": [
+            -7,
+            12
+          ]
+        }
+      }
+    }
+  ]
 }

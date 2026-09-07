@@ -68,5 +68,33 @@
       "what": "Makes a rectangle from a top-left corner and a size. Also Rect2(position, size) with two vectors."
     }
   ],
-  "solution": "func solve(position, size) -> Rect2:\n\treturn Rect2(position, size)"
+  "solution": "func solve(position, size) -> Rect2:\n\treturn Rect2(position, size)",
+  "generator": [
+    {
+      "v2": [
+        [
+          -13,
+          18
+        ],
+        [
+          0,
+          30
+        ],
+        0
+      ]
+    },
+    {
+      "v2": [
+        [
+          1,
+          43
+        ],
+        [
+          1,
+          58
+        ],
+        0
+      ]
+    }
+  ]
 }

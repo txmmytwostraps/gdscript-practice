@@ -40,5 +40,25 @@
     "`return first * 100 + second * 10 + third`"
   ],
   "docs": [],
-  "solution": "func solve(first, second, third):\n\treturn first * 100 + second * 10 + third"
+  "solution": "func solve(first, second, third):\n\treturn first * 100 + second * 10 + third",
+  "generator": [
+    {
+      "int": [
+        0,
+        14
+      ]
+    },
+    {
+      "int": [
+        0,
+        14
+      ]
+    },
+    {
+      "int": [
+        1,
+        12
+      ]
+    }
+  ]
 }

@@ -42,5 +42,13 @@
   "solution": "func solve(n):\n\treturn scaled(n) + scaled(n, 1)\n\nfunc scaled(value, factor = 3):\n\treturn value * factor",
   "require_methods": [
     "scaled"
+  ],
+  "generator": [
+    {
+      "int": [
+        0,
+        8
+      ]
+    }
   ]
 }

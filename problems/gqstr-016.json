@@ -43,5 +43,13 @@
       "what": "Joins two strings into one. Numbers must be turned into text first."
     }
   ],
-  "solution": "func solve(n):\n\treturn str(n) + \"px\""
+  "solution": "func solve(n):\n\treturn str(n) + \"px\"",
+  "generator": [
+    {
+      "int": [
+        -11,
+        20
+      ]
+    }
+  ]
 }

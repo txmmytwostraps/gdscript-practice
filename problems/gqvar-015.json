@@ -34,5 +34,14 @@
     "`return price + price + price`"
   ],
   "docs": [],
-  "solution": "func solve(p) -> float:\n\tvar price = p\n\treturn price + price + price"
+  "solution": "func solve(p) -> float:\n\tvar price = p\n\treturn price + price + price",
+  "generator": [
+    {
+      "float": [
+        0,
+        4,
+        1
+      ]
+    }
+  ]
 }

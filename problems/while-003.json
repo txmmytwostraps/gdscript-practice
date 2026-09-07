@@ -54,5 +54,13 @@
       "what": "Repeats the indented lines below it as long as the condition stays true."
     }
   ],
-  "solution": "func solve(n):\n\tif n == 0:\n\t\treturn 1\n\tvar count = 0\n\twhile n > 0:\n\t\tn = n / 10\n\t\tcount += 1\n\treturn count"
+  "solution": "func solve(n):\n\tif n == 0:\n\t\treturn 1\n\tvar count = 0\n\twhile n > 0:\n\t\tn = n / 10\n\t\tcount += 1\n\treturn count",
+  "generator": [
+    {
+      "int": [
+        0,
+        149999
+      ]
+    }
+  ]
 }

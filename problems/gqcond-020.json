@@ -54,5 +54,20 @@
       "what": "and is true when both sides are; or when at least one is; not flips true and false."
     }
   ],
-  "solution": "func solve(lives, time_left):\n\treturn lives <= 0 or time_left <= 0"
+  "solution": "func solve(lives, time_left):\n\treturn lives <= 0 or time_left <= 0",
+  "generator": [
+    {
+      "int": [
+        0,
+        5
+      ]
+    },
+    {
+      "float": [
+        0,
+        45,
+        1
+      ]
+    }
+  ]
 }

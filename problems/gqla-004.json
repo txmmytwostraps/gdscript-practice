@@ -45,5 +45,20 @@
       "what": "Runs the indented lines once per item, with item holding each value in turn."
     }
   ],
-  "solution": "func solve(items):\n\tvar count = 0\n\tfor item in items:\n\t\tcount += 1\n\treturn count"
+  "solution": "func solve(items):\n\tvar count = 0\n\tfor item in items:\n\t\tcount += 1\n\treturn count",
+  "generator": [
+    {
+      "pick": [
+        [
+          "a",
+          "b",
+          "c"
+        ],
+        [],
+        [
+          9
+        ]
+      ]
+    }
+  ]
 }

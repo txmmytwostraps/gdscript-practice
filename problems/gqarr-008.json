@@ -48,5 +48,21 @@
       "what": "Returns how many items the array holds."
     }
   ],
-  "solution": "func solve(items):\n\treturn items.is_empty()"
+  "solution": "func solve(items):\n\treturn items.is_empty()",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          0,
+          4
+        ],
+        "of": {
+          "int": [
+            0,
+            3
+          ]
+        }
+      }
+    }
+  ]
 }

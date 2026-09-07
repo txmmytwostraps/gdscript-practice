@@ -375,49 +375,57 @@
       "id": "gqparam-009",
       "title": "Add two numbers",
       "concept": "gq-parameters",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqparam-010",
       "title": "Order matters",
       "concept": "gq-parameters",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqparam-011",
       "title": "Price, quantity, shipping",
       "concept": "gq-parameters",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqparam-012",
       "title": "Use the parameter twice",
       "concept": "gq-parameters",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqparam-013",
       "title": "Whole numbers in, decimal out",
       "concept": "gq-parameters",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqparam-014",
       "title": "Clamp with parameters",
       "concept": "gq-parameters",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqparam-015",
       "title": "Two defaults",
       "concept": "gq-parameters",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqparam-016",
       "title": "Digits into a number",
       "concept": "gq-parameters",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqmem-001",
@@ -459,13 +467,15 @@
       "id": "gqmem-007",
       "title": "Local or member",
       "concept": "gq-members",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqmem-008",
       "title": "Counting calls",
       "concept": "gq-members",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqmem-009",
@@ -543,13 +553,15 @@
       "id": "gqvar-006",
       "title": "Pick up coins",
       "concept": "gq-variables",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqvar-007",
       "title": "Take a hit",
       "concept": "gq-variables",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqvar-008",
@@ -561,7 +573,8 @@
       "id": "gqvar-009",
       "title": "Copy, then change the original",
       "concept": "gq-variables",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqvar-010",
@@ -597,7 +610,8 @@
       "id": "gqvar-015",
       "title": "Read a variable three times",
       "concept": "gq-variables",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqvar-016",
@@ -609,7 +623,8 @@
       "id": "vars-001",
       "title": "Double the reward",
       "concept": "variables",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "vars-002",
@@ -621,13 +636,15 @@
       "id": "vars-003",
       "title": "Score bonus",
       "concept": "variables",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "vars-004",
       "title": "Halve it, keep the decimals",
       "concept": "variables",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "vars-005",
@@ -639,31 +656,36 @@
       "id": "arith-001",
       "title": "Room area",
       "concept": "arithmetic",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "arith-002",
       "title": "Average of three readings",
       "concept": "arithmetic",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "arith-003",
       "title": "Remainder",
       "concept": "arithmetic",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "arith-004",
       "title": "Celsius to Fahrenheit",
       "concept": "arithmetic",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "arith-005",
       "title": "Hours and minutes",
       "concept": "arithmetic",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqloop-001",
@@ -729,91 +751,106 @@
       "id": "gqdelta-001",
       "title": "Distance this frame",
       "concept": "gq-delta",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqdelta-002",
       "title": "New position",
       "concept": "gq-delta",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqdelta-003",
       "title": "New y position",
       "concept": "gq-delta",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqdelta-004",
       "title": "Frames to seconds",
       "concept": "gq-delta",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqdelta-005",
       "title": "Countdown timer",
       "concept": "gq-delta",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqdelta-006",
       "title": "Frames until the timer ends",
       "concept": "gq-delta",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqdelta-007",
       "title": "Speed up",
       "concept": "gq-delta",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqdelta-008",
       "title": "Fall with gravity",
       "concept": "gq-delta",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqdelta-009",
       "title": "Move toward a target",
       "concept": "gq-delta",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqdelta-010",
       "title": "Turn over time",
       "concept": "gq-delta",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqdelta-011",
       "title": "Distance over many frames",
       "concept": "gq-delta",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqdelta-012",
       "title": "Same distance at any frame rate",
       "concept": "gq-delta",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqdelta-013",
       "title": "Health regen with a cap",
       "concept": "gq-delta",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqdelta-014",
       "title": "Blink timer wraps around",
       "concept": "gq-delta",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqdelta-015",
       "title": "Speed from distance and time",
       "concept": "gq-delta",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqread-001",
@@ -915,187 +952,218 @@
       "id": "gqcond-001",
       "title": "Is the robot charged",
       "concept": "gq-conditions",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqcond-002",
       "title": "Positive or not",
       "concept": "gq-conditions",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqcond-003",
       "title": "Even or odd",
       "concept": "gq-conditions",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqcond-004",
       "title": "Bigger of two",
       "concept": "gq-conditions",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqcond-005",
       "title": "Letter grade",
       "concept": "gq-conditions",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqcond-006",
       "title": "Between",
       "concept": "gq-conditions",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqcond-007",
       "title": "Both must be true",
       "concept": "gq-conditions",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqcond-008",
       "title": "Either is enough",
       "concept": "gq-conditions",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqcond-009",
       "title": "Not",
       "concept": "gq-conditions",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqcond-010",
       "title": "Sign of a number",
       "concept": "gq-conditions",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqcond-011",
       "title": "Clamp with ifs",
       "concept": "gq-conditions",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqcond-012",
       "title": "Discount tiers",
       "concept": "gq-conditions",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqcond-013",
       "title": "Traffic light",
       "concept": "gq-conditions",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqcond-014",
       "title": "Damage with a shield",
       "concept": "gq-conditions",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqcond-015",
       "title": "Nested if",
       "concept": "gq-conditions",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqcond-016",
       "title": "Smallest of three",
       "concept": "gq-conditions",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqcond-017",
       "title": "Guard with an early return",
       "concept": "gq-conditions",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqcond-018",
       "title": "Absolute value with if",
       "concept": "gq-conditions",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqcond-019",
       "title": "Same or different",
       "concept": "gq-conditions",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqcond-020",
       "title": "Game over?",
       "concept": "gq-conditions",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "if-001",
       "title": "Absolute value",
       "concept": "ifelse",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "if-002",
       "title": "Even or odd",
       "concept": "ifelse",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "if-003",
       "title": "Letter grade",
       "concept": "ifelse",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "if-004",
       "title": "Larger of two",
       "concept": "ifelse",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "if-005",
       "title": "FizzBuzz for one number",
       "concept": "ifelse",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "cmp-001",
       "title": "Old enough",
       "concept": "comparisons",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "cmp-002",
       "title": "Not the same",
       "concept": "comparisons",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "cmp-003",
       "title": "In range",
       "concept": "comparisons",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "cmp-004",
       "title": "Can ride",
       "concept": "comparisons",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "cmp-005",
       "title": "Same sign",
       "concept": "comparisons",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqmul-001",
       "title": "Double the max health",
       "concept": "gq-multiply",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqmul-002",
@@ -1113,43 +1181,50 @@
       "id": "gqmul-004",
       "title": "Damage scales with level",
       "concept": "gq-multiply",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqmul-005",
       "title": "Critical hit",
       "concept": "gq-multiply",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqmul-006",
       "title": "Halve the damage",
       "concept": "gq-multiply",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqmul-007",
       "title": "Reduce damage by a percentage",
       "concept": "gq-multiply",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqmul-008",
       "title": "Coins for a level",
       "concept": "gq-multiply",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqmul-009",
       "title": "Grow by ten percent",
       "concept": "gq-multiply",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqmul-010",
       "title": "Square the level",
       "concept": "gq-multiply",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqmul-011",
@@ -1161,13 +1236,15 @@
       "id": "gqmul-012",
       "title": "Area of the arena",
       "concept": "gq-multiply",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqmul-013",
       "title": "Damage per second",
       "concept": "gq-multiply",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqmul-014",
@@ -1185,259 +1262,302 @@
       "id": "gqvec-001",
       "title": "Make a vector",
       "concept": "gq-vectors",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqvec-002",
       "title": "Read x and y",
       "concept": "gq-vectors",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqvec-003",
       "title": "Add two vectors",
       "concept": "gq-vectors",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqvec-004",
       "title": "From a to b",
       "concept": "gq-vectors",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqvec-005",
       "title": "Scale by a number",
       "concept": "gq-vectors",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqvec-006",
       "title": "Length",
       "concept": "gq-vectors",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqvec-007",
       "title": "Distance between points",
       "concept": "gq-vectors",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqvec-008",
       "title": "Direction of length 1",
       "concept": "gq-vectors",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqvec-009",
       "title": "Step along a direction",
       "concept": "gq-vectors",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqvec-010",
       "title": "Midpoint",
       "concept": "gq-vectors",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqvec-011",
       "title": "Mirror left to right",
       "concept": "gq-vectors",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqvec-012",
       "title": "Vector2.UP and friends",
       "concept": "gq-vectors",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqvec-013",
       "title": "Which is farther",
       "concept": "gq-vectors",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqvec-014",
       "title": "Vector to array",
       "concept": "gq-vectors",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqvec-015",
       "title": "Grid to pixels",
       "concept": "gq-vectors",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqvec-016",
       "title": "Keep inside a box",
       "concept": "gq-vectors",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqvec-017",
       "title": "Standing still",
       "concept": "gq-vectors",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqrect-001",
       "title": "Rect from four numbers",
       "concept": "gq-rect",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqrect-002",
       "title": "Rect from position and size",
       "concept": "gq-rect",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqrect-003",
       "title": "Area of a rect",
       "concept": "gq-rect",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqrect-004",
       "title": "Right and bottom edges",
       "concept": "gq-rect",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqrect-005",
       "title": "Centre of a rect",
       "concept": "gq-rect",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqrect-006",
       "title": "Rect around a centre",
       "concept": "gq-rect",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqrect-007",
       "title": "Move a rect",
       "concept": "gq-rect",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqrect-008",
       "title": "Grow",
       "concept": "gq-rect",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqrect-009",
       "title": "Shrink",
       "concept": "gq-rect",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqrect-010",
       "title": "Is the point inside",
       "concept": "gq-rect",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqrect-011",
       "title": "Do they overlap",
       "concept": "gq-rect",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqrect-012",
       "title": "The four edges",
       "concept": "gq-rect",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqrect-013",
       "title": "Tile rect from a cell",
       "concept": "gq-rect",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqrect-014",
       "title": "Health bar",
       "concept": "gq-rect",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqrect-015",
       "title": "Keep on screen",
       "concept": "gq-rect",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqrect-016",
       "title": "Scale a rect",
       "concept": "gq-rect",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "while-001",
       "title": "Count down",
       "concept": "while",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "while-002",
       "title": "Sum up to n",
       "concept": "while",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "while-003",
       "title": "Count the digits",
       "concept": "while",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "while-004",
       "title": "Halve until small",
       "concept": "while",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "while-005",
       "title": "First multiple",
       "concept": "while",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "for-001",
       "title": "Sum of a list",
       "concept": "for",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "for-002",
       "title": "Count the evens",
       "concept": "for",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "for-003",
       "title": "Sum of squares",
       "concept": "for",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "for-004",
       "title": "Largest number",
       "concept": "for",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "for-005",
       "title": "Times table",
       "concept": "for",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqarr-001",
@@ -1449,169 +1569,197 @@
       "id": "gqarr-002",
       "title": "First item",
       "concept": "gq-arrays",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqarr-003",
       "title": "Last item",
       "concept": "gq-arrays",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqarr-004",
       "title": "How many",
       "concept": "gq-arrays",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqarr-005",
       "title": "Append",
       "concept": "gq-arrays",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqarr-006",
       "title": "Change an item",
       "concept": "gq-arrays",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqarr-007",
       "title": "Return two values in an array",
       "concept": "gq-arrays",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqarr-008",
       "title": "Empty or not",
       "concept": "gq-arrays",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqarr-009",
       "title": "Contains",
       "concept": "gq-arrays",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqarr-010",
       "title": "Where is it",
       "concept": "gq-arrays",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqarr-011",
       "title": "Remove a value",
       "concept": "gq-arrays",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqarr-012",
       "title": "Sum with a loop",
       "concept": "gq-arrays",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqarr-013",
       "title": "Count the matches",
       "concept": "gq-arrays",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqarr-014",
       "title": "Count the matches, now with count()",
       "concept": "gq-arrays",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqarr-015",
       "title": "Largest with a loop",
       "concept": "gq-arrays",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqarr-016",
       "title": "Largest, now with max()",
       "concept": "gq-arrays",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqarr-017",
       "title": "Double each",
       "concept": "gq-arrays",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqarr-018",
       "title": "Average",
       "concept": "gq-arrays",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqarr-019",
       "title": "Reverse with a loop",
       "concept": "gq-arrays",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqarr-020",
       "title": "Reverse, now with reverse()",
       "concept": "gq-arrays",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqarr-021",
       "title": "Insert at the front",
       "concept": "gq-arrays",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqarr-022",
       "title": "Pop the last",
       "concept": "gq-arrays",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqarr-023",
       "title": "Evens only",
       "concept": "gq-arrays",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqarr-024",
       "title": "Arrays are shared, not copied",
       "concept": "gq-arrays",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "arr-001",
       "title": "First and last",
       "concept": "arrays",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "arr-002",
       "title": "Build a list",
       "concept": "arrays",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "arr-003",
       "title": "Reverse",
       "concept": "arrays",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "arr-004",
       "title": "Remove every copy",
       "concept": "arrays",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "arr-005",
       "title": "Middle item",
       "concept": "arrays",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqla-001",
@@ -1623,7 +1771,8 @@
       "id": "gqla-002",
       "title": "Sum of an array",
       "concept": "gq-looparrays",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqla-003",
@@ -1635,37 +1784,43 @@
       "id": "gqla-004",
       "title": "Count the items",
       "concept": "gq-looparrays",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqla-005",
       "title": "Double each",
       "concept": "gq-looparrays",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqla-006",
       "title": "Total damage",
       "concept": "gq-looparrays",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqla-007",
       "title": "Health after all hits",
       "concept": "gq-looparrays",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqla-008",
       "title": "Count the evens",
       "concept": "gq-looparrays",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqla-009",
       "title": "Largest",
       "concept": "gq-looparrays",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqla-010",
@@ -1683,19 +1838,22 @@
       "id": "gqla-012",
       "title": "Only the positives",
       "concept": "gq-looparrays",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqla-013",
       "title": "Is it there",
       "concept": "gq-looparrays",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqla-014",
       "title": "Average",
       "concept": "gq-looparrays",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqla-015",
@@ -1707,175 +1865,204 @@
       "id": "gqstr-001",
       "title": "Greet by name",
       "concept": "gq-strings",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqstr-002",
       "title": "Text built from parts",
       "concept": "gq-strings",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqstr-003",
       "title": "Length",
       "concept": "gq-strings",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqstr-004",
       "title": "Shout",
       "concept": "gq-strings",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqstr-005",
       "title": "Repeat with a loop",
       "concept": "gq-strings",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqstr-006",
       "title": "Repeat, now with repeat()",
       "concept": "gq-strings",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqstr-007",
       "title": "First and last character",
       "concept": "gq-strings",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqstr-008",
       "title": "Contains",
       "concept": "gq-strings",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqstr-009",
       "title": "Starts with",
       "concept": "gq-strings",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqstr-010",
       "title": "Replace",
       "concept": "gq-strings",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqstr-011",
       "title": "Split into words",
       "concept": "gq-strings",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqstr-012",
       "title": "Count a letter with a loop",
       "concept": "gq-strings",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqstr-013",
       "title": "Count a letter, now with count()",
       "concept": "gq-strings",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqstr-014",
       "title": "Reverse a string",
       "concept": "gq-strings",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqstr-015",
       "title": "Palindrome",
       "concept": "gq-strings",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqstr-016",
       "title": "Number to text",
       "concept": "gq-strings",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqstr-017",
       "title": "Text to number",
       "concept": "gq-strings",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqstr-018",
       "title": "Format with %",
       "concept": "gq-strings",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqstr-019",
       "title": "Trim the spaces",
       "concept": "gq-strings",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqstr-020",
       "title": "Capitalize",
       "concept": "gq-strings",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqstr-021",
       "title": "Long enough password",
       "concept": "gq-strings",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqstr-022",
       "title": "Two-digit clock number",
       "concept": "gq-strings",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqstr-023",
       "title": "Part of a string",
       "concept": "gq-strings",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqstr-024",
       "title": "Same word, any case",
       "concept": "gq-strings",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "str-001",
       "title": "Greeting",
       "concept": "strings",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "str-002",
       "title": "Length",
       "concept": "strings",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "str-003",
       "title": "Shout",
       "concept": "strings",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "str-004",
       "title": "Repeat",
       "concept": "strings",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "str-005",
       "title": "Count the vowels",
       "concept": "strings",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqret-001",
@@ -1887,25 +2074,29 @@
       "id": "gqret-002",
       "title": "Return the parameter",
       "concept": "gq-return",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqret-003",
       "title": "Return an expression",
       "concept": "gq-return",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqret-004",
       "title": "Use a returned value",
       "concept": "gq-return",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqret-005",
       "title": "Print, then return",
       "concept": "gq-return",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqret-006",
@@ -1917,133 +2108,155 @@
       "id": "gqret-007",
       "title": "A decimal from whole numbers",
       "concept": "gq-return",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqret-008",
       "title": "Return the bigger with max()",
       "concept": "gq-return",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqret-009",
       "title": "Return a rounded value",
       "concept": "gq-return",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqret-010",
       "title": "Return the remainder",
       "concept": "gq-return",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqret-011",
       "title": "Store the result first",
       "concept": "gq-return",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqret-012",
       "title": "Return the absolute value",
       "concept": "gq-return",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqret-013",
       "title": "Three helpers in a chain",
       "concept": "gq-return",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqret-014",
       "title": "A helper that returns nothing",
       "concept": "gq-return",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqret-015",
       "title": "Two helpers, one answer",
       "concept": "gq-return",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqret-016",
       "title": "Return with a default",
       "concept": "gq-return",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqret-017",
       "title": "Return an average",
       "concept": "gq-return",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqret-018",
       "title": "A helper that returns true or false",
       "concept": "gq-return",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "func-001",
       "title": "Square",
       "concept": "functions",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "func-002",
       "title": "Helper function",
       "concept": "functions",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "func-003",
       "title": "Default value",
       "concept": "functions",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "func-004",
       "title": "Two results",
       "concept": "functions",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "func-005",
       "title": "Print then return",
       "concept": "functions",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqap-001",
       "title": "Take an order",
       "concept": "gq-appendpop",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqap-002",
       "title": "Serve the first order",
       "concept": "gq-appendpop",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqap-003",
       "title": "Take from the top of the pile",
       "concept": "gq-appendpop",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqap-004",
       "title": "What is left",
       "concept": "gq-appendpop",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqap-005",
       "title": "Three orders in",
       "concept": "gq-appendpop",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqap-006",
@@ -2061,97 +2274,113 @@
       "id": "gqap-008",
       "title": "Is the queue empty",
       "concept": "gq-appendpop",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqap-009",
       "title": "Priority order",
       "concept": "gq-appendpop",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqap-010",
       "title": "Cancel an order",
       "concept": "gq-appendpop",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqap-011",
       "title": "Clear the kitchen",
       "concept": "gq-appendpop",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqap-012",
       "title": "How many waiting",
       "concept": "gq-appendpop",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqap-013",
       "title": "Serve two, keep the rest",
       "concept": "gq-appendpop",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqap-014",
       "title": "Move the top crate",
       "concept": "gq-appendpop",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqap-015",
       "title": "Collect the served meals",
       "concept": "gq-appendpop",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqidx-001",
       "title": "The first slot",
       "concept": "gq-indices",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqidx-002",
       "title": "The third slot",
       "concept": "gq-indices",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqidx-003",
       "title": "The last slot",
       "concept": "gq-indices",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqidx-004",
       "title": "Any slot",
       "concept": "gq-indices",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqidx-005",
       "title": "Replace a slot",
       "concept": "gq-indices",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqidx-006",
       "title": "First plus last",
       "concept": "gq-indices",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqidx-007",
       "title": "Swap two slots",
       "concept": "gq-indices",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqidx-008",
       "title": "Middle of three",
       "concept": "gq-indices",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqidx-009",
@@ -2163,19 +2392,22 @@
       "id": "gqidx-010",
       "title": "Where is the crystal",
       "concept": "gq-indices",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqidx-011",
       "title": "Every second item",
       "concept": "gq-indices",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqidx-012",
       "title": "Out of range guard",
       "concept": "gq-indices",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqidx-013",
@@ -2187,43 +2419,50 @@
       "id": "gqidx-014",
       "title": "Second to last",
       "concept": "gq-indices",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqidx-015",
       "title": "Fill a slot from another",
       "concept": "gq-indices",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "dict-001",
       "title": "Make a player",
       "concept": "dictionaries",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "dict-002",
       "title": "Safe lookup",
       "concept": "dictionaries",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "dict-003",
       "title": "Sum of values",
       "concept": "dictionaries",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "dict-004",
       "title": "Count the words",
       "concept": "dictionaries",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "dict-005",
       "title": "Keys with a value",
       "concept": "dictionaries",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqld-001",
@@ -2241,43 +2480,50 @@
       "id": "gqld-003",
       "title": "Total items",
       "concept": "gq-loopdicts",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqld-004",
       "title": "How many kinds",
       "concept": "gq-loopdicts",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqld-005",
       "title": "The keys as an array",
       "concept": "gq-loopdicts",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqld-006",
       "title": "The values as an array",
       "concept": "gq-loopdicts",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqld-007",
       "title": "Items that are running out",
       "concept": "gq-loopdicts",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqld-008",
       "title": "Double every amount",
       "concept": "gq-loopdicts",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqld-009",
       "title": "The most of anything",
       "concept": "gq-loopdicts",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqld-010",
@@ -2289,91 +2535,106 @@
       "id": "gqvt-001",
       "title": "Health as text",
       "concept": "gq-valuetypes",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqvt-002",
       "title": "Fix the type error",
       "concept": "gq-valuetypes",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqvt-003",
       "title": "Text to a whole number",
       "concept": "gq-valuetypes",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqvt-004",
       "title": "Text to a decimal",
       "concept": "gq-valuetypes",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqvt-005",
       "title": "Drop the decimals",
       "concept": "gq-valuetypes",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqvt-006",
       "title": "Whole number to decimal",
       "concept": "gq-valuetypes",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqvt-007",
       "title": "Is it text",
       "concept": "gq-valuetypes",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqvt-008",
       "title": "Name the type",
       "concept": "gq-valuetypes",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqvt-009",
       "title": "Add as numbers, not text",
       "concept": "gq-valuetypes",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqvt-010",
       "title": "Format a score line",
       "concept": "gq-valuetypes",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqvt-011",
       "title": "Bool to text",
       "concept": "gq-valuetypes",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqvt-012",
       "title": "Round, do not truncate",
       "concept": "gq-valuetypes",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqvt-013",
       "title": "Digits of a number",
       "concept": "gq-valuetypes",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqvt-014",
       "title": "Percent as text",
       "concept": "gq-valuetypes",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqvt-015",
       "title": "Same value, different types",
       "concept": "gq-valuetypes",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqtype-001",
@@ -2385,7 +2646,8 @@
       "id": "gqtype-002",
       "title": "A typed parameter",
       "concept": "gq-types",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqtype-003",
@@ -2421,7 +2683,8 @@
       "id": "gqtype-008",
       "title": "Grid to world",
       "concept": "gq-types",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqtype-009",
@@ -2433,25 +2696,29 @@
       "id": "gqtype-010",
       "title": "A typed bool",
       "concept": "gq-types",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqtype-011",
       "title": "void means nothing back",
       "concept": "gq-types",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqtype-012",
       "title": "Convert to satisfy the hint",
       "concept": "gq-types",
-      "difficulty": 1
+      "difficulty": 1,
+      "variants": true
     },
     {
       "id": "gqtype-013",
       "title": "Float parameter, float result",
       "concept": "gq-types",
-      "difficulty": 0
+      "difficulty": 0,
+      "variants": true
     },
     {
       "id": "gqtype-014",

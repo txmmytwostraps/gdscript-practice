@@ -40,5 +40,26 @@
     "`return vy + gravity * delta`"
   ],
   "docs": [],
-  "solution": "func solve(vy, gravity, delta) -> float:\n\treturn vy + gravity * delta"
+  "solution": "func solve(vy, gravity, delta) -> float:\n\treturn vy + gravity * delta",
+  "generator": [
+    {
+      "int": [
+        -302,
+        105
+      ]
+    },
+    {
+      "int": [
+        0,
+        1470
+      ]
+    },
+    {
+      "float": [
+        1,
+        3,
+        1
+      ]
+    }
+  ]
 }

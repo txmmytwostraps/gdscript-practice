@@ -48,5 +48,27 @@
       "what": "Runs the indented lines once per item, with item holding each value in turn."
     }
   ],
-  "solution": "func solve(health, hits):\n\tfor hit in hits:\n\t\thealth -= hit\n\treturn health"
+  "solution": "func solve(health, hits):\n\tfor hit in hits:\n\t\thealth -= hit\n\treturn health",
+  "generator": [
+    {
+      "int": [
+        1,
+        145
+      ]
+    },
+    {
+      "array": {
+        "len": [
+          0,
+          4
+        ],
+        "of": {
+          "int": [
+            1,
+            28
+          ]
+        }
+      }
+    }
+  ]
 }

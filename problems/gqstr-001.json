@@ -40,5 +40,14 @@
       "what": "Joins two strings into one. Numbers must be turned into text first."
     }
   ],
-  "solution": "func solve(name):\n\treturn \"Hello, \" + name + \"!\""
+  "solution": "func solve(name):\n\treturn \"Hello, \" + name + \"!\"",
+  "generator": [
+    {
+      "pick": [
+        "Tim",
+        "Godot",
+        ""
+      ]
+    }
+  ]
 }

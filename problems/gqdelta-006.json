@@ -43,5 +43,21 @@
       "what": "Returns the number as a whole number, dropping the decimals."
     }
   ],
-  "solution": "func solve(time_left, delta):\n\treturn int(time_left / delta)"
+  "solution": "func solve(time_left, delta):\n\treturn int(time_left / delta)",
+  "generator": [
+    {
+      "float": [
+        0,
+        3,
+        1
+      ]
+    },
+    {
+      "float": [
+        1,
+        2.25,
+        2
+      ]
+    }
+  ]
 }

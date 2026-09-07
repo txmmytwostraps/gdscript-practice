@@ -76,5 +76,21 @@
       "what": "The item at position i. Positions start at 0; -1 is the last item."
     }
   ],
-  "solution": "func solve(nums):\n\tvar biggest = nums[0]\n\tfor n in nums:\n\t\tif n > biggest:\n\t\t\tbiggest = n\n\treturn biggest"
+  "solution": "func solve(nums):\n\tvar biggest = nums[0]\n\tfor n in nums:\n\t\tif n > biggest:\n\t\t\tbiggest = n\n\treturn biggest",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          1,
+          7
+        ],
+        "of": {
+          "int": [
+            -19,
+            20
+          ]
+        }
+      }
+    }
+  ]
 }

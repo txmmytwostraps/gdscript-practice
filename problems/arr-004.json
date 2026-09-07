@@ -77,5 +77,27 @@
       "what": "Adds value to the end of the array. Returns nothing."
     }
   ],
-  "solution": "func solve(items, value):\n\tvar result = []\n\tfor x in items:\n\t\tif x != value:\n\t\t\tresult.append(x)\n\treturn result"
+  "solution": "func solve(items, value):\n\tvar result = []\n\tfor x in items:\n\t\tif x != value:\n\t\t\tresult.append(x)\n\treturn result",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          2,
+          6
+        ],
+        "of": {
+          "int": [
+            1,
+            5
+          ]
+        }
+      }
+    },
+    {
+      "int": [
+        1,
+        5
+      ]
+    }
+  ]
 }

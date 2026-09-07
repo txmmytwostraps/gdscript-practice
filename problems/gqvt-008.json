@@ -46,5 +46,15 @@
       "what": "true if the value is of that type. Also is int, is float, is bool."
     }
   ],
-  "solution": "func solve(value):\n\tif value is int:\n\t\treturn \"int\"\n\telif value is float:\n\t\treturn \"float\"\n\telif value is String:\n\t\treturn \"String\"\n\telse:\n\t\treturn \"other\""
+  "solution": "func solve(value):\n\tif value is int:\n\t\treturn \"int\"\n\telif value is float:\n\t\treturn \"float\"\n\telif value is String:\n\t\treturn \"String\"\n\telse:\n\t\treturn \"other\"",
+  "generator": [
+    {
+      "pick": [
+        5,
+        2.5,
+        "x",
+        true
+      ]
+    }
+  ]
 }

@@ -37,5 +37,20 @@
     "`return frames * delta`"
   ],
   "docs": [],
-  "solution": "func solve(frames, delta) -> float:\n\treturn frames * delta"
+  "solution": "func solve(frames, delta) -> float:\n\treturn frames * delta",
+  "generator": [
+    {
+      "int": [
+        0,
+        75
+      ]
+    },
+    {
+      "float": [
+        1,
+        2.02,
+        2
+      ]
+    }
+  ]
 }

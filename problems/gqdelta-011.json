@@ -40,5 +40,26 @@
     "`return speed * delta * frames`"
   ],
   "docs": [],
-  "solution": "func solve(speed, delta, frames) -> float:\n\treturn speed * delta * frames"
+  "solution": "func solve(speed, delta, frames) -> float:\n\treturn speed * delta * frames",
+  "generator": [
+    {
+      "int": [
+        1,
+        145
+      ]
+    },
+    {
+      "float": [
+        1,
+        2.5,
+        2
+      ]
+    },
+    {
+      "int": [
+        0,
+        75
+      ]
+    }
+  ]
 }

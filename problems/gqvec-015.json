@@ -61,5 +61,19 @@
       "what": "Vectors add and subtract part by part, and scale by a plain number."
     }
   ],
-  "solution": "func solve(column, row) -> Vector2:\n\treturn Vector2(column, row) * 64"
+  "solution": "func solve(column, row) -> Vector2:\n\treturn Vector2(column, row) * 64",
+  "generator": [
+    {
+      "int": [
+        0,
+        4
+      ]
+    },
+    {
+      "int": [
+        0,
+        5
+      ]
+    }
+  ]
 }

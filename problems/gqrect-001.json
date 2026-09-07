@@ -52,5 +52,31 @@
       "what": "Makes a rectangle from a top-left corner and a size. Also Rect2(position, size) with two vectors."
     }
   ],
-  "solution": "func solve(x, y, width, height) -> Rect2:\n\treturn Rect2(x, y, width, height)"
+  "solution": "func solve(x, y, width, height) -> Rect2:\n\treturn Rect2(x, y, width, height)",
+  "generator": [
+    {
+      "int": [
+        0,
+        15
+      ]
+    },
+    {
+      "int": [
+        0,
+        30
+      ]
+    },
+    {
+      "int": [
+        1,
+        45
+      ]
+    },
+    {
+      "int": [
+        1,
+        60
+      ]
+    }
+  ]
 }

@@ -54,5 +54,27 @@
       "what": "Returns the position of value, or -1 if it is not there."
     }
   ],
-  "solution": "func solve(items, value):\n\treturn items.find(value)"
+  "solution": "func solve(items, value):\n\treturn items.find(value)",
+  "generator": [
+    {
+      "array": {
+        "len": [
+          3,
+          5
+        ],
+        "of": {
+          "int": [
+            3,
+            9
+          ]
+        }
+      }
+    },
+    {
+      "int": [
+        3,
+        11
+      ]
+    }
+  ]
 }

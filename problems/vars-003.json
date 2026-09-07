@@ -41,5 +41,13 @@
     "Add that line between the var and the return."
   ],
   "docs": [],
-  "solution": "func solve(n):\n\tvar score = n\n\tscore += 10\n\treturn score"
+  "solution": "func solve(n):\n\tvar score = n\n\tscore += 10\n\treturn score",
+  "generator": [
+    {
+      "int": [
+        -65,
+        155
+      ]
+    }
+  ]
 }
