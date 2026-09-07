@@ -55,7 +55,7 @@ export function mountShell(active, { stats = true } = {}) {
     if (u) $("account-name").textContent = auth.displayName(u);
     $("email-form").hidden = true;
   };
-  const refresh = () => { renderHeaderStats($("header-stats")); renderAccount(); applyTextScale(); };
+  const refresh = () => { renderHeaderStats($("header-stats"), Boolean(sync.user)); renderAccount(); applyTextScale(); };
   onSynced(refresh);
   refresh();
   trackTime();
