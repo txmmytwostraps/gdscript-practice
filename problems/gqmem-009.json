@@ -24,7 +24,7 @@
   "docs": [
     {
       "name": "var name = value (outside any function)",
-      "what": "A member variable: every function in the script can read and change it."
+      "what": "A variable at the top of the script (a member variable): every function in the script can read and change it."
     },
     {
       "name": "print(value)",

@@ -20,7 +20,7 @@
   "docs": [
     {
       "name": "var name = value (outside any function)",
-      "what": "A member variable: every function in the script can read and change it."
+      "what": "A variable at the top of the script (a member variable): every function in the script can read and change it."
     }
   ],
   "solution": "var x = 0\nvar y = 0\n\nfunc solve():\n\tmove_by(3, 4)\n\treturn x + y\n\nfunc move_by(dx, dy):\n\tx += dx\n\ty += dy",

@@ -20,7 +20,7 @@
   "docs": [
     {
       "name": "var name = value (outside any function)",
-      "what": "A member variable: every function in the script can read and change it."
+      "what": "A variable at the top of the script (a member variable): every function in the script can read and change it."
     }
   ],
   "solution": "var health = 20\n\nfunc solve():\n\ttake_damage(50)\n\treturn health\n\nfunc take_damage(amount):\n\thealth -= amount\n\tif health < 0:\n\t\thealth = 0",

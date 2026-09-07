@@ -14,7 +14,7 @@
     }
   ],
   "hints": [
-    "Each helper changes the same member variable in turn.",
+    "Each helper changes the same variable at the top of the script (a member variable) in turn.",
     "`take_damage(40)`, `heal(15)`, `return health`."
   ],
   "docs": [

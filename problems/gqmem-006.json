@@ -21,7 +21,7 @@
   "docs": [
     {
       "name": "var name = value (outside any function)",
-      "what": "A member variable: every function in the script can read and change it."
+      "what": "A variable at the top of the script (a member variable): every function in the script can read and change it."
     }
   ],
   "solution": "var level = 1\n\nfunc solve():\n\tlevel_up()\n\tlevel_up()\n\treturn level\n\nfunc level_up():\n\tlevel += 1",

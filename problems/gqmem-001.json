@@ -3,7 +3,7 @@
   "title": "The robot's health",
   "concept": "gq-members",
   "difficulty": 0,
-  "prompt": "Declare a member variable `health` equal to 100 at the top of the script, outside any function. Then make `solve` return it.",
+  "prompt": "Declare a variable at the top of the script, outside any function (a member variable), called `health` and equal to 100. Then make `solve` return it.",
   "signature": "func solve():",
   "starter": "func solve():\n\treturn 0",
   "tests": [

@@ -6,22 +6,38 @@
     {
       "id": "m1-s1",
       "title": "Put the robot on the stage",
-      "prompt": "The stage is a strip 600 pixels wide. The robot's place on it is a number: how many pixels from the left edge it stands. Declare a member variable `x` that starts at the number `0`, so the robot begins at the left edge, and a member variable `speed` that starts at the number `120`. Nothing moves yet; this step only gives the robot its two numbers.",
+      "prompt": "The stage is a strip 600 pixels wide. The robot's place on it is a number: how many pixels from the left edge it stands. Declare a variable at the top of the script (a member variable) called `x` that starts at the number `0`, so the robot begins at the left edge, and another one called `speed` that starts at the number `120`. Nothing moves yet; this step only gives the robot its two numbers.",
       "starter": "# The robot stands on the stage at x, and will move at speed.\n# Declare both member variables here.\n",
       "solution": "var x = 0\nvar speed = 120\n",
-      "require_names": ["x", "speed"],
+      "require_names": [
+        "x",
+        "speed"
+      ],
       "tests": [
-        { "name": "x starts at 0", "read": "x", "expect": 0 },
-        { "name": "speed starts at 120", "read": "speed", "expect": 120 }
+        {
+          "name": "x starts at 0",
+          "read": "x",
+          "expect": 0
+        },
+        {
+          "name": "speed starts at 120",
+          "read": "speed",
+          "expect": 120
+        }
       ],
       "hints": [
         "A member variable is declared at the top of the script, outside any function, with `var`.",
         "`var x = 0` on one line and `var speed = 120` on the next is all this step needs."
       ],
       "docs": [
-        { "name": "var", "what": "declares a variable; at the top of a script it is a member variable that every function can use" }
+        {
+          "name": "var",
+          "what": "declares a variable; at the top of a script it is a member variable that every function can use"
+        }
       ],
-      "scene": { "buttons": [] }
+      "scene": {
+        "buttons": []
+      }
     },
     {
       "id": "m1-s2",
@@ -29,26 +45,115 @@
       "prompt": "Now give the robot two commands. Write `move_right`, which takes one parameter, `distance`, and adds it to `x`. Then write `move_left`, which takes `distance` and takes it away from `x`. The buttons beside the stage call your functions with the number `40`; the checks call them with other numbers too.",
       "starter": "var x = 0\nvar speed = 120\n\n# Write move_right(distance) and move_left(distance) below.\n",
       "solution": "var x = 0\nvar speed = 120\n\nfunc move_right(distance):\n\tx += distance\n\nfunc move_left(distance):\n\tx -= distance\n",
-      "require_methods": ["move_right", "move_left"],
+      "require_methods": [
+        "move_right",
+        "move_left"
+      ],
       "tests": [
-        { "name": "move_right(50) puts the robot at 50", "script": [{ "call": "move_right", "args": [50] }], "read": "x", "expect": 50 },
-        { "name": "move_left(20) from the start goes to -20", "script": [{ "call": "move_left", "args": [20] }], "read": "x", "expect": -20 },
-        { "name": "Right 50 then left 20 ends at 30", "script": [{ "call": "move_right", "args": [50] }, { "call": "move_left", "args": [20] }], "read": "x", "expect": 30 },
-        { "name": "Three small steps add up", "script": [{ "call": "move_right", "args": [10] }, { "call": "move_right", "args": [10] }, { "call": "move_right", "args": [10] }], "read": "x", "expect": 30 }
+        {
+          "name": "move_right(50) puts the robot at 50",
+          "script": [
+            {
+              "call": "move_right",
+              "args": [
+                50
+              ]
+            }
+          ],
+          "read": "x",
+          "expect": 50
+        },
+        {
+          "name": "move_left(20) from the start goes to -20",
+          "script": [
+            {
+              "call": "move_left",
+              "args": [
+                20
+              ]
+            }
+          ],
+          "read": "x",
+          "expect": -20
+        },
+        {
+          "name": "Right 50 then left 20 ends at 30",
+          "script": [
+            {
+              "call": "move_right",
+              "args": [
+                50
+              ]
+            },
+            {
+              "call": "move_left",
+              "args": [
+                20
+              ]
+            }
+          ],
+          "read": "x",
+          "expect": 30
+        },
+        {
+          "name": "Three small steps add up",
+          "script": [
+            {
+              "call": "move_right",
+              "args": [
+                10
+              ]
+            },
+            {
+              "call": "move_right",
+              "args": [
+                10
+              ]
+            },
+            {
+              "call": "move_right",
+              "args": [
+                10
+              ]
+            }
+          ],
+          "read": "x",
+          "expect": 30
+        }
       ],
       "hints": [
         "A function with a parameter looks like `func move_right(distance):`, and its body is indented under it.",
-        "`x += distance` adds to a member variable; `-=` takes away.",
+        "`x += distance` adds to a variable at the top of the script (a member variable); `-=` takes away.",
         "Both functions change `x`, the same member variable from step 1. Neither needs `return`."
       ],
       "docs": [
-        { "name": "func", "what": "defines a function; a name in the brackets is a parameter, a value handed in with each call" },
-        { "name": "+=", "what": "adds to a variable in place; -= takes away" }
+        {
+          "name": "func",
+          "what": "defines a function; a name in the brackets is a parameter, a value handed in with each call"
+        },
+        {
+          "name": "+=",
+          "what": "adds to a variable in place; -= takes away"
+        }
       ],
-      "scene": { "buttons": [
-        { "label": "move_right(40)", "call": "move_right", "args": [40] },
-        { "label": "move_left(40)", "call": "move_left", "args": [40] }
-      ] }
+      "scene": {
+        "buttons": [
+          {
+            "label": "move_right(40)",
+            "call": "move_right",
+            "args": [
+              40
+            ]
+          },
+          {
+            "label": "move_left(40)",
+            "call": "move_left",
+            "args": [
+              40
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "m1-s3",
@@ -56,12 +161,57 @@
       "prompt": "A game redraws the screen many times a second; each redraw is a frame. Godot calls `_process(delta)` once per frame, where `delta` is how long that frame took, in seconds, usually about 0.016. Write `_process` so that every frame it adds `speed * delta` to `x`. Over one second the small additions add up to exactly `speed` pixels, whatever the frame rate. The Play button beside the stage runs 60 frames for you.",
       "starter": "var x = 0\nvar speed = 120\n\nfunc move_right(distance):\n\tx += distance\n\nfunc move_left(distance):\n\tx -= distance\n\n# Write _process(delta) below.\n",
       "solution": "var x = 0\nvar speed = 120\n\nfunc move_right(distance):\n\tx += distance\n\nfunc move_left(distance):\n\tx -= distance\n\nfunc _process(delta):\n\tx += speed * delta\n",
-      "require_methods": ["_process"],
+      "require_methods": [
+        "_process"
+      ],
       "tests": [
-        { "name": "One second of frames moves the robot by speed", "script": [{ "frames": 60 }], "read": "x", "expect": 120 },
-        { "name": "Half a second moves it half as far", "script": [{ "frames": 30 }], "read": "x", "expect": 60 },
-        { "name": "Fewer, longer frames cover the same distance", "script": [{ "frames": 30, "delta": 0.03333333333333333 }], "read": "x", "expect": 120 },
-        { "name": "A command and the frames add together", "script": [{ "call": "move_right", "args": [30] }, { "frames": 60 }], "read": "x", "expect": 150 }
+        {
+          "name": "One second of frames moves the robot by speed",
+          "script": [
+            {
+              "frames": 60
+            }
+          ],
+          "read": "x",
+          "expect": 120
+        },
+        {
+          "name": "Half a second moves it half as far",
+          "script": [
+            {
+              "frames": 30
+            }
+          ],
+          "read": "x",
+          "expect": 60
+        },
+        {
+          "name": "Fewer, longer frames cover the same distance",
+          "script": [
+            {
+              "frames": 30,
+              "delta": 0.03333333333333333
+            }
+          ],
+          "read": "x",
+          "expect": 120
+        },
+        {
+          "name": "A command and the frames add together",
+          "script": [
+            {
+              "call": "move_right",
+              "args": [
+                30
+              ]
+            },
+            {
+              "frames": 60
+            }
+          ],
+          "read": "x",
+          "expect": 150
+        }
       ],
       "hints": [
         "The function is `func _process(delta):`. Godot passes delta in; you never call _process yourself.",
@@ -69,14 +219,37 @@
         "If the robot jumps a whole `speed` every frame, the multiply by `delta` is missing."
       ],
       "docs": [
-        { "name": "_process(delta)", "what": "a function Godot calls every frame; delta is that frame's length in seconds" },
-        { "name": "*", "what": "multiplies two numbers" }
+        {
+          "name": "_process(delta)",
+          "what": "a function Godot calls every frame; delta is that frame's length in seconds"
+        },
+        {
+          "name": "*",
+          "what": "multiplies two numbers"
+        }
       ],
-      "scene": { "buttons": [
-        { "label": "Play 1 second", "frames": 60 },
-        { "label": "move_right(40)", "call": "move_right", "args": [40] },
-        { "label": "move_left(40)", "call": "move_left", "args": [40] }
-      ] }
+      "scene": {
+        "buttons": [
+          {
+            "label": "Play 1 second",
+            "frames": 60
+          },
+          {
+            "label": "move_right(40)",
+            "call": "move_right",
+            "args": [
+              40
+            ]
+          },
+          {
+            "label": "move_left(40)",
+            "call": "move_left",
+            "args": [
+              40
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "m1-s4",
@@ -84,27 +257,116 @@
       "prompt": "Last, let the speed change while the robot runs. Write `speed_up`, which takes `amount` and adds it to `speed`, and `slow_down`, which takes `amount` and takes it away. Because `_process` reads `speed` every frame, the robot moves at the new speed from the next frame on. The buttons use the number `60`.",
       "starter": "var x = 0\nvar speed = 120\n\nfunc move_right(distance):\n\tx += distance\n\nfunc move_left(distance):\n\tx -= distance\n\nfunc _process(delta):\n\tx += speed * delta\n\n# Write speed_up(amount) and slow_down(amount) below.\n",
       "solution": "var x = 0\nvar speed = 120\n\nfunc move_right(distance):\n\tx += distance\n\nfunc move_left(distance):\n\tx -= distance\n\nfunc _process(delta):\n\tx += speed * delta\n\nfunc speed_up(amount):\n\tspeed += amount\n\nfunc slow_down(amount):\n\tspeed -= amount\n",
-      "require_methods": ["speed_up", "slow_down"],
+      "require_methods": [
+        "speed_up",
+        "slow_down"
+      ],
       "tests": [
-        { "name": "speed_up(60) makes speed 180", "script": [{ "call": "speed_up", "args": [60] }], "read": "speed", "expect": 180 },
-        { "name": "slow_down(20) makes speed 100", "script": [{ "call": "slow_down", "args": [20] }], "read": "speed", "expect": 100 },
-        { "name": "A faster robot covers more ground in a second", "script": [{ "call": "speed_up", "args": [60] }, { "frames": 60 }], "read": "x", "expect": 180 },
-        { "name": "At speed 0 the robot stands still", "script": [{ "call": "slow_down", "args": [120] }, { "frames": 60 }], "read": "x", "expect": 0 }
+        {
+          "name": "speed_up(60) makes speed 180",
+          "script": [
+            {
+              "call": "speed_up",
+              "args": [
+                60
+              ]
+            }
+          ],
+          "read": "speed",
+          "expect": 180
+        },
+        {
+          "name": "slow_down(20) makes speed 100",
+          "script": [
+            {
+              "call": "slow_down",
+              "args": [
+                20
+              ]
+            }
+          ],
+          "read": "speed",
+          "expect": 100
+        },
+        {
+          "name": "A faster robot covers more ground in a second",
+          "script": [
+            {
+              "call": "speed_up",
+              "args": [
+                60
+              ]
+            },
+            {
+              "frames": 60
+            }
+          ],
+          "read": "x",
+          "expect": 180
+        },
+        {
+          "name": "At speed 0 the robot stands still",
+          "script": [
+            {
+              "call": "slow_down",
+              "args": [
+                120
+              ]
+            },
+            {
+              "frames": 60
+            }
+          ],
+          "read": "x",
+          "expect": 0
+        }
       ],
       "hints": [
         "These two are the same shape as move_right and move_left, but they change `speed` instead of `x`.",
         "`speed += amount` and `speed -= amount`."
       ],
       "docs": [
-        { "name": "+=", "what": "adds to a variable in place; -= takes away" }
+        {
+          "name": "+=",
+          "what": "adds to a variable in place; -= takes away"
+        }
       ],
-      "scene": { "buttons": [
-        { "label": "speed_up(60)", "call": "speed_up", "args": [60] },
-        { "label": "slow_down(60)", "call": "slow_down", "args": [60] },
-        { "label": "Play 1 second", "frames": 60 },
-        { "label": "move_right(40)", "call": "move_right", "args": [40] },
-        { "label": "move_left(40)", "call": "move_left", "args": [40] }
-      ] }
+      "scene": {
+        "buttons": [
+          {
+            "label": "speed_up(60)",
+            "call": "speed_up",
+            "args": [
+              60
+            ]
+          },
+          {
+            "label": "slow_down(60)",
+            "call": "slow_down",
+            "args": [
+              60
+            ]
+          },
+          {
+            "label": "Play 1 second",
+            "frames": 60
+          },
+          {
+            "label": "move_right(40)",
+            "call": "move_right",
+            "args": [
+              40
+            ]
+          },
+          {
+            "label": "move_left(40)",
+            "call": "move_left",
+            "args": [
+              40
+            ]
+          }
+        ]
+      }
     }
   ],
   "godot": [

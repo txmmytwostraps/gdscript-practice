@@ -3,7 +3,7 @@
   "title": "Two members",
   "concept": "gq-members",
   "difficulty": 0,
-  "prompt": "Declare `health` equal to 100 and `level` equal to 1 as member variables. Return health plus level.",
+  "prompt": "Declare two variables at the top of the script (member variables): `health` equal to 100 and `level` equal to 1. Return health plus level.",
   "signature": "func solve():",
   "starter": "func solve():\n\treturn 0",
   "tests": [

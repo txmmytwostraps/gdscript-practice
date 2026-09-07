@@ -99,7 +99,13 @@ async function runChecks() {
 }
 function renderResult(result, errors) {
   $("result-table").hidden = true; $("errors").hidden = true;
-  const showErrors = (list) => { const shown = (list || []).map(tidyError).filter(Boolean); if (shown.length) { $("error-lines").textContent = shown.join("\n"); $("errors").hidden = false; const m = /line (\d+)/.exec(shown.join("\n")); if (m) editor.markError(Number(m[1]) - 1); } };
+  // Same as the practice page: the message and the corrected line number only, no backtrace.
+  const showErrors = (list) => {
+    const lines = (list || []).map(tidyError).filter((l) => l && !/GDScript backtrace|^\s*\[\d+\]/.test(l));
+    const shown = lines.slice(0, 20);
+    if (lines.length > 20) shown.push(`… ${lines.length - 20} more lines hidden`);
+    if (shown.length) { $("error-lines").textContent = shown.join("\n"); $("errors").hidden = false; const m = /line (\d+)/.exec(shown.join("\n")); if (m) editor.markError(Number(m[1]) - 1); }
+  };
   if (result.status === "compile_error") { setVerdict("fail", "[x] Did not compile"); $("count").textContent = `0 / ${step.tests.length} checks`; showErrors(errors.length ? errors : [result.error]); return; }
   if (result.status === "error") { setVerdict("fail", "[x] Not yet", result.error); $("count").textContent = `0 / ${step.tests.length} checks`; showErrors(errors); return; }
   const allPass = result.passed === result.total;
