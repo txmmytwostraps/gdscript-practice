@@ -5,14 +5,14 @@
 // last printed line as a status.
 export const STAGE_WIDTH = 600;
 const H = 160, GROUND = 128;
-export const KINDS = { move: { watch: ["x", "speed"] }, health: { watch: ["health", "max_health"] } };
+export const KINDS = { move: { watch: ["x", "speed"] }, health: { watch: ["health", "max_health"] }, walk: { watch: ["position", "speed", "facing"] } };
 
 export function makeScene(container, kind = "move") {
   container.innerHTML = `<canvas width="${STAGE_WIDTH}" height="${H}" style="width:100%;max-width:${STAGE_WIDTH}px;display:block;background:var(--bg);border:1px solid var(--line)"></canvas><div class="caps dim scene-readout" style="font-size:12px;margin-top:6px"></div>`;
   const canvas = container.querySelector("canvas"), readout = container.querySelector(".scene-readout");
   const ctx = canvas.getContext("2d");
   const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim() || "#888";
-  let state = kind === "health" ? { health: 100, max_health: 100, out: [] } : { x: 0, speed: 0 };
+  let state = kind === "health" ? { health: 100, max_health: 100, out: [] } : kind === "walk" ? { position: null, speed: null, facing: null } : { x: 0, speed: 0 };
   let anim = 0;
   const fmt = (v) => (Number.isFinite(v) ? (Number.isInteger(v) ? v : +v.toFixed(1)) : "?");
 
@@ -60,7 +60,27 @@ export function makeScene(container, kind = "move") {
     ctx.textAlign = "start";
     readout.textContent = `${hp === null ? "no health yet" : `health = ${fmt(hp)}`}${max !== null ? ` · max_health = ${fmt(max)}` : ""}${last ? ` · printed: ${last}` : ""}`;
   }
-  const draw = kind === "health" ? drawHealth : drawMove;
+  // A floor with a wall at each end; position is a Vector2 ({$v2: [x, y]}) and facing a word.
+  function drawWalk(s) {
+    const accent = css("--accent"), dim = css("--dim"), line = css("--line-strong"), error = css("--error");
+    ctx.clearRect(0, 0, STAGE_WIDTH, H);
+    ground();
+    ctx.fillStyle = line; ctx.fillRect(0, GROUND - 70, 3, 70); ctx.fillRect(STAGE_WIDTH - 3, GROUND - 70, 3, 70);   // the walls
+    ctx.fillStyle = dim; ctx.font = "10px IBM Plex Mono, monospace";
+    for (let t = 0; t <= STAGE_WIDTH; t += 100) { ctx.fillRect(t, GROUND, 1, 6); ctx.fillText(String(t), Math.min(t + 3, STAGE_WIDTH - 22), GROUND + 16); }
+    const v = s.position && s.position.$v2 ? s.position.$v2 : null;
+    const x = v ? v[0] : null;
+    if (x === null) { readout.textContent = "no position yet"; return; }
+    const inside = x >= 0 && x <= STAGE_WIDTH;
+    const px = Math.max(-20, Math.min(STAGE_WIDTH + 20, x));
+    robot(px, inside ? accent : error);
+    if (s.facing === "left" || s.facing === "right") {   // a small arrow the way it faces
+      const d = s.facing === "left" ? -1 : 1;
+      ctx.fillStyle = accent; ctx.beginPath(); ctx.moveTo(px + d * 26, GROUND - 40); ctx.lineTo(px + d * 16, GROUND - 46); ctx.lineTo(px + d * 16, GROUND - 34); ctx.closePath(); ctx.fill();
+    }
+    readout.textContent = `position = (${fmt(v[0])}, ${fmt(v[1])})${s.speed !== null && s.speed !== undefined ? ` · speed = ${fmt(s.speed)}` : ""}${s.facing ? ` · facing ${s.facing}` : ""}${inside ? "" : " · past the wall"}`;
+  }
+  const draw = kind === "health" ? drawHealth : kind === "walk" ? drawWalk : drawMove;
 
   return {
     kind,

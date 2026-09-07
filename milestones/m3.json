@@ -1,0 +1,126 @@
+{
+  "id": "m3",
+  "title": "Walk the floor",
+  "intro": "Four steps, one script that grows. The robot stands on a floor 600 pixels wide with a wall at each end. Its place is a Vector2 this time, it walks by direction and time, it cannot leave the floor, and it remembers which way it faces.",
+  "scene": { "kind": "walk", "watch": ["position", "speed", "facing"] },
+  "steps": [
+    {
+      "id": "m3-s1",
+      "title": "Place the robot with a Vector2",
+      "prompt": "The floor runs from x = 0 on the left to x = 600 on the right. Declare a variable at the top of the script (a member variable) called `position` holding `Vector2(300, 0)`, so the robot starts in the middle, and another called `speed` holding the number `150`: pixels per second. A Vector2 holds an x and a y in one value; the robot only ever moves along x here, and y stays 0.",
+      "starter": "# The robot's place on the floor, and its walking speed.\n# Declare both member variables here.\n",
+      "solution": "var position = Vector2(300, 0)\nvar speed = 150\n",
+      "require_names": ["position", "speed"],
+      "tests": [
+        { "name": "position starts at (300, 0)", "read": "position", "expect": { "$v2": [300, 0] } },
+        { "name": "speed starts at 150", "read": "speed", "expect": 150 }
+      ],
+      "hints": [
+        "`Vector2(300, 0)` is a value like any other: it can go on the right of `=` in a `var` line.",
+        "`var position = Vector2(300, 0)` and `var speed = 150`, both at the top of the script."
+      ],
+      "docs": [
+        { "name": "Vector2(x, y)", "what": "makes a value holding an x and a y; position.x reads the x part" },
+        { "name": "var", "what": "declares a variable; at the top of a script it is a member variable that every function can use" }
+      ],
+      "scene": { "buttons": [] }
+    },
+    {
+      "id": "m3-s2",
+      "title": "Move by direction and time",
+      "prompt": "Write `move`, which takes two parameters: `direction`, a Vector2 such as `Vector2(1, 0)` for right or `Vector2(-1, 0)` for left, and `delta`, the time in seconds. It adds `direction * speed * delta` to `position`. Half a second to the right at speed 150 moves the robot 75 pixels. The buttons beside the stage call move with a direction and half a second.",
+      "starter": "var position = Vector2(300, 0)\nvar speed = 150\n\n# Write move(direction, delta) below.\n",
+      "solution": "var position = Vector2(300, 0)\nvar speed = 150\n\nfunc move(direction, delta):\n\tposition += direction * speed * delta\n",
+      "require_methods": ["move"],
+      "tests": [
+        { "name": "Half a second to the right moves 75", "script": [{ "call": "move", "args": [{ "$v2": [1, 0] }, 0.5] }], "read": "position", "expect": { "$v2": [375, 0] } },
+        { "name": "One second to the left moves 150 back", "script": [{ "call": "move", "args": [{ "$v2": [-1, 0] }, 1] }], "read": "position", "expect": { "$v2": [150, 0] } },
+        { "name": "Right then left adds up", "script": [{ "call": "move", "args": [{ "$v2": [1, 0] }, 1] }, { "call": "move", "args": [{ "$v2": [-1, 0] }, 0.5] }], "read": "position", "expect": { "$v2": [375, 0] } },
+        { "name": "No time means no movement", "script": [{ "call": "move", "args": [{ "$v2": [1, 0] }, 0] }], "read": "position", "expect": { "$v2": [300, 0] } }
+      ],
+      "hints": [
+        "A Vector2 times a number scales both parts: `Vector2(1, 0) * 75` is `Vector2(75, 0)`.",
+        "Add the whole product to position in one line: `position += direction * speed * delta`."
+      ],
+      "docs": [
+        { "name": "*", "what": "a Vector2 times a number multiplies its x and its y" },
+        { "name": "+=", "what": "adds to a variable in place; works on Vector2 too" }
+      ],
+      "scene": { "buttons": [
+        { "label": "move(right, 0.5)", "call": "move", "args": [{ "$v2": [1, 0] }, 0.5] },
+        { "label": "move(left, 0.5)", "call": "move", "args": [{ "$v2": [-1, 0] }, 0.5] }
+      ] }
+    },
+    {
+      "id": "m3-s3",
+      "title": "Walk every frame",
+      "prompt": "Now the robot keeps walking on its own. Declare a member variable `walking` starting at `Vector2(0, 0)`, meaning standing still. Write `go_left`, which sets walking to `Vector2(-1, 0)`, `go_right`, which sets it to `Vector2(1, 0)`, and `stop`, which sets it back to `Vector2(0, 0)`. Then write `_process(delta)`, which calls `move(walking, delta)` every frame. One second of frames after go_right moves the robot 150 pixels.",
+      "starter": "var position = Vector2(300, 0)\nvar speed = 150\n\nfunc move(direction, delta):\n\tposition += direction * speed * delta\n\n# Declare walking, then write go_left(), go_right(), stop() and _process(delta) below.\n",
+      "solution": "var position = Vector2(300, 0)\nvar speed = 150\nvar walking = Vector2(0, 0)\n\nfunc move(direction, delta):\n\tposition += direction * speed * delta\n\nfunc go_left():\n\twalking = Vector2(-1, 0)\n\nfunc go_right():\n\twalking = Vector2(1, 0)\n\nfunc stop():\n\twalking = Vector2(0, 0)\n\nfunc _process(delta):\n\tmove(walking, delta)\n",
+      "require_methods": ["go_left", "go_right", "stop", "_process"],
+      "require_names": ["walking"],
+      "tests": [
+        { "name": "Standing still, a second of frames changes nothing", "script": [{ "frames": 60 }], "read": "position", "expect": { "$v2": [300, 0] } },
+        { "name": "go_right then one second reaches 450", "script": [{ "call": "go_right" }, { "frames": 60 }], "read": "position", "expect": { "$v2": [450, 0] } },
+        { "name": "go_left then half a second reaches 225", "script": [{ "call": "go_left" }, { "frames": 30 }], "read": "position", "expect": { "$v2": [225, 0] } },
+        { "name": "stop halts the walk", "script": [{ "call": "go_right" }, { "frames": 60 }, { "call": "stop" }, { "frames": 60 }], "read": "position", "expect": { "$v2": [450, 0] } }
+      ],
+      "hints": [
+        "The three small functions only assign a Vector2 to `walking`; nothing else.",
+        "`_process` has one job: `move(walking, delta)`. When walking is (0, 0) the product is (0, 0) and nothing moves.",
+        "If the robot moves at once without a button press, check that `walking` starts at `Vector2(0, 0)`."
+      ],
+      "docs": [
+        { "name": "_process(delta)", "what": "a function Godot calls every frame; delta is that frame's length in seconds" },
+        { "name": "Vector2(0, 0)", "what": "the zero vector: no movement in either direction" }
+      ],
+      "scene": { "buttons": [
+        { "label": "Left", "call": "go_left" },
+        { "label": "Right", "call": "go_right" },
+        { "label": "Stop", "call": "stop" },
+        { "label": "Run for 1 second", "frames": 60 }
+      ] }
+    },
+    {
+      "id": "m3-s4",
+      "title": "Stay inside the edges, face the way you walk",
+      "prompt": "Two finishing touches. First the walls: after moving, if `position.x` went below the number `0`, set `position.x` to `0`; if it went above the number `600`, set it to `600`. Put those two checks in `move`, right after the addition. Second, a member variable `facing` starting at `\"right\"`: `go_left` sets it to `\"left\"` and `go_right` sets it to `\"right\"`. The stage shows the facing in its status line.",
+      "starter": "var position = Vector2(300, 0)\nvar speed = 150\nvar walking = Vector2(0, 0)\n\nfunc move(direction, delta):\n\tposition += direction * speed * delta\n\nfunc go_left():\n\twalking = Vector2(-1, 0)\n\nfunc go_right():\n\twalking = Vector2(1, 0)\n\nfunc stop():\n\twalking = Vector2(0, 0)\n\nfunc _process(delta):\n\tmove(walking, delta)\n",
+      "solution": "var position = Vector2(300, 0)\nvar speed = 150\nvar walking = Vector2(0, 0)\nvar facing = \"right\"\n\nfunc move(direction, delta):\n\tposition += direction * speed * delta\n\tif position.x < 0:\n\t\tposition.x = 0\n\tif position.x > 600:\n\t\tposition.x = 600\n\nfunc go_left():\n\twalking = Vector2(-1, 0)\n\tfacing = \"left\"\n\nfunc go_right():\n\twalking = Vector2(1, 0)\n\tfacing = \"right\"\n\nfunc stop():\n\twalking = Vector2(0, 0)\n\nfunc _process(delta):\n\tmove(walking, delta)\n",
+      "require_names": ["facing"],
+      "tests": [
+        { "name": "Walking right for three seconds stops at the wall", "script": [{ "call": "go_right" }, { "frames": 180 }], "read": "position", "expect": { "$v2": [600, 0] } },
+        { "name": "Walking left for three seconds stops at 0", "script": [{ "call": "go_left" }, { "frames": 180 }], "read": "position", "expect": { "$v2": [0, 0] } },
+        { "name": "A direct move past the edge is held at 600", "script": [{ "call": "move", "args": [{ "$v2": [1, 0] }, 5] }], "read": "position", "expect": { "$v2": [600, 0] } },
+        { "name": "facing starts as right", "read": "facing", "expect": "right" },
+        { "name": "go_left turns the robot left", "script": [{ "call": "go_left" }], "read": "facing", "expect": "left" },
+        { "name": "go_right after go_left faces right again", "script": [{ "call": "go_left" }, { "call": "go_right" }], "read": "facing", "expect": "right" }
+      ],
+      "hints": [
+        "`position.x` can be read and assigned on its own: `position.x = 0` leaves y as it was.",
+        "Two separate `if` lines after the addition, one for each wall.",
+        "`facing` is text: `\"left\"` and `\"right\"` with the quotes, set inside go_left and go_right."
+      ],
+      "docs": [
+        { "name": "position.x", "what": "the x part of a Vector2; it can be read or assigned by itself" },
+        { "name": "if", "what": "runs the indented lines only when the condition is true" }
+      ],
+      "scene": { "buttons": [
+        { "label": "Left", "call": "go_left" },
+        { "label": "Right", "call": "go_right" },
+        { "label": "Stop", "call": "stop" },
+        { "label": "Run for 1 second", "frames": 60 }
+      ] }
+    }
+  ],
+  "godot": [
+    "Open Godot and make a new project called Robot Walks.",
+    "Create a 2D scene with a Node2D root named Robot, and give it a Sprite2D child using icon.svg as its texture.",
+    "Attach a script to Robot. In Godot the node already has a `position` that is a Vector2, so declare only `var speed = 150`, `var walking = Vector2(0, 0)` and `var facing = \"right\"`.",
+    "Copy move, go_left, go_right, stop and _process into the script, and let move change the node's own position.",
+    "In `func _ready():` call `go_right()`. Run the scene (F6): the icon walks right and stops at x = 600.",
+    "Change the call to `go_left()` and run again: it walks left and stops at the left wall.",
+    "Add a Label child and, in go_left and go_right, set `$Label.text = facing` so the word shows over the robot.",
+    "Try `speed = 300` and watch it cross the floor in half the time."
+  ]
+}

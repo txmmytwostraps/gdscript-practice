@@ -39,11 +39,21 @@ function setVerdict(kind, text, message) {
 }
 function clearResults() { setVerdict("", "Run the checks to see where the step stands."); $("count").textContent = ""; $("result-table").hidden = true; $("errors").hidden = true; }
 
+// Values as a learner would write them: Vector2(1, 0), "left", 150.
+function fmtVal(v) {
+  if (v && typeof v === "object" && v.$v2) return `Vector2(${v.$v2.join(", ")})`;
+  if (v && typeof v === "object" && v.$rect) return `Rect2(${v.$rect.join(", ")})`;
+  if (typeof v === "string") return JSON.stringify(v);
+  if (v === null || v === undefined) return "nothing";
+  return JSON.stringify(v);
+}
 // A check, in words: what is done, then what should be true afterwards.
 function describe(t) {
-  const acts = (t.script || []).map((a) => a.frames ? `${a.frames} frame${a.frames === 1 ? "" : "s"}${a.delta ? ` of ${(+a.delta).toFixed(3)} s` : ""}` : `${a.call}(${(a.args || []).join(", ")})`);
+  const acts = (t.script || []).map((a) => a.frames ? `${a.frames} frame${a.frames === 1 ? "" : "s"}${a.delta ? ` of ${(+a.delta).toFixed(3)} s` : ""}` : `${a.call}(${(a.args || []).map(fmtVal).join(", ")})`);
   const after = acts.length ? `after ${acts.join(", then ")}: ` : "at the start: ";
-  return `${after}${t.read} is ${t.expect}`;
+  if (t.read) return `${after}${t.read} is ${fmtVal(t.expect)}`;
+  if (t.out) return `${after}prints ${t.out.map((l) => JSON.stringify(l)).join(", then ")}`;
+  return after.replace(/: $/, "");
 }
 
 function renderSteps() {
@@ -115,7 +125,7 @@ function renderResult(result, errors) {
   $("count").textContent = `${result.passed} / ${result.total} checks`;
   $("result-table").innerHTML = `<tr><th></th><th>Check</th><th>Should be</th><th>Your script gave</th></tr>` + result.results.map((r, i) => {
     const t = step.tests[i] || {};
-    return `<tr class="${r.pass ? "pass" : "fail"}"><td class="mark">${r.pass ? "✓" : "✗"}</td><td>${esc(t.name || "")}<div class="why">${esc(describe(t))}</div></td><td>${esc(JSON.stringify(r.expect))}</td><td class="got">${r.error ? `<span class="err">${esc(r.error)}</span>` : esc(JSON.stringify(r.got))}</td></tr>`;
+    return `<tr class="${r.pass ? "pass" : "fail"}"><td class="mark">${r.pass ? "✓" : "✗"}</td><td>${esc(t.name || "")}<div class="why">${esc(describe(t))}</div></td><td>${esc(t.out && t.expect === null ? t.out.join(" / ") : fmtVal(r.expect))}</td><td class="got">${r.error ? `<span class="err">${esc(r.error)}</span>` : esc(t.out && t.expect === null ? (r.out || []).join(" / ") || "(nothing printed)" : fmtVal(r.got))}</td></tr>`;
   }).join("");
   $("result-table").hidden = false;
   if (errors.length) showErrors(errors);
