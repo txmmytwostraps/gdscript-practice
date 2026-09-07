@@ -3,3 +3,6 @@ web/
 
 # Godot editor cache
 judge/.godot/
+
+# Supabase CLI working files
+supabase/.temp/

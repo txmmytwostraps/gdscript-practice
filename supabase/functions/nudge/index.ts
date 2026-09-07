@@ -11,8 +11,11 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 
 const DAILY_CAP = 30;                          // nudges per user per day, under the provider's free tier
-const MODEL = Deno.env.get("NUDGE_MODEL") || "gemini-2.5-flash";
-const PROVIDER_URL = (key: string) => `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${key}`;
+// The model to ask, then fallbacks when it is unknown, overloaded or out of
+// free-tier quota (each model has its own quota, so together they cover a
+// day comfortably). The newest Flash first if NUDGE_MODEL names it.
+const MODELS = [Deno.env.get("NUDGE_MODEL"), "gemini-2.5-flash", "gemini-3.8-flash", "gemini-3.5-flash", "gemini-2.5-flash-lite"].filter((m): m is string => Boolean(m));
+const PROVIDER_URL = (model: string, key: string) => `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`;
 
 const CORS = {
   "Access-Control-Allow-Origin": "*",
@@ -77,22 +80,39 @@ Deno.serve(async (req) => {
     "Give the nudge now.",
   ].filter(Boolean).join("\n\n");
 
-  const res = await fetch(PROVIDER_URL(key), {
-    method: "POST", headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      systemInstruction: { parts: [{ text: SYSTEM }] },
-      contents: [{ role: "user", parts: [{ text: parts }] }],
-      generationConfig: { temperature: 0.4, maxOutputTokens: 200 },
-    }),
+  // Newer Flash models "think" before answering and can spend the whole
+  // output budget on that, returning no text. So: a generous budget, thinking
+  // switched off where the model allows it, and a plain retry where it does not.
+  const body_ = (thinking: boolean) => JSON.stringify({
+    systemInstruction: { parts: [{ text: SYSTEM }] },
+    contents: [{ role: "user", parts: [{ text: parts }] }],
+    generationConfig: { temperature: 0.4, maxOutputTokens: 1024, ...(thinking ? {} : { thinkingConfig: { thinkingBudget: 0 } }) },
   });
-  if (!res.ok) {
-    const detail = await res.text().catch(() => "");
-    console.error("provider", res.status, detail.slice(0, 300));
-    return json({ error: res.status === 429 ? "The nudge is busy right now; try again in a minute." : "The nudge could not be reached." }, 502);
+  let data: any = null, lastStatus = 0, lastDetail = "", used = "";
+  outer: for (const model of MODELS) {
+    for (const thinking of [false, true]) {
+      const res = await fetch(PROVIDER_URL(model, key), { method: "POST", headers: { "Content-Type": "application/json" }, body: body_(thinking) });
+      if (res.ok) { data = await res.json(); used = model; break outer; }
+      lastStatus = res.status;
+      const raw = await res.text().catch(() => "");
+      try { lastDetail = JSON.parse(raw)?.error?.message || raw; } catch { lastDetail = raw; }
+      lastDetail = String(lastDetail).slice(0, 200);
+      console.error("provider", model, thinking ? "thinking" : "no-thinking", res.status, lastDetail);
+      if (res.status === 404 || res.status === 503 || res.status === 429) continue outer;   // unknown, overloaded or rate-limited model: try the next one
+      if (res.status === 400 && !thinking) continue;       // the model refused the thinking switch: plain retry
+      break outer;                                         // anything else is not worth more calls
+    }
   }
-  const data = await res.json();
+  if (!data) {
+    const why = lastStatus === 429 ? "The nudge is busy right now; try again in a minute." : lastStatus === 400 || lastStatus === 403 ? "The nudge's key was refused." : "The nudge could not be reached.";
+    return json({ error: `${why} (provider said ${lastStatus}: ${lastDetail})` }, 502);
+  }
   let text: string = (data?.candidates?.[0]?.content?.parts || []).map((p: { text?: string }) => p.text || "").join("").trim();
-  if (!text) return json({ error: "The nudge had nothing to say; try the hints." }, 502);
+  if (!text) {
+    const why = data?.candidates?.[0]?.finishReason || data?.promptFeedback?.blockReason || "no text";
+    console.error("empty reply", used, why);
+    return json({ error: `The nudge had nothing to say; try the hints. (${used}: ${why})` }, 502);
+  }
   // A nudge must not carry code. When it does, the first hint stands in.
   let fallback = false;
   if (looksLikeCode(text)) { fallback = true; text = body.hints_opened?.[0] ? "Read the first hint again and check that line." : "Look at the first hint: it points at the part to check."; }
