@@ -1,0 +1,131 @@
+{
+  "id": "m5",
+  "title": "Enemy and combat",
+  "intro": "Four steps, one script that grows. The robot meets an enemy. Both sides get health and an attack power, written with type hints this time; then the attacks, the enemy's turn, and a fight that runs until one side falls. The stage shows both health bars and, after a fight, who won.",
+  "scene": { "kind": "fight", "watch": ["health", "max_health", "attack_power", "enemy_health", "enemy_max_health", "enemy_attack"] },
+  "steps": [
+    {
+      "id": "m5-s1",
+      "title": "Two sides, with types",
+      "prompt": "Both fighters need numbers, and this time each one says what kind of value it holds. Declare, at the top of the script, `health` and `max_health` as `int` starting at the number `100`, `attack_power` as `int` at the number `20`, then for the enemy `enemy_health` and `enemy_max_health` as `int` at the number `60` and `enemy_attack` as `int` at the number `15`. A type hint goes between the name and the value: `var health: int = 100`.",
+      "starter": "# The robot and the enemy: health, the most health, and attack power for each.\n# Declare all six member variables here, each with a type hint.\n",
+      "solution": "var health: int = 100\nvar max_health: int = 100\nvar attack_power: int = 20\nvar enemy_health: int = 60\nvar enemy_max_health: int = 60\nvar enemy_attack: int = 15\n",
+      "allow_type_hints": true,
+      "require_typed": ["health", "max_health", "attack_power", "enemy_health", "enemy_max_health", "enemy_attack"],
+      "tests": [
+        { "name": "The robot starts with 100 health", "read": "health", "expect": 100 },
+        { "name": "The robot hits for 20", "read": "attack_power", "expect": 20 },
+        { "name": "The enemy starts with 60 health", "read": "enemy_health", "expect": 60 },
+        { "name": "The enemy hits for 15", "read": "enemy_attack", "expect": 15 }
+      ],
+      "hints": [
+        "The shape is `var name: int = value`, with the colon right after the name.",
+        "Six lines, one per variable, all at the top of the script; the checks also look for the `: int` on each."
+      ],
+      "docs": [
+        { "name": "var name: int = value", "what": "declares a member variable that may only ever hold a whole number" },
+        { "name": "int", "what": "the type of whole numbers; float is for decimals, String for text, bool for true or false" }
+      ],
+      "scene": { "buttons": [] }
+    },
+    {
+      "id": "m5-s2",
+      "title": "Attack",
+      "prompt": "Write `attack`, which returns a `bool`: `func attack() -> bool:`. It takes `attack_power` away from `enemy_health`, keeps enemy_health from going below the number `0`, and returns `true` when the enemy has fallen, meaning enemy_health is `0`, otherwise `false`. Three hits of 20 bring a 60-health enemy to exactly 0; the third one returns true.",
+      "starter": "var health: int = 100\nvar max_health: int = 100\nvar attack_power: int = 20\nvar enemy_health: int = 60\nvar enemy_max_health: int = 60\nvar enemy_attack: int = 15\n\n# Write attack() -> bool below.\n",
+      "solution": "var health: int = 100\nvar max_health: int = 100\nvar attack_power: int = 20\nvar enemy_health: int = 60\nvar enemy_max_health: int = 60\nvar enemy_attack: int = 15\n\nfunc attack() -> bool:\n\tenemy_health -= attack_power\n\tif enemy_health < 0:\n\t\tenemy_health = 0\n\treturn enemy_health == 0\n",
+      "allow_type_hints": true,
+      "require_methods": ["attack"],
+      "tests": [
+        { "name": "One attack leaves the enemy at 40", "script": [{ "call": "attack" }], "read": "enemy_health", "expect": 40 },
+        { "name": "One attack does not fell it", "script": [{ "call": "attack" }], "result": true, "expect": false },
+        { "name": "The third attack fells it", "script": [{ "call": "attack" }, { "call": "attack" }, { "call": "attack" }], "result": true, "expect": true },
+        { "name": "A fourth attack keeps it at 0", "script": [{ "call": "attack" }, { "call": "attack" }, { "call": "attack" }, { "call": "attack" }], "read": "enemy_health", "expect": 0 }
+      ],
+      "hints": [
+        "Take the damage first, guard against going below 0 with an `if`, then decide what to return.",
+        "`enemy_health == 0` is already a bool: it can be returned as it is.",
+        "`-> bool` after the brackets promises a true or false comes back; every path must return one."
+      ],
+      "docs": [
+        { "name": "func name() -> bool:", "what": "a function that promises to return true or false" },
+        { "name": "==", "what": "true when both sides are the same value" }
+      ],
+      "scene": { "buttons": [
+        { "label": "Attack", "call": "attack" }
+      ] }
+    },
+    {
+      "id": "m5-s3",
+      "title": "The enemy's turn",
+      "prompt": "The robot's `take_damage` from the health milestone is back. Write `is_alive`, returning a `bool`: `true` while `health` is above the number `0`. Then write `enemy_turn`, also returning a `bool`: it calls `take_damage(enemy_attack)` and returns what `is_alive()` gives. A turn takes 15; seven turns bring 100 health to 0, and that seventh turn returns false.",
+      "starter": "var health: int = 100\nvar max_health: int = 100\nvar attack_power: int = 20\nvar enemy_health: int = 60\nvar enemy_max_health: int = 60\nvar enemy_attack: int = 15\n\nfunc attack() -> bool:\n\tenemy_health -= attack_power\n\tif enemy_health < 0:\n\t\tenemy_health = 0\n\treturn enemy_health == 0\n\nfunc take_damage(amount: int) -> void:\n\thealth -= amount\n\tif health < 0:\n\t\thealth = 0\n\n# Write is_alive() -> bool and enemy_turn() -> bool below.\n",
+      "solution": "var health: int = 100\nvar max_health: int = 100\nvar attack_power: int = 20\nvar enemy_health: int = 60\nvar enemy_max_health: int = 60\nvar enemy_attack: int = 15\n\nfunc attack() -> bool:\n\tenemy_health -= attack_power\n\tif enemy_health < 0:\n\t\tenemy_health = 0\n\treturn enemy_health == 0\n\nfunc take_damage(amount: int) -> void:\n\thealth -= amount\n\tif health < 0:\n\t\thealth = 0\n\nfunc is_alive() -> bool:\n\treturn health > 0\n\nfunc enemy_turn() -> bool:\n\ttake_damage(enemy_attack)\n\treturn is_alive()\n",
+      "allow_type_hints": true,
+      "require_methods": ["is_alive", "enemy_turn"],
+      "tests": [
+        { "name": "At full health the robot is alive", "script": [{ "call": "is_alive" }], "result": true, "expect": true },
+        { "name": "One enemy turn leaves 85", "script": [{ "call": "enemy_turn" }], "read": "health", "expect": 85 },
+        { "name": "One enemy turn reports still alive", "script": [{ "call": "enemy_turn" }], "result": true, "expect": true },
+        { "name": "The seventh turn reports the fall", "script": [{ "call": "enemy_turn" }, { "call": "enemy_turn" }, { "call": "enemy_turn" }, { "call": "enemy_turn" }, { "call": "enemy_turn" }, { "call": "enemy_turn" }, { "call": "enemy_turn" }], "result": true, "expect": false },
+        { "name": "Health never goes below 0", "script": [{ "call": "enemy_turn" }, { "call": "enemy_turn" }, { "call": "enemy_turn" }, { "call": "enemy_turn" }, { "call": "enemy_turn" }, { "call": "enemy_turn" }, { "call": "enemy_turn" }, { "call": "enemy_turn" }], "read": "health", "expect": 0 }
+      ],
+      "hints": [
+        "`return health > 0` is the whole body of is_alive.",
+        "enemy_turn has two lines: the take_damage call, then `return is_alive()`.",
+        "Do not subtract in enemy_turn yourself; take_damage already does it and keeps health at 0 or above."
+      ],
+      "docs": [
+        { "name": "-> void", "what": "a function that returns nothing" },
+        { "name": ">", "what": "true when the left side is bigger than the right" }
+      ],
+      "scene": { "buttons": [
+        { "label": "Attack", "call": "attack" },
+        { "label": "Enemy turn", "call": "enemy_turn" }
+      ] }
+    },
+    {
+      "id": "m5-s4",
+      "title": "Fight to the end",
+      "prompt": "Write `fight`, which returns a `String`: `func fight() -> String:`. It runs turns in a `while` loop as long as both sides stand. Each pass: call `attack()`, and if it returned `true`, return `\"won\"`; otherwise call `enemy_turn()`, and if that returned `false`, return `\"lost\"`. With the numbers so far the robot wins in three attacks and takes two hits on the way. A `spawn_enemy` function is given so the checks can bring in a tougher enemy.",
+      "starter": "var health: int = 100\nvar max_health: int = 100\nvar attack_power: int = 20\nvar enemy_health: int = 60\nvar enemy_max_health: int = 60\nvar enemy_attack: int = 15\n\nfunc attack() -> bool:\n\tenemy_health -= attack_power\n\tif enemy_health < 0:\n\t\tenemy_health = 0\n\treturn enemy_health == 0\n\nfunc take_damage(amount: int) -> void:\n\thealth -= amount\n\tif health < 0:\n\t\thealth = 0\n\nfunc is_alive() -> bool:\n\treturn health > 0\n\nfunc enemy_turn() -> bool:\n\ttake_damage(enemy_attack)\n\treturn is_alive()\n\nfunc spawn_enemy(hp: int, power: int) -> void:\n\tenemy_health = hp\n\tenemy_max_health = hp\n\tenemy_attack = power\n\n# Write fight() -> String below.\n",
+      "solution": "var health: int = 100\nvar max_health: int = 100\nvar attack_power: int = 20\nvar enemy_health: int = 60\nvar enemy_max_health: int = 60\nvar enemy_attack: int = 15\n\nfunc attack() -> bool:\n\tenemy_health -= attack_power\n\tif enemy_health < 0:\n\t\tenemy_health = 0\n\treturn enemy_health == 0\n\nfunc take_damage(amount: int) -> void:\n\thealth -= amount\n\tif health < 0:\n\t\thealth = 0\n\nfunc is_alive() -> bool:\n\treturn health > 0\n\nfunc enemy_turn() -> bool:\n\ttake_damage(enemy_attack)\n\treturn is_alive()\n\nfunc spawn_enemy(hp: int, power: int) -> void:\n\tenemy_health = hp\n\tenemy_max_health = hp\n\tenemy_attack = power\n\nfunc fight() -> String:\n\twhile is_alive() and enemy_health > 0:\n\t\tif attack():\n\t\t\treturn \"won\"\n\t\tif not enemy_turn():\n\t\t\treturn \"lost\"\n\treturn \"lost\"\n",
+      "allow_type_hints": true,
+      "require_methods": ["fight"],
+      "tests": [
+        { "name": "The first enemy is beaten", "script": [{ "call": "fight" }], "result": true, "expect": "won" },
+        { "name": "Winning costs two hits: 70 health left", "script": [{ "call": "fight" }], "read": "health", "expect": 70 },
+        { "name": "The beaten enemy is at 0", "script": [{ "call": "fight" }], "read": "enemy_health", "expect": 0 },
+        { "name": "A brute with 500 health and 40 power wins", "script": [{ "call": "spawn_enemy", "args": [500, 40] }, { "call": "fight" }], "result": true, "expect": "lost" },
+        { "name": "Losing leaves the robot at 0", "script": [{ "call": "spawn_enemy", "args": [500, 40] }, { "call": "fight" }], "read": "health", "expect": 0 },
+        { "name": "An enemy with 40 health falls in two attacks, one hit taken", "script": [{ "call": "spawn_enemy", "args": [40, 15] }, { "call": "fight" }], "read": "health", "expect": 85 }
+      ],
+      "hints": [
+        "The loop condition is `is_alive() and enemy_health > 0`; inside, the two ifs each `return` a word.",
+        "`if attack():` is enough: attack already gives true or false. `if not enemy_turn():` catches the fall.",
+        "A `return` after the loop, for safety, keeps the `-> String` promise on every path."
+      ],
+      "docs": [
+        { "name": "while", "what": "repeats the block while the condition is true; a return inside ends the function at once" },
+        { "name": "and / not", "what": "and is true when both sides are; not flips true and false" },
+        { "name": "-> String", "what": "a function that promises to return text" }
+      ],
+      "scene": { "buttons": [
+        { "label": "Attack", "call": "attack" },
+        { "label": "Enemy turn", "call": "enemy_turn" },
+        { "label": "Fight to the end", "call": "fight" },
+        { "label": "Brute: spawn_enemy(500, 40)", "call": "spawn_enemy", "args": [500, 40] }
+      ] }
+    }
+  ],
+  "godot": [
+    "Open Godot and make a new project called Robot Fight.",
+    "Create a 2D scene with a Node2D root named Arena, and attach a script to it.",
+    "Copy the whole script from step 4 into it, type hints and all; Godot's editor now warns you if a wrong kind of value is put in one of the variables.",
+    "Add two Label children, Robot and Enemy. Write `func show_bars():` that sets `$Robot.text = str(health) + \" / \" + str(max_health)` and the same for the enemy, and call it at the end of attack and take_damage.",
+    "In `func _ready():` call `print(fight())` and run the scene (F6): the Output panel says won and the labels show 70 and 0.",
+    "Change _ready to `spawn_enemy(500, 40)` before the fight and run again: lost, and the robot's label reads 0.",
+    "Add a Button node, connect its pressed signal to a function that calls `attack()` then `show_bars()`, and fight by clicking.",
+    "Try making attack_power a float and read the warning Godot gives where it is subtracted from an int."
+  ]
+}

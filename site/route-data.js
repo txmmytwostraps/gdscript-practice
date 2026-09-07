@@ -49,7 +49,7 @@ export const MILESTONES = [
   { id: "m4", number: 4, title: "An inventory", after: "gq-indices",
     uses: "Adds arrays, append, index, loops and functions that return a value. 4 steps in the browser, then the same build in Godot on your machine.", steps: 4, badge: "Carries a bag" },
   { id: "m5", number: 5, title: "Enemy and combat", after: "gq-types",
-    uses: "Adds if, elif and else, comparisons, while, and type hints.", steps: 4, planned: true },
+    uses: "Adds if and else, comparisons, while, and type hints. 4 steps in the browser, then the same build in Godot on your machine.", steps: 4, badge: "Wins the fight" },
 ];
 
 // The full lesson list of the course, as numbered in the app. Topics not in

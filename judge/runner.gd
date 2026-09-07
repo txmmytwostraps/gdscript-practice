@@ -30,6 +30,10 @@ func run_submission(user_code: String, problem: Dictionary) -> Dictionary:
 	for n in problem.get("require_names", []):
 		if not declares_name(user_code, n):
 			return {"status": "error", "error": "expected a variable or constant named %s (var %s or const %s)" % [n, n, n]}
+	# Milestone steps on type hints: the member must be declared with one.
+	for n in problem.get("require_typed", []):
+		if not declares_typed(user_code, n):
+			return {"status": "error", "error": "expected %s to be declared with a type hint (var %s: int = ...)" % [n, n]}
 	# "Name the magic number" problems: the number may appear once (its declaration).
 	for lit in problem.get("once_only", []):
 		var uses := count_literal(user_code, str(lit))
@@ -98,6 +102,8 @@ func run_submission(user_code: String, problem: Dictionary) -> Dictionary:
 		var r := {"args": to_json_value(args), "expect": to_json_value(expect), "got": to_json_value(got), "out": out_lines, "pass": ok}
 		if not step_error.is_empty():
 			r["error"] = step_error
+		if t.has("script"):
+			r["returned"] = to_json_value(last_return)
 		if not watch.is_empty():
 			r["trace"] = trace
 		if inst._judge_loop_exceeded:
@@ -135,6 +141,18 @@ static func declares_name(code: String, name: String) -> bool:
 		if hash >= 0:
 			no_comment = line.substr(0, hash)
 		if re.search(no_comment) != null:
+			return true
+	return false
+
+
+## True if the code declares `var NAME: Type` (a type hint, not just var NAME).
+static func declares_typed(code: String, name: String) -> bool:
+	var re := RegEx.new()
+	re.compile("(?m)^[ \\t]*var[ \\t]+" + name + "[ \\t]*:[ \\t]*[A-Za-z_]\\w*")
+	for line in code.split("\n"):
+		var hash := _header_colon_like(line, "#")
+		var text: String = line.substr(0, hash) if hash >= 0 else line
+		if re.search(text) != null:
 			return true
 	return false
 

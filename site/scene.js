@@ -5,14 +5,14 @@
 // last printed line as a status.
 export const STAGE_WIDTH = 600;
 const H = 160, GROUND = 128;
-export const KINDS = { move: { watch: ["x", "speed"] }, health: { watch: ["health", "max_health"] }, walk: { watch: ["position", "speed", "facing"] }, bag: { watch: ["items", "capacity", "health", "max_health"] } };
+export const KINDS = { move: { watch: ["x", "speed"] }, health: { watch: ["health", "max_health"] }, walk: { watch: ["position", "speed", "facing"] }, bag: { watch: ["items", "capacity", "health", "max_health"] }, fight: { watch: ["health", "max_health", "attack_power", "enemy_health", "enemy_max_health", "enemy_attack"] } };
 
 export function makeScene(container, kind = "move") {
   container.innerHTML = `<canvas width="${STAGE_WIDTH}" height="${H}" style="width:100%;max-width:${STAGE_WIDTH}px;display:block;background:var(--bg);border:1px solid var(--line)"></canvas><div class="caps dim scene-readout" style="font-size:12px;margin-top:6px"></div>`;
   const canvas = container.querySelector("canvas"), readout = container.querySelector(".scene-readout");
   const ctx = canvas.getContext("2d");
   const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim() || "#888";
-  let state = kind === "health" ? { health: 100, max_health: 100, out: [] } : kind === "walk" ? { position: null, speed: null, facing: null } : kind === "bag" ? { items: null, capacity: null, health: null, max_health: null } : { x: 0, speed: 0 };
+  let state = kind === "health" ? { health: 100, max_health: 100, out: [] } : kind === "walk" ? { position: null, speed: null, facing: null } : kind === "bag" ? { items: null, capacity: null, health: null, max_health: null } : kind === "fight" ? { health: null, max_health: null, enemy_health: null, enemy_max_health: null, returned: null } : { x: 0, speed: 0 };
   let anim = 0;
   const fmt = (v) => (Number.isFinite(v) ? (Number.isInteger(v) ? v : +v.toFixed(1)) : "?");
 
@@ -113,7 +113,33 @@ export function makeScene(container, kind = "move") {
     }
     readout.textContent = `${items === null ? "no bag yet" : `items = [${items.join(", ")}]`}${cap !== null ? ` · capacity = ${cap}` : ""}${hp !== null ? ` · health = ${fmt(hp)}` : ""}`;
   }
-  const draw = kind === "health" ? drawHealth : kind === "walk" ? drawWalk : kind === "bag" ? drawBag : drawMove;
+  // Two fighters facing each other with a health bar each; the last returned value shows as the verdict.
+  function bar(x, y, w, hp, max, label, color) {
+    const line = css("--line-strong"), text = css("--text"), error = css("--error");
+    ctx.strokeStyle = line; ctx.lineWidth = 1; ctx.strokeRect(x + 0.5, y + 0.5, w, 10);
+    if (hp !== null && max !== null) { ctx.fillStyle = hp <= 0 ? error : color; ctx.fillRect(x + 1, y + 1, Math.max(0, Math.min(1, hp / max)) * (w - 1), 9); }
+    ctx.fillStyle = text; ctx.font = "11px IBM Plex Mono, monospace"; ctx.textAlign = "left";
+    ctx.fillText(`${label} ${hp === null ? "?" : fmt(hp)}${max !== null ? " / " + fmt(max) : ""}`, x, y + 24);
+  }
+  function drawFight(s) {
+    const accent = css("--accent"), dim = css("--dim"), error = css("--error"), milestone = css("--milestone");
+    ctx.clearRect(0, 0, STAGE_WIDTH, H);
+    ground();
+    const hp = Number.isFinite(s.health) ? s.health : null, max = Number.isFinite(s.max_health) ? s.max_health : null;
+    const ehp = Number.isFinite(s.enemy_health) ? s.enemy_health : null, emax = Number.isFinite(s.enemy_max_health) ? s.enemy_max_health : null;
+    robot(150, hp !== null && hp <= 0 ? dim : accent);
+    // the enemy: a spikier shape
+    const ex = 450, down = ehp !== null && ehp <= 0;
+    ctx.save(); ctx.translate(ex, GROUND); ctx.strokeStyle = down ? dim : milestone; ctx.fillStyle = down ? dim : milestone; ctx.lineWidth = 2; ctx.lineCap = "round";
+    ctx.beginPath(); ctx.moveTo(-14, 0); ctx.lineTo(-14, -30); ctx.lineTo(-22, -46); ctx.lineTo(-6, -38); ctx.lineTo(0, -54); ctx.lineTo(6, -38); ctx.lineTo(22, -46); ctx.lineTo(14, -30); ctx.lineTo(14, 0); ctx.closePath(); ctx.stroke();
+    ctx.fillRect(-7, -32, 4, 4); ctx.fillRect(3, -32, 4, 4); ctx.restore();
+    bar(90, 18, 120, hp, max, "ROBOT", accent);
+    bar(390, 18, 120, ehp, emax, "ENEMY", milestone);
+    const verdict = typeof s.returned === "string" ? s.returned : null;
+    if (verdict) { ctx.fillStyle = verdict === "won" ? accent : error; ctx.font = "bold 16px Space Grotesk, sans-serif"; ctx.textAlign = "center"; ctx.fillText(verdict.toUpperCase(), STAGE_WIDTH / 2, 74); ctx.textAlign = "left"; }
+    readout.textContent = `${hp === null ? "no fighters yet" : `health = ${fmt(hp)}`}${ehp !== null ? ` · enemy_health = ${fmt(ehp)}` : ""}${s.returned !== null && s.returned !== undefined ? ` · returned ${JSON.stringify(s.returned)}` : ""}`;
+  }
+  const draw = kind === "health" ? drawHealth : kind === "walk" ? drawWalk : kind === "bag" ? drawBag : kind === "fight" ? drawFight : drawMove;
 
   return {
     kind,
@@ -163,7 +189,7 @@ export function wireScene(scene, judge, { buttonsEl, noteEl, getCode, watch }) {
       if (r.error) { note(r.error); history.pop(); }
       else note("");
       if (!frames.length) return;
-      frames[frames.length - 1] = { ...frames[frames.length - 1], out: r.out || [] };
+      frames[frames.length - 1] = { ...frames[frames.length - 1], out: r.out || [], returned: history.length ? (r.returned === undefined ? null : r.returned) : null };
       const last = history[history.length - 1];
       const count = animateLast && last ? (last.frames ? Number(last.frames) : 1) : 0;
       if (count > 0 && frames.length > count) scene.play(frames.slice(frames.length - count));
