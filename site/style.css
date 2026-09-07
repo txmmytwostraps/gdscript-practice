@@ -104,3 +104,14 @@
 .notebox textarea { width: 100%; box-sizing: border-box; padding: 10px 12px; border: 1px solid var(--line); background: var(--panel); color: var(--text); font: 13px/1.6 var(--mono); resize: vertical; }
 .notebox textarea:focus { outline: none; border-color: var(--accent); }
 .notebox input[type="checkbox"] { accent-color: var(--accent); }
+
+/* Wide monitors: a wider problem column, the editor takes the rest, and the
+   results panel sits beside the editor instead of below it. */
+@media (min-width: 1700px) {
+  .workspace { grid-template-columns: 560px minmax(0, 1fr); gap: 48px; }
+  .prompt, .hints .stage p { max-width: 70ch; }
+  .editor-pane { display: grid; grid-template-columns: minmax(0, 1fr) minmax(420px, 38%); grid-template-rows: auto 1fr auto auto; gap: 14px 24px; align-items: start; }
+  .editor-pane > .toolbar, .editor-pane > .editor-host, .editor-pane > .parsons, .editor-pane > .modes { grid-column: 1; }
+  .editor-pane > .results { grid-column: 2; grid-row: 1 / span 4; position: sticky; top: 24px; }
+  .CodeMirror, .editor-host textarea { min-height: 34rem; }
+}

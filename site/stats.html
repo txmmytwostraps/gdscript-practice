@@ -29,6 +29,7 @@
   .legend { font-size: 12px; color: var(--muted); margin-top: 6px; }
   .section { display: flex; flex-direction: column; gap: 12px; }
   .tablewrap { overflow-x: auto; }
+  @media (min-width: 1700px) { .page { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .page > :first-child, .page > .numbers, .page > .section:last-child { grid-column: 1 / -1; } .numbers { grid-template-columns: repeat(8, minmax(0, 1fr)); } }
 </style>
 </head>
 <body>

@@ -62,3 +62,6 @@ code { font-family: var(--mono); background: var(--line); color: var(--accent); 
 .account input { padding: 6px 10px; border: 1px solid var(--line-strong); background: var(--bg); width: 12rem; text-transform: none; letter-spacing: 0; }
 .account > div { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 #account-note { flex-basis: 100%; text-transform: none; letter-spacing: 0; color: var(--muted); }
+
+/* Wide monitors (1440p, 4K): use the width. Laptop widths keep the layout above. */
+@media (min-width: 1700px) { .page { max-width: 2400px; padding: 40px 64px; gap: 48px; } }
