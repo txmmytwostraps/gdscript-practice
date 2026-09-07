@@ -12,6 +12,7 @@ import { makeEditor } from "./editor.js";
 import { candidates } from "./mutate.js";
 import * as notes from "./notes.js";
 import { makeVariant } from "./variants.js";
+import { loadCards, cardsForConcept } from "./cards.js";
 
 // Problem types. ?mode=parsons puts the solution's lines in order;
 // ?mode=bug plants one bug in the solution to find and fix. Reviews pick a
@@ -186,6 +187,8 @@ function renderProblem(p) {
   const docs = Array.isArray(p.docs) ? p.docs : [];
   el.docs.hidden = docs.length === 0;
   el.doclist.innerHTML = docs.map((d) => `<div class="row"><code>${esc(d.name)}</code><span>${esc(d.what)}</span></div>`).join("");
+  const cards = cardsForConcept(p.concept);
+  $("cardlinks").innerHTML = cards.length ? `<span class="muted">Concept cards:</span> ${cards.map((c) => `<a href="concepts.html#${c.id}">${esc(c.name)}</a>`).join(" · ")}` : "";
   el.again.hidden = !state.solved[p.id];
   updateSolutionLock(p);
   document.title = `${p.title} · GDScript Practice`;
@@ -445,6 +448,8 @@ function markSolved(id) {
   logVerdict(id, true, first);
   // Completing a topic starts its review week.
   if (first && sync.user && current) reviews.scheduleTopicIfCleared(sync.user, current.concept).then((started) => { if (started) setVerdict("pass", "[x] Topic cleared", "Reviews for this topic start tomorrow: two a day for a week."); }).catch(() => {});
+  // The first solve in a topic puts its concept cards into the review queue.
+  if (first && sync.user && current) reviews.scheduleCardsIfStarted(sync.user, current.concept).catch(() => {});
 }
 // Every verdict is an attempt; a review's first verdict decides its schedule.
 function logVerdict(id, passed, wasNew) {
@@ -492,6 +497,7 @@ async function main() {
     saveTimer = setTimeout(() => { const text = editor.get(); if (text === current.starter) { clearDraft(current.id); el.saved.textContent = ""; } else { setDraft(current.id, text); el.saved.textContent = "saved"; } sync.push(current.id); }, 300);
   });
   await loadBank();
+  try { await loadCards(); } catch (e) { /* the page works without the card links */ }
   judge.load().catch((e) => setVerdict("fail", "[x] The judge could not start", e.message));   // before any problem loads: bug variants need it
 
   el.topic.addEventListener("change", () => { filters.topic = el.topic.value; store.set("filters", filters); renderFilters(); if (!current || !matches(state.byId.get(current.id))) pickNext(); });

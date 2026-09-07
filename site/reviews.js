@@ -10,6 +10,7 @@
 import * as auth from "./auth.js";
 import { state, store, dayKey, today } from "./progress.js";
 import { TOPICS } from "./route-data.js";
+import { loadCards, cardsForConcept, cardId, isCardId } from "./cards.js";
 
 export const REVIEW_CAP = 6;
 const SPACING = [3, 7, 14, 30];
@@ -29,15 +30,44 @@ export async function refresh() {
   return rows;
 }
 
-/** Everything due on or before the given day, oldest first (uncapped). */
+/** Everything due on or before the given day, oldest first (uncapped). Problems only. */
 export function due(day = dayKey(today())) {
-  return Object.values(rows).filter((r) => r.due_on <= day).sort((a, b) => a.due_on.localeCompare(b.due_on) || a.problem_id.localeCompare(b.problem_id));
+  return Object.values(rows).filter((r) => !isCardId(r.problem_id) && r.due_on <= day).sort((a, b) => a.due_on.localeCompare(b.due_on) || a.problem_id.localeCompare(b.problem_id));
 }
 /** The day's review list: at most REVIEW_CAP, plus the ones already reviewed today. */
 export function dueToday(day = dayKey(today())) {
-  const doneToday = Object.values(rows).filter((r) => r.reviewed_at && dayKey(new Date(r.reviewed_at)) === day);
+  const doneToday = Object.values(rows).filter((r) => !isCardId(r.problem_id) && r.reviewed_at && dayKey(new Date(r.reviewed_at)) === day);
   const pending = due(day).slice(0, Math.max(0, REVIEW_CAP - doneToday.length));
   return { pending, doneToday, rolled: Math.max(0, due(day).length - pending.length) };
+}
+
+// ---- concept cards: same rules, their own daily cap ----
+export const CARD_CAP = 4;
+export function cardsDue(day = dayKey(today())) {
+  return Object.values(rows).filter((r) => isCardId(r.problem_id) && r.due_on <= day).sort((a, b) => a.due_on.localeCompare(b.due_on) || a.problem_id.localeCompare(b.problem_id));
+}
+export function cardsDueToday(day = dayKey(today())) {
+  const doneToday = Object.values(rows).filter((r) => isCardId(r.problem_id) && r.reviewed_at && dayKey(new Date(r.reviewed_at)) === day);
+  const pending = cardsDue(day).slice(0, Math.max(0, CARD_CAP - doneToday.length));
+  return { pending, doneToday, rolled: Math.max(0, cardsDue(day).length - pending.length) };
+}
+/** Once a topic has its first solve, its concept cards enter the queue, due from tomorrow. */
+export async function scheduleCardsIfStarted(user, concept) {
+  if (!user) return false;
+  const list = state.problems.filter((p) => p.concept === concept);
+  if (list.length === 0 || !list.some((p) => state.solved[p.id])) return false;
+  await loadCards();
+  const cards = cardsForConcept(concept).filter((c) => !rows[cardId(c)]);
+  if (!cards.length) return false;
+  const start = dayKey(today());
+  const newRows = cards.map((c, i) => ({
+    user_id: user.id, problem_id: cardId(c), topic: c.concept, stage: "fresh",
+    due_on: addDays(start, Math.floor(i / CARD_CAP) + 1), step: 0, clean_streak: 0,
+  }));
+  await auth.upsertReviews(newRows);
+  for (const r of newRows) rows[r.problem_id] = r;
+  store.set("reviews", rows);
+  return true;
 }
 
 /** If every problem of the topic is solved and it is not scheduled yet, start its fresh week. */

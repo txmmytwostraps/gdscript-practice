@@ -3,7 +3,7 @@ import * as auth from "./auth.js";
 import { renderHeaderStats, trackTime } from "./progress.js";
 import { sync, onSynced } from "./sync.js";
 
-const NAV = [["Today", "./"], ["Route", "route.html"], ["Practice", "practice.html"], ["Gallery", "gallery.html"], ["Stats", "stats.html"]];
+const NAV = [["Today", "./"], ["Route", "route.html"], ["Practice", "practice.html"], ["Concepts", "concepts.html"], ["Gallery", "gallery.html"], ["Stats", "stats.html"]];
 
 export function mountShell(active, { stats = true } = {}) {
   // Testing aid: ?today=YYYY-MM-DD makes every page believe it is that day.

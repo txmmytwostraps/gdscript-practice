@@ -67,6 +67,20 @@ if (fs.existsSync(mdir)) {
     for (const s of m.steps || []) for (const e of styleErrors({ signature: "", ...s })) errors.push(`milestones/${f} ${s.id}: ${e}`);
   }
 }
+// Concept cards: fields present, ids unique, topic known.
+const cardsFile = path.resolve(__dirname, "..", "cards", "cards.json");
+if (fs.existsSync(cardsFile)) {
+  let cards = [];
+  try { cards = JSON.parse(fs.readFileSync(cardsFile, "utf8")); } catch (e) { errors.push(`cards.json: invalid JSON (${e.message})`); }
+  const ids = new Set();
+  for (const c of cards) {
+    for (const k of ["id", "concept", "name", "front", "what", "how", "example", "mistake"]) if (typeof c[k] !== "string" || !c[k].trim()) errors.push(`cards.json ${c.id || "?"}: missing "${k}"`);
+    if (ids.has(c.id)) errors.push(`cards.json: duplicate id ${c.id}`);
+    ids.add(c.id);
+    if (!CONCEPTS.includes(c.concept)) errors.push(`cards.json ${c.id}: unknown concept "${c.concept}"`);
+  }
+  console.log(`cards.json: ${cards.length} cards`);
+}
 if (errors.length) { console.error(errors.join("\n")); process.exit(1); }
 
 entries.sort((a, b) => CONCEPTS.indexOf(a.concept) - CONCEPTS.indexOf(b.concept) || a.id.localeCompare(b.id));

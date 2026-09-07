@@ -70,7 +70,7 @@ export const sync = {
     // topic that turned out to be complete (a solve from the other machine).
     try {
       await reviews.refresh();
-      for (const concept of new Set(state.problems.map((p) => p.concept))) await reviews.scheduleTopicIfCleared(this.user, concept);
+      for (const concept of new Set(state.problems.map((p) => p.concept))) { await reviews.scheduleTopicIfCleared(this.user, concept); await reviews.scheduleCardsIfStarted(this.user, concept); }
     } catch (e) { this.note("Reviews unavailable: " + e.message); }
     try { await notes.merge(this.user); } catch (e) { this.note("Notes unavailable: " + e.message); }
     this.note(toUpload.length ? `Synced: ${toUpload.length} problem${toUpload.length === 1 ? "" : "s"} updated in your account.` : "Synced.");

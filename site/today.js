@@ -15,14 +15,18 @@ function render() {
   const run = todayRun();
   // Slot 01 is the review queue, which lives in the account.
   const q = reviews.dueToday();
-  const total = q.pending.length + q.doneToday.length;
+  const cq = reviews.cardsDueToday();
+  const total = q.pending.length + q.doneToday.length + cq.pending.length + cq.doneToday.length;
+  const pendingAll = q.pending.length + cq.pending.length;
   const topics = [...new Set(q.pending.map((r) => reviews.topicTitle(r.topic)))].join(", ");
+  const cardsText = cq.pending.length ? `${cq.pending.length} concept card${cq.pending.length === 1 ? "" : "s"}` : "";
   const anyRows = Object.keys(reviews.all()).length > 0;
   run.slots[0] = !sync.user && !anyRows
     ? { n: "01", title: "REVIEW", detail: "sign in to get reviews", done: true, kind: "review" }
     : total === 0
-      ? { n: "01", title: "REVIEW", detail: anyRows ? "nothing due today" : "no reviews yet — clear a topic to start them", done: true, kind: "review" }
-      : { n: "01", title: `REVIEW · ${q.pending.length} DUE`, detail: q.pending.length ? topics + (q.rolled ? ` · ${q.rolled} more roll to tomorrow` : "") : `${q.doneToday.length} done today`, done: q.pending.length === 0, kind: "review", href: q.pending.length ? `practice.html?review=1#${q.pending[0].problem_id}` : null };
+      ? { n: "01", title: "REVIEW", detail: anyRows ? "nothing due today" : "no reviews yet — solve a problem to start its concept cards, clear a topic to start its problems", done: true, kind: "review" }
+      : { n: "01", title: `REVIEW · ${pendingAll} DUE`, detail: pendingAll ? [topics, cardsText].filter(Boolean).join(" · ") + (q.rolled ? ` · ${q.rolled} more roll to tomorrow` : "") : `${q.doneToday.length + cq.doneToday.length} done today`, done: pendingAll === 0, kind: "review",
+          href: q.pending.length ? `practice.html?review=1#${q.pending[0].problem_id}` : cq.pending.length ? "concepts.html?review=1" : null };
   run.doneCount = run.slots.filter((s) => s.done).length;
   run.allDone = run.doneCount === run.slots.length;
   const saved = store.get("run." + run.day, null);
