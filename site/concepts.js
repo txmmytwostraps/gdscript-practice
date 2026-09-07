@@ -53,7 +53,8 @@ function renderReference() {
 function renderFlash() {
   $("reference").hidden = true; $("toc").hidden = true; $("flash").hidden = false;
   if (at >= queue.length) {
-    $("flash").innerHTML = `<div class="front">${reviewMode ? "Cards done for today" : "End of the lesson's cards"}</div><div class="progress">${reviewMode ? `${results.pass} got it · ${results.miss} not yet` : `${queue.length} cards`}</div><div class="actions">${reviewMode ? `<a class="btn primary" href="./">Back to Today</a>` : ""}<a class="btn" href="concepts.html">All concepts</a></div>`;
+    const nothing = reviewMode && queue.length === 0;
+    $("flash").innerHTML = `<div class="front">${nothing ? "Nothing due" : reviewMode ? "Cards done for today" : "End of the lesson's cards"}</div><div class="progress">${nothing ? "no concept cards are scheduled for today" : reviewMode ? `${results.pass} got it · ${results.miss} not yet` : `${queue.length} cards`}</div><div class="actions">${reviewMode ? `<a class="btn primary" href="./">Back to Today</a>` : ""}<a class="btn" href="concepts.html">All concepts</a></div>`;
     return;
   }
   const c = queue[at];
