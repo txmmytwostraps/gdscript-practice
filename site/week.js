@@ -6,6 +6,7 @@ import { onSynced, sync } from "./sync.js";
 import * as reviews from "./reviews.js";
 import * as notes from "./notes.js";
 import * as scaffold from "./scaffold.js";
+import * as auth from "./auth.js";
 import { loadBank, state, store, routeTopics, streakDays, activeDays, dayDone, runsCompleted, newPerDay, dayKey, today } from "./progress.js";
 import { loadCards, cardById, isCardId } from "./cards.js";
 import { TOPICS } from "./route-data.js";
@@ -14,6 +15,7 @@ const $ = (id) => document.getElementById(id);
 const pct = (n, d) => (d ? Math.round((100 * n) / d) + "%" : "–");
 const lessonTag = (t) => `L${String(t.lesson).padStart(2, "0")}`;
 let attempts = [];
+let nudges = [];
 
 function build() {
   const end = today(); const days = [];
@@ -40,10 +42,11 @@ function build() {
     const a = week.filter((x) => ids.has(x.problem_id));
     const solves = solvedWeek.filter(([id]) => ids.has(id)).length;
     const hints = hintlog.filter((h) => ids.has(h.id)).length;
-    if (!a.length && !solves && !hints) continue;
+    const nudged = nudges.filter((x) => inWeek(x.at) && ids.has(x.problem_id)).length;
+    if (!a.length && !solves && !hints && !nudged) continue;
     const misses = a.filter((x) => x.result === "miss").length;
     const st = scaffold.statsFor(t.concept);
-    topicLines.push(`- ${t.title} (${lessonTag(t)}): attempts ${a.length}, solves ${solves}, misses ${misses}, pass rate ${pct(a.length - misses, a.length)}, hints opened ${hints}, hint level ${scaffold.levelFor(t.concept)}${scaffold.overrideFor(t.concept) ? " (set by hand)" : " (auto)"}${st.rate !== null ? `, rolling ${Math.round(st.rate * 100)}% over last ${Math.min(20, st.attempts)}` : ""}`);
+    topicLines.push(`- ${t.title} (${lessonTag(t)}): attempts ${a.length}, solves ${solves}, misses ${misses}, pass rate ${pct(a.length - misses, a.length)}, hints opened ${hints}, nudges ${nudged}, hint level ${scaffold.levelFor(t.concept)}${scaffold.overrideFor(t.concept) ? " (set by hand)" : " (auto)"}${st.rate !== null ? `, rolling ${Math.round(st.rate * 100)}% over last ${Math.min(20, st.attempts)}` : ""}`);
   }
   out.push(...(topicLines.length ? topicLines : ["- no activity this week"]));
   out.push("");
@@ -99,7 +102,7 @@ function build() {
 }
 
 async function load() {
-  if (sync.user) attempts = await scaffold.refresh(sync.user).catch(() => []);
+  if (sync.user) { attempts = await scaffold.refresh(sync.user).catch(() => []); nudges = await auth.fetchNudges().catch(() => []); }
   try { await reviews.refresh(); } catch (e) { /* cached */ }
   $("summary").textContent = build();
 }

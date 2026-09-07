@@ -97,6 +97,31 @@ export async function upsertSettings(userId, s) {
   if (error) throw new Error(error.message);
 }
 
+/** Ask the nudge function for a hint toward the fix. Returns { text, remaining } or throws with the plain message. */
+export async function nudge(payload) {
+  const { data } = await client.auth.getSession();
+  if (!data.session) throw new Error("sign in to get a nudge");
+  let r;
+  try {
+    r = await fetch(`${SUPABASE_URL}/functions/v1/nudge`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": `Bearer ${data.session.access_token}`, "apikey": SUPABASE_ANON_KEY },
+      body: JSON.stringify(payload),
+    });
+  } catch (e) { throw new Error("the nudge is not set up yet, or cannot be reached"); }
+  let body = null;
+  try { body = await r.json(); } catch (e) { /* not JSON */ }
+  if (!r.ok) { const err = new Error((body && body.error) || (r.status === 404 ? "the nudge is not set up yet" : "the nudge could not be reached")); err.capped = Boolean(body && body.capped); throw err; }
+  return body;
+}
+
+/** The user's nudges, newest first. */
+export async function fetchNudges() {
+  const { data, error } = await client.from("nudges").select("problem_id, topic, request, reply, at").order("at", { ascending: false }).limit(500);
+  if (error) throw new Error(error.message);
+  return data;
+}
+
 /** Every recorded attempt, oldest first. */
 export async function fetchAttempts() {
   const { data, error } = await client.from("attempts").select("problem_id, kind, result, at").order("at", { ascending: true }).limit(5000);

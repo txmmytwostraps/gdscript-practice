@@ -31,7 +31,7 @@ Hints come in two to four stages and open one at a time. How many are available 
 
 The reference solution is locked until you solve the problem or miss it twice, three times at the minimal level. Opening a hint never counts as a miss.
 
-Each problem has a notes box for what you did not get or what you missed; notes save as you type and gather on the Notes page. "Ask Claude" copies a prepared prompt to the clipboard, with the problem, your code, the failing tests and your note, asking for a nudge rather than the answer, to paste into a chat.
+Each problem has a notes box for what you did not get or what you missed; notes save as you type and gather on the Notes page. "Nudge" asks a built-in helper for a pointer toward the fix: it sees the problem, your code, the failing tests, your note and the hints you opened, answers in at most three sentences, never writes code, and counts as a hint opened. It works when you are signed in, up to thirty times a day. "Ask Claude" copies the same material as a prompt to the clipboard, to paste into a chat.
 
 Under the editor you can try the same problem in other forms: put the lines of the solution in order, or find and fix one planted bug. A topic drill serves problems with fresh numbers for as long as you like; a drill pass counts as practice, not as a solve. "Request more" on the Route copies a brief for writing more problems in this topic.
 

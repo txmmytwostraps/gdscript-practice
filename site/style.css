@@ -130,3 +130,8 @@
 #result-table tr.pass .got { color: var(--accent); } #result-table tr.fail .got { color: var(--error); }
 #result-table .err { color: var(--error); font-size: 12px; }
 .btn.dim { opacity: 0.4; }
+
+/* the nudge */
+.nudge { display: flex; flex-direction: column; gap: 8px; }
+.nudge-reply { font-size: 14px; line-height: 1.6; max-width: 60ch; padding: 10px 14px; border-left: 2px solid var(--milestone); background: var(--panel); }
+.nudge-reply .who { display: block; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--milestone); margin-bottom: 4px; }

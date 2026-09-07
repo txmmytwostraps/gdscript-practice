@@ -52,6 +52,7 @@ const el = {
   results: $("results"), verdict: $("verdict"), verdictSub: $("verdict-sub"), count: $("count"), message: $("message"), resultTable: $("result-table"),
   output: $("output"), outputLines: $("output-lines"), errors: $("errors"), errorLines: $("error-lines"),
   note: $("note"), noteResolved: $("note-resolved"), noteSaved: $("note-saved"), ask: $("ask"), askNote: $("ask-note"),
+  nudgeBtn: $("nudge-btn"), nudgeNote: $("nudge-note"), nudgeReply: $("nudge-reply"),
 };
 let filters = store.get("filters", { topic: "", difficulty: "any" });
 
@@ -265,6 +266,7 @@ async function showProblem(id, { keepResults = false } = {}) {
   if (!keepResults) clearResults();
   renderModes(p);
   renderNote(p);
+  el.nudgeReply.hidden = true; el.nudgeNote.textContent = "";
   location.hash = id;
 }
 
@@ -298,6 +300,27 @@ function askPrompt(p) {
     `\n## My note on this problem\n${n && n.text.trim() ? n.text.trim() : "(no note)"}`,
     "\nRemember: nudge me toward the fix, do not give the answer or write the code.",
   ].join("\n");
+}
+// The built-in nudge: the same material as the copied prompt, sent to the
+// nudge function, which answers with a pointer and never the answer. It
+// counts as a hint opened, and at the minimal level needs a miss first.
+async function askNudge() {
+  if (!current) return;
+  const p = current;
+  if (!sync.user) { el.nudgeNote.textContent = "sign in to get a nudge"; return; }
+  const level = scaffold.levelFor(p.concept), misses = state.fails[p.id] || 0;
+  if (level === "minimal" && misses < 1 && !state.solved[p.id]) { el.nudgeNote.textContent = "at the minimal hint level a nudge needs a miss first"; return; }
+  const failing = el.resultTable.hidden ? [] : [...el.resultTable.querySelectorAll("tr.fail")].map((r) => [...r.children].slice(1).map((c) => c.innerText.trim().replace(/\n+/g, " ")).join(" | "));
+  const opened = [...el.hints.querySelectorAll("button[data-hint]")].filter((b) => b.dataset.hint !== "bug" && !b.nextElementSibling.hidden).map((b) => b.nextElementSibling.textContent);
+  const n = notes.get(p.id);
+  el.nudgeBtn.disabled = true; el.nudgeNote.textContent = "thinking…";
+  try {
+    const r = await auth.nudge({ problem_id: p.id, topic: p.concept, title: p.title, prompt: p.prompt, signature: p.signature, code: activeMode === "parsons" && parsons ? parsons.get() : editor.get(), failing, error: el.errors.hidden ? "" : el.errorLines.textContent.trim(), note: n ? n.text : "", hints_opened: opened, hint_level: level });
+    el.nudgeReply.innerHTML = `<span class="who">Nudge</span>${esc(r.text)}`; el.nudgeReply.hidden = false;
+    el.nudgeNote.textContent = r.remaining !== undefined ? `${r.remaining} left today` : "";
+    const log = store.get("hintlog", []); log.push({ id: p.id, hint: "nudge", at: new Date().toISOString() }); store.set("hintlog", log.slice(-500));
+  } catch (e) { el.nudgeNote.textContent = e.message; }
+  finally { el.nudgeBtn.disabled = false; }
 }
 async function askClaude() {
   if (!current) return;
@@ -552,6 +575,7 @@ async function main() {
   el.note.addEventListener("input", () => { el.noteSaved.textContent = "…"; clearTimeout(noteTimer); noteTimer = setTimeout(() => saveNote({ text: el.note.value }), 600); });
   el.noteResolved.addEventListener("change", () => saveNote({ resolved: el.noteResolved.checked }));
   el.ask.addEventListener("click", askClaude);
+  el.nudgeBtn.addEventListener("click", askNudge);
   el.results.addEventListener("click", (ev) => { if (ev.target.closest("#drill-next")) nextDrill(); });
   el.hints.addEventListener("click", (ev) => {
     const b = ev.target.closest("button[data-hint]"); if (!b || b.classList.contains("locked")) return;
