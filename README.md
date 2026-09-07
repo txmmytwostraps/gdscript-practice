@@ -7,7 +7,7 @@ Daily GDScript practice that follows the GDQuest course "Learn GDScript From Zer
 - Reviews: the problems and concept cards due today.
 - New problems: a few from the topic you are on, five by default.
 - One more: a milestone step when one is unlocked, otherwise an extra problem.
-- The streak counts days in a row with at least one solve or review; full runs are counted separately.
+- The streak counts days in a row with at least one solve or review. A full run earns one rest day a week, held one at a time, spent on its own when a day is missed.
 
 ## The pages
 

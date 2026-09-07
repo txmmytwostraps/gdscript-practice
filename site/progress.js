@@ -134,17 +134,91 @@ export function activeDays() {
   for (const r of Object.values(store.get("reviews", {}))) if (r.reviewed_at) days.add(dayKey(new Date(r.reviewed_at)));
   return days;
 }
-export function streakDays() {
-  const days = activeDays();
-  let count = 0;
-  const day = today();
-  if (!days.has(dayKey(day))) day.setDate(day.getDate() - 1);
-  while (days.has(dayKey(day))) { count++; day.setDate(day.getDate() - 1); }
-  return count;
+// Days with a full run, read from the account tables so every machine and
+// the phone agree. A full run on a day means all three parts of the run:
+//  1. every review due that day was done (problems capped at 6 a day, cards
+//     at 4: a day whose reviews were capped counts once the capped set is
+//     done). A review row still carrying that day's due date was not done;
+//  2. the daily set of new problems was solved, or the topic was cleared;
+//  3. a milestone step was solved that day, or one more problem beyond the
+//     set, or the topic was cleared (nothing more to solve in it).
+const REVIEW_CAP_DAY = 6, CARD_CAP_DAY = 4;
+export function fullRunDays() {
+  const perDay = newPerDay();
+  const solvesBy = {}, stepsBy = new Set();
+  for (const [id, iso] of Object.entries(state.solved)) {
+    const k = dayKey(new Date(iso));
+    if (/^m\d+-s\d+$/.test(id)) stepsBy.add(k);
+    else if (state.byId.size === 0 || state.byId.has(id)) (solvesBy[k] = solvesBy[k] || []).push(id);
+  }
+  const cleared = new Set();
+  for (const t of TOPICS) { const st = topicStats(t); if (st.clearedAt) cleared.add(dayKey(new Date(st.clearedAt))); }
+  const rows = Object.values(store.get("reviews", {}));
+  const isCard = (r) => String(r.problem_id).startsWith("card:");
+  const reviewsOk = (k, card) => {
+    const mine = rows.filter((r) => isCard(r) === card);
+    const done = mine.filter((r) => r.reviewed_at && dayKey(new Date(r.reviewed_at)) === k).length;
+    const left = mine.filter((r) => r.due_on === k && !(r.reviewed_at && dayKey(new Date(r.reviewed_at)) === k)).length;
+    return left === 0 || done >= (card ? CARD_CAP_DAY : REVIEW_CAP_DAY);
+  };
+  const days = new Set([...Object.keys(solvesBy), ...stepsBy, ...cleared]);
+  const full = new Set();
+  for (const k of days) {
+    const n = (solvesBy[k] || []).length;
+    const setDone = n >= perDay || cleared.has(k);
+    const thirdDone = stepsBy.has(k) || n >= perDay + 1 || cleared.has(k);
+    if (setDone && thirdDone && reviewsOk(k, false) && reviewsOk(k, true)) full.add(k);
+  }
+  return full;
+}
+const shiftKey = (key, n) => { const d = new Date(key + "T12:00:00"); d.setDate(d.getDate() + n); return dayKey(d); };
+const mondayOf = (key) => { const d = new Date(key + "T12:00:00"); return shiftKey(key, -((d.getDay() + 6) % 7)); };
+
+// The streak, walked day by day from the first active day to today:
+//  - an active day (a solve or a review) extends the streak;
+//  - a full run earns one rest day, at most one held at a time, once a week;
+//  - a missed day spends the held rest day and the streak survives it, or
+//    ends the streak when none is held. Today never counts as missed.
+// Everything here comes from the account (solves, reviews, the daily set), so
+// the phone computes the same answer.
+export function streakInfo(now = today()) {
+  const active = activeDays();
+  const full = fullRunDays();
+  const todayK = dayKey(now);
+  const keys = [...active].filter((k) => k <= todayK).sort();
+  const result = { current: 0, longest: 0, rest: 0, restEarnedWeek: null, days: {} };
+  if (!keys.length) return result;
+  let streak = 0, rest = 0, earnedWeek = null;
+  for (let k = keys[0]; k <= todayK; k = shiftKey(k, 1)) {
+    if (active.has(k)) {
+      streak += 1;
+      const week = mondayOf(k);
+      if (full.has(k) && rest < 1 && earnedWeek !== week) { rest = 1; earnedWeek = week; result.days[k] = "earned"; }
+      else result.days[k] = "active";
+    } else if (k === todayK) {
+      result.days[k] = "today";   // still open: nothing is decided yet
+    } else if (rest > 0) {
+      rest = 0; result.days[k] = "rested";   // the held rest day covers it
+    } else {
+      streak = 0; result.days[k] = "missed";
+    }
+    if (streak > result.longest) result.longest = streak;
+  }
+  result.current = streak;
+  result.rest = rest;
+  result.restEarnedWeek = earnedWeek;
+  return result;
+}
+export function streakDays() { return streakInfo().current; }
+/** The last seven days, oldest first, each with its state for the row on Today. */
+export function weekRow(now = today()) {
+  const info = streakInfo(now);
+  const todayK = dayKey(now);
+  return Array.from({ length: 7 }, (_, i) => { const k = shiftKey(todayK, i - 6); return { key: k, state: info.days[k] || (k === todayK ? "today" : "missed"), isToday: k === todayK }; });
 }
 // Full daily runs finished, all time. Separate from the streak on purpose: the
 // streak survives a light day, this number only grows on a complete one.
-export function runsCompleted() { return store.keys("run.").filter((k) => dayDone(k.slice(4))).length; }
+export function runsCompleted() { return fullRunDays().size; }   // account data only, the same on every machine
 export function level() { return routeTopics().filter((t) => !t.extra && t.total > 0 && t.done === t.total).length + 1; }
 
 // ---- time spent today (only while a page is open and visible) ----
@@ -163,5 +237,6 @@ export function trackTime() {
 // ---- header ----
 export function renderHeaderStats(el) {
   if (!el) return;
-  el.innerHTML = `<span>Streak <b class="accent">${streakDays()}</b></span><span>Level <b>${level()}</b></span><span>Course <b>L${courseLock()}</b></span>`;
+  const s = streakInfo();
+  el.innerHTML = `<span>Streak <b class="accent">${s.current}</b><span class="dim"> · best ${s.longest}</span></span><span>Level <b>${level()}</b></span><span>Course <b>L${courseLock()}</b></span>`;
 }

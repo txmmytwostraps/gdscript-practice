@@ -1,6 +1,6 @@
 import { mountShell } from "./shell.js";
 import { onSynced, sync } from "./sync.js";
-import { loadBank, state, store, todayRun, routeTopics, markerFor, nextMilestone, milestoneStatus, streakDays, runsCompleted } from "./progress.js";
+import { loadBank, state, store, todayRun, routeTopics, markerFor, nextMilestone, milestoneStatus, streakDays, streakInfo, weekRow, runsCompleted } from "./progress.js";
 import { MILESTONES } from "./route-data.js";
 import { makeScene } from "./scene.js";
 import * as reviews from "./reviews.js";
@@ -33,6 +33,12 @@ function render() {
   if (saved && saved.done !== run.allDone) { saved.done = run.allDone; store.set("run." + run.day, saved); }
   $("runcount").textContent = `${run.doneCount} / 3 · ${run.minutes} min`;
   $("runsdone").textContent = String(runsCompleted());
+  // The streak: current and longest, the last seven days, and the rest day.
+  const s = streakInfo();
+  $("streak-now").innerHTML = `${s.current} day${s.current === 1 ? "" : "s"}<span class="dim"> · longest ${s.longest}</span>`;
+  const DOW = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+  $("week").innerHTML = weekRow().map((d) => `<div class="day ${d.state} ${d.isToday ? "today" : ""}" title="${d.key}${d.state === "rested" ? " · rest day used" : d.state === "earned" ? " · full run, rest day earned" : ""}"><span>${d.state === "active" || d.state === "earned" ? "✓" : d.state === "rested" ? "z" : ""}</span><span class="d">${DOW[new Date(d.key + "T12:00:00").getDay()]}</span></div>`).join("");
+  $("streak-note").textContent = s.rest ? "Rest day held: one missed day will not break the streak. A full run earns one a week; only one is held at a time." : "No rest day held. A full run earns one a week; it covers one missed day.";
   [...$("runbar").children].forEach((seg, i) => seg.classList.toggle("on", i < run.doneCount));
   const activeIdx = run.slots.findIndex((s) => !s.done);
   const firstNew = run.newIds.find((id) => !state.solved[id]);
