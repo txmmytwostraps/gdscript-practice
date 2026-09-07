@@ -5,7 +5,7 @@ import { mountShell } from "./shell.js";
 import { onSynced, sync } from "./sync.js";
 import * as auth from "./auth.js";
 import * as reviews from "./reviews.js";
-import { loadBank, state, routeTopics, streakDays, activeDays, runsCompleted, dayKey, today } from "./progress.js";
+import { loadBank, state, routeTopics, streakDays, activeDays, runsCompleted, milestones, dayKey, today } from "./progress.js";
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -28,6 +28,11 @@ function render() {
     ["Attempts", String(attempts.length)], ["Miss rate", pct(misses, attempts.length)],
     ["Reviews in queue", String(queue.length)], ["Due today", String(q.pending.length)],
   ].map(([k, v, a]) => `<div class="num"><div class="label">${k}</div><div class="v ${a ? "accent" : ""}">${esc(v)}</div></div>`).join("");
+
+  // badges
+  $("badges").innerHTML = milestones().map((m) => m.done
+    ? `<a href="gallery.html#${m.id}"><span>[x] Milestone ${m.number} · ${esc(m.title)}</span><span class="accent">${esc(m.badge || "done")}</span><span class="muted">${m.doneAt ? dayKey(new Date(m.doneAt)) : ""}${m.godotDone ? " · built in Godot" : ""}</span></a>`
+    : `<a href="route.html#${m.id}" class="dim"><span>[ ] Milestone ${m.number} · ${esc(m.title)}</span><span></span><span class="muted">${m.planned ? "planned" : m.unlocked ? `${m.stepsDone} / ${m.steps} steps` : `${m.topicsToGo} topic${m.topicsToGo === 1 ? "" : "s"} to go`}</span></a>`).join("");
 
   // per-topic tallies
   const byTopic = {};

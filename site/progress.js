@@ -65,15 +65,24 @@ export function currentTopic() {
   const all = routeTopics();
   return all.find((t) => !t.locked && t.total > 0 && t.done < t.total) || all.filter((t) => t.total > 0).slice(-1)[0];
 }
-export function nextMilestone() {
+// Milestones: unlocked once every topic up to `after` is cleared; built in
+// steps whose ids (m1-s1 …) live in the solved map like problems do, so they
+// sync with the account for free.
+export function milestoneStatus(m) {
   const all = routeTopics();
-  for (const m of MILESTONES) {
-    const idx = all.findIndex((t) => t.concept === m.after);
-    const before = all.slice(0, idx + 1);
-    const unlocked = before.every((t) => t.total === 0 || t.done === t.total);
-    return { ...m, unlocked, topicsToGo: before.filter((t) => t.total > 0 && t.done < t.total).length };
-  }
-  return null;
+  const idx = all.findIndex((t) => t.concept === m.after);
+  const before = all.slice(0, idx + 1).filter((t) => t.total > 0);
+  const topicsToGo = before.filter((t) => t.done < t.total).length;
+  const stepIds = Array.from({ length: m.steps }, (_, i) => `${m.id}-s${i + 1}`);
+  const stepsDone = stepIds.filter((id) => state.solved[id]).length;
+  const done = !m.planned && stepsDone === m.steps;
+  const doneAt = done ? stepIds.map((id) => state.solved[id]).sort().slice(-1)[0] : null;
+  return { ...m, unlocked: topicsToGo === 0, topicsToGo, stepIds, stepsDone, done, doneAt, godotDone: !!state.solved[`${m.id}-godot`] };
+}
+export function milestones() { return MILESTONES.map(milestoneStatus); }
+export function nextMilestone() {
+  const list = milestones();
+  return list.find((m) => !m.done) || null;
 }
 export function markerFor(t) { return t.locked ? "[#]" : t.done === t.total && t.total > 0 ? "[x]" : t.done > 0 ? "[>]" : "[ ]"; }
 

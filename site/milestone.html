@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Milestone · GDScript Practice</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="style.css">
+<style>
+  .hints .stage button { text-align: left; align-self: flex-start; }
+  .steps { display: flex; flex-wrap: wrap; gap: 6px; }
+  .steps a { padding: 8px 14px; border: 1px solid var(--line-strong); color: var(--muted); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .steps a.done { color: var(--accent); border-color: var(--accent); }
+  .steps a.current { background: var(--accent); border-color: var(--accent); color: var(--bg); font-weight: 600; }
+  .steps a.godot { border-style: dashed; }
+  .scene { display: flex; flex-direction: column; gap: 10px; padding: 14px 16px; background: var(--panel); border: 1px solid var(--line); }
+  .scene .buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+  .scene .scene-note { font-size: 12px; color: var(--error); min-height: 1em; }
+  .checks .row { grid-template-columns: minmax(0, 1fr); }
+  .checks .row .how { font-size: 12px; color: var(--muted); }
+  .checklist { display: flex; flex-direction: column; gap: 8px; }
+  .checklist label { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 12px; padding: 12px 16px; background: var(--panel); border: 1px solid var(--line); font-size: 14px; line-height: 1.6; cursor: pointer; }
+  .checklist label.on { color: var(--dim); text-decoration: line-through; }
+  .checklist input { accent-color: var(--accent); margin-top: 4px; }
+  .banner { padding: 16px 20px; border: 1px solid var(--milestone); color: var(--milestone); background: var(--milestone-bg); font-size: 14px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .banner a { color: var(--text); }
+  .lock { padding: 24px; border: 1px dashed var(--line-strong); color: var(--muted); font-size: 14px; line-height: 1.7; max-width: 60ch; }
+  #result-table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  #result-table th { text-align: left; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding: 6px 10px 6px 0; border-bottom: 1px solid var(--line); }
+  #result-table td { padding: 8px 10px 8px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  #result-table tr.fail td { color: var(--text); } #result-table tr.pass .mark { color: var(--accent); } #result-table tr.fail .mark { color: var(--error); }
+  #result-table .why { font-size: 12px; color: var(--muted); }
+  @media (min-width: 1700px) { .workspace { grid-template-columns: 560px minmax(0, 1fr); max-width: 1900px; } }
+</style>
+</head>
+<body>
+<div class="subbar">
+  <div class="caps" id="crumb"><a href="route.html">Route</a> › <span id="crumb-title">Milestone</span></div>
+  <div class="steps" id="steps"></div>
+</div>
+<main class="page workspace">
+  <section class="problem">
+    <div class="hero">
+      <div class="eyebrow" id="eyebrow">// milestone</div>
+      <h2 id="title">Loading…</h2>
+    </div>
+    <div id="banner" class="banner" hidden></div>
+    <div id="lock" class="lock" hidden></div>
+    <div id="stepbody">
+      <p class="prompt" id="prompt"></p>
+      <div class="hints" id="hints" style="margin-top: 18px;"></div>
+      <div class="tests" style="margin-top: 22px;">
+        <div class="label">Checks — pass all of them to finish the step</div>
+        <div class="testlist checks" id="checks"></div>
+      </div>
+      <div class="docs" id="docs" hidden style="margin-top: 22px;">
+        <div class="label">Documentation — what this step uses</div>
+        <div class="doclist" id="doclist"></div>
+      </div>
+    </div>
+    <div id="godotbody" hidden>
+      <p class="prompt" id="godot-intro"></p>
+      <div class="checklist" id="checklist" style="margin-top: 18px;"></div>
+    </div>
+  </section>
+  <section class="editor-pane" id="editor-pane">
+    <div class="toolbar">
+      <button id="run" class="btn primary" title="Ctrl+Enter">Run the checks ⏎</button>
+      <button id="reset" class="btn">Reset</button>
+      <button id="next" class="btn" hidden>Next step ›</button>
+      <span class="saved caps" id="saved"></span>
+      <span class="judge-status caps" id="judge-status">judge: loading…</span>
+    </div>
+    <div class="editor-host" id="editor-host">
+      <textarea id="editor" spellcheck="false"></textarea>
+    </div>
+    <div class="scene">
+      <div class="label">The stage — runs your script as it is now</div>
+      <div id="stage"></div>
+      <div class="buttons" id="scene-buttons"></div>
+      <div class="scene-note" id="scene-note"></div>
+    </div>
+    <section class="results" id="results" aria-live="polite">
+      <div class="verdict-row caps"><span class="verdict" id="verdict">Run the checks to see where the step stands.</span><span class="count dim" id="count"></span></div>
+      <div id="message" class="message" hidden></div>
+      <table id="result-table" hidden></table>
+      <div id="errors" hidden><div class="label">Errors</div><pre id="error-lines"></pre></div>
+    </section>
+  </section>
+</main>
+<div id="judge-frame" class="judge-frame" aria-hidden="true"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/mode/simple.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
+<script type="module" src="milestone.js"></script>
+</body>
+</html>

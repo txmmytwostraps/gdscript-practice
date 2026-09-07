@@ -1,6 +1,6 @@
 import { mountShell } from "./shell.js";
 import { onSynced } from "./sync.js";
-import { loadBank, state, routeTopics, markerFor, currentTopic, courseLock, setCourseLock, nextMilestone } from "./progress.js";
+import { loadBank, state, routeTopics, markerFor, currentTopic, courseLock, setCourseLock, nextMilestone, milestoneStatus, milestones } from "./progress.js";
 import { MILESTONES, LESSONS } from "./route-data.js";
 
 const $ = (id) => document.getElementById(id);
@@ -16,7 +16,7 @@ function render() {
   const ms = nextMilestone();
   $("pos-title").textContent = cur ? `${cur.title.toUpperCase()} · ${cur.done}/${cur.total}` : "—";
   $("pos-bar").firstElementChild.style.flexGrow = done; $("pos-bar").lastElementChild.style.flexGrow = Math.max(1, total - done);
-  $("pos-detail").textContent = `${done} / ${total} problems · 0 / ${MILESTONES.length} milestones` + (ms ? ` · next milestone ${ms.unlocked ? "unlocked" : `in ${ms.topicsToGo} topic${ms.topicsToGo === 1 ? "" : "s"}`}` : "");
+  $("pos-detail").textContent = `${done} / ${total} problems · ${milestones().filter((m) => m.done).length} / ${MILESTONES.length} milestones` + (ms ? ` · next milestone ${ms.unlocked ? "unlocked" : `in ${ms.topicsToGo} topic${ms.topicsToGo === 1 ? "" : "s"}`}` : "");
   $("lock").innerHTML = LESSONS.map(([n, t]) => `<option value="${n}">${n}</option>`).join("");
   $("lock").value = String(courseLock());
 
@@ -43,8 +43,15 @@ function render() {
       const milestone = MILESTONES.find((x) => x.after === t.concept);
       if (milestone) {
         const planned = milestone.planned;
+        const st = milestoneStatus(milestone);
         const afterTitle = t.title;
-        rows.push(`<div class="ms ${planned ? "planned" : ""}" id="${milestone.id}"><div class="icon">${planned ? arrow : person("#e2b153")}</div><div style="display:flex;flex-direction:column;gap:3px;flex-grow:1"><div class="k">${planned ? "" : "[!] "}Milestone ${String(milestone.number).padStart(2, "0")}</div><div class="t">${esc(milestone.title)}</div><div class="u">${esc(milestone.uses)}</div></div><div class="when">unlocks after ${esc(afterTitle)}</div></div>`);
+        const k = planned ? "" : st.done ? "[x] " : st.unlocked ? "[!] " : "";
+        const when = planned ? `unlocks after ${esc(afterTitle)}`
+          : st.done ? `done ${short(st.doneAt)}${st.godotDone ? " · built in Godot" : ""} · <a href="gallery.html#${milestone.id}">gallery</a>`
+          : st.unlocked ? `<a class="btn primary" href="milestone.html?m=${milestone.id}">${st.stepsDone ? `Continue · ${st.stepsDone}/${milestone.steps}` : "Start"}</a>`
+          : `unlocks after ${esc(afterTitle)} · ${st.topicsToGo} topic${st.topicsToGo === 1 ? "" : "s"} to go`;
+        const badge = st.done && milestone.badge ? ` · <span class="accent">${esc(milestone.badge)}</span>` : "";
+        rows.push(`<div class="ms ${planned ? "planned" : ""} ${st.done ? "done" : ""}" id="${milestone.id}"><div class="icon">${planned ? arrow : person(st.done ? "#7ee0a6" : "#e2b153")}</div><div style="display:flex;flex-direction:column;gap:3px;flex-grow:1"><div class="k">${k}Milestone ${String(milestone.number).padStart(2, "0")}${badge}</div><div class="t">${esc(milestone.title)}</div><div class="u">${esc(milestone.uses)}</div></div><div class="when">${when}</div></div>`);
       }
     }
   }

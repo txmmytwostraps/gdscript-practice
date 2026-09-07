@@ -1,7 +1,8 @@
 import { mountShell } from "./shell.js";
 import { onSynced, sync } from "./sync.js";
-import { loadBank, state, store, todayRun, routeTopics, markerFor, nextMilestone, streakDays, runsCompleted } from "./progress.js";
+import { loadBank, state, store, todayRun, routeTopics, markerFor, nextMilestone, milestoneStatus, streakDays, runsCompleted } from "./progress.js";
 import { MILESTONES } from "./route-data.js";
+import { makeScene } from "./scene.js";
 import * as reviews from "./reviews.js";
 
 const $ = (id) => document.getElementById(id);
@@ -60,9 +61,20 @@ function renderExcerpt(currentConcept) {
     const cls = t.locked ? "locked" : m === "[x]" ? "done" : i === cur ? "current" : "";
     rows.push(`<a class="${cls}" href="route.html#${t.concept}"><span>${m} ${esc(t.title)}</span><span>${t.locked ? `locked · L${t.lesson}` : `${t.done}/${t.total}`}</span></a>`);
     const ms = MILESTONES.find((x) => x.after === t.concept);
-    if (ms) rows.push(`<a class="milestone" href="route.html#${ms.id}"><span>[!] MILESTONE ${ms.number} — ${esc(ms.title.toLowerCase())}</span></a>`);
+    if (ms) { const st = milestoneStatus(ms); rows.push(`<a class="milestone" href="${st.unlocked && !ms.planned ? `milestone.html?m=${ms.id}` : `route.html#${ms.id}`}"><span>${st.done ? "[x]" : "[!]"} MILESTONE ${ms.number} — ${esc(ms.title.toLowerCase())}</span><span>${st.done ? "done" : st.unlocked ? `${st.stepsDone}/${ms.steps} steps` : ""}</span></a>`); }
   }
   $("excerpt").innerHTML = rows.join("");
+  renderCharacter();
+}
+
+// The character panel: a patrolling robot once milestone 1 is done.
+let sceneDemo = null;
+function renderCharacter() {
+  const m1 = milestoneStatus(MILESTONES[0]);
+  const note = $("character-note"), stage = $("character-stage");
+  if (!m1.done) { note.textContent = m1.unlocked ? "Milestone 1 is unlocked: make the character move." : "Milestone 1 makes the character move. Milestone 2 gives it health, and the bar fills for real."; return; }
+  if (!sceneDemo) { stage.innerHTML = ""; sceneDemo = makeScene(stage); sceneDemo.demo(120); }
+  note.innerHTML = `<span class="accent">${esc(MILESTONES[0].badge)}</span> · milestone 1 done. Milestone 2 gives it health. <a href="gallery.html#m1">Gallery ›</a>`;
 }
 
 async function main() {

@@ -14,7 +14,13 @@ func run_submission(user_code: String, problem: Dictionary) -> Dictionary:
 	if not script.can_instantiate():
 		return {"status": "compile_error", "error": "script cannot be instantiated"}
 	var inst = script.new()
-	if not inst.has_method("solve"):
+	# Milestone steps drive the script through "script" actions and "read" a
+	# member variable instead of calling solve(); only plain tests need it.
+	var needs_solve := false
+	for t in tests:
+		if not t.has("script") and not t.has("read"):
+			needs_solve = true
+	if needs_solve and not inst.has_method("solve"):
 		return {"status": "error", "error": "no solve() function"}
 	# Some problems ask the user to write an extra helper function.
 	for m in problem.get("require_methods", []):
@@ -44,18 +50,75 @@ func run_submission(user_code: String, problem: Dictionary) -> Dictionary:
 			var delta: float = float(t.get("delta", 1.0 / 60.0))
 			for i in int(t["frames"]):
 				inst.call("_process", delta)
-		var got = inst.callv("solve", args)
+		# Script harness: a test with "script": [...] performs each action in
+		# order - {"call": name, "args": [...]} or {"frames": N, "delta": d} -
+		# and "trace": [names] records the watched members after every action
+		# and every frame, so a page can animate what happened.
+		var step_error := ""
+		var watch: Array = t.get("trace", [])
+		var trace := []
+		if t.has("script"):
+			if not watch.is_empty():
+				trace.append(snapshot(inst, watch))
+			for action in t["script"]:
+				if action.has("call"):
+					var mname: String = str(action["call"])
+					if not inst.has_method(mname):
+						step_error = "missing function: %s()" % mname
+						break
+					inst.callv(mname, normalize(action.get("args", [])))
+					if not watch.is_empty():
+						trace.append(snapshot(inst, watch))
+				elif action.has("frames"):
+					if not inst.has_method("_process"):
+						step_error = "missing function: _process(delta)"
+						break
+					var d: float = float(action.get("delta", 1.0 / 60.0))
+					for i in int(action["frames"]):
+						inst.call("_process", d)
+						if not watch.is_empty():
+							trace.append(snapshot(inst, watch))
+		var got = null
+		if step_error.is_empty():
+			if t.has("read"):
+				var member: String = str(t["read"])
+				if not has_member(inst, member):
+					step_error = "no member variable named %s" % member
+				else:
+					got = inst.get(member)
+			elif inst.has_method("solve"):
+				got = inst.callv("solve", args)
 		var out_lines: Array = inst._out.duplicate()  # copy: _out is cleared before the next test
-		var ok := values_equal(got, expect)
+		var ok := step_error.is_empty() and values_equal(got, expect)
 		if t.has("out"):  # problem also checks what the user printed with out()
 			ok = ok and values_equal(out_lines, normalize(t["out"]))
 		var r := {"args": to_json_value(args), "expect": to_json_value(expect), "got": to_json_value(got), "out": out_lines, "pass": ok}
+		if not step_error.is_empty():
+			r["error"] = step_error
+		if not watch.is_empty():
+			r["trace"] = trace
 		if inst._judge_loop_exceeded:
 			r["pass"] = false
 			r["error"] = "a while loop ran more than %d times - probably an infinite loop" % Judge.LOOP_LIMIT
 		if r["pass"]: passed += 1
 		results.append(r)
 	return {"status": "ok", "passed": passed, "total": tests.size(), "results": results}
+
+
+## True if the script declares a member variable with this name.
+static func has_member(inst: Object, name: String) -> bool:
+	for prop in inst.get_property_list():
+		if prop["name"] == name and (int(prop["usage"]) & PROPERTY_USAGE_SCRIPT_VARIABLE) != 0:
+			return true
+	return false
+
+
+## The watched member values as JSON-friendly values, null for a missing one.
+static func snapshot(inst: Object, names: Array) -> Array:
+	var vals := []
+	for n in names:
+		vals.append(to_json_value(inst.get(str(n))) if has_member(inst, str(n)) else null)
+	return vals
 
 
 ## True if the code contains a real `var NAME` or `const NAME` declaration

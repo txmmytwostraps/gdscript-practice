@@ -57,6 +57,16 @@ for (const f of fs.readdirSync(dir).sort()) {
   for (const e of styleErrors(p)) errors.push(`${f}: ${e}`);
   entries.push({ id: p.id, title: p.title, concept: p.concept, difficulty: p.difficulty });
 }
+// Milestone steps follow the same house style (hints, docs, named checks, no type hints).
+const mdir = path.resolve(__dirname, "..", "milestones");
+if (fs.existsSync(mdir)) {
+  for (const f of fs.readdirSync(mdir).sort()) {
+    if (!f.endsWith(".json")) continue;
+    let m;
+    try { m = JSON.parse(fs.readFileSync(path.join(mdir, f), "utf8")); } catch (e) { errors.push(`milestones/${f}: invalid JSON (${e.message})`); continue; }
+    for (const s of m.steps || []) for (const e of styleErrors({ signature: "", ...s })) errors.push(`milestones/${f} ${s.id}: ${e}`);
+  }
+}
 if (errors.length) { console.error(errors.join("\n")); process.exit(1); }
 
 entries.sort((a, b) => CONCEPTS.indexOf(a.concept) - CONCEPTS.indexOf(b.concept) || a.id.localeCompare(b.id));

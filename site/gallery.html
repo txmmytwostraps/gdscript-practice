@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gallery · GDScript Practice</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="style.css">
+<style>
+  .page { grid-template-columns: 1fr; gap: 32px; }
+  h1 { font-size: 44px; }
+  .cards { display: flex; flex-direction: column; gap: 16px; }
+  .card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px 32px; padding: 20px 24px; background: var(--panel); border: 1px solid var(--milestone); box-shadow: 4px 4px 0 var(--milestone-bg); }
+  .card.locked { border: 1px dashed var(--line-strong); box-shadow: none; color: var(--dim); grid-template-columns: 1fr; }
+  .card .head { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: baseline; }
+  .card .k { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--milestone); }
+  .card .t { font-family: var(--head); font-weight: 700; font-size: 22px; text-transform: uppercase; }
+  .card .badge { padding: 4px 10px; border: 1px solid var(--milestone); color: var(--milestone); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .card .when { font-size: 12px; color: var(--muted); margin-left: auto; }
+  .card .buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .card .scene-note { font-size: 12px; color: var(--error); min-height: 1em; margin-top: 6px; }
+  .card pre.code { max-height: 22rem; overflow: auto; }
+  @media (max-width: 960px) { .card { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<main class="page">
+  <div style="display: flex; flex-direction: column; gap: 10px;">
+    <div class="eyebrow">// gallery</div>
+    <h1>Gallery</h1>
+    <div class="muted" style="font-size: 14px; max-width: 70ch;">What you have built so far. Each milestone runs here with the script you finished it with, and its badge shows on the Route and in Stats.</div>
+  </div>
+  <div class="cards" id="cards"></div>
+  <span class="judge-status caps dim" id="judge-status" style="font-size: 11px;"></span>
+</main>
+<div id="judge-frame" class="judge-frame" aria-hidden="true"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script type="module" src="gallery.js"></script>
+</body>
+</html>

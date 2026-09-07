@@ -21,7 +21,9 @@ func _ready() -> void:
 			var dir := a.trim_prefix("--problems").trim_prefix("=")
 			if dir.is_empty():
 				dir = ProjectSettings.globalize_path("res://").path_join("../problems")
-			get_tree().quit(_validate_problems(dir))
+			var code := _validate_problems(dir)
+			code = maxi(code, _validate_milestones(dir.path_join("../milestones")))
+			get_tree().quit(code)
 			return
 	_selftest()
 	get_tree().quit()
@@ -94,6 +96,14 @@ func _selftest() -> void:
 	var frame_problem := {"tests": [{"name": "60 frames", "args": [], "expect": 100, "frames": 60}, {"name": "no frames", "args": [], "expect": 0, "frames": 0}]}
 	var frame_code := "var x = 0.0\n\nfunc _process(delta):\n\tx += 100 * delta\n\nfunc solve():\n\treturn round(x)\n"
 	print("CASE frames: ", JSON.stringify(runner.run_submission(frame_code, frame_problem)))
+	# Script harness: actions on the instance, then read a member variable.
+	var script_code := "var x = 0\nvar speed = 120\n\nfunc move_right(distance):\n\tx += distance\n\nfunc _process(delta):\n\tx += speed * delta\n"
+	var script_problem := {"tests": [
+		{"script": [{"call": "move_right", "args": [50]}, {"frames": 60}], "read": "x", "expect": 170, "trace": ["x", "speed"]},
+		{"script": [{"call": "move_left", "args": [5]}], "read": "x", "expect": -5},
+		{"read": "nope", "expect": 0},
+	]}
+	print("CASE script: ", JSON.stringify(runner.run_submission(script_code, script_problem)))
 	print("CASE vector: ", JSON.stringify(runner.run_submission(vec_code, vec_problem)))
 	print("CASE vector_i: ", JSON.stringify(runner.run_submission(vec_i_code, vec_problem)))
 	print("CASE rect: ", JSON.stringify(runner.run_submission(rect_code, rect_problem)))
@@ -122,6 +132,54 @@ func _validate_problems(dir_path: String) -> int:
 			for p in problems:
 				print("       - ", p)
 	print("%d problems checked, %d failed" % [count, failures])
+	return 1 if failures > 0 else 0
+
+
+## Milestone files hold a list of steps; each step is checked like a problem:
+## the solution passes every check, the starter does not.
+func _validate_milestones(dir_path: String) -> int:
+	var dir := DirAccess.open(dir_path)
+	if dir == null:
+		print("no milestones dir, skipped")
+		return 0
+	var failures := 0
+	var count := 0
+	for f in dir.get_files():
+		if not f.ends_with(".json"):
+			continue
+		var m = JSON.parse_string(FileAccess.get_file_as_string(dir_path.path_join(f)))
+		if not m is Dictionary or not m.has("steps") or not m["steps"] is Array:
+			print("FAIL ", f, ": needs a steps list")
+			failures += 1
+			continue
+		for s in m["steps"]:
+			count += 1
+			var errs: Array[String] = []
+			for field in ["id", "title", "prompt", "starter", "solution", "tests", "hints"]:
+				if not s.has(field):
+					errs.append("missing field: " + field)
+			if errs.is_empty():
+				var sol := runner.run_submission(s["solution"], s)
+				if sol["status"] != "ok":
+					errs.append("solution did not run: " + str(sol.get("error")))
+				elif sol["passed"] != sol["total"]:
+					errs.append("solution passed only %d/%d checks" % [sol["passed"], sol["total"]])
+					for r in sol["results"]:
+						if not r["pass"]:
+							errs.append("  expect=%s got=%s %s" % [JSON.stringify(r["expect"]), JSON.stringify(r["got"]), str(r.get("error", ""))])
+				var st := runner.run_submission(s["starter"], s)
+				if st["status"] == "compile_error":
+					errs.append("starter does not compile: " + str(st.get("error")))
+				elif st["status"] == "ok" and st["passed"] == st["total"]:
+					errs.append("starter already passes every check")
+			if errs.is_empty():
+				print("OK   ", f, " ", s.get("id", "?"))
+			else:
+				failures += 1
+				print("FAIL ", f, " ", s.get("id", "?"))
+				for e in errs:
+					print("       - ", e)
+	print("%d milestone steps checked, %d failed" % [count, failures])
 	return 1 if failures > 0 else 0
 
 

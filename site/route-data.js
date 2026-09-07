@@ -41,7 +41,7 @@ export const TOPICS = [
 
 export const MILESTONES = [
   { id: "m1", number: 1, title: "Make the character move", after: "gq-delta",
-    uses: "Uses functions, parameters, variables and delta. 4 steps in the browser, then the same build in Godot on your machine.", steps: 4 },
+    uses: "Uses functions, parameters, variables and delta. 4 steps in the browser, then the same build in Godot on your machine.", steps: 4, badge: "The robot moves" },
   { id: "m2", number: 2, title: "A character with health", after: "gq-conditions",
     uses: "Uses variables, functions and conditions.", steps: 4, planned: true },
 ];
