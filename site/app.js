@@ -409,10 +409,27 @@ function logVerdict(id, passed, wasNew) {
   }
 }
 
+// ---------- wide-screen layout ----------
+// On wide monitors the results, notes, Ask Claude and tools move to a third
+// column; below that width they go back to where the HTML has them.
+let wideLayout = null;
+function layout() {
+  const wide = matchMedia("(min-width: 1700px)").matches;
+  if (wide === wideLayout) return;
+  wideLayout = wide;
+  const side = $("side"), problem = document.querySelector(".problem"), pane = document.querySelector(".editor-pane");
+  const movers = [el.results, document.querySelector(".notebox"), el.ask.closest(".tools"), el.again.closest(".tools")];
+  if (wide) { for (const m of movers) side.appendChild(m); side.hidden = false; }
+  else { side.hidden = true; pane.appendChild(el.results); for (const m of movers.slice(1)) problem.appendChild(m); }
+}
+
 // ---------- wiring ----------
 async function main() {
   const shell = mountShell("practice", { stats: true });
-  editor = makeEditor();
+  layout();
+  matchMedia("(min-width: 1700px)").addEventListener("change", layout);
+  window.addEventListener("resize", layout);
+  editor = makeEditor($("editor"), { onRun: runCode });
   let saveTimer = null;
   editor.onChange(() => {
     if (!current || activeMode !== "normal" || (reviewMode && reviewIds.includes(current.id))) return;   // drafts only for the plain problem
