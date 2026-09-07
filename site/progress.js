@@ -219,7 +219,35 @@ export function weekRow(now = today()) {
 // Full daily runs finished, all time. Separate from the streak on purpose: the
 // streak survives a light day, this number only grows on a complete one.
 export function runsCompleted() { return fullRunDays().size; }   // account data only, the same on every machine
-export function level() { return routeTopics().filter((t) => !t.extra && t.total > 0 && t.done === t.total).length + 1; }
+// ---- XP and level ----
+// The rule, in one place, from account data only (the progress, reviews and
+// attempts tables), so every machine and the phone compute the same numbers:
+//  - 10 XP for the first solve of a problem: a solved_at in the progress table;
+//  - 5 XP for a review done on the day it was due: an attempts row of kind
+//    "review" with result "pass", counted once per problem per day. A review
+//    done after its due day is logged as "review-late" and earns nothing;
+//  - 50 XP for a milestone step: a solved_at on a step id such as m1-s1;
+//  - practice-again, drills, variants and late reviews earn 0.
+//  Level = 1 + floor(XP / 500).
+export const XP_PROBLEM = 10, XP_REVIEW = 5, XP_STEP = 50, XP_PER_LEVEL = 500;
+export function xpInfo() {
+  let problems = 0, steps = 0;
+  for (const id of Object.keys(state.solved)) {
+    if (/^m\d+-s\d+$/.test(id)) steps += 1;
+    else if (state.byId.size === 0 ? !/^m\d+-/.test(id) : state.byId.has(id)) problems += 1;
+  }
+  const seen = new Set();
+  for (const a of store.get("attempts", [])) if (a.kind === "review" && a.result === "pass") seen.add(a.problem_id + "@" + dayKey(new Date(a.at)));
+  const xp = problems * XP_PROBLEM + seen.size * XP_REVIEW + steps * XP_STEP;
+  const level = 1 + Math.floor(xp / XP_PER_LEVEL);
+  return { xp, level, problems, reviews: seen.size, steps, into: xp % XP_PER_LEVEL, toNext: XP_PER_LEVEL - (xp % XP_PER_LEVEL) };
+}
+export function level() { return xpInfo().level; }
+/** "Level N · 120 XP" with a thin bar to the next level. */
+export function xpHtml() {
+  const x = xpInfo();
+  return `<span class="xp" title="${x.toNext} XP to level ${x.level + 1}">Level <b>${x.level}</b> · <b>${x.xp}</b> XP<span class="xpbar"><i style="width: ${Math.round(100 * x.into / XP_PER_LEVEL)}%"></i></span></span>`;
+}
 
 // ---- time spent today (only while a page is open and visible) ----
 export function minutesToday() { return Math.round((store.get("time." + dayKey(), 0)) / 60); }
@@ -238,5 +266,5 @@ export function trackTime() {
 export function renderHeaderStats(el) {
   if (!el) return;
   const s = streakInfo();
-  el.innerHTML = `<span>Streak <b class="accent">${s.current}</b><span class="dim"> · best ${s.longest}</span></span><span>Level <b>${level()}</b></span><span>Course <b>L${courseLock()}</b></span>`;
+  el.innerHTML = `<span>Streak <b class="accent">${s.current}</b><span class="dim"> · best ${s.longest}</span></span>${xpHtml()}<span>Course <b>L${courseLock()}</b></span>`;
 }

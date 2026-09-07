@@ -27,7 +27,7 @@ export function mountShell(active, { stats = true } = {}) {
           <button type="button" class="btn small" id="email-signup">Create account</button>
         </form>
       </div>
-      <div id="account-in" hidden><span id="account-name" class="accent"></span><button type="button" class="btn small" id="signout">Sign out</button></div>
+      <div id="account-in" hidden><span id="account-name" class="accent"></span><a class="getapp caps" href="https://github.com/txmmytwostraps/delta/releases/latest/download/delta.apk" title="Delta, the Android app">Get the app</a><button type="button" class="btn small" id="signout">Sign out</button></div>
       <div id="account-note" hidden></div>
     </div>`;
   document.body.prepend(header);

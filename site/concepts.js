@@ -3,6 +3,7 @@
 // schedule; ?cards=<lesson> flips through one lesson's cards without recording.
 import { mountShell } from "./shell.js";
 import { sync, onSynced } from "./sync.js";
+import * as auth from "./auth.js";
 import * as reviews from "./reviews.js";
 import { loadBank, courseLock, dayKey, today } from "./progress.js";
 import { loadCards, cardsByLesson, cardById, cardId } from "./cards.js";
@@ -76,6 +77,8 @@ async function answer(passed) {
   const c = queue[at];
   if (reviewMode) {
     results[passed ? "pass" : "miss"] += 1;
+    const row = reviews.all()[cardId(c)];
+    auth.insertAttempt(sync.user.id, cardId(c), row && row.due_on === dayKey(today()) ? "review" : "review-late", passed ? "pass" : "miss").catch(() => {});
     try { await reviews.recordResult(sync.user, cardId(c), passed, passed); } catch (e) { sync.note("Could not save the review: " + e.message); }
   }
   at += 1; revealed = false; renderFlash();

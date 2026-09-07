@@ -4,7 +4,7 @@
 import { JudgeClient, tidyError } from "./judge-client.js";
 import { mountShell } from "./shell.js";
 import { sync, onSynced } from "./sync.js";
-import { store, state, loadBank, getDraft, setDraft, clearDraft, saveSolved, milestoneStatus, dayKey } from "./progress.js";
+import { store, state, loadBank, getDraft, setDraft, clearDraft, saveSolved, milestoneStatus, dayKey, renderHeaderStats } from "./progress.js";
 import { MILESTONES, TOPICS } from "./route-data.js";
 import * as auth from "./auth.js";
 import { makeEditor } from "./editor.js";
@@ -136,7 +136,8 @@ function markStepDone() {
   const first = !state.solved[step.id];
   if (first) { state.solved[step.id] = new Date().toISOString(); saveSolved(); sync.push(step.id); if (sync.user) auth.insertAttempt(sync.user.id, step.id, "milestone", "pass").catch(() => {}); }
   const st = milestoneStatus(meta);
-  setVerdict("pass", st.done ? `Step ${stepAt + 1} done · milestone complete` : `Step ${stepAt + 1} done`, stepAt < data.steps.length - 1 ? "The next step starts from this script." : st.godotDone ? "" : "Now build the same robot in Godot: the last tab above.");
+  renderHeaderStats($("header-stats"));
+  setVerdict("pass", `${first ? "+50 XP · " : "+0 XP · again · "}${st.done ? `step ${stepAt + 1} done · milestone complete` : `step ${stepAt + 1} done`}`, stepAt < data.steps.length - 1 ? "The next step starts from this script." : st.godotDone ? "" : "Now build the same robot in Godot: the last tab above.");
   renderSteps();
 }
 

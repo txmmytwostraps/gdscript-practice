@@ -3,7 +3,7 @@ import { JudgeClient, tidyError } from "./judge-client.js";
 import { loadProblem } from "./problems.js";
 import { mountShell } from "./shell.js";
 import { sync, onSynced, exportProgress, clearProgress } from "./sync.js";
-import { store, state, loadBank, getDraft, setDraft, clearDraft, saveSolved, saveFails, todayRun, routeTopics, currentTopic, dayKey } from "./progress.js";
+import { store, state, loadBank, getDraft, setDraft, clearDraft, saveSolved, saveFails, todayRun, routeTopics, currentTopic, dayKey, today, XP_PROBLEM, XP_REVIEW, renderHeaderStats } from "./progress.js";
 import { TOPICS } from "./route-data.js";
 import * as reviews from "./reviews.js";
 import * as auth from "./auth.js";
@@ -26,6 +26,8 @@ let bugCode = "";            // the planted-bug code when active
 // Review mode: practice.html?review=1#id walks through today's due reviews.
 const reviewMode = new URLSearchParams(location.search).has("review");
 let reviewIds = [];          // today's pending reviews, in order
+let reviewOnTime = false;    // the open review is being done on its due day
+let xpLine = "";             // "+10 XP · first solve": what this pass earned
 let attemptFails = 0;        // misses since this problem was opened
 let reviewRecorded = false;  // the first verdict of a review decides it
 
@@ -271,6 +273,7 @@ function setVerdict(kind, text, message) {
 }
 function setVerdictRest(kind, text, message) {
   el.results.className = "results " + (kind || "");
+  if (kind !== "pass") $("verdict-actions").hidden = true;
   el.message.textContent = message || ""; el.message.hidden = !message;
 }
 function clearResults() {
@@ -292,6 +295,7 @@ async function showProblem(id, { keepResults = false } = {}) {
   // A review starts from the starter, not from the old solution.
   const inReview = reviewMode && reviewIds.includes(id);
   attemptFails = 0; reviewRecorded = false;
+  reviewOnTime = inReview && Boolean(reviews.all()[id]) && reviews.all()[id].due_on === dayKey(today());   // decided before the review moves its own due date
   activeMode = urlMode === "parsons" || urlMode === "bug" ? urlMode : inReview ? reviewVariant(id) : "normal";
   if (activeMode === "normal") {
     editor.set(inReview ? p.starter : draft ? migrateDraft(draft.code, p) : p.starter);
@@ -488,13 +492,25 @@ function pickNext() {
     if (next) showProblem(next.problem_id); else location.href = "./";
     return;
   }
-  const list = pool();
+  const concept = current && matches(current) ? current.concept : null;
+  const list = concept ? state.problems.filter((p) => p.concept === concept) : pool();
   if (list.length === 0) return;
-  const unsolved = list.filter((p) => !state.solved[p.id] && (!current || p.id !== current.id));
-  const from = unsolved.length ? unsolved : list.filter((p) => !current || p.id !== current.id);
-  if (unsolved.length === 0) setVerdict("pass", "Every problem in this topic is solved", "Here is a random one to redo.");
-  const choice = from.length ? from[Math.floor(Math.random() * from.length)] : list[0];
-  showProblem(choice.id, { keepResults: unsolved.length === 0 });
+  const at = current ? list.findIndex((p) => p.id === current.id) : -1;
+  const unsolved = [...list.slice(at + 1), ...list.slice(0, at + 1)].filter((p) => !state.solved[p.id] && (!current || p.id !== current.id));
+  if (unsolved.length) { showProblem(unsolved[0].id); return; }
+  if (concept && !store.get("cleared." + concept, false)) { location.href = `cleared.html?topic=${concept}`; return; }   // once per topic; the Route links back to it
+  const others = list.filter((p) => !current || p.id !== current.id);
+  if (!others.length) return;
+  setVerdict("pass", "Every problem in this topic is solved", "Here is a random one to redo.");
+  showProblem(others[Math.floor(Math.random() * others.length)].id, { keepResults: true });
+}
+// What the Next button leads to, decided after the solve is recorded.
+function showNext() {
+  const inReview = reviewMode && current && reviewIds.includes(current.id);
+  const left = current ? state.problems.filter((p) => p.concept === current.concept && !state.solved[p.id]).length : 1;
+  const cleared = !inReview && !drillTopic && current && left === 0 && !store.get("cleared." + current.concept, false);
+  el.next.textContent = inReview ? (reviews.dueToday().pending.some((r) => r.problem_id !== current.id) ? "Next review ›" : "Back to Today ›") : cleared ? "Topic cleared ›" : "Next ›";
+  $("verdict-actions").hidden = false;
 }
 
 // ---------- running ----------
@@ -519,7 +535,8 @@ function renderResult(result, errors) {
   if (result.status === "error") { miss(p.id); setVerdict("fail", drill ? "Not yet" : `${missText(p.id)}`, result.error); el.count.textContent = `0 / ${p.tests.length} tests`; showErrors(errors); return; }
   const allPass = result.passed === result.total;
   if (!allPass) miss(p.id);
-  setVerdict(allPass ? "pass" : "fail", allPass ? (drill ? "Variant solved · counts as practice" : "All tests pass · solved") : drill ? "Not yet" : `Not yet · ${missText(p.id)}`, allPass && drill ? "" : allPass ? "" : stuckText(p));
+  xpLine = !allPass ? "" : drill ? "+0 XP · drill" : reviewMode && reviewIds.includes(p.id) ? (reviewRecorded ? "+0 XP · review already counted today" : reviewOnTime ? `+${XP_REVIEW} XP · review` : "+0 XP · late review") : !state.solved[p.id] ? `+${XP_PROBLEM} XP · first solve` : "+0 XP · practice";
+  setVerdict(allPass ? "pass" : "fail", allPass ? xpLine : drill ? "Not yet" : `Not yet · ${missText(p.id)}`, allPass && drill ? "" : allPass ? "" : stuckText(p));
   if (allPass && drill) { el.message.innerHTML = `<button type="button" class="btn primary" id="drill-next">Next variant →</button>`; el.message.hidden = false; el.run.disabled = true; el.run.classList.add("dim"); }
   el.count.textContent = `${result.passed} / ${result.total} tests`;
   const printOnly = p.tests.some((t) => t.expect === null && t.out);
@@ -535,7 +552,7 @@ function renderResult(result, errors) {
   const printed = result.results.flatMap((r, i) => r.out.map((line) => `[test ${i + 1}] ${line}`));
   if (printed.length && !printOnly) { el.outputLines.textContent = printed.join("\n"); el.output.hidden = false; }
   if (errors.length) showErrors(errors);
-  if (allPass) { if (drill) drillVerdict(true, p.id); else markSolved(p.id); }
+  if (allPass) { if (drill) drillVerdict(true, p.id); else { markSolved(p.id); showNext(); } }
 }
 function showErrors(errors, fallback) {
   const lines = errors.map(tidyError).filter((l) => !/GDScript backtrace|^\s*\[\d+\]/.test(l));
@@ -557,10 +574,11 @@ function markSolved(id) {
   const first = !state.solved[id];
   if (first) { state.solved[id] = new Date().toISOString(); saveSolved(); sync.push(id); }
   if (current && current.id === id) { updateSolutionLock(current); el.again.hidden = false; }
+  renderHeaderStats($("header-stats"));   // the XP in the header moves with the solve
   renderFilters();
   logVerdict(id, true, first);
   // Completing a topic starts its review week.
-  if (first && sync.user && current) reviews.scheduleTopicIfCleared(sync.user, current.concept).then((started) => { if (started) setVerdict("pass", "Topic cleared", "Reviews for this topic start tomorrow: two a day for a week."); }).catch(() => {});
+  if (first && sync.user && current) reviews.scheduleTopicIfCleared(sync.user, current.concept).catch(() => {});
   // The first solve in a topic puts its concept cards into the review queue.
   if (first && sync.user && current) reviews.scheduleCardsIfStarted(sync.user, current.concept).catch(() => {});
 }
@@ -568,15 +586,16 @@ function markSolved(id) {
 function logVerdict(id, passed, wasNew) {
   if (!sync.user) return;
   const inReview = reviewMode && reviewIds.includes(id);
-  const kind = inReview ? "review" : wasNew ? "new" : "practice";
+  const kind = inReview ? (reviewOnTime ? "review" : "review-late") : wasNew ? "new" : "practice";
   auth.insertAttempt(sync.user.id, id, kind, passed ? "pass" : "miss").catch(() => {});
+  if (inReview) renderHeaderStats($("header-stats"));   // a review pass counts at once
   scaffold.noteAttempt(id, passed);
   if (inReview && !reviewRecorded) {
     reviewRecorded = true;
     const clean = passed && attemptFails === 0;
     reviews.recordResult(sync.user, id, passed, clean).then(() => {
       renderTodayBar();
-      if (passed) setVerdict("pass", clean ? "Review passed cleanly" : "Passed after a miss", clean ? "Next review in a few days." : "This one comes back tomorrow until it is solved cleanly twice.");
+      if (passed) { setVerdict("pass", `${xpLine} · ${clean ? "passed cleanly" : "passed after a miss"}`, clean ? "Next review in a few days." : "This one comes back tomorrow until it is solved cleanly twice."); showNext(); }
       else setVerdict("fail", `Review missed · ${missText(id)}`, "It comes back tomorrow. You can keep working on it now; that will not change the schedule.");
     }).catch((e) => sync.note("Could not save the review: " + e.message));
   }
@@ -660,12 +679,10 @@ async function main() {
   if (drillTopic) {
     drillIds = state.problems.filter((p) => p.concept === drillTopic && p.variants).map((p) => p.id);
     filters.topic = drillTopic; store.set("filters", filters); renderFilters();
-    el.next.textContent = "Next variant ›";
     await nextDrill();
   } else if (reviewMode) {
     try { await reviews.refresh(); } catch (e) { /* use the cached queue */ }
     reviewIds = reviews.dueToday().pending.map((r) => r.problem_id);
-    el.next.textContent = "Next review ›";
     if (reviewIds.length === 0) { setVerdict("pass", "No reviews due", "Nothing to review right now."); location.href = "./"; return; }
     await showProblem(reviewIds.includes(fromHash) ? fromHash : reviewIds[0]);
   } else {

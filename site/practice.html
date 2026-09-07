@@ -87,7 +87,6 @@
     <div class="toolbar">
       <button id="run" class="btn primary" title="Ctrl+Enter">Run ⏎</button>
       <button id="reset" class="btn">Reset</button>
-      <button id="next" class="btn">Next ›</button>
       <div class="seg" id="modes"></div>
       <span class="saved caps" id="saved"></span>
       <span class="judge-status caps" id="judge-status">judge: loading…</span>
@@ -99,6 +98,7 @@
     <section class="results idle" id="results" aria-live="polite">
       <div class="verdict-head"><div class="verdict" id="verdict">Run to check</div><div class="verdict-sub caps" id="verdict-sub" hidden></div><div class="count caps dim" id="count"></div></div>
       <div id="message" class="message" hidden></div>
+      <div class="verdict-actions" id="verdict-actions" hidden><button type="button" class="btn primary" id="next">Next ›</button></div>
       <table id="result-table" hidden></table>
       <div id="output" hidden><div class="label">Printed output</div><pre id="output-lines"></pre></div>
       <div id="errors" hidden><div class="label">Errors</div><pre id="error-lines"></pre></div>

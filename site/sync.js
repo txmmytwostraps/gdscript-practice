@@ -74,6 +74,7 @@ export const sync = {
       await reviews.refresh();
       for (const concept of new Set(state.problems.map((p) => p.concept))) { await reviews.scheduleTopicIfCleared(this.user, concept); await reviews.scheduleCardsIfStarted(this.user, concept); }
     } catch (e) { this.note("Reviews unavailable: " + e.message); }
+    try { store.set("attempts", await auth.fetchAttempts()); } catch (e) { /* XP from reviews waits for the next sync */ }
     try { await notes.merge(this.user); } catch (e) { this.note("Notes unavailable: " + e.message); }
     try { await settings.merge(this.user); } catch (e) { this.note("Settings unavailable: " + e.message); }
     this.note(toUpload.length ? `Synced: ${toUpload.length} problem${toUpload.length === 1 ? "" : "s"} updated in your account.` : "Synced.");

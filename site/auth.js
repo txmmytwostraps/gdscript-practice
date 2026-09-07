@@ -1,6 +1,7 @@
 // Thin wrapper around supabase-js: sign-in, and reading/writing the
 // progress table. app.js decides what to do with the data.
 import { SUPABASE_URL, SUPABASE_ANON_KEY } from "./config.js";
+import { store } from "./progress.js";
 
 export const enabled = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY && window.supabase);
 const client = enabled ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
@@ -129,9 +130,11 @@ export async function fetchAttempts() {
   return data;
 }
 
-/** One run that reached a verdict. kind: new | review | practice; result: pass | miss. */
+/** One run that reached a verdict. kind: new | review | review-late | practice | milestone; result: pass | miss. */
 export async function insertAttempt(userId, problemId, kind, result) {
-  const { error } = await client.from("attempts").insert({ user_id: userId, problem_id: problemId, kind, result });
+  const at = new Date().toISOString();
+  const cached = store.get("attempts", []); cached.push({ problem_id: problemId, kind, result, at }); store.set("attempts", cached.slice(-5000));
+  const { error } = await client.from("attempts").insert({ user_id: userId, problem_id: problemId, kind, result, at });
   if (error) throw new Error(error.message);
 }
 

@@ -43,6 +43,10 @@ When you solve the first problem of a topic, its concept cards enter the queue, 
 
 A milestone is a small script built in four steps beside a live stage. Each step adds to the same script, has visible checks, and the stage runs whatever you have written so far, with buttons that call your own functions. Milestones unlock on the Route once every topic before them is cleared. Finishing one adds it to the Gallery, awards a badge, and offers a guided version: a checklist for building the same thing in a real Godot project on your machine.
 
+## XP and levels
+
+Every first solve of a problem is worth 10 XP, a review done on its due day 5 XP, and a milestone step 50 XP. Practice-again, drills, variants and late reviews earn nothing. Each 500 XP is a level. The header shows the level and the XP with a bar to the next level.
+
 ## The Delta app
 
 Delta is a companion app for the phone for the parts that work well away from the keyboard: cards and light reviews. Install it on Android: [download Delta](https://github.com/txmmytwostraps/delta/releases/latest/download/delta.apk). The phone may ask you to allow installs from your browser, since it does not come from the Play Store.

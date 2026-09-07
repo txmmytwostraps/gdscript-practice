@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topic cleared · GDScript Practice</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="style.css">
+<style>
+  .cleared { max-width: 60ch; margin: 0 auto; padding: 48px 0 64px; display: flex; flex-direction: column; gap: 22px; }
+  .cleared .big { font-family: var(--head); font-weight: 700; font-size: 44px; line-height: 1.05; }
+  .cleared .tick { color: var(--accent); }
+  .cleared .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; }
+  .cleared .fact { padding: 14px 16px; background: var(--panel); border: 1px solid var(--line); }
+  .cleared .fact .v { font-family: var(--head); font-weight: 700; font-size: 22px; margin-top: 4px; }
+  .cleared .fact .v.accent { color: var(--accent); }
+  .cleared .go { display: flex; align-items: center; gap: 16px; }
+  .cleared .go .btn { font-size: 14px; padding: 12px 20px; }
+</style>
+</head>
+<body>
+<main class="page">
+  <section class="cleared" id="cleared">
+    <div class="eyebrow" id="eyebrow">// topic cleared</div>
+    <div class="big" id="title">…</div>
+    <div class="facts" id="facts"></div>
+    <p class="muted" id="reviews">Reviews start tomorrow, 2 a day for a week.</p>
+    <div class="go" id="go"></div>
+  </section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script type="module" src="cleared.js"></script>
+</body>
+</html>

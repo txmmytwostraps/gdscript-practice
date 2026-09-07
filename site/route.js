@@ -45,7 +45,7 @@ function render() {
       const canDrill = t.list.some((p) => p.variants);
       const lv = scaffold.levelFor(t.concept), st = scaffold.statsFor(t.concept);
       const hintSel = `<label class="hintlevel">hints <select data-scaffold="${t.concept}"><option value="">auto (${scaffold.autoLevel(t.concept)})</option>${scaffold.LEVELS.map((l) => `<option value="${l}" ${scaffold.overrideFor(t.concept) === l ? "selected" : ""}>${l}</option>`).join("")}</select>${st.rate !== null ? ` <span class="dim">${Math.round(st.rate * 100)}% of last ${Math.min(20, st.attempts)}</span>` : ""}</label>`;
-      const more = t.locked ? "" : `<div class="more caps">${canDrill ? `<a href="practice.html?drill=${t.concept}">[~] Drill</a>` : ""}<button type="button" class="linkish" data-request="${t.concept}">[+] Request more</button>${hintSel}</div>`;
+      const more = t.locked ? "" : `<div class="more caps">${m === "✓" ? `<a href="cleared.html?topic=${t.concept}">[✓] Cleared</a>` : ""}${canDrill ? `<a href="practice.html?drill=${t.concept}">[~] Drill</a>` : ""}<button type="button" class="linkish" data-request="${t.concept}">[+] Request more</button>${hintSel}</div>`;
       rows.push(`<div class="row ${cls}" id="${t.concept}"><div class="box">${m}</div><div class="${isCur ? "grow" : ""}"><div class="t">${esc(t.title.toUpperCase())}</div><div class="s">${sub}${note}</div>${more}</div>${isCur && next ? `<a class="btn primary" href="practice.html#${next.id}">Continue</a>` : ""}</div>`);
       const milestone = MILESTONES.find((x) => x.after === t.concept);
       if (milestone) {

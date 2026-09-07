@@ -5,7 +5,7 @@ import { mountShell } from "./shell.js";
 import { onSynced, sync } from "./sync.js";
 import * as auth from "./auth.js";
 import * as reviews from "./reviews.js";
-import { loadBank, state, routeTopics, streakDays, activeDays, runsCompleted, milestones, dayKey, today } from "./progress.js";
+import { loadBank, state, routeTopics, streakDays, activeDays, runsCompleted, milestones, dayKey, today, xpInfo, XP_PER_LEVEL } from "./progress.js";
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -23,11 +23,12 @@ function render() {
   const queue = Object.values(reviews.all());
 
   $("intro").textContent = sync.user ? "Attempts are counted from the day the attempt log started; solves and streak go back to your first day." : "Sign in to see attempts and reviews. Solves and streak below come from this browser.";
+  const x = xpInfo();
   $("numbers").innerHTML = [
-    ["Solved", `${solved} / ${total}`, true], ["Streak", `${streakDays()} day${streakDays() === 1 ? "" : "s"}`, true], ["Active days", String(days.size)], ["Full runs completed", String(runsCompleted())],
+    ["Solved", `${solved} / ${total}`, true], ["Streak", `${streakDays()} day${streakDays() === 1 ? "" : "s"}`, true], ["Level", `${x.level} · ${x.xp} XP`, true, `<div class="xpbar wide" title="${x.toNext} XP to level ${x.level + 1}"><i style="width: ${Math.round(100 * x.into / XP_PER_LEVEL)}%"></i></div>`], ["Active days", String(days.size)], ["Full runs completed", String(runsCompleted())],
     ["Attempts", String(attempts.length)], ["Miss rate", pct(misses, attempts.length)],
     ["Reviews in queue", String(queue.length)], ["Due today", String(q.pending.length)],
-  ].map(([k, v, a]) => `<div class="num"><div class="label">${k}</div><div class="v ${a ? "accent" : ""}">${esc(v)}</div></div>`).join("");
+  ].map(([k, v, a, extra]) => `<div class="num"><div class="label">${k}</div><div class="v ${a ? "accent" : ""}">${esc(v)}</div>${extra || ""}</div>`).join("");
 
   // badges
   $("badges").innerHTML = milestones().map((m) => m.done

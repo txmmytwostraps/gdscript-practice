@@ -1,6 +1,6 @@
 import { mountShell } from "./shell.js";
 import { onSynced, sync } from "./sync.js";
-import { loadBank, state, store, todayRun, routeTopics, markerFor, nextMilestone, milestoneStatus, streakDays, streakInfo, weekRow, runsCompleted } from "./progress.js";
+import { loadBank, state, store, todayRun, routeTopics, markerFor, nextMilestone, milestoneStatus, streakDays, streakInfo, weekRow, runsCompleted, xpInfo, XP_PER_LEVEL } from "./progress.js";
 import { MILESTONES } from "./route-data.js";
 import { makeScene } from "./scene.js";
 import * as reviews from "./reviews.js";
@@ -34,6 +34,9 @@ function render() {
   $("runcount").textContent = `${run.doneCount} / 3 · ${run.minutes} min`;
   $("runsdone").textContent = String(runsCompleted());
   // The streak: current and longest, the last seven days, and the rest day.
+  const x = xpInfo();
+  $("level-now").innerHTML = `${x.level}<span class="dim"> · ${x.xp} XP · ${x.toNext} to next</span>`;
+  $("xpbar").firstElementChild.style.width = `${Math.round(100 * x.into / XP_PER_LEVEL)}%`;
   const s = streakInfo();
   $("streak-now").innerHTML = `${s.current} day${s.current === 1 ? "" : "s"}<span class="dim"> · longest ${s.longest}</span>`;
   const DOW = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
