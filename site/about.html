@@ -7,22 +7,25 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="theme.css">
 <style>
-  .page { grid-template-columns: 220px minmax(0, 1fr); gap: 40px; max-width: 1200px; }
-  .toc { display: flex; flex-direction: column; gap: 4px; position: sticky; top: 24px; align-self: start; font-size: 12px; }
-  .toc a { color: var(--muted); padding: 4px 0; } .toc a:hover { color: var(--accent); }
+  .page { grid-template-columns: 1fr; max-width: 900px; padding-top: 28px; padding-bottom: 20px; }
   .about { max-width: 72ch; font-size: 15px; line-height: 1.7; }
-  .about h1 { font-size: 44px; margin: 0 0 8px; }
-  .about h2 { font-size: 22px; margin: 36px 0 10px; scroll-margin-top: 24px; }
-  .about p { margin: 0 0 14px; }
+  .about h1 { font-size: 36px; margin: 0 0 6px; }
+  .about h2 { font-size: 18px; margin: 20px 0 6px; scroll-margin-top: 24px; }
+  .about p { margin: 0 0 12px; }
+  .about ul { margin: 0 0 12px; padding-left: 20px; }
+  .about li { margin: 0; }
   .about code { background: var(--line); color: var(--accent); padding: 1px 6px; }
   .about a { color: var(--accent); }
   .about strong { color: var(--text); }
-  @media (max-width: 960px) { .toc { position: static; } }
+  .about details.more { margin-top: 20px; border-top: 1px solid var(--line); padding-top: 12px; }
+  .about details.more summary { cursor: pointer; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); list-style: none; }
+  .about details.more summary::before { content: "[+] "; color: var(--accent); }
+  .about details.more[open] summary::before { content: "[-] "; }
+  .about details.more h2 { font-size: 17px; }
 </style>
 </head>
 <body>
 <main class="page">
-  <nav class="toc" id="toc"></nav>
   <article class="about" id="about"><h1>About</h1><p class="muted">Loading…</p></article>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>

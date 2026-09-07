@@ -1,32 +1,27 @@
 # GDScript Practice
 
-Daily GDScript practice that follows the GDQuest course "Learn GDScript From Zero" lesson by lesson. You get a short problem, write the code in the browser, press Run, and Godot itself checks it. The site runs at https://txmmytwostraps.github.io/gdscript-practice/site/ and needs nothing installed.
+Daily GDScript practice that follows the GDQuest course "Learn GDScript From Zero" lesson by lesson. Your code runs in the browser and is checked by Godot itself, at https://txmmytwostraps.github.io/gdscript-practice/site/ with nothing to install.
 
 ## How a day works
 
-Today's run has three parts. First come the reviews that are due: problems you solved earlier, and concept cards, brought back on a schedule so they stay known. Then come a few new problems from the topic you are on, five by default. Then one more: a step of the current milestone when one is unlocked, otherwise one extra problem from the topic.
-
-A day counts as active when it has at least one solve or one review, and the streak counts consecutive active days. A full run is all three parts finished; full runs are counted separately, so a light day keeps the streak alive without pretending to be a full one.
+- Reviews: the problems and concept cards due today.
+- New problems: a few from the topic you are on, five by default.
+- One more: a milestone step when one is unlocked, otherwise an extra problem.
+- The streak counts days in a row with at least one solve or review; full runs are counted separately.
 
 ## The pages
 
-**Today** shows the day's run with its three parts, the character panel, and a short excerpt of the route around your position. Each part links straight to the work.
+- [Today](https://txmmytwostraps.github.io/gdscript-practice/site/): the day's run, your character, the route nearby.
+- [Route](https://txmmytwostraps.github.io/gdscript-practice/site/route.html): every topic in lesson order, milestones, settings.
+- [Practice](https://txmmytwostraps.github.io/gdscript-practice/site/practice.html): the problem page: prompt, tests, editor, results.
+- [Concepts](https://txmmytwostraps.github.io/gdscript-practice/site/concepts.html): one card per concept, flashcards, card reviews.
+- [Stats](https://txmmytwostraps.github.io/gdscript-practice/site/stats.html): solves, streak, misses, badges, activity grid.
+- [This week](https://txmmytwostraps.github.io/gdscript-practice/site/week.html): the last seven days as text to copy.
+- [Notes](https://txmmytwostraps.github.io/gdscript-practice/site/notes.html): everything written in a problem's notes box.
+- [Gallery](https://txmmytwostraps.github.io/gdscript-practice/site/gallery.html): finished milestones, running.
+- Profile: the account area in the header; sign in, sign out.
 
-**Route** is the whole course in lesson order, with every topic, how many of its problems you have solved, and the milestones placed after the last lesson each one needs. Topics past your course position are shown but locked; the course lock, the daily set size and each topic's hint level are set here. Each topic row also offers a drill and a way to ask for more problems.
-
-**Practice** is the problem page: the prompt, the tests, an editor, and the results. You can pick any unlocked topic and problem, move through them in order, or let the page pick the next unsolved one.
-
-**Concepts** holds one card per concept in lesson order: what it is, how you write it, an example, and the mistake beginners make. Each lesson's cards can be flipped through as flashcards, and cards on the review schedule come back through Today.
-
-**Stats** shows solves, streak, active days, full runs, attempts and miss rate, badges, the topics with the most misses lately, an activity grid for the last sixteen weeks, and a per-topic table.
-
-**This week** turns the last seven days into plain text you can copy: per-topic numbers, reviews, notes, repeated misses, what is due next, and the changes the numbers suggest.
-
-**Notes** lists everything you wrote in a problem's notes box, unresolved first, each linking back to its problem.
-
-**Gallery** shows every finished milestone running with the script you finished it with, and its badge.
-
-**Profile** is the account area in the header: sign in with GitHub or with an email and password, and sign out. Signed out, everything stays in the browser you are using. Signed in, progress, reviews, notes and settings are kept in your account and shared between your machines.
+<!-- about-more -->
 
 ## The problem page
 
