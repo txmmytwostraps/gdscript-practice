@@ -42,6 +42,8 @@ export function makeScene(container) {
     play(frames) {
       cancelAnimationFrame(anim);
       if (!frames.length) return;
+      // A hidden tab gets no animation frames: show the end state at once.
+      if (document.hidden) { state = { ...state, ...frames[frames.length - 1] }; draw(state); return; }
       let i = 0;
       const tick = () => { state = { ...state, ...frames[i] }; draw(state); i++; if (i < frames.length) anim = requestAnimationFrame(tick); };
       tick();
