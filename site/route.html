@@ -37,6 +37,7 @@
   .ms.planned .t { color: var(--muted); }
   @media (min-width: 1700px) { .page { grid-template-columns: 400px minmax(0, 1fr); gap: 64px; } }
   .row .more { display: flex; gap: 14px; margin-top: 6px; font-size: 11px; } .row .more a, .row .more .linkish { color: var(--muted); } .row .more a:hover, .row .more .linkish:hover { color: var(--accent); }
+  .row .more .hintlevel { display: flex; gap: 6px; align-items: center; color: var(--muted); } .row .more select { background: var(--bg); border: 1px solid var(--line-strong); color: var(--text); font-size: 11px; padding: 1px 4px; }
 </style>
 </head>
 <body>
@@ -57,6 +58,11 @@
       <div class="label">Course lock</div>
       <div class="lockrow"><span style="font-size: 14px;">Finished through lesson</span><select id="lock"></select></div>
       <div class="muted" style="font-size: 12px;">Topics past this show on the route but stay locked.</div>
+    </div>
+    <div class="panel" style="background: transparent; display: flex; flex-direction: column; gap: 10px;">
+      <div class="label">Daily set</div>
+      <div class="lockrow"><span style="font-size: 14px;">New problems per day</span><select id="perday"><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select></div>
+      <div class="muted" style="font-size: 12px;">Takes effect from tomorrow's run. Each topic's hint level sits on its row; "auto" follows your pass rate.</div>
     </div>
   </section>
   <section class="rail"><div class="rows" id="rows"></div></section>

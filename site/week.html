@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>This week · GDScript Practice</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="theme.css">
+<style>
+  .page { grid-template-columns: 1fr; gap: 24px; max-width: 1100px; }
+  h1 { font-size: 44px; }
+  pre.summary { margin: 0; padding: 20px 24px; background: var(--panel); border: 1px solid var(--line); font-size: 13px; line-height: 1.7; white-space: pre-wrap; overflow-x: auto; }
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; font-size: 12px; }
+</style>
+</head>
+<body>
+<main class="page">
+  <div style="display: flex; flex-direction: column; gap: 10px;">
+    <div class="eyebrow">// stats · this week</div>
+    <h1>This week</h1>
+    <div class="muted" id="intro" style="font-size: 14px; max-width: 70ch;">The last seven days as plain text: what you did per topic, reviews, notes, what is due next, and the changes the numbers suggest. Copy it for your weekly review; the settings it points at live on the Route page.</div>
+    <div class="actions caps"><button class="btn primary" id="copy">Copy the summary</button><span class="dim" id="copied"></span><a href="route.html">Settings on the Route ›</a></div>
+  </div>
+  <pre class="summary" id="summary">Loading…</pre>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script type="module" src="week.js"></script>
+</body>
+</html>

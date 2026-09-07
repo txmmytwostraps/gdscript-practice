@@ -1,6 +1,7 @@
 import { mountShell } from "./shell.js";
-import { onSynced } from "./sync.js";
-import { loadBank, state, routeTopics, markerFor, currentTopic, courseLock, setCourseLock, nextMilestone, milestoneStatus, milestones } from "./progress.js";
+import { onSynced, sync } from "./sync.js";
+import { loadBank, state, routeTopics, markerFor, currentTopic, courseLock, setCourseLock, newPerDay, setNewPerDay, nextMilestone, milestoneStatus, milestones } from "./progress.js";
+import * as scaffold from "./scaffold.js";
 import { MILESTONES, LESSONS } from "./route-data.js";
 import { requestPrompt } from "./content-rules.js";
 
@@ -41,7 +42,9 @@ function render() {
       const note = t.note ? ` · ${esc(t.note)}` : "";
       const next = t.list.find((p) => !state.solved[p.id]);
       const canDrill = t.list.some((p) => p.variants);
-      const more = t.locked ? "" : `<div class="more caps">${canDrill ? `<a href="practice.html?drill=${t.concept}">[~] Drill</a>` : ""}<button type="button" class="linkish" data-request="${t.concept}">[+] Request more</button></div>`;
+      const lv = scaffold.levelFor(t.concept), st = scaffold.statsFor(t.concept);
+      const hintSel = `<label class="hintlevel">hints <select data-scaffold="${t.concept}"><option value="">auto (${scaffold.autoLevel(t.concept)})</option>${scaffold.LEVELS.map((l) => `<option value="${l}" ${scaffold.overrideFor(t.concept) === l ? "selected" : ""}>${l}</option>`).join("")}</select>${st.rate !== null ? ` <span class="dim">${Math.round(st.rate * 100)}% of last ${Math.min(20, st.attempts)}</span>` : ""}</label>`;
+      const more = t.locked ? "" : `<div class="more caps">${canDrill ? `<a href="practice.html?drill=${t.concept}">[~] Drill</a>` : ""}<button type="button" class="linkish" data-request="${t.concept}">[+] Request more</button>${hintSel}</div>`;
       rows.push(`<div class="row ${cls}" id="${t.concept}"><div class="box">${m}</div><div class="${isCur ? "grow" : ""}"><div class="t">${esc(t.title.toUpperCase())}</div><div class="s">${sub}${note}</div>${more}</div>${isCur && next ? `<a class="btn primary" href="practice.html#${next.id}">Continue</a>` : ""}</div>`);
       const milestone = MILESTONES.find((x) => x.after === t.concept);
       if (milestone) {
@@ -67,6 +70,10 @@ async function main() {
   await loadBank();
   render();
   $("lock").addEventListener("change", () => { setCourseLock(Number($("lock").value)); render(); shell.refresh(); });
+  $("perday").value = String(newPerDay());
+  $("perday").addEventListener("change", () => { setNewPerDay($("perday").value); });
+  $("rows").addEventListener("change", (ev) => { const sel = ev.target.closest("select[data-scaffold]"); if (!sel) return; scaffold.setOverride(sel.dataset.scaffold, sel.value); render(); });
+  if (sync.user) scaffold.refresh(sync.user).then(render);
   // Request more problems: copies a written brief for the topic to the clipboard.
   $("rows").addEventListener("click", async (ev) => {
     const b = ev.target.closest("button[data-request]"); if (!b) return;
@@ -76,6 +83,6 @@ async function main() {
     catch (e) { b.textContent = "[+] Could not copy"; }
     setTimeout(() => { b.textContent = "[+] Request more"; }, 4000);
   });
-  onSynced(() => { render(); shell.refresh(); });
+  onSynced((what) => { if (what === "user" && sync.user) scaffold.refresh(sync.user).then(render); render(); shell.refresh(); });
 }
 main().catch((e) => { $("rows").innerHTML = `<div class="error">Could not load: ${esc(e.message)}</div>`; });

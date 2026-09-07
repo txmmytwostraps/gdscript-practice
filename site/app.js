@@ -13,6 +13,7 @@ import { candidates } from "./mutate.js";
 import * as notes from "./notes.js";
 import { makeVariant } from "./variants.js";
 import { loadCards, cardsForConcept } from "./cards.js";
+import * as scaffold from "./scaffold.js";
 
 // Problem types. ?mode=parsons puts the solution's lines in order;
 // ?mode=bug plants one bug in the solution to find and fix. Reviews pick a
@@ -39,7 +40,8 @@ const drillStart = Date.now();
 
 const DIFF = ["novice", "beginner", "intermediate", "advanced"];
 const MAX_ERROR_LINES = 20;
-const UNLOCK_AFTER = 2;
+// Misses before the reference solution unlocks: 2, or 3 on a topic at the minimal hint level.
+const unlockAfter = (p) => scaffold.solutionAfter(scaffold.levelFor(p.concept));
 
 const $ = (id) => document.getElementById(id);
 const el = {
@@ -181,7 +183,10 @@ function renderProblem(p) {
   el.requirements.innerHTML = reqs.join("<br>"); el.requirements.hidden = reqs.length === 0;
   // Staged hints: each opens on its own; opening one never counts as a miss.
   const hints = Array.isArray(p.hints) ? p.hints : (p.hint ? [p.hint] : []);
-  el.hints.innerHTML = hints.map((h, i) => `<div class="stage"><button type="button" class="linkish" data-hint="${i}">[+] Hint ${i + 1} of ${hints.length}</button><p hidden>${rich(h)}</p></div>`).join("");
+  const level = scaffold.levelFor(p.concept);
+  el.hints.innerHTML = hints.map((h, i) => `<div class="stage"><button type="button" class="linkish" data-hint="${i}">[+] Hint ${i + 1} of ${hints.length}</button><p hidden>${rich(h)}</p></div>`).join("")
+    + (hints.length ? `<div class="caps dim" id="hintlevel" style="font-size:11px"></div>` : "");
+  renderHintLocks(p);
   el.solution.innerHTML = highlight(p.solution); el.solution.hidden = true;
   el.tests.innerHTML = p.tests.map((tt) => `<div class="row">${tt.name ? `<span class="name">${esc(tt.name)}</span>` : ""}<span>${framesLabel(tt)}${esc(callStr(p, tt.args))}</span><span class="arrow">→</span><span class="exp">${expectHtml(p, tt)}</span></div>`).join("");
   const docs = Array.isArray(p.docs) ? p.docs : [];
@@ -195,10 +200,28 @@ function renderProblem(p) {
 }
 function updateSolutionLock(p) {
   const misses = state.fails[p.id] || 0;
-  const unlocked = Boolean(state.solved[p.id]) || misses >= UNLOCK_AFTER;
+  const after = unlockAfter(p);
+  const unlocked = Boolean(state.solved[p.id]) || misses >= after;
   el.solutionToggle.classList.toggle("locked", !unlocked);
-  el.solutionToggle.textContent = unlocked ? (el.solution.hidden ? "[+] Reference solution" : "[-] Reference solution") : `[#] Reference solution — locked · ${UNLOCK_AFTER - misses} more miss${UNLOCK_AFTER - misses === 1 ? "" : "es"} to unlock`;
+  el.solutionToggle.textContent = unlocked ? (el.solution.hidden ? "[+] Reference solution" : "[-] Reference solution") : `[#] Reference solution — locked · ${after - misses} more miss${after - misses === 1 ? "" : "es"} to unlock`;
   if (!unlocked) el.solution.hidden = true;
+  renderHintLocks(p);
+}
+// Adaptive hints: which hints may open depends on the topic's level and the
+// misses on this problem. Locked ones show what unlocks them.
+function renderHintLocks(p) {
+  const level = scaffold.levelFor(p.concept);
+  const misses = state.fails[p.id] || 0;
+  el.hints.querySelectorAll("button[data-hint]").forEach((b) => {
+    if (b.dataset.hint === "bug") return;
+    const i = Number(b.dataset.hint), total = el.hints.querySelectorAll("button[data-hint]:not([data-hint=bug])").length;
+    const open = scaffold.hintOpen(level, i, misses) || Boolean(state.solved[p.id]);
+    b.classList.toggle("locked", !open);
+    if (!open) { b.nextElementSibling.hidden = true; b.textContent = `[#] Hint ${i + 1} of ${total} — ${scaffold.hintLockText(level, i)}`; }
+    else if (b.textContent.startsWith("[#]")) b.textContent = `[+] Hint ${i + 1} of ${total}`;
+  });
+  const lv = $("hintlevel");
+  if (lv) lv.innerHTML = `Hints: <b>${level}</b>${scaffold.overrideFor(p.concept) ? " (set by hand)" : ""} · <a href="route.html#${p.concept}">change on the route</a>`;
 }
 function setVerdict(kind, text, message) {
   el.results.className = "results " + kind;
@@ -329,7 +352,7 @@ async function plantBug(p) {
 function renderModes(p) {
   const base = `practice.html#${p.id}`;
   const link = (m, text) => (activeMode === m ? `<span class="dim">${text}</span>` : `<a href="practice.html?mode=${m}#${p.id}">${text}</a>`);
-  const stuck = activeMode === "normal" && (state.fails[p.id] || 0) >= UNLOCK_AFTER && !state.solved[p.id] ? `<span class="amber">[!] Stuck? Try it as a Parsons: </span>` : "";
+  const stuck = activeMode === "normal" && (state.fails[p.id] || 0) >= unlockAfter(p) && !state.solved[p.id] ? `<span class="amber">[!] Stuck? Try it as a Parsons: </span>` : "";
   const canDrill = state.problems.some((x) => x.concept === p.concept && x.variants);
   if (drillTopic) { $("modes").innerHTML = `<span class="muted">Drilling this topic with fresh numbers.</span> <a href="practice.html#${p.id}">Back to the problems</a>`; return; }
   $("modes").innerHTML = `${stuck}<span class="muted">Try as:</span> ${activeMode === "normal" ? `<span class="dim">normal</span>` : `<a href="${base}">normal</a>`} · ${link("parsons", "[~] put the lines in order")} · ${link("bug", "[~] fix the bug")}${canDrill ? ` · <a href="practice.html?drill=${p.concept}">[~] drill this topic</a>` : ""}`;
@@ -337,6 +360,7 @@ function renderModes(p) {
 // ---------- drill ----------
 function drillVerdict(passed, id) {
   if (sync.user) auth.insertAttempt(sync.user.id, id, "drill", passed ? "pass" : "miss").catch(() => {});
+  scaffold.noteAttempt(id, passed);
   renderDrillBar();
 }
 function renderDrillBar() {
@@ -399,7 +423,7 @@ async function runCode() {
   catch (e) { if (!e.timedOut) setVerdict("fail", "[x] Could not run", e.message); }
   finally { running = false; if (el.judgeStatus.classList.contains("ready")) el.run.disabled = false; }
 }
-function missText(id) { return `miss ${Math.min(state.fails[id] || 0, UNLOCK_AFTER)} of ${UNLOCK_AFTER}`; }
+function missText(id) { const after = current ? unlockAfter(current) : 2; return `miss ${Math.min(state.fails[id] || 0, after)} of ${after}`; }
 function renderResult(result, errors) {
   el.resultTable.hidden = true; el.output.hidden = true; el.errors.hidden = true;
   const p = current, rtype = returnType(p.signature);
@@ -457,6 +481,7 @@ function logVerdict(id, passed, wasNew) {
   const inReview = reviewMode && reviewIds.includes(id);
   const kind = inReview ? "review" : wasNew ? "new" : "practice";
   auth.insertAttempt(sync.user.id, id, kind, passed ? "pass" : "miss").catch(() => {});
+  scaffold.noteAttempt(id, passed);
   if (inReview && !reviewRecorded) {
     reviewRecorded = true;
     const clean = passed && attemptFails === 0;
@@ -517,7 +542,11 @@ async function main() {
   el.note.addEventListener("input", () => { el.noteSaved.textContent = "…"; clearTimeout(noteTimer); noteTimer = setTimeout(() => saveNote({ text: el.note.value }), 600); });
   el.noteResolved.addEventListener("change", () => saveNote({ resolved: el.noteResolved.checked }));
   el.ask.addEventListener("click", askClaude);
-  el.hints.addEventListener("click", (ev) => { const b = ev.target.closest("button[data-hint]"); if (!b) return; const p = b.nextElementSibling; p.hidden = !p.hidden; b.textContent = (p.hidden ? "[+] " : "[-] ") + b.textContent.slice(4); });
+  el.hints.addEventListener("click", (ev) => {
+    const b = ev.target.closest("button[data-hint]"); if (!b || b.classList.contains("locked")) return;
+    const p = b.nextElementSibling; p.hidden = !p.hidden; b.textContent = (p.hidden ? "[+] " : "[-] ") + b.textContent.slice(4);
+    if (!p.hidden && current) { const log = store.get("hintlog", []); log.push({ id: current.id, hint: b.dataset.hint, at: new Date().toISOString() }); store.set("hintlog", log.slice(-500)); }   // for the weekly summary
+  });
   el.solutionToggle.addEventListener("click", () => { if (el.solutionToggle.classList.contains("locked")) return; el.solution.hidden = !el.solution.hidden; updateSolutionLock(current); });
   // Practice again: back to the starter without touching the solved date.
   el.again.addEventListener("click", () => { if (current) { clearDraft(current.id); editor.set(current.starter); clearResults(); setVerdict("", "Practice again: the solved date stays as it was."); editor.focus(); } });
@@ -554,6 +583,7 @@ async function main() {
 
   const why = sessionStorage.getItem("gdp.reloaded");
   if (why) { sessionStorage.removeItem("gdp.reloaded"); setVerdict("warn", why === "crash" ? "[!] The judge crashed on your last run and was restarted" : "[!] Your last run took more than 5 seconds — probably an infinite loop", "The judge was restarted; your code is unchanged."); }
-  onSynced((what) => { if (what === "local-changed" && current && activeMode === "normal") { const d = getDraft(current.id); editor.set(d ? d.code : current.starter); updateSolutionLock(current); } if ((what === "local-changed" || what === "merged") && current) renderNote(current); renderFilters(); shell.refresh(); });
+  onSynced((what) => { if (what === "user" && sync.user) scaffold.refresh(sync.user).then(() => { if (current) updateSolutionLock(current); });
+    if (what === "local-changed" && current && activeMode === "normal") { const d = getDraft(current.id); editor.set(d ? d.code : current.starter); updateSolutionLock(current); } if ((what === "local-changed" || what === "merged") && current) renderNote(current); renderFilters(); shell.refresh(); });
 }
 main().catch((e) => { setVerdict("fail", "[x] Could not load the problem bank", e.message); });

@@ -52,6 +52,9 @@ export function solvesOn(key) { return Object.entries(state.solved).filter(([, i
 // ---- course lock ----
 export function courseLock() { return store.get("courseLock", DEFAULT_COURSE_LOCK); }
 export function setCourseLock(n) { store.set("courseLock", n); }
+// ---- daily set size (a setting; the weekly summary may suggest changing it) ----
+export function newPerDay() { return store.get("newPerDay", NEW_PER_DAY); }
+export function setNewPerDay(n) { store.set("newPerDay", Math.max(1, Math.min(10, Number(n) || NEW_PER_DAY))); }
 
 // ---- topics on the route ----
 export function topicStats(t) {
@@ -96,7 +99,7 @@ export function todayRun() {
   if (!run) {
     const t = currentTopic();
     const unsolved = t ? t.list.filter((p) => !state.solved[p.id]) : [];
-    run = { day: key, topic: t ? t.concept : null, topicTitle: t ? t.title : "", newIds: unsolved.slice(0, NEW_PER_DAY).map((p) => p.id), extraId: unsolved[NEW_PER_DAY] ? unsolved[NEW_PER_DAY].id : null, reviews: [] };
+    run = { day: key, topic: t ? t.concept : null, topicTitle: t ? t.title : "", newIds: unsolved.slice(0, newPerDay()).map((p) => p.id), extraId: unsolved[newPerDay()] ? unsolved[newPerDay()].id : null, reviews: [] };
     store.set("run." + key, run);
   }
   const solvedToday = new Set(solvesOn(key));
@@ -123,7 +126,7 @@ export function dayDone(key) {
   const run = store.get("run." + key, null);
   if (run && run.done !== undefined) return run.done;   // set by the Today page once reviews are counted
   if (run) return run.newIds.length > 0 && run.newIds.every((id) => state.solved[id]) && (!run.extraId || state.solved[run.extraId]);
-  return solvesOn(key).length >= NEW_PER_DAY + 1;   // a day worked on another machine
+  return solvesOn(key).length >= newPerDay() + 1;   // a day worked on another machine
 }
 // A day is active when it has at least one solve or one review. The streak
 // counts consecutive active days ending today or yesterday; nothing else.
