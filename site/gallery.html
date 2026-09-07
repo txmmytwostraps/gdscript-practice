@@ -21,7 +21,12 @@
   .card .buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
   .card .scene-note { font-size: 12px; color: var(--error); min-height: 1em; margin-top: 6px; }
   .card pre.code { max-height: 22rem; overflow: auto; }
-  @media (max-width: 960px) { .card { grid-template-columns: 1fr; } }
+  .sofar { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 20px 32px; padding: 20px 24px; background: var(--panel); border: 1px solid var(--line); }
+  .sofar .abilities { display: flex; flex-direction: column; gap: 8px; font-size: 13px; }
+  .sofar .abilities div { display: flex; gap: 10px; align-items: baseline; }
+  .sofar .abilities .off { color: var(--dim); }
+  .sofar .abilities code { background: transparent; padding: 0; color: var(--fn); font-size: 12px; }
+  @media (max-width: 960px) { .card, .sofar { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -31,6 +36,7 @@
     <h1>Gallery</h1>
     <div class="muted" style="font-size: 14px; max-width: 70ch;">What you have built so far. Each milestone runs here with the script you finished it with, and its badge shows on the Route and in Stats.</div>
   </div>
+  <section class="sofar" id="sofar"></section>
   <div class="cards" id="cards"></div>
   <span class="judge-status caps dim" id="judge-status" style="font-size: 11px;"></span>
 </main>

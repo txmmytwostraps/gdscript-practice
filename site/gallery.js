@@ -11,8 +11,23 @@ const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replac
 const judge = new JudgeClient({ src: "../web/index.html", container: $("judge-frame"), timeoutMs: 5000, inline: new URLSearchParams(location.search).get("judge") === "inline", onStatus: (s) => { $("judge-status").textContent = s === "ready" ? "" : "judge: " + s; }, onTimeout: () => location.reload() });
 const stages = {};
 
+// What each milestone adds to the character, for the "so far" view.
+const GAINS = { m1: { key: "move", text: "moves along the stage", fns: "move_right, move_left, speed_up, slow_down" }, m2: { key: "health", text: "has health that never goes below zero", fns: "take_damage, heal, report" }, m3: { key: "walk", text: "walks the floor between two walls", fns: "move, go_left, go_right, stop" }, m4: { key: "bag", text: "carries a bag of four items", fns: "pick_up, has, count, use" }, m5: { key: "fight", text: "fights an enemy to the end", fns: "attack, enemy_turn, is_alive, fight" } };
+let sofarScene = null;
+function renderSoFar(list) {
+  const has = {};
+  for (const m of list) if (m.done && GAINS[m.id]) has[GAINS[m.id].key] = true;
+  const doneCount = list.filter((m) => m.done).length;
+  $("sofar").innerHTML = `<div><div class="label" style="margin-bottom:8px">Your character so far · ${doneCount} of ${list.length} milestones</div><div id="sofar-stage"></div></div>
+    <div class="abilities"><div class="label">What it can do</div>${list.map((m) => { const g = GAINS[m.id]; return g ? `<div class="${m.done ? "" : "off"}"><span>${m.done ? "✓" : "[ ]"}</span><span>${esc(g.text)}${m.done ? ` <code>${esc(g.fns)}</code>` : `<span class="dim"> · ${m.planned ? "planned" : m.unlocked ? "in progress" : "locked"}</span>`}</span></div>` : ""; }).join("")}</div>`;
+  if (sofarScene) sofarScene.stop();
+  sofarScene = makeScene($("sofar-stage"), "character");
+  sofarScene.set({ has, x: 300, facing: "right" });
+  if (has.move || has.walk) sofarScene.demo(has.walk ? 150 : 120);
+}
 async function render() {
   const list = milestones();
+  renderSoFar(list);
   const cards = [];
   for (const m of list) {
     if (!m.done) { cards.push(`<div class="card locked" id="${m.id}"><div class="head"><span class="k">Milestone ${String(m.number).padStart(2, "0")}</span><span class="t">${esc(m.title)}</span><span class="when">${m.planned ? "planned" : m.unlocked ? `${m.stepsDone} / ${m.steps} steps done · <a href="milestone.html?m=${m.id}">continue ›</a>` : `unlocks in ${m.topicsToGo} topic${m.topicsToGo === 1 ? "" : "s"}`}</span></div></div>`); continue; }

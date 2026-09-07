@@ -5,14 +5,14 @@
 // last printed line as a status.
 export const STAGE_WIDTH = 600;
 const H = 160, GROUND = 128;
-export const KINDS = { move: { watch: ["x", "speed"] }, health: { watch: ["health", "max_health"] }, walk: { watch: ["position", "speed", "facing"] }, bag: { watch: ["items", "capacity", "health", "max_health"] }, fight: { watch: ["health", "max_health", "attack_power", "enemy_health", "enemy_max_health", "enemy_attack"] } };
+export const KINDS = { move: { watch: ["x", "speed"] }, health: { watch: ["health", "max_health"] }, walk: { watch: ["position", "speed", "facing"] }, bag: { watch: ["items", "capacity", "health", "max_health"] }, fight: { watch: ["health", "max_health", "attack_power", "enemy_health", "enemy_max_health", "enemy_attack"] }, character: { watch: [] } };
 
 export function makeScene(container, kind = "move") {
   container.innerHTML = `<canvas width="${STAGE_WIDTH}" height="${H}" style="width:100%;max-width:${STAGE_WIDTH}px;display:block;background:var(--bg);border:1px solid var(--line)"></canvas><div class="caps dim scene-readout" style="font-size:12px;margin-top:6px"></div>`;
   const canvas = container.querySelector("canvas"), readout = container.querySelector(".scene-readout");
   const ctx = canvas.getContext("2d");
   const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim() || "#888";
-  let state = kind === "health" ? { health: 100, max_health: 100, out: [] } : kind === "walk" ? { position: null, speed: null, facing: null } : kind === "bag" ? { items: null, capacity: null, health: null, max_health: null } : kind === "fight" ? { health: null, max_health: null, enemy_health: null, enemy_max_health: null, returned: null } : { x: 0, speed: 0 };
+  let state = kind === "health" ? { health: 100, max_health: 100, out: [] } : kind === "walk" ? { position: null, speed: null, facing: null } : kind === "bag" ? { items: null, capacity: null, health: null, max_health: null } : kind === "fight" ? { health: null, max_health: null, enemy_health: null, enemy_max_health: null, returned: null } : kind === "character" ? { x: 300, facing: "right", has: {} } : { x: 0, speed: 0 };
   let anim = 0;
   const fmt = (v) => (Number.isFinite(v) ? (Number.isInteger(v) ? v : +v.toFixed(1)) : "?");
 
@@ -139,7 +139,38 @@ export function makeScene(container, kind = "move") {
     if (verdict) { ctx.fillStyle = verdict === "won" ? accent : error; ctx.font = "bold 16px Space Grotesk, sans-serif"; ctx.textAlign = "center"; ctx.fillText(verdict.toUpperCase(), STAGE_WIDTH / 2, 74); ctx.textAlign = "left"; }
     readout.textContent = `${hp === null ? "no fighters yet" : `health = ${fmt(hp)}`}${ehp !== null ? ` · enemy_health = ${fmt(ehp)}` : ""}${s.returned !== null && s.returned !== undefined ? ` · returned ${JSON.stringify(s.returned)}` : ""}`;
   }
-  const draw = kind === "health" ? drawHealth : kind === "walk" ? drawWalk : kind === "bag" ? drawBag : kind === "fight" ? drawFight : drawMove;
+  // Everything earned so far in one picture: the robot, and each milestone's addition once it is done.
+  function drawCharacter(s) {
+    const accent = css("--accent"), dim = css("--dim"), line = css("--line-strong"), text = css("--text"), muted = css("--muted"), milestone = css("--milestone");
+    const has = s.has || {};
+    ctx.clearRect(0, 0, STAGE_WIDTH, H);
+    ground();
+    if (has.walk) { ctx.fillStyle = line; ctx.fillRect(0, GROUND - 70, 3, 70); ctx.fillRect(STAGE_WIDTH - 3, GROUND - 70, 3, 70); }
+    const px = Math.max(30, Math.min(STAGE_WIDTH - 30, Number.isFinite(s.x) ? s.x : 300));
+    robot(px, accent);
+    if (has.walk && (s.facing === "left" || s.facing === "right")) {
+      const d = s.facing === "left" ? -1 : 1;
+      ctx.fillStyle = accent; ctx.beginPath(); ctx.moveTo(px + d * 26, GROUND - 40); ctx.lineTo(px + d * 16, GROUND - 46); ctx.lineTo(px + d * 16, GROUND - 34); ctx.closePath(); ctx.fill();
+    }
+    if (has.health) {   // full health bar over the robot
+      const bx = px - 40, by = GROUND - 78;
+      ctx.strokeStyle = line; ctx.lineWidth = 1; ctx.strokeRect(bx + 0.5, by + 0.5, 80, 8);
+      ctx.fillStyle = accent; ctx.fillRect(bx + 1, by + 1, 79, 7);
+      ctx.fillStyle = muted; ctx.font = "10px IBM Plex Mono, monospace"; ctx.textAlign = "center"; ctx.fillText("HP 100 / 100", px, by - 4); ctx.textAlign = "left";
+    }
+    if (has.bag) {   // a small bag on the back
+      ctx.strokeStyle = milestone; ctx.lineWidth = 2; ctx.strokeRect(px + 12.5, GROUND - 32.5, 12, 14);
+    }
+    if (has.fight) {   // the enemy waiting at the far end
+      const ex = px < 300 ? STAGE_WIDTH - 60 : 60;
+      ctx.save(); ctx.translate(ex, GROUND); ctx.strokeStyle = milestone; ctx.fillStyle = milestone; ctx.lineWidth = 2; ctx.lineCap = "round";
+      ctx.beginPath(); ctx.moveTo(-14, 0); ctx.lineTo(-14, -30); ctx.lineTo(-22, -46); ctx.lineTo(-6, -38); ctx.lineTo(0, -54); ctx.lineTo(6, -38); ctx.lineTo(22, -46); ctx.lineTo(14, -30); ctx.lineTo(14, 0); ctx.closePath(); ctx.stroke();
+      ctx.fillRect(-7, -32, 4, 4); ctx.fillRect(3, -32, 4, 4); ctx.restore();
+    }
+    const labels = [has.move && "moves", has.health && "has health", has.walk && "walks the floor", has.bag && "carries a bag", has.fight && "fights"].filter(Boolean);
+    readout.textContent = labels.length ? labels.join(" · ") : "nothing built yet";
+  }
+  const draw = kind === "health" ? drawHealth : kind === "walk" ? drawWalk : kind === "bag" ? drawBag : kind === "fight" ? drawFight : kind === "character" ? drawCharacter : drawMove;
 
   return {
     kind,
@@ -160,7 +191,7 @@ export function makeScene(container, kind = "move") {
     demo(speed = 120) {
       cancelAnimationFrame(anim);
       let x = 0, dir = 1, last = performance.now();
-      const tick = (now) => { x += dir * speed * Math.min(0.05, (now - last) / 1000); last = now; if (x > STAGE_WIDTH - 30) dir = -1; if (x < 30) dir = 1; state = { x, speed: speed * dir }; draw(state); anim = requestAnimationFrame(tick); };
+      const tick = (now) => { x += dir * speed * Math.min(0.05, (now - last) / 1000); last = now; if (x > STAGE_WIDTH - 30) dir = -1; if (x < 30) dir = 1; state = { ...state, x, speed: speed * dir, facing: dir < 0 ? "left" : "right" }; draw(state); anim = requestAnimationFrame(tick); };
       anim = requestAnimationFrame(tick);
     },
     stop() { cancelAnimationFrame(anim); },
