@@ -57,6 +57,7 @@ func run_submission(user_code: String, problem: Dictionary) -> Dictionary:
 		var step_error := ""
 		var watch: Array = t.get("trace", [])
 		var trace := []
+		var last_return = null   # what the last scripted call returned; "result": true reads it
 		if t.has("script"):
 			if not watch.is_empty():
 				trace.append(snapshot(inst, watch))
@@ -66,7 +67,7 @@ func run_submission(user_code: String, problem: Dictionary) -> Dictionary:
 					if not inst.has_method(mname):
 						step_error = "missing function: %s()" % mname
 						break
-					inst.callv(mname, normalize(action.get("args", [])))
+					last_return = inst.callv(mname, normalize(action.get("args", [])))
 					if not watch.is_empty():
 						trace.append(snapshot(inst, watch))
 				elif action.has("frames"):
@@ -80,7 +81,9 @@ func run_submission(user_code: String, problem: Dictionary) -> Dictionary:
 							trace.append(snapshot(inst, watch))
 		var got = null
 		if step_error.is_empty():
-			if t.has("read"):
+			if t.get("result", false):
+				got = last_return
+			elif t.has("read"):
 				var member: String = str(t["read"])
 				if not has_member(inst, member):
 					step_error = "no member variable named %s" % member

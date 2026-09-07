@@ -1,0 +1,130 @@
+{
+  "id": "m4",
+  "title": "An inventory",
+  "intro": "Four steps, one script that grows. The robot gets a bag: an array of item names with a limit on how many fit, functions to pick things up and look inside, and a way to use an item, which heals the robot when it was a potion. The stage shows the bag and, from the last step, the health bar.",
+  "scene": { "kind": "bag", "watch": ["items", "capacity", "health", "max_health"] },
+  "steps": [
+    {
+      "id": "m4-s1",
+      "title": "A bag with room for four",
+      "prompt": "The bag is an array of item names, empty to start with. Declare a variable at the top of the script (a member variable) called `items` holding an empty array, `[]`, and another called `capacity` holding the number `4`: the most items the bag can take. Nothing goes in yet; this step only gives the robot its bag.",
+      "starter": "# The robot's bag: an array of item names, and how many fit.\n# Declare both member variables here.\n",
+      "solution": "var items = []\nvar capacity = 4\n",
+      "require_names": ["items", "capacity"],
+      "tests": [
+        { "name": "The bag starts empty", "read": "items", "expect": [] },
+        { "name": "capacity starts at 4", "read": "capacity", "expect": 4 }
+      ],
+      "hints": [
+        "An empty array is written `[]`, two square brackets with nothing between.",
+        "`var items = []` and `var capacity = 4`, both at the top of the script."
+      ],
+      "docs": [
+        { "name": "[]", "what": "an empty array; items are added later with append" },
+        { "name": "var", "what": "declares a variable; at the top of a script it is a member variable that every function can use" }
+      ],
+      "scene": { "buttons": [] }
+    },
+    {
+      "id": "m4-s2",
+      "title": "Pick things up",
+      "prompt": "Write `pick_up`, which takes `name` and tries to put it in the bag. If the bag has fewer items than `capacity`, append the name and return `true`. Otherwise leave the bag as it is and return `false`. The buttons beside the stage pick up a potion or a key; the fifth pick-up bounces off.",
+      "starter": "var items = []\nvar capacity = 4\n\n# Write pick_up(name) below.\n",
+      "solution": "var items = []\nvar capacity = 4\n\nfunc pick_up(name):\n\tif items.size() < capacity:\n\t\titems.append(name)\n\t\treturn true\n\treturn false\n",
+      "require_methods": ["pick_up"],
+      "tests": [
+        { "name": "One potion goes in", "script": [{ "call": "pick_up", "args": ["potion"] }], "read": "items", "expect": ["potion"] },
+        { "name": "pick_up says it fit", "script": [{ "call": "pick_up", "args": ["potion"] }], "result": true, "expect": true },
+        { "name": "A potion and a key, in that order", "script": [{ "call": "pick_up", "args": ["potion"] }, { "call": "pick_up", "args": ["key"] }], "read": "items", "expect": ["potion", "key"] },
+        { "name": "A fifth item does not fit", "script": [{ "call": "pick_up", "args": ["potion"] }, { "call": "pick_up", "args": ["potion"] }, { "call": "pick_up", "args": ["key"] }, { "call": "pick_up", "args": ["key"] }, { "call": "pick_up", "args": ["gem"] }], "result": true, "expect": false },
+        { "name": "The bag stays at four", "script": [{ "call": "pick_up", "args": ["potion"] }, { "call": "pick_up", "args": ["potion"] }, { "call": "pick_up", "args": ["key"] }, { "call": "pick_up", "args": ["key"] }, { "call": "pick_up", "args": ["gem"] }], "read": "items", "expect": ["potion", "potion", "key", "key"] }
+      ],
+      "hints": [
+        "`items.size()` is how many are in the bag right now; compare it with `capacity`.",
+        "Inside the `if`: append, then `return true`. After the `if`, at the function's own indentation: `return false`.",
+        "return ends the function, so the `return false` line only runs when the if did not."
+      ],
+      "docs": [
+        { "name": "append(value)", "what": "adds a value to the end of an array" },
+        { "name": "size()", "what": "how many items an array holds" },
+        { "name": "return", "what": "ends the function and hands back a value; true and false are values too" }
+      ],
+      "scene": { "buttons": [
+        { "label": "Pick up potion", "call": "pick_up", "args": ["potion"] },
+        { "label": "Pick up key", "call": "pick_up", "args": ["key"] }
+      ] }
+    },
+    {
+      "id": "m4-s3",
+      "title": "Look inside the bag",
+      "prompt": "Two questions the robot can answer. Write `has`, which takes `name` and returns `true` when that name is somewhere in `items`, otherwise `false`. Write `count`, which takes `name` and returns how many times it appears. Both walk the array with a `for` loop: `has` can return the moment it finds a match; `count` adds one to a counter each time and returns it at the end.",
+      "starter": "var items = []\nvar capacity = 4\n\nfunc pick_up(name):\n\tif items.size() < capacity:\n\t\titems.append(name)\n\t\treturn true\n\treturn false\n\n# Write has(name) and count(name) below.\n",
+      "solution": "var items = []\nvar capacity = 4\n\nfunc pick_up(name):\n\tif items.size() < capacity:\n\t\titems.append(name)\n\t\treturn true\n\treturn false\n\nfunc has(name):\n\tfor item in items:\n\t\tif item == name:\n\t\t\treturn true\n\treturn false\n\nfunc count(name):\n\tvar total = 0\n\tfor item in items:\n\t\tif item == name:\n\t\t\ttotal += 1\n\treturn total\n",
+      "require_methods": ["has", "count"],
+      "tests": [
+        { "name": "has finds the key", "script": [{ "call": "pick_up", "args": ["potion"] }, { "call": "pick_up", "args": ["key"] }, { "call": "has", "args": ["key"] }], "result": true, "expect": true },
+        { "name": "has says no to a gem", "script": [{ "call": "pick_up", "args": ["potion"] }, { "call": "has", "args": ["gem"] }], "result": true, "expect": false },
+        { "name": "An empty bag has nothing", "script": [{ "call": "has", "args": ["potion"] }], "result": true, "expect": false },
+        { "name": "count sees two potions", "script": [{ "call": "pick_up", "args": ["potion"] }, { "call": "pick_up", "args": ["key"] }, { "call": "pick_up", "args": ["potion"] }, { "call": "count", "args": ["potion"] }], "result": true, "expect": 2 },
+        { "name": "count of something missing is 0", "script": [{ "call": "pick_up", "args": ["key"] }, { "call": "count", "args": ["gem"] }], "result": true, "expect": 0 }
+      ],
+      "hints": [
+        "`for item in items:` visits each name in turn; inside, compare `item == name`.",
+        "In has, `return true` inside the loop leaves the function early; `return false` after the loop covers the case where nothing matched.",
+        "In count, declare `var total = 0` before the loop, add `total += 1` on a match, and `return total` after the loop."
+      ],
+      "docs": [
+        { "name": "for item in array", "what": "runs the block once per item, with item holding the current one" },
+        { "name": "==", "what": "true when both sides are the same value; works on text" },
+        { "name": "return", "what": "ends the function and hands back a value" }
+      ],
+      "scene": { "buttons": [
+        { "label": "Pick up potion", "call": "pick_up", "args": ["potion"] },
+        { "label": "Pick up key", "call": "pick_up", "args": ["key"] }
+      ] }
+    },
+    {
+      "id": "m4-s4",
+      "title": "Use an item",
+      "prompt": "The robot's health from the health milestone is back, at the number `60`, together with `heal`. Write `use`, which takes `name`. Find where that name sits with `items.find(name)`; it gives the position, or `-1` when the name is not in the bag. If it is `-1`, return `false`. Otherwise remove that one item with `items.remove_at(position)`, and if the name was `\"potion\"`, call `heal(30)`. Then return `true`. Using a key removes it and heals nothing.",
+      "starter": "var items = []\nvar capacity = 4\nvar health = 60\nvar max_health = 100\n\nfunc pick_up(name):\n\tif items.size() < capacity:\n\t\titems.append(name)\n\t\treturn true\n\treturn false\n\nfunc has(name):\n\tfor item in items:\n\t\tif item == name:\n\t\t\treturn true\n\treturn false\n\nfunc count(name):\n\tvar total = 0\n\tfor item in items:\n\t\tif item == name:\n\t\t\ttotal += 1\n\treturn total\n\nfunc heal(amount):\n\thealth += amount\n\tif health > max_health:\n\t\thealth = max_health\n\n# Write use(name) below.\n",
+      "solution": "var items = []\nvar capacity = 4\nvar health = 60\nvar max_health = 100\n\nfunc pick_up(name):\n\tif items.size() < capacity:\n\t\titems.append(name)\n\t\treturn true\n\treturn false\n\nfunc has(name):\n\tfor item in items:\n\t\tif item == name:\n\t\t\treturn true\n\treturn false\n\nfunc count(name):\n\tvar total = 0\n\tfor item in items:\n\t\tif item == name:\n\t\t\ttotal += 1\n\treturn total\n\nfunc heal(amount):\n\thealth += amount\n\tif health > max_health:\n\t\thealth = max_health\n\nfunc use(name):\n\tvar position = items.find(name)\n\tif position == -1:\n\t\treturn false\n\titems.remove_at(position)\n\tif name == \"potion\":\n\t\theal(30)\n\treturn true\n",
+      "require_methods": ["use"],
+      "tests": [
+        { "name": "Using a potion empties a one-potion bag", "script": [{ "call": "pick_up", "args": ["potion"] }, { "call": "use", "args": ["potion"] }], "read": "items", "expect": [] },
+        { "name": "A potion heals 30", "script": [{ "call": "pick_up", "args": ["potion"] }, { "call": "use", "args": ["potion"] }], "read": "health", "expect": 90 },
+        { "name": "A key heals nothing", "script": [{ "call": "pick_up", "args": ["key"] }, { "call": "use", "args": ["key"] }], "read": "health", "expect": 60 },
+        { "name": "Using what you do not have returns false", "script": [{ "call": "use", "args": ["potion"] }], "result": true, "expect": false },
+        { "name": "Using an item you have returns true", "script": [{ "call": "pick_up", "args": ["key"] }, { "call": "use", "args": ["key"] }], "result": true, "expect": true },
+        { "name": "Only the first potion goes", "script": [{ "call": "pick_up", "args": ["potion"] }, { "call": "pick_up", "args": ["key"] }, { "call": "pick_up", "args": ["potion"] }, { "call": "use", "args": ["potion"] }], "read": "items", "expect": ["key", "potion"] },
+        { "name": "Two potions cannot heal past the limit", "script": [{ "call": "pick_up", "args": ["potion"] }, { "call": "pick_up", "args": ["potion"] }, { "call": "use", "args": ["potion"] }, { "call": "use", "args": ["potion"] }], "read": "health", "expect": 100 }
+      ],
+      "hints": [
+        "Store what find gives you: `var position = items.find(name)`. Then `if position == -1: return false`.",
+        "`items.remove_at(position)` takes out exactly that one, even when the same name appears again later.",
+        "Compare the name, not the position, to decide about healing: `if name == \"potion\":` then `heal(30)`."
+      ],
+      "docs": [
+        { "name": "find(value)", "what": "the position of the first matching item, or -1 when there is none" },
+        { "name": "remove_at(position)", "what": "removes the item at that position; the ones after it move up" },
+        { "name": "heal(amount)", "what": "the function from the health milestone: adds to health, never past max_health" }
+      ],
+      "scene": { "buttons": [
+        { "label": "Pick up potion", "call": "pick_up", "args": ["potion"] },
+        { "label": "Pick up key", "call": "pick_up", "args": ["key"] },
+        { "label": "Use potion", "call": "use", "args": ["potion"] },
+        { "label": "Use key", "call": "use", "args": ["key"] }
+      ] }
+    }
+  ],
+  "godot": [
+    "Open Godot and make a new project called Robot Bag.",
+    "Create a 2D scene with a Node2D root named Robot, and attach a script to it.",
+    "Copy the whole script from step 4 into it: items, capacity, health, max_health and the five functions.",
+    "Add a Label child named Bag. Write `func show_bag():` that sets `$Bag.text = \", \".join(items)`, and call it at the end of pick_up and use.",
+    "In `func _ready():` call `pick_up(\"potion\")`, `pick_up(\"key\")`, then `use(\"potion\")`. Run the scene (F6): the label reads key.",
+    "Add `print(health)` after the use call and check the Output panel: 90.",
+    "Try five pick-ups in _ready and print what the fifth one returns: false, and the label still shows four names.",
+    "Add a second Label for health and set its text in heal, so the number changes on screen."
+  ]
+}

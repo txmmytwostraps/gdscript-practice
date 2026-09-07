@@ -5,14 +5,14 @@
 // last printed line as a status.
 export const STAGE_WIDTH = 600;
 const H = 160, GROUND = 128;
-export const KINDS = { move: { watch: ["x", "speed"] }, health: { watch: ["health", "max_health"] }, walk: { watch: ["position", "speed", "facing"] } };
+export const KINDS = { move: { watch: ["x", "speed"] }, health: { watch: ["health", "max_health"] }, walk: { watch: ["position", "speed", "facing"] }, bag: { watch: ["items", "capacity", "health", "max_health"] } };
 
 export function makeScene(container, kind = "move") {
   container.innerHTML = `<canvas width="${STAGE_WIDTH}" height="${H}" style="width:100%;max-width:${STAGE_WIDTH}px;display:block;background:var(--bg);border:1px solid var(--line)"></canvas><div class="caps dim scene-readout" style="font-size:12px;margin-top:6px"></div>`;
   const canvas = container.querySelector("canvas"), readout = container.querySelector(".scene-readout");
   const ctx = canvas.getContext("2d");
   const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim() || "#888";
-  let state = kind === "health" ? { health: 100, max_health: 100, out: [] } : kind === "walk" ? { position: null, speed: null, facing: null } : { x: 0, speed: 0 };
+  let state = kind === "health" ? { health: 100, max_health: 100, out: [] } : kind === "walk" ? { position: null, speed: null, facing: null } : kind === "bag" ? { items: null, capacity: null, health: null, max_health: null } : { x: 0, speed: 0 };
   let anim = 0;
   const fmt = (v) => (Number.isFinite(v) ? (Number.isInteger(v) ? v : +v.toFixed(1)) : "?");
 
@@ -80,7 +80,40 @@ export function makeScene(container, kind = "move") {
     }
     readout.textContent = `position = (${fmt(v[0])}, ${fmt(v[1])})${s.speed !== null && s.speed !== undefined ? ` · speed = ${fmt(s.speed)}` : ""}${s.facing ? ` · facing ${s.facing}` : ""}${inside ? "" : " · past the wall"}`;
   }
-  const draw = kind === "health" ? drawHealth : kind === "walk" ? drawWalk : drawMove;
+  // The robot with a bag panel listing its items, and the health bar once the script has health.
+  function drawBag(s) {
+    const accent = css("--accent"), dim = css("--dim"), line = css("--line-strong"), text = css("--text"), muted = css("--muted"), error = css("--error");
+    ctx.clearRect(0, 0, STAGE_WIDTH, H);
+    ground();
+    robot(120, accent);
+    const items = Array.isArray(s.items) ? s.items : null;
+    const cap = Number.isFinite(s.capacity) ? s.capacity : null;
+    // the bag panel
+    const bx = 220, by = 18, bw = 360, bh = 104;
+    ctx.strokeStyle = line; ctx.lineWidth = 1; ctx.strokeRect(bx + 0.5, by + 0.5, bw, bh);
+    ctx.fillStyle = muted; ctx.font = "10px IBM Plex Mono, monospace"; ctx.textAlign = "left";
+    ctx.fillText(items === null ? "BAG" : `BAG ${items.length}${cap !== null ? " / " + cap : ""}`, bx + 10, by + 16);
+    if (items === null) { ctx.fillStyle = dim; ctx.fillText("no bag yet", bx + 10, by + 40); }
+    else if (!items.length) { ctx.fillStyle = dim; ctx.fillText("empty", bx + 10, by + 40); }
+    else {
+      const slots = Math.max(cap || 0, items.length);
+      for (let i = 0; i < slots; i++) {
+        const col = i % 4, row = Math.floor(i / 4);
+        const sx = bx + 10 + col * 86, sy = by + 26 + row * 36;
+        ctx.strokeStyle = i < items.length ? accent : line; ctx.strokeRect(sx + 0.5, sy + 0.5, 78, 28);
+        if (i < items.length) { ctx.fillStyle = text; ctx.font = "12px IBM Plex Mono, monospace"; ctx.fillText(String(items[i]).slice(0, 9), sx + 8, sy + 19); }
+      }
+    }
+    const hp = Number.isFinite(s.health) ? s.health : null, max = Number.isFinite(s.max_health) && s.max_health > 0 ? s.max_health : null;
+    if (hp !== null && max !== null) {
+      const hx = 70, hy = 24, hw = 100, hh = 10;
+      ctx.strokeStyle = line; ctx.strokeRect(hx + 0.5, hy + 0.5, hw, hh);
+      ctx.fillStyle = hp <= 0 ? error : accent; ctx.fillRect(hx + 1, hy + 1, Math.max(0, Math.min(1, hp / max)) * (hw - 1), hh - 1);
+      ctx.fillStyle = text; ctx.font = "11px IBM Plex Mono, monospace"; ctx.fillText(`HP ${fmt(hp)} / ${fmt(max)}`, hx, hy + hh + 14);
+    }
+    readout.textContent = `${items === null ? "no bag yet" : `items = [${items.join(", ")}]`}${cap !== null ? ` · capacity = ${cap}` : ""}${hp !== null ? ` · health = ${fmt(hp)}` : ""}`;
+  }
+  const draw = kind === "health" ? drawHealth : kind === "walk" ? drawWalk : kind === "bag" ? drawBag : drawMove;
 
   return {
     kind,

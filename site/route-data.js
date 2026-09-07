@@ -47,7 +47,7 @@ export const MILESTONES = [
   { id: "m3", number: 3, title: "Walk the floor", after: "gq-rect",
     uses: "Adds Vector2, delta and staying inside the edges. 4 steps in the browser, then the same build in Godot on your machine.", steps: 4, badge: "Walks the floor" },
   { id: "m4", number: 4, title: "An inventory", after: "gq-indices",
-    uses: "Adds arrays, append, index, loops and functions that return a value.", steps: 4, planned: true },
+    uses: "Adds arrays, append, index, loops and functions that return a value. 4 steps in the browser, then the same build in Godot on your machine.", steps: 4, badge: "Carries a bag" },
   { id: "m5", number: 5, title: "Enemy and combat", after: "gq-types",
     uses: "Adds if, elif and else, comparisons, while, and type hints.", steps: 4, planned: true },
 ];

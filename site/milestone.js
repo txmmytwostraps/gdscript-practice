@@ -51,6 +51,7 @@ function fmtVal(v) {
 function describe(t) {
   const acts = (t.script || []).map((a) => a.frames ? `${a.frames} frame${a.frames === 1 ? "" : "s"}${a.delta ? ` of ${(+a.delta).toFixed(3)} s` : ""}` : `${a.call}(${(a.args || []).map(fmtVal).join(", ")})`);
   const after = acts.length ? `after ${acts.join(", then ")}: ` : "at the start: ";
+  if (t.result) return `${after.replace(/^after /, "").replace(/: $/, "")} returns ${fmtVal(t.expect)}`;
   if (t.read) return `${after}${t.read} is ${fmtVal(t.expect)}`;
   if (t.out) return `${after}prints ${t.out.map((l) => JSON.stringify(l)).join(", then ")}`;
   return after.replace(/: $/, "");
