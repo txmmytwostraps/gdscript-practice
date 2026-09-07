@@ -69,7 +69,9 @@
 .cm-s-godot .cm-number, .cm-s-godot .cm-atom { color: var(--num); }
 .cm-s-godot .cm-def { color: var(--fn); }
 .cm-s-godot .cm-comment { color: var(--cmt); }
-.cm-s-godot .cm-tab { background: linear-gradient(to right, var(--line) 1px, transparent 1px); }
+/* tabs as in Godot: an indent guide at the border color and a faint arrow in each tab */
+.cm-s-godot .cm-tab { position: relative; background: linear-gradient(to right, var(--line-strong) 1px, transparent 1px); }
+.cm-s-godot .cm-tab::after { content: "→"; position: absolute; left: 6px; top: 0; color: var(--dim); opacity: 0.55; font-size: 12px; pointer-events: none; }
 .cm-s-godot .cm-error-line { background: rgba(255, 112, 133, 0.12); }
 
 .parsons { display: flex; flex-direction: column; gap: 4px; background: var(--panel); border: 1px solid var(--line); padding: 12px; }
