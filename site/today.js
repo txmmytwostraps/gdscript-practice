@@ -74,11 +74,14 @@ function renderExcerpt(currentConcept) {
 // The character panel: a patrolling robot once milestone 1 is done.
 let sceneDemo = null;
 function renderCharacter() {
-  const m1 = milestoneStatus(MILESTONES[0]);
+  const m1 = milestoneStatus(MILESTONES[0]), m2 = milestoneStatus(MILESTONES[1]);
   const note = $("character-note"), stage = $("character-stage");
-  if (!m1.done) { note.textContent = m1.unlocked ? "Milestone 1 is unlocked: make the character move." : "Milestone 1 makes the character move. Milestone 2 gives it health, and the bar fills for real."; return; }
-  if (!sceneDemo) { stage.innerHTML = ""; sceneDemo = makeScene(stage); sceneDemo.demo(120); }
-  note.innerHTML = `<span class="accent">${esc(MILESTONES[0].badge)}</span> · milestone 1 done. Milestone 2 gives it health. <a href="gallery.html#m1">Gallery ›</a>`;
+  const hp = stage.querySelector(".hp");
+  if (m2.done && hp) { hp.querySelector(".l").textContent = "HP 100 / 100"; hp.querySelector(".b").innerHTML = '<div style="height:100%;width:100%;background:var(--accent)"></div>'; }
+  if (!m1.done) { note.innerHTML = m2.done ? `<span class="accent">${esc(m2.badge)}</span> · milestone 2 done. Milestone 1 makes the character move. <a href="gallery.html#m2">Gallery ›</a>` : m1.unlocked ? "Milestone 1 is unlocked: make the character move." : "Milestone 1 makes the character move. Milestone 2 gives it health, and the bar fills for real."; return; }
+  if (!sceneDemo) { const bar = hp ? hp.outerHTML : ""; stage.innerHTML = ""; sceneDemo = makeScene(stage); sceneDemo.demo(120); if (bar) stage.insertAdjacentHTML("beforeend", bar); }
+  const badges = [m1, m2].filter((m) => m.done).map((m) => `<span class="accent">${esc(m.badge)}</span>`).join(" · ");
+  note.innerHTML = `${badges} · ${m2.done ? "milestones 1 and 2 done. Next: walk the floor with Vector2." : "milestone 1 done. Milestone 2 gives it health."} <a href="gallery.html#${m2.done ? "m2" : "m1"}">Gallery ›</a>`;
 }
 
 async function main() {

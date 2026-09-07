@@ -1,40 +1,69 @@
-// The milestone stage: a strip 600 pixels wide with a placeholder robot on
-// it. The page feeds it snapshots ({x, speed}) that came out of the judge
-// running the user's own script, and it draws or animates them.
+// The milestone stage: a strip with a placeholder robot on it. The page feeds
+// it states that came out of the judge running the user's own script, and it
+// draws or animates them. Two kinds: "move" watches x and speed and slides the
+// robot along; "health" watches health and max_health and shows a bar and the
+// last printed line as a status.
 export const STAGE_WIDTH = 600;
 const H = 160, GROUND = 128;
+export const KINDS = { move: { watch: ["x", "speed"] }, health: { watch: ["health", "max_health"] } };
 
-export function makeScene(container) {
+export function makeScene(container, kind = "move") {
   container.innerHTML = `<canvas width="${STAGE_WIDTH}" height="${H}" style="width:100%;max-width:${STAGE_WIDTH}px;display:block;background:var(--bg);border:1px solid var(--line)"></canvas><div class="caps dim scene-readout" style="font-size:12px;margin-top:6px"></div>`;
   const canvas = container.querySelector("canvas"), readout = container.querySelector(".scene-readout");
   const ctx = canvas.getContext("2d");
   const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim() || "#888";
-  let state = { x: 0, speed: 0 };
+  let state = kind === "health" ? { health: 100, max_health: 100, out: [] } : { x: 0, speed: 0 };
   let anim = 0;
+  const fmt = (v) => (Number.isFinite(v) ? (Number.isInteger(v) ? v : +v.toFixed(1)) : "?");
 
-  function draw(s) {
-    const accent = css("--accent"), line = css("--line-strong"), dim = css("--dim");
-    ctx.clearRect(0, 0, STAGE_WIDTH, H);
-    ctx.strokeStyle = line; ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(0, GROUND + 0.5); ctx.lineTo(STAGE_WIDTH, GROUND + 0.5); ctx.stroke();
-    ctx.fillStyle = dim; ctx.font = "10px IBM Plex Mono, monospace";
-    for (let t = 0; t <= STAGE_WIDTH; t += 100) { ctx.fillRect(t, GROUND, 1, 6); ctx.fillText(String(t), t + 3, GROUND + 16); }
-    const x = Number.isFinite(s.x) ? s.x : 0;
-    const onStage = x >= -20 && x <= STAGE_WIDTH + 20;
-    const px = Math.max(-20, Math.min(STAGE_WIDTH + 20, x));
+  function robot(px, color) {
     ctx.save(); ctx.translate(px, GROUND);
-    ctx.strokeStyle = onStage ? accent : dim; ctx.fillStyle = onStage ? accent : dim; ctx.lineWidth = 2; ctx.lineCap = "round";
+    ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineWidth = 2; ctx.lineCap = "round";
     ctx.beginPath(); ctx.arc(0, -46, 9, 0, Math.PI * 2); ctx.stroke();               // head
     ctx.beginPath(); ctx.rect(-10, -34, 20, 22); ctx.stroke();                         // body
     ctx.beginPath(); ctx.moveTo(-10, -26); ctx.lineTo(-20, -14); ctx.moveTo(10, -26); ctx.lineTo(20, -14); ctx.stroke();   // arms
     ctx.beginPath(); ctx.moveTo(-6, -12); ctx.lineTo(-6, 0); ctx.moveTo(6, -12); ctx.lineTo(6, 0); ctx.stroke();           // legs
     ctx.fillRect(-4, -49, 3, 3); ctx.fillRect(1, -49, 3, 3);                          // eyes
     ctx.restore();
-    const fmt = (v) => (Number.isFinite(v) ? (Number.isInteger(v) ? v : +v.toFixed(1)) : "?");
-    readout.textContent = `x = ${fmt(x)}${s.speed !== undefined && s.speed !== null ? ` · speed = ${fmt(s.speed)}` : ""}${onStage ? "" : " · off the stage"}`;
+  }
+  function ground() {
+    ctx.strokeStyle = css("--line-strong"); ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(0, GROUND + 0.5); ctx.lineTo(STAGE_WIDTH, GROUND + 0.5); ctx.stroke();
   }
 
+  function drawMove(s) {
+    const accent = css("--accent"), dim = css("--dim");
+    ctx.clearRect(0, 0, STAGE_WIDTH, H);
+    ground();
+    ctx.fillStyle = dim; ctx.font = "10px IBM Plex Mono, monospace";
+    for (let t = 0; t <= STAGE_WIDTH; t += 100) { ctx.fillRect(t, GROUND, 1, 6); ctx.fillText(String(t), t + 3, GROUND + 16); }
+    const x = Number.isFinite(s.x) ? s.x : 0;
+    const onStage = x >= -20 && x <= STAGE_WIDTH + 20;
+    robot(Math.max(-20, Math.min(STAGE_WIDTH + 20, x)), onStage ? accent : dim);
+    readout.textContent = `x = ${fmt(x)}${s.speed !== undefined && s.speed !== null ? ` · speed = ${fmt(s.speed)}` : ""}${onStage ? "" : " · off the stage"}`;
+  }
+  function drawHealth(s) {
+    const accent = css("--accent"), dim = css("--dim"), error = css("--error"), line = css("--line-strong"), text = css("--text");
+    ctx.clearRect(0, 0, STAGE_WIDTH, H);
+    ground();
+    const hp = Number.isFinite(s.health) ? s.health : null, max = Number.isFinite(s.max_health) && s.max_health > 0 ? s.max_health : null;
+    const down = hp !== null && hp <= 0;
+    robot(STAGE_WIDTH / 2, down ? dim : accent);
+    // the bar
+    const bx = STAGE_WIDTH / 2 - 100, by = 24, bw = 200, bh = 12;
+    ctx.strokeStyle = line; ctx.lineWidth = 1; ctx.strokeRect(bx + 0.5, by + 0.5, bw, bh);
+    if (hp !== null && max !== null) { ctx.fillStyle = down ? error : accent; ctx.fillRect(bx + 1, by + 1, Math.max(0, Math.min(1, hp / max)) * (bw - 1), bh - 1); }
+    ctx.fillStyle = text; ctx.font = "12px IBM Plex Mono, monospace"; ctx.textAlign = "center";
+    ctx.fillText(hp === null || max === null ? "HP ?" : `HP ${fmt(hp)} / ${fmt(max)}`, STAGE_WIDTH / 2, by + bh + 16);
+    const last = Array.isArray(s.out) && s.out.length ? s.out[s.out.length - 1] : "";
+    if (last) { ctx.fillStyle = down ? error : accent; ctx.font = "bold 14px Space Grotesk, sans-serif"; ctx.fillText(last, STAGE_WIDTH / 2, GROUND - 62); }
+    ctx.textAlign = "start";
+    readout.textContent = `${hp === null ? "no health yet" : `health = ${fmt(hp)}`}${max !== null ? ` · max_health = ${fmt(max)}` : ""}${last ? ` · printed: ${last}` : ""}`;
+  }
+  const draw = kind === "health" ? drawHealth : drawMove;
+
   return {
+    kind,
     /** Show one state at once. */
     set(s) { cancelAnimationFrame(anim); state = { ...state, ...s }; draw(state); },
     get() { return state; },
@@ -63,22 +92,25 @@ export function makeScene(container) {
 // history of actions; the whole history is replayed through the judge on the
 // current code, and the frames the last action produced are animated. So the
 // stage always shows what the script, as written now, would do.
-export function wireScene(scene, judge, { buttonsEl, noteEl, getCode }) {
+export function wireScene(scene, judge, { buttonsEl, noteEl, getCode, watch }) {
+  const names = watch || KINDS[scene.kind].watch;
   let history = [];
   let buttons = [];
   let busy = false;
   const note = (t) => { if (noteEl) noteEl.textContent = t || ""; };
+  const toState = (vals) => Object.fromEntries(names.map((n, i) => [n, vals[i]]));
   async function replay(animateLast) {
     if (busy) return;
     busy = true;
     try {
-      const { result } = await judge.run(getCode(), { tests: [{ script: history, trace: ["x", "speed"], expect: null }] });
+      const { result } = await judge.run(getCode(), { tests: [{ script: history, trace: names, expect: null }] });
       if (result.status !== "ok") { note(result.status === "compile_error" ? "the script does not compile yet" : result.error || "could not run"); return; }
       const r = result.results[0];
-      const frames = (r.trace || []).map(([x, speed]) => ({ x, speed }));
+      const frames = (r.trace || []).map(toState);
       if (r.error) { note(r.error); history.pop(); }
       else note("");
       if (!frames.length) return;
+      frames[frames.length - 1] = { ...frames[frames.length - 1], out: r.out || [] };
       const last = history[history.length - 1];
       const count = animateLast && last ? (last.frames ? Number(last.frames) : 1) : 0;
       if (count > 0 && frames.length > count) scene.play(frames.slice(frames.length - count));

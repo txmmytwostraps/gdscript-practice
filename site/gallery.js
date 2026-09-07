@@ -8,7 +8,7 @@ import { makeScene, wireScene } from "./scene.js";
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-const judge = new JudgeClient({ src: "../web/index.html", container: $("judge-frame"), timeoutMs: 5000, onStatus: (s) => { $("judge-status").textContent = s === "ready" ? "" : "judge: " + s; }, onTimeout: () => location.reload() });
+const judge = new JudgeClient({ src: "../web/index.html", container: $("judge-frame"), timeoutMs: 5000, inline: new URLSearchParams(location.search).get("judge") === "inline", onStatus: (s) => { $("judge-status").textContent = s === "ready" ? "" : "judge: " + s; }, onTimeout: () => location.reload() });
 const stages = {};
 
 async function render() {
@@ -24,12 +24,12 @@ async function render() {
     cards.push(`<div class="card" id="${m.id}"><div class="head"><span class="k">Milestone ${String(m.number).padStart(2, "0")}</span><span class="t">${esc(m.title)}</span><span class="badge">${esc(m.badge || "done")}</span><span class="when">finished ${m.doneAt ? dayKey(new Date(m.doneAt)) : ""}${m.godotDone ? " · built in Godot too" : ""}</span></div>
       <div><div class="label" style="margin-bottom:8px">Your script</div><pre class="code">${esc(code)}</pre><div class="caps" style="margin-top:10px;font-size:12px"><a href="milestone.html?m=${m.id}#s${data ? data.steps.length : 1}">Open the milestone ›</a></div></div>
       <div><div class="label" style="margin-bottom:8px">Run it</div><div id="stage-${m.id}"></div><div class="buttons" id="buttons-${m.id}"></div><div class="scene-note" id="note-${m.id}"></div></div></div>`);
-    stages[m.id] = { code, buttons: last && last.scene ? last.scene.buttons : [] };
+    stages[m.id] = { code, buttons: last && last.scene ? last.scene.buttons : [], kind: (data && data.scene && data.scene.kind) || "move", watch: data && data.scene ? data.scene.watch : undefined };
   }
   $("cards").innerHTML = cards.length ? cards.join("") : `<div class="muted">No milestones yet.</div>`;
   for (const [id, s] of Object.entries(stages)) {
-    const scene = makeScene($(`stage-${id}`));
-    const w = wireScene(scene, judge, { buttonsEl: $(`buttons-${id}`), noteEl: $(`note-${id}`), getCode: () => s.code });
+    const scene = makeScene($(`stage-${id}`), s.kind);
+    const w = wireScene(scene, judge, { buttonsEl: $(`buttons-${id}`), noteEl: $(`note-${id}`), getCode: () => s.code, watch: s.watch });
     w.setButtons(s.buttons);
     judge.ready.then(() => w.reset()).catch(() => {});
   }

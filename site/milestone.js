@@ -21,6 +21,7 @@ let data = null, step = null, stepAt = 0, editor, scene, stage, running = false;
 
 const judge = new JudgeClient({
   src: "../web/index.html", container: $("judge-frame"), timeoutMs: 5000,
+  inline: params.get("judge") === "inline",   // testing aid, see judge-client.js
   onStatus: (s) => {
     $("judge-status").textContent = { loading: "judge: loading…", ready: "judge: ready", timeout: "judge: timed out", crash: "judge: crashed", error: "judge: failed to load" }[s] || "judge: " + s;
     $("judge-status").className = "judge-status caps " + (s === "ready" ? "ready" : ["timeout", "crash", "error"].includes(s) ? "bad" : "");
@@ -145,8 +146,9 @@ async function main() {
     return;
   }
   editor = makeEditor($("editor"), { onRun: runChecks });
-  scene = makeScene($("stage"));
-  stage = wireScene(scene, judge, { buttonsEl: $("scene-buttons"), noteEl: $("scene-note"), getCode: () => editor.get() });
+  const sceneSpec = data.scene || {};
+  scene = makeScene($("stage"), sceneSpec.kind || "move");
+  stage = wireScene(scene, judge, { buttonsEl: $("scene-buttons"), noteEl: $("scene-note"), getCode: () => editor.get(), watch: sceneSpec.watch });
   judge.load().catch((e) => setVerdict("fail", "The judge could not start", e.message));
   let saveTimer = null, refreshTimer = null;
   editor.onChange(() => {

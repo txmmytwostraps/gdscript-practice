@@ -43,7 +43,13 @@ export const MILESTONES = [
   { id: "m1", number: 1, title: "Make the character move", after: "gq-delta",
     uses: "Uses functions, parameters, variables and delta. 4 steps in the browser, then the same build in Godot on your machine.", steps: 4, badge: "The robot moves" },
   { id: "m2", number: 2, title: "A character with health", after: "gq-conditions",
-    uses: "Uses variables, functions and conditions.", steps: 4, planned: true },
+    uses: "Uses member variables, functions, if and else. 4 steps in the browser, then the same build in Godot on your machine.", steps: 4, badge: "Never below zero" },
+  { id: "m3", number: 3, title: "Walk the floor", after: "gq-rect",
+    uses: "Adds Vector2, delta and staying inside the edges.", steps: 4, planned: true },
+  { id: "m4", number: 4, title: "An inventory", after: "gq-indices",
+    uses: "Adds arrays, append, index, loops and functions that return a value.", steps: 4, planned: true },
+  { id: "m5", number: 5, title: "Enemy and combat", after: "gq-types",
+    uses: "Adds if, elif and else, comparisons, while, and type hints.", steps: 4, planned: true },
 ];
 
 // The full lesson list of the course, as numbered in the app. Topics not in

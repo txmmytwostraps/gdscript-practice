@@ -1,0 +1,118 @@
+{
+  "id": "m2",
+  "title": "A character with health",
+  "intro": "Four steps, one script that grows. The robot gets health that can go down and up but never past its limits, and a report of how it is doing. The stage beside the editor shows the health bar and whatever the script prints.",
+  "scene": { "kind": "health", "watch": ["health", "max_health"] },
+  "steps": [
+    {
+      "id": "m2-s1",
+      "title": "Give the robot health",
+      "prompt": "The robot needs two numbers: how much health it has now, and the most it can ever have. Declare a variable at the top of the script (a member variable) called `health` that starts at the number `100`, and another called `max_health`, also starting at the number `100`. Every function you write in the next steps will read and change these two.",
+      "starter": "# The robot's health, and the most health it can have.\n# Declare both member variables here.\n",
+      "solution": "var health = 100\nvar max_health = 100\n",
+      "require_names": ["health", "max_health"],
+      "tests": [
+        { "name": "health starts at 100", "read": "health", "expect": 100 },
+        { "name": "max_health starts at 100", "read": "max_health", "expect": 100 }
+      ],
+      "hints": [
+        "A member variable is declared at the top of the script, outside any function, with `var`.",
+        "`var health = 100` on one line and `var max_health = 100` on the next is all this step needs."
+      ],
+      "docs": [
+        { "name": "var", "what": "declares a variable; at the top of a script it is a member variable that every function can use" }
+      ],
+      "scene": { "buttons": [] }
+    },
+    {
+      "id": "m2-s2",
+      "title": "Take a hit, never below zero",
+      "prompt": "Write `take_damage`, which takes one parameter, `amount`, and takes it away from `health`. Then guard the result: if health went below the number `0`, set it back to `0`. A robot at 10 health hit for 30 ends at 0, not at -20. The button beside the stage hits for `30`; the checks hit for other amounts too.",
+      "starter": "var health = 100\nvar max_health = 100\n\n# Write take_damage(amount) below.\n",
+      "solution": "var health = 100\nvar max_health = 100\n\nfunc take_damage(amount):\n\thealth -= amount\n\tif health < 0:\n\t\thealth = 0\n",
+      "require_methods": ["take_damage"],
+      "tests": [
+        { "name": "One hit for 30 leaves 70", "script": [{ "call": "take_damage", "args": [30] }], "read": "health", "expect": 70 },
+        { "name": "Three hits for 30 leave 10", "script": [{ "call": "take_damage", "args": [30] }, { "call": "take_damage", "args": [30] }, { "call": "take_damage", "args": [30] }], "read": "health", "expect": 10 },
+        { "name": "A huge hit stops at 0", "script": [{ "call": "take_damage", "args": [150] }], "read": "health", "expect": 0 },
+        { "name": "Exactly enough leaves 0", "script": [{ "call": "take_damage", "args": [100] }], "read": "health", "expect": 0 }
+      ],
+      "hints": [
+        "Start with the plain version: `health -= amount`. Then run the checks and read which one fails.",
+        "After the subtraction, an `if` can look at `health` and put it back to `0` when it went too far.",
+        "`if health < 0:` with `health = 0` indented under it."
+      ],
+      "docs": [
+        { "name": "if", "what": "runs the indented lines only when the condition is true" },
+        { "name": "-=", "what": "takes away from a variable in place" }
+      ],
+      "scene": { "buttons": [
+        { "label": "take_damage(30)", "call": "take_damage", "args": [30] }
+      ] }
+    },
+    {
+      "id": "m2-s3",
+      "title": "Heal, up to the limit",
+      "prompt": "Write `heal`, which takes `amount` and adds it to `health`, but never past `max_health`. A robot at 90 healed for 20 ends at 100, not 110. Use the same shape as take_damage: change the number, then an `if` that puts it back within the limit.",
+      "starter": "var health = 100\nvar max_health = 100\n\nfunc take_damage(amount):\n\thealth -= amount\n\tif health < 0:\n\t\thealth = 0\n\n# Write heal(amount) below.\n",
+      "solution": "var health = 100\nvar max_health = 100\n\nfunc take_damage(amount):\n\thealth -= amount\n\tif health < 0:\n\t\thealth = 0\n\nfunc heal(amount):\n\thealth += amount\n\tif health > max_health:\n\t\thealth = max_health\n",
+      "require_methods": ["heal"],
+      "tests": [
+        { "name": "Hurt to 50, healed for 20, is 70", "script": [{ "call": "take_damage", "args": [50] }, { "call": "heal", "args": [20] }], "read": "health", "expect": 70 },
+        { "name": "Healing at full stays at 100", "script": [{ "call": "heal", "args": [20] }], "read": "health", "expect": 100 },
+        { "name": "Healing past the limit stops at 100", "script": [{ "call": "take_damage", "args": [10] }, { "call": "heal", "args": [50] }], "read": "health", "expect": 100 },
+        { "name": "Healing from 0 works", "script": [{ "call": "take_damage", "args": [100] }, { "call": "heal", "args": [30] }], "read": "health", "expect": 30 }
+      ],
+      "hints": [
+        "`health += amount` first, then check the result against `max_health`.",
+        "`if health > max_health:` with `health = max_health` indented under it."
+      ],
+      "docs": [
+        { "name": "+=", "what": "adds to a variable in place" },
+        { "name": ">", "what": "true when the left side is bigger than the right" }
+      ],
+      "scene": { "buttons": [
+        { "label": "take_damage(30)", "call": "take_damage", "args": [30] },
+        { "label": "heal(20)", "call": "heal", "args": [20] }
+      ] }
+    },
+    {
+      "id": "m2-s4",
+      "title": "Report the state",
+      "prompt": "Last, let the robot say how it is doing. Write `report`, which prints the word `Alive` when `health` is above the number `0`, and otherwise prints `Down`. Use `if` and `else`: exactly one of the two lines prints each time report is called. The stage shows the last thing the script printed as its status line.",
+      "starter": "var health = 100\nvar max_health = 100\n\nfunc take_damage(amount):\n\thealth -= amount\n\tif health < 0:\n\t\thealth = 0\n\nfunc heal(amount):\n\thealth += amount\n\tif health > max_health:\n\t\thealth = max_health\n\n# Write report() below.\n",
+      "solution": "var health = 100\nvar max_health = 100\n\nfunc take_damage(amount):\n\thealth -= amount\n\tif health < 0:\n\t\thealth = 0\n\nfunc heal(amount):\n\thealth += amount\n\tif health > max_health:\n\t\thealth = max_health\n\nfunc report():\n\tif health > 0:\n\t\tprint(\"Alive\")\n\telse:\n\t\tprint(\"Down\")\n",
+      "require_methods": ["report"],
+      "tests": [
+        { "name": "At full health it prints Alive", "script": [{ "call": "report" }], "expect": null, "out": ["Alive"] },
+        { "name": "At 0 it prints Down", "script": [{ "call": "take_damage", "args": [100] }, { "call": "report" }], "expect": null, "out": ["Down"] },
+        { "name": "Healed from 0 it is Alive again", "script": [{ "call": "take_damage", "args": [100] }, { "call": "heal", "args": [10] }, { "call": "report" }], "expect": null, "out": ["Alive"] },
+        { "name": "Two reports, one before and one after falling", "script": [{ "call": "take_damage", "args": [30] }, { "call": "report" }, { "call": "take_damage", "args": [70] }, { "call": "report" }], "expect": null, "out": ["Alive", "Down"] }
+      ],
+      "hints": [
+        "`if health > 0:` prints one word; the `else:` under it prints the other.",
+        "`else:` sits at the same indentation as its `if`, and its own line is indented under it.",
+        "print(\"Alive\") and print(\"Down\"), with the quotes."
+      ],
+      "docs": [
+        { "name": "if / else", "what": "runs the first block when the condition is true, the else block when it is false" },
+        { "name": "print", "what": "writes a line to the output" }
+      ],
+      "scene": { "buttons": [
+        { "label": "take_damage(30)", "call": "take_damage", "args": [30] },
+        { "label": "heal(20)", "call": "heal", "args": [20] },
+        { "label": "report()", "call": "report" }
+      ] }
+    }
+  ],
+  "godot": [
+    "Open Godot and make a new project called Robot Health.",
+    "Create a 2D scene. Rename the root node to Robot and attach a script to it.",
+    "At the top of the script declare `var health = 100` and `var max_health = 100`.",
+    "Copy your take_damage, heal and report functions into the script, under the two variables.",
+    "Write `func _ready():` and inside it call `take_damage(30)`, then `report()`.",
+    "Run the scene (F6) and look at the Output panel at the bottom: it says Alive.",
+    "Change the call to `take_damage(120)` and run again: the panel says Down, and health never went below 0.",
+    "Add a Label node as a child of Robot, and in report set `$Label.text = \"Alive\"` or `\"Down\"` beside each print, so the word shows in the game window too."
+  ]
+}
