@@ -3,7 +3,7 @@
   "title": "Forgetting delta",
   "concept": "gq-loop",
   "difficulty": 1,
-  "prompt": "The starter moves x by 120 every frame instead of every second, so one second of frames moves 7200. Fix `_process` so it multiplies by delta; then 60 frames move 120.",
+  "prompt": "The starter moves the robot 120 every frame instead of every second, so one second of frames moves 7200. It should move 120 in a second.",
   "signature": "func x_after_frames():",
   "fn": "x_after_frames",
   "starter": "var x = 0.0\n\nfunc _process(delta):\n\tx += 120\n\nfunc x_after_frames():\n\treturn round(x)",
@@ -22,7 +22,7 @@
     }
   ],
   "hints": [
-    "Without delta, the speed depends on how many frames run.",
+    "Multiply by delta in _process. Without delta, the speed depends on how many frames run.",
     "`x += 120 * delta`"
   ],
   "docs": [

@@ -3,7 +3,7 @@
   "title": "Collect the served meals",
   "concept": "gq-appendpop",
   "difficulty": 1,
-  "prompt": "Serve every order from the queue in turn and append each to a new array called served. Return served, which has the same meals in the same order.",
+  "prompt": "Every order is served in turn and kept on a record. collect_served gives back the record: the same meals in the order they were served.",
   "signature": "func collect_served(queue):",
   "fn": "collect_served",
   "starter": "func collect_served(queue):\n\tvar served = []\n\treturn served",
@@ -30,7 +30,7 @@
     }
   ],
   "hints": [
-    "A while loop that moves items from one array to another.",
+    "A while loop until the queue is empty, moving each pop_front into a new array with append.",
     "`while not queue.is_empty():` then `served.append(queue.pop_front())`."
   ],
   "docs": [

@@ -3,7 +3,7 @@
   "title": "A default value",
   "concept": "gq-parameters",
   "difficulty": 1,
-  "prompt": "Write `show_score`, which takes a score and a bonus, where bonus has a default of 0, and prints their sum. In `report_scores`, call it once with just the score and once with the score and a bonus of 10, so report_scores(5) prints 5 then 15.",
+  "prompt": "The robot shows a score, sometimes with a bonus and sometimes without, through one `show_score` helper whose bonus is 0 unless given. report_scores(5) prints 5, then 15 with a bonus of 10.",
   "signature": "func report_scores(score):",
   "fn": "report_scores",
   "starter": "func report_scores(score):\n\tpass",
@@ -35,7 +35,7 @@
     }
   ],
   "hints": [
-    "A default is written in the definition after an = sign; the caller may leave that parameter out.",
+    "show_score takes a score and a bonus, the bonus with a default of 0 written after an = sign in the definition, and prints their sum; report_scores calls it once with just the score and once with the score and 10.",
     "`func show_score(score, bonus = 0):` printing `score + bonus`.",
     "First call `show_score(score)`, then `show_score(score, 10)`."
   ],

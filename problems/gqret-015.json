@@ -3,7 +3,7 @@
   "title": "Two helpers, one answer",
   "concept": "gq-return",
   "difficulty": 1,
-  "prompt": "Write `perimeter` and `area` for a rectangle. `perimeter_plus_area` returns the perimeter plus the area. perimeter_plus_area(3, 4) is 26.",
+  "prompt": "A rectangle's perimeter and area come from two helpers, `perimeter` and `area`, and perimeter_plus_area adds them together. perimeter_plus_area(3, 4) is 26.",
   "signature": "func perimeter_plus_area(width, height):",
   "fn": "perimeter_plus_area",
   "starter": "func perimeter_plus_area(width, height):\n\treturn 0",
@@ -34,7 +34,7 @@
     }
   ],
   "hints": [
-    "Two returned values can be added in one expression.",
+    "perimeter returns twice the width plus twice the height and area returns width times height; two returned values can be added in one expression.",
     "`return perimeter(width, height) + area(width, height)`"
   ],
   "docs": [

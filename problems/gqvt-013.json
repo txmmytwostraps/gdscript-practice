@@ -3,7 +3,7 @@
   "title": "Digits of a number",
   "concept": "gq-valuetypes",
   "difficulty": 1,
-  "prompt": "Return how many digits the whole number has by turning it into text and measuring the length. 12345 has 5.",
+  "prompt": "How many digits does the whole number have? count_digits(12345) is 5.",
   "signature": "func count_digits(n):",
   "fn": "count_digits",
   "starter": "func count_digits(n):\n\treturn 0",
@@ -31,7 +31,7 @@
     }
   ],
   "hints": [
-    "Converting to text makes counting easy.",
+    "Turning it into text with str() makes counting easy: the text's length.",
     "`return str(n).length()`"
   ],
   "docs": [

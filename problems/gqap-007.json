@@ -3,7 +3,7 @@
   "title": "Unstack the crates",
   "concept": "gq-appendpop",
   "difficulty": 1,
-  "prompt": "Take crates off the pile one at a time, printing each, until the pile is empty. The last one added comes off first.",
+  "prompt": "The robot unloads a pile of crates, calling out each one. The crate added last comes off first, so [1, 2, 3] prints 3, 2, 1.",
   "signature": "func unstack_crates(pile):",
   "fn": "unstack_crates",
   "starter": "func unstack_crates(pile):\n\tpass",
@@ -34,7 +34,7 @@
     }
   ],
   "hints": [
-    "pop_back from a while loop.",
+    "pop_back takes the top crate; a while loop runs until the pile is empty.",
     "`while not pile.is_empty():` then `print(pile.pop_back())`."
   ],
   "docs": [

@@ -3,7 +3,7 @@
   "title": "Heal",
   "concept": "gq-members",
   "difficulty": 1,
-  "prompt": "The starter has a member `health` at 50 and a `take_damage` helper. Add a `heal` helper that adds an amount to health. In `health_after_heal`, call heal(20). Then return health, which is 70.",
+  "prompt": "The starter has a member `health` at 50 and a `take_damage` helper. The robot needs the opposite too, a `heal` helper, and health_after_heal reports health after healing 20: 70.",
   "signature": "func health_after_heal():",
   "fn": "health_after_heal",
   "starter": "var health = 50\n\nfunc health_after_heal():\n\treturn health\n\nfunc take_damage(amount):\n\thealth -= amount",
@@ -15,7 +15,7 @@
     }
   ],
   "hints": [
-    "heal is the mirror of take_damage.",
+    "heal adds an amount to health, the mirror of take_damage; health_after_heal calls heal(20) and returns health.",
     "`func heal(amount):` with `health += amount`.",
     "health_after_heal: `heal(20)` then `return health`."
   ],

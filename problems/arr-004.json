@@ -3,7 +3,7 @@
   "title": "Remove every copy",
   "concept": "arrays",
   "difficulty": 1,
-  "prompt": "Return a new array that has everything from items except any item equal to value.",
+  "prompt": "The robot's bag has copies it does not want. remove_all gives back a new array with everything from items except the ones equal to value.",
   "signature": "func remove_all(items, value):",
   "fn": "remove_all",
   "starter": "func remove_all(items, value):\n\treturn items",

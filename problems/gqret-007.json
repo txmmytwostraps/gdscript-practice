@@ -3,7 +3,7 @@
   "title": "A decimal from whole numbers",
   "concept": "gq-return",
   "difficulty": 1,
-  "prompt": "Write `half`, which takes a whole number and returns half of it with decimals, so half(5) is 2.5. `halved` returns half(n).",
+  "prompt": "Half of a whole number, decimals kept, from a `half` helper that `halved` uses: halved(5) is 2.5.",
   "signature": "func halved(n) -> float:",
   "fn": "halved",
   "starter": "func halved(n) -> float:\n\treturn n / 2",
@@ -31,7 +31,7 @@
     }
   ],
   "hints": [
-    "Divide by something with a decimal point.",
+    "half takes a whole number and divides it by something with a decimal point; halved returns half(n).",
     "`return value / 2.0` inside half."
   ],
   "docs": [

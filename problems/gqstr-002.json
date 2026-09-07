@@ -3,7 +3,7 @@
   "title": "Text built from parts",
   "concept": "gq-strings",
   "difficulty": 1,
-  "prompt": "Return a status line like \"Robo has 100 hp\" from a name and a number. A number cannot be joined to text directly; it has to be turned into text first.",
+  "prompt": "The robot's status line reads like \"Robo has 100 hp\", built from a name and a number.",
   "signature": "func status_line(name, hp):",
   "fn": "status_line",
   "starter": "func status_line(name, hp):\n\treturn name",
@@ -26,7 +26,7 @@
     }
   ],
   "hints": [
-    "str() turns a number into text you can join with +.",
+    "A number cannot be joined to text directly; str() turns it into text you can join with +.",
     "`return name + \" has \" + str(hp) + \" hp\"`"
   ],
   "docs": [

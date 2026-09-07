@@ -3,7 +3,7 @@
   "title": "Fall",
   "concept": "gq-loop",
   "difficulty": 1,
-  "prompt": "Members `y` at 0.0 and `vy` at 0.0. Gravity is 100 per second per second. In `_process`, add 100 times delta to vy, then add vy times delta to y. After 60 frames y_after_fall returns vy rounded, 100.",
+  "prompt": "The robot falls. Gravity is 100 per second per second, from `y` and `vy` both at 0.0. After 60 frames at 60 per second, y_after_fall reports a fall speed of 100.",
   "signature": "func y_after_fall():",
   "fn": "y_after_fall",
   "starter": "var y = 0.0\nvar vy = 0.0\n\nfunc y_after_fall():\n\treturn round(vy)",
@@ -22,7 +22,7 @@
     }
   ],
   "hints": [
-    "Two lines per frame: speed changes, then position changes.",
+    "Two lines per frame in _process: gravity times delta joins vy, then vy times delta joins y.",
     "`vy += 100 * delta` then `y += vy * delta`."
   ],
   "docs": [

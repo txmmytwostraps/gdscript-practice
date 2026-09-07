@@ -3,7 +3,7 @@
   "title": "Sales tax",
   "concept": "variables",
   "difficulty": 1,
-  "prompt": "The robot shop adds 20% tax. Inside `price_with_tax`, make a constant `TAX` equal to 0.2 and return the price with tax added: price plus price times TAX. price_with_tax(10) is 12.0.",
+  "prompt": "The robot shop adds 20% tax, and the rate deserves a name. price_with_tax(10) is 12.0.",
   "signature": "func price_with_tax(price) -> float:",
   "fn": "price_with_tax",
   "starter": "func price_with_tax(price) -> float:\n\treturn price",
@@ -48,7 +48,7 @@
     }
   ],
   "hints": [
-    "A constant is like a variable that never changes; it uses const instead of var.",
+    "A constant is like a variable that never changes; it uses const instead of var: `TAX` at 0.2, and the answer is price plus price times TAX.",
     "`const TAX = 0.2`",
     "`return price + price * TAX`"
   ],

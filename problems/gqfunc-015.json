@@ -3,7 +3,7 @@
   "title": "Alarm",
   "concept": "gq-functions",
   "difficulty": 1,
-  "prompt": "Write `blink`, which prints \"blink\". Then write `alarm`, which calls blink three times and then prints \"alarm\". `run` calls alarm once; the output is blink, blink, blink, alarm.",
+  "prompt": "The robot's alarm is three blinks and then the word alarm, all from one call in `run`. The output is blink, blink, blink, alarm.",
   "signature": "func run():",
   "fn": "run",
   "starter": "func run():\n\tpass",
@@ -25,7 +25,7 @@
     }
   ],
   "hints": [
-    "A helper can both call other helpers and print on its own.",
+    "blink prints \"blink\"; alarm calls blink three times and then prints \"alarm\"; run calls alarm once.",
     "alarm has four lines: three `blink()` calls and one print.",
     "run is just `alarm()`."
   ],

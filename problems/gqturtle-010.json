@@ -3,7 +3,7 @@
   "title": "A corner helper",
   "concept": "gq-turtle",
   "difficulty": 1,
-  "prompt": "Write a helper called `corner` that moves forward 40 and turns left. Then draw a square by calling corner four times from `run`.",
+  "prompt": "Draw a square of 40 with a `corner` helper, so that `run` is only four lines.",
   "signature": "func run():",
   "fn": "run",
   "starter": "func run():\n\tpass",
@@ -25,7 +25,7 @@
     }
   ],
   "hints": [
-    "Anything you repeat can become a function.",
+    "corner moves forward 40 and turns left; run calls corner four times. Anything you repeat can become a function.",
     "`func corner():` with the two calls inside.",
     "run: `corner()` four times."
   ],

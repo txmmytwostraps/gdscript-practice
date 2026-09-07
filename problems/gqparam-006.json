@@ -3,7 +3,7 @@
   "title": "Parameters are copies",
   "concept": "gq-parameters",
   "difficulty": 1,
-  "prompt": "Write `add_ten`, which takes a number, adds 10 to its parameter with +=, and prints it. In `copy_check`, call add_ten(n) and then print n yourself, so copy_check(5) prints 15 and then 5. The original does not change.",
+  "prompt": "A number handed to a helper is a copy. copy_check hands n to an `add_ten` helper that prints its number plus ten, then prints n itself, so copy_check(5) prints 15 and then 5: the original does not change.",
   "signature": "func copy_check(n):",
   "fn": "copy_check",
   "starter": "func copy_check(n):\n\tpass",
@@ -35,7 +35,7 @@
     }
   ],
   "hints": [
-    "A number passed to a function is copied; changing the copy inside leaves the caller's variable alone.",
+    "add_ten takes a number, adds 10 to its parameter with += and prints it; copy_check calls add_ten(n) and then prints n. Changing the copy inside leaves the caller's variable alone.",
     "Inside add_ten: `value += 10` then `print(value)`.",
     "copy_check: `add_ten(n)` then `print(n)`."
   ],

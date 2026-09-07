@@ -3,7 +3,7 @@
   "title": "Two helpers",
   "concept": "gq-turtle",
   "difficulty": 1,
-  "prompt": "Write `square`, which draws a square of 20 with four corners, and use it twice from `run` with a `jump` of 30 in between.",
+  "prompt": "Draw two squares of 20 with a gap of 30 between them, with a `square` helper for the square.",
   "signature": "func run():",
   "fn": "run",
   "starter": "func run():\n\tpass",
@@ -34,7 +34,7 @@
     }
   ],
   "hints": [
-    "square is eight calls in a function; run is three lines.",
+    "square is four corners of forward 20 and turn left; run is square, jump 30, square.",
     "`square()`, `jump(30)`, `square()`."
   ],
   "docs": [

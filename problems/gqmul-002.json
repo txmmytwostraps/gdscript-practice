@@ -3,7 +3,7 @@
   "title": "Level up the member",
   "concept": "gq-multiply",
   "difficulty": 1,
-  "prompt": "Members `level` at 1 and `max_health` at 100. Write `level_up`, which adds 1 to level and multiplies max_health by 2. In `max_health_after_level`, call level_up once. Then return max_health, which is 200.",
+  "prompt": "Members `level` at 1 and `max_health` at 100. A level-up makes the robot one level higher and doubles its maximum health, through a `level_up` helper. max_health_after_level levels up once and reports 200.",
   "signature": "func max_health_after_level():",
   "fn": "max_health_after_level",
   "starter": "var level = 1\nvar max_health = 100\n\nfunc max_health_after_level():\n\treturn max_health",
@@ -15,7 +15,7 @@
     }
   ],
   "hints": [
-    "Two members change in one helper.",
+    "level_up adds 1 to level and multiplies max_health by 2; max_health_after_level calls it once and returns max_health.",
     "`level += 1` and `max_health *= 2` inside level_up.",
     "`*=` multiplies a variable in place, like += adds."
   ],

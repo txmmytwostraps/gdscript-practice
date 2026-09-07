@@ -3,7 +3,7 @@
   "title": "Nested if",
   "concept": "gq-conditions",
   "difficulty": 1,
-  "prompt": "To ride the robot you must be at least 12 years old, and then at least 120 cm tall. Return \"too young\", \"too short\" or \"ride\". Check the age first, and only check the height inside that.",
+  "prompt": "To ride the robot you must be at least 12 years old, and then at least 120 cm tall. ride_check answers \"too young\", \"too short\" or \"ride\".",
   "signature": "func ride_check(age, height):",
   "fn": "ride_check",
   "starter": "func ride_check(age, height):\n\treturn \"ride\"",
@@ -42,7 +42,7 @@
     }
   ],
   "hints": [
-    "An if can live inside another if, indented one level further.",
+    "Check the age first, and only check the height inside that: an if can live inside another if, indented one level further.",
     "`if age >= 12:` then inside it `if height >= 120:` return \"ride\" `else:` return \"too short\"; the outer `else:` returns \"too young\"."
   ],
   "docs": [

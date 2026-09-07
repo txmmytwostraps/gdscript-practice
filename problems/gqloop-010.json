@@ -3,7 +3,7 @@
   "title": "A helper called from the loop",
   "concept": "gq-loop",
   "difficulty": 1,
-  "prompt": "A member `health` starts at 100. Write `regen`, which takes delta and adds 10 times delta to health. Write `_process`, which calls regen(delta). After 60 frames health_after_regen returns health rounded, 110.",
+  "prompt": "The robot's `health` starts at 100 and recovers 10 points a second, and the recovery lives in a helper called `regen` that the frame loop calls. After 60 frames at 60 per second, health_after_regen reports 110.",
   "signature": "func health_after_regen():",
   "fn": "health_after_regen",
   "starter": "var health = 100.0\n\nfunc health_after_regen():\n\treturn round(health)",
@@ -22,7 +22,7 @@
     }
   ],
   "hints": [
-    "_process can hand delta on to other functions.",
+    "regen takes delta and adds 10 times delta to health; _process hands delta on to regen.",
     "`func regen(delta):` with `health += 10 * delta`.",
     "`func _process(delta):` with `regen(delta)`."
   ],

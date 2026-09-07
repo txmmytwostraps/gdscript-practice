@@ -3,7 +3,7 @@
   "title": "Perimeter, your way",
   "concept": "gq-parameters",
   "difficulty": 1,
-  "prompt": "The robot measures a rectangular room. Write a helper called `print_perimeter` that prints the distance around a rectangle, and call it from `report_perimeter` with the width and height. You decide its parameters. report_perimeter(3, 4) prints 14.",
+  "prompt": "The robot measures a rectangular room and reports the distance around it, through a `print_perimeter` helper whose parameters are yours to decide. report_perimeter(3, 4) prints 14.",
   "signature": "func report_perimeter(width, height):",
   "fn": "report_perimeter",
   "starter": "func report_perimeter(width, height):\n\tpass",
@@ -46,7 +46,7 @@
     }
   ],
   "hints": [
-    "The perimeter is twice the width plus twice the height, so the helper needs both.",
+    "The perimeter is twice the width plus twice the height, so the helper needs both; report_perimeter calls it with the width and height.",
     "`func print_perimeter(w, h):` printing `2 * w + 2 * h`.",
     "report_perimeter passes its two values straight through."
   ],

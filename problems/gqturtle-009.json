@@ -3,7 +3,7 @@
   "title": "A triangle",
   "concept": "gq-turtle",
   "difficulty": 1,
-  "prompt": "Draw a triangle with sides of 60. At each corner turn left by 120, not 90: `turn_left(120)`.",
+  "prompt": "Draw a triangle with sides of 60.",
   "signature": "func run():",
   "fn": "run",
   "starter": "func run():\n\tpass",
@@ -23,7 +23,7 @@
     }
   ],
   "hints": [
-    "turn_left can take a number of degrees.",
+    "turn_left can take a number of degrees, and a triangle's corners turn 120, not 90.",
     "Three pairs of `move_forward(60)` and `turn_left(120)`."
   ],
   "docs": [

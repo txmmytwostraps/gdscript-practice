@@ -3,7 +3,7 @@
   "title": "Hours and minutes",
   "concept": "arithmetic",
   "difficulty": 1,
-  "prompt": "The robot has run for some number of minutes. Return an array with two numbers: whole hours, then the minutes left over. hours_and_minutes(90) is [1, 30].",
+  "prompt": "The robot has run for some number of minutes, and the log wants that as whole hours plus the minutes left over, in a two-item array. hours_and_minutes(90) is [1, 30].",
   "signature": "func hours_and_minutes(total_minutes):",
   "fn": "hours_and_minutes",
   "starter": "func hours_and_minutes(total_minutes):\n\treturn [0, 0]",

@@ -3,7 +3,7 @@
   "title": "Stop at a wall",
   "concept": "gq-loop",
   "difficulty": 1,
-  "prompt": "A member `x` starts at 0.0 and moves 200 per second, but must never pass 150. In `_process`, move x, then if it went past 150, set it to 150. After 60 frames x_at_wall returns x rounded, 150.",
+  "prompt": "The robot drives at 200 per second from `x` at 0.0, but there is a wall at 150 it can never pass. After 60 frames at 60 per second, x_at_wall reports 150.",
   "signature": "func x_at_wall():",
   "fn": "x_at_wall",
   "starter": "var x = 0.0\n\nfunc x_at_wall():\n\treturn round(x)",
@@ -22,7 +22,7 @@
     }
   ],
   "hints": [
-    "Move first, then clamp.",
+    "In _process, move x by 200 times delta first, then if it went past 150, put it back to 150.",
     "`x += 200 * delta` then `if x > 150:` set `x = 150`."
   ],
   "docs": [

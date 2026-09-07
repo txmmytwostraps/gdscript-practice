@@ -3,7 +3,7 @@
   "title": "Default value",
   "concept": "functions",
   "difficulty": 1,
-  "prompt": "add_step takes n and step, where step has a default of 1, so the tests sometimes call add_step with only one value. Return n plus step.",
+  "prompt": "The robot's counter moves up by a step, and the step is 1 unless the caller says otherwise. add_step(5) is 6 and add_step(5, 3) is 8.",
   "signature": "func add_step(n, step = 1):",
   "fn": "add_step",
   "starter": "func add_step(n, step = 1):\n\treturn n",
@@ -40,7 +40,7 @@
     }
   ],
   "hints": [
-    "Inside the function, step is just a normal variable.",
+    "Inside the function, step is just a normal variable; the answer is n plus step.",
     "`return n + step`"
   ],
   "docs": [

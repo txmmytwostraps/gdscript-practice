@@ -3,7 +3,7 @@
   "title": "A gap in the line",
   "concept": "gq-turtle",
   "difficulty": 1,
-  "prompt": "Draw a dashed line: forward 20, then `jump` 10 (which moves without drawing), then forward 20 again.",
+  "prompt": "Draw a dashed line: a dash of 20, a gap of 10, another dash of 20.",
   "signature": "func run():",
   "fn": "run",
   "starter": "func run():\n\tpass",
@@ -20,7 +20,7 @@
     }
   ],
   "hints": [
-    "jump moves the turtle without leaving a line.",
+    "jump moves the turtle without leaving a line: forward 20, jump 10, forward 20.",
     "`move_forward(20)`, `jump(10)`, `move_forward(20)`."
   ],
   "docs": [

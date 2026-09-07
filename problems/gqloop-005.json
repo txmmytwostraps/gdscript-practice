@@ -3,7 +3,7 @@
   "title": "Countdown in the loop",
   "concept": "gq-loop",
   "difficulty": 1,
-  "prompt": "A member `time_left` starts at 3.0. In `_process`, subtract delta each frame. After 60 frames time_after_frames returns time_left rounded, which is 2.",
+  "prompt": "The robot's timer, `time_left`, starts at 3.0 and runs down as the frames go by. After 60 frames at 60 per second, time_after_frames reports 2.",
   "signature": "func time_after_frames():",
   "fn": "time_after_frames",
   "starter": "var time_left = 3.0\n\nfunc time_after_frames():\n\treturn round(time_left)",
@@ -28,7 +28,7 @@
     }
   ],
   "hints": [
-    "A timer is a member that shrinks by delta every frame.",
+    "A timer is a member that shrinks by delta every frame, inside _process.",
     "`time_left -= delta`"
   ],
   "docs": [

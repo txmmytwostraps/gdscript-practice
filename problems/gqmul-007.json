@@ -3,7 +3,7 @@
   "title": "Reduce damage by a percentage",
   "concept": "gq-multiply",
   "difficulty": 1,
-  "prompt": "Armor reduces damage by 25%. Return the damage that gets through: damage times 0.75. through_armor(40) is 30.0.",
+  "prompt": "Armor stops 25% of any damage. through_armor gives back the damage that gets through: through_armor(40) is 30.0.",
   "signature": "func through_armor(damage) -> float:",
   "fn": "through_armor",
   "starter": "func through_armor(damage) -> float:\n\treturn damage",
@@ -31,7 +31,7 @@
     }
   ],
   "hints": [
-    "25% off means 75% remains.",
+    "25% off means 75% remains: damage times 0.75.",
     "`return damage * 0.75`"
   ],
   "docs": [

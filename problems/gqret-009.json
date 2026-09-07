@@ -3,7 +3,7 @@
   "title": "Return a rounded value",
   "concept": "gq-return",
   "difficulty": 1,
-  "prompt": "Write `nearest`, which takes a decimal and returns the nearest whole number as an int. `rounded` returns nearest(x). 2.6 becomes 3.",
+  "prompt": "The nearest whole number to a decimal, as an int, from a `nearest` helper that `rounded` uses. rounded(2.6) is 3.",
   "signature": "func rounded(x):",
   "fn": "rounded",
   "starter": "func rounded(x):\n\treturn int(x)",
@@ -38,7 +38,7 @@
     }
   ],
   "hints": [
-    "round() gives the nearest value but as a float; int() turns it into an int.",
+    "nearest takes a decimal; round() gives the nearest value but as a float, and int() turns it into an int. rounded returns nearest(x).",
     "`return int(round(value))` inside nearest."
   ],
   "docs": [

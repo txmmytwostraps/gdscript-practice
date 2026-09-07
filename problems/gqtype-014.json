@@ -3,7 +3,7 @@
   "title": "Members with types",
   "concept": "gq-types",
   "difficulty": 1,
-  "prompt": "Declare members `level: int = 1` and `max_health: float = 100.0`. Write `level_up`, hinted void, which adds 1 to level and multiplies max_health by 1.5. In `typed_level_up`, call it twice. Then return max_health.",
+  "prompt": "The robot's `level` starts at 1 and its `max_health` at 100.0, both typed. Each level-up, from a `level_up` helper hinted void, raises the level by one and the maximum health by half. typed_level_up levels up twice and reports 225.",
   "signature": "func typed_level_up() -> float:",
   "fn": "typed_level_up",
   "starter": "func typed_level_up() -> float:\n\treturn 0.0",
@@ -15,7 +15,7 @@
     }
   ],
   "hints": [
-    "Hint both members; use -> void on the helper.",
+    "Declare `level: int = 1` and `max_health: float = 100.0`; level_up, with -> void, adds 1 to level and multiplies max_health by 1.5; typed_level_up calls it twice and returns max_health.",
     "`func level_up() -> void:` with `level += 1` and `max_health *= 1.5`."
   ],
   "docs": [

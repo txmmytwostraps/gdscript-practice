@@ -3,7 +3,7 @@
   "title": "Move every frame",
   "concept": "gq-loop",
   "difficulty": 1,
-  "prompt": "A member `x` starts at 0.0 and the robot drives at 120 pixels per second. In `_process`, move x by 120 times delta. After 60 frames x_after_second returns x rounded, which is 120.",
+  "prompt": "The robot drives at 120 pixels per second, starting from `x` at 0.0. After 60 frames at 60 per second, x_after_second reports 120.",
   "signature": "func x_after_second():",
   "fn": "x_after_second",
   "starter": "var x = 0.0\n\nfunc x_after_second():\n\treturn round(x)",
@@ -28,7 +28,7 @@
     }
   ],
   "hints": [
-    "Speed times delta is the distance for one frame.",
+    "Speed times delta is the distance for one frame; add it to x in _process.",
     "`x += 120 * delta` inside _process."
   ],
   "docs": [

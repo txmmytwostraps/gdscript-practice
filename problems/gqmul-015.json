@@ -1,9 +1,9 @@
 {
   "id": "gqmul-015",
-  "title": "Report after levelling",
+  "title": "Report after leveling",
   "concept": "gq-multiply",
   "difficulty": 1,
-  "prompt": "Members `level` at 1 and `max_health` at 100, with a working `level_up`. Write `report`, which prints level and then max_health. run calls level_up, then report.",
+  "prompt": "Members `level` at 1 and `max_health` at 100, with a working `level_up`. After one level-up the robot reports itself through a `report` helper: the level on one line, then the maximum health.",
   "signature": "func run():",
   "fn": "run",
   "starter": "var level = 1\nvar max_health = 100\n\nfunc run():\n\tpass\n\nfunc level_up():\n\tlevel += 1\n\tmax_health *= 2",
@@ -19,7 +19,7 @@
     }
   ],
   "hints": [
-    "report reads the members after the change.",
+    "report prints level, then max_health; run calls level_up, then report. report reads the members after the change.",
     "`print(level)` then `print(max_health)` inside report."
   ],
   "docs": [

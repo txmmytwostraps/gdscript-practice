@@ -3,7 +3,7 @@
   "title": "Align the tracks",
   "concept": "gq-indices",
   "difficulty": 1,
-  "prompt": "Two arrays, left and right, have the same length. Return a new array where each item is left[i] plus right[i].",
+  "prompt": "The robot's two tracks, left and right, log the same number of readings. align_tracks pairs them up: a new array where each item is the left reading plus the right reading at the same position. [1, 2] and [10, 20] give [11, 22].",
   "signature": "func align_tracks(left, right):",
   "fn": "align_tracks",
   "starter": "func align_tracks(left, right):\n\treturn left",

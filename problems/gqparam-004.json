@@ -3,7 +3,7 @@
   "title": "Health, damage, remaining",
   "concept": "gq-parameters",
   "difficulty": 1,
-  "prompt": "The robot reports a hit in three lines. Write three helpers: `print_health` prints the health, `print_damage` prints the damage, and `print_remaining` takes both and prints health minus damage. Call all three from `report_hit` in that order, so report_hit(100, 30) prints 100, 30, 70.",
+  "prompt": "The robot reports a hit in three lines: its health, the damage, and what is left, each line from a helper of its own. report_hit(100, 30) prints 100, 30, 70.",
   "signature": "func report_hit(health, damage):",
   "fn": "report_hit",
   "starter": "func report_hit(health, damage):\n\tpass",
@@ -41,7 +41,7 @@
     }
   ],
   "hints": [
-    "Two helpers take one parameter; the last takes two.",
+    "print_health prints the health, print_damage the damage, and print_remaining takes both and prints health minus damage; report_hit calls all three in that order.",
     "`func print_remaining(h, d):` prints `h - d`.",
     "report_hit: `print_health(health)`, `print_damage(damage)`, `print_remaining(health, damage)`."
   ],

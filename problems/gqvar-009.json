@@ -3,7 +3,7 @@
   "title": "Copy, then change the original",
   "concept": "gq-variables",
   "difficulty": 1,
-  "prompt": "`a` starts as n. Make a second variable `b` equal to a. Then add the number `1` to a, and return b. Numbers are copied, so b should still be the old value: copy_then_change(5) is 5.",
+  "prompt": "`a` starts as n, and `b` is a copy of it taken before a goes up by the number `1`. Numbers are copied, so the copy keeps the old value: copy_then_change(5) is 5.",
   "signature": "func copy_then_change(n):",
   "fn": "copy_then_change",
   "starter": "func copy_then_change(n):\n\tvar a = n\n\tvar b = a\n\ta += 1\n\treturn a",
@@ -31,7 +31,7 @@
     }
   ],
   "hints": [
-    "Assigning a number copies it; the two variables are separate afterwards.",
+    "b equals a, then a += 1, and the answer is b. Assigning a number copies it; the two variables are separate afterwards.",
     "The starter returns the wrong one. Return b."
   ],
   "docs": [],

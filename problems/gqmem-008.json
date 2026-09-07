@@ -3,7 +3,7 @@
   "title": "Counting calls",
   "concept": "gq-members",
   "difficulty": 1,
-  "prompt": "A member `count` starts at 0. Write `tick`, which adds 1 to count. In `count_ticks`, call tick n times using a loop, then return count.",
+  "prompt": "The robot counts ticks in a member `count` that starts at 0, one tick per call of a `tick` helper. count_ticks(3) ticks three times and reports 3.",
   "signature": "func count_ticks(n):",
   "fn": "count_ticks",
   "starter": "var count = 0\n\nfunc count_ticks(n):\n\treturn count",
@@ -31,7 +31,7 @@
     }
   ],
   "hints": [
-    "The member keeps its value between calls.",
+    "tick adds 1 to count; count_ticks calls tick n times in a loop, then returns count. The member keeps its value between calls.",
     "`for i in range(n):` then `tick()`.",
     "Return count after the loop."
   ],

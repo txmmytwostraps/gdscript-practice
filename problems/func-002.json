@@ -3,7 +3,7 @@
   "title": "Helper function",
   "concept": "functions",
   "difficulty": 1,
-  "prompt": "Write a second function called `cube` that returns n times n times n. Make `cubed` call cube(n). Then return what it gives back. Both go in the same code box.",
+  "prompt": "The robot needs cubes of numbers, and the work belongs in a helper called `cube` that `cubed` uses. cubed(3) is 27.",
   "signature": "func cubed(n):",
   "fn": "cubed",
   "starter": "func cubed(n):\n\treturn 0",
@@ -45,7 +45,7 @@
     }
   ],
   "hints": [
-    "A function is defined with func and a name on its own line, followed by an indented body.",
+    "cube returns n times n times n; cubed calls cube(n) and returns what it gives back. A function is defined with func and a name on its own line, followed by an indented body.",
     "`func cube(n):` with `return n * n * n`.",
     "cubed: `return cube(n)`."
   ],

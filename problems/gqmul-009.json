@@ -3,7 +3,7 @@
   "title": "Grow by ten percent",
   "concept": "gq-multiply",
   "difficulty": 1,
-  "prompt": "Each level, max_health grows by 10%. Return max_health times 1.1. grow_max_health(100) is 110.0.",
+  "prompt": "Each level, the robot's maximum health grows by 10%. grow_max_health(100) is 110.0.",
   "signature": "func grow_max_health(max_health) -> float:",
   "fn": "grow_max_health",
   "starter": "func grow_max_health(max_health) -> float:\n\treturn max_health + 10",
@@ -31,7 +31,7 @@
     }
   ],
   "hints": [
-    "Adding 10 is not the same as adding 10%.",
+    "Adding 10 is not the same as adding 10%: multiply max_health by 1.1.",
     "`return max_health * 1.1`"
   ],
   "docs": [

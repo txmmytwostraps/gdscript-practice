@@ -3,7 +3,7 @@
   "title": "Middle item",
   "concept": "arrays",
   "difficulty": 1,
-  "prompt": "The array always has an odd number of items. Return the one in the middle.",
+  "prompt": "The robot's convoy always has an odd number of vehicles, and the leader rides in the middle one. middle_item gives back that one.",
   "signature": "func middle_item(items):",
   "fn": "middle_item",
   "starter": "func middle_item(items):\n\treturn items[0]",

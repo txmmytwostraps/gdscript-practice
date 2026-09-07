@@ -3,7 +3,7 @@
   "title": "In range",
   "concept": "comparisons",
   "difficulty": 1,
-  "prompt": "Return true if n is between low and high, including both ends.",
+  "prompt": "The robot's sensor only trusts readings inside a range. in_range says whether n is between low and high, with both ends counting.",
   "signature": "func in_range(n, low, high):",
   "fn": "in_range",
   "starter": "func in_range(n, low, high):\n\treturn false",
@@ -55,7 +55,7 @@
     }
   ],
   "hints": [
-    "Two conditions joined with and.",
+    "Two conditions joined with and: n against low, and n against high.",
     "`return low <= n and n <= high`"
   ],
   "docs": [

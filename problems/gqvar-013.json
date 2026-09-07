@@ -3,7 +3,7 @@
   "title": "Whole number or decimal",
   "concept": "gq-variables",
   "difficulty": 1,
-  "prompt": "Create a variable `half` equal to 7 divided by 2, and return it. The answer must be 3.5, but 7 / 2 with two whole numbers gives 3.",
+  "prompt": "Half of 7, kept in a variable called `half`, must come out as 3.5, but 7 / 2 with two whole numbers gives 3.",
   "signature": "func half_of_seven() -> float:",
   "fn": "half_of_seven",
   "starter": "func half_of_seven() -> float:\n\tvar half = 7 / 2\n\treturn half",
@@ -18,7 +18,7 @@
     }
   ],
   "hints": [
-    "Dividing two whole numbers (ints) throws away the decimals.",
+    "half is 7 divided by 2, and then it is returned; dividing two whole numbers (ints) throws away the decimals.",
     "Write one of the numbers with a decimal point, like 2.0.",
     "`var half = 7 / 2.0`"
   ],

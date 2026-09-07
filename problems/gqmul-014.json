@@ -3,7 +3,7 @@
   "title": "Level up with a cap",
   "concept": "gq-multiply",
   "difficulty": 1,
-  "prompt": "Members `max_health` at 100. Write `level_up`, which doubles max_health but never lets it pass 500. In `max_health_capped`, call level_up four times. Then return max_health, which is 500.",
+  "prompt": "A member `max_health` at 100. Each level-up doubles it, but it can never pass 500, through a `level_up` helper. max_health_capped levels up four times and reports 500.",
   "signature": "func max_health_capped():",
   "fn": "max_health_capped",
   "starter": "var max_health = 100\n\nfunc max_health_capped():\n\treturn max_health",
@@ -15,7 +15,7 @@
     }
   ],
   "hints": [
-    "Double, then check the cap.",
+    "level_up doubles max_health, then checks the cap; max_health_capped calls it four times and returns max_health.",
     "`max_health *= 2` then `if max_health > 500:` set it to 500."
   ],
   "docs": [

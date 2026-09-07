@@ -198,12 +198,10 @@ function renderProblem(p) {
   el.title.textContent = p.title;
   el.prompt.innerHTML = rich(p.prompt);
   $("writeline").innerHTML = `Write a function called <code>${esc(fnName(p))}</code>.`;
+  $("writeline").hidden = String(p.starter || "").includes(`func ${fnName(p)}(`);
   $("signature-help").innerHTML = hasInputs(p) ? describeSignature(p.signature, p.tests.every((tt) => tt.expect === null && tt.out), fnName(p)) : "";
   $("signature-help").hidden = !hasInputs(p);
-  const reqs = [];
-  if (p.require_methods) reqs.push("Must define: " + p.require_methods.map((m) => `<code>${esc(m)}()</code>`).join(", "));
-  if (p.require_names) reqs.push("Must declare: " + p.require_names.map((m) => `<code>${esc(m)}</code>`).join(", ") + (p.once_only ? ` — and ${p.once_only.map((x) => `<code>${x}</code>`).join(", ")} may appear only once` : ""));
-  el.requirements.innerHTML = reqs.join("<br>"); el.requirements.hidden = reqs.length === 0;
+  el.requirements.innerHTML = ""; el.requirements.hidden = true;
   // Staged hints: each opens on its own; opening one never counts as a miss.
   const hints = Array.isArray(p.hints) ? p.hints : (p.hint ? [p.hint] : []);
   const level = scaffold.levelFor(p.concept);
@@ -216,7 +214,8 @@ function renderProblem(p) {
   el.tests.innerHTML = (inputs ? `<div class="row head"><span>The judge calls</span><span></span><span>Expected outcome</span></div>` : `<div class="row head"><span>Expected output</span></div>`)
     + p.tests.map((tt) => inputs
       ? `<div class="row"><span>${framesLabel(tt)}${esc(callStr(p, tt.args))}</span><span class="arrow">→</span><span class="exp">${outcomeHtml(p, tt)}</span>${many && tt.name ? `<span class="check">Checks that ${esc(tt.name.charAt(0).toLowerCase() + tt.name.slice(1))}</span>` : ""}</div>`
-      : `<div class="row"><span class="exp">${framesLabel(tt)}${outcomeHtml(p, tt)}</span>${many && tt.name ? `<span class="check">Checks that ${esc(tt.name.charAt(0).toLowerCase() + tt.name.slice(1))}</span>` : ""}</div>`).join("");
+      : `<div class="row"><span class="exp">${framesLabel(tt)}${outcomeHtml(p, tt)}</span>${many && tt.name ? `<span class="check">Checks that ${esc(tt.name.charAt(0).toLowerCase() + tt.name.slice(1))}</span>` : ""}</div>`).join("")
+    + requirementRows(p);
   const docs = Array.isArray(p.docs) ? p.docs : [];
   el.docs.hidden = docs.length === 0;
   el.doclist.innerHTML = docs.map((d) => `<div class="row"><code>${esc(d.name)}</code><span>${esc(d.what)}</span></div>`).join("");
@@ -226,6 +225,16 @@ function renderProblem(p) {
   el.again.hidden = !state.solved[p.id];
   updateSolutionLock(p);
   document.title = `${p.title} · GDScript Practice`;
+}
+// What the judge checks about the code itself, shown as rows under the tests:
+// a variable or constant that must be declared, a helper that must exist, a
+// number that may appear only once.
+function requirementRows(p) {
+  const rows = [];
+  for (const n of p.require_names || []) rows.push(`declares a ${/^[A-Z][A-Z0-9_]*$/.test(n) ? "constant" : "variable"} <code>${esc(n)}</code>`);
+  for (const m of p.require_methods || []) rows.push(`defines a function <code>${esc(m)}()</code>`);
+  for (const x of p.once_only || []) rows.push(`uses the number <code>${esc(String(x))}</code> only once, where it is named`);
+  return rows.map((r) => `<div class="row req"><span class="exp">${r}</span></div>`).join("");
 }
 function updateSolutionLock(p) {
   const misses = state.fails[p.id] || 0;

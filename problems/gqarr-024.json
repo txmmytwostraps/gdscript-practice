@@ -3,7 +3,7 @@
   "title": "Arrays are shared, not copied",
   "concept": "gq-arrays",
   "difficulty": 1,
-  "prompt": "Earlier you saw that a number passed to a function is a copy. Arrays are different. Write `add_item`, which takes an array and appends 99 to it. In `with_item_added`, call add_item(items). Then return items: the original now contains the 99.",
+  "prompt": "A number handed to a function is a copy; an array is not. with_item_added hands its array to a helper, `add_item`, which puts the number `99` on the end, and the original comes back with the 99 in it. [1, 2] becomes [1, 2, 99].",
   "signature": "func with_item_added(items):",
   "fn": "with_item_added",
   "starter": "func with_item_added(items):\n\treturn items",
@@ -33,7 +33,7 @@
     }
   ],
   "hints": [
-    "Both names point at the same array, so changes made through one show up in the other.",
+    "add_item takes the array and appends 99; with_item_added calls add_item(items) and returns items. Both names point at the same array, so changes made through one show up in the other.",
     "`func add_item(arr):` with `arr.append(99)`; it does not need to return anything.",
     "with_item_added: `add_item(items)` then `return items`."
   ],

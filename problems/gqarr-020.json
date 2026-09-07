@@ -3,7 +3,7 @@
   "title": "Reverse, now with reverse()",
   "concept": "gq-arrays",
   "difficulty": 1,
-  "prompt": "Same task with the built-in reverse method. Careful: `return items.reverse()` will not even compile, because reverse() changes the array in place and gives nothing back.",
+  "prompt": "Same task, this time with the built-in reverse method. [1, 2, 3] becomes [3, 2, 1].",
   "signature": "func reverse_with_method(items):",
   "fn": "reverse_with_method",
   "starter": "func reverse_with_method(items):\n\treturn items",
@@ -43,7 +43,7 @@
     }
   ],
   "hints": [
-    "Call reverse() on its own line, then return the array on the next.",
+    "reverse() changes the array in place and gives nothing back, so `return items.reverse()` will not even compile. Call it on its own line, then return the array.",
     "`items.reverse()` then `return items`."
   ],
   "docs": [

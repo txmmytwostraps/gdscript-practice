@@ -3,7 +3,7 @@
   "title": "Three level-ups",
   "concept": "gq-multiply",
   "difficulty": 1,
-  "prompt": "Same members and level_up as before. In `max_health_after_three`, call level_up three times. Then return max_health, which is 800.",
+  "prompt": "Same members and level_up as before. max_health_after_three levels up three times and reports 800.",
   "signature": "func max_health_after_three():",
   "fn": "max_health_after_three",
   "starter": "var level = 1\nvar max_health = 100\n\nfunc max_health_after_three():\n\treturn max_health\n\nfunc level_up():\n\tlevel += 1\n\tmax_health *= 2",
@@ -15,7 +15,7 @@
     }
   ],
   "hints": [
-    "Each call doubles again.",
+    "Three level_up() calls, then return max_health. Each call doubles again.",
     "Three `level_up()` lines, then return."
   ],
   "docs": [

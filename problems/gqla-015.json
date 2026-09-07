@@ -3,7 +3,7 @@
   "title": "Print with numbers",
   "concept": "gq-looparrays",
   "difficulty": 1,
-  "prompt": "Print each item with its position in front, starting from 1: \"1 bolt\", \"2 gear\". Keep a counter that goes up each turn of the loop.",
+  "prompt": "Print each item with its number in front, counting from 1: \"1 bolt\", \"2 gear\".",
   "signature": "func print_numbered(items):",
   "fn": "print_numbered",
   "starter": "func print_numbered(items):\n\tpass",
@@ -32,7 +32,7 @@
     }
   ],
   "hints": [
-    "The loop gives you the item; you keep the number yourself.",
+    "The loop gives you the item; you keep the number yourself, in a counter that goes up each turn of the loop.",
     "`var n = 1` before the loop, `n += 1` at the end of each turn.",
     "`print(str(n) + \" \" + item)`"
   ],

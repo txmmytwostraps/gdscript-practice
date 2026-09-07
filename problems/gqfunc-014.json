@@ -3,7 +3,7 @@
   "title": "Patrol route",
   "concept": "gq-functions",
   "difficulty": 1,
-  "prompt": "The robot patrols a corner. Write `step`, which prints \"forward\", and `turn`, which prints \"left\". In `run`, make it step, turn, step, turn, so the output is those four words in order.",
+  "prompt": "The robot patrols a corner. Its route prints as forward, left, forward, left, and each kind of move is a helper of its own.",
   "signature": "func run():",
   "fn": "run",
   "starter": "func run():\n\tpass",
@@ -25,7 +25,7 @@
     }
   ],
   "hints": [
-    "Each call is one instruction, and the order of calls is the route.",
+    "step prints \"forward\" and turn prints \"left\"; run calls step, turn, step, turn. Each call is one instruction, and the order of calls is the route.",
     "Two helpers with one print each.",
     "run has four calls: `step()`, `turn()`, `step()`, `turn()`."
   ],

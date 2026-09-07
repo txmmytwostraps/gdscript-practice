@@ -3,7 +3,7 @@
   "title": "Only while running",
   "concept": "gq-loop",
   "difficulty": 1,
-  "prompt": "Members `running` at true and `distance` at 0.0. In `_process`, add 100 times delta to distance, but only when running is true. distance_while_running returns distance rounded; 60 frames give 100.",
+  "prompt": "The robot only covers ground while `running` is true, at 100 per second, counting `distance` from 0.0. After 60 frames at 60 per second, distance_while_running reports 100.",
   "signature": "func distance_while_running():",
   "fn": "distance_while_running",
   "starter": "var running = true\nvar distance = 0.0\n\nfunc distance_while_running():\n\treturn round(distance)",
@@ -22,7 +22,7 @@
     }
   ],
   "hints": [
-    "An if inside _process decides whether this frame does anything.",
+    "An if on running inside _process decides whether this frame adds 100 times delta to distance.",
     "`if running:` then `distance += 100 * delta`."
   ],
   "docs": [

@@ -3,7 +3,7 @@
   "title": "Damage, then heal",
   "concept": "gq-members",
   "difficulty": 1,
-  "prompt": "Using the starter's members and helpers, make `damage_then_heal` take 40 damage, then heal 15, and return health. From 100 that leaves 75.",
+  "prompt": "Using the starter's members and helpers: the robot takes 40 damage, then heals 15, and damage_then_heal reports the health left. From 100 that is 75.",
   "signature": "func damage_then_heal():",
   "fn": "damage_then_heal",
   "starter": "var health = 100\n\nfunc damage_then_heal():\n\treturn health\n\nfunc take_damage(amount):\n\thealth -= amount\n\nfunc heal(amount):\n\thealth += amount",
@@ -15,7 +15,7 @@
     }
   ],
   "hints": [
-    "Each helper changes the same variable at the top of the script (a member variable) in turn.",
+    "take_damage, then heal, then return health; each helper changes the same variable at the top of the script (a member variable) in turn.",
     "`take_damage(40)`, `heal(15)`, `return health`."
   ],
   "docs": [

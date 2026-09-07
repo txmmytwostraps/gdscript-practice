@@ -3,7 +3,7 @@
   "title": "Convert to satisfy the hint",
   "concept": "gq-types",
   "difficulty": 1,
-  "prompt": "Write `to_label`, which takes an int and returns a String of it with \"hp\" on the end. label_for returns to_label(n). The return hint means you must convert the number.",
+  "prompt": "A health number becomes a label with \"hp\" on the end, through a `to_label` helper that label_for uses. label_for(80) is \"80hp\".",
   "signature": "func label_for(n: int) -> String:",
   "fn": "label_for",
   "starter": "func label_for(n: int) -> String:\n\treturn \"hp\"",
@@ -24,7 +24,7 @@
     }
   ],
   "hints": [
-    "A String return type will not accept a number.",
+    "to_label takes an int and returns a String; the return hint means the number must be turned into text first. label_for returns to_label(n).",
     "`return str(value) + \"hp\"`"
   ],
   "docs": [

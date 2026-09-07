@@ -3,7 +3,7 @@
   "title": "Whole number to decimal",
   "concept": "gq-valuetypes",
   "difficulty": 1,
-  "prompt": "Return a divided by b keeping decimals, by converting first. divide_as_decimal(7, 2) is 3.5.",
+  "prompt": "The answer to a divided by b keeps its decimals: divide_as_decimal(7, 2) is 3.5.",
   "signature": "func divide_as_decimal(a, b) -> float:",
   "fn": "divide_as_decimal",
   "starter": "func divide_as_decimal(a, b) -> float:\n\treturn a / b",
@@ -34,7 +34,7 @@
     }
   ],
   "hints": [
-    "Two ints divide to an int; one float makes the result a float.",
+    "Two ints divide to an int; convert one to a float first so the result is a float.",
     "`return float(a) / b`"
   ],
   "docs": [

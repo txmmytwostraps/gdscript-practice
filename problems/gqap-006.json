@@ -3,7 +3,7 @@
   "title": "Serve everything",
   "concept": "gq-appendpop",
   "difficulty": 1,
-  "prompt": "Serve every order in turn, printing each as it is served, until the queue is empty. Use a while loop with pop_front.",
+  "prompt": "The robot works through the whole order queue, front first, calling out each order as it is served. An empty queue prints nothing.",
   "signature": "func serve_everything(queue):",
   "fn": "serve_everything",
   "starter": "func serve_everything(queue):\n\tpass",
@@ -32,7 +32,7 @@
     }
   ],
   "hints": [
-    "Keep going while there is something left.",
+    "A while loop that keeps going while the queue has something left, taking the front order with pop_front and printing it.",
     "`while queue.size() > 0:` then `print(queue.pop_front())`."
   ],
   "docs": [

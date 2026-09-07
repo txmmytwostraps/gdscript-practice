@@ -3,7 +3,7 @@
   "title": "Two numbers to name",
   "concept": "gq-readable",
   "difficulty": 1,
-  "prompt": "This bill is some items at 4.5 each, plus 20% tax. Name both numbers, `PRICE_PER_ITEM` and `TAX_RATE`, and use the names everywhere. Notice 4.5 appears twice in the starter.",
+  "prompt": "This bill is some items at 4.5 each, plus 20% tax. Both numbers deserve names, and 4.5 appears twice in the starter.",
   "signature": "func bill_with_tax(quantity) -> float:",
   "fn": "bill_with_tax",
   "starter": "func bill_with_tax(quantity) -> float:\n\treturn quantity * 4.5 + quantity * 4.5 * 0.2",
@@ -39,7 +39,7 @@
     }
   ],
   "hints": [
-    "Two const lines.",
+    "Two const lines, `PRICE_PER_ITEM` and `TAX_RATE`, used everywhere the numbers were.",
     "`const PRICE_PER_ITEM = 4.5` and `const TAX_RATE = 0.2`",
     "Replace every copy of each number, not just the first."
   ],

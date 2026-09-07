@@ -3,7 +3,7 @@
   "title": "Remove a value",
   "concept": "gq-arrays",
   "difficulty": 1,
-  "prompt": "Remove the first copy of value from the array and return the array. If value is not there, return it unchanged. [1, 2, 3, 2] minus 2 is [1, 3, 2].",
+  "prompt": "The robot drops one copy of an item. remove_value gives back the array without the first copy of value; if there is none, the array is unchanged. [1, 2, 3, 2] minus 2 is [1, 3, 2].",
   "signature": "func remove_value(items, value):",
   "fn": "remove_value",
   "starter": "func remove_value(items, value):\n\treturn items",

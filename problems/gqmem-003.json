@@ -3,7 +3,7 @@
   "title": "A helper changes a member",
   "concept": "gq-members",
   "difficulty": 1,
-  "prompt": "`health` is a variable at the top of the script (a member variable) starting at 100. Write `take_damage`, which takes an amount and subtracts it from health. In `health_after_hit`, call take_damage(30). Then return health, which is 70 by then.",
+  "prompt": "`health` is a variable at the top of the script (a member variable) starting at 100. The robot takes a hit of 30 through a `take_damage` helper, and health_after_hit reports what is left: 70.",
   "signature": "func health_after_hit():",
   "fn": "health_after_hit",
   "starter": "var health = 100\n\nfunc health_after_hit():\n\treturn health",
@@ -15,7 +15,7 @@
     }
   ],
   "hints": [
-    "Because health is a member, a helper can change it and health_after_hit sees the change.",
+    "take_damage takes an amount and subtracts it from health; health_after_hit calls take_damage(30) and then returns health. Because health is a member, a helper can change it and health_after_hit sees the change.",
     "`func take_damage(amount):` with `health -= amount`.",
     "health_after_hit: `take_damage(30)` then `return health`."
   ],

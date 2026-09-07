@@ -3,7 +3,7 @@
   "title": "Serve two, keep the rest",
   "concept": "gq-appendpop",
   "difficulty": 1,
-  "prompt": "Serve the first two orders and return the queue that remains. The queue always has at least two orders.",
+  "prompt": "The robot serves the first two orders. serve_two gives back what is still waiting; there are always at least two orders.",
   "signature": "func serve_two(queue):",
   "fn": "serve_two",
   "starter": "func serve_two(queue):\n\treturn queue",
@@ -33,7 +33,7 @@
     }
   ],
   "hints": [
-    "Two pop_front calls.",
+    "pop_front takes the first order; two calls, then return the queue.",
     "`queue.pop_front()` twice, then `return queue`."
   ],
   "docs": [

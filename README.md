@@ -45,7 +45,7 @@ A milestone is a small script built in four steps beside a live stage. Each step
 
 ## The Delta app
 
-Delta is a companion app for the phone for the parts that work well away from the keyboard: cards and light reviews. Get it here: [Delta for Android](#the-delta-app) (placeholder until release; the real link replaces it then).
+Delta is a companion app for the phone for the parts that work well away from the keyboard: cards and light reviews. Install it on Android: [download Delta](https://github.com/txmmytwostraps/delta/releases/latest/download/delta.apk). The phone may ask you to allow installs from your browser, since it does not come from the Play Store.
 
 ## Settings
 

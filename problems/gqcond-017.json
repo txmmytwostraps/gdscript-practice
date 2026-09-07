@@ -3,7 +3,7 @@
   "title": "Guard with an early return",
   "concept": "gq-conditions",
   "difficulty": 1,
-  "prompt": "Dividing by zero is an error; run the starter to see it. Fix it: if b is 0, return -1 straight away, otherwise return a divided by b using whole-number division.",
+  "prompt": "Dividing by zero is an error; run the starter to see it. safe_divide gives -1 when b is 0, and the whole-number result of a divided by b otherwise.",
   "signature": "func safe_divide(a, b):",
   "fn": "safe_divide",
   "starter": "func safe_divide(a, b):\n\treturn a / b",
@@ -34,7 +34,7 @@
     }
   ],
   "hints": [
-    "An if with a return inside stops the function early.",
+    "An if on b with a return inside stops the function early; the normal division comes after it.",
     "`if b == 0:` then `return -1`.",
     "The division line stays after the if; it only runs when b is not 0."
   ],

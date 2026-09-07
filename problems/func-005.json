@@ -3,7 +3,7 @@
   "title": "Print then return",
   "concept": "functions",
   "difficulty": 1,
-  "prompt": "Call print(n) to print the value of n, then return n times 10. The tests check what you print as well as what you return.",
+  "prompt": "The robot logs each reading as it comes in, then passes on ten times the value. print_then_scale(3) prints 3 and gives back 30.",
   "signature": "func print_then_scale(n):",
   "fn": "print_then_scale",
   "starter": "func print_then_scale(n):\n\treturn n * 10",
@@ -40,7 +40,7 @@
     }
   ],
   "hints": [
-    "Two lines: print first, then return.",
+    "Two lines: print n first, then return n times 10.",
     "`print(n)` then `return n * 10`."
   ],
   "docs": [

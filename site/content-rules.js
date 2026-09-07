@@ -3,6 +3,7 @@
 // one topic, to the clipboard.
 export const CONTENT_RULES = `- Follow the GDQuest course "Learn GDScript From Zero" in lesson order: a problem may only use concepts from its own lesson or earlier ones.
 - One recurring character: a robot with health, level and max_health. Prompts give a goal with a little context, not a bare instruction.
+- A beginner (difficulty 1) prompt states the goal in game terms and the values only, never a line of code in English (no "create a variable", "set it to", "return it"); which variables and which operation go in hint 1.
 - Every test has a plain-English name saying what is verified (e.g. "Exactly 20 leaves 0", "The message is printed").
 - A problem with no inputs is a function called run(), as in the course; a problem with inputs is a function named after what it does (double, take_hit, is_even), and the goal says so.
 - No type hints anywhere (no "x: int", no ":=", no "-> int"), except that the tested function may keep its return type where it matters.

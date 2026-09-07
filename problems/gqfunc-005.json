@@ -3,7 +3,7 @@
   "title": "A helper that calls a helper",
   "concept": "gq-functions",
   "difficulty": 1,
-  "prompt": "Write `beep`, which prints \"beep\". Then write `double_beep`, which calls beep twice. `run` should call double_beep once, and the output is two beeps.",
+  "prompt": "The robot beeps twice, and both beeps come from one call in `run`. The output is beep, beep.",
   "signature": "func run():",
   "fn": "run",
   "starter": "func run():\n\tpass",
@@ -23,7 +23,7 @@
     }
   ],
   "hints": [
-    "Any function can call any other function, not just run.",
+    "beep prints \"beep\"; double_beep calls beep twice; run calls double_beep once. Any function can call any other function, not just run.",
     "double_beep is `func double_beep():` with `beep()` written twice inside it.",
     "run then only needs one line: `double_beep()`."
   ],

@@ -3,7 +3,7 @@
   "title": "Two squares side by side",
   "concept": "gq-turtle",
   "difficulty": 1,
-  "prompt": "Draw a square of 30, then jump 40 forward, then draw another square of 30. Each square is four times: forward 30, turn left.",
+  "prompt": "Draw two squares of 30 side by side, with a gap of 40 between them.",
   "signature": "func run():",
   "fn": "run",
   "starter": "func run():\n\tpass",
@@ -34,7 +34,7 @@
     }
   ],
   "hints": [
-    "After four left turns the turtle faces the way it started, so a jump moves it along.",
+    "A square is forward 30 then turn left, four times; after four left turns the turtle faces the way it started, so a jump of 40 moves it along to the second square.",
     "Square, then `jump(40)`, then the square again."
   ],
   "docs": [

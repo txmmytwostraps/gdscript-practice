@@ -3,7 +3,7 @@
   "title": "Members keep state between helpers",
   "concept": "gq-members",
   "difficulty": 1,
-  "prompt": "Members `coins` at 0. Write `earn`, which adds an amount, and `spend`, which subtracts one. coins_left earns 50, spends 20, earns 5 and returns coins, 35.",
+  "prompt": "The robot's purse, a member `coins` at 0, grows through an `earn` helper and shrinks through a `spend` helper. coins_left earns 50, spends 20, earns 5 and reports 35.",
   "signature": "func coins_left():",
   "fn": "coins_left",
   "starter": "var coins = 0\n\nfunc coins_left():\n\treturn coins",
@@ -15,7 +15,7 @@
     }
   ],
   "hints": [
-    "Both helpers work on the same member.",
+    "earn adds an amount to coins and spend subtracts one; both helpers work on the same member.",
     "`earn(50)`, `spend(20)`, `earn(5)`, `return coins`."
   ],
   "docs": [

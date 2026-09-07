@@ -187,3 +187,7 @@
 .fold summary { font-size: 12px; }
 .fold summary > span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .fold summary > span:last-child, .fold summary > a { flex-shrink: 0; white-space: nowrap; }
+
+/* checks on the code itself sit under the tests as single-column rows */
+.testlist .row.req { grid-template-columns: 1fr; }
+.testlist .row.req .exp { color: var(--muted); }

@@ -3,7 +3,7 @@
   "title": "Swap two variables",
   "concept": "gq-variables",
   "difficulty": 1,
-  "prompt": "Swap the values of a and b using a third variable called `temp`. After the swap, return a, which should hold what b had: swap_and_return(1, 2) is 2.",
+  "prompt": "Swap the values of a and b, then report a, which now holds what b had: swap_and_return(1, 2) is 2.",
   "signature": "func swap_and_return(a, b):",
   "fn": "swap_and_return",
   "starter": "func swap_and_return(a, b):\n\treturn a",
@@ -37,7 +37,7 @@
     }
   ],
   "hints": [
-    "You need somewhere to keep one value while the other overwrites it.",
+    "You need somewhere to keep one value while the other overwrites it: a third variable called `temp`.",
     "Three steps: `var temp = a`, `a = b`, `b = temp`.",
     "Then `return a`."
   ],

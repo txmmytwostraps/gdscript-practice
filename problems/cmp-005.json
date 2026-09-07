@@ -3,7 +3,7 @@
   "title": "Same sign",
   "concept": "comparisons",
   "difficulty": 1,
-  "prompt": "Return true if a and b are both zero-or-positive, or both negative. Otherwise return false.",
+  "prompt": "The robot compares two readings, a and b. same_sign is true when both are zero or positive, or both negative, and false otherwise.",
   "signature": "func same_sign(a, b):",
   "fn": "same_sign",
   "starter": "func same_sign(a, b):\n\treturn false",

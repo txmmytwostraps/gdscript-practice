@@ -3,7 +3,7 @@
   "title": "Draw a square",
   "concept": "gq-functions",
   "difficulty": 1,
-  "prompt": "The robot draws by driving. `forward` prints \"forward 30\" and `left` prints \"left\", and both already exist. Make `run` drive a square: forward then left, four times over, for eight instructions in total.",
+  "prompt": "The robot draws by driving, and `forward` and `left` already exist. Drive a square: eight instructions in all.",
   "signature": "func run():",
   "fn": "run",
   "starter": "func run():\n\tpass\n\nfunc forward():\n\tprint(\"forward 30\")\n\nfunc left():\n\tprint(\"left\")",
@@ -29,7 +29,7 @@
     }
   ],
   "hints": [
-    "A square is the same corner four times.",
+    "A square is the same corner four times, and one corner is forward() then left().",
     "One corner is `forward()` then `left()`.",
     "Write that pair four times in run, eight lines in all."
   ],

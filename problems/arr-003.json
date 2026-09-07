@@ -3,7 +3,7 @@
   "title": "Reverse",
   "concept": "arrays",
   "difficulty": 1,
-  "prompt": "Return a new array with the items in reverse order. You may loop, or use the reverse() method.",
+  "prompt": "The robot reads its log back to front: the same items, last one first, in a new array. [1, 2, 3] becomes [3, 2, 1].",
   "signature": "func reversed(items):",
   "fn": "reversed",
   "starter": "func reversed(items):\n\treturn items",
@@ -60,7 +60,7 @@
     }
   ],
   "hints": [
-    "Insert each item at the front of a new array with push_front.",
+    "Loop over the items and put each at the front of a new array with push_front, or use the reverse() method.",
     "`for x in items:` then `result.push_front(x)`."
   ],
   "docs": [

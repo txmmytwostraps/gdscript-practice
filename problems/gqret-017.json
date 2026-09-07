@@ -3,7 +3,7 @@
   "title": "Return an average",
   "concept": "gq-return",
   "difficulty": 1,
-  "prompt": "Write `average`, which returns the average of two whole numbers with decimals, so average(1, 2) is 1.5. `mean_of` returns average(a, b).",
+  "prompt": "The average of two whole numbers, decimals kept, from an `average` helper that `mean_of` uses: mean_of(1, 2) is 1.5.",
   "signature": "func mean_of(a, b) -> float:",
   "fn": "mean_of",
   "starter": "func mean_of(a, b) -> float:\n\treturn (a + b) / 2",
@@ -34,7 +34,7 @@
     }
   ],
   "hints": [
-    "Dividing two ints drops the decimals; divide by a float.",
+    "average adds the two and divides by a float, since dividing two ints drops the decimals; mean_of returns average(a, b).",
     "`return (x + y) / 2.0` inside average."
   ],
   "docs": [

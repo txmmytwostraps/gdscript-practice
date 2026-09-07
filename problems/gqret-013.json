@@ -3,7 +3,7 @@
   "title": "Three helpers in a chain",
   "concept": "gq-return",
   "difficulty": 1,
-  "prompt": "Write `add_one`, `double` and `square`, each returning what its name says. `chained` returns the result of adding one, then doubling, then squaring n. chained(1) is 16.",
+  "prompt": "Three helpers, `add_one`, `double` and `square`, each doing what its name says, and chained puts n through all three in that order. chained(1) is 16.",
   "signature": "func chained(n):",
   "fn": "chained",
   "starter": "func chained(n):\n\treturn n",
@@ -31,7 +31,7 @@
     }
   ],
   "hints": [
-    "A returned value can go straight into the next call; inner calls happen first.",
+    "chained returns square of double of add_one of n: a returned value can go straight into the next call, and inner calls happen first.",
     "`return square(double(add_one(n)))`"
   ],
   "docs": [

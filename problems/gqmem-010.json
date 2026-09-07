@@ -3,7 +3,7 @@
   "title": "Max health",
   "concept": "gq-members",
   "difficulty": 1,
-  "prompt": "Members `health` at 90 and `max_health` at 100 exist. Write `heal`, which adds an amount to health and then, if health went above max_health, sets it back to max_health. In `health_at_max`, call heal(30). Then return health, which stays at 100.",
+  "prompt": "Members `health` at 90 and `max_health` at 100 exist. Healing can never take the robot past its maximum: health_at_max heals 30 through a `heal` helper and reports 100, not 120.",
   "signature": "func health_at_max():",
   "fn": "health_at_max",
   "starter": "var health = 90\nvar max_health = 100\n\nfunc health_at_max():\n\treturn health",
@@ -15,7 +15,7 @@
     }
   ],
   "hints": [
-    "Add first, then check the cap.",
+    "heal adds the amount to health first, then checks the cap against max_health; health_at_max calls heal(30) and returns health.",
     "`if health > max_health:` then `health = max_health`.",
     "health_at_max: `heal(30)` then `return health`."
   ],

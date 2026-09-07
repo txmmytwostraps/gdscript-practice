@@ -3,7 +3,7 @@
   "title": "Move the top crate",
   "concept": "gq-appendpop",
   "difficulty": 1,
-  "prompt": "Take the top crate off pile a with pop_back and put it on top of pile b with append. Return pile b.",
+  "prompt": "The robot moves the top crate from pile a onto pile b. move_top_crate gives back pile b with the crate on top.",
   "signature": "func move_top_crate(a, b):",
   "fn": "move_top_crate",
   "starter": "func move_top_crate(a, b):\n\treturn b",
@@ -39,7 +39,7 @@
     }
   ],
   "hints": [
-    "pop_back gives you the crate; append puts it down.",
+    "pop_back on a gives you the crate; append puts it down on b.",
     "`b.append(a.pop_back())`"
   ],
   "docs": [

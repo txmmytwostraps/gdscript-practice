@@ -3,7 +3,7 @@
   "title": "Grid to world",
   "concept": "gq-types",
   "difficulty": 1,
-  "prompt": "Write `grid_to_world`, which takes a cell as Vector2 and a cell_size as float, both hinted, and returns the cell times the size as a Vector2. world_position returns grid_to_world(cell, 64.0).",
+  "prompt": "A grid cell becomes a position on screen when multiplied by the cell size, and the conversion lives in a fully typed `grid_to_world` helper that world_position uses with cells of 64. Cell (2, 1) is at (128, 64).",
   "signature": "func world_position(cell: Vector2) -> Vector2:",
   "fn": "world_position",
   "starter": "func world_position(cell: Vector2) -> Vector2:\n\treturn cell",
@@ -44,7 +44,7 @@
     }
   ],
   "hints": [
-    "Hint each parameter and the return type.",
+    "grid_to_world takes a cell as Vector2 and a cell_size as float, both hinted, and returns the cell times the size as a Vector2; world_position returns grid_to_world(cell, 64.0).",
     "`func grid_to_world(cell: Vector2, cell_size: float) -> Vector2:`",
     "`return cell * cell_size`"
   ],

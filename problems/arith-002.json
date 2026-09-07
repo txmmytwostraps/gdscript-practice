@@ -3,7 +3,7 @@
   "title": "Average of three readings",
   "concept": "arithmetic",
   "difficulty": 1,
-  "prompt": "The robot's sensor takes three readings a, b and c. Return their average: add them and divide by three, keeping decimals. average_of_three(1, 1, 2) is 1.333…",
+  "prompt": "The robot's sensor takes three readings. Find their average, keeping the decimals. average_of_three(1, 1, 2) is 1.333…",
   "signature": "func average_of_three(a, b, c) -> float:",
   "fn": "average_of_three",
   "starter": "func average_of_three(a, b, c) -> float:\n\treturn 0.0",
@@ -55,7 +55,7 @@
     }
   ],
   "hints": [
-    "Add the three in brackets first so the division applies to the whole sum.",
+    "Add a, b and c in brackets first, then divide the whole sum by three.",
     "Dividing by 3 (an int) loses the decimals; divide by 3.0.",
     "`return (a + b + c) / 3.0`"
   ],

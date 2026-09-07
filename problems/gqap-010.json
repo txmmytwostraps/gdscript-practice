@@ -3,7 +3,7 @@
   "title": "Cancel an order",
   "concept": "gq-appendpop",
   "difficulty": 1,
-  "prompt": "A customer cancels. Remove the first matching order from the queue and return the queue. If it is not there, the queue is unchanged.",
+  "prompt": "A customer cancels an order. cancel_order gives back the queue without the first matching order; if it is not there, nothing changes.",
   "signature": "func cancel_order(queue, order):",
   "fn": "cancel_order",
   "starter": "func cancel_order(queue, order):\n\treturn queue",
@@ -37,7 +37,7 @@
     }
   ],
   "hints": [
-    "erase removes by value.",
+    "erase removes by value: one call on the queue, then give the queue back.",
     "`queue.erase(order)`"
   ],
   "docs": [

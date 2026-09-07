@@ -3,7 +3,7 @@
   "title": "Same distance at any frame rate",
   "concept": "gq-delta",
   "difficulty": 1,
-  "prompt": "Simulate the robot frame by frame: fps frames every second, each with delta equal to 1.0 / fps. Add speed times delta on every frame for the given number of seconds and return the total. At 100 per second for 2 seconds the answer is 200 whether fps is 60 or 30.",
+  "prompt": "Simulate the robot frame by frame for the given number of seconds, at fps frames a second, and give back the distance covered. At 100 per second for 2 seconds the answer is 200 whether fps is 60 or 30.",
   "signature": "func distance_at_fps(speed, seconds, fps) -> float:",
   "fn": "distance_at_fps",
   "starter": "func distance_at_fps(speed, seconds, fps) -> float:\n\treturn 0.0",
@@ -37,7 +37,7 @@
     }
   ],
   "hints": [
-    "Work out delta once: 1.0 divided by fps.",
+    "delta is 1.0 divided by fps; each frame adds speed times delta to a total, and there are seconds times fps frames.",
     "Loop seconds times fps times, adding speed times delta each turn.",
     "`for i in range(seconds * fps):` with `total += speed * delta` inside."
   ],
