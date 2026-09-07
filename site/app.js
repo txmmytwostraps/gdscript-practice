@@ -14,6 +14,7 @@ import * as notes from "./notes.js";
 import { makeVariant } from "./variants.js";
 import { loadCards, cardsForConcept } from "./cards.js";
 import * as scaffold from "./scaffold.js";
+import { runPlan } from "./run.js";
 
 // Problem types. ?mode=parsons puts the solution's lines in order;
 // ?mode=bug plants one bug in the solution to find and fix. Reviews pick a
@@ -25,6 +26,8 @@ let bugCode = "";            // the planted-bug code when active
 
 // Review mode: practice.html?review=1#id walks through today's due reviews.
 const reviewMode = new URLSearchParams(location.search).has("review");
+const runMode = new URLSearchParams(location.search).has("run");   // the day's run as one sitting: reviews, new problems, the extra
+const isReview = (id) => (reviewMode || runMode) && reviewIds.includes(id);
 let reviewIds = [];          // today's pending reviews, in order
 let reviewOnTime = false;    // the open review is being done on its due day
 let xpLine = "";             // "+10 XP · first solve": what this pass earned
@@ -183,6 +186,12 @@ function renderFilters() {
   renderTodayBar();
 }
 function renderTodayBar() {
+  if (runMode) {
+    const plan = runPlan();
+    const at = current ? plan.items.findIndex((it) => it.id === current.id) : -1;
+    el.todaybar.innerHTML = `<span class="accent">Run</span><div class="segs">${plan.items.map((it) => `<div class="${it.done ? "on" : ""}"></div>`).join("")}</div><b>${at >= 0 ? at + 1 : "–"} of ${plan.total}</b>`;
+    return;
+  }
   if (reviewMode) {
     const at = current ? reviewIds.indexOf(current.id) : -1;
     el.todaybar.innerHTML = reviewIds.length ? `<span class="accent">Review</span><div class="segs">${reviewIds.map((id) => `<div class="${reviews.all()[id] && reviews.all()[id].reviewed_at && reviews.dueToday().doneToday.some((r) => r.problem_id === id) ? "on" : ""}"></div>`).join("")}</div><b>${at >= 0 ? at + 1 : "–"} / ${reviewIds.length} due today</b>` : `<span class="accent">Review</span><b>nothing due</b>`;
@@ -196,7 +205,7 @@ function renderTodayBar() {
 function renderProblem(p) {
   const t = topicOf(p.concept);
   const list = pool(); const at = list.findIndex((x) => x.id === p.id);
-  el.eyebrow.textContent = `// ${t ? t.title.toLowerCase() : p.concept} · problem ${at + 1} of ${list.length} · ${DIFF[p.difficulty]}`;
+  el.eyebrow.textContent = `${t ? t.title.toLowerCase() : p.concept} · problem ${at + 1} of ${list.length} · ${DIFF[p.difficulty]}`;
   el.title.textContent = p.title;
   el.prompt.innerHTML = rich(p.prompt);
   $("writeline").innerHTML = `Write a function called <code>${esc(fnName(p))}</code>.`;
@@ -207,8 +216,7 @@ function renderProblem(p) {
   // Staged hints: each opens on its own; opening one never counts as a miss.
   const hints = Array.isArray(p.hints) ? p.hints : (p.hint ? [p.hint] : []);
   const level = scaffold.levelFor(p.concept);
-  el.hints.innerHTML = hints.map((h, i) => `<div class="stage"><button type="button" class="linkish" data-hint="${i}">[+] Hint ${i + 1} of ${hints.length}</button><p hidden>${rich(h)}</p></div>`).join("")
-    + "";
+  el.hints.innerHTML = hints.map((h, i) => `<div class="stage"><button type="button" class="hrow" data-hint="${i}"><span class="sq">${i + 1}</span><span class="hname">Hint ${i + 1}</span><span class="hstate"></span></button><p class="hint-text" hidden>${rich(h)}</p></div>`).join("");
   renderHintLocks(p);
   el.solution.innerHTML = highlight(p.solution); el.solution.hidden = true;
   const many = p.tests.length > 1, inputs = showsCall(p);
@@ -222,8 +230,8 @@ function renderProblem(p) {
   el.docs.hidden = docs.length === 0;
   el.doclist.innerHTML = docs.map((d) => `<div class="row"><code>${esc(d.name)}</code><span>${esc(d.what)}</span></div>`).join("");
   const cards = cardsForConcept(p.concept);
-  $("cardlinks").innerHTML = cards.length ? `<span class="muted">Concept cards:</span> ${cards.map((c) => `<a href="concepts.html#${c.id}">${esc(c.name)}</a>`).join(" · ")}` : "";
-  $("help-summary").textContent = [`${hints.length} hint${hints.length === 1 ? "" : "s"}`, "reference", docs.length ? `${docs.length} doc${docs.length === 1 ? "" : "s"}` : "", cards.length ? `${cards.length} card${cards.length === 1 ? "" : "s"}` : ""].filter(Boolean).join(" · ");
+  $("cardlinks").innerHTML = cards.map((c) => `<a class="chip" href="concepts.html#${c.id}">${esc(c.name)}</a>`).join(""); $("cards").hidden = cards.length === 0;
+  $("help-summary").textContent = [`${hints.length} hint${hints.length === 1 ? "" : "s"}`, docs.length ? `${docs.length} doc${docs.length === 1 ? "" : "s"}` : "", cards.length ? `${cards.length} card${cards.length === 1 ? "" : "s"}` : ""].filter(Boolean).join(" · ");
   el.again.hidden = !state.solved[p.id];
   updateSolutionLock(p);
   document.title = `${p.title} · GDScript Practice`;
@@ -243,9 +251,18 @@ function updateSolutionLock(p) {
   const after = unlockAfter(p);
   const unlocked = Boolean(state.solved[p.id]) || misses >= after;
   el.solutionToggle.classList.toggle("locked", !unlocked);
-  el.solutionToggle.textContent = unlocked ? (el.solution.hidden ? "[+] Reference solution" : "[-] Reference solution") : `[#] Reference solution — locked · ${after - misses} more miss${after - misses === 1 ? "" : "es"} to unlock`;
+  el.solutionToggle.classList.toggle("open", unlocked && el.solution.hidden);
+  el.solutionToggle.classList.toggle("opened", unlocked && !el.solution.hidden);
+  el.solutionToggle.querySelector(".hstate").textContent = unlocked ? (el.solution.hidden ? "show ›" : "hide") : `locked · ${after - misses} more miss${after - misses === 1 ? "" : "es"}`;
   if (!unlocked) el.solution.hidden = true;
   renderHintLocks(p);
+}
+// One rung of the ladder: its square, its name and its state on the right.
+function hintState(b, st, lockText) {
+  b.classList.remove("open", "opened", "locked"); b.classList.add(st);
+  const sq = b.querySelector(".sq"), hs = b.querySelector(".hstate");
+  if (st === "opened") { sq.textContent = "✓"; hs.textContent = "opened"; }
+  else { sq.textContent = b.dataset.hint === "bug" ? "?" : String(Number(b.dataset.hint) + 1); hs.textContent = st === "open" ? "open ›" : lockText || "locked"; }
 }
 // Adaptive hints: which hints may open depends on the topic's level and the
 // misses on this problem. Locked ones show what unlocks them.
@@ -254,11 +271,10 @@ function renderHintLocks(p) {
   const misses = state.fails[p.id] || 0;
   el.hints.querySelectorAll("button[data-hint]").forEach((b) => {
     if (b.dataset.hint === "bug") return;
-    const i = Number(b.dataset.hint), total = el.hints.querySelectorAll("button[data-hint]:not([data-hint=bug])").length;
+    const i = Number(b.dataset.hint);
     const open = scaffold.hintOpen(level, i, misses) || Boolean(state.solved[p.id]);
-    b.classList.toggle("locked", !open);
-    if (!open) { b.nextElementSibling.hidden = true; b.textContent = `[#] Hint ${i + 1} of ${total} — ${scaffold.hintLockText(level, i)}`; }
-    else if (b.textContent.startsWith("[#]")) b.textContent = `[+] Hint ${i + 1} of ${total}`;
+    if (!open) b.nextElementSibling.hidden = true;
+    hintState(b, !open ? "locked" : b.nextElementSibling.hidden ? "open" : "opened", open ? "" : scaffold.hintLockText(level, i));
   });
   const lv = $("help-level");
   if (lv) lv.innerHTML = `<span title="hint level">${level}${scaffold.overrideFor(p.concept) ? " (by hand)" : ""}</span> · <a href="route.html#${p.concept}">change</a>`;
@@ -293,7 +309,7 @@ async function showProblem(id, { keepResults = false } = {}) {
   renderProblem(p);
   const draft = getDraft(id);
   // A review starts from the starter, not from the old solution.
-  const inReview = reviewMode && reviewIds.includes(id);
+  const inReview = isReview(id);
   attemptFails = 0; reviewRecorded = false;
   reviewOnTime = inReview && Boolean(reviews.all()[id]) && reviews.all()[id].due_on === dayKey(today());   // decided before the review moves its own due date
   activeMode = urlMode === "parsons" || urlMode === "bug" ? urlMode : inReview ? reviewVariant(id) : "normal";
@@ -302,7 +318,7 @@ async function showProblem(id, { keepResults = false } = {}) {
     el.saved.textContent = !inReview && draft ? "saved" : "";
   }
   await applyMode(p);
-  if (inReview) { el.eyebrow.textContent = `// review · ${topicOf(p.concept) ? topicOf(p.concept).title.toLowerCase() : p.concept} · ${reviewIds.indexOf(id) + 1} of ${reviewIds.length}${activeMode !== "normal" ? " · " + modeLabel(activeMode) : ""}`; el.again.hidden = true; }
+  if (inReview) { el.eyebrow.textContent = `review · ${topicOf(p.concept) ? topicOf(p.concept).title.toLowerCase() : p.concept} · ${reviewIds.indexOf(id) + 1} of ${reviewIds.length}${activeMode !== "normal" ? " · " + modeLabel(activeMode) : ""}`; el.again.hidden = true; }
   if (!keepResults) clearResults();
   renderModes(p);
   renderNote(p);
@@ -355,6 +371,12 @@ function askPrompt(p) {
 // The built-in nudge: the same material as the copied prompt, sent to the
 // nudge function, which answers with a pointer and never the answer. It
 // counts as a hint opened, and at the minimal level needs a miss first.
+// "29 left today": the cap is 30 in 24 hours; counted from the account's nudges.
+async function refreshNudgeCount() {
+  if (!sync.user) { el.nudgeNote.textContent = "sign in to use"; return; }
+  try { const list = await auth.fetchNudges(); const used = list.filter((n) => Date.now() - new Date(n.at).getTime() < 864e5).length; el.nudgeNote.textContent = `${Math.max(0, 30 - used)} left today`; }
+  catch (e) { el.nudgeNote.textContent = ""; }
+}
 async function askNudge() {
   if (!current) return;
   const p = current;
@@ -416,7 +438,7 @@ async function applyMode(p) {
     const n = document.createElement("div"); n.id = "bugnote"; n.className = "bugnote";
     n.textContent = "This is a working solution with one bug planted in it. Find it, fix it, and run.";
     el.requirements.insertAdjacentElement("afterend", n);
-    el.hints.insertAdjacentHTML("beforeend", `<div class="stage"><button type="button" class="linkish" data-hint="bug">[+] Hint · what kind of bug</button><p hidden>The bug is ${esc(found.kind)}.</p></div>`);
+    el.hints.insertAdjacentHTML("beforeend", `<div class="stage"><button type="button" class="hrow open" data-hint="bug"><span class="sq">?</span><span class="hname">What kind of bug</span><span class="hstate">open ›</span></button><p class="hint-text" hidden>The bug is ${esc(found.kind)}.</p></div>`);
   }
 }
 
@@ -437,7 +459,7 @@ function renderModes(p) {
 
   const canDrill = state.problems.some((x) => x.concept === p.concept && x.variants);
   if (drillTopic) { $("modes").innerHTML = `<span class="on">Drill</span><a href="practice.html#${p.id}">Back</a>`; return; }
-  const inReviewNow = reviewMode && reviewIds.includes(p.id);
+  const inReviewNow = isReview(p.id);
   const orderOk = !inReviewNow && p.solution.split("\n").filter((l) => l.trim()).length >= 2;
   const bugOk = !inReviewNow && candidates(p.solution, p.id).length > 0;
   const segItem = (m, text, ok) => activeMode === m ? `<span class="on">${text}</span>` : ok ? `<a href="${m === "normal" ? base : `practice.html?mode=${m}#${p.id}`}">${text}</a>` : `<span class="off" title="not available for this problem">${text}</span>`;
@@ -476,7 +498,7 @@ function showVariant(v) {
   renderFilters();
   renderProblem(v);
   const t = topicOf(v.concept);
-  el.eyebrow.textContent = `// drill · ${t ? t.title.toLowerCase() : v.concept} · ${esc(v.title.toLowerCase())} · fresh numbers`;
+  el.eyebrow.textContent = `drill · ${t ? t.title.toLowerCase() : v.concept} · ${esc(v.title.toLowerCase())} · fresh numbers`;
   el.again.hidden = true;
   editor.set(v.starter); el.saved.textContent = "";
   clearResults();
@@ -487,6 +509,12 @@ function showVariant(v) {
 }
 function pickNext() {
   if (drillTopic) { nextDrill(); return; }
+  if (runMode) {   // the next item of the run that is not done; the Run done page after the last
+    const plan = runPlan();
+    const next = plan.items.find((it) => !it.done && (!current || it.id !== current.id));
+    if (next) showProblem(next.id); else location.href = "run-done.html";
+    return;
+  }
   if (reviewMode) {   // next pending review, or back to Today when done
     const next = reviews.dueToday().pending.find((r) => !current || r.problem_id !== current.id);
     if (next) showProblem(next.problem_id); else location.href = "./";
@@ -506,11 +534,13 @@ function pickNext() {
 }
 // What the Next button leads to, decided after the solve is recorded.
 function showNext() {
-  const inReview = reviewMode && current && reviewIds.includes(current.id);
+  const inReview = current && isReview(current.id);
   const left = current ? state.problems.filter((p) => p.concept === current.concept && !state.solved[p.id]).length : 1;
   const cleared = !inReview && !drillTopic && current && left === 0 && !store.get("cleared." + current.concept, false);
-  el.next.textContent = inReview ? (reviews.dueToday().pending.some((r) => r.problem_id !== current.id) ? "Next review ›" : "Back to Today ›") : cleared ? "Topic cleared ›" : "Next ›";
+  const runLeft = runMode ? runPlan().items.some((it) => !it.done && it.id !== current.id) : true;
+  el.next.textContent = !runLeft ? "Run done ›" : inReview && !runMode ? (reviews.dueToday().pending.some((r) => r.problem_id !== current.id) ? "Next review ›" : "Back to Today ›") : cleared ? "Topic cleared ›" : "Next ›";
   $("verdict-actions").hidden = false;
+  el.next.focus();   // Enter on a ✓ Correct panel is Next
 }
 
 // ---------- running ----------
@@ -535,7 +565,7 @@ function renderResult(result, errors) {
   if (result.status === "error") { miss(p.id); setVerdict("fail", drill ? "Not yet" : `${missText(p.id)}`, result.error); el.count.textContent = `0 / ${p.tests.length} tests`; showErrors(errors); return; }
   const allPass = result.passed === result.total;
   if (!allPass) miss(p.id);
-  xpLine = !allPass ? "" : drill ? "+0 XP · drill" : reviewMode && reviewIds.includes(p.id) ? (reviewRecorded ? "+0 XP · review already counted today" : reviewOnTime ? `+${XP_REVIEW} XP · review` : "+0 XP · late review") : !state.solved[p.id] ? `+${XP_PROBLEM} XP · first solve` : "+0 XP · practice";
+  xpLine = !allPass ? "" : drill ? "+0 XP · drill" : isReview(p.id) ? (reviewRecorded ? "+0 XP · review already counted today" : reviewOnTime ? `+${XP_REVIEW} XP · review` : "+0 XP · late review") : !state.solved[p.id] ? `+${XP_PROBLEM} XP · first solve` : "+0 XP · practice";
   setVerdict(allPass ? "pass" : "fail", allPass ? xpLine : drill ? "Not yet" : `Not yet · ${missText(p.id)}`, allPass && drill ? "" : allPass ? "" : stuckText(p));
   if (allPass && drill) { el.message.innerHTML = `<button type="button" class="btn primary" id="drill-next">Next variant →</button>`; el.message.hidden = false; el.run.disabled = true; el.run.classList.add("dim"); }
   el.count.textContent = `${result.passed} / ${result.total} tests`;
@@ -585,7 +615,7 @@ function markSolved(id) {
 // Every verdict is an attempt; a review's first verdict decides its schedule.
 function logVerdict(id, passed, wasNew) {
   if (!sync.user) return;
-  const inReview = reviewMode && reviewIds.includes(id);
+  const inReview = isReview(id);
   const kind = inReview ? (reviewOnTime ? "review" : "review-late") : wasNew ? "new" : "practice";
   auth.insertAttempt(sync.user.id, id, kind, passed ? "pass" : "miss").catch(() => {});
   if (inReview) renderHeaderStats($("header-stats"));   // a review pass counts at once
@@ -610,7 +640,7 @@ function layout() {
   if (wide === wideLayout) return;
   wideLayout = wide;
   const side = $("side"), problem = document.querySelector(".problem"), pane = document.querySelector(".editor-pane");
-  const movers = [el.results, el.ask.closest(".tools"), el.again.closest(".tools")];
+  const movers = [el.results, el.again.closest(".tools")];
   if (wide) { for (const m of movers) side.appendChild(m); side.hidden = false; }
   else { side.hidden = true; for (const m of movers) pane.appendChild(m); }
 }
@@ -625,7 +655,7 @@ async function main() {
   editor = makeEditor($("editor"), { onRun: runCode });
   let saveTimer = null;
   editor.onChange(() => {
-    if (!current || drillTopic || activeMode !== "normal" || (reviewMode && reviewIds.includes(current.id))) return;   // drafts only for the plain problem
+    if (!current || drillTopic || activeMode !== "normal" || (isReview(current.id))) return;   // drafts only for the plain problem
     el.saved.textContent = "…";
     clearTimeout(saveTimer);
     saveTimer = setTimeout(() => { const text = editor.get(); if (text.replace(/[ 	]+$/gm, "") === current.starter.replace(/[ 	]+$/gm, "")) { clearDraft(current.id); el.saved.textContent = ""; } else { setDraft(current.id, text); el.saved.textContent = "saved"; } sync.push(current.id); }, 300);
@@ -655,23 +685,21 @@ async function main() {
   el.results.addEventListener("click", (ev) => { if (ev.target.closest("#drill-next")) nextDrill(); });
   el.hints.addEventListener("click", (ev) => {
     const b = ev.target.closest("button[data-hint]"); if (!b || b.classList.contains("locked")) return;
-    const p = b.nextElementSibling; p.hidden = !p.hidden; b.textContent = (p.hidden ? "[+] " : "[-] ") + b.textContent.slice(4);
+    const p = b.nextElementSibling; p.hidden = !p.hidden; hintState(b, p.hidden ? "open" : "opened");
     if (!p.hidden && current) { const log = store.get("hintlog", []); log.push({ id: current.id, hint: b.dataset.hint, at: new Date().toISOString() }); store.set("hintlog", log.slice(-500)); }   // for the weekly summary
   });
   el.solutionToggle.addEventListener("click", () => { if (el.solutionToggle.classList.contains("locked")) return; el.solution.hidden = !el.solution.hidden; updateSolutionLock(current); });
   // Practice again: back to the starter without touching the solved date.
   el.again.addEventListener("click", () => { if (current) { clearDraft(current.id); editor.set(current.starter); clearResults(); setVerdict("", "Practice again: the solved date stays as it was."); editor.focus(); } });
-  $("export").addEventListener("click", () => {
-    const blob = new Blob([JSON.stringify(exportProgress(), null, 2)], { type: "application/json" });
-    const a = Object.assign(document.createElement("a"), { href: URL.createObjectURL(blob), download: `gdscript-practice-progress-${new Date().toISOString().slice(0, 10)}.json` });
-    document.body.appendChild(a); a.click(); a.remove();
+  // Keyboard: Ctrl+Enter runs (the editor), Enter on a ✓ Correct panel is Next, Escape closes Help.
+  document.addEventListener("keydown", (ev) => {
+    if (ev.key === "Escape") { const h = $("help-fold"); if (h.open) { h.open = false; ev.preventDefault(); } return; }
+    if (ev.key !== "Enter" || ev.ctrlKey || ev.metaKey || $("verdict-actions").hidden || !el.results.classList.contains("pass")) return;
+    const tag = (ev.target.tagName || "").toLowerCase();
+    if (tag === "textarea" || tag === "input" || tag === "select" || ev.target.closest(".CodeMirror") || ev.target === el.next) return;
+    ev.preventDefault(); pickNext();
   });
-  $("clear").addEventListener("click", async () => {
-    const where = sync.user ? "in this browser AND in your account" : "in this browser";
-    if (prompt(`This deletes every solve, miss count and draft ${where}. Type CLEAR to confirm.`) !== "CLEAR") return;
-    await clearProgress();
-    location.hash = ""; location.reload();
-  });
+  refreshNudgeCount();
 
   const fromHash = location.hash.slice(1);
   const topicParam = new URLSearchParams(location.search).get("topic");   // links from Stats: practice.html?topic=<concept>
@@ -680,6 +708,12 @@ async function main() {
     drillIds = state.problems.filter((p) => p.concept === drillTopic && p.variants).map((p) => p.id);
     filters.topic = drillTopic; store.set("filters", filters); renderFilters();
     await nextDrill();
+  } else if (runMode) {
+    try { await reviews.refresh(); } catch (e) { /* use the cached queue */ }
+    const plan = runPlan();
+    reviewIds = plan.items.filter((it) => it.kind === "review" && !it.done).map((it) => it.id);
+    if (!plan.next) { location.href = "run-done.html"; return; }
+    await showProblem(plan.next.id);
   } else if (reviewMode) {
     try { await reviews.refresh(); } catch (e) { /* use the cached queue */ }
     reviewIds = reviews.dueToday().pending.map((r) => r.problem_id);
@@ -692,7 +726,7 @@ async function main() {
 
   const why = sessionStorage.getItem("gdp.reloaded");
   if (why) { sessionStorage.removeItem("gdp.reloaded"); setVerdict("warn", why === "crash" ? "[!] The judge crashed on your last run and was restarted" : "[!] Your last run took more than 5 seconds — probably an infinite loop", "The judge was restarted; your code is unchanged."); }
-  onSynced((what) => { if (what === "user" && sync.user) scaffold.refresh(sync.user).then(() => { if (current) updateSolutionLock(current); });
+  onSynced((what) => { if (what === "user" && sync.user) { refreshNudgeCount(); scaffold.refresh(sync.user).then(() => { if (current) updateSolutionLock(current); }); }
     if (what === "local-changed" && current && activeMode === "normal") { const d = getDraft(current.id); editor.set(d ? d.code : current.starter); updateSolutionLock(current); } if ((what === "local-changed" || what === "merged") && current) renderNote(current); renderFilters(); shell.refresh(); });
 }
 main().catch((e) => { setVerdict("fail", "Could not load the problem bank", e.message); });

@@ -53,19 +53,24 @@
       <summary><span>Help <span class="dim">—</span> <span id="help-summary" class="muted">…</span></span><span class="dim" id="help-level"></span></summary>
       <div class="fold-body">
         <div class="nudge" id="nudge">
-          <div class="toggles caps"><button type="button" class="linkish" id="nudge-btn">[?] Nudge — a pointer, not the answer</button><span class="dim" id="nudge-note"></span></div>
-          <div class="nudge-reply" id="nudge-reply" hidden></div>
+          <button type="button" class="nudge-btn" id="nudge-btn"><span>? Ask for a nudge</span><span class="dim" id="nudge-note"></span></button>
+          <div class="nudge-reply prose" id="nudge-reply" hidden></div>
+          <div class="askrow"><button type="button" class="textlink" id="ask">Ask Claude — copy a prompt</button><span class="dim" id="ask-note"></span></div>
         </div>
-        <div class="hints" id="hints"></div>
-        <div class="toggles caps">
-          <button type="button" class="linkish" id="solution-toggle">[#] Reference solution</button>
+        <div>
+          <div class="label up">Hints</div>
+          <div class="ladder hints" id="hints"></div>
+          <button type="button" class="hrow ref" id="solution-toggle"><span class="sq">#</span><span class="hname">Reference solution</span><span class="hstate"></span></button>
+          <pre class="code" id="solution" hidden></pre>
         </div>
-        <pre class="code" id="solution" hidden></pre>
         <div class="docs" id="docs" hidden>
-          <div class="label">Documentation — what this problem uses</div>
+          <div class="label up">Docs</div>
           <div class="doclist" id="doclist"></div>
         </div>
-        <div class="caps" id="cardlinks" style="font-size: 12px;"></div>
+        <div id="cards" hidden>
+          <div class="label up">Cards</div>
+          <div class="chips" id="cardlinks"></div>
+        </div>
       </div>
     </details>
 
@@ -103,14 +108,8 @@
       <div id="output" hidden><div class="label">Printed output</div><pre id="output-lines"></pre></div>
       <div id="errors" hidden><div class="label">Errors</div><pre id="error-lines"></pre></div>
     </section>
-    <div class="tools caps">
-      <button type="button" class="linkish" id="ask">[?] Ask Claude — copy a prompt</button>
-      <span class="dim" id="ask-note"></span>
-    </div>
-    <div class="tools caps">
-      <button type="button" class="linkish" id="again" hidden>[~] Practice again</button>
-      <button type="button" class="linkish" id="export">[v] Export progress</button>
-      <button type="button" class="linkish danger" id="clear">[x] Clear progress</button>
+    <div class="tools">
+      <button type="button" class="textlink" id="again" hidden>Practice again</button>
     </div>
   </section>
   <section class="side" id="side" hidden></section>

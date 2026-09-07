@@ -7,65 +7,83 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="theme.css">
 <style>
-  .page { grid-template-columns: 320px minmax(0, 1fr); gap: 48px; }
-  h1 { font-size: 44px; }
-  .left { display: flex; flex-direction: column; gap: 20px; }
-  .position .big { font-family: var(--head); font-weight: 700; font-size: 20px; }
-  .thin { display: flex; gap: 3px; height: 10px; } .thin > div { background: var(--line); } .thin > div.on { background: var(--accent); }
-  .lockrow { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-  .lockrow select { font-family: var(--head); font-weight: 700; font-size: 18px; background: var(--line); border: 0; padding: 2px 10px; color: var(--text); }
-  .rail { position: relative; padding-bottom: 24px; }
-  .rail::before { content: ""; position: absolute; left: 21px; top: 20px; bottom: 40px; width: 2px; background: var(--line); }
-  .rows { display: flex; flex-direction: column; gap: 4px; position: relative; }
-  .row { display: flex; align-items: center; gap: 22px; padding: 8px 0; color: var(--muted); }
-  .box { width: 44px; height: 44px; background: var(--bg); border: 2px solid var(--line-strong); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--muted); font-weight: 600; font-size: 13px; }
-  .row .t { font-weight: 600; } .row .s { font-size: 12px; color: var(--dim); }
-  .row.done .box { border-color: var(--accent); color: var(--accent); }
-  .row.current { padding: 12px 16px 12px 0; }
-  .row.current .box { background: var(--accent); border-color: var(--accent); color: var(--bg); box-shadow: 4px 4px 0 var(--line); }
-  .row.current .t { font-family: var(--head); font-weight: 700; font-size: 20px; color: var(--text); } .row.current .s { color: var(--muted); }
-  .row.current .grow { flex-grow: 1; }
-  .row.locked, .row.locked .t { color: var(--dim); } .row.locked .box { border-color: var(--line); color: var(--dim); }
-  .row.empty .t { color: var(--dim); font-weight: 500; } .row.empty .box { border-style: dashed; color: var(--dim); }
-  .ms { display: flex; align-items: center; gap: 20px; padding: 18px 22px; margin: 10px 0 10px -2px; background: var(--panel); border: 1px solid var(--milestone); box-shadow: 4px 4px 0 var(--milestone-bg); }
-  .ms .icon { width: 48px; height: 48px; background: var(--milestone-bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .ms .k { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--milestone); }
-  .ms .t { font-family: var(--head); font-weight: 700; font-size: 20px; text-transform: uppercase; }
-  .ms .u { font-size: 13px; color: var(--muted); } .ms .when { font-size: 12px; color: var(--muted); white-space: nowrap; text-transform: uppercase; letter-spacing: 0.06em; }
-  .ms.planned { background: transparent; border: 1px dashed var(--line-strong); box-shadow: none; }
-  .ms.planned .icon { background: var(--panel); border: 1px solid var(--line); } .ms.planned .k, .ms.planned .t { color: var(--dim); }
-  .ms.planned .t { color: var(--muted); }
-  @media (min-width: 1700px) { .page { grid-template-columns: 400px minmax(0, 1fr); gap: 64px; } }
-  .row .more { display: flex; gap: 14px; margin-top: 6px; font-size: 11px; } .row .more a, .row .more .linkish { color: var(--muted); } .row .more a:hover, .row .more .linkish:hover { color: var(--accent); }
-  .row .more .hintlevel { display: flex; gap: 6px; align-items: center; color: var(--muted); } .row .more select { background: var(--bg); border: 1px solid var(--line-strong); color: var(--text); font-size: 11px; padding: 1px 4px; }
+  .page { grid-template-columns: 300px minmax(0, 1fr); gap: 56px; }
+  .left { display: flex; flex-direction: column; gap: 26px; }
+  .here { display: flex; flex-direction: column; gap: 10px; }
+  .here .big { font-family: var(--head); font-weight: 700; font-size: 20px; line-height: 1.15; }
+  .here .small { font-size: 12px; color: var(--muted); }
+  .segbar { display: flex; gap: 3px; height: 8px; } .segbar > i { flex: 1; background: var(--line-strong); } .segbar > i.on { background: var(--accent); }
+  .toc { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+  .toc a { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+  .toc a .r { color: var(--dim); font-size: 12px; } .toc a .c { font-size: 12px; color: var(--dim); min-width: 4rem; text-align: right; }
+  .toc a.cur { color: var(--text); } .toc a.cur .c { color: var(--accent); }
+  .toc a:hover { color: var(--accent); }
+  /* stages */
+  .stages { display: flex; flex-direction: column; gap: 36px; }
+  .stage { display: flex; flex-direction: column; gap: 4px; scroll-margin-top: 24px; }
+  .stage-head { display: grid; grid-template-columns: auto auto minmax(80px, 1fr) auto; align-items: center; gap: 16px; padding: 0 0 10px; border-bottom: 1px solid var(--line-strong); }
+  .stage-head .sname { font-family: var(--head); font-weight: 700; font-size: 18px; }
+  .stage-head .srange { font-size: 12px; color: var(--dim); }
+  .stage-head .sbar { display: block; height: 3px; background: var(--line-strong); max-width: 220px; justify-self: end; width: 100%; }
+  .stage-head .sbar i { display: block; height: 100%; background: var(--accent); }
+  .stage-head .scount { font-size: 12px; color: var(--muted); min-width: 4rem; text-align: right; }
+  .stage-head .scount.lock { color: var(--dim); min-width: 0; }
+  details.stage summary { list-style: none; cursor: pointer; } details.stage summary::-webkit-details-marker { display: none; }
+  details.stage summary .scount::after { content: " · show ▾"; color: var(--accent); }
+  details.stage[open] summary .scount::after { content: " · hide ▴"; }
+  details.stage summary .scount.lock::after { content: " · show ▾"; }
+  .stage-head .scount { white-space: nowrap; }
+  .path { position: relative; padding-left: 40px; margin-top: 10px; }
+  .path::before { content: ""; position: absolute; left: 15px; top: 8px; bottom: 8px; width: 2px; background: var(--line); }
+  .lrow { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 14px; min-height: 48px; padding: 0 6px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 14px; scroll-margin-top: 24px; }
+  .lrow .tt { color: var(--text); } .lrow .tr { font-size: 12px; color: var(--dim); white-space: nowrap; }
+  .lrow.done .tt { color: var(--muted); } .lrow.done .tr { color: var(--accent); }
+  .lrow.locked .tt, .lrow.empty .tt { color: var(--dim); }
+  .node { position: absolute; left: -32px; top: 50%; width: 14px; height: 14px; margin-top: -7px; border: 2px solid var(--line-strong); background: var(--bg); box-sizing: border-box; }
+  .node.done { background: var(--accent); border-color: var(--accent); }
+  .node.cur { border-color: var(--accent); border-radius: 50%; width: 16px; height: 16px; margin-top: -8px; left: -33px; }
+  .node.locked { width: 8px; height: 8px; margin-top: -4px; left: -29px; border: 0; background: var(--dim); }
+  /* the current lesson is the only card */
+  .card { position: relative; margin: 8px 0; padding: 18px 20px; background: var(--panel); border: 1px solid var(--accent); display: flex; flex-direction: column; gap: 12px; scroll-margin-top: 24px; }
+  .card .node { top: 28px; margin-top: 0; }
+  .card .ct { font-family: var(--head); font-weight: 700; font-size: 20px; }
+  .card .cs { font-size: 13px; color: var(--muted); }
+  .card .tools { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; font-size: 12px; color: var(--muted); }
+  .card .tools a, .card .tools button { color: var(--accent); background: none; border: 0; padding: 0; font-size: 12px; }
+  .card .tools select { background: var(--bg); border: 1px solid var(--line-strong); color: var(--text); font-size: 12px; padding: 1px 4px; }
+  .card .go { display: flex; align-items: center; gap: 16px; }
+  /* milestone tiles across the path */
+  .tile { position: relative; margin: 10px 0 10px -40px; padding: 14px 18px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: center; border: 1px dashed var(--milestone); color: var(--milestone); font-size: 14px; scroll-margin-top: 24px; }
+  .tile .k { color: var(--milestone); } .tile .u { font-size: 12px; color: var(--muted); margin-top: 3px; }
+  .tile .tr { font-size: 12px; white-space: nowrap; color: var(--milestone); }
+  .tile.open { border-style: solid; }
+  .tile.done { border-style: solid; background: var(--milestone-bg); }
+  .tile.done .tr a { color: var(--accent); }
+  .tile.dim { border-color: var(--line-strong); color: var(--dim); } .tile.dim .k, .tile.dim .tr { color: var(--dim); }
+  @media (min-width: 1700px) { .page { grid-template-columns: 360px minmax(0, 1fr); gap: 72px; } }
 </style>
 </head>
 <body>
 <main class="page">
   <section class="left">
-    <div style="display: flex; flex-direction: column; gap: 10px;">
-      <div class="eyebrow">// the route</div>
+    <div class="here">
       <h1>Route</h1>
-      <div class="muted" style="font-size: 14px;">One topic per lesson of Learn GDScript From Zero. Milestones use what came before them.</div>
+      <div class="muted prose" style="font-size: 14px;">One topic per lesson of Learn GDScript From Zero, in five stages. Milestones use what came before them.</div>
     </div>
-    <div class="panel position" style="display: flex; flex-direction: column; gap: 12px;">
-      <div class="label">Position</div>
-      <div class="big" id="pos-title">—</div>
-      <div class="thin" id="pos-bar"><div class="on" style="flex-grow: 0"></div><div style="flex-grow: 1"></div></div>
-      <div class="muted" style="font-size: 12px;" id="pos-detail"></div>
+    <div class="panel here" id="here">
+      <div class="label up">You are here</div>
+      <div class="big" id="here-title">—</div>
+      <div class="segbar" id="here-bar"></div>
+      <div class="small" id="here-count"></div>
+      <div class="small" id="here-totals"></div>
+      <div class="small" id="here-next"></div>
     </div>
-    <div class="panel" style="background: transparent; display: flex; flex-direction: column; gap: 10px;">
-      <div class="label">Course lock</div>
-      <div class="lockrow"><span style="font-size: 14px;">Finished through lesson</span><select id="lock"></select></div>
-      <div class="muted" style="font-size: 12px;">Topics past this show on the route but stay locked.</div>
-    </div>
-    <div class="panel" style="background: transparent; display: flex; flex-direction: column; gap: 10px;">
-      <div class="label">Daily set</div>
-      <div class="lockrow"><span style="font-size: 14px;">New problems per day</span><select id="perday"><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select></div>
-      <div class="muted" style="font-size: 12px;">Takes effect from tomorrow's run. Each topic's hint level sits on its row; "auto" follows your pass rate.</div>
+    <div>
+      <div class="label up" style="margin-bottom: 4px;">Stages</div>
+      <div class="toc" id="toc"></div>
     </div>
   </section>
-  <section class="rail"><div class="rows" id="rows"></div></section>
+  <section class="stages" id="stages"></section>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script type="module" src="route.js"></script>

@@ -4,15 +4,13 @@ import { JudgeClient } from "./judge-client.js";
 import { mountShell } from "./shell.js";
 import { onSynced } from "./sync.js";
 import { loadBank, getDraft, milestones, dayKey } from "./progress.js";
-import { makeScene, wireScene } from "./scene.js";
+import { makeScene, wireScene, GAINS } from "./scene.js";
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const judge = new JudgeClient({ src: "../web/index.html", container: $("judge-frame"), timeoutMs: 5000, inline: new URLSearchParams(location.search).get("judge") === "inline", onStatus: (s) => { $("judge-status").textContent = s === "ready" ? "" : "judge: " + s; }, onTimeout: () => location.reload() });
 const stages = {};
 
-// What each milestone adds to the character, for the "so far" view.
-const GAINS = { m1: { key: "move", text: "moves along the stage", fns: "move_right, move_left, speed_up, slow_down" }, m2: { key: "health", text: "has health that never goes below zero", fns: "take_damage, heal, report" }, m3: { key: "walk", text: "walks the floor between two walls", fns: "move, go_left, go_right, stop" }, m4: { key: "bag", text: "carries a bag of four items", fns: "pick_up, has, count, use" }, m5: { key: "fight", text: "fights an enemy to the end", fns: "attack, enemy_turn, is_alive, fight" } };
 let sofarScene = null;
 function renderSoFar(list) {
   const has = {};

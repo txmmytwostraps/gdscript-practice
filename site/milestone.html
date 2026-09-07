@@ -28,10 +28,12 @@
   .banner a { color: var(--text); }
   .lock { padding: 24px; border: 1px dashed var(--line-strong); color: var(--muted); font-size: 14px; line-height: 1.7; max-width: 60ch; }
   #result-table { border-collapse: collapse; width: 100%; font-size: 13px; }
-  #result-table th { text-align: left; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding: 6px 10px 6px 0; border-bottom: 1px solid var(--line); }
+  #result-table th { text-align: left; font-size: 12px; color: var(--dim); font-weight: 500; padding: 6px 10px 6px 0; border-bottom: 1px solid var(--line); }
   #result-table td { padding: 8px 10px 8px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
   #result-table tr.fail td { color: var(--text); } #result-table tr.pass .mark { color: var(--accent); } #result-table tr.fail .mark { color: var(--error); }
   #result-table .why { font-size: 12px; color: var(--muted); }
+  #stage.gridbg canvas { background: transparent !important; }
+  .steps a { text-transform: none; letter-spacing: 0; }
   @media (min-width: 1700px) { .workspace { grid-template-columns: 560px minmax(0, 1fr); max-width: 1900px; } }
 </style>
 </head>
@@ -43,7 +45,7 @@
 <main class="page workspace">
   <section class="problem">
     <div class="hero">
-      <div class="eyebrow" id="eyebrow">// milestone</div>
+      <div class="eyebrow" id="eyebrow"></div>
       <h2 id="title">Loading…</h2>
     </div>
     <div id="banner" class="banner" hidden></div>
@@ -78,7 +80,7 @@
     </div>
     <div class="scene">
       <div class="label">The stage — runs your script as it is now</div>
-      <div id="stage"></div>
+      <div id="stage" class="gridbg"></div>
       <div class="buttons" id="scene-buttons"></div>
       <div class="scene-note" id="scene-note"></div>
     </div>

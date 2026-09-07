@@ -7,79 +7,88 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="theme.css">
 <style>
-  .page { grid-template-columns: minmax(0, 1fr) 420px; }
-  .hero { display: flex; flex-direction: column; gap: 10px; }
-  .runhead { display: flex; justify-content: space-between; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-  .runhead b { color: var(--text); font-weight: 500; }
-  .slots { display: flex; flex-direction: column; gap: 8px; }
-  .slot { display: grid; grid-template-columns: 56px minmax(0, 1fr) 120px; align-items: center; gap: 16px; padding: 16px 20px; background: var(--panel); border: 1px solid var(--line); color: var(--muted); text-align: left; }
-  .slot .n { font-family: var(--head); font-weight: 700; font-size: 22px; color: var(--accent); }
-  .slot .t { font-weight: 600; } .slot .d { font-size: 13px; }
-  .slot.done .t { text-decoration: line-through; }
-  .slot .state { font-size: 12px; color: var(--accent); text-align: right; letter-spacing: 0.06em; }
-  .slot.active { padding: 20px; border-color: var(--accent); box-shadow: 4px 4px 0 var(--accent); color: var(--text); }
-  .slot.active .n { color: var(--text); } .slot.active .d { color: var(--muted); }
-  .slot.active .state { padding: 10px 0; background: var(--accent); color: var(--bg); font-weight: 600; font-size: 13px; text-align: center; }
-  .slot.link { cursor: pointer; } .slot.link:hover { border-color: var(--line-strong); }
-  .keep { margin-top: auto; display: flex; flex-wrap: wrap; gap: 12px; }
-  .side { display: flex; flex-direction: column; gap: 20px; }
-  .character { display: flex; flex-direction: column; gap: 14px; }
-  .stage { height: 130px; background: var(--bg); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; position: relative; }
-  .hp { position: absolute; left: 12px; bottom: 10px; display: flex; flex-direction: column; gap: 4px; width: 140px; }
-  .hp .l { font-size: 10px; letter-spacing: 0.1em; color: var(--muted); }
-  .hp .b { height: 8px; border: 1px solid var(--line-strong); background: var(--bg); }
-  .excerpt { display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
-  .excerpt a { display: flex; justify-content: space-between; color: var(--muted); }
-  .excerpt a.done { color: var(--dim); } .excerpt a.current { color: var(--text); font-weight: 600; } .excerpt a.current span:last-child { color: var(--accent); }
-  .excerpt a.milestone { color: var(--milestone); padding: 6px 0; } .excerpt a.locked { color: var(--dim); }
-  .streakbox { display: flex; flex-direction: column; gap: 8px; }
-  .week { display: flex; gap: 6px; }
-  .week .day { width: 40px; height: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border: 1px solid var(--line); background: var(--panel); color: var(--dim); font-size: 14px; }
-  .week .day .d { font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dim); }
+  .page { grid-template-columns: minmax(0, 1fr) 400px; }
+  .main { display: flex; flex-direction: column; gap: 28px; min-height: 60vh; }
+  .titlerow { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+  .titlerow .date { font-size: 12px; color: var(--muted); margin-top: 6px; }
+  .streakline { display: flex; align-items: center; gap: 16px; margin-left: auto; font-size: 13px; color: var(--muted); flex-wrap: wrap; }
+  .streakline .n { font-family: var(--head); font-weight: 700; font-size: 34px; color: var(--accent); line-height: 1; }
+  .streakline .txt { display: flex; flex-direction: column; gap: 2px; }
+  .streakline .txt b { color: var(--text); font-weight: 600; }
+  .week { display: flex; gap: 4px; }
+  .week .day { width: 30px; height: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid var(--line); background: var(--panel); color: var(--dim); font-size: 12px; line-height: 1; }
+  .week .day .d { font-size: 8px; color: var(--dim); margin-top: 2px; }
   .week .day.active, .week .day.earned { color: var(--accent); border-color: var(--line-strong); }
   .week .day.rested { color: var(--milestone); border-color: var(--line-strong); }
   .week .day.today { outline: 1px solid var(--text); outline-offset: -1px; }
-  .firstvisit { display: flex; justify-content: space-between; gap: 16px; align-items: center; padding: 14px 20px; border: 1px solid var(--line-strong); background: var(--panel); font-size: 14px; } .firstvisit a { color: var(--accent); }
-  .doneday { padding: 14px 20px; border: 1px solid var(--accent); color: var(--accent); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; }
-  @media (min-width: 1700px) { .page { grid-template-columns: minmax(0, 1fr) 560px; } }
+  .rest { font-size: 11px; padding: 4px 8px; border: 1px solid var(--milestone); color: var(--milestone); }
+  .rest.off { border-color: var(--line); color: var(--dim); }
+  .runcard { border: 1px solid var(--line); background: var(--panel); }
+  .runrow { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; align-items: center; gap: 14px; padding: 14px 18px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+  .runrow:last-child { border-bottom: 0; }
+  .runrow .mk { color: var(--dim); font-size: 13px; }
+  .runrow .t { color: var(--text); } .runrow .d { font-size: 12px; color: var(--muted); }
+  .runrow.done .mk { color: var(--accent); } .runrow.done .t { color: var(--muted); }
+  .runrow.cur { background: rgba(126, 240, 194, 0.07); }
+  .runrow.cur .mk { color: var(--accent); }
+  .runrow a.go { color: var(--accent); font-size: 13px; }
+  .runrow .tr { font-size: 12px; color: var(--dim); }
+  .runcard details summary { list-style: none; cursor: pointer; }
+  .runcard details summary::-webkit-details-marker { display: none; }
+  .runcard details summary .tr { color: var(--accent); }
+  .actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .actions .btn { font-size: 14px; padding: 11px 22px; }
+  .xpline { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--muted); }
+  .xpline b { color: var(--text); font-weight: 600; }
+  .xpbar { display: block; width: 100%; height: 4px; background: var(--line-strong); }
+  .xpbar i { display: block; height: 100%; background: var(--accent); }
+  .keep { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+  .keep > a, .keep > span { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 14px; color: var(--text); }
+  .keep > a:hover { color: var(--accent); }
+  .keep .tr { font-size: 12px; color: var(--dim); }
+  .side { display: flex; flex-direction: column; gap: 24px; }
+  .character { display: flex; flex-direction: column; gap: 12px; }
+  #character-stage { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid var(--line); }
+  #character-stage canvas { position: absolute; left: 50%; bottom: 14px; width: 600px !important; max-width: none !important; height: 160px !important; transform: translateX(-50%); border: 0 !important; }
+  #character-stage .scene-readout { display: none; }
+  .character .caption { font-size: 12px; color: var(--muted); min-height: 1em; }
+  .character .foot2 { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; color: var(--muted); }
+  .excerpt { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+  .excerpt a { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+  .excerpt a.done { color: var(--dim); } .excerpt a.current { color: var(--text); font-weight: 600; } .excerpt a.current span:last-child { color: var(--accent); }
+  .excerpt a.milestone { color: var(--milestone); } .excerpt a.locked { color: var(--dim); }
+  .firstvisit { display: flex; justify-content: space-between; gap: 16px; align-items: center; padding: 14px 20px; border: 1px solid var(--line-strong); background: var(--panel); } .firstvisit a { color: var(--accent); }
+  .firstvisit button { background: none; border: 0; color: var(--muted); font-size: 13px; padding: 0; }
+  @media (min-width: 1700px) { .page { grid-template-columns: minmax(0, 1fr) 520px; } }
 </style>
 </head>
 <body>
 <main class="page">
-  <section style="display: flex; flex-direction: column; gap: 26px; min-height: 60vh;">
-    <div class="hero">
-      <div class="eyebrow" id="dateline">// today</div>
-      <h1>Today's run</h1>
+  <section class="main">
+    <div class="titlerow">
+      <div><h1>Today</h1><div class="date" id="dateline"></div></div>
+      <div class="streakline" id="streakline"></div>
     </div>
-    <div style="display: flex; flex-direction: column; gap: 8px;">
-      <div class="runhead"><span>Run progress</span><b id="runcount">– / 3</b></div>
-      <div class="bar" id="runbar"><div></div><div></div><div></div></div>
-      <div class="runhead" style="font-size: 12px;"><span class="muted">Full runs completed</span><b id="runsdone">–</b></div>
+    <div class="runcard" id="runcard"></div>
+    <div class="actions"><a class="btn primary" id="runbtn" href="practice.html?run=1">Start run</a><span class="muted" id="runnote" style="font-size: 13px;"></span></div>
+    <div class="xpline"><span id="xptext"></span><span class="xpbar" id="xpbar"><i></i></span></div>
+    <div>
+      <div class="label up" style="margin-bottom: 4px;">Keep going</div>
+      <div class="keep" id="keep"></div>
     </div>
-    <div class="streakbox">
-      <div class="runhead"><span>Streak</span><b id="streak-now">–</b></div>
-      <div class="runhead" id="level-row" style="font-size: 12px;"><span class="muted">Level</span><b id="level-now">–</b></div>
-      <div class="xpbar wide" id="xpbar"><i></i></div>
-      <div class="week" id="week"></div>
-      <div class="caps dim" id="streak-note" style="font-size: 11px;"></div>
-    </div>
-    <div class="slots" id="slots"></div>
-    <div class="firstvisit" id="firstvisit" hidden><span>New here? <a href="about.html">About</a> explains how a day works, what each page is for, and how your code is checked.</span><button type="button" class="linkish" id="firstvisit-close">[x] Got it</button></div>
-    <div class="doneday" id="doneday" hidden>Day done · streak extended. Anything more is a bonus.</div>
-    <div class="keep" id="keep"></div>
+    <div class="firstvisit prose" id="firstvisit" hidden><span>New here? <a href="about.html">About</a> explains how a day works, what each page is for, and how your code is checked.</span><button type="button" id="firstvisit-close">Got it</button></div>
   </section>
 
   <aside class="side">
     <div class="panel character">
-      <div class="label">Player character</div>
-      <div class="stage" id="character-stage">
-        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#2a323b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="4"></circle><path d="M5 21v-2a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v2"></path></svg>
-        <div class="hp"><div class="l">HP — NOT YET</div><div class="b"></div></div>
-      </div>
-      <div class="muted" style="font-size: 13px;" id="character-note">Milestone 1 makes the character move. Milestone 2 gives it health, and the bar fills for real.</div>
+      <div class="label up">Character</div>
+      <div id="character-stage"></div>
+      <div class="caption" id="character-caption"></div>
+      <div class="muted prose" style="font-size: 13px;" id="character-note"></div>
+      <div class="foot2"><span id="milestone-count"></span><a class="btn small" href="gallery.html">Open gallery</a></div>
     </div>
-    <div style="display: flex; flex-direction: column; gap: 10px;">
-      <div class="label">Route</div>
+    <div>
+      <div class="label up" style="margin-bottom: 4px;">Route</div>
       <div class="excerpt" id="excerpt"></div>
     </div>
   </aside>

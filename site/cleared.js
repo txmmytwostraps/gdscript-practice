@@ -15,7 +15,7 @@ function render(concept) {
   const t = topics.find((x) => x.concept === concept);
   if (!t) { $("title").textContent = "No such topic"; $("go").innerHTML = `<a class="btn" href="route.html">Route</a>`; return; }
   const cleared = t.total > 0 && t.done === t.total;
-  $("eyebrow").textContent = cleared ? `// topic cleared · ${lesson(t)}` : `// ${lesson(t)} · not cleared yet`;
+  $("eyebrow").textContent = cleared ? `topic cleared · ${lesson(t)}` : `${lesson(t)} · not cleared yet`;
   $("title").innerHTML = `${esc(t.title)}<div class="tick" style="font-size: 30px; margin-top: 6px;">${cleared ? "✓" : ""} ${t.done}/${t.total}</div>`;
   // what this topic unlocked: a milestone waiting behind it, or the next topic on the route
   const m = MILESTONES.find((x) => x.after === concept && !x.planned);

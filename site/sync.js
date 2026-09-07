@@ -77,7 +77,7 @@ export const sync = {
     try { store.set("attempts", await auth.fetchAttempts()); } catch (e) { /* XP from reviews waits for the next sync */ }
     try { await notes.merge(this.user); } catch (e) { this.note("Notes unavailable: " + e.message); }
     try { await settings.merge(this.user); } catch (e) { this.note("Settings unavailable: " + e.message); }
-    this.note(toUpload.length ? `Synced: ${toUpload.length} problem${toUpload.length === 1 ? "" : "s"} updated in your account.` : "Synced.");
+    this.note("");
     notify(changedLocal ? "local-changed" : "merged");
   },
 };

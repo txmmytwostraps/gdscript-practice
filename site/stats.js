@@ -2,10 +2,13 @@
 // progress table (synced locally), attempts from the attempts table, and the
 // review queue from the reviews table.
 import { mountShell } from "./shell.js";
-import { onSynced, sync } from "./sync.js";
+import { onSynced, sync, exportProgress, clearProgress } from "./sync.js";
+import * as settings from "./settings.js";
+import { LESSONS } from "./route-data.js";
+import { applyTextScale } from "./shell.js";
 import * as auth from "./auth.js";
 import * as reviews from "./reviews.js";
-import { loadBank, state, routeTopics, streakDays, activeDays, runsCompleted, milestones, dayKey, today, xpInfo, XP_PER_LEVEL } from "./progress.js";
+import { loadBank, state, routeTopics, streakDays, activeDays, runsCompleted, milestones, dayKey, today, xpInfo, XP_PER_LEVEL, courseLock, newPerDay } from "./progress.js";
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -77,10 +80,28 @@ async function load() {
   render();
 }
 
+function renderTextSize() { for (const b of $("textsize").querySelectorAll("button")) b.classList.toggle("on", Number(b.dataset.size) === settings.textScale()); $("lock").value = String(courseLock()); $("perday").value = String(newPerDay()); }
 async function main() {
   const shell = mountShell("stats");
   await loadBank();
   render();
+  $("lock").innerHTML = LESSONS.map(([n, t]) => `<option value="${n}">${n} · ${t}</option>`).join("");
+  renderTextSize();
+  $("lock").addEventListener("change", async () => { await settings.setCourseLock(Number($("lock").value)); render(); shell.refresh(); });
+  $("perday").addEventListener("change", () => settings.setNewPerDay($("perday").value));
+  $("textsize").addEventListener("click", async (ev) => { const b = ev.target.closest("button[data-size]"); if (!b) return; await settings.setTextScale(Number(b.dataset.size)); applyTextScale(); renderTextSize(); });
+  $("export").addEventListener("click", () => {
+    const blob = new Blob([JSON.stringify(exportProgress(), null, 2)], { type: "application/json" });
+    const a = Object.assign(document.createElement("a"), { href: URL.createObjectURL(blob), download: `gdscript-practice-progress-${new Date().toISOString().slice(0, 10)}.json` });
+    document.body.appendChild(a); a.click(); a.remove();
+  });
+  $("clear").addEventListener("click", async () => {
+    const where = sync.user ? "in this browser AND in your account" : "in this browser";
+    if (prompt(`This deletes every solve, miss count and draft ${where}. Type CLEAR to confirm.`) !== "CLEAR") return;
+    await clearProgress();
+    location.reload();
+  });
+  onSynced(renderTextSize);
   onSynced((what) => { if (what === "user" || what === "merged" || what === "local-changed") load().then(() => shell.refresh()); });
   if (sync.user) load();
 }

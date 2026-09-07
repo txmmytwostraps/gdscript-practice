@@ -64,5 +64,15 @@ export const LESSONS = [
   [25, "Looping over dictionaries"], [26, "Value types"], [27, "Specifying types with type hints"],
 ];
 
+// The lessons grouped into stages for the Route. The course itself runs as
+// one sequence; these breaks follow where its subject changes.
+export const STAGES = [
+  { title: "First steps", from: 1, to: 7 },
+  { title: "Variables and numbers", from: 8, to: 12 },
+  { title: "Decisions", from: 13, to: 15 },
+  { title: "Loops and lists", from: 16, to: 20 },
+  { title: "Real functions", from: 21, to: 27 },
+];
+
 export const DEFAULT_COURSE_LOCK = 20;   // "finished through lesson N"
 export const NEW_PER_DAY = 5;

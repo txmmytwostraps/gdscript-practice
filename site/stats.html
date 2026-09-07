@@ -14,7 +14,13 @@
   .num .v { font-family: var(--head); font-weight: 700; font-size: 28px; line-height: 1; margin-top: 6px; }
   .num .v.accent { color: var(--accent); }
   table { border-collapse: collapse; width: 100%; font-size: 13px; }
-  th { text-align: left; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding: 8px 10px 8px 0; border-bottom: 1px solid var(--line); }
+  th { text-align: left; font-size: 12px; color: var(--dim); font-weight: 500; padding: 8px 10px 8px 0; border-bottom: 1px solid var(--line); }
+  .setrow { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+  .setrow .d { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .setrow select { background: var(--bg); border: 1px solid var(--line-strong); color: var(--text); font-size: 13px; padding: 4px 8px; }
+  .seg { display: inline-flex; border: 1px solid var(--line-strong); }
+  .seg button { padding: 5px 12px; font-size: 12px; background: none; border: 0; border-right: 1px solid var(--line-strong); color: var(--muted); }
+  .seg button:last-child { border-right: 0; } .seg button.on { background: var(--line); color: var(--text); font-weight: 600; }
   td { padding: 8px 10px 8px 0; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; vertical-align: top; }
   td.r, th.r { text-align: right; }
   tr.locked td { color: var(--dim); }
@@ -35,14 +41,13 @@
 <body>
 <main class="page">
   <div style="display: flex; flex-direction: column; gap: 10px;">
-    <div class="eyebrow" id="eyebrow">// stats</div>
     <h1>Stats</h1>
     <div class="muted" id="intro" style="font-size: 14px; max-width: 70ch;"></div>
-    <div class="caps" style="font-size: 12px; display: flex; gap: 18px; flex-wrap: wrap;"><a href="notes.html">[>] Notes — what I don't get / what I missed</a><a href="week.html">[>] This week — the weekly summary</a></div>
+    <div style="font-size: 13px; display: flex; gap: 18px; flex-wrap: wrap;"><a href="notes.html">Notes ›</a><a href="week.html">This week ›</a><a href="gallery.html">Gallery ›</a><a href="#settings">Settings ›</a></div>
   </div>
   <div class="numbers" id="numbers"></div>
   <section class="section">
-    <div class="label">Badges — one per milestone</div>
+    <div class="label">Badges, one per milestone · <a href="gallery.html">open the gallery ›</a></div>
     <div class="weak" id="badges"></div>
   </section>
   <section class="section">
@@ -57,6 +62,16 @@
   <section class="section">
     <div class="label">Per topic</div>
     <div class="tablewrap"><table id="topics"></table></div>
+  </section>
+  <section class="section" id="settings">
+    <div class="label up">Settings</div>
+    <div>
+      <div class="setrow"><span>Text size<div class="d">prose only: goals, hints, cards, About</div></span><span class="seg" id="textsize"><button type="button" data-size="0.9">S</button><button type="button" data-size="1">M</button><button type="button" data-size="1.15">L</button></span></div>
+      <div class="setrow" id="course-lock"><span>Course lock<div class="d">finished through this lesson; topics past it stay locked</div></span><select id="lock"></select></div>
+      <div class="setrow"><span>Daily set<div class="d">new problems per day, from tomorrow's run</div></span><select id="perday"><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select></div>
+      <div class="setrow"><span>Export progress<div class="d">solves, misses and drafts as one JSON file</div></span><button type="button" class="btn small" id="export">Download</button></div>
+      <div class="setrow"><span>Clear progress<div class="d">every solve, miss count and draft, here and in the account</div></span><button type="button" class="btn small" id="clear">Clear…</button></div>
+    </div>
   </section>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>

@@ -59,7 +59,7 @@ function renderFlash() {
     return;
   }
   const c = queue[at];
-  $("eyebrow").textContent = reviewMode ? `// concepts · review · ${at + 1} of ${queue.length}` : `// concepts · lesson ${freeLesson} · ${at + 1} of ${queue.length}`;
+  $("eyebrow").textContent = reviewMode ? `Review · ${at + 1} of ${queue.length}` : `Lesson ${freeLesson} · ${at + 1} of ${queue.length}`; $("eyebrow").hidden = false;
   $("flash").innerHTML = `<div class="progress">Card ${at + 1} of ${queue.length}</div>
     <div class="front">${esc(c.front)}</div>
     ${revealed ? `<div class="back">

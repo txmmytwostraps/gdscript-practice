@@ -71,7 +71,7 @@ function showStep(i) {
   stepAt = Math.max(0, Math.min(data.steps.length - 1, i));
   step = data.steps[stepAt];
   $("stepbody").hidden = false; $("godotbody").hidden = true;
-  $("eyebrow").textContent = `// milestone ${String(meta.number).padStart(2, "0")} · step ${stepAt + 1} of ${data.steps.length}`;
+  $("eyebrow").textContent = `milestone ${String(meta.number).padStart(2, "0")} · step ${stepAt + 1} of ${data.steps.length}`;
   $("title").textContent = step.title;
   document.title = `${step.title} · GDScript Practice`;
   $("prompt").innerHTML = rich(step.prompt);
@@ -91,7 +91,7 @@ function showStep(i) {
 
 function showGodot() {
   $("stepbody").hidden = true; $("godotbody").hidden = false; $("editor-pane").hidden = true;
-  $("eyebrow").textContent = `// milestone ${String(meta.number).padStart(2, "0")} · the same build in Godot`;
+  $("eyebrow").textContent = `milestone ${String(meta.number).padStart(2, "0")} · the same build in Godot`;
   $("title").textContent = "Build it in Godot";
   document.title = "Build it in Godot · GDScript Practice";
   $("godot-intro").innerHTML = rich("Now make the same robot in a real Godot project on your machine. Tick each line as you do it. The list is the whole build: nothing here needs anything you have not written above.");
@@ -151,7 +151,7 @@ async function main() {
   const st = milestoneStatus(meta);
   if (!st.unlocked && !preview) {
     $("title").textContent = meta.title;
-    $("eyebrow").textContent = `// milestone ${String(meta.number).padStart(2, "0")} · locked`;
+    $("eyebrow").textContent = `milestone ${String(meta.number).padStart(2, "0")} · locked`;
     $("lock").hidden = false; $("stepbody").hidden = true; $("editor-pane").hidden = true; $("steps").hidden = true;
     const afterTopic = TOPICS.find((t) => t.concept === meta.after);
     $("lock").innerHTML = `This milestone unlocks when every topic up to <b>${esc(afterTopic ? afterTopic.title : meta.after)}</b> on the route is cleared: ${st.topicsToGo} topic${st.topicsToGo === 1 ? "" : "s"} to go. <a href="route.html#${meta.id}">Back to the route ›</a>`;

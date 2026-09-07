@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Run done · GDScript Practice</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="theme.css">
+<style>
+  .done { max-width: 64ch; margin: 0 auto; padding: 32px 0 64px; display: flex; flex-direction: column; gap: 26px; }
+  .tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .tile { padding: 16px 18px; background: var(--panel); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px; }
+  .tile .v { font-family: var(--head); font-weight: 700; font-size: 26px; line-height: 1; }
+  .tile .v.accent { color: var(--accent); }
+  .parts { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+  .parts .row { display: grid; grid-template-columns: 24px minmax(0, 1fr) auto auto; gap: 14px; align-items: center; padding: 12px 4px; border-bottom: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+  .parts .row .mk { color: var(--accent); } .parts .row .t { color: var(--text); }
+  .parts .row .xp { color: var(--accent); min-width: 5rem; text-align: right; }
+  .parts .row.off .mk, .parts .row.off .xp { color: var(--dim); }
+  .go { display: flex; align-items: center; gap: 20px; }
+  .go .btn { font-size: 14px; padding: 11px 22px; }
+  @media (max-width: 600px) { .tiles { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body class="gridbg">
+<main class="page">
+  <section class="done">
+    <div><div class="eyebrow" id="eyebrow"></div><h1>Run done</h1></div>
+    <div class="tiles" id="tiles"></div>
+    <div class="parts" id="parts"></div>
+    <div class="go"><a class="btn primary" href="./">Back to Today</a><a id="keep" href="practice.html">Keep going ›</a></div>
+  </section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script type="module" src="run-done.js"></script>
+</body>
+</html>

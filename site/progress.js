@@ -265,6 +265,19 @@ export function trackTime() {
 // ---- header ----
 export function renderHeaderStats(el) {
   if (!el) return;
-  const s = streakInfo();
-  el.innerHTML = `<span>Streak <b class="accent">${s.current}</b><span class="dim"> · best ${s.longest}</span></span>${xpHtml()}<span>Course <b>L${courseLock()}</b></span>`;
+  const s = streakInfo(), x = xpInfo();
+  el.innerHTML = `<span class="blk"><span>Streak <b>${s.current}</b> · best ${s.longest}</span></span>`
+    + `<span class="blk" title="${x.toNext} XP to level ${x.level + 1}"><span>Level <b>${x.level}</b> · ${x.xp} XP</span><span class="xpbar"><i style="width: ${Math.round(100 * x.into / XP_PER_LEVEL)}%"></i></span></span>`
+    + `<a class="blk" href="stats.html#settings" title="the course lock, under Stats settings"><span>Course <b>L${courseLock()}</b></span></a>`;
+}
+/** XP earned on one day, by the same rule: first solves, on-time review passes, milestone steps. */
+export function xpOn(day) {
+  let problems = 0, steps = 0;
+  for (const [id, iso] of Object.entries(state.solved)) {
+    if (dayKey(new Date(iso)) !== day) continue;
+    if (/^md+-sd+$/.test(id)) steps += 1; else if (state.byId.size === 0 ? !/^md+-/.test(id) : state.byId.has(id)) problems += 1;
+  }
+  const seen = new Set();
+  for (const a of store.get("attempts", [])) if (a.kind === "review" && a.result === "pass" && dayKey(new Date(a.at)) === day) seen.add(a.problem_id);
+  return { problems, reviews: seen.size, steps, xp: problems * XP_PROBLEM + seen.size * XP_REVIEW + steps * XP_STEP };
 }

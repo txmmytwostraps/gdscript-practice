@@ -20,7 +20,12 @@ export function setUser(u) { user = u; }
 
 export function courseLock() { return data.course_lock ?? DEFAULT_COURSE_LOCK; }
 export function newPerDay() { return data.new_per_day ?? NEW_PER_DAY; }
-export function hintOverrides() { return data.hint_overrides || {}; }
+export function hintOverrides() { const o = { ...(data.hint_overrides || {}) }; delete o._text_size; return o; }
+// Text size S / M / L: 0.9, 1, 1.15. Stored in the settings row inside the
+// hint_overrides JSON as "_text_size", so the table needs no new column.
+export const TEXT_SIZES = { S: 0.9, M: 1, L: 1.15 };
+export function textScale() { const v = Number((data.hint_overrides || {})._text_size); return Object.values(TEXT_SIZES).includes(v) ? v : 1; }
+export function setTextScale(v) { const o = { ...(data.hint_overrides || {}) }; if (Number(v) === 1) delete o._text_size; else o._text_size = Number(v); return save({ hint_overrides: o }); }
 
 async function save(patch) {
   data = { ...data, ...patch, updated_at: new Date().toISOString() };
@@ -30,7 +35,7 @@ async function save(patch) {
 export function setCourseLock(n) { return save({ course_lock: Number(n) }); }
 export function setNewPerDay(n) { return save({ new_per_day: Math.max(1, Math.min(10, Number(n) || NEW_PER_DAY)) }); }
 export function setHintOverride(concept, level) {
-  const o = { ...hintOverrides() };
+  const o = { ...(data.hint_overrides || {}) };
   if (level) o[concept] = level; else delete o[concept];
   return save({ hint_overrides: o });
 }

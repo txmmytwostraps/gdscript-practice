@@ -5,10 +5,13 @@
 // last printed line as a status.
 export const STAGE_WIDTH = 600;
 const H = 160, GROUND = 128;
+// What each milestone adds to the character, for the "so far" views on the Gallery and Today.
+export const GAINS = { m1: { key: "move", text: "moves along the stage", fns: "move_right, move_left, speed_up, slow_down" }, m2: { key: "health", text: "has health that never goes below zero", fns: "take_damage, heal, report" }, m3: { key: "walk", text: "walks the floor between two walls", fns: "move, go_left, go_right, stop" }, m4: { key: "bag", text: "carries a bag of four items", fns: "pick_up, has, count, use" }, m5: { key: "fight", text: "fights an enemy to the end", fns: "attack, enemy_turn, is_alive, fight" } };
 export const KINDS = { move: { watch: ["x", "speed"] }, health: { watch: ["health", "max_health"] }, walk: { watch: ["position", "speed", "facing"] }, bag: { watch: ["items", "capacity", "health", "max_health"] }, fight: { watch: ["health", "max_health", "attack_power", "enemy_health", "enemy_max_health", "enemy_attack"] }, character: { watch: [] } };
 
 export function makeScene(container, kind = "move") {
-  container.innerHTML = `<canvas width="${STAGE_WIDTH}" height="${H}" style="width:100%;max-width:${STAGE_WIDTH}px;display:block;background:var(--bg);border:1px solid var(--line)"></canvas><div class="caps dim scene-readout" style="font-size:12px;margin-top:6px"></div>`;
+  container.classList.add("gridbg");
+  container.innerHTML = `<canvas width="${STAGE_WIDTH}" height="${H}" style="width:100%;max-width:${STAGE_WIDTH}px;display:block;background:transparent;border:1px solid var(--line)"></canvas><div class="caps dim scene-readout" style="font-size:12px;margin-top:6px"></div>`;
   const canvas = container.querySelector("canvas"), readout = container.querySelector(".scene-readout");
   const ctx = canvas.getContext("2d");
   const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim() || "#888";
@@ -188,10 +191,11 @@ export function makeScene(container, kind = "move") {
       tick();
     },
     /** A looping demo for pages without the judge: the robot patrols. */
-    demo(speed = 120) {
+    /** Patrol back and forth; range narrows the walk (the Today panel shows the middle of the stage). */
+    demo(speed = 120, range = [30, STAGE_WIDTH - 30]) {
       cancelAnimationFrame(anim);
-      let x = 0, dir = 1, last = performance.now();
-      const tick = (now) => { x += dir * speed * Math.min(0.05, (now - last) / 1000); last = now; if (x > STAGE_WIDTH - 30) dir = -1; if (x < 30) dir = 1; state = { ...state, x, speed: speed * dir, facing: dir < 0 ? "left" : "right" }; draw(state); anim = requestAnimationFrame(tick); };
+      let x = range[0], dir = 1, last = performance.now();
+      const tick = (now) => { x += dir * speed * Math.min(0.05, (now - last) / 1000); last = now; if (x > range[1]) dir = -1; if (x < range[0]) dir = 1; state = { ...state, x, speed: speed * dir, facing: dir < 0 ? "left" : "right" }; draw(state); anim = requestAnimationFrame(tick); };
       anim = requestAnimationFrame(tick);
     },
     stop() { cancelAnimationFrame(anim); },

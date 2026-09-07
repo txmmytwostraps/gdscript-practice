@@ -1,22 +1,28 @@
-// The header every page shares: brand, nav, streak/level/course, account.
+// The header every page shares: brand and nav on the left; streak, level,
+// course and the account menu on the right. About lives in the footer.
 import * as auth from "./auth.js";
 import { renderHeaderStats, trackTime } from "./progress.js";
+import * as settings from "./settings.js";
 import { sync, onSynced } from "./sync.js";
 
-const NAV = [["Today", "./"], ["Route", "route.html"], ["Practice", "practice.html"], ["Concepts", "concepts.html"], ["Gallery", "gallery.html"], ["Stats", "stats.html"], ["About", "about.html"]];
+const NAV = [["Today", "./"], ["Route", "route.html"], ["Practice", "practice.html"], ["Concepts", "concepts.html"], ["Stats", "stats.html"]];
+export const APP_URL = "https://github.com/txmmytwostraps/delta/releases/latest/download/delta.apk";
+
+/** The text-size setting, as the --text-scale variable prose sizes follow. */
+export function applyTextScale() { document.documentElement.style.setProperty("--text-scale", String(settings.textScale())); }
 
 export function mountShell(active, { stats = true } = {}) {
   // Testing aid: ?today=YYYY-MM-DD makes every page believe it is that day.
   const t = new URLSearchParams(location.search).get("today");
   if (t !== null) { try { if (t) sessionStorage.setItem("gdp.today", t); else sessionStorage.removeItem("gdp.today"); } catch (e) {} }
+  applyTextScale();
   const header = document.createElement("header");
   header.className = "top";
   header.innerHTML = `
     <a class="brand" href="./"><span class="mark"></span><span class="name">GDScript Practice</span></a>
     <nav class="nav">${NAV.map(([n, href]) => `<a href="${href}" class="${n.toLowerCase() === active ? "active" : ""}">${n}</a>`).join("")}</nav>
-    <div class="stats" id="header-stats" ${stats ? "" : "hidden"}></div>
+    <div class="hstats" id="header-stats" ${stats ? "" : "hidden"}></div>
     <div class="account">
-      <div id="account-off" hidden><span class="muted">Progress stays in this browser</span></div>
       <div id="account-out" hidden>
         <button type="button" class="btn small" id="github-signin">Sign in with GitHub</button>
         <button type="button" class="btn small" id="email-toggle">Email</button>
@@ -27,29 +33,31 @@ export function mountShell(active, { stats = true } = {}) {
           <button type="button" class="btn small" id="email-signup">Create account</button>
         </form>
       </div>
-      <div id="account-in" hidden><span id="account-name" class="accent"></span><a class="getapp caps" href="https://github.com/txmmytwostraps/delta/releases/latest/download/delta.apk" title="Delta, the Android app">Get the app</a><button type="button" class="btn small" id="signout">Sign out</button></div>
+      <details class="menu" id="account-in" hidden>
+        <summary id="account-name"></summary>
+        <div class="drop"><a href="${APP_URL}" title="Delta, the Android app">Get the app</a><button type="button" id="signout">Sign out</button></div>
+      </details>
       <div id="account-note" hidden></div>
     </div>`;
   document.body.prepend(header);
   const footer = document.createElement("footer");
-  footer.className = "foot caps";
-  footer.innerHTML = `<a href="about.html">About</a><span class="dim">·</span><a href="https://github.com/txmmytwostraps/gdscript-practice">Source</a><span class="dim">·</span><span class="muted">Follows Learn GDScript From Zero, lesson by lesson</span>`;
+  footer.className = "foot";
+  footer.innerHTML = `<a href="about.html">About</a><span class="dim">·</span><a href="https://github.com/txmmytwostraps/gdscript-practice">Source</a><span class="dim">·</span><span>Follows Learn GDScript From Zero, lesson by lesson</span>`;
   document.body.appendChild(footer);
   const $ = (id) => document.getElementById(id);
 
   const renderAccount = () => {
     const u = sync.user;
-    $("account-off").hidden = Boolean(u) || !auth.enabled;
     $("account-out").hidden = Boolean(u) || !auth.enabled;
     $("account-in").hidden = !u;
-    $("account-off").hidden = auth.enabled;
     if (u) $("account-name").textContent = auth.displayName(u);
     $("email-form").hidden = true;
   };
-  const refresh = () => { renderHeaderStats($("header-stats")); renderAccount(); };
+  const refresh = () => { renderHeaderStats($("header-stats")); renderAccount(); applyTextScale(); };
   onSynced(refresh);
   refresh();
   trackTime();
+  document.addEventListener("click", (ev) => { const m = $("account-in"); if (m && m.open && !m.contains(ev.target)) m.open = false; });
 
   if (auth.enabled) {
     $("github-signin").addEventListener("click", () => auth.signInWithGitHub());
