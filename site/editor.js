@@ -17,24 +17,43 @@ export function makeEditor(ta, { onRun = () => {} } = {}) {
       // backspace on an empty pair removes both.
       autoCloseBrackets: { pairs: "()[]{}''\"\"", closeBefore: ")]}'\":;,", triples: "", explode: "()[]{}" },
       extraKeys: {
-        Tab: (cm) => cm.replaceSelection("\t"), "Shift-Tab": (cm) => cm.indentSelection("subtract"),
+        // Tab indents (the selected lines, or inserts one tab); Shift-Tab removes one level.
+        Tab: (cm) => { if (cm.somethingSelected() && cm.getCursor("from").line !== cm.getCursor("to").line) cm.execCommand("indentMore"); else cm.replaceSelection("\t"); },
+        "Shift-Tab": (cm) => cm.execCommand("indentLess"),
         Enter: (cm) => {
-          // Keep the indentation of the current line, or of the nearest
-          // non-blank line above when this one is blank; add a level after ':'.
+          // Keep the current line's indentation; one more tab after a line ending in ':'.
           const cur = cm.getCursor();
-          let n = cur.line;
-          let line = cm.getLine(n).slice(0, cur.ch);
-          while (line.trim() === "" && n > 0) { n -= 1; line = cm.getLine(n); }
+          const line = cm.getLine(cur.line).slice(0, cur.ch);
           const indent = (/^\t*/.exec(line) || [""])[0];
-          const extra = /:\s*(#.*)?$/.test(line) && n === cur.line ? "\t" : "";
+          const extra = /:\s*(#.*)?$/.test(line) ? "\t" : "";
           cm.replaceSelection("\n" + indent + extra);
+        },
+        Backspace: (cm) => {
+          // At the start of an indented line, remove one tab; otherwise the usual backspace.
+          const cur = cm.getCursor();
+          const before = cm.getLine(cur.line).slice(0, cur.ch);
+          if (!cm.somethingSelected() && before.length && /^\t+$/.test(before)) cm.replaceRange("", { line: cur.line, ch: cur.ch - 1 }, cur);
+          else cm.execCommand("delCharBefore");
         },
         "Ctrl-Enter": () => onRun(), "Cmd-Enter": () => onRun(),
       },
     });
     let marked = null;
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => cm.refresh());   // re-measure once the web font is in
-    return { get: () => cm.getValue(), set: (t) => { cm.setValue(t); cm.clearHistory(); cm.refresh(); }, onChange: (fn) => cm.on("change", fn), focus: () => cm.focus(),
+    // Loading code: when it ends with an empty line under a ':' header, that
+    // line gets its indentation and the cursor, so typing starts in the body.
+    const set = (t) => {
+      cm.setValue(t);
+      const last = cm.lastLine();
+      if (last > 0 && cm.getLine(last) === "") {
+        const prev = cm.getLine(last - 1);
+        const indent = (/^\t*/.exec(prev) || [""])[0] + (/:\s*(#.*)?$/.test(prev) ? "\t" : "");
+        if (indent) { cm.replaceRange(indent, { line: last, ch: 0 }); }
+        cm.setCursor({ line: last, ch: indent.length });
+      }
+      cm.clearHistory(); cm.refresh();
+    };
+    return { get: () => cm.getValue(), set, onChange: (fn) => cm.on("change", fn), focus: () => cm.focus(),
       markError: (n) => { if (marked !== null) cm.removeLineClass(marked, "background", "cm-error-line"); marked = n; if (n !== null) cm.addLineClass(n, "background", "cm-error-line"); } };
   }
   ta.addEventListener("keydown", (ev) => {
