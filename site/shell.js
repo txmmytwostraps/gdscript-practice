@@ -3,7 +3,7 @@ import * as auth from "./auth.js";
 import { renderHeaderStats, trackTime } from "./progress.js";
 import { sync, onSynced } from "./sync.js";
 
-const NAV = [["Today", "./"], ["Route", "route.html"], ["Practice", "practice.html"], ["Concepts", "concepts.html"], ["Gallery", "gallery.html"], ["Stats", "stats.html"]];
+const NAV = [["Today", "./"], ["Route", "route.html"], ["Practice", "practice.html"], ["Concepts", "concepts.html"], ["Gallery", "gallery.html"], ["Stats", "stats.html"], ["About", "about.html"]];
 
 export function mountShell(active, { stats = true } = {}) {
   // Testing aid: ?today=YYYY-MM-DD makes every page believe it is that day.
@@ -31,6 +31,10 @@ export function mountShell(active, { stats = true } = {}) {
       <div id="account-note" hidden></div>
     </div>`;
   document.body.prepend(header);
+  const footer = document.createElement("footer");
+  footer.className = "foot caps";
+  footer.innerHTML = `<a href="about.html">About</a><span class="dim">·</span><a href="https://github.com/txmmytwostraps/gdscript-practice">Source</a><span class="dim">·</span><span class="muted">Follows Learn GDScript From Zero, lesson by lesson</span>`;
+  document.body.appendChild(footer);
   const $ = (id) => document.getElementById(id);
 
   const renderAccount = () => {

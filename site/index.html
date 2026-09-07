@@ -32,6 +32,7 @@
   .excerpt a { display: flex; justify-content: space-between; color: var(--muted); }
   .excerpt a.done { color: var(--dim); } .excerpt a.current { color: var(--text); font-weight: 600; } .excerpt a.current span:last-child { color: var(--accent); }
   .excerpt a.milestone { color: var(--milestone); padding: 6px 0; } .excerpt a.locked { color: var(--dim); }
+  .firstvisit { display: flex; justify-content: space-between; gap: 16px; align-items: center; padding: 14px 20px; border: 1px solid var(--line-strong); background: var(--panel); font-size: 14px; } .firstvisit a { color: var(--accent); }
   .doneday { padding: 14px 20px; border: 1px solid var(--accent); color: var(--accent); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; }
   @media (min-width: 1700px) { .page { grid-template-columns: minmax(0, 1fr) 560px; } }
 </style>
@@ -49,6 +50,7 @@
       <div class="runhead" style="font-size: 12px;"><span class="muted">Full runs completed</span><b id="runsdone">–</b></div>
     </div>
     <div class="slots" id="slots"></div>
+    <div class="firstvisit" id="firstvisit" hidden><span>New here? <a href="about.html">About</a> explains how a day works, what each page is for, and how your code is checked.</span><button type="button" class="linkish" id="firstvisit-close">[x] Got it</button></div>
     <div class="doneday" id="doneday" hidden>Day done · streak extended. Anything more is a bonus.</div>
     <div class="keep" id="keep"></div>
   </section>

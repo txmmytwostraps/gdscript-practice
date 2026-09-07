@@ -45,6 +45,8 @@ function render() {
     return href && !s.done ? `<a class="slot link ${active ? "active" : ""}" href="${href}">${inner}</a>` : `<div class="slot ${s.done ? "done" : ""} ${active ? "active" : ""}">${inner}</div>`;
   }).join("");
   $("doneday").hidden = !run.allDone;
+  // First visit: nothing solved yet, or not signed in, until dismissed.
+  $("firstvisit").hidden = Boolean(store.get("aboutSeen", false)) || (sync.user && Object.keys(state.solved).length > 0);
   // keep going: never counts against the day
   const topic = routeTopics().find((t) => t.concept === run.topic);
   const moreId = topic ? (topic.list.find((p) => !state.solved[p.id] && !run.newIds.includes(p.id) && p.id !== run.extraId) || {}).id : null;
@@ -88,6 +90,7 @@ async function main() {
   const shell = mountShell("today");
   await loadBank();
   render();
+  $("firstvisit-close").addEventListener("click", () => { store.set("aboutSeen", true); $("firstvisit").hidden = true; });
   onSynced(() => { render(); shell.refresh(); });
 }
 main().catch((e) => { $("slots").innerHTML = `<div class="error">Could not load: ${esc(e.message)}</div>`; });

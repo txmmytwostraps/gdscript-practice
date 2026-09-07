@@ -69,7 +69,7 @@ jobs:
         run: |
           mkdir -p _site
           cp -r site problems milestones cards web _site/
-          cp index.html .nojekyll _site/
+          cp index.html README.md .nojekyll _site/
 
       # Turns Pages on with "GitHub Actions" as the source if it is not yet.
       - uses: actions/configure-pages@v5
