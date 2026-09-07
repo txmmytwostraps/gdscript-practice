@@ -1,6 +1,7 @@
 import { mountShell } from "./shell.js";
 import { onSynced, sync } from "./sync.js";
-import { loadBank, state, routeTopics, markerFor, currentTopic, courseLock, setCourseLock, newPerDay, setNewPerDay, nextMilestone, milestoneStatus, milestones } from "./progress.js";
+import { loadBank, state, routeTopics, markerFor, currentTopic, courseLock, newPerDay, nextMilestone, milestoneStatus, milestones } from "./progress.js";
+import { setCourseLock, setNewPerDay } from "./settings.js";
 import * as scaffold from "./scaffold.js";
 import { MILESTONES, LESSONS } from "./route-data.js";
 import { requestPrompt } from "./content-rules.js";
@@ -72,7 +73,8 @@ async function main() {
   $("lock").addEventListener("change", () => { setCourseLock(Number($("lock").value)); render(); shell.refresh(); });
   $("perday").value = String(newPerDay());
   $("perday").addEventListener("change", () => { setNewPerDay($("perday").value); });
-  $("rows").addEventListener("change", (ev) => { const sel = ev.target.closest("select[data-scaffold]"); if (!sel) return; scaffold.setOverride(sel.dataset.scaffold, sel.value); render(); });
+  $("rows").addEventListener("change", async (ev) => { const sel = ev.target.closest("select[data-scaffold]"); if (!sel) return; await scaffold.setOverride(sel.dataset.scaffold, sel.value); render(); });
+  onSynced((what) => { if (what === "merged" || what === "local-changed") { $("lock").value = String(courseLock()); $("perday").value = String(newPerDay()); } });
   if (sync.user) scaffold.refresh(sync.user).then(render);
   // Request more problems: copies a written brief for the topic to the clipboard.
   $("rows").addEventListener("click", async (ev) => {

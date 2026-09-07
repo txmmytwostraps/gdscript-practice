@@ -49,12 +49,11 @@ export function today() {
 export const dayKey = (d = today()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 export function solvesOn(key) { return Object.entries(state.solved).filter(([, iso]) => dayKey(new Date(iso)) === key).map(([id]) => id); }
 
-// ---- course lock ----
-export function courseLock() { return store.get("courseLock", DEFAULT_COURSE_LOCK); }
-export function setCourseLock(n) { store.set("courseLock", n); }
-// ---- daily set size (a setting; the weekly summary may suggest changing it) ----
-export function newPerDay() { return store.get("newPerDay", NEW_PER_DAY); }
-export function setNewPerDay(n) { store.set("newPerDay", Math.max(1, Math.min(10, Number(n) || NEW_PER_DAY))); }
+// ---- settings (course lock, daily set size) ----
+// settings.js owns them and keeps the account in step; this reads the local copy.
+const settingsCopy = () => store.get("settings", null) || {};
+export function courseLock() { const v = settingsCopy().course_lock; return v == null ? store.get("courseLock", DEFAULT_COURSE_LOCK) : v; }
+export function newPerDay() { const v = settingsCopy().new_per_day; return v == null ? store.get("newPerDay", NEW_PER_DAY) : v; }
 
 // ---- topics on the route ----
 export function topicStats(t) {

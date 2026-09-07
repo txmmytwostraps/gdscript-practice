@@ -9,6 +9,7 @@
 // wins until it is cleared.
 import * as auth from "./auth.js";
 import { store, state } from "./progress.js";
+import * as settings from "./settings.js";
 
 export const LEVELS = ["full", "reduced", "minimal"];
 const WINDOW = 20, RISE = 0.85, DROP = 0.65, MIN_RISE = 15, MIN_DROP = 10;
@@ -16,10 +17,11 @@ const WINDOW = 20, RISE = 0.85, DROP = 0.65, MIN_RISE = 15, MIN_DROP = 10;
 let data = store.get("scaffold", { auto: {}, override: {}, counts: {} });   // auto: { concept: { level, since } }
 const persist = () => store.set("scaffold", data);
 
-export function levelFor(concept) { return data.override[concept] || (data.auto[concept] ? data.auto[concept].level : "full"); }
+// Overrides live in the account settings; the automatic levels stay local.
+export function levelFor(concept) { return overrideFor(concept) || (data.auto[concept] ? data.auto[concept].level : "full"); }
 export function autoLevel(concept) { return data.auto[concept] ? data.auto[concept].level : "full"; }
-export function overrideFor(concept) { return data.override[concept] || ""; }
-export function setOverride(concept, level) { if (level && LEVELS.includes(level)) data.override[concept] = level; else delete data.override[concept]; persist(); }
+export function overrideFor(concept) { const o = settings.hintOverrides()[concept]; return LEVELS.includes(o) ? o : ""; }
+export function setOverride(concept, level) { return settings.setHintOverride(concept, LEVELS.includes(level) ? level : ""); }
 export function statsFor(concept) { return data.counts[concept] || { attempts: 0, rate: null }; }
 
 /** Misses needed before the reference solution unlocks, by level. */

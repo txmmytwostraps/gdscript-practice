@@ -6,6 +6,7 @@ import * as auth from "./auth.js";
 import { state, store, getDraft, saveSolved, saveFails } from "./progress.js";
 import * as reviews from "./reviews.js";
 import * as notes from "./notes.js";
+import * as settings from "./settings.js";
 
 const listeners = [];
 export function onSynced(fn) { listeners.push(fn); }
@@ -35,6 +36,7 @@ export const sync = {
   async setUser(u) {
     const was = this.user && this.user.id;
     this.user = u;
+    settings.setUser(u);
     notify("user");
     if (u && u.id !== was) {
       try { await this.mergeOnLogin(); } catch (e) { this.note("Sync failed: " + e.message); }
@@ -73,6 +75,7 @@ export const sync = {
       for (const concept of new Set(state.problems.map((p) => p.concept))) { await reviews.scheduleTopicIfCleared(this.user, concept); await reviews.scheduleCardsIfStarted(this.user, concept); }
     } catch (e) { this.note("Reviews unavailable: " + e.message); }
     try { await notes.merge(this.user); } catch (e) { this.note("Notes unavailable: " + e.message); }
+    try { await settings.merge(this.user); } catch (e) { this.note("Settings unavailable: " + e.message); }
     this.note(toUpload.length ? `Synced: ${toUpload.length} problem${toUpload.length === 1 ? "" : "s"} updated in your account.` : "Synced.");
     notify(changedLocal ? "local-changed" : "merged");
   },

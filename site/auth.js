@@ -85,6 +85,18 @@ export async function upsertNotes(rowsToWrite) {
   if (error) throw new Error(error.message);
 }
 
+/** The user's settings row, or null when there is none yet. */
+export async function fetchSettings() {
+  const { data, error } = await client.from("settings").select("course_lock, new_per_day, hint_overrides, updated_at").maybeSingle();
+  if (error) throw new Error(error.message);
+  return data;
+}
+
+export async function upsertSettings(userId, s) {
+  const { error } = await client.from("settings").upsert({ user_id: userId, course_lock: s.course_lock, new_per_day: s.new_per_day, hint_overrides: s.hint_overrides || {}, updated_at: s.updated_at || new Date().toISOString() }, { onConflict: "user_id" });
+  if (error) throw new Error(error.message);
+}
+
 /** Every recorded attempt, oldest first. */
 export async function fetchAttempts() {
   const { data, error } = await client.from("attempts").select("problem_id, kind, result, at").order("at", { ascending: true }).limit(5000);
