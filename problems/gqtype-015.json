@@ -3,7 +3,7 @@
   "title": "Read a hinted signature",
   "concept": "gq-types",
   "difficulty": 0,
-  "prompt": "This helper is already written with full hints. Call it from solve with 3 and 4 and return the result.",
+  "prompt": "This helper is already written with full hints. Call it from `solve` with 3 and 4. Then return what it gives you.",
   "signature": "func solve() -> int:",
   "starter": "func solve() -> int:\n\treturn 0\n\nfunc add(a: int, b: int) -> int:\n\treturn a + b",
   "tests": [

@@ -3,7 +3,7 @@
   "title": "Multiply in place",
   "concept": "gq-multiply",
   "difficulty": 1,
-  "prompt": "A member `speed` starts at 10. Write `boost`, which multiplies speed by 3 using `*=`. solve calls boost and returns speed, 30.",
+  "prompt": "A member `speed` starts at 10. Write `boost`, which multiplies speed by 3 using `*=`. In `solve`, call boost. Then return speed, which is 30.",
   "signature": "func solve():",
   "starter": "var speed = 10\n\nfunc solve():\n\treturn speed",
   "tests": [

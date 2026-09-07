@@ -3,7 +3,7 @@
   "title": "void means nothing back",
   "concept": "gq-types",
   "difficulty": 0,
-  "prompt": "Write `log_health`, hinted to return void, which prints the health. solve calls it and returns the health unchanged.",
+  "prompt": "Write `log_health`, hinted to return void, which prints the health. In `solve`, call it. Then return the health, unchanged.",
   "signature": "func solve(health: int) -> int:",
   "starter": "func solve(health: int) -> int:\n\treturn health",
   "tests": [

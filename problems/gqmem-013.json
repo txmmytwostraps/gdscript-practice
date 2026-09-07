@@ -3,7 +3,7 @@
   "title": "Reset",
   "concept": "gq-members",
   "difficulty": 0,
-  "prompt": "Members `health` at 35 and `max_health` at 100. Write `reset`, which sets health back to max_health. solve calls reset and returns health, 100.",
+  "prompt": "Members `health` at 35 and `max_health` at 100. Write `reset`, which sets health back to max_health. In `solve`, call reset. Then return health, which is 100.",
   "signature": "func solve():",
   "starter": "var health = 35\nvar max_health = 100\n\nfunc solve():\n\treturn health",
   "tests": [

@@ -3,7 +3,7 @@
   "title": "Heal",
   "concept": "gq-members",
   "difficulty": 1,
-  "prompt": "The starter has a member `health` at 50 and a `take_damage` helper. Add a `heal` helper that adds an amount to health. In `solve`, call heal(20) and return health, which is 70.",
+  "prompt": "The starter has a member `health` at 50 and a `take_damage` helper. Add a `heal` helper that adds an amount to health. In `solve`, call heal(20). Then return health, which is 70.",
   "signature": "func solve():",
   "starter": "var health = 50\n\nfunc solve():\n\treturn health\n\nfunc take_damage(amount):\n\thealth -= amount",
   "tests": [

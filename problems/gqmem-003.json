@@ -3,7 +3,7 @@
   "title": "A helper changes a member",
   "concept": "gq-members",
   "difficulty": 1,
-  "prompt": "`health` is a variable at the top of the script (a member variable) starting at 100. Write `take_damage`, which takes an amount and subtracts it from health. In `solve`, call take_damage(30) and return health, which is then 70.",
+  "prompt": "`health` is a variable at the top of the script (a member variable) starting at 100. Write `take_damage`, which takes an amount and subtracts it from health. In `solve`, call take_damage(30). Then return health, which is 70 by then.",
   "signature": "func solve():",
   "starter": "var health = 100\n\nfunc solve():\n\treturn health",
   "tests": [

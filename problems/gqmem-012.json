@@ -3,7 +3,7 @@
   "title": "Position as members",
   "concept": "gq-members",
   "difficulty": 0,
-  "prompt": "Members `x` at 0 and `y` at 0 are the robot's position. Write `move_by`, which takes dx and dy and adds them to x and y. solve calls move_by(3, 4) then returns x plus y, which is 7.",
+  "prompt": "Members `x` at 0 and `y` at 0 are the robot's position. Write `move_by`, which takes dx and dy and adds them to x and y. In `solve`, call move_by(3, 4). Then return x plus y, which is 7.",
   "signature": "func solve():",
   "starter": "var x = 0\nvar y = 0\n\nfunc solve():\n\treturn x + y",
   "tests": [

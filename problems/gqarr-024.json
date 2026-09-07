@@ -3,7 +3,7 @@
   "title": "Arrays are shared, not copied",
   "concept": "gq-arrays",
   "difficulty": 1,
-  "prompt": "Earlier you saw that a number passed to a function is a copy. Arrays are different. Write `add_item`, which takes an array and appends 99 to it. In `solve`, call add_item(items) and then return items; the original now contains the 99.",
+  "prompt": "Earlier you saw that a number passed to a function is a copy. Arrays are different. Write `add_item`, which takes an array and appends 99 to it. In `solve`, call add_item(items). Then return items: the original now contains the 99.",
   "signature": "func solve(items):",
   "starter": "func solve(items):\n\treturn items",
   "tests": [

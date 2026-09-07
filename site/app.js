@@ -120,7 +120,7 @@ function describeSignature(sig, printOnly = false) {
   const hasHints = /:\s*\w+\s*[,)=]/.test(sig) || ret;
   const typesTopic = state.problems.find((p) => p.concept === "gq-types");
   const hintNote = typesTopic ? ` The parts like <code>-> int</code> are type hints — optional in GDScript, covered in <a href="practice.html#${typesTopic.id}">lesson 27</a>.` : " The parts like <code>-> int</code> are type hints — optional in GDScript; you may not have met them yet.";
-  return `The first line means: <code>solve</code> ${receives}, and ${gives}.${hasHints ? hintNote : ""}`;
+  return `The first line means: <code>solve</code> ${receives}, and ${gives}.${hasHints ? hintNote : ""}<br><span class="dim">A function called <code>solve</code> is only how this site hands your code its inputs. Godot itself never looks for one.</span>`;
 }
 
 // ---------- editor ----------

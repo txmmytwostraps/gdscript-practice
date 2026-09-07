@@ -3,7 +3,7 @@
   "title": "Members with types",
   "concept": "gq-types",
   "difficulty": 1,
-  "prompt": "Declare members `level: int = 1` and `max_health: float = 100.0`. Write `level_up`, hinted void, which adds 1 to level and multiplies max_health by 1.5. solve calls it twice and returns max_health.",
+  "prompt": "Declare members `level: int = 1` and `max_health: float = 100.0`. Write `level_up`, hinted void, which adds 1 to level and multiplies max_health by 1.5. In `solve`, call it twice. Then return max_health.",
   "signature": "func solve() -> float:",
   "starter": "func solve() -> float:\n\treturn 0.0",
   "tests": [

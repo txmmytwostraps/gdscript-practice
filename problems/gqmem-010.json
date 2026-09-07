@@ -3,7 +3,7 @@
   "title": "Max health",
   "concept": "gq-members",
   "difficulty": 1,
-  "prompt": "Members `health` at 90 and `max_health` at 100 exist. Write `heal`, which adds an amount to health and then, if health went above max_health, sets it back to max_health. solve calls heal(30) and returns health, which stays at 100.",
+  "prompt": "Members `health` at 90 and `max_health` at 100 exist. Write `heal`, which adds an amount to health and then, if health went above max_health, sets it back to max_health. In `solve`, call heal(30). Then return health, which stays at 100.",
   "signature": "func solve():",
   "starter": "var health = 90\nvar max_health = 100\n\nfunc solve():\n\treturn health",
   "tests": [

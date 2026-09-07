@@ -3,7 +3,7 @@
   "title": "Level up",
   "concept": "gq-members",
   "difficulty": 0,
-  "prompt": "The robot's `level` is a member starting at 1. Write `level_up`, which adds 1 to level. In `solve`, call it twice and return level, which is 3.",
+  "prompt": "The robot's `level` is a member starting at 1. Write `level_up`, which adds 1 to level. In `solve`, call it twice. Then return level, which is 3.",
   "signature": "func solve():",
   "starter": "var level = 1\n\nfunc solve():\n\treturn level",
   "tests": [

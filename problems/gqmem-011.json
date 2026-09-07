@@ -3,7 +3,7 @@
   "title": "Never below zero",
   "concept": "gq-members",
   "difficulty": 1,
-  "prompt": "Members `health` at 20. Write `take_damage`, which subtracts an amount and then, if health went below 0, sets it to 0. solve calls take_damage(50) and returns health, which is 0.",
+  "prompt": "Members `health` at 20. Write `take_damage`, which subtracts an amount and then, if health went below 0, sets it to 0. In `solve`, call take_damage(50). Then return health, which is 0.",
   "signature": "func solve():",
   "starter": "var health = 20\n\nfunc solve():\n\treturn health",
   "tests": [

@@ -3,7 +3,7 @@
   "title": "Helper function",
   "concept": "functions",
   "difficulty": 1,
-  "prompt": "Write a second function called `cube` that returns n times n times n. Make `solve` call cube(n) and return what it gives back. Both go in the same code box.",
+  "prompt": "Write a second function called `cube` that returns n times n times n. Make `solve` call cube(n). Then return what it gives back. Both go in the same code box.",
   "signature": "func solve(n):",
   "starter": "func solve(n):\n\treturn 0",
   "tests": [
