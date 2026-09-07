@@ -3,9 +3,10 @@
   "title": "Never below zero",
   "concept": "gq-members",
   "difficulty": 1,
-  "prompt": "Members `health` at 20. Write `take_damage`, which subtracts an amount and then, if health went below 0, sets it to 0. In `solve`, call take_damage(50). Then return health, which is 0.",
-  "signature": "func solve():",
-  "starter": "var health = 20\n\nfunc solve():\n\treturn health",
+  "prompt": "Members `health` at 20. Write `take_damage`, which subtracts an amount and then, if health went below 0, sets it to 0. In `health_floor`, call take_damage(50). Then return health, which is 0.",
+  "signature": "func health_floor():",
+  "fn": "health_floor",
+  "starter": "var health = 20\n\nfunc health_floor():\n\treturn health",
   "tests": [
     {
       "name": "20 minus 50 stops at 0",
@@ -23,7 +24,7 @@
       "what": "A variable at the top of the script (a member variable): every function in the script can read and change it."
     }
   ],
-  "solution": "var health = 20\n\nfunc solve():\n\ttake_damage(50)\n\treturn health\n\nfunc take_damage(amount):\n\thealth -= amount\n\tif health < 0:\n\t\thealth = 0",
+  "solution": "var health = 20\n\nfunc health_floor():\n\ttake_damage(50)\n\treturn health\n\nfunc take_damage(amount):\n\thealth -= amount\n\tif health < 0:\n\t\thealth = 0",
   "require_methods": [
     "take_damage"
   ]

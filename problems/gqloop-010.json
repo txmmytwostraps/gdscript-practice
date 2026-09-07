@@ -3,9 +3,10 @@
   "title": "A helper called from the loop",
   "concept": "gq-loop",
   "difficulty": 1,
-  "prompt": "A member `health` starts at 100. Write `regen`, which takes delta and adds 10 times delta to health. Write `_process`, which calls regen(delta). After 60 frames solve returns health rounded, 110.",
-  "signature": "func solve():",
-  "starter": "var health = 100.0\n\nfunc solve():\n\treturn round(health)",
+  "prompt": "A member `health` starts at 100. Write `regen`, which takes delta and adds 10 times delta to health. Write `_process`, which calls regen(delta). After 60 frames health_after_regen returns health rounded, 110.",
+  "signature": "func health_after_regen():",
+  "fn": "health_after_regen",
+  "starter": "var health = 100.0\n\nfunc health_after_regen():\n\treturn round(health)",
   "tests": [
     {
       "name": "One second regenerates 10",
@@ -39,7 +40,7 @@
       "what": "Returns the nearest whole number as a float."
     }
   ],
-  "solution": "var health = 100.0\n\nfunc _process(delta):\n\tregen(delta)\n\nfunc regen(delta):\n\thealth += 10 * delta\n\nfunc solve():\n\treturn round(health)",
+  "solution": "var health = 100.0\n\nfunc _process(delta):\n\tregen(delta)\n\nfunc regen(delta):\n\thealth += 10 * delta\n\nfunc health_after_regen():\n\treturn round(health)",
   "require_methods": [
     "_process",
     "regen"

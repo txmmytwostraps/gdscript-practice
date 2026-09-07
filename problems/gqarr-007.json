@@ -3,9 +3,10 @@
   "title": "Return two values in an array",
   "concept": "gq-arrays",
   "difficulty": 0,
-  "prompt": "A function can only return one thing, so return an array holding two: a plus b, then a minus b. solve(5, 3) is [8, 2].",
-  "signature": "func solve(a, b):",
-  "starter": "func solve(a, b):\n\treturn []",
+  "prompt": "A function can only return one thing, so return an array holding two: a plus b, then a minus b. sum_and_difference(5, 3) is [8, 2].",
+  "signature": "func sum_and_difference(a, b):",
+  "fn": "sum_and_difference",
+  "starter": "func sum_and_difference(a, b):\n\treturn []",
   "tests": [
     {
       "name": "5 and 3 give [8, 2]",
@@ -46,7 +47,7 @@
     "`return [a + b, a - b]`"
   ],
   "docs": [],
-  "solution": "func solve(a, b):\n\treturn [a + b, a - b]",
+  "solution": "func sum_and_difference(a, b):\n\treturn [a + b, a - b]",
   "generator": [
     {
       "int": [

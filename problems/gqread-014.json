@@ -4,8 +4,9 @@
   "concept": "gq-readable",
   "difficulty": 0,
   "prompt": "Each gem the robot finds is worth 25 coins. Name that `COINS_PER_GEM` and use it to find the total for some gems.",
-  "signature": "func solve(gems):",
-  "starter": "func solve(gems):\n\treturn gems * 25",
+  "signature": "func coins_for_gems(gems):",
+  "fn": "coins_for_gems",
+  "starter": "func coins_for_gems(gems):\n\treturn gems * 25",
   "require_names": [
     "COINS_PER_GEM"
   ],
@@ -45,5 +46,5 @@
       "what": "Declares a named value that never changes. Written in CAPITALS by convention."
     }
   ],
-  "solution": "func solve(gems):\n\tconst COINS_PER_GEM = 25\n\treturn gems * COINS_PER_GEM"
+  "solution": "func coins_for_gems(gems):\n\tconst COINS_PER_GEM = 25\n\treturn gems * COINS_PER_GEM"
 }

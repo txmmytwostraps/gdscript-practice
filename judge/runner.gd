@@ -1,6 +1,7 @@
 extends Node
-## Compiles a code string the user typed, then runs its solve() against the
-## tests in a problem. Returns a plain Dictionary so it can be turned into JSON.
+## Compiles a code string the user typed, then runs its function (the
+## problem's "fn": run() for problems without inputs, a named one otherwise)
+## against the tests in a problem. Returns a plain Dictionary so it can be turned into JSON.
 
 func run_submission(user_code: String, problem: Dictionary) -> Dictionary:
 	var tests: Array = problem.get("tests", [])
@@ -14,14 +15,15 @@ func run_submission(user_code: String, problem: Dictionary) -> Dictionary:
 	if not script.can_instantiate():
 		return {"status": "compile_error", "error": "script cannot be instantiated"}
 	var inst = script.new()
+	var fn: String = str(problem.get("fn", "run"))
 	# Milestone steps drive the script through "script" actions and "read" a
-	# member variable instead of calling solve(); only plain tests need it.
-	var needs_solve := false
+	# member variable instead of calling the function; only plain tests need it.
+	var needs_fn := false
 	for t in tests:
 		if not t.has("script") and not t.has("read"):
-			needs_solve = true
-	if needs_solve and not inst.has_method("solve"):
-		return {"status": "error", "error": "no solve() function"}
+			needs_fn = true
+	if needs_fn and not inst.has_method(fn):
+		return {"status": "error", "error": "no %s() function - the tests call %s()" % [fn, fn]}
 	# Some problems ask the user to write an extra helper function.
 	for m in problem.get("require_methods", []):
 		if not inst.has_method(m):
@@ -47,7 +49,7 @@ func run_submission(user_code: String, problem: Dictionary) -> Dictionary:
 		inst = script.new()   # a fresh instance per test, so member variables start over
 		inst._judge_reset()
 		# Frame harness: a test with "frames": N runs the user's _process(delta)
-		# N times first, so game-loop problems can be checked through solve().
+		# N times first, so game-loop problems can be checked through the function.
 		if t.has("frames"):
 			if not inst.has_method("_process"):
 				return {"status": "error", "error": "missing function: _process(delta)"}
@@ -93,8 +95,8 @@ func run_submission(user_code: String, problem: Dictionary) -> Dictionary:
 					step_error = "no member variable named %s" % member
 				else:
 					got = inst.get(member)
-			elif inst.has_method("solve"):
-				got = inst.callv("solve", args)
+			elif inst.has_method(fn):
+				got = inst.callv(fn, args)
 		var out_lines: Array = inst._out.duplicate()  # copy: _out is cleared before the next test
 		var ok := step_error.is_empty() and values_equal(got, expect)
 		if t.has("out"):  # problem also checks what the user printed with out()

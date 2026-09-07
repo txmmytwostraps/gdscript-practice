@@ -4,8 +4,9 @@
   "concept": "gq-vectors",
   "difficulty": 0,
   "prompt": "Return the x part of the robot's position added to its y part. For (3, 4) that is 7.",
-  "signature": "func solve(v) -> float:",
-  "starter": "func solve(v) -> float:\n\treturn 0.0",
+  "signature": "func x_plus_y(v) -> float:",
+  "fn": "x_plus_y",
+  "starter": "func x_plus_y(v) -> float:\n\treturn 0.0",
   "tests": [
     {
       "name": "(3, 4) gives 7",
@@ -54,7 +55,7 @@
       "what": "Makes a vector holding an x and a y. Read them back with .x and .y."
     }
   ],
-  "solution": "func solve(v) -> float:\n\treturn v.x + v.y",
+  "solution": "func x_plus_y(v) -> float:\n\treturn v.x + v.y",
   "generator": [
     {
       "v2": [

@@ -4,8 +4,9 @@
   "concept": "gq-looparrays",
   "difficulty": 0,
   "prompt": "Print each name in the array with \"Robot: \" in front, one per line.",
-  "signature": "func solve(names):",
-  "starter": "func solve(names):\n\tpass",
+  "signature": "func print_with_label(names):",
+  "fn": "print_with_label",
+  "starter": "func print_with_label(names):\n\tpass",
   "tests": [
     {
       "name": "Two names",
@@ -44,5 +45,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve(names):\n\tfor name in names:\n\t\tprint(\"Robot: \" + name)"
+  "solution": "func print_with_label(names):\n\tfor name in names:\n\t\tprint(\"Robot: \" + name)"
 }

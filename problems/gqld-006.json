@@ -4,8 +4,9 @@
   "concept": "gq-loopdicts",
   "difficulty": 0,
   "prompt": "Return an array of the amounts, in order.",
-  "signature": "func solve(inventory):",
-  "starter": "func solve(inventory):\n\treturn []",
+  "signature": "func values_as_array(inventory):",
+  "fn": "values_as_array",
+  "starter": "func values_as_array(inventory):\n\treturn []",
   "tests": [
     {
       "name": "Two amounts",
@@ -38,7 +39,7 @@
       "what": "Returns an array of every value."
     }
   ],
-  "solution": "func solve(inventory):\n\treturn inventory.values()",
+  "solution": "func values_as_array(inventory):\n\treturn inventory.values()",
   "generator": [
     {
       "pick": [

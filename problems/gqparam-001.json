@@ -3,9 +3,10 @@
   "title": "Display a value",
   "concept": "gq-parameters",
   "difficulty": 0,
-  "prompt": "The robot needs a way to display any number. Write `display`, which takes one value and prints it. `solve` receives n; make it call display with n, then with n times 2, so solve(3) prints 3 and then 6.",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\tpass",
+  "prompt": "The robot needs a way to display any number. Write `display`, which takes one value and prints it. `display_twice` receives n; make it call display with n, then with n times 2, so display_twice(3) prints 3 and then 6.",
+  "signature": "func display_twice(n):",
+  "fn": "display_twice",
+  "starter": "func display_twice(n):\n\tpass",
   "require_methods": [
     "display"
   ],
@@ -47,7 +48,7 @@
   "hints": [
     "A parameter is a name in the brackets of the definition; whatever the caller passes in is stored under that name.",
     "`func display(value):` with `print(value)` inside.",
-    "In solve: `display(n)` then `display(n * 2)`."
+    "In display_twice: `display(n)` then `display(n * 2)`."
   ],
   "docs": [
     {
@@ -55,5 +56,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve(n):\n\tdisplay(n)\n\tdisplay(n * 2)\n\nfunc display(value):\n\tprint(value)"
+  "solution": "func display_twice(n):\n\tdisplay(n)\n\tdisplay(n * 2)\n\nfunc display(value):\n\tprint(value)"
 }

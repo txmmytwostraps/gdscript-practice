@@ -3,9 +3,10 @@
   "title": "Store the result first",
   "concept": "gq-return",
   "difficulty": 0,
-  "prompt": "Write `area`, which returns width times height. In `solve`, store area(width, height) in a variable, then return twice that, for two identical rooms. solve(3, 4) is 24.",
-  "signature": "func solve(width, height):",
-  "starter": "func solve(width, height):\n\treturn 0",
+  "prompt": "Write `area`, which returns width times height. In `two_rooms`, store area(width, height) in a variable, then return twice that, for two identical rooms. two_rooms(3, 4) is 24.",
+  "signature": "func two_rooms(width, height):",
+  "fn": "two_rooms",
+  "starter": "func two_rooms(width, height):\n\treturn 0",
   "tests": [
     {
       "name": "3 by 4, twice, is 24",
@@ -42,7 +43,7 @@
       "what": "Ends the function and hands value back to whoever called it."
     }
   ],
-  "solution": "func solve(width, height):\n\tvar one_room = area(width, height)\n\treturn one_room * 2\n\nfunc area(w, h):\n\treturn w * h",
+  "solution": "func two_rooms(width, height):\n\tvar one_room = area(width, height)\n\treturn one_room * 2\n\nfunc area(w, h):\n\treturn w * h",
   "require_methods": [
     "area"
   ],

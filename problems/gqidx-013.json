@@ -4,8 +4,9 @@
   "concept": "gq-indices",
   "difficulty": 1,
   "prompt": "Two arrays, left and right, have the same length. Return a new array where each item is left[i] plus right[i].",
-  "signature": "func solve(left, right):",
-  "starter": "func solve(left, right):\n\treturn left",
+  "signature": "func align_tracks(left, right):",
+  "fn": "align_tracks",
+  "starter": "func align_tracks(left, right):\n\treturn left",
   "tests": [
     {
       "name": "[1, 2] plus [10, 20]",
@@ -55,6 +56,6 @@
       "what": "Returns how many items the array holds."
     }
   ],
-  "solution": "func solve(left, right):\n\tvar result = []\n\tfor i in range(left.size()):\n\t\tresult.append(left[i] + right[i])\n\treturn result",
+  "solution": "func align_tracks(left, right):\n\tvar result = []\n\tfor i in range(left.size()):\n\t\tresult.append(left[i] + right[i])\n\treturn result",
   "variants": false
 }

@@ -3,9 +3,10 @@
   "title": "Fix the type error",
   "concept": "gq-types",
   "difficulty": 1,
-  "prompt": "The starter declares `name` as a String but stores a number in it, which does not compile. Store the number as text instead so solve returns \"7\".",
-  "signature": "func solve() -> String:",
-  "starter": "func solve() -> String:\n\tvar name: String = 7\n\treturn name",
+  "prompt": "The starter declares `name` as a String but stores a number in it, which does not compile. Store the number as text instead so name_as_text returns \"7\".",
+  "signature": "func name_as_text() -> String:",
+  "fn": "name_as_text",
+  "starter": "func name_as_text() -> String:\n\tvar name: String = 7\n\treturn name",
   "tests": [
     {
       "name": "Returns the text 7",
@@ -23,7 +24,7 @@
       "what": "Declares a variable that can only hold that type. Also float, String, bool, Vector2, Array."
     }
   ],
-  "solution": "func solve() -> String:\n\tvar name: String = \"7\"\n\treturn name",
+  "solution": "func name_as_text() -> String:\n\tvar name: String = \"7\"\n\treturn name",
   "allow_type_hints": true,
   "starter_broken": true
 }

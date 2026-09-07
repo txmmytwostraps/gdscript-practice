@@ -3,9 +3,10 @@
   "title": "Sum up to n",
   "concept": "while",
   "difficulty": 0,
-  "prompt": "Return 1 + 2 + 3 + ... + n using a while loop. For 0, return 0. solve(4) is 10.",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\tvar total = 0\n\treturn total",
+  "prompt": "Return 1 + 2 + 3 + ... + n using a while loop. For 0, return 0. sum_up_to(4) is 10.",
+  "signature": "func sum_up_to(n):",
+  "fn": "sum_up_to",
+  "starter": "func sum_up_to(n):\n\tvar total = 0\n\treturn total",
   "tests": [
     {
       "name": "Up to 4 is 10",
@@ -54,7 +55,7 @@
       "what": "Repeats the indented lines below it as long as the condition stays true."
     }
   ],
-  "solution": "func solve(n):\n\tvar total = 0\n\tvar i = 1\n\twhile i <= n:\n\t\ttotal += i\n\t\ti += 1\n\treturn total",
+  "solution": "func sum_up_to(n):\n\tvar total = 0\n\tvar i = 1\n\twhile i <= n:\n\t\ttotal += i\n\t\ti += 1\n\treturn total",
   "generator": [
     {
       "int": [

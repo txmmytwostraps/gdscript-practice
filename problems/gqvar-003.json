@@ -4,8 +4,9 @@
   "concept": "gq-variables",
   "difficulty": 0,
   "prompt": "The robot needs a switch. Create a variable `is_on` set to true and return it.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\treturn false",
+  "signature": "func switch_state():",
+  "fn": "switch_state",
+  "starter": "func switch_state():\n\treturn false",
   "require_names": [
     "is_on"
   ],
@@ -21,5 +22,5 @@
     "`var is_on = true`, then `return is_on`."
   ],
   "docs": [],
-  "solution": "func solve():\n\tvar is_on = true\n\treturn is_on"
+  "solution": "func switch_state():\n\tvar is_on = true\n\treturn is_on"
 }

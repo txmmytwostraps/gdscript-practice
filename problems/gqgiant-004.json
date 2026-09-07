@@ -4,8 +4,9 @@
   "concept": "gq-giants",
   "difficulty": 0,
   "prompt": "Call `rotate` with 90 twice, so the robot ends up facing the other way.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass",
   "tests": [
     {
       "name": "Two rotations of 90",
@@ -27,5 +28,5 @@
       "what": "Turns the robot by that many degrees. Takes one number; returns nothing."
     }
   ],
-  "solution": "func solve():\n\trotate(90)\n\trotate(90)"
+  "solution": "func run():\n\trotate(90)\n\trotate(90)"
 }

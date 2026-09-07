@@ -4,8 +4,9 @@
   "concept": "gq-loopdicts",
   "difficulty": 1,
   "prompt": "Return the largest amount in the inventory. The inventory has at least one entry.",
-  "signature": "func solve(inventory):",
-  "starter": "func solve(inventory):\n\treturn 0",
+  "signature": "func most_of_anything(inventory):",
+  "fn": "most_of_anything",
+  "starter": "func most_of_anything(inventory):\n\treturn 0",
   "tests": [
     {
       "name": "3 is the most",
@@ -41,7 +42,7 @@
       "what": "The value stored under key. Assigning to it changes or adds the entry."
     }
   ],
-  "solution": "func solve(inventory):\n\tvar biggest = 0\n\tfor item in inventory:\n\t\tif inventory[item] > biggest:\n\t\t\tbiggest = inventory[item]\n\treturn biggest",
+  "solution": "func most_of_anything(inventory):\n\tvar biggest = 0\n\tfor item in inventory:\n\t\tif inventory[item] > biggest:\n\t\t\tbiggest = inventory[item]\n\treturn biggest",
   "generator": [
     {
       "pick": [

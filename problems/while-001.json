@@ -4,8 +4,9 @@
   "concept": "while",
   "difficulty": 0,
   "prompt": "The robot counts down before launch. Return an array counting down from n to 1, like [3, 2, 1]. For 0, return an empty array. Use a while loop.",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\tvar result = []\n\treturn result",
+  "signature": "func count_down(n):",
+  "fn": "count_down",
+  "starter": "func count_down(n):\n\tvar result = []\n\treturn result",
   "tests": [
     {
       "name": "3 counts 3, 2, 1",
@@ -63,7 +64,7 @@
       "what": "Adds value to the end of the array. Returns nothing."
     }
   ],
-  "solution": "func solve(n):\n\tvar result = []\n\tvar i = n\n\twhile i > 0:\n\t\tresult.append(i)\n\t\ti -= 1\n\treturn result",
+  "solution": "func count_down(n):\n\tvar result = []\n\tvar i = n\n\twhile i > 0:\n\t\tresult.append(i)\n\t\ti -= 1\n\treturn result",
   "generator": [
     {
       "int": [

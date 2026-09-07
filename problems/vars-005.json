@@ -3,9 +3,10 @@
   "title": "Sales tax",
   "concept": "variables",
   "difficulty": 1,
-  "prompt": "The robot shop adds 20% tax. Inside `solve`, make a constant `TAX` equal to 0.2 and return the price with tax added: price plus price times TAX. solve(10) is 12.0.",
-  "signature": "func solve(price) -> float:",
-  "starter": "func solve(price) -> float:\n\treturn price",
+  "prompt": "The robot shop adds 20% tax. Inside `price_with_tax`, make a constant `TAX` equal to 0.2 and return the price with tax added: price plus price times TAX. price_with_tax(10) is 12.0.",
+  "signature": "func price_with_tax(price) -> float:",
+  "fn": "price_with_tax",
+  "starter": "func price_with_tax(price) -> float:\n\treturn price",
   "require_names": [
     "TAX"
   ],
@@ -52,5 +53,5 @@
     "`return price + price * TAX`"
   ],
   "docs": [],
-  "solution": "func solve(price) -> float:\n\tconst TAX = 0.2\n\treturn price + price * TAX"
+  "solution": "func price_with_tax(price) -> float:\n\tconst TAX = 0.2\n\treturn price + price * TAX"
 }

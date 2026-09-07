@@ -4,8 +4,9 @@
   "concept": "gq-return",
   "difficulty": 1,
   "prompt": "Run the starter as it is: \"after\" is never printed, because return ends the function at once. Fix the helper so it prints both words and still returns 1.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\treturn early()\n\nfunc early():\n\tprint(\"before\")\n\treturn 1\n\tprint(\"after\")",
+  "signature": "func after_fix():",
+  "fn": "after_fix",
+  "starter": "func after_fix():\n\treturn early()\n\nfunc early():\n\tprint(\"before\")\n\treturn 1\n\tprint(\"after\")",
   "tests": [
     {
       "name": "Both words are printed and 1 comes back",
@@ -31,7 +32,7 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve():\n\treturn early()\n\nfunc early():\n\tprint(\"before\")\n\tprint(\"after\")\n\treturn 1",
+  "solution": "func after_fix():\n\treturn early()\n\nfunc early():\n\tprint(\"before\")\n\tprint(\"after\")\n\treturn 1",
   "require_methods": [
     "early"
   ]

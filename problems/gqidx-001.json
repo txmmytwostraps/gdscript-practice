@@ -4,8 +4,9 @@
   "concept": "gq-indices",
   "difficulty": 0,
   "prompt": "The robot's inventory is an array. Return what is in the first slot.",
-  "signature": "func solve(inventory):",
-  "starter": "func solve(inventory):\n\treturn \"\"",
+  "signature": "func first_slot(inventory):",
+  "fn": "first_slot",
+  "starter": "func first_slot(inventory):\n\treturn \"\"",
   "tests": [
     {
       "name": "First of three",
@@ -38,7 +39,7 @@
       "what": "The item at position i. Positions start at 0; -1 is the last item."
     }
   ],
-  "solution": "func solve(inventory):\n\treturn inventory[0]",
+  "solution": "func first_slot(inventory):\n\treturn inventory[0]",
   "generator": [
     {
       "array": {

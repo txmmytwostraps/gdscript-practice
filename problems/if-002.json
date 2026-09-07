@@ -4,8 +4,9 @@
   "concept": "ifelse",
   "difficulty": 0,
   "prompt": "Return the text \"even\" if n is even, or \"odd\" if it is odd.",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\treturn \"\"",
+  "signature": "func even_or_odd(n):",
+  "fn": "even_or_odd",
+  "starter": "func even_or_odd(n):\n\treturn \"\"",
   "tests": [
     {
       "name": "4 is even",
@@ -50,7 +51,7 @@
       "what": "The remainder after dividing a by b."
     }
   ],
-  "solution": "func solve(n):\n\tif n % 2 == 0:\n\t\treturn \"even\"\n\telse:\n\t\treturn \"odd\"",
+  "solution": "func even_or_odd(n):\n\tif n % 2 == 0:\n\t\treturn \"even\"\n\telse:\n\t\treturn \"odd\"",
   "generator": [
     {
       "int": [

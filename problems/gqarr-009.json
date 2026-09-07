@@ -4,8 +4,9 @@
   "concept": "gq-arrays",
   "difficulty": 0,
   "prompt": "Return true if value is somewhere in the array.",
-  "signature": "func solve(items, value):",
-  "starter": "func solve(items, value):\n\treturn false",
+  "signature": "func contains(items, value):",
+  "fn": "contains",
+  "starter": "func contains(items, value):\n\treturn false",
   "tests": [
     {
       "name": "2 is in [1, 2, 3]",
@@ -50,7 +51,7 @@
       "what": "true if value is one of the items."
     }
   ],
-  "solution": "func solve(items, value):\n\treturn value in items",
+  "solution": "func contains(items, value):\n\treturn value in items",
   "generator": [
     {
       "array": {

@@ -3,9 +3,10 @@
   "title": "Celsius to Fahrenheit",
   "concept": "arithmetic",
   "difficulty": 1,
-  "prompt": "The robot's thermometer reads Celsius; the display wants Fahrenheit. The formula is F = C times 9, divided by 5, plus 32. Return the Fahrenheit value. solve(100) is 212.0.",
-  "signature": "func solve(c) -> float:",
-  "starter": "func solve(c) -> float:\n\treturn c",
+  "prompt": "The robot's thermometer reads Celsius; the display wants Fahrenheit. The formula is F = C times 9, divided by 5, plus 32. Return the Fahrenheit value. to_fahrenheit(100) is 212.0.",
+  "signature": "func to_fahrenheit(c) -> float:",
+  "fn": "to_fahrenheit",
+  "starter": "func to_fahrenheit(c) -> float:\n\treturn c",
   "tests": [
     {
       "name": "0 C is 32 F",
@@ -49,7 +50,7 @@
     "`return c * 9.0 / 5.0 + 32`"
   ],
   "docs": [],
-  "solution": "func solve(c) -> float:\n\treturn c * 9.0 / 5.0 + 32.0",
+  "solution": "func to_fahrenheit(c) -> float:\n\treturn c * 9.0 / 5.0 + 32.0",
   "generator": [
     {
       "int": [

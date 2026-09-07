@@ -3,9 +3,10 @@
   "title": "Price, quantity, shipping",
   "concept": "gq-parameters",
   "difficulty": 0,
-  "prompt": "The robot shop works out a bill. `solve` receives a price, a quantity and a shipping cost. Return the total: price times quantity, plus shipping. solve(2.5, 4, 3) is 13.0.",
-  "signature": "func solve(price, quantity, shipping) -> float:",
-  "starter": "func solve(price, quantity, shipping) -> float:\n\treturn 0.0",
+  "prompt": "The robot shop works out a bill. `shop_bill` receives a price, a quantity and a shipping cost. Return the total: price times quantity, plus shipping. shop_bill(2.5, 4, 3) is 13.0.",
+  "signature": "func shop_bill(price, quantity, shipping) -> float:",
+  "fn": "shop_bill",
+  "starter": "func shop_bill(price, quantity, shipping) -> float:\n\treturn 0.0",
   "tests": [
     {
       "name": "2.5 times 4 plus 3 is 13",
@@ -41,7 +42,7 @@
     "`return price * quantity + shipping`"
   ],
   "docs": [],
-  "solution": "func solve(price, quantity, shipping) -> float:\n\treturn price * quantity + shipping",
+  "solution": "func shop_bill(price, quantity, shipping) -> float:\n\treturn price * quantity + shipping",
   "generator": [
     {
       "float": [

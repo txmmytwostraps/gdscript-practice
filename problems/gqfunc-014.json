@@ -3,9 +3,10 @@
   "title": "Patrol route",
   "concept": "gq-functions",
   "difficulty": 1,
-  "prompt": "The robot patrols a corner. Write `step`, which prints \"forward\", and `turn`, which prints \"left\". In `solve`, make it step, turn, step, turn, so the output is those four words in order.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass",
+  "prompt": "The robot patrols a corner. Write `step`, which prints \"forward\", and `turn`, which prints \"left\". In `run`, make it step, turn, step, turn, so the output is those four words in order.",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass",
   "require_methods": [
     "step",
     "turn"
@@ -26,7 +27,7 @@
   "hints": [
     "Each call is one instruction, and the order of calls is the route.",
     "Two helpers with one print each.",
-    "solve has four calls: `step()`, `turn()`, `step()`, `turn()`."
+    "run has four calls: `step()`, `turn()`, `step()`, `turn()`."
   ],
   "docs": [
     {
@@ -34,5 +35,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve():\n\tstep()\n\tturn()\n\tstep()\n\tturn()\n\nfunc step():\n\tprint(\"forward\")\n\nfunc turn():\n\tprint(\"left\")"
+  "solution": "func run():\n\tstep()\n\tturn()\n\tstep()\n\tturn()\n\nfunc step():\n\tprint(\"forward\")\n\nfunc turn():\n\tprint(\"left\")"
 }

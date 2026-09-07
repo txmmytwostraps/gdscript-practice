@@ -4,8 +4,9 @@
   "concept": "gq-vectors",
   "difficulty": 1,
   "prompt": "Return the point exactly halfway between a and b. Between (0, 0) and (4, 6) is (2, 3).",
-  "signature": "func solve(a, b) -> Vector2:",
-  "starter": "func solve(a, b) -> Vector2:\n\treturn a",
+  "signature": "func midpoint(a, b) -> Vector2:",
+  "fn": "midpoint",
+  "starter": "func midpoint(a, b) -> Vector2:\n\treturn a",
   "tests": [
     {
       "name": "(0, 0) and (4, 6) give (2, 3)",
@@ -87,7 +88,7 @@
       "what": "Vectors add and subtract part by part, and scale by a plain number."
     }
   ],
-  "solution": "func solve(a, b) -> Vector2:\n\treturn (a + b) / 2",
+  "solution": "func midpoint(a, b) -> Vector2:\n\treturn (a + b) / 2",
   "generator": [
     {
       "v2": [

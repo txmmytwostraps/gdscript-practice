@@ -3,9 +3,10 @@
   "title": "Use a returned value",
   "concept": "gq-return",
   "difficulty": 0,
-  "prompt": "Write `square`, which returns its parameter times itself. In `solve`, store square(n) in a variable, add the number `1` to it, and return the result. solve(3) is 10.",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\treturn n",
+  "prompt": "Write `square`, which returns its parameter times itself. In `square_plus_one`, store square(n) in a variable, add the number `1` to it, and return the result. square_plus_one(3) is 10.",
+  "signature": "func square_plus_one(n):",
+  "fn": "square_plus_one",
+  "starter": "func square_plus_one(n):\n\treturn n",
   "tests": [
     {
       "name": "3 squared plus 1 is 10",
@@ -39,7 +40,7 @@
       "what": "Ends the function and hands value back to whoever called it."
     }
   ],
-  "solution": "func solve(n):\n\tvar squared = square(n)\n\treturn squared + 1\n\nfunc square(value):\n\treturn value * value",
+  "solution": "func square_plus_one(n):\n\tvar squared = square(n)\n\treturn squared + 1\n\nfunc square(value):\n\treturn value * value",
   "require_methods": [
     "square"
   ],

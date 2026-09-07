@@ -4,8 +4,9 @@
   "concept": "dictionaries",
   "difficulty": 0,
   "prompt": "Return a dictionary with two entries: \"name\" set to name, and \"hp\" set to hp.",
-  "signature": "func solve(name, hp):",
-  "starter": "func solve(name, hp):\n\treturn {}",
+  "signature": "func make_player(name, hp):",
+  "fn": "make_player",
+  "starter": "func make_player(name, hp):\n\treturn {}",
   "tests": [
     {
       "name": "Tim with 100",
@@ -40,7 +41,7 @@
       "what": "Makes a dictionary: named slots you read and write with data[\"key\"]."
     }
   ],
-  "solution": "func solve(name, hp):\n\treturn {\"name\": name, \"hp\": hp}",
+  "solution": "func make_player(name, hp):\n\treturn {\"name\": name, \"hp\": hp}",
   "generator": [
     {
       "pick": [

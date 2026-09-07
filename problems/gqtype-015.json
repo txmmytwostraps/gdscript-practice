@@ -3,9 +3,10 @@
   "title": "Read a hinted signature",
   "concept": "gq-types",
   "difficulty": 0,
-  "prompt": "This helper is already written with full hints. Call it from `solve` with 3 and 4. Then return what it gives you.",
-  "signature": "func solve() -> int:",
-  "starter": "func solve() -> int:\n\treturn 0\n\nfunc add(a: int, b: int) -> int:\n\treturn a + b",
+  "prompt": "This helper is already written with full hints. Call it from `use_add` with 3 and 4. Then return what it gives you.",
+  "signature": "func use_add() -> int:",
+  "fn": "use_add",
+  "starter": "func use_add() -> int:\n\treturn 0\n\nfunc add(a: int, b: int) -> int:\n\treturn a + b",
   "tests": [
     {
       "name": "3 plus 4 is 7",
@@ -27,6 +28,6 @@
       "what": "Return type hint: the function promises to return that type."
     }
   ],
-  "solution": "func solve() -> int:\n\treturn add(3, 4)\n\nfunc add(a: int, b: int) -> int:\n\treturn a + b",
+  "solution": "func use_add() -> int:\n\treturn add(3, 4)\n\nfunc add(a: int, b: int) -> int:\n\treturn a + b",
   "allow_type_hints": true
 }

@@ -4,8 +4,9 @@
   "concept": "gq-appendpop",
   "difficulty": 0,
   "prompt": "Crates are stacked; the last one put on is the first one taken. Remove the last crate and return it.",
-  "signature": "func solve(pile):",
-  "starter": "func solve(pile):\n\treturn pile[0]",
+  "signature": "func take_top(pile):",
+  "fn": "take_top",
+  "starter": "func take_top(pile):\n\treturn pile[0]",
   "tests": [
     {
       "name": "Top crate is 3",
@@ -38,7 +39,7 @@
       "what": "Removes the last item and returns it."
     }
   ],
-  "solution": "func solve(pile):\n\treturn pile.pop_back()",
+  "solution": "func take_top(pile):\n\treturn pile.pop_back()",
   "generator": [
     {
       "array": {

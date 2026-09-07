@@ -4,8 +4,9 @@
   "concept": "gq-turtle",
   "difficulty": 1,
   "prompt": "Draw a triangle with sides of 60. At each corner turn left by 120, not 90: `turn_left(120)`.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass",
   "tests": [
     {
       "name": "Three sides, three turns of 120",
@@ -35,5 +36,5 @@
       "what": "Turns the turtle 90 degrees to the left. Give it a number to turn by a different angle."
     }
   ],
-  "solution": "func solve():\n\tmove_forward(60)\n\tturn_left(120)\n\tmove_forward(60)\n\tturn_left(120)\n\tmove_forward(60)\n\tturn_left(120)"
+  "solution": "func run():\n\tmove_forward(60)\n\tturn_left(120)\n\tmove_forward(60)\n\tturn_left(120)\n\tmove_forward(60)\n\tturn_left(120)"
 }

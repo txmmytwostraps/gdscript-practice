@@ -4,8 +4,9 @@
   "concept": "gq-indices",
   "difficulty": 0,
   "prompt": "Return the item at position i.",
-  "signature": "func solve(inventory, i):",
-  "starter": "func solve(inventory, i):\n\treturn inventory[0]",
+  "signature": "func slot_at(inventory, i):",
+  "fn": "slot_at",
+  "starter": "func slot_at(inventory, i):\n\treturn inventory[0]",
   "tests": [
     {
       "name": "Position 1 is gear",
@@ -54,7 +55,7 @@
       "what": "The item at position i. Positions start at 0; -1 is the last item."
     }
   ],
-  "solution": "func solve(inventory, i):\n\treturn inventory[i]",
+  "solution": "func slot_at(inventory, i):\n\treturn inventory[i]",
   "generator": [
     {
       "array": {

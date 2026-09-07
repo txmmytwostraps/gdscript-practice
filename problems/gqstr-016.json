@@ -4,8 +4,9 @@
   "concept": "gq-strings",
   "difficulty": 0,
   "prompt": "Return the number followed by \"px\", so 12 gives \"12px\".",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\treturn \"px\"",
+  "signature": "func number_to_text(n):",
+  "fn": "number_to_text",
+  "starter": "func number_to_text(n):\n\treturn \"px\"",
   "tests": [
     {
       "name": "12 gives 12px",
@@ -43,7 +44,7 @@
       "what": "Joins two strings into one. Numbers must be turned into text first."
     }
   ],
-  "solution": "func solve(n):\n\treturn str(n) + \"px\"",
+  "solution": "func number_to_text(n):\n\treturn str(n) + \"px\"",
   "generator": [
     {
       "int": [

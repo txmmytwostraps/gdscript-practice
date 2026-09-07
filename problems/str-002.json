@@ -4,8 +4,9 @@
   "concept": "strings",
   "difficulty": 0,
   "prompt": "Return the number of characters in the text.",
-  "signature": "func solve(s):",
-  "starter": "func solve(s):\n\treturn 0",
+  "signature": "func length_of(s):",
+  "fn": "length_of",
+  "starter": "func length_of(s):\n\treturn 0",
   "tests": [
     {
       "name": "hello is 5",
@@ -46,7 +47,7 @@
       "what": "Returns how many characters the string has."
     }
   ],
-  "solution": "func solve(s):\n\treturn s.length()",
+  "solution": "func length_of(s):\n\treturn s.length()",
   "generator": [
     {
       "pick": [

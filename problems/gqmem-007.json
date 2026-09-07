@@ -3,9 +3,10 @@
   "title": "Local or member",
   "concept": "gq-members",
   "difficulty": 1,
-  "prompt": "The starter has a member `score` at 0, but `add_points` creates its own local `score` instead of using the member, so solve still returns 0. Fix add_points so it changes the member, and solve(10) returns 10.",
-  "signature": "func solve(points):",
-  "starter": "var score = 0\n\nfunc solve(points):\n\tadd_points(points)\n\treturn score\n\nfunc add_points(amount):\n\tvar score = amount",
+  "prompt": "The starter has a member `score` at 0, but `add_points` creates its own local `score` instead of using the member, so score_after_points still returns 0. Fix add_points so it changes the member, and score_after_points(10) returns 10.",
+  "signature": "func score_after_points(points):",
+  "fn": "score_after_points",
+  "starter": "var score = 0\n\nfunc score_after_points(points):\n\tadd_points(points)\n\treturn score\n\nfunc add_points(amount):\n\tvar score = amount",
   "tests": [
     {
       "name": "Adding 10 gives 10",
@@ -40,7 +41,7 @@
       "what": "A variable at the top of the script (a member variable): every function in the script can read and change it."
     }
   ],
-  "solution": "var score = 0\n\nfunc solve(points):\n\tadd_points(points)\n\treturn score\n\nfunc add_points(amount):\n\tscore += amount",
+  "solution": "var score = 0\n\nfunc score_after_points(points):\n\tadd_points(points)\n\treturn score\n\nfunc add_points(amount):\n\tscore += amount",
   "generator": [
     {
       "int": [

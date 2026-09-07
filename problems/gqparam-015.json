@@ -3,9 +3,10 @@
   "title": "Two defaults",
   "concept": "gq-parameters",
   "difficulty": 1,
-  "prompt": "Both of solve's parameters have defaults: width is 4 and height is 3 unless the caller says otherwise. Return width times height. The tests call solve with no values, one value and two.",
-  "signature": "func solve(width = 4, height = 3):",
-  "starter": "func solve(width = 4, height = 3):\n\treturn 0",
+  "prompt": "Both of area_with_defaults's parameters have defaults: width is 4 and height is 3 unless the caller says otherwise. Return width times height. The tests call area_with_defaults with no values, one value and two.",
+  "signature": "func area_with_defaults(width = 4, height = 3):",
+  "fn": "area_with_defaults",
+  "starter": "func area_with_defaults(width = 4, height = 3):\n\treturn 0",
   "tests": [
     {
       "name": "No values: 4 by 3 is 12",
@@ -33,7 +34,7 @@
     "`return width * height`"
   ],
   "docs": [],
-  "solution": "func solve(width = 4, height = 3):\n\treturn width * height",
+  "solution": "func area_with_defaults(width = 4, height = 3):\n\treturn width * height",
   "generator": [
     {
       "int": [

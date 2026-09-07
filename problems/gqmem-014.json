@@ -3,9 +3,10 @@
   "title": "Members keep state between helpers",
   "concept": "gq-members",
   "difficulty": 1,
-  "prompt": "Members `coins` at 0. Write `earn`, which adds an amount, and `spend`, which subtracts one. solve earns 50, spends 20, earns 5 and returns coins, 35.",
-  "signature": "func solve():",
-  "starter": "var coins = 0\n\nfunc solve():\n\treturn coins",
+  "prompt": "Members `coins` at 0. Write `earn`, which adds an amount, and `spend`, which subtracts one. coins_left earns 50, spends 20, earns 5 and returns coins, 35.",
+  "signature": "func coins_left():",
+  "fn": "coins_left",
+  "starter": "var coins = 0\n\nfunc coins_left():\n\treturn coins",
   "tests": [
     {
       "name": "50 minus 20 plus 5 is 35",
@@ -23,7 +24,7 @@
       "what": "A variable at the top of the script (a member variable): every function in the script can read and change it."
     }
   ],
-  "solution": "var coins = 0\n\nfunc solve():\n\tearn(50)\n\tspend(20)\n\tearn(5)\n\treturn coins\n\nfunc earn(amount):\n\tcoins += amount\n\nfunc spend(amount):\n\tcoins -= amount",
+  "solution": "var coins = 0\n\nfunc coins_left():\n\tearn(50)\n\tspend(20)\n\tearn(5)\n\treturn coins\n\nfunc earn(amount):\n\tcoins += amount\n\nfunc spend(amount):\n\tcoins -= amount",
   "require_methods": [
     "earn",
     "spend"

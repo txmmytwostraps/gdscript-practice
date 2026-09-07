@@ -4,8 +4,9 @@
   "concept": "gq-readable",
   "difficulty": 0,
   "prompt": "This turns frames into seconds at 60 frames per second. Name the 60.0 `FRAMES_PER_SECOND`.",
-  "signature": "func solve(frames) -> float:",
-  "starter": "func solve(frames) -> float:\n\treturn frames / 60.0",
+  "signature": "func frames_to_seconds(frames) -> float:",
+  "fn": "frames_to_seconds",
+  "starter": "func frames_to_seconds(frames) -> float:\n\treturn frames / 60.0",
   "require_names": [
     "FRAMES_PER_SECOND"
   ],
@@ -45,5 +46,5 @@
       "what": "Declares a named value that never changes. Written in CAPITALS by convention."
     }
   ],
-  "solution": "func solve(frames) -> float:\n\tconst FRAMES_PER_SECOND = 60.0\n\treturn frames / FRAMES_PER_SECOND"
+  "solution": "func frames_to_seconds(frames) -> float:\n\tconst FRAMES_PER_SECOND = 60.0\n\treturn frames / FRAMES_PER_SECOND"
 }

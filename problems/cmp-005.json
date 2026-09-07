@@ -4,8 +4,9 @@
   "concept": "comparisons",
   "difficulty": 1,
   "prompt": "Return true if a and b are both zero-or-positive, or both negative. Otherwise return false.",
-  "signature": "func solve(a, b):",
-  "starter": "func solve(a, b):\n\treturn false",
+  "signature": "func same_sign(a, b):",
+  "fn": "same_sign",
+  "starter": "func same_sign(a, b):\n\treturn false",
   "tests": [
     {
       "name": "3 and 5 share a sign",
@@ -62,7 +63,7 @@
       "what": "and is true when both sides are; or when at least one is; not flips true and false."
     }
   ],
-  "solution": "func solve(a, b):\n\treturn (a >= 0 and b >= 0) or (a < 0 and b < 0)",
+  "solution": "func same_sign(a, b):\n\treturn (a >= 0 and b >= 0) or (a < 0 and b < 0)",
   "generator": [
     {
       "int": [

@@ -4,8 +4,9 @@
   "concept": "gq-turtle",
   "difficulty": 1,
   "prompt": "Draw three steps: forward 20, turn left, forward 20, turn right, and repeat that three times in all.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass",
   "tests": [
     {
       "name": "Three steps",
@@ -45,5 +46,5 @@
       "what": "Turns the turtle 90 degrees to the right. Give it a number to turn by a different angle."
     }
   ],
-  "solution": "func solve():\n\tstep()\n\tstep()\n\tstep()\n\nfunc step():\n\tmove_forward(20)\n\tturn_left()\n\tmove_forward(20)\n\tturn_right()"
+  "solution": "func run():\n\tstep()\n\tstep()\n\tstep()\n\nfunc step():\n\tmove_forward(20)\n\tturn_left()\n\tmove_forward(20)\n\tturn_right()"
 }

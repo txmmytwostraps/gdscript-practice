@@ -4,8 +4,9 @@
   "concept": "gq-strings",
   "difficulty": 1,
   "prompt": "Return a status line like \"Robo has 100 hp\" from a name and a number. A number cannot be joined to text directly; it has to be turned into text first.",
-  "signature": "func solve(name, hp):",
-  "starter": "func solve(name, hp):\n\treturn name",
+  "signature": "func status_line(name, hp):",
+  "fn": "status_line",
+  "starter": "func status_line(name, hp):\n\treturn name",
   "tests": [
     {
       "name": "Robo with 100",
@@ -38,7 +39,7 @@
       "what": "Returns the value as text."
     }
   ],
-  "solution": "func solve(name, hp):\n\treturn name + \" has \" + str(hp) + \" hp\"",
+  "solution": "func status_line(name, hp):\n\treturn name + \" has \" + str(hp) + \" hp\"",
   "generator": [
     {
       "pick": [

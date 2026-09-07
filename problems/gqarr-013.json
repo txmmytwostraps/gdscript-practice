@@ -4,8 +4,9 @@
   "concept": "gq-arrays",
   "difficulty": 1,
   "prompt": "Return how many items in the array are equal to value, using a loop.",
-  "signature": "func solve(items, value):",
-  "starter": "func solve(items, value):\n\treturn 0",
+  "signature": "func count_matches(items, value):",
+  "fn": "count_matches",
+  "starter": "func count_matches(items, value):\n\treturn 0",
   "tests": [
     {
       "name": "Three 1s",
@@ -51,7 +52,7 @@
       "what": "Runs the indented lines once per item, with item holding each value in turn."
     }
   ],
-  "solution": "func solve(items, value):\n\tvar count = 0\n\tfor item in items:\n\t\tif item == value:\n\t\t\tcount += 1\n\treturn count",
+  "solution": "func count_matches(items, value):\n\tvar count = 0\n\tfor item in items:\n\t\tif item == value:\n\t\t\tcount += 1\n\treturn count",
   "generator": [
     {
       "array": {

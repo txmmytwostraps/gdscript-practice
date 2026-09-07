@@ -4,8 +4,9 @@
   "concept": "gq-valuetypes",
   "difficulty": 0,
   "prompt": "The robot's energy is a decimal but the display wants a whole number. Return energy as an int, dropping the decimals: 7.9 becomes 7.",
-  "signature": "func solve(energy):",
-  "starter": "func solve(energy):\n\treturn energy",
+  "signature": "func drop_decimals(energy):",
+  "fn": "drop_decimals",
+  "starter": "func drop_decimals(energy):\n\treturn energy",
   "tests": [
     {
       "name": "7.9 becomes 7",
@@ -39,7 +40,7 @@
       "what": "Returns the value as a whole number; decimals are dropped, text like \"42\" is read."
     }
   ],
-  "solution": "func solve(energy):\n\treturn int(energy)",
+  "solution": "func drop_decimals(energy):\n\treturn int(energy)",
   "generator": [
     {
       "float": [

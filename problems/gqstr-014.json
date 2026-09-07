@@ -4,8 +4,9 @@
   "concept": "gq-strings",
   "difficulty": 1,
   "prompt": "Return the text backwards, so \"abc\" becomes \"cba\".",
-  "signature": "func solve(text):",
-  "starter": "func solve(text):\n\treturn text",
+  "signature": "func reversed_text(text):",
+  "fn": "reversed_text",
+  "starter": "func reversed_text(text):\n\treturn text",
   "tests": [
     {
       "name": "abc becomes cba",
@@ -39,7 +40,7 @@
       "what": "Returns the text backwards. Unlike arrays, this returns a new string."
     }
   ],
-  "solution": "func solve(text):\n\treturn text.reverse()",
+  "solution": "func reversed_text(text):\n\treturn text.reverse()",
   "generator": [
     {
       "pick": [

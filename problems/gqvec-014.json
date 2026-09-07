@@ -4,8 +4,9 @@
   "concept": "gq-vectors",
   "difficulty": 0,
   "prompt": "Return an array holding the x part and then the y part of the vector. (3, 4) becomes [3, 4].",
-  "signature": "func solve(v):",
-  "starter": "func solve(v):\n\treturn []",
+  "signature": "func vector_to_array(v):",
+  "fn": "vector_to_array",
+  "starter": "func vector_to_array(v):\n\treturn []",
   "tests": [
     {
       "name": "(3, 4) becomes [3, 4]",
@@ -48,7 +49,7 @@
       "what": "Makes a vector holding an x and a y. Read them back with .x and .y."
     }
   ],
-  "solution": "func solve(v):\n\treturn [v.x, v.y]",
+  "solution": "func vector_to_array(v):\n\treturn [v.x, v.y]",
   "generator": [
     {
       "v2": [

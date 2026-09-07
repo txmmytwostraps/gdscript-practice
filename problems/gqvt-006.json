@@ -3,9 +3,10 @@
   "title": "Whole number to decimal",
   "concept": "gq-valuetypes",
   "difficulty": 1,
-  "prompt": "Return a divided by b keeping decimals, by converting first. solve(7, 2) is 3.5.",
-  "signature": "func solve(a, b) -> float:",
-  "starter": "func solve(a, b) -> float:\n\treturn a / b",
+  "prompt": "Return a divided by b keeping decimals, by converting first. divide_as_decimal(7, 2) is 3.5.",
+  "signature": "func divide_as_decimal(a, b) -> float:",
+  "fn": "divide_as_decimal",
+  "starter": "func divide_as_decimal(a, b) -> float:\n\treturn a / b",
   "tests": [
     {
       "name": "7 over 2 is 3.5",
@@ -42,7 +43,7 @@
       "what": "Returns the value as a decimal number."
     }
   ],
-  "solution": "func solve(a, b) -> float:\n\treturn float(a) / b",
+  "solution": "func divide_as_decimal(a, b) -> float:\n\treturn float(a) / b",
   "generator": [
     {
       "int": [

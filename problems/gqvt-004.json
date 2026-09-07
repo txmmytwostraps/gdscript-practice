@@ -4,8 +4,9 @@
   "concept": "gq-valuetypes",
   "difficulty": 0,
   "prompt": "The speed was typed as text like \"2.5\". Return it as a number doubled, so \"2.5\" gives 5.0.",
-  "signature": "func solve(text) -> float:",
-  "starter": "func solve(text) -> float:\n\treturn 0.0",
+  "signature": "func text_to_decimal(text) -> float:",
+  "fn": "text_to_decimal",
+  "starter": "func text_to_decimal(text) -> float:\n\treturn 0.0",
   "tests": [
     {
       "name": "2.5 doubles to 5.0",
@@ -39,7 +40,7 @@
       "what": "Returns the value as a decimal number."
     }
   ],
-  "solution": "func solve(text) -> float:\n\treturn float(text) * 2",
+  "solution": "func text_to_decimal(text) -> float:\n\treturn float(text) * 2",
   "generator": [
     {
       "pick": [

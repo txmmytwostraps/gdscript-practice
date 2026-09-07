@@ -3,9 +3,10 @@
   "title": "Fall",
   "concept": "gq-loop",
   "difficulty": 1,
-  "prompt": "Members `y` at 0.0 and `vy` at 0.0. Gravity is 100 per second per second. In `_process`, add 100 times delta to vy, then add vy times delta to y. After 60 frames solve returns vy rounded, 100.",
-  "signature": "func solve():",
-  "starter": "var y = 0.0\nvar vy = 0.0\n\nfunc solve():\n\treturn round(vy)",
+  "prompt": "Members `y` at 0.0 and `vy` at 0.0. Gravity is 100 per second per second. In `_process`, add 100 times delta to vy, then add vy times delta to y. After 60 frames y_after_fall returns vy rounded, 100.",
+  "signature": "func y_after_fall():",
+  "fn": "y_after_fall",
+  "starter": "var y = 0.0\nvar vy = 0.0\n\nfunc y_after_fall():\n\treturn round(vy)",
   "tests": [
     {
       "name": "After one second the fall speed is 100",
@@ -38,7 +39,7 @@
       "what": "Returns the nearest whole number as a float."
     }
   ],
-  "solution": "var y = 0.0\nvar vy = 0.0\n\nfunc _process(delta):\n\tvy += 100 * delta\n\ty += vy * delta\n\nfunc solve():\n\treturn round(vy)",
+  "solution": "var y = 0.0\nvar vy = 0.0\n\nfunc _process(delta):\n\tvy += 100 * delta\n\ty += vy * delta\n\nfunc y_after_fall():\n\treturn round(vy)",
   "require_methods": [
     "_process"
   ]

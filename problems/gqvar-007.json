@@ -3,9 +3,10 @@
   "title": "Take a hit",
   "concept": "gq-variables",
   "difficulty": 0,
-  "prompt": "The robot's `health` starts at hp. It takes a hit of 20. Take the number `20` away from health using `-=`, then return health. solve(100) is 80.",
-  "signature": "func solve(hp):",
-  "starter": "func solve(hp):\n\tvar health = hp\n\treturn health",
+  "prompt": "The robot's `health` starts at hp. It takes a hit of 20. Take the number `20` away from health using `-=`, then return health. take_hit(100) is 80.",
+  "signature": "func take_hit(hp):",
+  "fn": "take_hit",
+  "starter": "func take_hit(hp):\n\tvar health = hp\n\treturn health",
   "tests": [
     {
       "name": "100 hit for 20 leaves 80",
@@ -34,7 +35,7 @@
     "`health -= 20` on the line after the var line."
   ],
   "docs": [],
-  "solution": "func solve(hp):\n\tvar health = hp\n\thealth -= 20\n\treturn health",
+  "solution": "func take_hit(hp):\n\tvar health = hp\n\thealth -= 20\n\treturn health",
   "generator": [
     {
       "int": [

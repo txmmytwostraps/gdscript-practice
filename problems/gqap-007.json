@@ -4,8 +4,9 @@
   "concept": "gq-appendpop",
   "difficulty": 1,
   "prompt": "Take crates off the pile one at a time, printing each, until the pile is empty. The last one added comes off first.",
-  "signature": "func solve(pile):",
-  "starter": "func solve(pile):\n\tpass",
+  "signature": "func unstack_crates(pile):",
+  "fn": "unstack_crates",
+  "starter": "func unstack_crates(pile):\n\tpass",
   "tests": [
     {
       "name": "3, 2, 1 come off",
@@ -54,5 +55,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve(pile):\n\twhile not pile.is_empty():\n\t\tprint(pile.pop_back())"
+  "solution": "func unstack_crates(pile):\n\twhile not pile.is_empty():\n\t\tprint(pile.pop_back())"
 }

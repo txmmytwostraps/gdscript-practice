@@ -4,8 +4,9 @@
   "concept": "gq-indices",
   "difficulty": 0,
   "prompt": "Put item into slot i of the inventory and return the inventory.",
-  "signature": "func solve(inventory, i, item):",
-  "starter": "func solve(inventory, i, item):\n\treturn inventory",
+  "signature": "func replace_slot(inventory, i, item):",
+  "fn": "replace_slot",
+  "starter": "func replace_slot(inventory, i, item):\n\treturn inventory",
   "tests": [
     {
       "name": "Slot 1 becomes gem",
@@ -48,7 +49,7 @@
       "what": "The item at position i. Positions start at 0; -1 is the last item."
     }
   ],
-  "solution": "func solve(inventory, i, item):\n\tinventory[i] = item\n\treturn inventory",
+  "solution": "func replace_slot(inventory, i, item):\n\tinventory[i] = item\n\treturn inventory",
   "generator": [
     {
       "array": {

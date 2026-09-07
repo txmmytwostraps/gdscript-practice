@@ -4,8 +4,9 @@
   "concept": "gq-vectors",
   "difficulty": 0,
   "prompt": "The robot moves by a step. Return a plus b. Adding vectors adds the x parts together and the y parts together: (1, 2) + (3, 4) is (4, 6).",
-  "signature": "func solve(a, b) -> Vector2:",
-  "starter": "func solve(a, b) -> Vector2:\n\treturn a",
+  "signature": "func add_vectors(a, b) -> Vector2:",
+  "fn": "add_vectors",
+  "starter": "func add_vectors(a, b) -> Vector2:\n\treturn a",
   "tests": [
     {
       "name": "(1, 2) + (3, 4) is (4, 6)",
@@ -64,7 +65,7 @@
       "what": "Vectors add and subtract part by part, and scale by a plain number."
     }
   ],
-  "solution": "func solve(a, b) -> Vector2:\n\treturn a + b",
+  "solution": "func add_vectors(a, b) -> Vector2:\n\treturn a + b",
   "generator": [
     {
       "v2": [

@@ -4,8 +4,9 @@
   "concept": "gq-rect",
   "difficulty": 0,
   "prompt": "Return an array of the rectangle's left, top, right and bottom edge positions, in that order.",
-  "signature": "func solve(r):",
-  "starter": "func solve(r):\n\treturn []",
+  "signature": "func four_edges(r):",
+  "fn": "four_edges",
+  "starter": "func four_edges(r):\n\treturn []",
   "tests": [
     {
       "name": "(10, 20, 30, 40) gives 10, 20, 40, 60",
@@ -56,7 +57,7 @@
       "what": "The top-left corner, the width and height, and the bottom-right corner, all Vector2."
     }
   ],
-  "solution": "func solve(r):\n\treturn [r.position.x, r.position.y, r.end.x, r.end.y]",
+  "solution": "func four_edges(r):\n\treturn [r.position.x, r.position.y, r.end.x, r.end.y]",
   "generator": [
     {
       "rect": [

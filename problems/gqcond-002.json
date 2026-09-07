@@ -3,9 +3,10 @@
   "title": "Positive or not",
   "concept": "gq-conditions",
   "difficulty": 0,
-  "prompt": "Return the text \"positive\" if n is greater than zero, otherwise \"not positive\". solve(5) is \"positive\".",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\treturn \"\"",
+  "prompt": "Return the text \"positive\" if n is greater than zero, otherwise \"not positive\". positive_or_not(5) is \"positive\".",
+  "signature": "func positive_or_not(n):",
+  "fn": "positive_or_not",
+  "starter": "func positive_or_not(n):\n\treturn \"\"",
   "tests": [
     {
       "name": "5 is positive",
@@ -43,7 +44,7 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(n):\n\tif n > 0:\n\t\treturn \"positive\"\n\telse:\n\t\treturn \"not positive\"",
+  "solution": "func positive_or_not(n):\n\tif n > 0:\n\t\treturn \"positive\"\n\telse:\n\t\treturn \"not positive\"",
   "generator": [
     {
       "int": [

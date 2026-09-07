@@ -4,8 +4,9 @@
   "concept": "arrays",
   "difficulty": 1,
   "prompt": "Return a new array with the items in reverse order. You may loop, or use the reverse() method.",
-  "signature": "func solve(items):",
-  "starter": "func solve(items):\n\treturn items",
+  "signature": "func reversed(items):",
+  "fn": "reversed",
+  "starter": "func reversed(items):\n\treturn items",
   "tests": [
     {
       "name": "[1, 2, 3] becomes [3, 2, 1]",
@@ -76,7 +77,7 @@
       "what": "Reverses the array in place. Returns nothing."
     }
   ],
-  "solution": "func solve(items):\n\tvar result = []\n\tfor x in items:\n\t\tresult.push_front(x)\n\treturn result",
+  "solution": "func reversed(items):\n\tvar result = []\n\tfor x in items:\n\t\tresult.push_front(x)\n\treturn result",
   "generator": [
     {
       "pick": [

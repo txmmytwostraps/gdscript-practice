@@ -3,9 +3,10 @@
   "title": "Print before and after",
   "concept": "gq-functions",
   "difficulty": 0,
-  "prompt": "The robot logs a value with a marker before and after it. Write `start`, which prints \"start\", and `finish`, which prints \"done\". In `solve`, call start, then print n, then call finish, so solve(7) prints start, 7, done.",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\tprint(n)",
+  "prompt": "The robot logs a value with a marker before and after it. Write `start`, which prints \"start\", and `finish`, which prints \"done\". In `log_with_markers`, call start, then print n, then call finish, so log_with_markers(7) prints start, 7, done.",
+  "signature": "func log_with_markers(n):",
+  "fn": "log_with_markers",
+  "starter": "func log_with_markers(n):\n\tprint(n)",
   "require_methods": [
     "start",
     "finish"
@@ -37,8 +38,8 @@
     }
   ],
   "hints": [
-    "solve can mix its own prints with calls to helpers.",
-    "Three lines in solve, in the order the output should appear: `start()`, `print(n)`, `finish()`."
+    "log_with_markers can mix its own prints with calls to helpers.",
+    "Three lines in log_with_markers, in the order the output should appear: `start()`, `print(n)`, `finish()`."
   ],
   "docs": [
     {
@@ -46,5 +47,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve(n):\n\tstart()\n\tprint(n)\n\tfinish()\n\nfunc start():\n\tprint(\"start\")\n\nfunc finish():\n\tprint(\"done\")"
+  "solution": "func log_with_markers(n):\n\tstart()\n\tprint(n)\n\tfinish()\n\nfunc start():\n\tprint(\"start\")\n\nfunc finish():\n\tprint(\"done\")"
 }

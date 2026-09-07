@@ -3,9 +3,10 @@
   "title": "Return the remainder",
   "concept": "gq-return",
   "difficulty": 0,
-  "prompt": "Write `leftover`, which returns the remainder when its first parameter is divided by the second. `solve` returns leftover(a, b).",
-  "signature": "func solve(a, b):",
-  "starter": "func solve(a, b):\n\treturn 0",
+  "prompt": "Write `leftover`, which returns the remainder when its first parameter is divided by the second. `remainder_of` returns leftover(a, b).",
+  "signature": "func remainder_of(a, b):",
+  "fn": "remainder_of",
+  "starter": "func remainder_of(a, b):\n\treturn 0",
   "tests": [
     {
       "name": "10 by 3 leaves 1",
@@ -46,7 +47,7 @@
       "what": "The remainder after dividing a by b."
     }
   ],
-  "solution": "func solve(a, b):\n\treturn leftover(a, b)\n\nfunc leftover(x, y):\n\treturn x % y",
+  "solution": "func remainder_of(a, b):\n\treturn leftover(a, b)\n\nfunc leftover(x, y):\n\treturn x % y",
   "require_methods": [
     "leftover"
   ],

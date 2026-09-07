@@ -4,8 +4,9 @@
   "concept": "gq-indices",
   "difficulty": 1,
   "prompt": "Copy the item in slot 0 into slot 2, leaving slot 0 as it is, and return the array. The array has at least three items.",
-  "signature": "func solve(items):",
-  "starter": "func solve(items):\n\treturn items",
+  "signature": "func copy_first_to_third(items):",
+  "fn": "copy_first_to_third",
+  "starter": "func copy_first_to_third(items):\n\treturn items",
   "tests": [
     {
       "name": "Slot 2 becomes a copy of slot 0",
@@ -50,7 +51,7 @@
       "what": "The item at position i. Positions start at 0; -1 is the last item."
     }
   ],
-  "solution": "func solve(items):\n\titems[2] = items[0]\n\treturn items",
+  "solution": "func copy_first_to_third(items):\n\titems[2] = items[0]\n\treturn items",
   "generator": [
     {
       "pick": [

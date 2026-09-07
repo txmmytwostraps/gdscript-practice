@@ -4,8 +4,9 @@
   "concept": "gq-valuetypes",
   "difficulty": 1,
   "prompt": "Return how many digits the whole number has by turning it into text and measuring the length. 12345 has 5.",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\treturn 0",
+  "signature": "func count_digits(n):",
+  "fn": "count_digits",
+  "starter": "func count_digits(n):\n\treturn 0",
   "tests": [
     {
       "name": "12345 has 5",
@@ -43,7 +44,7 @@
       "what": "Returns how many characters the string has."
     }
   ],
-  "solution": "func solve(n):\n\treturn str(n).length()",
+  "solution": "func count_digits(n):\n\treturn str(n).length()",
   "generator": [
     {
       "int": [

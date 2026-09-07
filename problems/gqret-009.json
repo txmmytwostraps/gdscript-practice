@@ -3,9 +3,10 @@
   "title": "Return a rounded value",
   "concept": "gq-return",
   "difficulty": 1,
-  "prompt": "Write `nearest`, which takes a decimal and returns the nearest whole number as an int. `solve` returns nearest(x). 2.6 becomes 3.",
-  "signature": "func solve(x):",
-  "starter": "func solve(x):\n\treturn int(x)",
+  "prompt": "Write `nearest`, which takes a decimal and returns the nearest whole number as an int. `rounded` returns nearest(x). 2.6 becomes 3.",
+  "signature": "func rounded(x):",
+  "fn": "rounded",
+  "starter": "func rounded(x):\n\treturn int(x)",
   "tests": [
     {
       "name": "2.4 rounds to 2",
@@ -54,7 +55,7 @@
       "what": "Returns the number as a whole number, dropping the decimals."
     }
   ],
-  "solution": "func solve(x):\n\treturn nearest(x)\n\nfunc nearest(value):\n\treturn int(round(value))",
+  "solution": "func rounded(x):\n\treturn nearest(x)\n\nfunc nearest(value):\n\treturn int(round(value))",
   "require_methods": [
     "nearest"
   ],

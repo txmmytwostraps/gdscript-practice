@@ -3,9 +3,10 @@
   "title": "A helper that returns true or false",
   "concept": "gq-return",
   "difficulty": 0,
-  "prompt": "Write `is_even`, which returns true when its parameter is even. `solve` returns is_even(n).",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\treturn false",
+  "prompt": "Write `is_even`, which returns true when its parameter is even. `check_even` returns is_even(n).",
+  "signature": "func check_even(n):",
+  "fn": "check_even",
+  "starter": "func check_even(n):\n\treturn false",
   "tests": [
     {
       "name": "4 is even",
@@ -43,7 +44,7 @@
       "what": "The remainder after dividing a by b."
     }
   ],
-  "solution": "func solve(n):\n\treturn is_even(n)\n\nfunc is_even(value):\n\treturn value % 2 == 0",
+  "solution": "func check_even(n):\n\treturn is_even(n)\n\nfunc is_even(value):\n\treturn value % 2 == 0",
   "require_methods": [
     "is_even"
   ],

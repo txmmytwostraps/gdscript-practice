@@ -4,8 +4,9 @@
   "concept": "gq-appendpop",
   "difficulty": 0,
   "prompt": "The kitchen queue is an array of meals. Add the new order to the end and return the queue. [\"soup\"] plus \"pie\" is [\"soup\", \"pie\"].",
-  "signature": "func solve(queue, order):",
-  "starter": "func solve(queue, order):\n\treturn queue",
+  "signature": "func take_order(queue, order):",
+  "fn": "take_order",
+  "starter": "func take_order(queue, order):\n\treturn queue",
   "tests": [
     {
       "name": "pie joins the queue",
@@ -41,7 +42,7 @@
       "what": "Adds value to the end of the array. Returns nothing."
     }
   ],
-  "solution": "func solve(queue, order):\n\tqueue.append(order)\n\treturn queue",
+  "solution": "func take_order(queue, order):\n\tqueue.append(order)\n\treturn queue",
   "generator": [
     {
       "array": {

@@ -3,9 +3,10 @@
   "title": "Stop at a wall",
   "concept": "gq-loop",
   "difficulty": 1,
-  "prompt": "A member `x` starts at 0.0 and moves 200 per second, but must never pass 150. In `_process`, move x, then if it went past 150, set it to 150. After 60 frames solve returns x rounded, 150.",
-  "signature": "func solve():",
-  "starter": "var x = 0.0\n\nfunc solve():\n\treturn round(x)",
+  "prompt": "A member `x` starts at 0.0 and moves 200 per second, but must never pass 150. In `_process`, move x, then if it went past 150, set it to 150. After 60 frames x_at_wall returns x rounded, 150.",
+  "signature": "func x_at_wall():",
+  "fn": "x_at_wall",
+  "starter": "var x = 0.0\n\nfunc x_at_wall():\n\treturn round(x)",
   "tests": [
     {
       "name": "After one second, stopped at 150",
@@ -38,7 +39,7 @@
       "what": "Returns the nearest whole number as a float."
     }
   ],
-  "solution": "var x = 0.0\n\nfunc _process(delta):\n\tx += 200 * delta\n\tif x > 150:\n\t\tx = 150\n\nfunc solve():\n\treturn round(x)",
+  "solution": "var x = 0.0\n\nfunc _process(delta):\n\tx += 200 * delta\n\tif x > 150:\n\t\tx = 150\n\nfunc x_at_wall():\n\treturn round(x)",
   "require_methods": [
     "_process"
   ]

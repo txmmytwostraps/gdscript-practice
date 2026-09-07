@@ -4,8 +4,9 @@
   "concept": "gq-delta",
   "difficulty": 0,
   "prompt": "The robot is at position x, driving at speed. Return where it is after one frame of delta seconds. From 0 at 100 pixels per second, a 0.1 s frame puts it at 10.",
-  "signature": "func solve(x, speed, delta) -> float:",
-  "starter": "func solve(x, speed, delta) -> float:\n\treturn x",
+  "signature": "func new_position(x, speed, delta) -> float:",
+  "fn": "new_position",
+  "starter": "func new_position(x, speed, delta) -> float:\n\treturn x",
   "tests": [
     {
       "name": "From 0 at 100 for 0.1 s is 10",
@@ -40,7 +41,7 @@
     "`return x + speed * delta`"
   ],
   "docs": [],
-  "solution": "func solve(x, speed, delta) -> float:\n\treturn x + speed * delta",
+  "solution": "func new_position(x, speed, delta) -> float:\n\treturn x + speed * delta",
   "generator": [
     {
       "int": [

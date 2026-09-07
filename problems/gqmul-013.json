@@ -3,9 +3,10 @@
   "title": "Damage per second",
   "concept": "gq-multiply",
   "difficulty": 1,
-  "prompt": "The robot hits for damage, hits_per_second times a second. Return the damage dealt over the given seconds. solve(5, 2, 3.0) is 30.0.",
-  "signature": "func solve(damage, hits_per_second, seconds) -> float:",
-  "starter": "func solve(damage, hits_per_second, seconds) -> float:\n\treturn damage",
+  "prompt": "The robot hits for damage, hits_per_second times a second. Return the damage dealt over the given seconds. damage_over_time(5, 2, 3.0) is 30.0.",
+  "signature": "func damage_over_time(damage, hits_per_second, seconds) -> float:",
+  "fn": "damage_over_time",
+  "starter": "func damage_over_time(damage, hits_per_second, seconds) -> float:\n\treturn damage",
   "tests": [
     {
       "name": "5 damage, 2 per second, 3 seconds is 30",
@@ -45,7 +46,7 @@
       "what": "Multiplies two numbers. * with a float keeps decimals."
     }
   ],
-  "solution": "func solve(damage, hits_per_second, seconds) -> float:\n\treturn damage * hits_per_second * seconds",
+  "solution": "func damage_over_time(damage, hits_per_second, seconds) -> float:\n\treturn damage * hits_per_second * seconds",
   "generator": [
     {
       "int": [

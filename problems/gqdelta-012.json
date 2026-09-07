@@ -4,8 +4,9 @@
   "concept": "gq-delta",
   "difficulty": 1,
   "prompt": "Simulate the robot frame by frame: fps frames every second, each with delta equal to 1.0 / fps. Add speed times delta on every frame for the given number of seconds and return the total. At 100 per second for 2 seconds the answer is 200 whether fps is 60 or 30.",
-  "signature": "func solve(speed, seconds, fps) -> float:",
-  "starter": "func solve(speed, seconds, fps) -> float:\n\treturn 0.0",
+  "signature": "func distance_at_fps(speed, seconds, fps) -> float:",
+  "fn": "distance_at_fps",
+  "starter": "func distance_at_fps(speed, seconds, fps) -> float:\n\treturn 0.0",
   "tests": [
     {
       "name": "2 s at 60 fps is 200",
@@ -46,7 +47,7 @@
       "what": "Gives the numbers 0 up to n - 1, for a for loop to count through."
     }
   ],
-  "solution": "func solve(speed, seconds, fps) -> float:\n\tvar delta = 1.0 / fps\n\tvar total = 0.0\n\tfor i in range(seconds * fps):\n\t\ttotal += speed * delta\n\treturn total",
+  "solution": "func distance_at_fps(speed, seconds, fps) -> float:\n\tvar delta = 1.0 / fps\n\tvar total = 0.0\n\tfor i in range(seconds * fps):\n\t\ttotal += speed * delta\n\treturn total",
   "generator": [
     {
       "int": [

@@ -4,8 +4,9 @@
   "concept": "gq-valuetypes",
   "difficulty": 1,
   "prompt": "Return \"int\", \"float\", \"String\" or \"other\" depending on the type of value.",
-  "signature": "func solve(value):",
-  "starter": "func solve(value):\n\treturn \"other\"",
+  "signature": "func type_name(value):",
+  "fn": "type_name",
+  "starter": "func type_name(value):\n\treturn \"other\"",
   "tests": [
     {
       "name": "5 is int",
@@ -46,7 +47,7 @@
       "what": "true if the value is of that type. Also is int, is float, is bool."
     }
   ],
-  "solution": "func solve(value):\n\tif value is int:\n\t\treturn \"int\"\n\telif value is float:\n\t\treturn \"float\"\n\telif value is String:\n\t\treturn \"String\"\n\telse:\n\t\treturn \"other\"",
+  "solution": "func type_name(value):\n\tif value is int:\n\t\treturn \"int\"\n\telif value is float:\n\t\treturn \"float\"\n\telif value is String:\n\t\treturn \"String\"\n\telse:\n\t\treturn \"other\"",
   "generator": [
     {
       "pick": [

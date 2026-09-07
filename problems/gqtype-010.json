@@ -3,9 +3,10 @@
   "title": "A typed bool",
   "concept": "gq-types",
   "difficulty": 0,
-  "prompt": "Write `is_alive`, which takes health hinted as int and returns a bool: true when health is above 0. solve returns is_alive(hp).",
-  "signature": "func solve(hp: int) -> bool:",
-  "starter": "func solve(hp: int) -> bool:\n\treturn true",
+  "prompt": "Write `is_alive`, which takes health hinted as int and returns a bool: true when health is above 0. check_alive returns is_alive(hp).",
+  "signature": "func check_alive(hp: int) -> bool:",
+  "fn": "check_alive",
+  "starter": "func check_alive(hp: int) -> bool:\n\treturn true",
   "tests": [
     {
       "name": "10 is alive",
@@ -43,7 +44,7 @@
       "what": "Return type hint: the function promises to return that type."
     }
   ],
-  "solution": "func solve(hp: int) -> bool:\n\treturn is_alive(hp)\n\nfunc is_alive(health: int) -> bool:\n\treturn health > 0",
+  "solution": "func check_alive(hp: int) -> bool:\n\treturn is_alive(hp)\n\nfunc is_alive(health: int) -> bool:\n\treturn health > 0",
   "allow_type_hints": true,
   "require_methods": [
     "is_alive"

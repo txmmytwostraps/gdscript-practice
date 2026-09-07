@@ -4,8 +4,9 @@
   "concept": "gq-delta",
   "difficulty": 1,
   "prompt": "Gravity adds gravity pixels per second to the robot's falling speed every second, and down is positive. Return the vertical speed vy after one frame. From 0 with gravity 980, a 0.1 s frame gives 98.",
-  "signature": "func solve(vy, gravity, delta) -> float:",
-  "starter": "func solve(vy, gravity, delta) -> float:\n\treturn vy",
+  "signature": "func fall_speed(vy, gravity, delta) -> float:",
+  "fn": "fall_speed",
+  "starter": "func fall_speed(vy, gravity, delta) -> float:\n\treturn vy",
   "tests": [
     {
       "name": "From rest, 0.1 s of gravity is 98",
@@ -40,7 +41,7 @@
     "`return vy + gravity * delta`"
   ],
   "docs": [],
-  "solution": "func solve(vy, gravity, delta) -> float:\n\treturn vy + gravity * delta",
+  "solution": "func fall_speed(vy, gravity, delta) -> float:\n\treturn vy + gravity * delta",
   "generator": [
     {
       "int": [

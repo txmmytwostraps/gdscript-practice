@@ -3,9 +3,10 @@
   "title": "Count the frames",
   "concept": "gq-loop",
   "difficulty": 0,
-  "prompt": "A member `frames` starts at 0. Write `_process`, which takes delta and adds 1 to frames every time it runs. The judge runs 60 frames, then `solve` returns frames.",
-  "signature": "func solve():",
-  "starter": "var frames = 0\n\nfunc solve():\n\treturn frames",
+  "prompt": "A member `frames` starts at 0. Write `_process`, which takes delta and adds 1 to frames every time it runs. The judge runs 60 frames, then `frame_count` returns frames.",
+  "signature": "func frame_count():",
+  "fn": "frame_count",
+  "starter": "var frames = 0\n\nfunc frame_count():\n\treturn frames",
   "tests": [
     {
       "name": "60 frames counted",
@@ -29,7 +30,7 @@
   "hints": [
     "_process is a function Godot calls for you, again and again.",
     "`func _process(delta):` with `frames += 1` inside.",
-    "You do not call it yourself; leave solve as it is."
+    "You do not call it yourself; leave frame_count as it is."
   ],
   "docs": [
     {
@@ -41,7 +42,7 @@
       "what": "A member variable keeps its value from one frame to the next."
     }
   ],
-  "solution": "var frames = 0\n\nfunc _process(delta):\n\tframes += 1\n\nfunc solve():\n\treturn frames",
+  "solution": "var frames = 0\n\nfunc _process(delta):\n\tframes += 1\n\nfunc frame_count():\n\treturn frames",
   "require_methods": [
     "_process"
   ]

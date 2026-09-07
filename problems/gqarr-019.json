@@ -4,8 +4,9 @@
   "concept": "gq-arrays",
   "difficulty": 1,
   "prompt": "Return a new array with the items in the opposite order, built with a loop.",
-  "signature": "func solve(items):",
-  "starter": "func solve(items):\n\treturn items",
+  "signature": "func reverse_with_loop(items):",
+  "fn": "reverse_with_loop",
+  "starter": "func reverse_with_loop(items):\n\treturn items",
   "tests": [
     {
       "name": "[1, 2, 3] becomes [3, 2, 1]",
@@ -55,7 +56,7 @@
       "what": "Adds value at the start. Returns nothing."
     }
   ],
-  "solution": "func solve(items):\n\tvar result = []\n\tfor item in items:\n\t\tresult.push_front(item)\n\treturn result",
+  "solution": "func reverse_with_loop(items):\n\tvar result = []\n\tfor item in items:\n\t\tresult.push_front(item)\n\treturn result",
   "generator": [
     {
       "array": {

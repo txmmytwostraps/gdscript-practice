@@ -4,8 +4,9 @@
   "concept": "gq-rect",
   "difficulty": 1,
   "prompt": "Return the rectangle made smaller by margin on every side.",
-  "signature": "func solve(r, margin) -> Rect2:",
-  "starter": "func solve(r, margin) -> Rect2:\n\treturn r",
+  "signature": "func shrink_rect(r, margin) -> Rect2:",
+  "fn": "shrink_rect",
+  "starter": "func shrink_rect(r, margin) -> Rect2:\n\treturn r",
   "tests": [
     {
       "name": "Shrink by 5",
@@ -62,7 +63,7 @@
       "what": "Returns the rectangle made bigger by amount on every side (negative shrinks)."
     }
   ],
-  "solution": "func solve(r, margin) -> Rect2:\n\treturn r.grow(-margin)",
+  "solution": "func shrink_rect(r, margin) -> Rect2:\n\treturn r.grow(-margin)",
   "generator": [
     {
       "rect": [

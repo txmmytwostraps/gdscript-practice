@@ -4,8 +4,9 @@
   "concept": "gq-delta",
   "difficulty": 0,
   "prompt": "The robot drives at speed pixels per second, and the last frame took delta seconds. Return how far it moved during that frame. At 100 pixels per second, a 0.016 s frame moves 1.6 pixels.",
-  "signature": "func solve(speed, delta) -> float:",
-  "starter": "func solve(speed, delta) -> float:\n\treturn speed",
+  "signature": "func distance_this_frame(speed, delta) -> float:",
+  "fn": "distance_this_frame",
+  "starter": "func distance_this_frame(speed, delta) -> float:\n\treturn speed",
   "tests": [
     {
       "name": "100 per second for 0.016 s is 1.6",
@@ -37,7 +38,7 @@
     "`return speed * delta`"
   ],
   "docs": [],
-  "solution": "func solve(speed, delta) -> float:\n\treturn speed * delta",
+  "solution": "func distance_this_frame(speed, delta) -> float:\n\treturn speed * delta",
   "generator": [
     {
       "int": [

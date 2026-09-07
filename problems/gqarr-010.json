@@ -4,8 +4,9 @@
   "concept": "gq-arrays",
   "difficulty": 1,
   "prompt": "Return the position of value in the array, or -1 if it is not there. 7 in [5, 6, 7] is at position 2.",
-  "signature": "func solve(items, value):",
-  "starter": "func solve(items, value):\n\treturn 0",
+  "signature": "func position_of(items, value):",
+  "fn": "position_of",
+  "starter": "func position_of(items, value):\n\treturn 0",
   "tests": [
     {
       "name": "7 is at position 2",
@@ -54,7 +55,7 @@
       "what": "Returns the position of value, or -1 if it is not there."
     }
   ],
-  "solution": "func solve(items, value):\n\treturn items.find(value)",
+  "solution": "func position_of(items, value):\n\treturn items.find(value)",
   "generator": [
     {
       "array": {

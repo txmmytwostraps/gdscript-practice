@@ -4,8 +4,9 @@
   "concept": "gq-turtle",
   "difficulty": 1,
   "prompt": "Draw a square of 30, then jump 40 forward, then draw another square of 30. Each square is four times: forward 30, turn left.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass",
   "tests": [
     {
       "name": "Square, jump 40, square",
@@ -50,5 +51,5 @@
       "what": "Moves forward without drawing."
     }
   ],
-  "solution": "func solve():\n\tmove_forward(30)\n\tturn_left()\n\tmove_forward(30)\n\tturn_left()\n\tmove_forward(30)\n\tturn_left()\n\tmove_forward(30)\n\tturn_left()\n\tjump(40)\n\tmove_forward(30)\n\tturn_left()\n\tmove_forward(30)\n\tturn_left()\n\tmove_forward(30)\n\tturn_left()\n\tmove_forward(30)\n\tturn_left()"
+  "solution": "func run():\n\tmove_forward(30)\n\tturn_left()\n\tmove_forward(30)\n\tturn_left()\n\tmove_forward(30)\n\tturn_left()\n\tmove_forward(30)\n\tturn_left()\n\tjump(40)\n\tmove_forward(30)\n\tturn_left()\n\tmove_forward(30)\n\tturn_left()\n\tmove_forward(30)\n\tturn_left()\n\tmove_forward(30)\n\tturn_left()"
 }

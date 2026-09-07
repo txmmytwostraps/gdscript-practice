@@ -3,9 +3,10 @@
   "title": "Report after levelling",
   "concept": "gq-multiply",
   "difficulty": 1,
-  "prompt": "Members `level` at 1 and `max_health` at 100, with a working `level_up`. Write `report`, which prints level and then max_health. solve calls level_up, then report.",
-  "signature": "func solve():",
-  "starter": "var level = 1\nvar max_health = 100\n\nfunc solve():\n\tpass\n\nfunc level_up():\n\tlevel += 1\n\tmax_health *= 2",
+  "prompt": "Members `level` at 1 and `max_health` at 100, with a working `level_up`. Write `report`, which prints level and then max_health. run calls level_up, then report.",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "var level = 1\nvar max_health = 100\n\nfunc run():\n\tpass\n\nfunc level_up():\n\tlevel += 1\n\tmax_health *= 2",
   "tests": [
     {
       "name": "Level is printed, then max health",
@@ -31,7 +32,7 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "var level = 1\nvar max_health = 100\n\nfunc solve():\n\tlevel_up()\n\treport()\n\nfunc level_up():\n\tlevel += 1\n\tmax_health *= 2\n\nfunc report():\n\tprint(level)\n\tprint(max_health)",
+  "solution": "var level = 1\nvar max_health = 100\n\nfunc run():\n\tlevel_up()\n\treport()\n\nfunc level_up():\n\tlevel += 1\n\tmax_health *= 2\n\nfunc report():\n\tprint(level)\n\tprint(max_health)",
   "require_methods": [
     "report"
   ]

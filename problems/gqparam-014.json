@@ -3,9 +3,10 @@
   "title": "Clamp with parameters",
   "concept": "gq-parameters",
   "difficulty": 1,
-  "prompt": "The robot's speed must stay between a low and a high limit. Return value, but never lower than low and never higher than high. Godot has a built-in for exactly this. solve(15, 0, 10) is 10.",
-  "signature": "func solve(value, low, high):",
-  "starter": "func solve(value, low, high):\n\treturn value",
+  "prompt": "The robot's speed must stay between a low and a high limit. Return value, but never lower than low and never higher than high. Godot has a built-in for exactly this. clamp_value(15, 0, 10) is 10.",
+  "signature": "func clamp_value(value, low, high):",
+  "fn": "clamp_value",
+  "starter": "func clamp_value(value, low, high):\n\treturn value",
   "tests": [
     {
       "name": "Inside the limits stays the same",
@@ -46,7 +47,7 @@
       "what": "Returns value, but never lower than low or higher than high."
     }
   ],
-  "solution": "func solve(value, low, high):\n\treturn clamp(value, low, high)",
+  "solution": "func clamp_value(value, low, high):\n\treturn clamp(value, low, high)",
   "generator": [
     {
       "int": [

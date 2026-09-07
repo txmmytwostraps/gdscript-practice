@@ -4,8 +4,9 @@
   "concept": "dictionaries",
   "difficulty": 1,
   "prompt": "Return the value stored under key in data. If the key is not there, return -1 instead of crashing. Try running the starter as-is to see what the crash looks like.",
-  "signature": "func solve(data, key):",
-  "starter": "func solve(data, key):\n\treturn data[key]",
+  "signature": "func safe_lookup(data, key):",
+  "fn": "safe_lookup",
+  "starter": "func safe_lookup(data, key):\n\treturn data[key]",
   "tests": [
     {
       "name": "a is 1",
@@ -62,7 +63,7 @@
       "what": "Returns the value for key, or default when the key is missing."
     }
   ],
-  "solution": "func solve(data, key):\n\tif key in data:\n\t\treturn data[key]\n\telse:\n\t\treturn -1",
+  "solution": "func safe_lookup(data, key):\n\tif key in data:\n\t\treturn data[key]\n\telse:\n\t\treturn -1",
   "generator": [
     {
       "pick": [

@@ -4,8 +4,9 @@
   "concept": "arrays",
   "difficulty": 0,
   "prompt": "Return an array holding the first item and the last item of items, in that order. The array always has at least one item.",
-  "signature": "func solve(items):",
-  "starter": "func solve(items):\n\treturn []",
+  "signature": "func first_and_last(items):",
+  "fn": "first_and_last",
+  "starter": "func first_and_last(items):\n\treturn []",
   "tests": [
     {
       "name": "[1, 2, 3] gives [1, 3]",
@@ -73,7 +74,7 @@
       "what": "The item at position i. Positions start at 0; -1 is the last item."
     }
   ],
-  "solution": "func solve(items):\n\treturn [items[0], items[-1]]",
+  "solution": "func first_and_last(items):\n\treturn [items[0], items[-1]]",
   "generator": [
     {
       "pick": [

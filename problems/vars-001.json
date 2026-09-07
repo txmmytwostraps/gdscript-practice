@@ -3,9 +3,10 @@
   "title": "Double the reward",
   "concept": "variables",
   "difficulty": 0,
-  "prompt": "The robot earns double rewards today. Return n multiplied by 2, so solve(2) is 4.",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\treturn 0",
+  "prompt": "The robot earns double rewards today. Return n multiplied by 2, so double_reward(2) is 4.",
+  "signature": "func double_reward(n):",
+  "fn": "double_reward",
+  "starter": "func double_reward(n):\n\treturn 0",
   "tests": [
     {
       "name": "2 doubles to 4",
@@ -41,7 +42,7 @@
     "`return n * 2`"
   ],
   "docs": [],
-  "solution": "func solve(n):\n\treturn n * 2",
+  "solution": "func double_reward(n):\n\treturn n * 2",
   "generator": [
     {
       "int": [

@@ -4,8 +4,9 @@
   "concept": "gq-delta",
   "difficulty": 1,
   "prompt": "The robot's timer has time_left seconds to go. Return the time left after this frame, but never less than zero. With 0.2 s left and a 0.5 s frame, the answer is 0.0.",
-  "signature": "func solve(time_left, delta) -> float:",
-  "starter": "func solve(time_left, delta) -> float:\n\treturn time_left - delta",
+  "signature": "func countdown(time_left, delta) -> float:",
+  "fn": "countdown",
+  "starter": "func countdown(time_left, delta) -> float:\n\treturn time_left - delta",
   "tests": [
     {
       "name": "5 s minus a 0.5 s frame is 4.5",
@@ -43,7 +44,7 @@
       "what": "Returns the larger of the two numbers."
     }
   ],
-  "solution": "func solve(time_left, delta) -> float:\n\treturn max(time_left - delta, 0.0)",
+  "solution": "func countdown(time_left, delta) -> float:\n\treturn max(time_left - delta, 0.0)",
   "generator": [
     {
       "float": [

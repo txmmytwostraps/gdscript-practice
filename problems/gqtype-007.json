@@ -4,8 +4,9 @@
   "concept": "gq-types",
   "difficulty": 0,
   "prompt": "Declare `position` with the type Vector2 and the value Vector2(3, 4). Return its x plus its y.",
-  "signature": "func solve() -> float:",
-  "starter": "func solve() -> float:\n\treturn 0.0",
+  "signature": "func typed_position_sum() -> float:",
+  "fn": "typed_position_sum",
+  "starter": "func typed_position_sum() -> float:\n\treturn 0.0",
   "tests": [
     {
       "name": "3 plus 4 is 7",
@@ -24,7 +25,7 @@
       "what": "Declares a variable that can only hold that type. Also float, String, bool, Vector2, Array."
     }
   ],
-  "solution": "func solve() -> float:\n\tvar position: Vector2 = Vector2(3, 4)\n\treturn position.x + position.y",
+  "solution": "func typed_position_sum() -> float:\n\tvar position: Vector2 = Vector2(3, 4)\n\treturn position.x + position.y",
   "allow_type_hints": true,
   "require_names": [
     "position"

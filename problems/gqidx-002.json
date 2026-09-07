@@ -4,8 +4,9 @@
   "concept": "gq-indices",
   "difficulty": 0,
   "prompt": "Return what is in the third slot of the inventory. The array has at least three items.",
-  "signature": "func solve(inventory):",
-  "starter": "func solve(inventory):\n\treturn inventory[3]",
+  "signature": "func third_slot(inventory):",
+  "fn": "third_slot",
+  "starter": "func third_slot(inventory):\n\treturn inventory[3]",
   "tests": [
     {
       "name": "Third of three is wire",
@@ -41,7 +42,7 @@
       "what": "The item at position i. Positions start at 0; -1 is the last item."
     }
   ],
-  "solution": "func solve(inventory):\n\treturn inventory[2]",
+  "solution": "func third_slot(inventory):\n\treturn inventory[2]",
   "generator": [
     {
       "pick": [

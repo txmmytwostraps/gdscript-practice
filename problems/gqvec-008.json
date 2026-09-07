@@ -4,8 +4,9 @@
   "concept": "gq-vectors",
   "difficulty": 1,
   "prompt": "Return a vector pointing the same way as v but with length exactly 1. Games use these to say which way the robot faces. (3, 4) becomes (0.6, 0.8).",
-  "signature": "func solve(v) -> Vector2:",
-  "starter": "func solve(v) -> Vector2:\n\treturn v",
+  "signature": "func direction_of(v) -> Vector2:",
+  "fn": "direction_of",
+  "starter": "func direction_of(v) -> Vector2:\n\treturn v",
   "tests": [
     {
       "name": "(3, 4) becomes (0.6, 0.8)",
@@ -69,7 +70,7 @@
       "what": "Returns a vector pointing the same way with length 1."
     }
   ],
-  "solution": "func solve(v) -> Vector2:\n\treturn v.normalized()",
+  "solution": "func direction_of(v) -> Vector2:\n\treturn v.normalized()",
   "generator": [
     {
       "v2": [

@@ -4,8 +4,9 @@
   "concept": "gq-looparrays",
   "difficulty": 0,
   "prompt": "Return true if target is in the array, using a loop rather than the in keyword.",
-  "signature": "func solve(items, target):",
-  "starter": "func solve(items, target):\n\treturn false",
+  "signature": "func is_in_array(items, target):",
+  "fn": "is_in_array",
+  "starter": "func is_in_array(items, target):\n\treturn false",
   "tests": [
     {
       "name": "2 is in [1, 2, 3]",
@@ -50,7 +51,7 @@
       "what": "Runs the indented lines once per item, with item holding each value in turn."
     }
   ],
-  "solution": "func solve(items, target):\n\tvar found = false\n\tfor item in items:\n\t\tif item == target:\n\t\t\tfound = true\n\treturn found",
+  "solution": "func is_in_array(items, target):\n\tvar found = false\n\tfor item in items:\n\t\tif item == target:\n\t\t\tfound = true\n\treturn found",
   "generator": [
     {
       "array": {

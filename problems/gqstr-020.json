@@ -4,8 +4,9 @@
   "concept": "gq-strings",
   "difficulty": 0,
   "prompt": "Return the text with the first letter of each word in capitals: \"hello world\" becomes \"Hello World\".",
-  "signature": "func solve(text):",
-  "starter": "func solve(text):\n\treturn text",
+  "signature": "func capitalize_words(text):",
+  "fn": "capitalize_words",
+  "starter": "func capitalize_words(text):\n\treturn text",
   "tests": [
     {
       "name": "hello world becomes Hello World",
@@ -32,7 +33,7 @@
       "what": "Returns the text with the first letter of each word in capitals."
     }
   ],
-  "solution": "func solve(text):\n\treturn text.capitalize()",
+  "solution": "func capitalize_words(text):\n\treturn text.capitalize()",
   "generator": [
     {
       "pick": [

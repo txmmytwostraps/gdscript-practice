@@ -4,8 +4,9 @@
   "concept": "gq-conditions",
   "difficulty": 0,
   "prompt": "A shield halves the damage the robot takes. Return the damage actually taken: 10 with a shield becomes 5, 10 without stays 10.",
-  "signature": "func solve(damage, has_shield):",
-  "starter": "func solve(damage, has_shield):\n\treturn damage",
+  "signature": "func damage_taken(damage, has_shield):",
+  "fn": "damage_taken",
+  "starter": "func damage_taken(damage, has_shield):\n\treturn damage",
   "tests": [
     {
       "name": "10 with a shield is 5",
@@ -42,7 +43,7 @@
       "what": "Runs the indented lines below it only when the condition is true. elif and else add more branches."
     }
   ],
-  "solution": "func solve(damage, has_shield):\n\tif has_shield:\n\t\treturn damage / 2\n\telse:\n\t\treturn damage",
+  "solution": "func damage_taken(damage, has_shield):\n\tif has_shield:\n\t\treturn damage / 2\n\telse:\n\t\treturn damage",
   "generator": [
     {
       "int": [

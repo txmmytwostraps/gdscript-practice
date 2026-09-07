@@ -4,8 +4,9 @@
   "concept": "for",
   "difficulty": 1,
   "prompt": "Return the largest number in the array with a loop, not max(). The array always has at least one number.",
-  "signature": "func solve(nums):",
-  "starter": "func solve(nums):\n\treturn nums[0]",
+  "signature": "func largest(nums):",
+  "fn": "largest",
+  "starter": "func largest(nums):\n\treturn nums[0]",
   "tests": [
     {
       "name": "9 is the largest of 3, 9, 2",
@@ -76,7 +77,7 @@
       "what": "The item at position i. Positions start at 0; -1 is the last item."
     }
   ],
-  "solution": "func solve(nums):\n\tvar biggest = nums[0]\n\tfor n in nums:\n\t\tif n > biggest:\n\t\t\tbiggest = n\n\treturn biggest",
+  "solution": "func largest(nums):\n\tvar biggest = nums[0]\n\tfor n in nums:\n\t\tif n > biggest:\n\t\t\tbiggest = n\n\treturn biggest",
   "generator": [
     {
       "array": {

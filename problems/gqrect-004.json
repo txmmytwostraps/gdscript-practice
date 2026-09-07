@@ -4,8 +4,9 @@
   "concept": "gq-rect",
   "difficulty": 0,
   "prompt": "Return the bottom-right corner of the rectangle as a Vector2. For a rect at (10, 20) sized (30, 40) that is (40, 60).",
-  "signature": "func solve(r) -> Vector2:",
-  "starter": "func solve(r) -> Vector2:\n\treturn r.position",
+  "signature": "func bottom_right(r) -> Vector2:",
+  "fn": "bottom_right",
+  "starter": "func bottom_right(r) -> Vector2:\n\treturn r.position",
   "tests": [
     {
       "name": "(10, 20) + (30, 40) is (40, 60)",
@@ -56,7 +57,7 @@
       "what": "The top-left corner, the width and height, and the bottom-right corner, all Vector2."
     }
   ],
-  "solution": "func solve(r) -> Vector2:\n\treturn r.end",
+  "solution": "func bottom_right(r) -> Vector2:\n\treturn r.end",
   "generator": [
     {
       "rect": [

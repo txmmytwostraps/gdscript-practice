@@ -4,8 +4,9 @@
   "concept": "gq-rect",
   "difficulty": 1,
   "prompt": "The robot's health bar at (0, 0) is max_width wide when health is full. Return the Rect2 to draw for the current hp: the same height, but only as wide as the fraction of health left. Half health is half the width.",
-  "signature": "func solve(max_width, height, hp, max_hp) -> Rect2:",
-  "starter": "func solve(max_width, height, hp, max_hp) -> Rect2:\n\treturn Rect2(0, 0, max_width, height)",
+  "signature": "func health_bar(max_width, height, hp, max_hp) -> Rect2:",
+  "fn": "health_bar",
+  "starter": "func health_bar(max_width, height, hp, max_hp) -> Rect2:\n\treturn Rect2(0, 0, max_width, height)",
   "tests": [
     {
       "name": "Half health is half width",
@@ -69,7 +70,7 @@
       "what": "Makes a rectangle from a top-left corner and a size. Also Rect2(position, size) with two vectors."
     }
   ],
-  "solution": "func solve(max_width, height, hp, max_hp) -> Rect2:\n\treturn Rect2(0, 0, max_width * hp / max_hp, height)",
+  "solution": "func health_bar(max_width, height, hp, max_hp) -> Rect2:\n\treturn Rect2(0, 0, max_width * hp / max_hp, height)",
   "generator": [
     {
       "int": [

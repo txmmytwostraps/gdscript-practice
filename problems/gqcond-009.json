@@ -4,8 +4,9 @@
   "concept": "gq-conditions",
   "difficulty": 0,
   "prompt": "Return true if the robot's hatch is closed. You are told whether it is open.",
-  "signature": "func solve(is_open):",
-  "starter": "func solve(is_open):\n\treturn is_open",
+  "signature": "func is_closed(is_open):",
+  "fn": "is_closed",
+  "starter": "func is_closed(is_open):\n\treturn is_open",
   "tests": [
     {
       "name": "Open means not closed",
@@ -32,7 +33,7 @@
       "what": "and is true when both sides are; or when at least one is; not flips true and false."
     }
   ],
-  "solution": "func solve(is_open):\n\treturn not is_open",
+  "solution": "func is_closed(is_open):\n\treturn not is_open",
   "generator": [
     {
       "bool": true

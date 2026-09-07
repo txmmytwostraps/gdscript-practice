@@ -3,9 +3,10 @@
   "title": "Area of the arena",
   "concept": "gq-multiply",
   "difficulty": 0,
-  "prompt": "The arena is width by height tiles, each tile 64 pixels. Return the arena's width in pixels times its height in pixels. solve(2, 3) is 24576.",
-  "signature": "func solve(width, height):",
-  "starter": "func solve(width, height):\n\treturn width * height",
+  "prompt": "The arena is width by height tiles, each tile 64 pixels. Return the arena's width in pixels times its height in pixels. arena_area(2, 3) is 24576.",
+  "signature": "func arena_area(width, height):",
+  "fn": "arena_area",
+  "starter": "func arena_area(width, height):\n\treturn width * height",
   "tests": [
     {
       "name": "2 by 3 tiles",
@@ -42,7 +43,7 @@
       "what": "Multiplies two numbers. * with a float keeps decimals."
     }
   ],
-  "solution": "func solve(width, height):\n\treturn (width * 64) * (height * 64)",
+  "solution": "func arena_area(width, height):\n\treturn (width * 64) * (height * 64)",
   "generator": [
     {
       "int": [

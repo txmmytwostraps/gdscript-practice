@@ -3,9 +3,10 @@
   "title": "The same number twice",
   "concept": "gq-readable",
   "difficulty": 0,
-  "prompt": "This finds the centre of a grid tile, and the tile size 64 appears twice. Name it once as `TILE_SIZE` and use the name in both places, so changing the tile size later takes one edit.",
-  "signature": "func solve(column):",
-  "starter": "func solve(column):\n\treturn 64 * column + 64 / 2",
+  "prompt": "This finds the center of a grid tile, and the tile size 64 appears twice. Name it once as `TILE_SIZE` and use the name in both places, so changing the tile size later takes one edit.",
+  "signature": "func tile_center(column):",
+  "fn": "tile_center",
+  "starter": "func tile_center(column):\n\treturn 64 * column + 64 / 2",
   "require_names": [
     "TILE_SIZE"
   ],
@@ -14,21 +15,21 @@
   ],
   "tests": [
     {
-      "name": "Column 0 centres at 32",
+      "name": "Column 0 centers at 32",
       "args": [
         0
       ],
       "expect": 32
     },
     {
-      "name": "Column 1 centres at 96",
+      "name": "Column 1 centers at 96",
       "args": [
         1
       ],
       "expect": 96
     },
     {
-      "name": "Column 3 centres at 224",
+      "name": "Column 3 centers at 224",
       "args": [
         3
       ],
@@ -46,5 +47,5 @@
       "what": "Declares a named value that never changes. Written in CAPITALS by convention."
     }
   ],
-  "solution": "func solve(column):\n\tconst TILE_SIZE = 64\n\treturn TILE_SIZE * column + TILE_SIZE / 2"
+  "solution": "func tile_center(column):\n\tconst TILE_SIZE = 64\n\treturn TILE_SIZE * column + TILE_SIZE / 2"
 }

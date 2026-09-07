@@ -4,8 +4,9 @@
   "concept": "gq-delta",
   "difficulty": 0,
   "prompt": "The robot moved distance pixels during a frame that lasted delta seconds. Return its speed in pixels per second. 2 pixels in 0.5 s is 4 per second.",
-  "signature": "func solve(distance, delta) -> float:",
-  "starter": "func solve(distance, delta) -> float:\n\treturn distance * delta",
+  "signature": "func speed_from_distance(distance, delta) -> float:",
+  "fn": "speed_from_distance",
+  "starter": "func speed_from_distance(distance, delta) -> float:\n\treturn distance * delta",
   "tests": [
     {
       "name": "2 in 0.5 s is 4 per second",
@@ -37,7 +38,7 @@
     "`return distance / delta`"
   ],
   "docs": [],
-  "solution": "func solve(distance, delta) -> float:\n\treturn distance / delta",
+  "solution": "func speed_from_distance(distance, delta) -> float:\n\treturn distance / delta",
   "generator": [
     {
       "float": [

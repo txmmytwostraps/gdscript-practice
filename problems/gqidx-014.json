@@ -4,8 +4,9 @@
   "concept": "gq-indices",
   "difficulty": 0,
   "prompt": "Return the second-to-last item. The array has at least two items.",
-  "signature": "func solve(items):",
-  "starter": "func solve(items):\n\treturn items[-1]",
+  "signature": "func second_to_last(items):",
+  "fn": "second_to_last",
+  "starter": "func second_to_last(items):\n\treturn items[-1]",
   "tests": [
     {
       "name": "Second to last of four",
@@ -40,7 +41,7 @@
       "what": "The item at position i. Positions start at 0; -1 is the last item."
     }
   ],
-  "solution": "func solve(items):\n\treturn items[-2]",
+  "solution": "func second_to_last(items):\n\treturn items[-2]",
   "generator": [
     {
       "pick": [

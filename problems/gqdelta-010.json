@@ -4,8 +4,9 @@
   "concept": "gq-delta",
   "difficulty": 0,
   "prompt": "The robot faces angle degrees and turns at turn_speed degrees per second. Return the angle after one frame. From 0 at 90 per second, a 0.5 s frame gives 45.",
-  "signature": "func solve(angle, turn_speed, delta) -> float:",
-  "starter": "func solve(angle, turn_speed, delta) -> float:\n\treturn angle",
+  "signature": "func turn_over_time(angle, turn_speed, delta) -> float:",
+  "fn": "turn_over_time",
+  "starter": "func turn_over_time(angle, turn_speed, delta) -> float:\n\treturn angle",
   "tests": [
     {
       "name": "0 plus 90 per second for 0.5 s is 45",
@@ -40,7 +41,7 @@
     "`return angle + turn_speed * delta`"
   ],
   "docs": [],
-  "solution": "func solve(angle, turn_speed, delta) -> float:\n\treturn angle + turn_speed * delta",
+  "solution": "func turn_over_time(angle, turn_speed, delta) -> float:\n\treturn angle + turn_speed * delta",
   "generator": [
     {
       "int": [

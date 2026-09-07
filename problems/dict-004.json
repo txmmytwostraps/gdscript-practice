@@ -4,8 +4,9 @@
   "concept": "dictionaries",
   "difficulty": 1,
   "prompt": "Given an array of words, return a dictionary where each word is a key and its value is how many times it appeared. [\"a\", \"b\", \"a\"] gives {\"a\": 2, \"b\": 1}.",
-  "signature": "func solve(words):",
-  "starter": "func solve(words):\n\tvar counts = {}\n\treturn counts",
+  "signature": "func count_words(words):",
+  "fn": "count_words",
+  "starter": "func count_words(words):\n\tvar counts = {}\n\treturn counts",
   "tests": [
     {
       "name": "a twice, b once",
@@ -70,7 +71,7 @@
       "what": "true if the dictionary has that key."
     }
   ],
-  "solution": "func solve(words):\n\tvar counts = {}\n\tfor word in words:\n\t\tif not word in counts:\n\t\t\tcounts[word] = 0\n\t\tcounts[word] += 1\n\treturn counts",
+  "solution": "func count_words(words):\n\tvar counts = {}\n\tfor word in words:\n\t\tif not word in counts:\n\t\t\tcounts[word] = 0\n\t\tcounts[word] += 1\n\treturn counts",
   "generator": [
     {
       "array": {

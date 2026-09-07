@@ -3,9 +3,10 @@
   "title": "void means nothing back",
   "concept": "gq-types",
   "difficulty": 0,
-  "prompt": "Write `log_health`, hinted to return void, which prints the health. In `solve`, call it. Then return the health, unchanged.",
-  "signature": "func solve(health: int) -> int:",
-  "starter": "func solve(health: int) -> int:\n\treturn health",
+  "prompt": "Write `log_health`, hinted to return void, which prints the health. In `log_then_return`, call it. Then return the health, unchanged.",
+  "signature": "func log_then_return(health: int) -> int:",
+  "fn": "log_then_return",
+  "starter": "func log_then_return(health: int) -> int:\n\treturn health",
   "tests": [
     {
       "name": "Health is printed and returned unchanged",
@@ -42,7 +43,7 @@
       "what": "Shows value in the output."
     }
   ],
-  "solution": "func solve(health: int) -> int:\n\tlog_health(health)\n\treturn health\n\nfunc log_health(health: int) -> void:\n\tprint(health)",
+  "solution": "func log_then_return(health: int) -> int:\n\tlog_health(health)\n\treturn health\n\nfunc log_health(health: int) -> void:\n\tprint(health)",
   "allow_type_hints": true,
   "require_methods": [
     "log_health"

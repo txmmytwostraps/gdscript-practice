@@ -4,8 +4,9 @@
   "concept": "gq-strings",
   "difficulty": 0,
   "prompt": "Return the number of characters in the text. Spaces count.",
-  "signature": "func solve(text):",
-  "starter": "func solve(text):\n\treturn 0",
+  "signature": "func length_of(text):",
+  "fn": "length_of",
+  "starter": "func length_of(text):\n\treturn 0",
   "tests": [
     {
       "name": "hello is 5",
@@ -39,7 +40,7 @@
       "what": "Returns how many characters the string has."
     }
   ],
-  "solution": "func solve(text):\n\treturn text.length()",
+  "solution": "func length_of(text):\n\treturn text.length()",
   "generator": [
     {
       "pick": [

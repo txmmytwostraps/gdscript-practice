@@ -4,8 +4,9 @@
   "concept": "for",
   "difficulty": 1,
   "prompt": "Return 1 squared + 2 squared + ... + n squared. For 3 that is 1 + 4 + 9 = 14. For 0, return 0.",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\treturn 0",
+  "signature": "func sum_of_squares(n):",
+  "fn": "sum_of_squares",
+  "starter": "func sum_of_squares(n):\n\treturn 0",
   "tests": [
     {
       "name": "3 gives 14",
@@ -57,7 +58,7 @@
       "what": "The whole numbers from a up to but not including b. range(n) starts at 0."
     }
   ],
-  "solution": "func solve(n):\n\tvar total = 0\n\tfor i in range(1, n + 1):\n\t\ttotal += i * i\n\treturn total",
+  "solution": "func sum_of_squares(n):\n\tvar total = 0\n\tfor i in range(1, n + 1):\n\t\ttotal += i * i\n\treturn total",
   "generator": [
     {
       "int": [

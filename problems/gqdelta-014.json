@@ -4,8 +4,9 @@
   "concept": "gq-delta",
   "difficulty": 1,
   "prompt": "The robot's light blinks on a timer t that grows by delta each frame and wraps back to zero every period seconds. Return the new t after adding delta and wrapping. With t at 0.9, delta 0.2 and a period of 1.0, the answer is 0.1.",
-  "signature": "func solve(t, delta, period) -> float:",
-  "starter": "func solve(t, delta, period) -> float:\n\treturn t + delta",
+  "signature": "func blink_timer(t, delta, period) -> float:",
+  "fn": "blink_timer",
+  "starter": "func blink_timer(t, delta, period) -> float:\n\treturn t + delta",
   "tests": [
     {
       "name": "Wraps past the period",
@@ -46,7 +47,7 @@
       "what": "Returns the remainder of a divided by b, for decimals. fmod(1.1, 1.0) is 0.1."
     }
   ],
-  "solution": "func solve(t, delta, period) -> float:\n\treturn fmod(t + delta, period)",
+  "solution": "func blink_timer(t, delta, period) -> float:\n\treturn fmod(t + delta, period)",
   "generator": [
     {
       "float": [

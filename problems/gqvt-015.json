@@ -3,9 +3,10 @@
   "title": "Same value, different types",
   "concept": "gq-valuetypes",
   "difficulty": 1,
-  "prompt": "Return true if a and b are equal as numbers, even if one arrived as text. solve(\"5\", 5) is true.",
-  "signature": "func solve(a, b):",
-  "starter": "func solve(a, b):\n\treturn a == b",
+  "prompt": "Return true if a and b are equal as numbers, even if one arrived as text. same_value(\"5\", 5) is true.",
+  "signature": "func same_value(a, b):",
+  "fn": "same_value",
+  "starter": "func same_value(a, b):\n\treturn a == b",
   "tests": [
     {
       "name": "\"5\" equals 5",
@@ -42,7 +43,7 @@
       "what": "Returns the value as a whole number; decimals are dropped, text like \"42\" is read."
     }
   ],
-  "solution": "func solve(a, b):\n\treturn int(a) == int(b)",
+  "solution": "func same_value(a, b):\n\treturn int(a) == int(b)",
   "generator": [
     {
       "pick": [

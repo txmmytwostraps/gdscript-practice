@@ -72,7 +72,7 @@ const paramTypes = (sig) => ((/\((.*)\)/.exec(sig) || [])[1] || "").split(",").m
 const returnType = (sig) => (/->\s*(\w+)/.exec(sig) || [])[1] || "";
 const fmtTyped = (v, type) => godotValue(v) ?? ((type === "float" && typeof v === "number" && Number.isInteger(v)) ? v.toFixed(1) : JSON.stringify(v));
 const callStr = (p, args) => {
-  const name = (/func\s+(\w+)/.exec(p.signature) || [, "solve"])[1];
+  const name = p.fn || (/func\s+(\w+)/.exec(p.signature) || [, "run"])[1];
   const types = paramTypes(p.signature);
   return `${name}(${args.map((a, i) => fmtTyped(a, types[i])).join(", ")})`;
 };
@@ -80,7 +80,26 @@ const callStr = (p, args) => {
 // Print-only tests show the lines alone under an "output" heading; tests that
 // also return a value label the printed part so it is not read as the answer.
 const printedHtml = (lines, alone) => lines.length ? `${alone ? "" : `<span class="p">prints</span>\n`}${lines.map(esc).join("\n")}` : `<span class="p">${alone ? "(nothing printed)" : "prints nothing"}</span>`;
-// Game-loop tests run _process(delta) N times before calling solve.
+// Game-loop tests run _process(delta) N times before calling the function.
+const fnName = (p) => p.fn || (/func\s+(\w+)/.exec(p.signature) || [, "run"])[1];
+const hasInputs = (p) => p.tests.some((t) => t.args && t.args.length);
+// A call is shown whenever the function has a name of its own; only run() problems show output alone.
+const showsCall = (p) => hasInputs(p) || fnName(p) !== "run";
+// The outcome of a test, verb first: "returns 8", "prints" with the lines under it, "runs without error".
+const outcomeHtml = (p, t) => {
+  const rtype = returnType(p.signature);
+  if (t.expect === null && t.out) return `<span class="verb">prints</span>\n${t.out.length ? t.out.map(esc).join("\n") : "<span class=\"dim\">(nothing)</span>"}`;
+  if (t.expect === null || t.expect === undefined) return `<span class="verb">runs without error</span>`;
+  return `<span class="verb">returns</span> ${esc(fmtTyped(t.expect, rtype))}${t.out ? `\n<span class="verb">prints</span>\n${t.out.map(esc).join("\n")}` : ""}`;
+};
+// What the code actually did, in the same shape.
+const gotHtml = (p, t, r) => {
+  const rtype = returnType(p.signature);
+  if (r.error) return `<span class="err">${esc(r.error)}</span>`;
+  if (t.expect === null && t.out) return `<span class="verb">prints</span>\n${r.out.length ? r.out.map(esc).join("\n") : "<span class=\"dim\">(nothing)</span>"}`;
+  if (t.expect === null || t.expect === undefined) return `<span class="verb">${r.pass ? "ran without error" : "did not run cleanly"}</span>`;
+  return `<span class="verb">returns</span> ${esc(fmtTyped(r.got, rtype))}${t.out ? `\n<span class="verb">prints</span>\n${(r.out || []).map(esc).join("\n")}` : ""}`;
+};
 const framesLabel = (t) => (t.frames != null ? `<span class="muted">after ${t.frames} frame${t.frames === 1 ? "" : "s"} · </span>` : "");
 const expectHtml = (p, t) => (t.expect === null && t.out) ? printedHtml(t.out, true) : esc(fmtTyped(t.expect, returnType(p.signature))) + (t.out ? `\n${printedHtml(t.out)}` : "");
 
@@ -107,7 +126,7 @@ function highlight(code) {
 }
 
 const TYPE_WORDS = { int: "a whole number", float: "a number that can have decimals", String: "some text", bool: "true or false", Array: "an array", Dictionary: "a dictionary", Vector2: "a Vector2 (an x and a y)", Vector2i: "a Vector2i", Rect2: "a Rect2 (a rectangle)", Rect2i: "a Rect2i", Variant: "any kind of value", void: "nothing" };
-function describeSignature(sig, printOnly = false) {
+function describeSignature(sig, printOnly = false, name = "run") {
   const params = ((/\((.*)\)/.exec(sig) || [])[1] || "").split(",").map((s) => s.trim()).filter(Boolean).map((s) => {
     const [left, def] = s.split("=").map((x) => x.trim());
     const [name, type] = left.split(":").map((x) => x.trim());
@@ -121,7 +140,7 @@ function describeSignature(sig, printOnly = false) {
   const hasHints = /:\s*\w+\s*[,)=]/.test(sig) || ret;
   const typesTopic = state.problems.find((p) => p.concept === "gq-types");
   const hintNote = typesTopic ? ` The parts like <code>-> int</code> are type hints — optional in GDScript, covered in <a href="practice.html#${typesTopic.id}">lesson 27</a>.` : " The parts like <code>-> int</code> are type hints — optional in GDScript; you may not have met them yet.";
-  return `The first line means: <code>solve</code> ${receives}, and ${gives}.${hasHints ? hintNote : ""}<br><span class="dim">A function called <code>solve</code> is only how this site hands your code its inputs. Godot itself never looks for one.</span>`;
+  return `<code>${esc(name)}</code> ${receives}, and ${gives}.${hasHints ? hintNote : ""}`;
 }
 
 // ---------- editor ----------
@@ -178,7 +197,8 @@ function renderProblem(p) {
   el.eyebrow.textContent = `// ${t ? t.title.toLowerCase() : p.concept} · problem ${at + 1} of ${list.length} · ${DIFF[p.difficulty]}`;
   el.title.textContent = p.title;
   el.prompt.innerHTML = rich(p.prompt);
-  $("signature-help").innerHTML = describeSignature(p.signature, p.tests.every((tt) => tt.expect === null && tt.out));
+  $("signature-help").innerHTML = hasInputs(p) ? describeSignature(p.signature, p.tests.every((tt) => tt.expect === null && tt.out), fnName(p)) : "";
+  $("signature-help").hidden = !hasInputs(p);
   const reqs = [];
   if (p.require_methods) reqs.push("Must define: " + p.require_methods.map((m) => `<code>${esc(m)}()</code>`).join(", "));
   if (p.require_names) reqs.push("Must declare: " + p.require_names.map((m) => `<code>${esc(m)}</code>`).join(", ") + (p.once_only ? ` — and ${p.once_only.map((x) => `<code>${x}</code>`).join(", ")} may appear only once` : ""));
@@ -190,7 +210,12 @@ function renderProblem(p) {
     + (hints.length ? `<div class="caps dim" id="hintlevel" style="font-size:11px"></div>` : "");
   renderHintLocks(p);
   el.solution.innerHTML = highlight(p.solution); el.solution.hidden = true;
-  el.tests.innerHTML = p.tests.map((tt) => `<div class="row">${tt.name ? `<span class="name">${esc(tt.name)}</span>` : ""}<span>${framesLabel(tt)}${esc(callStr(p, tt.args))}</span><span class="arrow">→</span><span class="exp">${expectHtml(p, tt)}</span></div>`).join("");
+  const many = p.tests.length > 1, inputs = showsCall(p);
+  el.tests.classList.toggle("noinputs", !inputs);
+  el.tests.innerHTML = (inputs ? `<div class="row head"><span>The judge calls</span><span></span><span>Expected outcome</span></div>` : `<div class="row head"><span>Expected output</span></div>`)
+    + p.tests.map((tt) => inputs
+      ? `<div class="row"><span>${framesLabel(tt)}${esc(callStr(p, tt.args))}</span><span class="arrow">→</span><span class="exp">${outcomeHtml(p, tt)}</span>${many && tt.name ? `<span class="check">Checks that ${esc(tt.name.charAt(0).toLowerCase() + tt.name.slice(1))}</span>` : ""}</div>`
+      : `<div class="row"><span class="exp">${framesLabel(tt)}${outcomeHtml(p, tt)}</span>${many && tt.name ? `<span class="check">Checks that ${esc(tt.name.charAt(0).toLowerCase() + tt.name.slice(1))}</span>` : ""}</div>`).join("");
   const docs = Array.isArray(p.docs) ? p.docs : [];
   el.docs.hidden = docs.length === 0;
   el.doclist.innerHTML = docs.map((d) => `<div class="row"><code>${esc(d.name)}</code><span>${esc(d.what)}</span></div>`).join("");
@@ -258,7 +283,7 @@ async function showProblem(id, { keepResults = false } = {}) {
   attemptFails = 0; reviewRecorded = false;
   activeMode = urlMode === "parsons" || urlMode === "bug" ? urlMode : inReview ? reviewVariant(id) : "normal";
   if (activeMode === "normal") {
-    editor.set(inReview ? p.starter : draft ? draft.code : p.starter);
+    editor.set(inReview ? p.starter : draft ? migrateDraft(draft.code, p) : p.starter);
     el.saved.textContent = !inReview && draft ? "saved" : "";
   }
   await applyMode(p);
@@ -268,6 +293,14 @@ async function showProblem(id, { keepResults = false } = {}) {
   renderNote(p);
   el.nudgeReply.hidden = true; el.nudgeNote.textContent = "";
   location.hash = id;
+}
+
+// Drafts saved before the rename still declare solve(); they are brought to the
+// problem's function name on load so old work keeps running.
+function migrateDraft(code, p) {
+  const fn = fnName(p);
+  if (fn === "solve" || !/solve/.test(code)) return code;
+  return code.replace(/solve/g, fn);
 }
 
 // ---------- notes and Ask Claude ----------
@@ -291,7 +324,7 @@ function askPrompt(p) {
   const failing = el.resultTable.hidden ? [] : [...el.resultTable.querySelectorAll("tr.fail")].map((r) => [...r.children].slice(1).map((c) => c.innerText.trim().replace(/\n+/g, " ")).join(" | "));
   const errors = el.errors.hidden ? "" : el.errorLines.textContent.trim();
   const n = notes.get(p.id);
-  const tests = p.tests.map((t) => `- ${t.name ? t.name + ": " : ""}${callStr(p, t.args)} → ${t.expect === null && t.out ? "prints " + JSON.stringify(t.out) : fmtTyped(t.expect, returnType(p.signature))}`).join("\n");
+  const tests = p.tests.map((t) => `- ${t.name ? t.name + ": " : ""}${hasInputs(p) ? callStr(p, t.args) + " → " : ""}${t.expect === null && t.out ? "prints " + JSON.stringify(t.out) : t.expect === null || t.expect === undefined ? "runs without error" : "returns " + fmtTyped(t.expect, returnType(p.signature))}`).join("\n");
   return [
     "I am a beginner learning GDScript with the GDQuest course \"Learn GDScript From Zero\". Nudge me toward the fix. Do not give the answer and do not write the code. Ask me a question or point at the line to look at.",
     `\n## The problem: ${p.title}\n${p.prompt}\n\nThe checks:\n${tests}`,
@@ -469,11 +502,13 @@ function renderResult(result, errors) {
   if (allPass && drill) { el.message.innerHTML = `<button type="button" class="btn primary" id="drill-next">Next variant →</button>`; el.message.hidden = false; el.run.disabled = true; el.run.classList.add("dim"); }
   el.count.textContent = `${result.passed} / ${result.total} tests`;
   const printOnly = p.tests.some((t) => t.expect === null && t.out);
-  el.resultTable.innerHTML = `<tr><th></th><th>The judge called</th><th>${printOnly ? "Expected output" : "Correct answer"}</th><th>${printOnly ? "Your output" : "Your code returned"}</th></tr>` + result.results.map((r, i) => {
+  const inputs = showsCall(p), many = p.tests.length > 1;
+  el.resultTable.innerHTML = (inputs ? `<tr><th></th><th>The judge calls</th><th>Expected outcome</th><th>Your code</th></tr>` : `<tr><th></th><th>Expected output</th><th>Your code</th></tr>`) + result.results.map((r, i) => {
     const t = p.tests[i] || {};
-    const yours = (t.expect === null && t.out) ? printedHtml(r.out, true) : esc(fmtTyped(r.got, rtype)) + (t.out ? `\n${printedHtml(r.out)}` : "");
-    const cell = r.error ? `<span class="err">${esc(r.error)}</span>` : yours;
-    return `<tr class="${r.pass ? "pass" : "fail"}"><td class="mark">${r.pass ? "✓" : "✗"}</td><td>${t.name ? `<span class="check">${esc(t.name)}</span>` : ""}${framesLabel(t)}${esc(callStr(p, r.args))}</td><td>${expectHtml(p, t)}</td><td class="got">${cell}</td></tr>`;
+    const name = many && t.name ? `<span class="check">Checks that ${esc(t.name.charAt(0).toLowerCase() + t.name.slice(1))}</span>` : "";
+    return inputs
+      ? `<tr class="${r.pass ? "pass" : "fail"}"><td class="mark">${r.pass ? "✓" : "✗"}</td><td>${framesLabel(t)}${esc(callStr(p, r.args))}${name}</td><td>${outcomeHtml(p, t)}</td><td class="got">${gotHtml(p, t, r)}</td></tr>`
+      : `<tr class="${r.pass ? "pass" : "fail"}"><td class="mark">${r.pass ? "✓" : "✗"}</td><td>${framesLabel(t)}${outcomeHtml(p, t)}${name}</td><td class="got">${gotHtml(p, t, r)}</td></tr>`;
   }).join("");
   el.resultTable.hidden = false;
   const printed = result.results.flatMap((r, i) => r.out.map((line) => `[test ${i + 1}] ${line}`));

@@ -4,8 +4,9 @@
   "concept": "gq-readable",
   "difficulty": 0,
   "prompt": "Everyone knows a minute has 60 seconds, but a name still helps. Call it `SECONDS_PER_MINUTE` and use it.",
-  "signature": "func solve(minutes):",
-  "starter": "func solve(minutes):\n\treturn minutes * 60",
+  "signature": "func minutes_to_seconds(minutes):",
+  "fn": "minutes_to_seconds",
+  "starter": "func minutes_to_seconds(minutes):\n\treturn minutes * 60",
   "require_names": [
     "SECONDS_PER_MINUTE"
   ],
@@ -45,5 +46,5 @@
       "what": "Declares a named value that never changes. Written in CAPITALS by convention."
     }
   ],
-  "solution": "func solve(minutes):\n\tconst SECONDS_PER_MINUTE = 60\n\treturn minutes * SECONDS_PER_MINUTE"
+  "solution": "func minutes_to_seconds(minutes):\n\tconst SECONDS_PER_MINUTE = 60\n\treturn minutes * SECONDS_PER_MINUTE"
 }

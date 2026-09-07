@@ -4,8 +4,9 @@
   "concept": "functions",
   "difficulty": 0,
   "prompt": "Return n squared, n times itself.",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\treturn 0",
+  "signature": "func square(n):",
+  "fn": "square",
+  "starter": "func square(n):\n\treturn 0",
   "tests": [
     {
       "name": "3 squared is 9",
@@ -46,7 +47,7 @@
       "what": "Ends the function and hands value back to whoever called it."
     }
   ],
-  "solution": "func solve(n):\n\treturn n * n",
+  "solution": "func square(n):\n\treturn n * n",
   "generator": [
     {
       "int": [

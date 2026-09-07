@@ -3,9 +3,10 @@
   "title": "Use the parameter twice",
   "concept": "gq-parameters",
   "difficulty": 0,
-  "prompt": "A parameter can be used as many times as you like. Return n times n, plus n, so solve(3) is 12.",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\treturn n",
+  "prompt": "A parameter can be used as many times as you like. Return n times n, plus n, so square_plus(3) is 12.",
+  "signature": "func square_plus(n):",
+  "fn": "square_plus",
+  "starter": "func square_plus(n):\n\treturn n",
   "tests": [
     {
       "name": "3 gives 12",
@@ -41,7 +42,7 @@
     "`return n * n + n`"
   ],
   "docs": [],
-  "solution": "func solve(n):\n\treturn n * n + n",
+  "solution": "func square_plus(n):\n\treturn n * n + n",
   "generator": [
     {
       "int": [

@@ -4,8 +4,9 @@
   "concept": "gq-vectors",
   "difficulty": 1,
   "prompt": "Return the robot's position pushed back inside a box from (0, 0) to (width, height). Each part is clamped separately. (-3, 12) in a 10 by 10 box becomes (0, 10).",
-  "signature": "func solve(position, width, height) -> Vector2:",
-  "starter": "func solve(position, width, height) -> Vector2:\n\treturn position",
+  "signature": "func keep_inside_box(position, width, height) -> Vector2:",
+  "fn": "keep_inside_box",
+  "starter": "func keep_inside_box(position, width, height) -> Vector2:\n\treturn position",
   "tests": [
     {
       "name": "Inside stays put",
@@ -79,7 +80,7 @@
       "what": "Makes a vector holding an x and a y. Read them back with .x and .y."
     }
   ],
-  "solution": "func solve(position, width, height) -> Vector2:\n\treturn Vector2(clamp(position.x, 0, width), clamp(position.y, 0, height))",
+  "solution": "func keep_inside_box(position, width, height) -> Vector2:\n\treturn Vector2(clamp(position.x, 0, width), clamp(position.y, 0, height))",
   "generator": [
     {
       "v2": [

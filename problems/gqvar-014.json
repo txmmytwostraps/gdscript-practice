@@ -3,9 +3,10 @@
   "title": "Add to a decimal",
   "concept": "gq-variables",
   "difficulty": 0,
-  "prompt": "The robot has driven 1.5 metres. It drives 2.25 more, twice. Add the number `2.25` to `distance` twice using `+=`, and return distance, which is 6.0.",
-  "signature": "func solve() -> float:",
-  "starter": "func solve() -> float:\n\tvar distance = 1.5\n\treturn distance",
+  "prompt": "The robot has driven 1.5 meters. It drives 2.25 more, twice. Add the number `2.25` to `distance` twice using `+=`, and return distance, which is 6.0.",
+  "signature": "func distance_driven() -> float:",
+  "fn": "distance_driven",
+  "starter": "func distance_driven() -> float:\n\tvar distance = 1.5\n\treturn distance",
   "tests": [
     {
       "name": "1.5 plus 2.25 twice is 6.0",
@@ -18,5 +19,5 @@
     "Two lines of `distance += 2.25`."
   ],
   "docs": [],
-  "solution": "func solve() -> float:\n\tvar distance = 1.5\n\tdistance += 2.25\n\tdistance += 2.25\n\treturn distance"
+  "solution": "func distance_driven() -> float:\n\tvar distance = 1.5\n\tdistance += 2.25\n\tdistance += 2.25\n\treturn distance"
 }

@@ -4,8 +4,9 @@
   "concept": "gq-indices",
   "difficulty": 1,
   "prompt": "Return a new array with the items at positions 0, 2, 4 and so on.",
-  "signature": "func solve(items):",
-  "starter": "func solve(items):\n\treturn items",
+  "signature": "func every_second(items):",
+  "fn": "every_second",
+  "starter": "func every_second(items):\n\treturn items",
   "tests": [
     {
       "name": "Positions 0, 2, 4",
@@ -62,7 +63,7 @@
       "what": "The item at position i. Positions start at 0; -1 is the last item."
     }
   ],
-  "solution": "func solve(items):\n\tvar result = []\n\tfor i in range(0, items.size(), 2):\n\t\tresult.append(items[i])\n\treturn result",
+  "solution": "func every_second(items):\n\tvar result = []\n\tfor i in range(0, items.size(), 2):\n\t\tresult.append(items[i])\n\treturn result",
   "generator": [
     {
       "pick": [

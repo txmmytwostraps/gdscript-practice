@@ -3,9 +3,10 @@
   "title": "Even or odd",
   "concept": "gq-conditions",
   "difficulty": 0,
-  "prompt": "Return \"even\" if n is even and \"odd\" if it is odd. solve(4) is \"even\".",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\treturn \"\"",
+  "prompt": "Return \"even\" if n is even and \"odd\" if it is odd. even_or_odd(4) is \"even\".",
+  "signature": "func even_or_odd(n):",
+  "fn": "even_or_odd",
+  "starter": "func even_or_odd(n):\n\treturn \"\"",
   "tests": [
     {
       "name": "4 is even",
@@ -51,7 +52,7 @@
       "what": "The remainder after dividing a by b."
     }
   ],
-  "solution": "func solve(n):\n\tif n % 2 == 0:\n\t\treturn \"even\"\n\telse:\n\t\treturn \"odd\"",
+  "solution": "func even_or_odd(n):\n\tif n % 2 == 0:\n\t\treturn \"even\"\n\telse:\n\t\treturn \"odd\"",
   "generator": [
     {
       "int": [

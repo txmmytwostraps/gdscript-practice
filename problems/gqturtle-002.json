@@ -4,8 +4,9 @@
   "concept": "gq-turtle",
   "difficulty": 0,
   "prompt": "Draw a corner: move forward 50, turn left, move forward 50 again.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass",
   "tests": [
     {
       "name": "Forward, left, forward",
@@ -32,5 +33,5 @@
       "what": "Turns the turtle 90 degrees to the left. Give it a number to turn by a different angle."
     }
   ],
-  "solution": "func solve():\n\tmove_forward(50)\n\tturn_left()\n\tmove_forward(50)"
+  "solution": "func run():\n\tmove_forward(50)\n\tturn_left()\n\tmove_forward(50)"
 }

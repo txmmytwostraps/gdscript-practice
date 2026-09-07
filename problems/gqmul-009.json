@@ -3,9 +3,10 @@
   "title": "Grow by ten percent",
   "concept": "gq-multiply",
   "difficulty": 1,
-  "prompt": "Each level, max_health grows by 10%. Return max_health times 1.1. solve(100) is 110.0.",
-  "signature": "func solve(max_health) -> float:",
-  "starter": "func solve(max_health) -> float:\n\treturn max_health + 10",
+  "prompt": "Each level, max_health grows by 10%. Return max_health times 1.1. grow_max_health(100) is 110.0.",
+  "signature": "func grow_max_health(max_health) -> float:",
+  "fn": "grow_max_health",
+  "starter": "func grow_max_health(max_health) -> float:\n\treturn max_health + 10",
   "tests": [
     {
       "name": "100 grows to 110",
@@ -39,7 +40,7 @@
       "what": "Multiplies two numbers. * with a float keeps decimals."
     }
   ],
-  "solution": "func solve(max_health) -> float:\n\treturn max_health * 1.1",
+  "solution": "func grow_max_health(max_health) -> float:\n\treturn max_health * 1.1",
   "generator": [
     {
       "int": [

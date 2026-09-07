@@ -3,9 +3,10 @@
   "title": "Perimeter, your way",
   "concept": "gq-parameters",
   "difficulty": 1,
-  "prompt": "The robot measures a rectangular room. Write a helper called `print_perimeter` that prints the distance around a rectangle, and call it from `solve` with the width and height. You decide its parameters. solve(3, 4) prints 14.",
-  "signature": "func solve(width, height):",
-  "starter": "func solve(width, height):\n\tpass",
+  "prompt": "The robot measures a rectangular room. Write a helper called `print_perimeter` that prints the distance around a rectangle, and call it from `report_perimeter` with the width and height. You decide its parameters. report_perimeter(3, 4) prints 14.",
+  "signature": "func report_perimeter(width, height):",
+  "fn": "report_perimeter",
+  "starter": "func report_perimeter(width, height):\n\tpass",
   "require_methods": [
     "print_perimeter"
   ],
@@ -47,7 +48,7 @@
   "hints": [
     "The perimeter is twice the width plus twice the height, so the helper needs both.",
     "`func print_perimeter(w, h):` printing `2 * w + 2 * h`.",
-    "solve passes its two values straight through."
+    "report_perimeter passes its two values straight through."
   ],
   "docs": [
     {
@@ -55,5 +56,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve(width, height):\n\tprint_perimeter(width, height)\n\nfunc print_perimeter(w, h):\n\tprint(2 * w + 2 * h)"
+  "solution": "func report_perimeter(width, height):\n\tprint_perimeter(width, height)\n\nfunc print_perimeter(w, h):\n\tprint(2 * w + 2 * h)"
 }

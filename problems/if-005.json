@@ -4,8 +4,9 @@
   "concept": "ifelse",
   "difficulty": 1,
   "prompt": "If n is divisible by both 3 and 5 return \"FizzBuzz\". If only by 3 return \"Fizz\". If only by 5 return \"Buzz\". Otherwise return the number itself as text, like \"7\".",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\treturn str(n)",
+  "signature": "func fizzbuzz(n):",
+  "fn": "fizzbuzz",
+  "starter": "func fizzbuzz(n):\n\treturn str(n)",
   "tests": [
     {
       "name": "3 is Fizz",
@@ -72,7 +73,7 @@
       "what": "Returns the value as text."
     }
   ],
-  "solution": "func solve(n):\n\tif n % 15 == 0:\n\t\treturn \"FizzBuzz\"\n\telif n % 3 == 0:\n\t\treturn \"Fizz\"\n\telif n % 5 == 0:\n\t\treturn \"Buzz\"\n\telse:\n\t\treturn str(n)",
+  "solution": "func fizzbuzz(n):\n\tif n % 15 == 0:\n\t\treturn \"FizzBuzz\"\n\telif n % 3 == 0:\n\t\treturn \"Fizz\"\n\telif n % 5 == 0:\n\t\treturn \"Buzz\"\n\telse:\n\t\treturn str(n)",
   "generator": [
     {
       "int": [

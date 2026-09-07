@@ -3,9 +3,10 @@
   "title": "Health after all hits",
   "concept": "gq-looparrays",
   "difficulty": 1,
-  "prompt": "The robot starts at health and takes every hit in the array. Return the health left. solve(100, [10, 20]) is 70.",
-  "signature": "func solve(health, hits):",
-  "starter": "func solve(health, hits):\n\treturn health",
+  "prompt": "The robot starts at health and takes every hit in the array. Return the health left. health_after_hits(100, [10, 20]) is 70.",
+  "signature": "func health_after_hits(health, hits):",
+  "fn": "health_after_hits",
+  "starter": "func health_after_hits(health, hits):\n\treturn health",
   "tests": [
     {
       "name": "100 minus 10 and 20 is 70",
@@ -48,7 +49,7 @@
       "what": "Runs the indented lines once per item, with item holding each value in turn."
     }
   ],
-  "solution": "func solve(health, hits):\n\tfor hit in hits:\n\t\thealth -= hit\n\treturn health",
+  "solution": "func health_after_hits(health, hits):\n\tfor hit in hits:\n\t\thealth -= hit\n\treturn health",
   "generator": [
     {
       "int": [

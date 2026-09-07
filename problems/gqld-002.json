@@ -4,8 +4,9 @@
   "concept": "gq-loopdicts",
   "difficulty": 0,
   "prompt": "Print each entry as \"name: amount\", like \"bolt: 3\".",
-  "signature": "func solve(inventory):",
-  "starter": "func solve(inventory):\n\tpass",
+  "signature": "func print_amounts(inventory):",
+  "fn": "print_amounts",
+  "starter": "func print_amounts(inventory):\n\tpass",
   "tests": [
     {
       "name": "Two entries",
@@ -52,5 +53,5 @@
       "what": "Returns the value as text."
     }
   ],
-  "solution": "func solve(inventory):\n\tfor item in inventory:\n\t\tprint(item + \": \" + str(inventory[item]))"
+  "solution": "func print_amounts(inventory):\n\tfor item in inventory:\n\t\tprint(item + \": \" + str(inventory[item]))"
 }

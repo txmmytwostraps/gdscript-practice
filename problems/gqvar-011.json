@@ -3,9 +3,10 @@
   "title": "Health after damage",
   "concept": "gq-variables",
   "difficulty": 0,
-  "prompt": "Make a variable called `remaining` equal to health minus damage, and return it. solve(100, 30) is 70.",
-  "signature": "func solve(health, damage):",
-  "starter": "func solve(health, damage):\n\treturn health",
+  "prompt": "Make a variable called `remaining` equal to health minus damage, and return it. health_after_damage(100, 30) is 70.",
+  "signature": "func health_after_damage(health, damage):",
+  "fn": "health_after_damage",
+  "starter": "func health_after_damage(health, damage):\n\treturn health",
   "require_names": [
     "remaining"
   ],
@@ -40,5 +41,5 @@
     "`var remaining = health - damage`, then return it."
   ],
   "docs": [],
-  "solution": "func solve(health, damage):\n\tvar remaining = health - damage\n\treturn remaining"
+  "solution": "func health_after_damage(health, damage):\n\tvar remaining = health - damage\n\treturn remaining"
 }

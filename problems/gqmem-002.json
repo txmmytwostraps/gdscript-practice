@@ -4,8 +4,9 @@
   "concept": "gq-members",
   "difficulty": 0,
   "prompt": "Declare two variables at the top of the script (member variables): `health` equal to 100 and `level` equal to 1. Return health plus level.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\treturn 0",
+  "signature": "func health_plus_level():",
+  "fn": "health_plus_level",
+  "starter": "func health_plus_level():\n\treturn 0",
   "tests": [
     {
       "name": "100 plus 1 is 101",
@@ -24,7 +25,7 @@
       "what": "A member variable: every function in the script can read and change it."
     }
   ],
-  "solution": "var health = 100\nvar level = 1\n\nfunc solve():\n\treturn health + level",
+  "solution": "var health = 100\nvar level = 1\n\nfunc health_plus_level():\n\treturn health + level",
   "require_names": [
     "health",
     "level"

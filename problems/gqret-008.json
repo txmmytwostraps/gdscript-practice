@@ -3,9 +3,10 @@
   "title": "Return the bigger with max()",
   "concept": "gq-return",
   "difficulty": 0,
-  "prompt": "Write `bigger`, which returns the larger of its two parameters using the built-in max(). `solve` returns bigger(a, b).",
-  "signature": "func solve(a, b):",
-  "starter": "func solve(a, b):\n\treturn a",
+  "prompt": "Write `bigger`, which returns the larger of its two parameters using the built-in max(). `larger_of` returns bigger(a, b).",
+  "signature": "func larger_of(a, b):",
+  "fn": "larger_of",
+  "starter": "func larger_of(a, b):\n\treturn a",
   "tests": [
     {
       "name": "7 beats 3",
@@ -46,7 +47,7 @@
       "what": "Returns the larger of the two numbers."
     }
   ],
-  "solution": "func solve(a, b):\n\treturn bigger(a, b)\n\nfunc bigger(x, y):\n\treturn max(x, y)",
+  "solution": "func larger_of(a, b):\n\treturn bigger(a, b)\n\nfunc bigger(x, y):\n\treturn max(x, y)",
   "require_methods": [
     "bigger"
   ],

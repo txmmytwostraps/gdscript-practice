@@ -3,12 +3,13 @@
   "title": "Return a fixed number",
   "concept": "gq-return",
   "difficulty": 0,
-  "prompt": "Write a function `lucky_number` that returns 7. Then make `solve` return whatever lucky_number gives back.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\treturn 0",
+  "prompt": "Write a function `lucky_number` that returns 7. Then make `use_lucky_number` return whatever lucky_number gives back.",
+  "signature": "func use_lucky_number():",
+  "fn": "use_lucky_number",
+  "starter": "func use_lucky_number():\n\treturn 0",
   "tests": [
     {
-      "name": "solve gets 7 from the helper",
+      "name": "run gets 7 from the helper",
       "args": [],
       "expect": 7
     }
@@ -16,7 +17,7 @@
   "hints": [
     "A call to a function that returns something can be used anywhere a value can.",
     "`func lucky_number():` with `return 7`.",
-    "solve: `return lucky_number()`."
+    "use_lucky_number: `return lucky_number()`."
   ],
   "docs": [
     {
@@ -24,7 +25,7 @@
       "what": "Ends the function and hands value back to whoever called it."
     }
   ],
-  "solution": "func solve():\n\treturn lucky_number()\n\nfunc lucky_number():\n\treturn 7",
+  "solution": "func use_lucky_number():\n\treturn lucky_number()\n\nfunc lucky_number():\n\treturn 7",
   "require_methods": [
     "lucky_number"
   ]

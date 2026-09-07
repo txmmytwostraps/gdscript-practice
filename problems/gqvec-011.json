@@ -4,8 +4,9 @@
   "concept": "gq-vectors",
   "difficulty": 1,
   "prompt": "Return the vector flipped horizontally: x changes sign, y stays the same. (3, 4) becomes (-3, 4).",
-  "signature": "func solve(v) -> Vector2:",
-  "starter": "func solve(v) -> Vector2:\n\treturn v",
+  "signature": "func mirror_x(v) -> Vector2:",
+  "fn": "mirror_x",
+  "starter": "func mirror_x(v) -> Vector2:\n\treturn v",
   "tests": [
     {
       "name": "(3, 4) becomes (-3, 4)",
@@ -69,7 +70,7 @@
       "what": "Makes a vector holding an x and a y. Read them back with .x and .y."
     }
   ],
-  "solution": "func solve(v) -> Vector2:\n\treturn Vector2(-v.x, v.y)",
+  "solution": "func mirror_x(v) -> Vector2:\n\treturn Vector2(-v.x, v.y)",
   "generator": [
     {
       "v2": [

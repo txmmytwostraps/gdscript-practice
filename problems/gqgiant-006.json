@@ -4,8 +4,9 @@
   "concept": "gq-giants",
   "difficulty": 0,
   "prompt": "`move` takes two arguments: how far across, then how far down. Move the robot 100 to the right and 0 down.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass",
   "tests": [
     {
       "name": "move is called with 100 and 0",
@@ -26,5 +27,5 @@
       "what": "Moves the robot by x across and y down. Takes two numbers; returns nothing."
     }
   ],
-  "solution": "func solve():\n\tmove(100, 0)"
+  "solution": "func run():\n\tmove(100, 0)"
 }

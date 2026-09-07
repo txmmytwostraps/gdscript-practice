@@ -4,8 +4,9 @@
   "concept": "gq-looparrays",
   "difficulty": 0,
   "prompt": "Return how many items the array has, by counting in a loop rather than using size().",
-  "signature": "func solve(items):",
-  "starter": "func solve(items):\n\treturn 0",
+  "signature": "func count_items(items):",
+  "fn": "count_items",
+  "starter": "func count_items(items):\n\treturn 0",
   "tests": [
     {
       "name": "Three items",
@@ -45,7 +46,7 @@
       "what": "Runs the indented lines once per item, with item holding each value in turn."
     }
   ],
-  "solution": "func solve(items):\n\tvar count = 0\n\tfor item in items:\n\t\tcount += 1\n\treturn count",
+  "solution": "func count_items(items):\n\tvar count = 0\n\tfor item in items:\n\t\tcount += 1\n\treturn count",
   "generator": [
     {
       "pick": [

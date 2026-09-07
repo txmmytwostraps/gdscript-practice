@@ -4,8 +4,9 @@
   "concept": "gq-turtle",
   "difficulty": 0,
   "prompt": "Draw a square with sides of 40: forward 40 then turn left, four times over.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass",
   "tests": [
     {
       "name": "Four sides, four left turns",
@@ -38,5 +39,5 @@
       "what": "Turns the turtle 90 degrees to the left. Give it a number to turn by a different angle."
     }
   ],
-  "solution": "func solve():\n\tmove_forward(40)\n\tturn_left()\n\tmove_forward(40)\n\tturn_left()\n\tmove_forward(40)\n\tturn_left()\n\tmove_forward(40)\n\tturn_left()"
+  "solution": "func run():\n\tmove_forward(40)\n\tturn_left()\n\tmove_forward(40)\n\tturn_left()\n\tmove_forward(40)\n\tturn_left()\n\tmove_forward(40)\n\tturn_left()"
 }

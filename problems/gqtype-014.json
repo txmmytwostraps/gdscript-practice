@@ -3,9 +3,10 @@
   "title": "Members with types",
   "concept": "gq-types",
   "difficulty": 1,
-  "prompt": "Declare members `level: int = 1` and `max_health: float = 100.0`. Write `level_up`, hinted void, which adds 1 to level and multiplies max_health by 1.5. In `solve`, call it twice. Then return max_health.",
-  "signature": "func solve() -> float:",
-  "starter": "func solve() -> float:\n\treturn 0.0",
+  "prompt": "Declare members `level: int = 1` and `max_health: float = 100.0`. Write `level_up`, hinted void, which adds 1 to level and multiplies max_health by 1.5. In `typed_level_up`, call it twice. Then return max_health.",
+  "signature": "func typed_level_up() -> float:",
+  "fn": "typed_level_up",
+  "starter": "func typed_level_up() -> float:\n\treturn 0.0",
   "tests": [
     {
       "name": "Two level-ups give 225",
@@ -27,7 +28,7 @@
       "what": "Return type hint: the function promises to return that type."
     }
   ],
-  "solution": "var level: int = 1\nvar max_health: float = 100.0\n\nfunc solve() -> float:\n\tlevel_up()\n\tlevel_up()\n\treturn max_health\n\nfunc level_up() -> void:\n\tlevel += 1\n\tmax_health *= 1.5",
+  "solution": "var level: int = 1\nvar max_health: float = 100.0\n\nfunc typed_level_up() -> float:\n\tlevel_up()\n\tlevel_up()\n\treturn max_health\n\nfunc level_up() -> void:\n\tlevel += 1\n\tmax_health *= 1.5",
   "allow_type_hints": true,
   "require_names": [
     "level",

@@ -3,9 +3,10 @@
   "title": "Parameters are copies",
   "concept": "gq-parameters",
   "difficulty": 1,
-  "prompt": "Write `add_ten`, which takes a number, adds 10 to its parameter with +=, and prints it. In `solve`, call add_ten(n) and then print n yourself, so solve(5) prints 15 and then 5. The original does not change.",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\tpass",
+  "prompt": "Write `add_ten`, which takes a number, adds 10 to its parameter with +=, and prints it. In `copy_check`, call add_ten(n) and then print n yourself, so copy_check(5) prints 15 and then 5. The original does not change.",
+  "signature": "func copy_check(n):",
+  "fn": "copy_check",
+  "starter": "func copy_check(n):\n\tpass",
   "require_methods": [
     "add_ten"
   ],
@@ -36,7 +37,7 @@
   "hints": [
     "A number passed to a function is copied; changing the copy inside leaves the caller's variable alone.",
     "Inside add_ten: `value += 10` then `print(value)`.",
-    "solve: `add_ten(n)` then `print(n)`."
+    "copy_check: `add_ten(n)` then `print(n)`."
   ],
   "docs": [
     {
@@ -44,5 +45,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve(n):\n\tadd_ten(n)\n\tprint(n)\n\nfunc add_ten(value):\n\tvalue += 10\n\tprint(value)"
+  "solution": "func copy_check(n):\n\tadd_ten(n)\n\tprint(n)\n\nfunc add_ten(value):\n\tvalue += 10\n\tprint(value)"
 }

@@ -4,8 +4,9 @@
   "concept": "strings",
   "difficulty": 1,
   "prompt": "Return how many vowels (a, e, i, o, u) are in the text. The text is always lowercase.",
-  "signature": "func solve(s):",
-  "starter": "func solve(s):\n\treturn 0",
+  "signature": "func count_vowels(s):",
+  "fn": "count_vowels",
+  "starter": "func count_vowels(s):\n\treturn 0",
   "tests": [
     {
       "name": "hello has 2",
@@ -57,7 +58,7 @@
       "what": "true if part appears somewhere in text."
     }
   ],
-  "solution": "func solve(s):\n\tvar count = 0\n\tfor c in s:\n\t\tif c in \"aeiou\":\n\t\t\tcount += 1\n\treturn count",
+  "solution": "func count_vowels(s):\n\tvar count = 0\n\tfor c in s:\n\t\tif c in \"aeiou\":\n\t\t\tcount += 1\n\treturn count",
   "generator": [
     {
       "pick": [

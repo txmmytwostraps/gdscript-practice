@@ -4,8 +4,9 @@
   "concept": "gq-loopdicts",
   "difficulty": 0,
   "prompt": "Return the total amount of everything in the inventory. {\"bolt\": 3, \"gear\": 1} totals 4.",
-  "signature": "func solve(inventory):",
-  "starter": "func solve(inventory):\n\treturn 0",
+  "signature": "func total_items(inventory):",
+  "fn": "total_items",
+  "starter": "func total_items(inventory):\n\treturn 0",
   "tests": [
     {
       "name": "3 plus 1 is 4",
@@ -48,7 +49,7 @@
       "what": "The value stored under key. Assigning to it changes or adds the entry."
     }
   ],
-  "solution": "func solve(inventory):\n\tvar total = 0\n\tfor item in inventory:\n\t\ttotal += inventory[item]\n\treturn total",
+  "solution": "func total_items(inventory):\n\tvar total = 0\n\tfor item in inventory:\n\t\ttotal += inventory[item]\n\treturn total",
   "generator": [
     {
       "pick": [

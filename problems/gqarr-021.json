@@ -4,8 +4,9 @@
   "concept": "gq-arrays",
   "difficulty": 0,
   "prompt": "Put value at the start of the array, before everything else, and return the array.",
-  "signature": "func solve(items, value):",
-  "starter": "func solve(items, value):\n\titems.append(value)\n\treturn items",
+  "signature": "func insert_at_front(items, value):",
+  "fn": "insert_at_front",
+  "starter": "func insert_at_front(items, value):\n\titems.append(value)\n\treturn items",
   "tests": [
     {
       "name": "1 in front of [2, 3]",
@@ -43,7 +44,7 @@
       "what": "Adds value at the start. Returns nothing."
     }
   ],
-  "solution": "func solve(items, value):\n\titems.push_front(value)\n\treturn items",
+  "solution": "func insert_at_front(items, value):\n\titems.push_front(value)\n\treturn items",
   "generator": [
     {
       "array": {

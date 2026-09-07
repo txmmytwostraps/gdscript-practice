@@ -4,8 +4,9 @@
   "concept": "gq-appendpop",
   "difficulty": 1,
   "prompt": "Take the top crate off pile a with pop_back and put it on top of pile b with append. Return pile b.",
-  "signature": "func solve(a, b):",
-  "starter": "func solve(a, b):\n\treturn b",
+  "signature": "func move_top_crate(a, b):",
+  "fn": "move_top_crate",
+  "starter": "func move_top_crate(a, b):\n\treturn b",
   "tests": [
     {
       "name": "3 moves from a to b",
@@ -51,7 +52,7 @@
       "what": "Adds value to the end of the array. Returns nothing."
     }
   ],
-  "solution": "func solve(a, b):\n\tb.append(a.pop_back())\n\treturn b",
+  "solution": "func move_top_crate(a, b):\n\tb.append(a.pop_back())\n\treturn b",
   "generator": [
     {
       "array": {

@@ -3,9 +3,10 @@
   "title": "Halve it, keep the decimals",
   "concept": "variables",
   "difficulty": 1,
-  "prompt": "Return n divided by 2. The answer must keep its decimal part: solve(5) is 2.5, not 2.",
-  "signature": "func solve(n) -> float:",
-  "starter": "func solve(n) -> float:\n\treturn n / 2",
+  "prompt": "Return n divided by 2. The answer must keep its decimal part: halve_it(5) is 2.5, not 2.",
+  "signature": "func halve_it(n) -> float:",
+  "fn": "halve_it",
+  "starter": "func halve_it(n) -> float:\n\treturn n / 2",
   "tests": [
     {
       "name": "5 halves to 2.5",
@@ -48,7 +49,7 @@
     "Divide by 2.0 instead, and the result becomes a float."
   ],
   "docs": [],
-  "solution": "func solve(n) -> float:\n\treturn n / 2.0",
+  "solution": "func halve_it(n) -> float:\n\treturn n / 2.0",
   "generator": [
     {
       "int": [

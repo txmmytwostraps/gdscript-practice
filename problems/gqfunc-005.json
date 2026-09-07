@@ -3,9 +3,10 @@
   "title": "A helper that calls a helper",
   "concept": "gq-functions",
   "difficulty": 1,
-  "prompt": "Write `beep`, which prints \"beep\". Then write `double_beep`, which calls beep twice. `solve` should call double_beep once, and the output is two beeps.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass",
+  "prompt": "Write `beep`, which prints \"beep\". Then write `double_beep`, which calls beep twice. `run` should call double_beep once, and the output is two beeps.",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass",
   "require_methods": [
     "beep",
     "double_beep"
@@ -22,9 +23,9 @@
     }
   ],
   "hints": [
-    "Any function can call any other function, not just solve.",
+    "Any function can call any other function, not just run.",
     "double_beep is `func double_beep():` with `beep()` written twice inside it.",
-    "solve then only needs one line: `double_beep()`."
+    "run then only needs one line: `double_beep()`."
   ],
   "docs": [
     {
@@ -32,5 +33,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve():\n\tdouble_beep()\n\nfunc beep():\n\tprint(\"beep\")\n\nfunc double_beep():\n\tbeep()\n\tbeep()"
+  "solution": "func run():\n\tdouble_beep()\n\nfunc beep():\n\tprint(\"beep\")\n\nfunc double_beep():\n\tbeep()\n\tbeep()"
 }

@@ -3,7 +3,7 @@
 // choices for strings and other values. Ranges are read from the problem's
 // own tests and widened a little. Run: node tools/gen-variants.js
 //
-// Generator spec, one entry per argument of solve:
+// Generator spec, one entry per argument of the tested function:
 //   {"int": [lo, hi]}                  {"float": [lo, hi, decimals]}
 //   {"bool": true}                     {"pick": [value, value, ...]}
 //   {"array": {"len": [lo, hi], "of": <spec>}}

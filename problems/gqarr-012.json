@@ -4,8 +4,9 @@
   "concept": "gq-arrays",
   "difficulty": 0,
   "prompt": "Return the total of all the numbers in the array. An empty array totals 0.",
-  "signature": "func solve(nums):",
-  "starter": "func solve(nums):\n\tvar total = 0\n\treturn total",
+  "signature": "func sum_with_loop(nums):",
+  "fn": "sum_with_loop",
+  "starter": "func sum_with_loop(nums):\n\tvar total = 0\n\treturn total",
   "tests": [
     {
       "name": "1, 2, 3 total 6",
@@ -47,7 +48,7 @@
       "what": "Runs the indented lines once per item, with item holding each value in turn."
     }
   ],
-  "solution": "func solve(nums):\n\tvar total = 0\n\tfor n in nums:\n\t\ttotal += n\n\treturn total",
+  "solution": "func sum_with_loop(nums):\n\tvar total = 0\n\tfor n in nums:\n\t\ttotal += n\n\treturn total",
   "generator": [
     {
       "array": {

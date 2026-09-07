@@ -4,8 +4,9 @@
   "concept": "gq-strings",
   "difficulty": 1,
   "prompt": "The text holds a whole number, like \"41\". Return that number plus one, as a number.",
-  "signature": "func solve(text):",
-  "starter": "func solve(text):\n\treturn 0",
+  "signature": "func text_plus_one(text):",
+  "fn": "text_plus_one",
+  "starter": "func text_plus_one(text):\n\treturn 0",
   "tests": [
     {
       "name": "41 becomes 42",
@@ -39,7 +40,7 @@
       "what": "Returns the whole number written in the text."
     }
   ],
-  "solution": "func solve(text):\n\treturn text.to_int() + 1",
+  "solution": "func text_plus_one(text):\n\treturn text.to_int() + 1",
   "generator": [
     {
       "pick": [

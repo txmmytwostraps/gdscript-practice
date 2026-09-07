@@ -4,8 +4,9 @@
   "concept": "gq-looparrays",
   "difficulty": 1,
   "prompt": "Print each item with its position in front, starting from 1: \"1 bolt\", \"2 gear\". Keep a counter that goes up each turn of the loop.",
-  "signature": "func solve(items):",
-  "starter": "func solve(items):\n\tpass",
+  "signature": "func print_numbered(items):",
+  "fn": "print_numbered",
+  "starter": "func print_numbered(items):\n\tpass",
   "tests": [
     {
       "name": "Two items numbered",
@@ -49,5 +50,5 @@
       "what": "Returns the value as text."
     }
   ],
-  "solution": "func solve(items):\n\tvar n = 1\n\tfor item in items:\n\t\tprint(str(n) + \" \" + item)\n\t\tn += 1"
+  "solution": "func print_numbered(items):\n\tvar n = 1\n\tfor item in items:\n\t\tprint(str(n) + \" \" + item)\n\t\tn += 1"
 }

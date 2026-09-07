@@ -4,8 +4,9 @@
   "concept": "arrays",
   "difficulty": 0,
   "prompt": "Start with an empty array. Append a, then b, then c to it. Return the array.",
-  "signature": "func solve(a, b, c):",
-  "starter": "func solve(a, b, c):\n\tvar items = []\n\treturn items",
+  "signature": "func build_list(a, b, c):",
+  "fn": "build_list",
+  "starter": "func build_list(a, b, c):\n\tvar items = []\n\treturn items",
   "tests": [
     {
       "name": "1, 2, 3",
@@ -57,7 +58,7 @@
       "what": "Adds value to the end of the array. Returns nothing."
     }
   ],
-  "solution": "func solve(a, b, c):\n\tvar items = []\n\titems.append(a)\n\titems.append(b)\n\titems.append(c)\n\treturn items",
+  "solution": "func build_list(a, b, c):\n\tvar items = []\n\titems.append(a)\n\titems.append(b)\n\titems.append(c)\n\treturn items",
   "generator": [
     {
       "pick": [

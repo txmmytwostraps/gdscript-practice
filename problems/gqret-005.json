@@ -3,9 +3,10 @@
   "title": "Print, then return",
   "concept": "gq-return",
   "difficulty": 0,
-  "prompt": "Write `add`, which prints \"adding\" and then returns its two parameters added together. `solve` returns add(a, b). Both the printed line and the returned value are checked.",
-  "signature": "func solve(a, b):",
-  "starter": "func solve(a, b):\n\treturn a + b",
+  "prompt": "Write `add`, which prints \"adding\" and then returns its two parameters added together. `sum_with_message` returns add(a, b). Both the printed line and the returned value are checked.",
+  "signature": "func sum_with_message(a, b):",
+  "fn": "sum_with_message",
+  "starter": "func sum_with_message(a, b):\n\treturn a + b",
   "tests": [
     {
       "name": "adding is printed and the sum comes back",
@@ -44,7 +45,7 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve(a, b):\n\treturn add(a, b)\n\nfunc add(x, y):\n\tprint(\"adding\")\n\treturn x + y",
+  "solution": "func sum_with_message(a, b):\n\treturn add(a, b)\n\nfunc add(x, y):\n\tprint(\"adding\")\n\treturn x + y",
   "require_methods": [
     "add"
   ],

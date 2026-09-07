@@ -3,9 +3,10 @@
   "title": "A return type",
   "concept": "gq-types",
   "difficulty": 0,
-  "prompt": "Write `greeting`, which takes no parameters and returns the String \"hello\", declaring that return type with an arrow. solve returns greeting().",
-  "signature": "func solve() -> String:",
-  "starter": "func solve() -> String:\n\treturn \"\"",
+  "prompt": "Write `greeting`, which takes no parameters and returns the String \"hello\", declaring that return type with an arrow. use_greeting returns greeting().",
+  "signature": "func use_greeting() -> String:",
+  "fn": "use_greeting",
+  "starter": "func use_greeting() -> String:\n\treturn \"\"",
   "tests": [
     {
       "name": "Returns hello",
@@ -23,7 +24,7 @@
       "what": "Return type hint: the function promises to return that type."
     }
   ],
-  "solution": "func solve() -> String:\n\treturn greeting()\n\nfunc greeting() -> String:\n\treturn \"hello\"",
+  "solution": "func use_greeting() -> String:\n\treturn greeting()\n\nfunc greeting() -> String:\n\treturn \"hello\"",
   "allow_type_hints": true,
   "require_methods": [
     "greeting"

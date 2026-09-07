@@ -3,9 +3,10 @@
   "title": "Alarm",
   "concept": "gq-functions",
   "difficulty": 1,
-  "prompt": "Write `blink`, which prints \"blink\". Then write `alarm`, which calls blink three times and then prints \"alarm\". `solve` calls alarm once; the output is blink, blink, blink, alarm.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass",
+  "prompt": "Write `blink`, which prints \"blink\". Then write `alarm`, which calls blink three times and then prints \"alarm\". `run` calls alarm once; the output is blink, blink, blink, alarm.",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass",
   "require_methods": [
     "blink",
     "alarm"
@@ -26,7 +27,7 @@
   "hints": [
     "A helper can both call other helpers and print on its own.",
     "alarm has four lines: three `blink()` calls and one print.",
-    "solve is just `alarm()`."
+    "run is just `alarm()`."
   ],
   "docs": [
     {
@@ -34,5 +35,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve():\n\talarm()\n\nfunc blink():\n\tprint(\"blink\")\n\nfunc alarm():\n\tblink()\n\tblink()\n\tblink()\n\tprint(\"alarm\")"
+  "solution": "func run():\n\talarm()\n\nfunc blink():\n\tprint(\"blink\")\n\nfunc alarm():\n\tblink()\n\tblink()\n\tblink()\n\tprint(\"alarm\")"
 }

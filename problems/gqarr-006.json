@@ -4,8 +4,9 @@
   "concept": "gq-arrays",
   "difficulty": 0,
   "prompt": "Replace the second item of the array with value, then return the array. [1, 2, 3] with 9 becomes [1, 9, 3].",
-  "signature": "func solve(items, value):",
-  "starter": "func solve(items, value):\n\treturn items",
+  "signature": "func change_second(items, value):",
+  "fn": "change_second",
+  "starter": "func change_second(items, value):\n\treturn items",
   "tests": [
     {
       "name": "[1, 2, 3] with 9 becomes [1, 9, 3]",
@@ -48,7 +49,7 @@
       "what": "The item at position i. Positions start at 0; -1 is the last item."
     }
   ],
-  "solution": "func solve(items, value):\n\titems[1] = value\n\treturn items",
+  "solution": "func change_second(items, value):\n\titems[1] = value\n\treturn items",
   "generator": [
     {
       "array": {

@@ -4,8 +4,9 @@
   "concept": "gq-looparrays",
   "difficulty": 0,
   "prompt": "The robot reads out its inventory. Print each item in the array on its own line, in order.",
-  "signature": "func solve(items):",
-  "starter": "func solve(items):\n\tpass",
+  "signature": "func print_each(items):",
+  "fn": "print_each",
+  "starter": "func print_each(items):\n\tpass",
   "tests": [
     {
       "name": "All three items are printed",
@@ -46,5 +47,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve(items):\n\tfor item in items:\n\t\tprint(item)"
+  "solution": "func print_each(items):\n\tfor item in items:\n\t\tprint(item)"
 }

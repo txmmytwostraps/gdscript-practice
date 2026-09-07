@@ -4,8 +4,9 @@
   "concept": "gq-delta",
   "difficulty": 0,
   "prompt": "Every frame lasts delta seconds. Return how many seconds a number of frames lasts. 50 frames of 0.02 s is 1.0 second.",
-  "signature": "func solve(frames, delta) -> float:",
-  "starter": "func solve(frames, delta) -> float:\n\treturn 0.0",
+  "signature": "func frames_to_seconds(frames, delta) -> float:",
+  "fn": "frames_to_seconds",
+  "starter": "func frames_to_seconds(frames, delta) -> float:\n\treturn 0.0",
   "tests": [
     {
       "name": "50 frames of 0.02 s is 1 s",
@@ -37,7 +38,7 @@
     "`return frames * delta`"
   ],
   "docs": [],
-  "solution": "func solve(frames, delta) -> float:\n\treturn frames * delta",
+  "solution": "func frames_to_seconds(frames, delta) -> float:\n\treturn frames * delta",
   "generator": [
     {
       "int": [

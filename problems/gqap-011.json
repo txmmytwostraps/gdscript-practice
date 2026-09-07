@@ -4,8 +4,9 @@
   "concept": "gq-appendpop",
   "difficulty": 0,
   "prompt": "Closing time: remove every order and return the empty queue.",
-  "signature": "func solve(queue):",
-  "starter": "func solve(queue):\n\treturn queue",
+  "signature": "func clear_kitchen(queue):",
+  "fn": "clear_kitchen",
+  "starter": "func clear_kitchen(queue):\n\treturn queue",
   "tests": [
     {
       "name": "Everything gone",
@@ -35,7 +36,7 @@
       "what": "Removes every item. Returns nothing."
     }
   ],
-  "solution": "func solve(queue):\n\tqueue.clear()\n\treturn queue",
+  "solution": "func clear_kitchen(queue):\n\tqueue.clear()\n\treturn queue",
   "generator": [
     {
       "array": {

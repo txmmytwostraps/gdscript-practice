@@ -3,9 +3,10 @@
   "title": "Swap two variables",
   "concept": "gq-variables",
   "difficulty": 1,
-  "prompt": "Swap the values of a and b using a third variable called `temp`. After the swap, return a, which should hold what b had: solve(1, 2) is 2.",
-  "signature": "func solve(a, b):",
-  "starter": "func solve(a, b):\n\treturn a",
+  "prompt": "Swap the values of a and b using a third variable called `temp`. After the swap, return a, which should hold what b had: swap_and_return(1, 2) is 2.",
+  "signature": "func swap_and_return(a, b):",
+  "fn": "swap_and_return",
+  "starter": "func swap_and_return(a, b):\n\treturn a",
   "require_names": [
     "temp"
   ],
@@ -41,5 +42,5 @@
     "Then `return a`."
   ],
   "docs": [],
-  "solution": "func solve(a, b):\n\tvar temp = a\n\ta = b\n\tb = temp\n\treturn a"
+  "solution": "func swap_and_return(a, b):\n\tvar temp = a\n\ta = b\n\tb = temp\n\treturn a"
 }

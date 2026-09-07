@@ -3,9 +3,10 @@
   "title": "Score bonus",
   "concept": "variables",
   "difficulty": 0,
-  "prompt": "The robot's `score` starts out equal to n. It earns a bonus: add the number `10` to score, then return score. solve(5) is 15.",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\tvar score = n\n\treturn score",
+  "prompt": "The robot's `score` starts out equal to n. It earns a bonus: add the number `10` to score, then return score. score_bonus(5) is 15.",
+  "signature": "func score_bonus(n):",
+  "fn": "score_bonus",
+  "starter": "func score_bonus(n):\n\tvar score = n\n\treturn score",
   "tests": [
     {
       "name": "0 plus 10 is 10",
@@ -41,7 +42,7 @@
     "Add that line between the var and the return."
   ],
   "docs": [],
-  "solution": "func solve(n):\n\tvar score = n\n\tscore += 10\n\treturn score",
+  "solution": "func score_bonus(n):\n\tvar score = n\n\tscore += 10\n\treturn score",
   "generator": [
     {
       "int": [

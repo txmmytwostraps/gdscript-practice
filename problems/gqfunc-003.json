@@ -3,9 +3,10 @@
   "title": "Beep twice",
   "concept": "gq-functions",
   "difficulty": 0,
-  "prompt": "The robot beeps to get attention. Write `beep`, which prints \"beep\", and call it twice from `solve` so \"beep\" appears two times.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass",
+  "prompt": "The robot beeps to get attention. Write `beep`, which prints \"beep\", and call it twice from `run` so \"beep\" appears two times.",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass",
   "require_methods": [
     "beep"
   ],
@@ -22,7 +23,7 @@
   ],
   "hints": [
     "Once a function exists you can call it as many times as you like.",
-    "Define `func beep():` with a single print, then write `beep()` on two separate lines in solve."
+    "Define `func beep():` with a single print, then write `beep()` on two separate lines in run."
   ],
   "docs": [
     {
@@ -30,5 +31,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve():\n\tbeep()\n\tbeep()\n\nfunc beep():\n\tprint(\"beep\")"
+  "solution": "func run():\n\tbeep()\n\tbeep()\n\nfunc beep():\n\tprint(\"beep\")"
 }

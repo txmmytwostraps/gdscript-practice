@@ -4,8 +4,9 @@
   "concept": "ifelse",
   "difficulty": 0,
   "prompt": "Return n if it is zero or positive. If n is negative, return -n so the result is positive. Do it with if and else rather than abs().",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\treturn n",
+  "signature": "func absolute_value(n):",
+  "fn": "absolute_value",
+  "starter": "func absolute_value(n):\n\treturn n",
   "tests": [
     {
       "name": "-5 becomes 5",
@@ -50,7 +51,7 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(n):\n\tif n < 0:\n\t\treturn -n\n\telse:\n\t\treturn n",
+  "solution": "func absolute_value(n):\n\tif n < 0:\n\t\treturn -n\n\telse:\n\t\treturn n",
   "generator": [
     {
       "int": [

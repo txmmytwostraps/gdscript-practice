@@ -3,9 +3,10 @@
   "title": "Boot sequence",
   "concept": "gq-functions",
   "difficulty": 0,
-  "prompt": "The robot already has a `boot` function that prints \"Booting\". Add a second function `ready` that prints \"Ready\", and make `solve` call boot and then ready, so the output is those two lines in that order.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass\n\nfunc boot():\n\tprint(\"Booting\")",
+  "prompt": "The robot already has a `boot` function that prints \"Booting\". Add a second function `ready` that prints \"Ready\", and make `run` call boot and then ready, so the output is those two lines in that order.",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass\n\nfunc boot():\n\tprint(\"Booting\")",
   "require_methods": [
     "boot",
     "ready"
@@ -23,8 +24,8 @@
   ],
   "hints": [
     "Look at how boot is written; ready is the same shape with a different name and text.",
-    "Add `func ready():` with `print(\"Ready\")` under it, anywhere below solve.",
-    "In solve, call `boot()` on one line and `ready()` on the next."
+    "Add `func ready():` with `print(\"Ready\")` under it, anywhere below run.",
+    "In run, call `boot()` on one line and `ready()` on the next."
   ],
   "docs": [
     {
@@ -32,5 +33,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve():\n\tboot()\n\tready()\n\nfunc boot():\n\tprint(\"Booting\")\n\nfunc ready():\n\tprint(\"Ready\")"
+  "solution": "func run():\n\tboot()\n\tready()\n\nfunc boot():\n\tprint(\"Booting\")\n\nfunc ready():\n\tprint(\"Ready\")"
 }

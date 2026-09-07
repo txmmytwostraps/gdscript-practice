@@ -4,8 +4,9 @@
   "concept": "functions",
   "difficulty": 1,
   "prompt": "Call print(n) to print the value of n, then return n times 10. The tests check what you print as well as what you return.",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\treturn n * 10",
+  "signature": "func print_then_scale(n):",
+  "fn": "print_then_scale",
+  "starter": "func print_then_scale(n):\n\treturn n * 10",
   "tests": [
     {
       "name": "3 is printed and 30 comes back",
@@ -52,7 +53,7 @@
       "what": "Ends the function and hands value back to whoever called it."
     }
   ],
-  "solution": "func solve(n):\n\tprint(n)\n\treturn n * 10",
+  "solution": "func print_then_scale(n):\n\tprint(n)\n\treturn n * 10",
   "generator": [
     {
       "int": [

@@ -3,9 +3,10 @@
   "title": "Three level-ups",
   "concept": "gq-multiply",
   "difficulty": 1,
-  "prompt": "Same members and level_up as before. In `solve`, call level_up three times. Then return max_health, which is 800.",
-  "signature": "func solve():",
-  "starter": "var level = 1\nvar max_health = 100\n\nfunc solve():\n\treturn max_health\n\nfunc level_up():\n\tlevel += 1\n\tmax_health *= 2",
+  "prompt": "Same members and level_up as before. In `max_health_after_three`, call level_up three times. Then return max_health, which is 800.",
+  "signature": "func max_health_after_three():",
+  "fn": "max_health_after_three",
+  "starter": "var level = 1\nvar max_health = 100\n\nfunc max_health_after_three():\n\treturn max_health\n\nfunc level_up():\n\tlevel += 1\n\tmax_health *= 2",
   "tests": [
     {
       "name": "Three doublings: 800",
@@ -27,5 +28,5 @@
       "what": "A member variable: every function in the script can read and change it."
     }
   ],
-  "solution": "var level = 1\nvar max_health = 100\n\nfunc solve():\n\tlevel_up()\n\tlevel_up()\n\tlevel_up()\n\treturn max_health\n\nfunc level_up():\n\tlevel += 1\n\tmax_health *= 2"
+  "solution": "var level = 1\nvar max_health = 100\n\nfunc max_health_after_three():\n\tlevel_up()\n\tlevel_up()\n\tlevel_up()\n\treturn max_health\n\nfunc level_up():\n\tlevel += 1\n\tmax_health *= 2"
 }

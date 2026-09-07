@@ -4,8 +4,9 @@
   "concept": "gq-rect",
   "difficulty": 0,
   "prompt": "Return the area of the rectangle: its width times its height.",
-  "signature": "func solve(r) -> float:",
-  "starter": "func solve(r) -> float:\n\treturn 0.0",
+  "signature": "func rect_area(r) -> float:",
+  "fn": "rect_area",
+  "starter": "func rect_area(r) -> float:\n\treturn 0.0",
   "tests": [
     {
       "name": "3 by 4 is 12",
@@ -60,7 +61,7 @@
       "what": "The top-left corner, the width and height, and the bottom-right corner, all Vector2."
     }
   ],
-  "solution": "func solve(r) -> float:\n\treturn r.size.x * r.size.y",
+  "solution": "func rect_area(r) -> float:\n\treturn r.size.x * r.size.y",
   "generator": [
     {
       "rect": [

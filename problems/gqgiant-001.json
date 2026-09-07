@@ -3,9 +3,10 @@
   "title": "Make the robot visible",
   "concept": "gq-giants",
   "difficulty": 0,
-  "prompt": "The robot starts hidden. Godot already has a function that shows it: `show`. In `solve`, call it once, with nothing inside the brackets.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass",
+  "prompt": "The robot starts hidden. Godot already has a function that shows it: `show`. In `run`, call it once, with nothing inside the brackets.",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass",
   "tests": [
     {
       "name": "show is called once",
@@ -18,7 +19,7 @@
   ],
   "hints": [
     "You use someone else's function by writing its name followed by brackets.",
-    "`show()` on its own line inside solve."
+    "`show()` on its own line inside run."
   ],
   "docs": [
     {
@@ -26,5 +27,5 @@
       "what": "Makes the robot visible or invisible. No arguments; returns nothing."
     }
   ],
-  "solution": "func solve():\n\tshow()"
+  "solution": "func run():\n\tshow()"
 }

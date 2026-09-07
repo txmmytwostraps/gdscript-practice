@@ -4,8 +4,9 @@
   "concept": "gq-valuetypes",
   "difficulty": 1,
   "prompt": "Return the value as the nearest whole number, so 7.9 becomes 8 and 7.2 becomes 7. Remember int() alone drops decimals.",
-  "signature": "func solve(value):",
-  "starter": "func solve(value):\n\treturn int(value)",
+  "signature": "func round_value(value):",
+  "fn": "round_value",
+  "starter": "func round_value(value):\n\treturn int(value)",
   "tests": [
     {
       "name": "7.9 rounds to 8",
@@ -43,7 +44,7 @@
       "what": "Returns the nearest whole number as a float."
     }
   ],
-  "solution": "func solve(value):\n\treturn int(round(value))",
+  "solution": "func round_value(value):\n\treturn int(round(value))",
   "generator": [
     {
       "float": [

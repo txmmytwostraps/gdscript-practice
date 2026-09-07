@@ -4,8 +4,9 @@
   "concept": "gq-conditions",
   "difficulty": 1,
   "prompt": "Return -1 if n is negative, 0 if it is zero, and 1 if it is positive.",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\treturn 0",
+  "signature": "func sign_of(n):",
+  "fn": "sign_of",
+  "starter": "func sign_of(n):\n\treturn 0",
   "tests": [
     {
       "name": "-7 gives -1",
@@ -43,7 +44,7 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(n):\n\tif n < 0:\n\t\treturn -1\n\telif n == 0:\n\t\treturn 0\n\telse:\n\t\treturn 1",
+  "solution": "func sign_of(n):\n\tif n < 0:\n\t\treturn -1\n\telif n == 0:\n\t\treturn 0\n\telse:\n\t\treturn 1",
   "generator": [
     {
       "int": [

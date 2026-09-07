@@ -4,8 +4,9 @@
   "concept": "ifelse",
   "difficulty": 0,
   "prompt": "Return whichever of a and b is larger. If they are equal, return either one.",
-  "signature": "func solve(a, b):",
-  "starter": "func solve(a, b):\n\treturn a",
+  "signature": "func larger_of_two(a, b):",
+  "fn": "larger_of_two",
+  "starter": "func larger_of_two(a, b):\n\treturn a",
   "tests": [
     {
       "name": "7 beats 3",
@@ -54,7 +55,7 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(a, b):\n\tif a > b:\n\t\treturn a\n\telse:\n\t\treturn b",
+  "solution": "func larger_of_two(a, b):\n\tif a > b:\n\t\treturn a\n\telse:\n\t\treturn b",
   "generator": [
     {
       "int": [

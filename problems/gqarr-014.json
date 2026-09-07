@@ -4,8 +4,9 @@
   "concept": "gq-arrays",
   "difficulty": 0,
   "prompt": "Same task as before: how many items equal value. This time use the built-in count method instead of a loop.",
-  "signature": "func solve(items, value):",
-  "starter": "func solve(items, value):\n\treturn 0",
+  "signature": "func count_with_count(items, value):",
+  "fn": "count_with_count",
+  "starter": "func count_with_count(items, value):\n\treturn 0",
   "tests": [
     {
       "name": "Three 1s",
@@ -51,7 +52,7 @@
       "what": "Returns how many items equal value."
     }
   ],
-  "solution": "func solve(items, value):\n\treturn items.count(value)",
+  "solution": "func count_with_count(items, value):\n\treturn items.count(value)",
   "generator": [
     {
       "array": {

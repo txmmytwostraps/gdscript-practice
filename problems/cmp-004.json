@@ -4,8 +4,9 @@
   "concept": "comparisons",
   "difficulty": 1,
   "prompt": "You can ride the roller coaster if you are at least 120 cm tall OR you are with an adult. Return true if the person can ride.",
-  "signature": "func solve(height_cm, with_adult):",
-  "starter": "func solve(height_cm, with_adult):\n\treturn false",
+  "signature": "func can_ride(height_cm, with_adult):",
+  "fn": "can_ride",
+  "starter": "func can_ride(height_cm, with_adult):\n\treturn false",
   "tests": [
     {
       "name": "130 cm alone may ride",
@@ -54,7 +55,7 @@
       "what": "and is true when both sides are; or when at least one is; not flips true and false."
     }
   ],
-  "solution": "func solve(height_cm, with_adult):\n\treturn height_cm >= 120 or with_adult",
+  "solution": "func can_ride(height_cm, with_adult):\n\treturn height_cm >= 120 or with_adult",
   "generator": [
     {
       "int": [

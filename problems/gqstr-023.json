@@ -4,8 +4,9 @@
   "concept": "gq-strings",
   "difficulty": 1,
   "prompt": "Return the first three characters of the text. If it is shorter than three, return all of it.",
-  "signature": "func solve(text):",
-  "starter": "func solve(text):\n\treturn text",
+  "signature": "func first_three(text):",
+  "fn": "first_three",
+  "starter": "func first_three(text):\n\treturn text",
   "tests": [
     {
       "name": "Godot gives God",
@@ -39,7 +40,7 @@
       "what": "Returns part of the text, starting at position start, at most length characters."
     }
   ],
-  "solution": "func solve(text):\n\treturn text.substr(0, 3)",
+  "solution": "func first_three(text):\n\treturn text.substr(0, 3)",
   "generator": [
     {
       "pick": [

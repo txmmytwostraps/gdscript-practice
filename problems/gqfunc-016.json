@@ -3,9 +3,10 @@
   "title": "Draw a square",
   "concept": "gq-functions",
   "difficulty": 1,
-  "prompt": "The robot draws by driving. `forward` prints \"forward 30\" and `left` prints \"left\", and both already exist. Make `solve` drive a square: forward then left, four times over, for eight instructions in total.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass\n\nfunc forward():\n\tprint(\"forward 30\")\n\nfunc left():\n\tprint(\"left\")",
+  "prompt": "The robot draws by driving. `forward` prints \"forward 30\" and `left` prints \"left\", and both already exist. Make `run` drive a square: forward then left, four times over, for eight instructions in total.",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass\n\nfunc forward():\n\tprint(\"forward 30\")\n\nfunc left():\n\tprint(\"left\")",
   "require_methods": [
     "forward",
     "left"
@@ -30,7 +31,7 @@
   "hints": [
     "A square is the same corner four times.",
     "One corner is `forward()` then `left()`.",
-    "Write that pair four times in solve, eight lines in all."
+    "Write that pair four times in run, eight lines in all."
   ],
   "docs": [
     {
@@ -38,5 +39,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve():\n\tforward()\n\tleft()\n\tforward()\n\tleft()\n\tforward()\n\tleft()\n\tforward()\n\tleft()\n\nfunc forward():\n\tprint(\"forward 30\")\n\nfunc left():\n\tprint(\"left\")"
+  "solution": "func run():\n\tforward()\n\tleft()\n\tforward()\n\tleft()\n\tforward()\n\tleft()\n\tforward()\n\tleft()\n\nfunc forward():\n\tprint(\"forward 30\")\n\nfunc left():\n\tprint(\"left\")"
 }

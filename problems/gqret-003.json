@@ -3,9 +3,10 @@
   "title": "Return an expression",
   "concept": "gq-return",
   "difficulty": 0,
-  "prompt": "Write `double`, which returns its parameter times 2. `solve` returns double(n), so solve(4) is 8.",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\treturn n",
+  "prompt": "Write `double`, which returns its parameter times 2. `twice` returns double(n), so twice(4) is 8.",
+  "signature": "func twice(n):",
+  "fn": "twice",
+  "starter": "func twice(n):\n\treturn n",
   "tests": [
     {
       "name": "4 doubles to 8",
@@ -39,7 +40,7 @@
       "what": "Ends the function and hands value back to whoever called it."
     }
   ],
-  "solution": "func solve(n):\n\treturn double(n)\n\nfunc double(value):\n\treturn value * 2",
+  "solution": "func twice(n):\n\treturn double(n)\n\nfunc double(value):\n\treturn value * 2",
   "require_methods": [
     "double"
   ],

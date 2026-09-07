@@ -3,9 +3,10 @@
   "title": "Arrays are shared, not copied",
   "concept": "gq-arrays",
   "difficulty": 1,
-  "prompt": "Earlier you saw that a number passed to a function is a copy. Arrays are different. Write `add_item`, which takes an array and appends 99 to it. In `solve`, call add_item(items). Then return items: the original now contains the 99.",
-  "signature": "func solve(items):",
-  "starter": "func solve(items):\n\treturn items",
+  "prompt": "Earlier you saw that a number passed to a function is a copy. Arrays are different. Write `add_item`, which takes an array and appends 99 to it. In `with_item_added`, call add_item(items). Then return items: the original now contains the 99.",
+  "signature": "func with_item_added(items):",
+  "fn": "with_item_added",
+  "starter": "func with_item_added(items):\n\treturn items",
   "tests": [
     {
       "name": "[1, 2] gains a 99",
@@ -34,7 +35,7 @@
   "hints": [
     "Both names point at the same array, so changes made through one show up in the other.",
     "`func add_item(arr):` with `arr.append(99)`; it does not need to return anything.",
-    "solve: `add_item(items)` then `return items`."
+    "with_item_added: `add_item(items)` then `return items`."
   ],
   "docs": [
     {
@@ -42,7 +43,7 @@
       "what": "Adds value to the end of the array. Returns nothing."
     }
   ],
-  "solution": "func solve(items):\n\tadd_item(items)\n\treturn items\n\nfunc add_item(arr):\n\tarr.append(99)",
+  "solution": "func with_item_added(items):\n\tadd_item(items)\n\treturn items\n\nfunc add_item(arr):\n\tarr.append(99)",
   "require_methods": [
     "add_item"
   ],

@@ -4,8 +4,9 @@
   "concept": "gq-errors",
   "difficulty": 0,
   "prompt": "The robot should print \"Hello\", but the code will not run. Press Run, read the error, and fix the one thing wrong on that line.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tprint(\"Hello\"",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tprint(\"Hello\"",
   "starter_broken": true,
   "tests": [
     {
@@ -32,5 +33,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve():\n\tprint(\"Hello\")"
+  "solution": "func run():\n\tprint(\"Hello\")"
 }

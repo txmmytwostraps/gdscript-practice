@@ -4,8 +4,9 @@
   "concept": "gq-delta",
   "difficulty": 1,
   "prompt": "The robot's health recovers at regen points per second but can never go above max_hp. Return the health after one frame. 99 health regenerating 10 per second for 0.5 s is capped at 100.",
-  "signature": "func solve(hp, regen, max_hp, delta) -> float:",
-  "starter": "func solve(hp, regen, max_hp, delta) -> float:\n\treturn hp + regen * delta",
+  "signature": "func regen_health(hp, regen, max_hp, delta) -> float:",
+  "fn": "regen_health",
+  "starter": "func regen_health(hp, regen, max_hp, delta) -> float:\n\treturn hp + regen * delta",
   "tests": [
     {
       "name": "50 plus 10 per second for 0.5 s is 55",
@@ -49,7 +50,7 @@
       "what": "Returns the smaller of the two numbers."
     }
   ],
-  "solution": "func solve(hp, regen, max_hp, delta) -> float:\n\treturn min(hp + regen * delta, max_hp)",
+  "solution": "func regen_health(hp, regen, max_hp, delta) -> float:\n\treturn min(hp + regen * delta, max_hp)",
   "generator": [
     {
       "int": [

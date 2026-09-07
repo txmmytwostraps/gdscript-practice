@@ -3,9 +3,10 @@
   "title": "Count the digits",
   "concept": "while",
   "difficulty": 1,
-  "prompt": "Return how many digits the number n has. n is never negative, and 0 counts as one digit. solve(12345) is 5.",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\treturn 1",
+  "prompt": "Return how many digits the number n has. n is never negative, and 0 counts as one digit. count_digits(12345) is 5.",
+  "signature": "func count_digits(n):",
+  "fn": "count_digits",
+  "starter": "func count_digits(n):\n\treturn 1",
   "tests": [
     {
       "name": "12345 has 5 digits",
@@ -54,7 +55,7 @@
       "what": "Repeats the indented lines below it as long as the condition stays true."
     }
   ],
-  "solution": "func solve(n):\n\tif n == 0:\n\t\treturn 1\n\tvar count = 0\n\twhile n > 0:\n\t\tn = n / 10\n\t\tcount += 1\n\treturn count",
+  "solution": "func count_digits(n):\n\tif n == 0:\n\t\treturn 1\n\tvar count = 0\n\twhile n > 0:\n\t\tn = n / 10\n\t\tcount += 1\n\treturn count",
   "generator": [
     {
       "int": [

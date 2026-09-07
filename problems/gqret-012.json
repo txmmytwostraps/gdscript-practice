@@ -3,9 +3,10 @@
   "title": "Return the absolute value",
   "concept": "gq-return",
   "difficulty": 0,
-  "prompt": "Write `distance_from_zero`, which returns how far a number is from zero, always positive, using the built-in abs(). `solve` returns distance_from_zero(n).",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\treturn n",
+  "prompt": "Write `distance_from_zero`, which returns how far a number is from zero, always positive, using the built-in abs(). `far_from_zero` returns distance_from_zero(n).",
+  "signature": "func far_from_zero(n):",
+  "fn": "far_from_zero",
+  "starter": "func far_from_zero(n):\n\treturn n",
   "tests": [
     {
       "name": "-5 is 5 from zero",
@@ -43,7 +44,7 @@
       "what": "Returns n without its sign: abs(-5) is 5."
     }
   ],
-  "solution": "func solve(n):\n\treturn distance_from_zero(n)\n\nfunc distance_from_zero(value):\n\treturn abs(value)",
+  "solution": "func far_from_zero(n):\n\treturn distance_from_zero(n)\n\nfunc distance_from_zero(value):\n\treturn abs(value)",
   "require_methods": [
     "distance_from_zero"
   ],

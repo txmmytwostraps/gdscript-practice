@@ -4,8 +4,9 @@
   "concept": "gq-giants",
   "difficulty": 1,
   "prompt": "On screen, up is a negative y. Move the robot 0 across and 50 up.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass",
   "tests": [
     {
       "name": "move is called with 0 and -50",
@@ -26,5 +27,5 @@
       "what": "Moves the robot by x across and y down. Takes two numbers; returns nothing."
     }
   ],
-  "solution": "func solve():\n\tmove(0, -50)"
+  "solution": "func run():\n\tmove(0, -50)"
 }

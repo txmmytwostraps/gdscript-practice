@@ -4,8 +4,9 @@
   "concept": "gq-looparrays",
   "difficulty": 0,
   "prompt": "The robot took several hits, listed in an array. Return the total damage taken.",
-  "signature": "func solve(hits):",
-  "starter": "func solve(hits):\n\treturn 0",
+  "signature": "func total_damage(hits):",
+  "fn": "total_damage",
+  "starter": "func total_damage(hits):\n\treturn 0",
   "tests": [
     {
       "name": "10, 20, 5 total 35",
@@ -45,7 +46,7 @@
       "what": "Runs the indented lines once per item, with item holding each value in turn."
     }
   ],
-  "solution": "func solve(hits):\n\tvar total = 0\n\tfor hit in hits:\n\t\ttotal += hit\n\treturn total",
+  "solution": "func total_damage(hits):\n\tvar total = 0\n\tfor hit in hits:\n\t\ttotal += hit\n\treturn total",
   "generator": [
     {
       "array": {

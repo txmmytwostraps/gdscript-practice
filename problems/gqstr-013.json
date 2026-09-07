@@ -4,8 +4,9 @@
   "concept": "gq-strings",
   "difficulty": 0,
   "prompt": "Same task with the built-in count method.",
-  "signature": "func solve(text, letter):",
-  "starter": "func solve(text, letter):\n\treturn 0",
+  "signature": "func count_letter_method(text, letter):",
+  "fn": "count_letter_method",
+  "starter": "func count_letter_method(text, letter):\n\treturn 0",
   "tests": [
     {
       "name": "banana has 3 a's",
@@ -42,7 +43,7 @@
       "what": "Returns how many times part appears."
     }
   ],
-  "solution": "func solve(text, letter):\n\treturn text.count(letter)",
+  "solution": "func count_letter_method(text, letter):\n\treturn text.count(letter)",
   "generator": [
     {
       "pick": [

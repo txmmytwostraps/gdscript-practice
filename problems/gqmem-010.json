@@ -3,9 +3,10 @@
   "title": "Max health",
   "concept": "gq-members",
   "difficulty": 1,
-  "prompt": "Members `health` at 90 and `max_health` at 100 exist. Write `heal`, which adds an amount to health and then, if health went above max_health, sets it back to max_health. In `solve`, call heal(30). Then return health, which stays at 100.",
-  "signature": "func solve():",
-  "starter": "var health = 90\nvar max_health = 100\n\nfunc solve():\n\treturn health",
+  "prompt": "Members `health` at 90 and `max_health` at 100 exist. Write `heal`, which adds an amount to health and then, if health went above max_health, sets it back to max_health. In `health_at_max`, call heal(30). Then return health, which stays at 100.",
+  "signature": "func health_at_max():",
+  "fn": "health_at_max",
+  "starter": "var health = 90\nvar max_health = 100\n\nfunc health_at_max():\n\treturn health",
   "tests": [
     {
       "name": "90 plus 30 is capped at 100",
@@ -16,7 +17,7 @@
   "hints": [
     "Add first, then check the cap.",
     "`if health > max_health:` then `health = max_health`.",
-    "solve: `heal(30)` then `return health`."
+    "health_at_max: `heal(30)` then `return health`."
   ],
   "docs": [
     {
@@ -24,7 +25,7 @@
       "what": "A variable at the top of the script (a member variable): every function in the script can read and change it."
     }
   ],
-  "solution": "var health = 90\nvar max_health = 100\n\nfunc solve():\n\theal(30)\n\treturn health\n\nfunc heal(amount):\n\thealth += amount\n\tif health > max_health:\n\t\thealth = max_health",
+  "solution": "var health = 90\nvar max_health = 100\n\nfunc health_at_max():\n\theal(30)\n\treturn health\n\nfunc heal(amount):\n\thealth += amount\n\tif health > max_health:\n\t\thealth = max_health",
   "require_methods": [
     "heal"
   ]

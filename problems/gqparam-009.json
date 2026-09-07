@@ -3,9 +3,10 @@
   "title": "Add two numbers",
   "concept": "gq-parameters",
   "difficulty": 0,
-  "prompt": "`solve` receives two numbers, a and b. Return them added together, so solve(1, 2) is 3.",
-  "signature": "func solve(a, b):",
-  "starter": "func solve(a, b):\n\treturn 0",
+  "prompt": "`add_two` receives two numbers, a and b. Return them added together, so add_two(1, 2) is 3.",
+  "signature": "func add_two(a, b):",
+  "fn": "add_two",
+  "starter": "func add_two(a, b):\n\treturn 0",
   "tests": [
     {
       "name": "1 plus 2 is 3",
@@ -45,7 +46,7 @@
     "`return a + b`"
   ],
   "docs": [],
-  "solution": "func solve(a, b):\n\treturn a + b",
+  "solution": "func add_two(a, b):\n\treturn a + b",
   "generator": [
     {
       "int": [

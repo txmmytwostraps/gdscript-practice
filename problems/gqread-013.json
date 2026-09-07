@@ -4,8 +4,9 @@
   "concept": "gq-readable",
   "difficulty": 0,
   "prompt": "Parts are 25% off. Name the 0.25 `DISCOUNT` and use it to work out the sale price.",
-  "signature": "func solve(price) -> float:",
-  "starter": "func solve(price) -> float:\n\treturn price - price * 0.25",
+  "signature": "func sale_price(price) -> float:",
+  "fn": "sale_price",
+  "starter": "func sale_price(price) -> float:\n\treturn price - price * 0.25",
   "require_names": [
     "DISCOUNT"
   ],
@@ -45,5 +46,5 @@
       "what": "Declares a named value that never changes. Written in CAPITALS by convention."
     }
   ],
-  "solution": "func solve(price) -> float:\n\tconst DISCOUNT = 0.25\n\treturn price - price * DISCOUNT"
+  "solution": "func sale_price(price) -> float:\n\tconst DISCOUNT = 0.25\n\treturn price - price * DISCOUNT"
 }

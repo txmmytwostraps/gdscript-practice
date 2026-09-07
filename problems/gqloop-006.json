@@ -3,9 +3,10 @@
   "title": "Spin",
   "concept": "gq-loop",
   "difficulty": 0,
-  "prompt": "A member `angle` starts at 0.0. In `_process`, turn by 90 degrees per second. After 60 frames solve returns angle rounded, 90.",
-  "signature": "func solve():",
-  "starter": "var angle = 0.0\n\nfunc solve():\n\treturn round(angle)",
+  "prompt": "A member `angle` starts at 0.0. In `_process`, turn by 90 degrees per second. After 60 frames angle_after_second returns angle rounded, 90.",
+  "signature": "func angle_after_second():",
+  "fn": "angle_after_second",
+  "starter": "var angle = 0.0\n\nfunc angle_after_second():\n\treturn round(angle)",
   "tests": [
     {
       "name": "One second turns 90",
@@ -38,7 +39,7 @@
       "what": "Returns the nearest whole number as a float."
     }
   ],
-  "solution": "var angle = 0.0\n\nfunc _process(delta):\n\tangle += 90 * delta\n\nfunc solve():\n\treturn round(angle)",
+  "solution": "var angle = 0.0\n\nfunc _process(delta):\n\tangle += 90 * delta\n\nfunc angle_after_second():\n\treturn round(angle)",
   "require_methods": [
     "_process"
   ]

@@ -3,9 +3,10 @@
   "title": "Fix the type error",
   "concept": "gq-valuetypes",
   "difficulty": 1,
-  "prompt": "The starter tries to join a number to text and fails. Fix it with a conversion so solve(3) returns \"Level 3\".",
-  "signature": "func solve(level):",
-  "starter": "func solve(level):\n\treturn \"Level \" + level",
+  "prompt": "The starter tries to join a number to text and fails. Fix it with a conversion so level_label(3) returns \"Level 3\".",
+  "signature": "func level_label(level):",
+  "fn": "level_label",
+  "starter": "func level_label(level):\n\treturn \"Level \" + level",
   "tests": [
     {
       "name": "3 gives Level 3",
@@ -36,7 +37,7 @@
       "what": "Joins two strings. Joining text to a number is an error; convert first."
     }
   ],
-  "solution": "func solve(level):\n\treturn \"Level \" + str(level)",
+  "solution": "func level_label(level):\n\treturn \"Level \" + str(level)",
   "generator": [
     {
       "int": [

@@ -3,9 +3,10 @@
   "title": "Three steps in order",
   "concept": "gq-functions",
   "difficulty": 0,
-  "prompt": "The robot's start-up has three steps. Write `step_one`, `step_two` and `step_three`, printing \"one\", \"two\" and \"three\". Call them from `solve` so the words come out in that order.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass",
+  "prompt": "The robot's start-up has three steps. Write `step_one`, `step_two` and `step_three`, printing \"one\", \"two\" and \"three\". Call them from `run` so the words come out in that order.",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass",
   "require_methods": [
     "step_one",
     "step_two",
@@ -24,9 +25,9 @@
     }
   ],
   "hints": [
-    "Calls run from top to bottom. The order you write the calls in solve is the order things happen.",
+    "Calls run from top to bottom. The order you write the calls in run is the order things happen.",
     "Three definitions, each `func step_x():` with one print.",
-    "In solve: `step_one()`, then `step_two()`, then `step_three()`, one per line."
+    "In run: `step_one()`, then `step_two()`, then `step_three()`, one per line."
   ],
   "docs": [
     {
@@ -34,5 +35,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve():\n\tstep_one()\n\tstep_two()\n\tstep_three()\n\nfunc step_one():\n\tprint(\"one\")\n\nfunc step_two():\n\tprint(\"two\")\n\nfunc step_three():\n\tprint(\"three\")"
+  "solution": "func run():\n\tstep_one()\n\tstep_two()\n\tstep_three()\n\nfunc step_one():\n\tprint(\"one\")\n\nfunc step_two():\n\tprint(\"two\")\n\nfunc step_three():\n\tprint(\"three\")"
 }

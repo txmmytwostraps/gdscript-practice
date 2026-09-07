@@ -4,8 +4,9 @@
   "concept": "gq-rect",
   "difficulty": 0,
   "prompt": "Tiles are 64 by 64 pixels. Return the Rect2 that covers the tile at the given column and row.",
-  "signature": "func solve(column, row) -> Rect2:",
-  "starter": "func solve(column, row) -> Rect2:\n\treturn Rect2()",
+  "signature": "func tile_rect(column, row) -> Rect2:",
+  "fn": "tile_rect",
+  "starter": "func tile_rect(column, row) -> Rect2:\n\treturn Rect2()",
   "tests": [
     {
       "name": "Cell (0, 0)",
@@ -52,7 +53,7 @@
       "what": "Makes a vector holding an x and a y. Read them back with .x and .y."
     }
   ],
-  "solution": "func solve(column, row) -> Rect2:\n\treturn Rect2(Vector2(column, row) * 64, Vector2(64, 64))",
+  "solution": "func tile_rect(column, row) -> Rect2:\n\treturn Rect2(Vector2(column, row) * 64, Vector2(64, 64))",
   "generator": [
     {
       "int": [

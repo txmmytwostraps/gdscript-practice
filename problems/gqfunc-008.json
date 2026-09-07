@@ -3,9 +3,10 @@
   "title": "Defined below, called above",
   "concept": "gq-functions",
   "difficulty": 0,
-  "prompt": "Write a function `wave` that prints \"waving\", and put its definition below `solve` in the file. Call it from solve. Godot reads the whole script before running anything, so the order of definitions does not matter.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass",
+  "prompt": "Write a function `wave` that prints \"waving\", and put its definition below `run` in the file. Call it from run. Godot reads the whole script before running anything, so the order of definitions does not matter.",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass",
   "require_methods": [
     "wave"
   ],
@@ -21,7 +22,7 @@
   ],
   "hints": [
     "Definitions can sit anywhere in the script; only the order of calls matters.",
-    "Leave a blank line after solve, then `func wave():` and its print."
+    "Leave a blank line after run, then `func wave():` and its print."
   ],
   "docs": [
     {
@@ -29,5 +30,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve():\n\twave()\n\nfunc wave():\n\tprint(\"waving\")"
+  "solution": "func run():\n\twave()\n\nfunc wave():\n\tprint(\"waving\")"
 }

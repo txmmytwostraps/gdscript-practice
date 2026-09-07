@@ -3,9 +3,10 @@
   "title": "Add up the time",
   "concept": "gq-loop",
   "difficulty": 1,
-  "prompt": "A member `time` starts at 0.0. In `_process`, add delta to it every frame. After 60 frames at 60 per second, solve should return about 1.0 (rounded to whole seconds).",
-  "signature": "func solve():",
-  "starter": "var time = 0.0\n\nfunc solve():\n\treturn round(time)",
+  "prompt": "A member `time` starts at 0.0. In `_process`, add delta to it every frame. After 60 frames at 60 per second, time_passed should return about 1.0 (rounded to whole seconds).",
+  "signature": "func time_passed():",
+  "fn": "time_passed",
+  "starter": "var time = 0.0\n\nfunc time_passed():\n\treturn round(time)",
   "tests": [
     {
       "name": "60 frames is 1 second",
@@ -44,7 +45,7 @@
       "what": "Returns the nearest whole number as a float."
     }
   ],
-  "solution": "var time = 0.0\n\nfunc _process(delta):\n\ttime += delta\n\nfunc solve():\n\treturn round(time)",
+  "solution": "var time = 0.0\n\nfunc _process(delta):\n\ttime += delta\n\nfunc time_passed():\n\treturn round(time)",
   "require_methods": [
     "_process"
   ]

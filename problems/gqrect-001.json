@@ -4,8 +4,9 @@
   "concept": "gq-rect",
   "difficulty": 0,
   "prompt": "Return a Rect2 whose top-left corner is at (x, y) and which is width wide and height tall. This is what draw_rect takes.",
-  "signature": "func solve(x, y, width, height) -> Rect2:",
-  "starter": "func solve(x, y, width, height) -> Rect2:\n\treturn Rect2()",
+  "signature": "func make_rect(x, y, width, height) -> Rect2:",
+  "fn": "make_rect",
+  "starter": "func make_rect(x, y, width, height) -> Rect2:\n\treturn Rect2()",
   "tests": [
     {
       "name": "10, 20, 30, 40",
@@ -52,7 +53,7 @@
       "what": "Makes a rectangle from a top-left corner and a size. Also Rect2(position, size) with two vectors."
     }
   ],
-  "solution": "func solve(x, y, width, height) -> Rect2:\n\treturn Rect2(x, y, width, height)",
+  "solution": "func make_rect(x, y, width, height) -> Rect2:\n\treturn Rect2(x, y, width, height)",
   "generator": [
     {
       "int": [

@@ -44,7 +44,7 @@ func _js_run(args: Array) -> Variant:
 
 ## Runs the three classic cases through the same JSON path the web page uses.
 func _selftest() -> void:
-	var problem_json := JSON.stringify({"tests": [
+	var problem_json := JSON.stringify({"fn": "solve", "tests": [
 		{"args": [[1, 2, 3]], "expect": 6},
 		{"args": [[]], "expect": 0},
 		{"args": [[-5, 5, 10]], "expect": 10},
@@ -62,28 +62,28 @@ func _selftest() -> void:
 		var r := runner.run_submission(pair[1], JSON.parse_string(problem_json))
 		print("CASE ", pair[0], " (", Time.get_ticks_msec() - t0, " ms): ", JSON.stringify(r))
 	# "Name the magic number" rules: declaration required, literal at most once.
-	var naming := {"require_names": ["SPEED"], "once_only": [250], "tests": [{"args": [2], "expect": 500}]}
+	var naming := {"fn": "solve", "require_names": ["SPEED"], "once_only": [250], "tests": [{"args": [2], "expect": 500}]}
 	var unused_const := "func solve(seconds: float) -> float:\n\tconst SPEED = 250\n\treturn 250 * seconds\n"
 	var comment_only := "func solve(seconds: float) -> float:\n\t# const SPEED = 250\n\treturn 250 * seconds\n"
 	var named_ok := "func solve(seconds: float) -> float:\n\tconst SPEED = 250  # 250 in a comment is fine\n\treturn SPEED * seconds\n"
 	for pair in [["unused_const", unused_const], ["comment_only", comment_only], ["named_ok", named_ok]]:
 		print("CASE ", pair[0], ": ", JSON.stringify(runner.run_submission(pair[1], naming)))
 	# print() is rewritten to out(): whole word only, not inside strings/comments.
-	var printing := {"tests": [{"args": [3], "expect": 3, "out": ["a1", "3", "x", "print(z)"]}]}
+	var printing := {"fn": "solve", "tests": [{"args": [3], "expect": 3, "out": ["a1", "3", "x", "print(z)"]}]}
 	var uses_print := "func solve(n: int) -> int:\n\tprint(\"a\", 1)\n\tprint(n)  # print(hidden)\n\tmy_print()\n\tprint(\"print(z)\")\n\treturn n\n\nfunc my_print() -> void:\n\tout(\"x\")\n"
 	print("CASE print_rewrite: ", JSON.stringify(runner.run_submission(uses_print, printing)))
 	# Vector2 / Rect2 travel as {"$v2": [x, y]} and {"$rect": [x, y, w, h]}.
-	var vec_problem: Dictionary = JSON.parse_string(JSON.stringify({"tests": [
+	var vec_problem: Dictionary = JSON.parse_string(JSON.stringify({"fn": "solve", "tests": [
 		{"args": [{"$v2": [3, 4]}], "expect": {"$v2": [6, 8]}},
 		{"args": [{"$v2": [1, 1]}], "expect": {"$v2": [2, 2]}},
 	]}))
 	var vec_code := "func solve(v: Vector2) -> Vector2:\n\treturn v * 2\n"
 	var vec_i_code := "func solve(v: Vector2) -> Vector2i:\n\treturn Vector2i(v * 2)\n"
-	var rect_problem: Dictionary = JSON.parse_string(JSON.stringify({"tests": [{"args": [2, 3], "expect": {"$rect": [0, 0, 2, 3]}}]}))
+	var rect_problem: Dictionary = JSON.parse_string(JSON.stringify({"fn": "solve", "tests": [{"args": [2, 3], "expect": {"$rect": [0, 0, 2, 3]}}]}))
 	var rect_code := "func solve(w: int, h: int) -> Rect2:\n\treturn Rect2(0, 0, w, h)\n"
 	# Beginner style must compile: untyped parameter, no return type, := on a Variant.
 	var beginner := "func solve(items: Array):\n\tvar first := items.front()\n\tvar total = first + 1\n\treturn total\n"
-	var beginner_problem := {"tests": [{"args": [[4, 5]], "expect": 5}]}
+	var beginner_problem := {"fn": "solve", "tests": [{"args": [[4, 5]], "expect": 5}]}
 	print("CASE beginner_style: ", JSON.stringify(runner.run_submission(beginner, beginner_problem)))
 	var hard := "func solve(items):
 	var first := items[0]
@@ -91,10 +91,10 @@ func _selftest() -> void:
 "
 	print("CASE beginner_hard_error: ", JSON.stringify(runner.run_submission(hard, beginner_problem)))
 	# Recorders (show/rotate/turtle) and the frame harness for _process().
-	var rec_problem := {"tests": [{"name": "calls", "args": [], "expect": null, "out": ["show", "rotate 45", "forward 30", "left", "right 45", "move 10 20"]}]}
+	var rec_problem := {"fn": "solve", "tests": [{"name": "calls", "args": [], "expect": null, "out": ["show", "rotate 45", "forward 30", "left", "right 45", "move 10 20"]}]}
 	var rec_code := "func solve():\n\tshow()\n\trotate(45)\n\tmove_forward(30)\n\tturn_left()\n\tturn_right(45)\n\tmove(10, 20)\n"
 	print("CASE recorders: ", JSON.stringify(runner.run_submission(rec_code, rec_problem)))
-	var frame_problem := {"tests": [{"name": "60 frames", "args": [], "expect": 100, "frames": 60}, {"name": "no frames", "args": [], "expect": 0, "frames": 0}]}
+	var frame_problem := {"fn": "solve", "tests": [{"name": "60 frames", "args": [], "expect": 100, "frames": 60}, {"name": "no frames", "args": [], "expect": 0, "frames": 0}]}
 	var frame_code := "var x = 0.0\n\nfunc _process(delta):\n\tx += 100 * delta\n\nfunc solve():\n\treturn round(x)\n"
 	print("CASE frames: ", JSON.stringify(runner.run_submission(frame_code, frame_problem)))
 	# Script harness: actions on the instance, then read a member variable.
@@ -190,7 +190,7 @@ func _check_problem(path: String, expected_id: String) -> Array[String]:
 	var p = JSON.parse_string(text)
 	if not p is Dictionary:
 		return ["file is not valid JSON"]
-	for field in ["id", "title", "concept", "difficulty", "prompt", "signature", "starter", "tests", "solution"]:
+	for field in ["id", "title", "concept", "difficulty", "prompt", "signature", "fn", "starter", "tests", "solution"]:
 		if not p.has(field):
 			errs.append("missing field: " + field)
 	if not p.has("hints") and not p.has("hint"):
@@ -208,6 +208,8 @@ func _check_problem(path: String, expected_id: String) -> Array[String]:
 		if not (t is Dictionary) or not t.has("args") or not (t["args"] is Array) or not t.has("expect"):
 			errs.append("each test needs \"args\" (array) and \"expect\"")
 			return errs
+	if not str(p["signature"]).contains("func " + str(p["fn"]) + "("):
+		errs.append("signature must declare func %s(" % p["fn"])
 	if not p.get("starter_broken", false) and not str(p["starter"]).contains(p["signature"]):
 		errs.append("starter should begin with the signature")
 	var sol := runner.run_submission(p["solution"], p)

@@ -3,9 +3,10 @@
   "title": "Return the parameter",
   "concept": "gq-return",
   "difficulty": 0,
-  "prompt": "Write `same`, a function that takes a number and returns it unchanged. `solve` should return same(n).",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\treturn 0",
+  "prompt": "Write `same`, a function that takes a number and returns it unchanged. `pass_through` should return same(n).",
+  "signature": "func pass_through(n):",
+  "fn": "pass_through",
+  "starter": "func pass_through(n):\n\treturn 0",
   "tests": [
     {
       "name": "4 comes back as 4",
@@ -39,7 +40,7 @@
       "what": "Ends the function and hands value back to whoever called it."
     }
   ],
-  "solution": "func solve(n):\n\treturn same(n)\n\nfunc same(value):\n\treturn value",
+  "solution": "func pass_through(n):\n\treturn same(n)\n\nfunc same(value):\n\treturn value",
   "require_methods": [
     "same"
   ],

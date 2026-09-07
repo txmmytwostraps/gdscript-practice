@@ -3,9 +3,10 @@
   "title": "Float parameter, float result",
   "concept": "gq-types",
   "difficulty": 0,
-  "prompt": "Write `half`, taking a float and returning a float that is half of it. solve returns half(x).",
-  "signature": "func solve(x: float) -> float:",
-  "starter": "func solve(x: float) -> float:\n\treturn x",
+  "prompt": "Write `half`, taking a float and returning a float that is half of it. halved_float returns half(x).",
+  "signature": "func halved_float(x: float) -> float:",
+  "fn": "halved_float",
+  "starter": "func halved_float(x: float) -> float:\n\treturn x",
   "tests": [
     {
       "name": "5 halves to 2.5",
@@ -36,7 +37,7 @@
       "what": "Return type hint: the function promises to return that type."
     }
   ],
-  "solution": "func solve(x: float) -> float:\n\treturn half(x)\n\nfunc half(value: float) -> float:\n\treturn value / 2",
+  "solution": "func halved_float(x: float) -> float:\n\treturn half(x)\n\nfunc half(value: float) -> float:\n\treturn value / 2",
   "allow_type_hints": true,
   "require_methods": [
     "half"

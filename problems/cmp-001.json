@@ -4,8 +4,9 @@
   "concept": "comparisons",
   "difficulty": 0,
   "prompt": "Return true if age is 18 or more, otherwise false.",
-  "signature": "func solve(age):",
-  "starter": "func solve(age):\n\treturn false",
+  "signature": "func is_old_enough(age):",
+  "fn": "is_old_enough",
+  "starter": "func is_old_enough(age):\n\treturn false",
   "tests": [
     {
       "name": "18 is old enough",
@@ -46,7 +47,7 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(age):\n\treturn age >= 18",
+  "solution": "func is_old_enough(age):\n\treturn age >= 18",
   "generator": [
     {
       "int": [

@@ -4,8 +4,9 @@
   "concept": "gq-conditions",
   "difficulty": 1,
   "prompt": "The robot reads a traffic light as text. Return \"stop\" for \"red\", \"go\" for \"green\", and \"wait\" for anything else.",
-  "signature": "func solve(colour):",
-  "starter": "func solve(colour):\n\treturn \"wait\"",
+  "signature": "func traffic_light(color):",
+  "fn": "traffic_light",
+  "starter": "func traffic_light(color):\n\treturn \"wait\"",
   "tests": [
     {
       "name": "red means stop",
@@ -29,7 +30,7 @@
       "expect": "wait"
     },
     {
-      "name": "Unknown colours wait",
+      "name": "Unknown colors wait",
       "args": [
         "blue"
       ],
@@ -38,7 +39,7 @@
   ],
   "hints": [
     "Text can be compared with == just like numbers.",
-    "`if colour == \"red\":`, `elif colour == \"green\":`, `else:`."
+    "`if color == \"red\":`, `elif color == \"green\":`, `else:`."
   ],
   "docs": [
     {
@@ -50,7 +51,7 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(colour):\n\tif colour == \"red\":\n\t\treturn \"stop\"\n\telif colour == \"green\":\n\t\treturn \"go\"\n\telse:\n\t\treturn \"wait\"",
+  "solution": "func traffic_light(color):\n\tif color == \"red\":\n\t\treturn \"stop\"\n\telif color == \"green\":\n\t\treturn \"go\"\n\telse:\n\t\treturn \"wait\"",
   "generator": [
     {
       "pick": [

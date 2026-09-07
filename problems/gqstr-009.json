@@ -4,8 +4,9 @@
   "concept": "gq-strings",
   "difficulty": 0,
   "prompt": "Return true if the text begins with the given prefix.",
-  "signature": "func solve(text, prefix):",
-  "starter": "func solve(text, prefix):\n\treturn false",
+  "signature": "func starts_with_prefix(text, prefix):",
+  "fn": "starts_with_prefix",
+  "starter": "func starts_with_prefix(text, prefix):\n\treturn false",
   "tests": [
     {
       "name": "A web address starts with https",
@@ -42,7 +43,7 @@
       "what": "Returns true if the text starts with prefix."
     }
   ],
-  "solution": "func solve(text, prefix):\n\treturn text.begins_with(prefix)",
+  "solution": "func starts_with_prefix(text, prefix):\n\treturn text.begins_with(prefix)",
   "generator": [
     {
       "pick": [

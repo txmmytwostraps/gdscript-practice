@@ -4,8 +4,9 @@
   "concept": "gq-readable",
   "difficulty": 0,
   "prompt": "The 0.2 here is a 20% tax. Name it `TAX_RATE` so the next reader does not have to guess.",
-  "signature": "func solve(price) -> float:",
-  "starter": "func solve(price) -> float:\n\treturn price + price * 0.2",
+  "signature": "func price_with_tax(price) -> float:",
+  "fn": "price_with_tax",
+  "starter": "func price_with_tax(price) -> float:\n\treturn price + price * 0.2",
   "require_names": [
     "TAX_RATE"
   ],
@@ -46,5 +47,5 @@
       "what": "Declares a named value that never changes. Written in CAPITALS by convention."
     }
   ],
-  "solution": "func solve(price) -> float:\n\tconst TAX_RATE = 0.2\n\treturn price + price * TAX_RATE"
+  "solution": "func price_with_tax(price) -> float:\n\tconst TAX_RATE = 0.2\n\treturn price + price * TAX_RATE"
 }

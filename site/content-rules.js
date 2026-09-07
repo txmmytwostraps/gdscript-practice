@@ -4,13 +4,14 @@
 export const CONTENT_RULES = `- Follow the GDQuest course "Learn GDScript From Zero" in lesson order: a problem may only use concepts from its own lesson or earlier ones.
 - One recurring character: a robot with health, level and max_health. Prompts give a goal with a little context, not a bare instruction.
 - Every test has a plain-English name saying what is verified (e.g. "Exactly 20 leaves 0", "The message is printed").
-- No type hints anywhere (no "x: int", no ":=", no "-> int"), except that solve may keep its return type where it matters.
+- A problem with no inputs is a function called run(), as in the course; a problem with inputs is a function named after what it does (double, take_hit, is_even), and the goal says so.
+- No type hints anywhere (no "x: int", no ":=", no "-> int"), except that the tested function may keep its return type where it matters.
 - Starters extend existing code where that fits; a fix-the-error starter must not compile, a fix-the-bug starter runs but gives wrong answers.
 - 2 to 4 staged hints that nudge without giving the answer; the last hint may name the exact line to write.
 - A "docs" list of the built-ins the problem uses, each with a one-line "what".
 - Backticks around code words; write "the number \`20\`" when a literal is meant.
 - Print-style problems check printed lines; return-style problems check the returned value; problems that name a variable use "require_names" and "once_only" strictly.
-- Ids are <prefix>-<nnn>, one JSON file per problem, with fields: id, title, concept, difficulty (0 novice, 1 beginner), prompt, signature, starter, tests[{name,args,expect,out?}], hints[], docs[], solution.`;
+- Ids are <prefix>-<nnn>, one JSON file per problem, with fields: id, title, concept, difficulty (0 novice, 1 beginner), prompt, signature, fn (the function the tests call), starter, tests[{name,args,expect,out?}], hints[], docs[], solution.`;
 
 export function requestPrompt({ title, concept, lesson, titles, batch = 10 }) {
   return [

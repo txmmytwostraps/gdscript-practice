@@ -4,8 +4,9 @@
   "concept": "gq-readable",
   "difficulty": 0,
   "prompt": "The robot begins with 3 lives. This returns how many are left. Name the 3 `STARTING_LIVES`.",
-  "signature": "func solve(lives_lost):",
-  "starter": "func solve(lives_lost):\n\treturn 3 - lives_lost",
+  "signature": "func lives_left(lives_lost):",
+  "fn": "lives_left",
+  "starter": "func lives_left(lives_lost):\n\treturn 3 - lives_lost",
   "require_names": [
     "STARTING_LIVES"
   ],
@@ -45,5 +46,5 @@
       "what": "Declares a named value that never changes. Written in CAPITALS by convention."
     }
   ],
-  "solution": "func solve(lives_lost):\n\tconst STARTING_LIVES = 3\n\treturn STARTING_LIVES - lives_lost"
+  "solution": "func lives_left(lives_lost):\n\tconst STARTING_LIVES = 3\n\treturn STARTING_LIVES - lives_lost"
 }

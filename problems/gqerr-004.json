@@ -4,8 +4,9 @@
   "concept": "gq-errors",
   "difficulty": 0,
   "prompt": "The robot tries to print, but the function name is spelt wrong, so Godot cannot find it. Fix the spelling so it prints \"Scanning\".",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tprnt(\"Scanning\")",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tprnt(\"Scanning\")",
   "starter_broken": true,
   "tests": [
     {
@@ -32,5 +33,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve():\n\tprint(\"Scanning\")"
+  "solution": "func run():\n\tprint(\"Scanning\")"
 }

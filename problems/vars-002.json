@@ -3,9 +3,10 @@
   "title": "Store and return a greeting",
   "concept": "variables",
   "difficulty": 0,
-  "prompt": "Inside `solve`, create a variable named `greeting` that holds the text \"hello\", then return that variable.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\treturn \"\"",
+  "prompt": "Inside `stored_greeting`, create a variable named `greeting` that holds the text \"hello\", then return that variable.",
+  "signature": "func stored_greeting():",
+  "fn": "stored_greeting",
+  "starter": "func stored_greeting():\n\treturn \"\"",
   "require_names": [
     "greeting"
   ],
@@ -21,5 +22,5 @@
     "`var greeting = \"hello\"`, then `return greeting`."
   ],
   "docs": [],
-  "solution": "func solve():\n\tvar greeting = \"hello\"\n\treturn greeting"
+  "solution": "func stored_greeting():\n\tvar greeting = \"hello\"\n\treturn greeting"
 }

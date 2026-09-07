@@ -4,8 +4,9 @@
   "concept": "gq-conditions",
   "difficulty": 0,
   "prompt": "Return \"same\" if a and b are equal, otherwise \"different\".",
-  "signature": "func solve(a, b):",
-  "starter": "func solve(a, b):\n\treturn \"same\"",
+  "signature": "func same_or_different(a, b):",
+  "fn": "same_or_different",
+  "starter": "func same_or_different(a, b):\n\treturn \"same\"",
   "tests": [
     {
       "name": "3 and 3 are the same",
@@ -46,7 +47,7 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(a, b):\n\tif a == b:\n\t\treturn \"same\"\n\telse:\n\t\treturn \"different\"",
+  "solution": "func same_or_different(a, b):\n\tif a == b:\n\t\treturn \"same\"\n\telse:\n\t\treturn \"different\"",
   "generator": [
     {
       "int": [

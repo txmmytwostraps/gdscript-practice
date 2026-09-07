@@ -3,9 +3,10 @@
   "title": "Pick up coins",
   "concept": "gq-variables",
   "difficulty": 0,
-  "prompt": "The robot's `coins` start at whatever n is. It picks up 5 more. Add the number `5` to coins using `+=`, then return coins. solve(10) is 15.",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\tvar coins = n\n\treturn coins",
+  "prompt": "The robot's `coins` start at whatever n is. It picks up 5 more. Add the number `5` to coins using `+=`, then return coins. pick_up_coins(10) is 15.",
+  "signature": "func pick_up_coins(n):",
+  "fn": "pick_up_coins",
+  "starter": "func pick_up_coins(n):\n\tvar coins = n\n\treturn coins",
   "tests": [
     {
       "name": "10 coins plus 5 is 15",
@@ -35,7 +36,7 @@
     "Put that line between the var line and the return."
   ],
   "docs": [],
-  "solution": "func solve(n):\n\tvar coins = n\n\tcoins += 5\n\treturn coins",
+  "solution": "func pick_up_coins(n):\n\tvar coins = n\n\tcoins += 5\n\treturn coins",
   "generator": [
     {
       "int": [

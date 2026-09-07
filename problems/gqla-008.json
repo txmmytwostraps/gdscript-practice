@@ -4,8 +4,9 @@
   "concept": "gq-looparrays",
   "difficulty": 0,
   "prompt": "Return how many numbers in the array are even.",
-  "signature": "func solve(nums):",
-  "starter": "func solve(nums):\n\treturn 0",
+  "signature": "func count_evens(nums):",
+  "fn": "count_evens",
+  "starter": "func count_evens(nums):\n\treturn 0",
   "tests": [
     {
       "name": "Two evens",
@@ -57,7 +58,7 @@
       "what": "The remainder after dividing a by b."
     }
   ],
-  "solution": "func solve(nums):\n\tvar count = 0\n\tfor n in nums:\n\t\tif n % 2 == 0:\n\t\t\tcount += 1\n\treturn count",
+  "solution": "func count_evens(nums):\n\tvar count = 0\n\tfor n in nums:\n\t\tif n % 2 == 0:\n\t\t\tcount += 1\n\treturn count",
   "generator": [
     {
       "array": {

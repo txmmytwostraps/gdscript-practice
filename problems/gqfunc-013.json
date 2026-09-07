@@ -3,9 +3,10 @@
   "title": "The missing call",
   "concept": "gq-functions",
   "difficulty": 0,
-  "prompt": "The robot has a `charge` function that prints \"Charging\", but it never runs because nothing calls it. Make `solve` call it, so the output is \"Charging\".",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass\n\nfunc charge():\n\tprint(\"Charging\")",
+  "prompt": "The robot has a `charge` function that prints \"Charging\", but it never runs because nothing calls it. Make `run` call it, so the output is \"Charging\".",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass\n\nfunc charge():\n\tprint(\"Charging\")",
   "require_methods": [
     "charge"
   ],
@@ -21,7 +22,7 @@
   ],
   "hints": [
     "Defining a function does not run it. Something has to call it.",
-    "Replace pass in solve with `charge()`."
+    "Replace pass in run with `charge()`."
   ],
   "docs": [
     {
@@ -29,5 +30,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve():\n\tcharge()\n\nfunc charge():\n\tprint(\"Charging\")"
+  "solution": "func run():\n\tcharge()\n\nfunc charge():\n\tprint(\"Charging\")"
 }

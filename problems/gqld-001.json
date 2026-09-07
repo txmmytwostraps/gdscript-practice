@@ -4,8 +4,9 @@
   "concept": "gq-loopdicts",
   "difficulty": 0,
   "prompt": "The inventory is a dictionary of item names to amounts. Print each item name on its own line, in order.",
-  "signature": "func solve(inventory):",
-  "starter": "func solve(inventory):\n\tpass",
+  "signature": "func print_keys(inventory):",
+  "fn": "print_keys",
+  "starter": "func print_keys(inventory):\n\tpass",
   "tests": [
     {
       "name": "Two names",
@@ -44,5 +45,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve(inventory):\n\tfor item in inventory:\n\t\tprint(item)"
+  "solution": "func print_keys(inventory):\n\tfor item in inventory:\n\t\tprint(item)"
 }

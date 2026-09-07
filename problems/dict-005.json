@@ -4,8 +4,9 @@
   "concept": "dictionaries",
   "difficulty": 1,
   "prompt": "Return an array of every key whose value equals value, in the order they appear in the dictionary.",
-  "signature": "func solve(data, value):",
-  "starter": "func solve(data, value):\n\treturn []",
+  "signature": "func keys_with_value(data, value):",
+  "fn": "keys_with_value",
+  "starter": "func keys_with_value(data, value):\n\treturn []",
   "tests": [
     {
       "name": "a and c hold 1",
@@ -57,7 +58,7 @@
       "what": "Runs once per key; data[key] gives its value."
     }
   ],
-  "solution": "func solve(data, value):\n\tvar result = []\n\tfor key in data:\n\t\tif data[key] == value:\n\t\t\tresult.append(key)\n\treturn result",
+  "solution": "func keys_with_value(data, value):\n\tvar result = []\n\tfor key in data:\n\t\tif data[key] == value:\n\t\t\tresult.append(key)\n\treturn result",
   "generator": [
     {
       "pick": [

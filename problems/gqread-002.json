@@ -4,8 +4,9 @@
   "concept": "gq-readable",
   "difficulty": 0,
   "prompt": "980 is how fast the robot falls. Name it `GRAVITY` and use the name in the calculation.",
-  "signature": "func solve(velocity, seconds) -> float:",
-  "starter": "func solve(velocity, seconds) -> float:\n\treturn velocity + 980 * seconds",
+  "signature": "func velocity_after_fall(velocity, seconds) -> float:",
+  "fn": "velocity_after_fall",
+  "starter": "func velocity_after_fall(velocity, seconds) -> float:\n\treturn velocity + 980 * seconds",
   "require_names": [
     "GRAVITY"
   ],
@@ -49,5 +50,5 @@
       "what": "Declares a named value that never changes. Written in CAPITALS by convention."
     }
   ],
-  "solution": "func solve(velocity, seconds) -> float:\n\tconst GRAVITY = 980\n\treturn velocity + GRAVITY * seconds"
+  "solution": "func velocity_after_fall(velocity, seconds) -> float:\n\tconst GRAVITY = 980\n\treturn velocity + GRAVITY * seconds"
 }

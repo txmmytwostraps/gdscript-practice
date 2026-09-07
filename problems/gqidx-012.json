@@ -4,8 +4,9 @@
   "concept": "gq-indices",
   "difficulty": 1,
   "prompt": "Return the item at position i, or \"none\" if i is not a valid position (negative or too big).",
-  "signature": "func solve(items, i):",
-  "starter": "func solve(items, i):\n\treturn items[i]",
+  "signature": "func slot_or_none(items, i):",
+  "fn": "slot_or_none",
+  "starter": "func slot_or_none(items, i):\n\treturn items[i]",
   "tests": [
     {
       "name": "Valid position",
@@ -55,7 +56,7 @@
       "what": "Returns how many items the array holds."
     }
   ],
-  "solution": "func solve(items, i):\n\tif i < 0 or i >= items.size():\n\t\treturn \"none\"\n\treturn items[i]",
+  "solution": "func slot_or_none(items, i):\n\tif i < 0 or i >= items.size():\n\t\treturn \"none\"\n\treturn items[i]",
   "generator": [
     {
       "array": {

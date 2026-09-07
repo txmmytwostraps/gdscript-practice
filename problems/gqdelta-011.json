@@ -4,8 +4,9 @@
   "concept": "gq-delta",
   "difficulty": 0,
   "prompt": "Return the total distance the robot covers at speed over a number of frames that each last delta seconds. 100 per second for 50 frames of 0.02 s is 100.",
-  "signature": "func solve(speed, delta, frames) -> float:",
-  "starter": "func solve(speed, delta, frames) -> float:\n\treturn speed * delta",
+  "signature": "func distance_over_frames(speed, delta, frames) -> float:",
+  "fn": "distance_over_frames",
+  "starter": "func distance_over_frames(speed, delta, frames) -> float:\n\treturn speed * delta",
   "tests": [
     {
       "name": "50 frames of 0.02 s at 100 is 100",
@@ -40,7 +41,7 @@
     "`return speed * delta * frames`"
   ],
   "docs": [],
-  "solution": "func solve(speed, delta, frames) -> float:\n\treturn speed * delta * frames",
+  "solution": "func distance_over_frames(speed, delta, frames) -> float:\n\treturn speed * delta * frames",
   "generator": [
     {
       "int": [

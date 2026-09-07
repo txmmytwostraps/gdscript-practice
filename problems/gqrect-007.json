@@ -4,8 +4,9 @@
   "concept": "gq-rect",
   "difficulty": 0,
   "prompt": "Return the rectangle shifted by offset. Its size does not change.",
-  "signature": "func solve(r, offset) -> Rect2:",
-  "starter": "func solve(r, offset) -> Rect2:\n\treturn r",
+  "signature": "func move_rect(r, offset) -> Rect2:",
+  "fn": "move_rect",
+  "starter": "func move_rect(r, offset) -> Rect2:\n\treturn r",
   "tests": [
     {
       "name": "Shift by (5, -5)",
@@ -76,7 +77,7 @@
       "what": "The top-left corner, the width and height, and the bottom-right corner, all Vector2."
     }
   ],
-  "solution": "func solve(r, offset) -> Rect2:\n\treturn Rect2(r.position + offset, r.size)",
+  "solution": "func move_rect(r, offset) -> Rect2:\n\treturn Rect2(r.position + offset, r.size)",
   "generator": [
     {
       "rect": [

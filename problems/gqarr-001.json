@@ -4,8 +4,9 @@
   "concept": "gq-arrays",
   "difficulty": 0,
   "prompt": "The robot carries three part numbers. Return an array holding 10, 20 and 30, in that order.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\treturn []",
+  "signature": "func make_inventory():",
+  "fn": "make_inventory",
+  "starter": "func make_inventory():\n\treturn []",
   "tests": [
     {
       "name": "Returns [10, 20, 30]",
@@ -22,5 +23,5 @@
     "`return [10, 20, 30]`"
   ],
   "docs": [],
-  "solution": "func solve():\n\treturn [10, 20, 30]"
+  "solution": "func make_inventory():\n\treturn [10, 20, 30]"
 }

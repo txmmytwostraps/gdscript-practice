@@ -3,9 +3,10 @@
   "title": "Critical hit",
   "concept": "gq-multiply",
   "difficulty": 0,
-  "prompt": "A critical hit does 1.5 times the damage. Return damage times 1.5. solve(10) is 15.0.",
-  "signature": "func solve(damage) -> float:",
-  "starter": "func solve(damage) -> float:\n\treturn damage",
+  "prompt": "A critical hit does 1.5 times the damage. Return damage times 1.5. critical_hit(10) is 15.0.",
+  "signature": "func critical_hit(damage) -> float:",
+  "fn": "critical_hit",
+  "starter": "func critical_hit(damage) -> float:\n\treturn damage",
   "tests": [
     {
       "name": "10 crits for 15",
@@ -39,7 +40,7 @@
       "what": "Multiplies two numbers. * with a float keeps decimals."
     }
   ],
-  "solution": "func solve(damage) -> float:\n\treturn damage * 1.5",
+  "solution": "func critical_hit(damage) -> float:\n\treturn damage * 1.5",
   "generator": [
     {
       "int": [

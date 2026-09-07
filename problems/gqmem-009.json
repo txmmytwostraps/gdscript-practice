@@ -3,9 +3,10 @@
   "title": "Report the members",
   "concept": "gq-members",
   "difficulty": 0,
-  "prompt": "Members `health` at 80 and `level` at 2 exist. Write `report`, which prints health and then level, and call it from `solve`.",
-  "signature": "func solve():",
-  "starter": "var health = 80\nvar level = 2\n\nfunc solve():\n\tpass",
+  "prompt": "Members `health` at 80 and `level` at 2 exist. Write `report`, which prints health and then level, and call it from `run`.",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "var health = 80\nvar level = 2\n\nfunc run():\n\tpass",
   "tests": [
     {
       "name": "Health is printed, then level",
@@ -31,7 +32,7 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "var health = 80\nvar level = 2\n\nfunc solve():\n\treport()\n\nfunc report():\n\tprint(health)\n\tprint(level)",
+  "solution": "var health = 80\nvar level = 2\n\nfunc run():\n\treport()\n\nfunc report():\n\tprint(health)\n\tprint(level)",
   "require_methods": [
     "report"
   ]

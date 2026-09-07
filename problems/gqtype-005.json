@@ -3,9 +3,10 @@
   "title": "Fix the wrong hint",
   "concept": "gq-types",
   "difficulty": 1,
-  "prompt": "The starter hints `half` as an int, so 7 / 2.0 is cut to 3 and the test fails. Change the hint to float so solve returns 3.5.",
-  "signature": "func solve() -> float:",
-  "starter": "func solve() -> float:\n\tvar half: int = 7 / 2.0\n\treturn half",
+  "prompt": "The starter hints `half` as an int, so 7 / 2.0 is cut to 3 and the test fails. Change the hint to float so half_of_seven returns 3.5.",
+  "signature": "func half_of_seven() -> float:",
+  "fn": "half_of_seven",
+  "starter": "func half_of_seven() -> float:\n\tvar half: int = 7 / 2.0\n\treturn half",
   "tests": [
     {
       "name": "Half of 7 is 3.5",
@@ -23,6 +24,6 @@
       "what": "Declares a variable that can only hold that type. Also float, String, bool, Vector2, Array."
     }
   ],
-  "solution": "func solve() -> float:\n\tvar half: float = 7 / 2.0\n\treturn half",
+  "solution": "func half_of_seven() -> float:\n\tvar half: float = 7 / 2.0\n\treturn half",
   "allow_type_hints": true
 }

@@ -3,9 +3,10 @@
   "title": "Two helpers, one job each",
   "concept": "gq-functions",
   "difficulty": 0,
-  "prompt": "The robot introduces itself in two parts. Write `say_name`, which prints \"Robo\", and `say_model`, which prints \"RX-7\". Call both from `solve`, name first.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass",
+  "prompt": "The robot introduces itself in two parts. Write `say_name`, which prints \"Robo\", and `say_model`, which prints \"RX-7\". Call both from `run`, name first.",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass",
   "require_methods": [
     "say_name",
     "say_model"
@@ -22,8 +23,8 @@
     }
   ],
   "hints": [
-    "Each helper does one small thing; solve just lines them up.",
-    "Two definitions with one print each, then two calls in solve."
+    "Each helper does one small thing; run just lines them up.",
+    "Two definitions with one print each, then two calls in run."
   ],
   "docs": [
     {
@@ -31,5 +32,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve():\n\tsay_name()\n\tsay_model()\n\nfunc say_name():\n\tprint(\"Robo\")\n\nfunc say_model():\n\tprint(\"RX-7\")"
+  "solution": "func run():\n\tsay_name()\n\tsay_model()\n\nfunc say_name():\n\tprint(\"Robo\")\n\nfunc say_model():\n\tprint(\"RX-7\")"
 }

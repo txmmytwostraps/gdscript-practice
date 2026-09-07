@@ -3,9 +3,10 @@
   "title": "Add and print",
   "concept": "gq-parameters",
   "difficulty": 0,
-  "prompt": "Write `print_sum`, which takes two numbers and prints them added together. `solve` receives a and b; call print_sum with them, so solve(2, 3) prints 5.",
-  "signature": "func solve(a, b):",
-  "starter": "func solve(a, b):\n\tpass",
+  "prompt": "Write `print_sum`, which takes two numbers and prints them added together. `report_sum` receives a and b; call print_sum with them, so report_sum(2, 3) prints 5.",
+  "signature": "func report_sum(a, b):",
+  "fn": "report_sum",
+  "starter": "func report_sum(a, b):\n\tpass",
   "require_methods": [
     "print_sum"
   ],
@@ -47,7 +48,7 @@
   "hints": [
     "Two parameters are separated by a comma, both in the definition and in the call.",
     "`func print_sum(x, y):` printing `x + y`.",
-    "solve calls `print_sum(a, b)`."
+    "report_sum calls `print_sum(a, b)`."
   ],
   "docs": [
     {
@@ -55,5 +56,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve(a, b):\n\tprint_sum(a, b)\n\nfunc print_sum(x, y):\n\tprint(x + y)"
+  "solution": "func report_sum(a, b):\n\tprint_sum(a, b)\n\nfunc print_sum(x, y):\n\tprint(x + y)"
 }

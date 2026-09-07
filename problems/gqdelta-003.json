@@ -4,8 +4,9 @@
   "concept": "gq-delta",
   "difficulty": 0,
   "prompt": "The robot jumps. It has a vertical position y and a vertical speed vy in pixels per second, where down is positive. Return the new y after one frame. The starter forgets delta and moves a whole second per frame.",
-  "signature": "func solve(y, vy, delta) -> float:",
-  "starter": "func solve(y, vy, delta) -> float:\n\treturn y + vy",
+  "signature": "func new_y(y, vy, delta) -> float:",
+  "fn": "new_y",
+  "starter": "func new_y(y, vy, delta) -> float:\n\treturn y + vy",
   "tests": [
     {
       "name": "From 0 at 100 down for 0.1 s is 10",
@@ -40,7 +41,7 @@
     "`return y + vy * delta`"
   ],
   "docs": [],
-  "solution": "func solve(y, vy, delta) -> float:\n\treturn y + vy * delta",
+  "solution": "func new_y(y, vy, delta) -> float:\n\treturn y + vy * delta",
   "generator": [
     {
       "int": [

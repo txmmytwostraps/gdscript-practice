@@ -4,8 +4,9 @@
   "concept": "gq-valuetypes",
   "difficulty": 1,
   "prompt": "Return the fraction done as a percentage string with no decimals: 0.5 gives \"50%\", 0.25 gives \"25%\".",
-  "signature": "func solve(fraction):",
-  "starter": "func solve(fraction):\n\treturn \"%\"",
+  "signature": "func percent_text(fraction):",
+  "fn": "percent_text",
+  "starter": "func percent_text(fraction):\n\treturn \"%\"",
   "tests": [
     {
       "name": "0.5 is 50%",
@@ -47,7 +48,7 @@
       "what": "Joins two strings. Joining text to a number is an error; convert first."
     }
   ],
-  "solution": "func solve(fraction):\n\treturn str(int(fraction * 100)) + \"%\"",
+  "solution": "func percent_text(fraction):\n\treturn str(int(fraction * 100)) + \"%\"",
   "generator": [
     {
       "float": [

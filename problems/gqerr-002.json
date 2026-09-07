@@ -4,8 +4,9 @@
   "concept": "gq-errors",
   "difficulty": 0,
   "prompt": "A function's first line must end with a colon. This one does not, so nothing runs. Fix it so the robot prints \"Ready\".",
-  "signature": "func solve():",
-  "starter": "func solve()\n\tprint(\"Ready\")",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run()\n\tprint(\"Ready\")",
   "starter_broken": true,
   "tests": [
     {
@@ -20,7 +21,7 @@
   "hints": [
     "Lines that open a block, like func and if, end with a colon.",
     "Look at the very first line.",
-    "Add : after the closing bracket of solve()."
+    "Add : after the closing bracket of run()."
   ],
   "docs": [
     {
@@ -32,5 +33,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve():\n\tprint(\"Ready\")"
+  "solution": "func run():\n\tprint(\"Ready\")"
 }

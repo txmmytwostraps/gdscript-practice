@@ -3,9 +3,10 @@
   "title": "Order matters",
   "concept": "gq-functions",
   "difficulty": 0,
-  "prompt": "The robot lands before it takes off, which is backwards. Fix `solve` so the output is \"Taking off\" and then \"Landing\". Do not change the two helpers.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tland()\n\ttake_off()\n\nfunc take_off():\n\tprint(\"Taking off\")\n\nfunc land():\n\tprint(\"Landing\")",
+  "prompt": "The robot lands before it takes off, which is backwards. Fix `run` so the output is \"Taking off\" and then \"Landing\". Do not change the two helpers.",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tland()\n\ttake_off()\n\nfunc take_off():\n\tprint(\"Taking off\")\n\nfunc land():\n\tprint(\"Landing\")",
   "require_methods": [
     "take_off",
     "land"
@@ -22,8 +23,8 @@
     }
   ],
   "hints": [
-    "The helpers are fine; only the order of the two calls in solve is wrong.",
-    "Swap the two lines inside solve."
+    "The helpers are fine; only the order of the two calls in run is wrong.",
+    "Swap the two lines inside run."
   ],
   "docs": [
     {
@@ -31,5 +32,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve():\n\ttake_off()\n\tland()\n\nfunc take_off():\n\tprint(\"Taking off\")\n\nfunc land():\n\tprint(\"Landing\")"
+  "solution": "func run():\n\ttake_off()\n\tland()\n\nfunc take_off():\n\tprint(\"Taking off\")\n\nfunc land():\n\tprint(\"Landing\")"
 }

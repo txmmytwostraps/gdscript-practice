@@ -3,9 +3,10 @@
   "title": "Squares, three times",
   "concept": "gq-parameters",
   "difficulty": 0,
-  "prompt": "Write `print_square`, which takes a number and prints it multiplied by itself. In `solve`, call it with n, then n + 1, then n + 2, so solve(1) prints 1, 4, 9.",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\tpass",
+  "prompt": "Write `print_square`, which takes a number and prints it multiplied by itself. In `three_squares`, call it with n, then n + 1, then n + 2, so three_squares(1) prints 1, 4, 9.",
+  "signature": "func three_squares(n):",
+  "fn": "three_squares",
+  "starter": "func three_squares(n):\n\tpass",
   "require_methods": [
     "print_square"
   ],
@@ -46,5 +47,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve(n):\n\tprint_square(n)\n\tprint_square(n + 1)\n\tprint_square(n + 2)\n\nfunc print_square(x):\n\tprint(x * x)"
+  "solution": "func three_squares(n):\n\tprint_square(n)\n\tprint_square(n + 1)\n\tprint_square(n + 2)\n\nfunc print_square(x):\n\tprint(x * x)"
 }

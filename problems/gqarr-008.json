@@ -4,8 +4,9 @@
   "concept": "gq-arrays",
   "difficulty": 0,
   "prompt": "Return true if the robot's inventory has no items.",
-  "signature": "func solve(items):",
-  "starter": "func solve(items):\n\treturn false",
+  "signature": "func is_empty(items):",
+  "fn": "is_empty",
+  "starter": "func is_empty(items):\n\treturn false",
   "tests": [
     {
       "name": "Empty is true",
@@ -48,7 +49,7 @@
       "what": "Returns how many items the array holds."
     }
   ],
-  "solution": "func solve(items):\n\treturn items.is_empty()",
+  "solution": "func is_empty(items):\n\treturn items.is_empty()",
   "generator": [
     {
       "array": {

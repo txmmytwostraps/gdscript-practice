@@ -4,8 +4,9 @@
   "concept": "gq-vectors",
   "difficulty": 0,
   "prompt": "Return the velocity of the robot moving straight up at the given speed. Godot has ready-made direction vectors, and up means a negative y on screen. Speed 10 gives (0, -10).",
-  "signature": "func solve(speed) -> Vector2:",
-  "starter": "func solve(speed) -> Vector2:\n\treturn Vector2.ZERO",
+  "signature": "func upward_velocity(speed) -> Vector2:",
+  "fn": "upward_velocity",
+  "starter": "func upward_velocity(speed) -> Vector2:\n\treturn Vector2.ZERO",
   "tests": [
     {
       "name": "Speed 10 is (0, -10)",
@@ -58,7 +59,7 @@
       "what": "Vectors add and subtract part by part, and scale by a plain number."
     }
   ],
-  "solution": "func solve(speed) -> Vector2:\n\treturn Vector2.UP * speed",
+  "solution": "func upward_velocity(speed) -> Vector2:\n\treturn Vector2.UP * speed",
   "generator": [
     {
       "float": [

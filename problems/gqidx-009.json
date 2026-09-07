@@ -4,8 +4,9 @@
   "concept": "gq-indices",
   "difficulty": 1,
   "prompt": "Print each item with its position in front, using a counting loop: \"0 bolt\", \"1 gear\".",
-  "signature": "func solve(items):",
-  "starter": "func solve(items):\n\tpass",
+  "signature": "func print_by_position(items):",
+  "fn": "print_by_position",
+  "starter": "func print_by_position(items):\n\tpass",
   "tests": [
     {
       "name": "Two items with positions",
@@ -60,5 +61,5 @@
       "what": "Returns the value as text."
     }
   ],
-  "solution": "func solve(items):\n\tfor i in range(items.size()):\n\t\tprint(str(i) + \" \" + items[i])"
+  "solution": "func print_by_position(items):\n\tfor i in range(items.size()):\n\t\tprint(str(i) + \" \" + items[i])"
 }

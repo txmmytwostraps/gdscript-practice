@@ -4,8 +4,9 @@
   "concept": "strings",
   "difficulty": 1,
   "prompt": "Return text repeated n times. (\"ab\", 3) gives \"ababab\"; zero times gives an empty string.",
-  "signature": "func solve(text, n):",
-  "starter": "func solve(text, n):\n\treturn text",
+  "signature": "func repeat_text(text, n):",
+  "fn": "repeat_text",
+  "starter": "func repeat_text(text, n):\n\treturn text",
   "tests": [
     {
       "name": "ab three times",
@@ -54,7 +55,7 @@
       "what": "Runs the indented lines once per character, with c holding each one."
     }
   ],
-  "solution": "func solve(text, n):\n\tvar result = \"\"\n\tfor i in range(n):\n\t\tresult += text\n\treturn result",
+  "solution": "func repeat_text(text, n):\n\tvar result = \"\"\n\tfor i in range(n):\n\t\tresult += text\n\treturn result",
   "generator": [
     {
       "pick": [

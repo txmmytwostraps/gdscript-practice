@@ -4,8 +4,9 @@
   "concept": "comparisons",
   "difficulty": 0,
   "prompt": "Return true if a and b are different numbers, false if they are the same.",
-  "signature": "func solve(a, b):",
-  "starter": "func solve(a, b):\n\treturn false",
+  "signature": "func is_different(a, b):",
+  "fn": "is_different",
+  "starter": "func is_different(a, b):\n\treturn false",
   "tests": [
     {
       "name": "1 and 2 differ",
@@ -50,7 +51,7 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(a, b):\n\treturn a != b",
+  "solution": "func is_different(a, b):\n\treturn a != b",
   "generator": [
     {
       "int": [

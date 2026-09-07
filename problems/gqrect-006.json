@@ -1,14 +1,15 @@
 {
   "id": "gqrect-006",
-  "title": "Rect around a centre",
+  "title": "Rect around a center",
   "concept": "gq-rect",
   "difficulty": 1,
-  "prompt": "Return a Rect2 of the given size whose middle is at center. The starter puts the corner at the centre instead.",
-  "signature": "func solve(center, size) -> Rect2:",
-  "starter": "func solve(center, size) -> Rect2:\n\treturn Rect2(center, size)",
+  "prompt": "Return a Rect2 of the given size whose middle is at center. The starter puts the corner at the center instead.",
+  "signature": "func rect_around(center, size) -> Rect2:",
+  "fn": "rect_around",
+  "starter": "func rect_around(center, size) -> Rect2:\n\treturn Rect2(center, size)",
   "tests": [
     {
-      "name": "Centre (5, 5) size 10 starts at (0, 0)",
+      "name": "Center (5, 5) size 10 starts at (0, 0)",
       "args": [
         {
           "$v2": [
@@ -33,7 +34,7 @@
       }
     },
     {
-      "name": "Centre (25, 40) size (30, 40)",
+      "name": "Center (25, 40) size (30, 40)",
       "args": [
         {
           "$v2": [
@@ -72,7 +73,7 @@
       "what": "Vectors add and subtract part by part, and scale by a plain number."
     }
   ],
-  "solution": "func solve(center, size) -> Rect2:\n\treturn Rect2(center - size / 2, size)",
+  "solution": "func rect_around(center, size) -> Rect2:\n\treturn Rect2(center - size / 2, size)",
   "generator": [
     {
       "v2": [

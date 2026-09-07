@@ -3,9 +3,10 @@
   "title": "Countdown in the loop",
   "concept": "gq-loop",
   "difficulty": 1,
-  "prompt": "A member `time_left` starts at 3.0. In `_process`, subtract delta each frame. After 60 frames solve returns time_left rounded, which is 2.",
-  "signature": "func solve():",
-  "starter": "var time_left = 3.0\n\nfunc solve():\n\treturn round(time_left)",
+  "prompt": "A member `time_left` starts at 3.0. In `_process`, subtract delta each frame. After 60 frames time_after_frames returns time_left rounded, which is 2.",
+  "signature": "func time_after_frames():",
+  "fn": "time_after_frames",
+  "starter": "var time_left = 3.0\n\nfunc time_after_frames():\n\treturn round(time_left)",
   "tests": [
     {
       "name": "After 1 second, 2 left",
@@ -44,7 +45,7 @@
       "what": "Returns the nearest whole number as a float."
     }
   ],
-  "solution": "var time_left = 3.0\n\nfunc _process(delta):\n\ttime_left -= delta\n\nfunc solve():\n\treturn round(time_left)",
+  "solution": "var time_left = 3.0\n\nfunc _process(delta):\n\ttime_left -= delta\n\nfunc time_after_frames():\n\treturn round(time_left)",
   "require_methods": [
     "_process"
   ]

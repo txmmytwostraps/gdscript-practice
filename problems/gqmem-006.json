@@ -3,9 +3,10 @@
   "title": "Level up",
   "concept": "gq-members",
   "difficulty": 0,
-  "prompt": "The robot's `level` is a member starting at 1. Write `level_up`, which adds 1 to level. In `solve`, call it twice. Then return level, which is 3.",
-  "signature": "func solve():",
-  "starter": "var level = 1\n\nfunc solve():\n\treturn level",
+  "prompt": "The robot's `level` is a member starting at 1. Write `level_up`, which adds 1 to level. In `level_after_two`, call it twice. Then return level, which is 3.",
+  "signature": "func level_after_two():",
+  "fn": "level_after_two",
+  "starter": "var level = 1\n\nfunc level_after_two():\n\treturn level",
   "tests": [
     {
       "name": "Two level-ups from 1 is 3",
@@ -16,7 +17,7 @@
   "hints": [
     "The helper needs no parameter; it always adds one.",
     "`func level_up():` with `level += 1`.",
-    "Call it twice in solve."
+    "Call it twice in level_after_two."
   ],
   "docs": [
     {
@@ -24,7 +25,7 @@
       "what": "A variable at the top of the script (a member variable): every function in the script can read and change it."
     }
   ],
-  "solution": "var level = 1\n\nfunc solve():\n\tlevel_up()\n\tlevel_up()\n\treturn level\n\nfunc level_up():\n\tlevel += 1",
+  "solution": "var level = 1\n\nfunc level_after_two():\n\tlevel_up()\n\tlevel_up()\n\treturn level\n\nfunc level_up():\n\tlevel += 1",
   "require_methods": [
     "level_up"
   ]

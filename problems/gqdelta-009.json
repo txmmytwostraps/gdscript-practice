@@ -4,8 +4,9 @@
   "concept": "gq-delta",
   "difficulty": 1,
   "prompt": "Move the robot's x toward target at speed, but never past it. Return the new x. From 9 toward 10 at 4 per second, a 0.5 s frame lands exactly on 10, not 11.",
-  "signature": "func solve(x, target, speed, delta) -> float:",
-  "starter": "func solve(x, target, speed, delta) -> float:\n\treturn x + speed * delta",
+  "signature": "func move_toward_target(x, target, speed, delta) -> float:",
+  "fn": "move_toward_target",
+  "starter": "func move_toward_target(x, target, speed, delta) -> float:\n\treturn x + speed * delta",
   "tests": [
     {
       "name": "Normal step: 0 toward 10 by 2",
@@ -59,7 +60,7 @@
       "what": "Returns from moved toward to by at most step, never past it."
     }
   ],
-  "solution": "func solve(x, target, speed, delta) -> float:\n\treturn move_toward(x, target, speed * delta)",
+  "solution": "func move_toward_target(x, target, speed, delta) -> float:\n\treturn move_toward(x, target, speed * delta)",
   "generator": [
     {
       "int": [

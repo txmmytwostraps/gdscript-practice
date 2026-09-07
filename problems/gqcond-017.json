@@ -4,8 +4,9 @@
   "concept": "gq-conditions",
   "difficulty": 1,
   "prompt": "Dividing by zero is an error; run the starter to see it. Fix it: if b is 0, return -1 straight away, otherwise return a divided by b using whole-number division.",
-  "signature": "func solve(a, b):",
-  "starter": "func solve(a, b):\n\treturn a / b",
+  "signature": "func safe_divide(a, b):",
+  "fn": "safe_divide",
+  "starter": "func safe_divide(a, b):\n\treturn a / b",
   "tests": [
     {
       "name": "10 by 2 is 5",
@@ -47,7 +48,7 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(a, b):\n\tif b == 0:\n\t\treturn -1\n\treturn a / b",
+  "solution": "func safe_divide(a, b):\n\tif b == 0:\n\t\treturn -1\n\treturn a / b",
   "generator": [
     {
       "int": [

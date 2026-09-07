@@ -4,8 +4,9 @@
   "concept": "gq-appendpop",
   "difficulty": 0,
   "prompt": "Serve the first order with pop_front, then return the queue that remains.",
-  "signature": "func solve(queue):",
-  "starter": "func solve(queue):\n\treturn queue",
+  "signature": "func after_serving_first(queue):",
+  "fn": "after_serving_first",
+  "starter": "func after_serving_first(queue):\n\treturn queue",
   "tests": [
     {
       "name": "After serving soup, pie remains",
@@ -39,7 +40,7 @@
       "what": "Removes the first item and returns it."
     }
   ],
-  "solution": "func solve(queue):\n\tqueue.pop_front()\n\treturn queue",
+  "solution": "func after_serving_first(queue):\n\tqueue.pop_front()\n\treturn queue",
   "generator": [
     {
       "array": {

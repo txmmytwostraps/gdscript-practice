@@ -4,8 +4,9 @@
   "concept": "dictionaries",
   "difficulty": 0,
   "prompt": "Return the sum of all the values in the dictionary, ignoring the keys. An empty dictionary sums to 0.",
-  "signature": "func solve(data):",
-  "starter": "func solve(data):\n\treturn 0",
+  "signature": "func sum_of_values(data):",
+  "fn": "sum_of_values",
+  "starter": "func sum_of_values(data):\n\treturn 0",
   "tests": [
     {
       "name": "1 and 2 sum to 3",
@@ -46,7 +47,7 @@
       "what": "Runs once per key; data[key] gives its value."
     }
   ],
-  "solution": "func solve(data):\n\tvar total = 0\n\tfor key in data:\n\t\ttotal += data[key]\n\treturn total",
+  "solution": "func sum_of_values(data):\n\tvar total = 0\n\tfor key in data:\n\t\ttotal += data[key]\n\treturn total",
   "generator": [
     {
       "pick": [

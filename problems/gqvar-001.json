@@ -3,9 +3,10 @@
   "title": "The robot's lives",
   "concept": "gq-variables",
   "difficulty": 0,
-  "prompt": "The robot starts every run with 3 lives, but nothing stores that yet. In `solve`, create a variable called `lives` holding the number 3, and return it.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\treturn 0",
+  "prompt": "The robot starts every run with 3 lives, but nothing stores that yet. In `robot_lives`, create a variable called `lives` holding the number 3, and return it.",
+  "signature": "func robot_lives():",
+  "fn": "robot_lives",
+  "starter": "func robot_lives():\n\treturn 0",
   "require_names": [
     "lives"
   ],
@@ -22,5 +23,5 @@
     "Then `return lives`, not the number."
   ],
   "docs": [],
-  "solution": "func solve():\n\tvar lives = 3\n\treturn lives"
+  "solution": "func robot_lives():\n\tvar lives = 3\n\treturn lives"
 }

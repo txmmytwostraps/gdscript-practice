@@ -3,9 +3,10 @@
   "title": "Format a score line",
   "concept": "gq-valuetypes",
   "difficulty": 0,
-  "prompt": "Return \"Score: N / M\" from two numbers, so solve(7, 10) is \"Score: 7 / 10\".",
-  "signature": "func solve(score, best):",
-  "starter": "func solve(score, best):\n\treturn \"Score: \"",
+  "prompt": "Return \"Score: N / M\" from two numbers, so score_line(7, 10) is \"Score: 7 / 10\".",
+  "signature": "func score_line(score, best):",
+  "fn": "score_line",
+  "starter": "func score_line(score, best):\n\treturn \"Score: \"",
   "tests": [
     {
       "name": "7 of 10",
@@ -38,7 +39,7 @@
       "what": "Joins two strings. Joining text to a number is an error; convert first."
     }
   ],
-  "solution": "func solve(score, best):\n\treturn \"Score: \" + str(score) + \" / \" + str(best)",
+  "solution": "func score_line(score, best):\n\treturn \"Score: \" + str(score) + \" / \" + str(best)",
   "generator": [
     {
       "int": [

@@ -3,9 +3,10 @@
   "title": "Both must be true",
   "concept": "gq-conditions",
   "difficulty": 1,
-  "prompt": "Someone can enter the robot arena only if they are at least 18 AND they have a ticket. Return true if they can enter. solve(20, true) is true; solve(16, true) is false.",
-  "signature": "func solve(age, has_ticket):",
-  "starter": "func solve(age, has_ticket):\n\treturn has_ticket",
+  "prompt": "Someone can enter the robot arena only if they are at least 18 AND they have a ticket. Return true if they can enter. can_enter(20, true) is true; can_enter(16, true) is false.",
+  "signature": "func can_enter(age, has_ticket):",
+  "fn": "can_enter",
+  "starter": "func can_enter(age, has_ticket):\n\treturn has_ticket",
   "tests": [
     {
       "name": "20 with a ticket may enter",
@@ -54,7 +55,7 @@
       "what": "and is true when both sides are; or when at least one is; not flips true and false."
     }
   ],
-  "solution": "func solve(age, has_ticket):\n\treturn age >= 18 and has_ticket",
+  "solution": "func can_enter(age, has_ticket):\n\treturn age >= 18 and has_ticket",
   "generator": [
     {
       "int": [

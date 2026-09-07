@@ -3,9 +3,10 @@
   "title": "Bigger of two",
   "concept": "gq-conditions",
   "difficulty": 0,
-  "prompt": "Return whichever of a and b is bigger, using if and else rather than max(). solve(3, 7) is 7.",
-  "signature": "func solve(a, b):",
-  "starter": "func solve(a, b):\n\treturn a",
+  "prompt": "Return whichever of a and b is bigger, using if and else rather than max(). bigger_of_two(3, 7) is 7.",
+  "signature": "func bigger_of_two(a, b):",
+  "fn": "bigger_of_two",
+  "starter": "func bigger_of_two(a, b):\n\treturn a",
   "tests": [
     {
       "name": "7 beats 3",
@@ -46,7 +47,7 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(a, b):\n\tif a > b:\n\t\treturn a\n\telse:\n\t\treturn b",
+  "solution": "func bigger_of_two(a, b):\n\tif a > b:\n\t\treturn a\n\telse:\n\t\treturn b",
   "generator": [
     {
       "int": [

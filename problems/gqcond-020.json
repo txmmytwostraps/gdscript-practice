@@ -4,8 +4,9 @@
   "concept": "gq-conditions",
   "difficulty": 1,
   "prompt": "The robot's game is over when it has no lives left or the time has run out (zero or less). Return true if it is over.",
-  "signature": "func solve(lives, time_left):",
-  "starter": "func solve(lives, time_left):\n\treturn false",
+  "signature": "func is_game_over(lives, time_left):",
+  "fn": "is_game_over",
+  "starter": "func is_game_over(lives, time_left):\n\treturn false",
   "tests": [
     {
       "name": "No lives: over",
@@ -54,7 +55,7 @@
       "what": "and is true when both sides are; or when at least one is; not flips true and false."
     }
   ],
-  "solution": "func solve(lives, time_left):\n\treturn lives <= 0 or time_left <= 0",
+  "solution": "func is_game_over(lives, time_left):\n\treturn lives <= 0 or time_left <= 0",
   "generator": [
     {
       "int": [

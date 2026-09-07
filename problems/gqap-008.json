@@ -4,8 +4,9 @@
   "concept": "gq-appendpop",
   "difficulty": 0,
   "prompt": "Return true if there are no orders waiting.",
-  "signature": "func solve(queue):",
-  "starter": "func solve(queue):\n\treturn false",
+  "signature": "func is_queue_empty(queue):",
+  "fn": "is_queue_empty",
+  "starter": "func is_queue_empty(queue):\n\treturn false",
   "tests": [
     {
       "name": "Empty is true",
@@ -34,7 +35,7 @@
       "what": "Returns true when the array has no items."
     }
   ],
-  "solution": "func solve(queue):\n\treturn queue.is_empty()",
+  "solution": "func is_queue_empty(queue):\n\treturn queue.is_empty()",
   "generator": [
     {
       "array": {

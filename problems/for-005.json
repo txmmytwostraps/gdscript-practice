@@ -4,8 +4,9 @@
   "concept": "for",
   "difficulty": 0,
   "prompt": "Return the times table for n as an array of ten numbers: n times 1 up to n times 10.",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\tvar table = []\n\treturn table",
+  "signature": "func times_table(n):",
+  "fn": "times_table",
+  "starter": "func times_table(n):\n\tvar table = []\n\treturn table",
   "tests": [
     {
       "name": "2 times table",
@@ -98,7 +99,7 @@
       "what": "Adds value to the end of the array. Returns nothing."
     }
   ],
-  "solution": "func solve(n):\n\tvar table = []\n\tfor i in range(1, 11):\n\t\ttable.append(n * i)\n\treturn table",
+  "solution": "func times_table(n):\n\tvar table = []\n\tfor i in range(1, 11):\n\t\ttable.append(n * i)\n\treturn table",
   "generator": [
     {
       "int": [

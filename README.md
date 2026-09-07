@@ -25,7 +25,7 @@ Daily GDScript practice that follows the GDQuest course "Learn GDScript From Zer
 
 ## The problem page
 
-Every problem asks for a function called `solve`. That function is only how this site hands your code its inputs and reads back the answer; Godot itself never looks for one. The line under the prompt explains what solve receives and what it must give back, and the tests list shows each call the judge makes with the answer it expects.
+A problem without inputs asks for a function called `run`, as the course does, and its tests show the output expected. A problem with inputs asks for a function named after what it does, `double` or `take_hit`, and the line under the goal says what it receives and what it must give back; the tests list shows each call the judge makes and the outcome it expects.
 
 Hints come in two to four stages and open one at a time. How many are available depends on the topic's hint level. At the full level every hint opens on request. At the reduced level only the first hint opens until you have missed the problem once. At the minimal level hints stay closed until two misses. The level moves on its own with your pass rate over the last twenty attempts in the topic, and can be set by hand on the Route.
 
@@ -84,7 +84,7 @@ One JSON file per problem in `problems/`, named after its `id`. Fields:
 
 - `id`, `title`, `concept` (a topic id from `tools/build-index.js`), `difficulty` (0 novice, 1 beginner).
 - `prompt`: what to do, in plain words; backticks around code words.
-- `signature`: the first line of the function the tests call, for example `func solve(hp):`.
+- `signature`: the first line of the function the tests call, for example `func take_hit(hp):`, and `fn`: its name (`run` for problems without inputs).
 - `starter`: the code the editor opens with. `starter_broken: true` marks a fix-the-error starter that must not compile.
 - `tests`: a list of `{ "name", "args", "expect" }`; `out` lists the lines the code must print, `frames` runs `_process(delta)` that many times first, and `script` performs calls before `read` reads a member variable.
 - `hints`: two to four strings that nudge without giving the answer. `docs`: the built-ins used, as `{ "name", "what" }`.

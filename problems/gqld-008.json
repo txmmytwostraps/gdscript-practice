@@ -4,8 +4,9 @@
   "concept": "gq-loopdicts",
   "difficulty": 1,
   "prompt": "Double every amount in the inventory and return the dictionary.",
-  "signature": "func solve(inventory):",
-  "starter": "func solve(inventory):\n\treturn inventory",
+  "signature": "func double_amounts(inventory):",
+  "fn": "double_amounts",
+  "starter": "func double_amounts(inventory):\n\treturn inventory",
   "tests": [
     {
       "name": "3 and 1 become 6 and 2",
@@ -42,7 +43,7 @@
       "what": "The value stored under key. Assigning to it changes or adds the entry."
     }
   ],
-  "solution": "func solve(inventory):\n\tfor item in inventory:\n\t\tinventory[item] = inventory[item] * 2\n\treturn inventory",
+  "solution": "func double_amounts(inventory):\n\tfor item in inventory:\n\t\tinventory[item] = inventory[item] * 2\n\treturn inventory",
   "generator": [
     {
       "pick": [

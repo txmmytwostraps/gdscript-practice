@@ -1407,14 +1407,14 @@
     },
     {
       "id": "gqrect-005",
-      "title": "Centre of a rect",
+      "title": "Center of a rect",
       "concept": "gq-rect",
       "difficulty": 0,
       "variants": true
     },
     {
       "id": "gqrect-006",
-      "title": "Rect around a centre",
+      "title": "Rect around a center",
       "concept": "gq-rect",
       "difficulty": 1,
       "variants": true

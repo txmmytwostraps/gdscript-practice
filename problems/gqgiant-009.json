@@ -4,8 +4,9 @@
   "concept": "gq-giants",
   "difficulty": 1,
   "prompt": "Do three things in order: show the robot, turn it 180 degrees, then move it 30 across and 30 down.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass",
   "tests": [
     {
       "name": "show, rotate 180, move 30 30",
@@ -36,5 +37,5 @@
       "what": "Moves the robot by x across and y down. Takes two numbers; returns nothing."
     }
   ],
-  "solution": "func solve():\n\tshow()\n\trotate(180)\n\tmove(30, 30)"
+  "solution": "func run():\n\tshow()\n\trotate(180)\n\tmove(30, 30)"
 }

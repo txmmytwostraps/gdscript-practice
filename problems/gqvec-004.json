@@ -4,8 +4,9 @@
   "concept": "gq-vectors",
   "difficulty": 1,
   "prompt": "Return the vector that takes the robot from point a to point b. Starting at a and adding your answer should land on b. The starter has the subtraction backwards.",
-  "signature": "func solve(a, b) -> Vector2:",
-  "starter": "func solve(a, b) -> Vector2:\n\treturn a - b",
+  "signature": "func from_a_to_b(a, b) -> Vector2:",
+  "fn": "from_a_to_b",
+  "starter": "func from_a_to_b(a, b) -> Vector2:\n\treturn a - b",
   "tests": [
     {
       "name": "(1, 1) to (4, 5) is (3, 4)",
@@ -87,7 +88,7 @@
       "what": "Vectors add and subtract part by part, and scale by a plain number."
     }
   ],
-  "solution": "func solve(a, b) -> Vector2:\n\treturn b - a",
+  "solution": "func from_a_to_b(a, b) -> Vector2:\n\treturn b - a",
   "generator": [
     {
       "v2": [

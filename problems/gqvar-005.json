@@ -4,8 +4,9 @@
   "concept": "gq-variables",
   "difficulty": 0,
   "prompt": "The robot's `level` starts at 1. On a new line, change it to 2 without writing var again. Return level, which should now be 2.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tvar level = 1\n\treturn level",
+  "signature": "func new_level():",
+  "fn": "new_level",
+  "starter": "func new_level():\n\tvar level = 1\n\treturn level",
   "tests": [
     {
       "name": "level is 2 after the change",
@@ -18,5 +19,5 @@
     "Add `level = 2` between the two existing lines."
   ],
   "docs": [],
-  "solution": "func solve():\n\tvar level = 1\n\tlevel = 2\n\treturn level"
+  "solution": "func new_level():\n\tvar level = 1\n\tlevel = 2\n\treturn level"
 }

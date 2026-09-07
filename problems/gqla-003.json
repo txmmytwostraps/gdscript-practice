@@ -4,8 +4,9 @@
   "concept": "gq-looparrays",
   "difficulty": 1,
   "prompt": "The robot's path is an array of distances. For each one, move forward that far and then turn left. [30, 40] gives forward 30, left, forward 40, left.",
-  "signature": "func solve(path):",
-  "starter": "func solve(path):\n\tpass",
+  "signature": "func draw_path(path):",
+  "fn": "draw_path",
+  "starter": "func draw_path(path):\n\tpass",
   "tests": [
     {
       "name": "Two legs",
@@ -72,5 +73,5 @@
       "what": "Turns the turtle 90 degrees to the left."
     }
   ],
-  "solution": "func solve(path):\n\tfor distance in path:\n\t\tmove_forward(distance)\n\t\tturn_left()"
+  "solution": "func draw_path(path):\n\tfor distance in path:\n\t\tmove_forward(distance)\n\t\tturn_left()"
 }

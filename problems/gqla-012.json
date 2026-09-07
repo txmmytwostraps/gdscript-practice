@@ -4,8 +4,9 @@
   "concept": "gq-looparrays",
   "difficulty": 1,
   "prompt": "Return a new array with only the numbers greater than zero, in their original order.",
-  "signature": "func solve(nums):",
-  "starter": "func solve(nums):\n\treturn nums",
+  "signature": "func positives_only(nums):",
+  "fn": "positives_only",
+  "starter": "func positives_only(nums):\n\treturn nums",
   "tests": [
     {
       "name": "Keeps 1 and 3",
@@ -59,7 +60,7 @@
       "what": "Adds value to the end of the array. Returns nothing."
     }
   ],
-  "solution": "func solve(nums):\n\tvar result = []\n\tfor n in nums:\n\t\tif n > 0:\n\t\t\tresult.append(n)\n\treturn result",
+  "solution": "func positives_only(nums):\n\tvar result = []\n\tfor n in nums:\n\t\tif n > 0:\n\t\t\tresult.append(n)\n\treturn result",
   "generator": [
     {
       "array": {

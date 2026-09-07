@@ -4,8 +4,9 @@
   "concept": "gq-readable",
   "difficulty": 0,
   "prompt": "The robot's drive code works, but what is 250? Give it a name: create a constant `SPEED` equal to 250 and use it in place of the bare number. The results stay the same.",
-  "signature": "func solve(seconds) -> float:",
-  "starter": "func solve(seconds) -> float:\n\treturn 250 * seconds",
+  "signature": "func distance_at_speed(seconds) -> float:",
+  "fn": "distance_at_speed",
+  "starter": "func distance_at_speed(seconds) -> float:\n\treturn 250 * seconds",
   "require_names": [
     "SPEED"
   ],
@@ -46,5 +47,5 @@
       "what": "Declares a named value that never changes. Written in CAPITALS by convention."
     }
   ],
-  "solution": "func solve(seconds) -> float:\n\tconst SPEED = 250\n\treturn SPEED * seconds"
+  "solution": "func distance_at_speed(seconds) -> float:\n\tconst SPEED = 250\n\treturn SPEED * seconds"
 }

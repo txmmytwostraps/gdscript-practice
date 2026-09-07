@@ -4,8 +4,9 @@
   "concept": "gq-strings",
   "difficulty": 0,
   "prompt": "Return the text in capital letters with an exclamation mark on the end. \"hi\" becomes \"HI!\".",
-  "signature": "func solve(text):",
-  "starter": "func solve(text):\n\treturn text",
+  "signature": "func shout(text):",
+  "fn": "shout",
+  "starter": "func shout(text):\n\treturn text",
   "tests": [
     {
       "name": "hi becomes HI!",
@@ -43,7 +44,7 @@
       "what": "Joins two strings into one. Numbers must be turned into text first."
     }
   ],
-  "solution": "func solve(text):\n\treturn text.to_upper() + \"!\"",
+  "solution": "func shout(text):\n\treturn text.to_upper() + \"!\"",
   "generator": [
     {
       "pick": [

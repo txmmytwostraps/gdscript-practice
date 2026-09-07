@@ -4,8 +4,9 @@
   "concept": "gq-variables",
   "difficulty": 0,
   "prompt": "Give the robot a name. Create a variable `robot_name` holding the text \"Robo\" and return it.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\treturn \"\"",
+  "signature": "func name_of_robot():",
+  "fn": "name_of_robot",
+  "starter": "func name_of_robot():\n\treturn \"\"",
   "require_names": [
     "robot_name"
   ],
@@ -21,5 +22,5 @@
     "`var robot_name = \"Robo\"` then return the variable."
   ],
   "docs": [],
-  "solution": "func solve():\n\tvar robot_name = \"Robo\"\n\treturn robot_name"
+  "solution": "func name_of_robot():\n\tvar robot_name = \"Robo\"\n\treturn robot_name"
 }

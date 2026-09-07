@@ -4,8 +4,9 @@
   "concept": "gq-strings",
   "difficulty": 1,
   "prompt": "Return an array of the words in the text, which are separated by single spaces.",
-  "signature": "func solve(text):",
-  "starter": "func solve(text):\n\treturn [text]",
+  "signature": "func split_words(text):",
+  "fn": "split_words",
+  "starter": "func split_words(text):\n\treturn [text]",
   "tests": [
     {
       "name": "Three words",
@@ -38,7 +39,7 @@
       "what": "Returns an array of the pieces between each separator."
     }
   ],
-  "solution": "func solve(text):\n\treturn text.split(\" \")",
+  "solution": "func split_words(text):\n\treturn text.split(\" \")",
   "generator": [
     {
       "pick": [

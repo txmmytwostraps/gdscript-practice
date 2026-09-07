@@ -3,9 +3,10 @@
   "title": "Default value",
   "concept": "functions",
   "difficulty": 1,
-  "prompt": "solve takes n and step, where step has a default of 1, so the tests sometimes call solve with only one value. Return n plus step.",
-  "signature": "func solve(n, step = 1):",
-  "starter": "func solve(n, step = 1):\n\treturn n",
+  "prompt": "add_step takes n and step, where step has a default of 1, so the tests sometimes call add_step with only one value. Return n plus step.",
+  "signature": "func add_step(n, step = 1):",
+  "fn": "add_step",
+  "starter": "func add_step(n, step = 1):\n\treturn n",
   "tests": [
     {
       "name": "5 with the default is 6",
@@ -48,7 +49,7 @@
       "what": "Ends the function and hands value back to whoever called it."
     }
   ],
-  "solution": "func solve(n, step = 1):\n\treturn n + step",
+  "solution": "func add_step(n, step = 1):\n\treturn n + step",
   "generator": [
     {
       "int": [

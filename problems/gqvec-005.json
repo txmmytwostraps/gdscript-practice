@@ -4,8 +4,9 @@
   "concept": "gq-vectors",
   "difficulty": 0,
   "prompt": "Return the vector multiplied by factor; both parts get multiplied. (1, 2) times 3 is (3, 6).",
-  "signature": "func solve(v, factor) -> Vector2:",
-  "starter": "func solve(v, factor) -> Vector2:\n\treturn v",
+  "signature": "func scale_vector(v, factor) -> Vector2:",
+  "fn": "scale_vector",
+  "starter": "func scale_vector(v, factor) -> Vector2:\n\treturn v",
   "tests": [
     {
       "name": "(1, 2) times 3 is (3, 6)",
@@ -72,7 +73,7 @@
       "what": "Vectors add and subtract part by part, and scale by a plain number."
     }
   ],
-  "solution": "func solve(v, factor) -> Vector2:\n\treturn v * factor",
+  "solution": "func scale_vector(v, factor) -> Vector2:\n\treturn v * factor",
   "generator": [
     {
       "v2": [

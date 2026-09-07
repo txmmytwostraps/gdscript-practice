@@ -4,8 +4,9 @@
   "concept": "gq-delta",
   "difficulty": 1,
   "prompt": "A timer has time_left seconds and every frame lasts delta seconds. Return how many whole frames fit into the time left. 1 second at 0.25 s per frame is 4 frames.",
-  "signature": "func solve(time_left, delta):",
-  "starter": "func solve(time_left, delta):\n\treturn 0",
+  "signature": "func frames_left(time_left, delta):",
+  "fn": "frames_left",
+  "starter": "func frames_left(time_left, delta):\n\treturn 0",
   "tests": [
     {
       "name": "1 s at 0.25 s is 4 frames",
@@ -43,7 +44,7 @@
       "what": "Returns the number as a whole number, dropping the decimals."
     }
   ],
-  "solution": "func solve(time_left, delta):\n\treturn int(time_left / delta)",
+  "solution": "func frames_left(time_left, delta):\n\treturn int(time_left / delta)",
   "generator": [
     {
       "float": [

@@ -4,8 +4,9 @@
   "concept": "gq-indices",
   "difficulty": 0,
   "prompt": "Return the last item, whatever the size of the inventory.",
-  "signature": "func solve(inventory):",
-  "starter": "func solve(inventory):\n\treturn inventory[0]",
+  "signature": "func last_slot(inventory):",
+  "fn": "last_slot",
+  "starter": "func last_slot(inventory):\n\treturn inventory[0]",
   "tests": [
     {
       "name": "Last of three",
@@ -51,7 +52,7 @@
       "what": "The item at position i. Positions start at 0; -1 is the last item."
     }
   ],
-  "solution": "func solve(inventory):\n\treturn inventory[-1]",
+  "solution": "func last_slot(inventory):\n\treturn inventory[-1]",
   "generator": [
     {
       "pick": [

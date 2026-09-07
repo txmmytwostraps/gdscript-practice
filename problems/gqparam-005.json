@@ -3,9 +3,10 @@
   "title": "A default value",
   "concept": "gq-parameters",
   "difficulty": 1,
-  "prompt": "Write `show_score`, which takes a score and a bonus, where bonus has a default of 0, and prints their sum. In `solve`, call it once with just the score and once with the score and a bonus of 10, so solve(5) prints 5 then 15.",
-  "signature": "func solve(score):",
-  "starter": "func solve(score):\n\tpass",
+  "prompt": "Write `show_score`, which takes a score and a bonus, where bonus has a default of 0, and prints their sum. In `report_scores`, call it once with just the score and once with the score and a bonus of 10, so report_scores(5) prints 5 then 15.",
+  "signature": "func report_scores(score):",
+  "fn": "report_scores",
+  "starter": "func report_scores(score):\n\tpass",
   "require_methods": [
     "show_score"
   ],
@@ -44,5 +45,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve(score):\n\tshow_score(score)\n\tshow_score(score, 10)\n\nfunc show_score(score, bonus = 0):\n\tprint(score + bonus)"
+  "solution": "func report_scores(score):\n\tshow_score(score)\n\tshow_score(score, 10)\n\nfunc show_score(score, bonus = 0):\n\tprint(score + bonus)"
 }

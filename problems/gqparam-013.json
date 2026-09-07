@@ -3,9 +3,10 @@
   "title": "Whole numbers in, decimal out",
   "concept": "gq-parameters",
   "difficulty": 1,
-  "prompt": "Both values are whole numbers, but the answer must keep its decimals: solve(7, 2) is 3.5. Return a divided by b.",
-  "signature": "func solve(a, b) -> float:",
-  "starter": "func solve(a, b) -> float:\n\treturn a / b",
+  "prompt": "Both values are whole numbers, but the answer must keep its decimals: divide_keep_decimals(7, 2) is 3.5. Return a divided by b.",
+  "signature": "func divide_keep_decimals(a, b) -> float:",
+  "fn": "divide_keep_decimals",
+  "starter": "func divide_keep_decimals(a, b) -> float:\n\treturn a / b",
   "tests": [
     {
       "name": "7 over 2 is 3.5",
@@ -43,7 +44,7 @@
       "what": "Returns the number as a float, so dividing keeps decimals."
     }
   ],
-  "solution": "func solve(a, b) -> float:\n\treturn float(a) / b",
+  "solution": "func divide_keep_decimals(a, b) -> float:\n\treturn float(a) / b",
   "generator": [
     {
       "int": [

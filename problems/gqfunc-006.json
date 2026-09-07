@@ -3,9 +3,10 @@
   "title": "Name it well",
   "concept": "gq-functions",
   "difficulty": 0,
-  "prompt": "This robot code works, but `f` tells nobody what it does. Rename the function to `raise_shields`, both where it is defined and where solve calls it. The output stays \"Shields up\".",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tf()\n\nfunc f():\n\tprint(\"Shields up\")",
+  "prompt": "This robot code works, but `f` tells nobody what it does. Rename the function to `raise_shields`, both where it is defined and where run calls it. The output stays \"Shields up\".",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tf()\n\nfunc f():\n\tprint(\"Shields up\")",
   "require_methods": [
     "raise_shields"
   ],
@@ -21,7 +22,7 @@
   ],
   "hints": [
     "A good function name says what the function does, so the code reads like a sentence.",
-    "Change the name in two places: after func, and in the call inside solve."
+    "Change the name in two places: after func, and in the call inside run."
   ],
   "docs": [
     {
@@ -29,5 +30,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve():\n\traise_shields()\n\nfunc raise_shields():\n\tprint(\"Shields up\")"
+  "solution": "func run():\n\traise_shields()\n\nfunc raise_shields():\n\tprint(\"Shields up\")"
 }

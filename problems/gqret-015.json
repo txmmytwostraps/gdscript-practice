@@ -3,9 +3,10 @@
   "title": "Two helpers, one answer",
   "concept": "gq-return",
   "difficulty": 1,
-  "prompt": "Write `perimeter` and `area` for a rectangle. `solve` returns the perimeter plus the area. solve(3, 4) is 26.",
-  "signature": "func solve(width, height):",
-  "starter": "func solve(width, height):\n\treturn 0",
+  "prompt": "Write `perimeter` and `area` for a rectangle. `perimeter_plus_area` returns the perimeter plus the area. perimeter_plus_area(3, 4) is 26.",
+  "signature": "func perimeter_plus_area(width, height):",
+  "fn": "perimeter_plus_area",
+  "starter": "func perimeter_plus_area(width, height):\n\treturn 0",
   "tests": [
     {
       "name": "3 by 4: 14 plus 12 is 26",
@@ -42,7 +43,7 @@
       "what": "Ends the function and hands value back to whoever called it."
     }
   ],
-  "solution": "func solve(width, height):\n\treturn perimeter(width, height) + area(width, height)\n\nfunc perimeter(w, h):\n\treturn 2 * w + 2 * h\n\nfunc area(w, h):\n\treturn w * h",
+  "solution": "func perimeter_plus_area(width, height):\n\treturn perimeter(width, height) + area(width, height)\n\nfunc perimeter(w, h):\n\treturn 2 * w + 2 * h\n\nfunc area(w, h):\n\treturn w * h",
   "require_methods": [
     "perimeter",
     "area"

@@ -4,8 +4,9 @@
   "concept": "gq-appendpop",
   "difficulty": 1,
   "prompt": "Serve every order in turn, printing each as it is served, until the queue is empty. Use a while loop with pop_front.",
-  "signature": "func solve(queue):",
-  "starter": "func solve(queue):\n\tpass",
+  "signature": "func serve_everything(queue):",
+  "fn": "serve_everything",
+  "starter": "func serve_everything(queue):\n\tpass",
   "tests": [
     {
       "name": "Serves soup then pie",
@@ -52,5 +53,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve(queue):\n\twhile queue.size() > 0:\n\t\tprint(queue.pop_front())"
+  "solution": "func serve_everything(queue):\n\twhile queue.size() > 0:\n\t\tprint(queue.pop_front())"
 }

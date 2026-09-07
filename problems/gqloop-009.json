@@ -3,9 +3,10 @@
   "title": "Only while running",
   "concept": "gq-loop",
   "difficulty": 1,
-  "prompt": "Members `running` at true and `distance` at 0.0. In `_process`, add 100 times delta to distance, but only when running is true. solve returns distance rounded; 60 frames give 100.",
-  "signature": "func solve():",
-  "starter": "var running = true\nvar distance = 0.0\n\nfunc solve():\n\treturn round(distance)",
+  "prompt": "Members `running` at true and `distance` at 0.0. In `_process`, add 100 times delta to distance, but only when running is true. distance_while_running returns distance rounded; 60 frames give 100.",
+  "signature": "func distance_while_running():",
+  "fn": "distance_while_running",
+  "starter": "var running = true\nvar distance = 0.0\n\nfunc distance_while_running():\n\treturn round(distance)",
   "tests": [
     {
       "name": "60 frames while running is 100",
@@ -38,7 +39,7 @@
       "what": "Returns the nearest whole number as a float."
     }
   ],
-  "solution": "var running = true\nvar distance = 0.0\n\nfunc _process(delta):\n\tif running:\n\t\tdistance += 100 * delta\n\nfunc solve():\n\treturn round(distance)",
+  "solution": "var running = true\nvar distance = 0.0\n\nfunc _process(delta):\n\tif running:\n\t\tdistance += 100 * delta\n\nfunc distance_while_running():\n\treturn round(distance)",
   "require_methods": [
     "_process"
   ]

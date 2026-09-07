@@ -3,9 +3,10 @@
   "title": "Grid to world",
   "concept": "gq-types",
   "difficulty": 1,
-  "prompt": "Write `grid_to_world`, which takes a cell as Vector2 and a cell_size as float, both hinted, and returns the cell times the size as a Vector2. solve returns grid_to_world(cell, 64.0).",
-  "signature": "func solve(cell: Vector2) -> Vector2:",
-  "starter": "func solve(cell: Vector2) -> Vector2:\n\treturn cell",
+  "prompt": "Write `grid_to_world`, which takes a cell as Vector2 and a cell_size as float, both hinted, and returns the cell times the size as a Vector2. world_position returns grid_to_world(cell, 64.0).",
+  "signature": "func world_position(cell: Vector2) -> Vector2:",
+  "fn": "world_position",
+  "starter": "func world_position(cell: Vector2) -> Vector2:\n\treturn cell",
   "tests": [
     {
       "name": "Cell (2, 1) at size 64 is (128, 64)",
@@ -57,7 +58,7 @@
       "what": "Return type hint: the function promises to return that type."
     }
   ],
-  "solution": "func solve(cell: Vector2) -> Vector2:\n\treturn grid_to_world(cell, 64.0)\n\nfunc grid_to_world(cell: Vector2, cell_size: float) -> Vector2:\n\treturn cell * cell_size",
+  "solution": "func world_position(cell: Vector2) -> Vector2:\n\treturn grid_to_world(cell, 64.0)\n\nfunc grid_to_world(cell: Vector2, cell_size: float) -> Vector2:\n\treturn cell * cell_size",
   "allow_type_hints": true,
   "require_methods": [
     "grid_to_world"

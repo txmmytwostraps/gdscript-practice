@@ -4,8 +4,9 @@
   "concept": "gq-errors",
   "difficulty": 0,
   "prompt": "The word that starts a function is spelt wrong, so Godot does not know what this line means. Fix it so the robot prints \"Online\".",
-  "signature": "func solve():",
-  "starter": "fnc solve():\n\tprint(\"Online\")",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "fnc run():\n\tprint(\"Online\")",
   "starter_broken": true,
   "tests": [
     {
@@ -32,5 +33,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve():\n\tprint(\"Online\")"
+  "solution": "func run():\n\tprint(\"Online\")"
 }

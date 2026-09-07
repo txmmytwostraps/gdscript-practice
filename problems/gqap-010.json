@@ -4,8 +4,9 @@
   "concept": "gq-appendpop",
   "difficulty": 1,
   "prompt": "A customer cancels. Remove the first matching order from the queue and return the queue. If it is not there, the queue is unchanged.",
-  "signature": "func solve(queue, order):",
-  "starter": "func solve(queue, order):\n\treturn queue",
+  "signature": "func cancel_order(queue, order):",
+  "fn": "cancel_order",
+  "starter": "func cancel_order(queue, order):\n\treturn queue",
   "tests": [
     {
       "name": "pie removed",
@@ -45,7 +46,7 @@
       "what": "Removes the first copy of value. Returns nothing."
     }
   ],
-  "solution": "func solve(queue, order):\n\tqueue.erase(order)\n\treturn queue",
+  "solution": "func cancel_order(queue, order):\n\tqueue.erase(order)\n\treturn queue",
   "generator": [
     {
       "array": {

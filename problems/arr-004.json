@@ -4,8 +4,9 @@
   "concept": "arrays",
   "difficulty": 1,
   "prompt": "Return a new array that has everything from items except any item equal to value.",
-  "signature": "func solve(items, value):",
-  "starter": "func solve(items, value):\n\treturn items",
+  "signature": "func remove_all(items, value):",
+  "fn": "remove_all",
+  "starter": "func remove_all(items, value):\n\treturn items",
   "tests": [
     {
       "name": "Both 1s removed",
@@ -77,7 +78,7 @@
       "what": "Adds value to the end of the array. Returns nothing."
     }
   ],
-  "solution": "func solve(items, value):\n\tvar result = []\n\tfor x in items:\n\t\tif x != value:\n\t\t\tresult.append(x)\n\treturn result",
+  "solution": "func remove_all(items, value):\n\tvar result = []\n\tfor x in items:\n\t\tif x != value:\n\t\t\tresult.append(x)\n\treturn result",
   "generator": [
     {
       "array": {

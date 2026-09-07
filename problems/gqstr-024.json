@@ -4,8 +4,9 @@
   "concept": "gq-strings",
   "difficulty": 1,
   "prompt": "Return true if a and b are the same word ignoring capital letters, so \"Godot\" and \"GODOT\" match.",
-  "signature": "func solve(a, b):",
-  "starter": "func solve(a, b):\n\treturn a == b",
+  "signature": "func same_word(a, b):",
+  "fn": "same_word",
+  "starter": "func same_word(a, b):\n\treturn a == b",
   "tests": [
     {
       "name": "Godot and GODOT match",
@@ -42,7 +43,7 @@
       "what": "Returns the text in capitals, or in small letters."
     }
   ],
-  "solution": "func solve(a, b):\n\treturn a.to_lower() == b.to_lower()",
+  "solution": "func same_word(a, b):\n\treturn a.to_lower() == b.to_lower()",
   "generator": [
     {
       "pick": [

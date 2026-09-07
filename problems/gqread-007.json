@@ -4,8 +4,9 @@
   "concept": "gq-readable",
   "difficulty": 0,
   "prompt": "The robot jumps 120 pixels up from the ground, and up means a smaller y. Name that number `JUMP_HEIGHT` and use it.",
-  "signature": "func solve(ground_y):",
-  "starter": "func solve(ground_y):\n\treturn ground_y - 120",
+  "signature": "func jump_top(ground_y):",
+  "fn": "jump_top",
+  "starter": "func jump_top(ground_y):\n\treturn ground_y - 120",
   "require_names": [
     "JUMP_HEIGHT"
   ],
@@ -45,5 +46,5 @@
       "what": "Declares a named value that never changes. Written in CAPITALS by convention."
     }
   ],
-  "solution": "func solve(ground_y):\n\tconst JUMP_HEIGHT = 120\n\treturn ground_y - JUMP_HEIGHT"
+  "solution": "func jump_top(ground_y):\n\tconst JUMP_HEIGHT = 120\n\treturn ground_y - JUMP_HEIGHT"
 }

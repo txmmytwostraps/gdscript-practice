@@ -4,8 +4,9 @@
   "concept": "gq-strings",
   "difficulty": 0,
   "prompt": "Return the text with every copy of old swapped for new. \"a-b-c\" with \"-\" replaced by \" \" is \"a b c\".",
-  "signature": "func solve(text, old, new):",
-  "starter": "func solve(text, old, new):\n\treturn text",
+  "signature": "func replace_all(text, old, new):",
+  "fn": "replace_all",
+  "starter": "func replace_all(text, old, new):\n\treturn text",
   "tests": [
     {
       "name": "Dashes become spaces",
@@ -45,7 +46,7 @@
       "what": "Returns the text with every copy of old swapped for new."
     }
   ],
-  "solution": "func solve(text, old, new):\n\treturn text.replace(old, new)",
+  "solution": "func replace_all(text, old, new):\n\treturn text.replace(old, new)",
   "generator": [
     {
       "pick": [

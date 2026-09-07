@@ -4,8 +4,9 @@
   "concept": "gq-conditions",
   "difficulty": 0,
   "prompt": "Return n made positive: -5 becomes 5, 5 stays 5. Use an if rather than abs().",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\treturn n",
+  "signature": "func absolute_value(n):",
+  "fn": "absolute_value",
+  "starter": "func absolute_value(n):\n\treturn n",
   "tests": [
     {
       "name": "-5 becomes 5",
@@ -43,7 +44,7 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(n):\n\tif n < 0:\n\t\treturn -n\n\treturn n",
+  "solution": "func absolute_value(n):\n\tif n < 0:\n\t\treturn -n\n\treturn n",
   "generator": [
     {
       "int": [

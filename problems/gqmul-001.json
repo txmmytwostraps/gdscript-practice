@@ -3,9 +3,10 @@
   "title": "Double the max health",
   "concept": "gq-multiply",
   "difficulty": 0,
-  "prompt": "The robot levels up and its max health doubles. Return max_health times 2. solve(100) is 200.",
-  "signature": "func solve(max_health):",
-  "starter": "func solve(max_health):\n\treturn max_health",
+  "prompt": "The robot levels up and its max health doubles. Return max_health times 2. double_max_health(100) is 200.",
+  "signature": "func double_max_health(max_health):",
+  "fn": "double_max_health",
+  "starter": "func double_max_health(max_health):\n\treturn max_health",
   "tests": [
     {
       "name": "100 doubles to 200",
@@ -39,7 +40,7 @@
       "what": "Multiplies two numbers. * with a float keeps decimals."
     }
   ],
-  "solution": "func solve(max_health):\n\treturn max_health * 2",
+  "solution": "func double_max_health(max_health):\n\treturn max_health * 2",
   "generator": [
     {
       "int": [

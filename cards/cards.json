@@ -11,8 +11,8 @@
     "mistake": "Closing the quote but forgetting the bracket: `print(\"Hi\"`." },
   { "id": "indentation", "concept": "gq-errors", "name": "Indentation", "front": "Why does GDScript care about the spaces at the start of a line?",
     "what": "The lines inside a function are pushed in by one tab. That tab is how GDScript knows which lines belong to the function.",
-    "how": "func solve():\n\tprint(\"inside\")",
-    "example": "A line with no tab after `func solve():` is an error: the function has an empty body.",
+    "how": "func run():\n\tprint(\"inside\")",
+    "example": "A line with no tab after `func run():` is an error: the function has an empty body.",
     "mistake": "Mixing a tab on one line and spaces on the next. Use the Tab key every time." },
 
   { "id": "builtin-call", "concept": "gq-giants", "name": "Calling a built-in function", "front": "How do you use a function that Godot already provides?",
@@ -44,7 +44,7 @@
     "mistake": "Forgetting the colon at the end of the `func` line, or the tab on the next one." },
   { "id": "call-own-function", "concept": "gq-functions", "name": "Calling your own function", "front": "How do you run a function you wrote?",
     "what": "Write its name with brackets. Defining a function does nothing on its own; the body only runs when the function is called.",
-    "how": "func solve():\n\tsay_hello()\n\tsay_hello()",
+    "how": "func run():\n\tsay_hello()\n\tsay_hello()",
     "example": "Calling `say_hello()` twice prints Hello twice.",
     "mistake": "Defining the function and never calling it, then wondering why nothing printed." },
 

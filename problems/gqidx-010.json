@@ -4,8 +4,9 @@
   "concept": "gq-indices",
   "difficulty": 1,
   "prompt": "Return the position of the first \"crystal\" in the array, using a loop over positions, or -1 if there is none.",
-  "signature": "func solve(items):",
-  "starter": "func solve(items):\n\treturn -1",
+  "signature": "func find_crystal(items):",
+  "fn": "find_crystal",
+  "starter": "func find_crystal(items):\n\treturn -1",
   "tests": [
     {
       "name": "crystal at position 2",
@@ -57,7 +58,7 @@
       "what": "The item at position i. Positions start at 0; -1 is the last item."
     }
   ],
-  "solution": "func solve(items):\n\tfor i in range(items.size()):\n\t\tif items[i] == \"crystal\":\n\t\t\treturn i\n\treturn -1",
+  "solution": "func find_crystal(items):\n\tfor i in range(items.size()):\n\t\tif items[i] == \"crystal\":\n\t\t\treturn i\n\treturn -1",
   "generator": [
     {
       "array": {

@@ -4,8 +4,9 @@
   "concept": "gq-readable",
   "difficulty": 0,
   "prompt": "The robot starts with 100 health. Name that number `MAX_HEALTH` and use it to work out the health left after damage.",
-  "signature": "func solve(damage):",
-  "starter": "func solve(damage):\n\treturn 100 - damage",
+  "signature": "func health_left(damage):",
+  "fn": "health_left",
+  "starter": "func health_left(damage):\n\treturn 100 - damage",
   "require_names": [
     "MAX_HEALTH"
   ],
@@ -45,5 +46,5 @@
       "what": "Declares a named value that never changes. Written in CAPITALS by convention."
     }
   ],
-  "solution": "func solve(damage):\n\tconst MAX_HEALTH = 100\n\treturn MAX_HEALTH - damage"
+  "solution": "func health_left(damage):\n\tconst MAX_HEALTH = 100\n\treturn MAX_HEALTH - damage"
 }

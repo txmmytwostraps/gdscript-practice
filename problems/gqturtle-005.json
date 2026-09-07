@@ -4,8 +4,9 @@
   "concept": "gq-turtle",
   "difficulty": 0,
   "prompt": "Draw the same square as before, sides of 40, but turning right at each corner.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass",
   "tests": [
     {
       "name": "Four sides, four right turns",
@@ -37,5 +38,5 @@
       "what": "Turns the turtle 90 degrees to the right. Give it a number to turn by a different angle."
     }
   ],
-  "solution": "func solve():\n\tmove_forward(40)\n\tturn_right()\n\tmove_forward(40)\n\tturn_right()\n\tmove_forward(40)\n\tturn_right()\n\tmove_forward(40)\n\tturn_right()"
+  "solution": "func run():\n\tmove_forward(40)\n\tturn_right()\n\tmove_forward(40)\n\tturn_right()\n\tmove_forward(40)\n\tturn_right()\n\tmove_forward(40)\n\tturn_right()"
 }

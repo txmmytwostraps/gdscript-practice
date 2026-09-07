@@ -12,12 +12,12 @@ const CONCEPTS = [
   "while", "for", "gq-arrays", "arrays", "gq-looparrays", "gq-strings", "strings", "gq-return", "functions",
   "gq-appendpop", "gq-indices", "dictionaries", "gq-loopdicts", "gq-valuetypes", "gq-types",
 ];
-const REQUIRED = ["id", "title", "concept", "difficulty", "prompt", "signature", "starter", "tests", "solution"];
+const REQUIRED = ["id", "title", "concept", "difficulty", "prompt", "signature", "fn", "starter", "tests", "solution"];
 // Problems are moving to the house style (hints list, docs, named tests, no
 // type hints). Files that still have the old single `hint` are accepted but
 // counted, so the migration can go topic by topic.
 
-// House style checks. Type hints are allowed only as solve's return type.
+// House style checks. Type hints are allowed only as the tested function's return type.
 function styleErrors(p) {
   const out = [];
   if (!Array.isArray(p.hints) || p.hints.length < 2 || p.hints.length > 4 || p.hints.some((h) => typeof h !== "string" || !h.trim())) out.push("hints must be 2 to 4 strings");
@@ -25,13 +25,13 @@ function styleErrors(p) {
   if (Array.isArray(p.tests) && p.tests.some((t) => typeof t.name !== "string" || !t.name.trim())) out.push("every test needs a plain-English name");
   if (p.allow_type_hints) return out;   // the type-hints lesson itself
   const sigParams = (/\((.*)\)/.exec(p.signature) || [, ""])[1];
-  if (/:/.test(sigParams)) out.push("solve's parameters must not have type hints");
+  if (/:/.test(sigParams)) out.push("the function's parameters must not have type hints");
   for (const [field, code] of [["starter", p.starter], ["solution", p.solution]]) {
     for (const line of String(code).split("\n")) {
       const m = /^\s*func\s+(\w+)\s*\(([^)]*)\)\s*(->\s*\w+)?\s*:/.exec(line);
       if (!m) continue;
       if (/:/.test(m[2])) out.push(`${field}: parameters of ${m[1]}() must not have type hints`);
-      if (m[1] !== "solve" && m[3]) out.push(`${field}: ${m[1]}() must not declare a return type`);
+      if (m[1] !== p.fn && m[3]) out.push(`${field}: ${m[1]}() must not declare a return type`);
     }
     if (/\bvar\s+\w+\s*:\s*\w+/.test(code) || /:=/.test(code)) out.push(`${field}: no typed variables or := (write var x = ...)`);
   }
@@ -55,6 +55,7 @@ for (const f of fs.readdirSync(dir).sort()) {
   if (![0, 1, 2, 3].includes(p.difficulty)) errors.push(`${f}: difficulty must be 0-3`);
   if (!Array.isArray(p.tests) || p.tests.length === 0) errors.push(`${f}: needs at least one test`);
   for (const e of styleErrors(p)) errors.push(`${f}: ${e}`);
+  if (p.fn && !String(p.signature).includes(`func ${p.fn}(`)) errors.push(`${f}: signature must declare func ${p.fn}(`);
   entries.push({ id: p.id, title: p.title, concept: p.concept, difficulty: p.difficulty, ...(Array.isArray(p.generator) ? { variants: true } : {}) });
 }
 // Milestone steps follow the same house style (hints, docs, named checks, no type hints).

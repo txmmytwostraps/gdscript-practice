@@ -4,8 +4,9 @@
   "concept": "gq-readable",
   "difficulty": 0,
   "prompt": "This finds the x where a sprite of the given width touches the right edge of a 1920-pixel screen. Name the 1920 `SCREEN_WIDTH`.",
-  "signature": "func solve(width):",
-  "starter": "func solve(width):\n\treturn 1920 - width",
+  "signature": "func right_edge_x(width):",
+  "fn": "right_edge_x",
+  "starter": "func right_edge_x(width):\n\treturn 1920 - width",
   "require_names": [
     "SCREEN_WIDTH"
   ],
@@ -45,5 +46,5 @@
       "what": "Declares a named value that never changes. Written in CAPITALS by convention."
     }
   ],
-  "solution": "func solve(width):\n\tconst SCREEN_WIDTH = 1920\n\treturn SCREEN_WIDTH - width"
+  "solution": "func right_edge_x(width):\n\tconst SCREEN_WIDTH = 1920\n\treturn SCREEN_WIDTH - width"
 }

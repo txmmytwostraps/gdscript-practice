@@ -4,8 +4,9 @@
   "concept": "gq-vectors",
   "difficulty": 0,
   "prompt": "The robot's position is two numbers, x and y, kept together. Return a Vector2 whose x is x and whose y is y.",
-  "signature": "func solve(x, y) -> Vector2:",
-  "starter": "func solve(x, y) -> Vector2:\n\treturn Vector2.ZERO",
+  "signature": "func make_vector(x, y) -> Vector2:",
+  "fn": "make_vector",
+  "starter": "func make_vector(x, y) -> Vector2:\n\treturn Vector2.ZERO",
   "tests": [
     {
       "name": "3 and 4 make (3, 4)",
@@ -57,7 +58,7 @@
       "what": "Makes a vector holding an x and a y. Read them back with .x and .y."
     }
   ],
-  "solution": "func solve(x, y) -> Vector2:\n\treturn Vector2(x, y)",
+  "solution": "func make_vector(x, y) -> Vector2:\n\treturn Vector2(x, y)",
   "generator": [
     {
       "float": [

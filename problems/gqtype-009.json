@@ -4,8 +4,9 @@
   "concept": "gq-types",
   "difficulty": 0,
   "prompt": "Declare `scores` as an Array holding [3, 5, 7] and return its size.",
-  "signature": "func solve() -> int:",
-  "starter": "func solve() -> int:\n\treturn 0",
+  "signature": "func typed_scores_size() -> int:",
+  "fn": "typed_scores_size",
+  "starter": "func typed_scores_size() -> int:\n\treturn 0",
   "tests": [
     {
       "name": "Three scores",
@@ -24,7 +25,7 @@
       "what": "Declares a variable that can only hold that type. Also float, String, bool, Vector2, Array."
     }
   ],
-  "solution": "func solve() -> int:\n\tvar scores: Array = [3, 5, 7]\n\treturn scores.size()",
+  "solution": "func typed_scores_size() -> int:\n\tvar scores: Array = [3, 5, 7]\n\treturn scores.size()",
   "allow_type_hints": true,
   "require_names": [
     "scores"

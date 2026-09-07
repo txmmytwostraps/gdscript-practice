@@ -3,9 +3,10 @@
   "title": "Square the level",
   "concept": "gq-multiply",
   "difficulty": 0,
-  "prompt": "Experience needed is the level multiplied by itself, times 100. Return it for level n. solve(3) is 900.",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\treturn 0",
+  "prompt": "Experience needed is the level multiplied by itself, times 100. Return it for level n. experience_needed(3) is 900.",
+  "signature": "func experience_needed(n):",
+  "fn": "experience_needed",
+  "starter": "func experience_needed(n):\n\treturn 0",
   "tests": [
     {
       "name": "Level 3 needs 900",
@@ -39,7 +40,7 @@
       "what": "Multiplies two numbers. * with a float keeps decimals."
     }
   ],
-  "solution": "func solve(n):\n\treturn n * n * 100",
+  "solution": "func experience_needed(n):\n\treturn n * n * 100",
   "generator": [
     {
       "int": [

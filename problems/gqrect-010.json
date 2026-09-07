@@ -4,8 +4,9 @@
   "concept": "gq-rect",
   "difficulty": 0,
   "prompt": "Return true if the point lies inside the rectangle.",
-  "signature": "func solve(r, point):",
-  "starter": "func solve(r, point):\n\treturn false",
+  "signature": "func is_point_inside(r, point):",
+  "fn": "is_point_inside",
+  "starter": "func is_point_inside(r, point):\n\treturn false",
   "tests": [
     {
       "name": "(5, 5) is inside a 10 by 10",
@@ -78,7 +79,7 @@
       "what": "Returns true if the point lies inside the rectangle."
     }
   ],
-  "solution": "func solve(r, point):\n\treturn r.has_point(point)",
+  "solution": "func is_point_inside(r, point):\n\treturn r.has_point(point)",
   "generator": [
     {
       "rect": [

@@ -3,9 +3,10 @@
   "title": "Remainder",
   "concept": "arithmetic",
   "difficulty": 0,
-  "prompt": "Return the remainder when a is divided by b. 10 divided by 3 is 3 remainder 1, so solve(10, 3) is 1.",
-  "signature": "func solve(a, b):",
-  "starter": "func solve(a, b):\n\treturn 0",
+  "prompt": "Return the remainder when a is divided by b. 10 divided by 3 is 3 remainder 1, so remainder(10, 3) is 1.",
+  "signature": "func remainder(a, b):",
+  "fn": "remainder",
+  "starter": "func remainder(a, b):\n\treturn 0",
   "tests": [
     {
       "name": "10 by 3 leaves 1",
@@ -50,7 +51,7 @@
       "what": "The remainder after dividing a by b. 10 % 3 is 1."
     }
   ],
-  "solution": "func solve(a, b):\n\treturn a % b",
+  "solution": "func remainder(a, b):\n\treturn a % b",
   "generator": [
     {
       "int": [

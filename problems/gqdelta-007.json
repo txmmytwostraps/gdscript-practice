@@ -4,8 +4,9 @@
   "concept": "gq-delta",
   "difficulty": 0,
   "prompt": "The robot at speed gains acceleration pixels per second every second. Return its speed after one frame. From 0 with acceleration 100, a 0.1 s frame gives 10.",
-  "signature": "func solve(speed, acceleration, delta) -> float:",
-  "starter": "func solve(speed, acceleration, delta) -> float:\n\treturn speed",
+  "signature": "func speed_after_frame(speed, acceleration, delta) -> float:",
+  "fn": "speed_after_frame",
+  "starter": "func speed_after_frame(speed, acceleration, delta) -> float:\n\treturn speed",
   "tests": [
     {
       "name": "0 plus 100 for 0.1 s is 10",
@@ -40,7 +41,7 @@
     "`return speed + acceleration * delta`"
   ],
   "docs": [],
-  "solution": "func solve(speed, acceleration, delta) -> float:\n\treturn speed + acceleration * delta",
+  "solution": "func speed_after_frame(speed, acceleration, delta) -> float:\n\treturn speed + acceleration * delta",
   "generator": [
     {
       "int": [

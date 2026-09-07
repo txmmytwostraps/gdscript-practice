@@ -3,9 +3,10 @@
   "title": "Clamp with ifs",
   "concept": "gq-conditions",
   "difficulty": 1,
-  "prompt": "The robot's speed must stay between low and high. Return value, but never below low and never above high, using if statements rather than clamp(). solve(15, 0, 10) is 10.",
-  "signature": "func solve(value, low, high):",
-  "starter": "func solve(value, low, high):\n\treturn value",
+  "prompt": "The robot's speed must stay between low and high. Return value, but never below low and never above high, using if statements rather than clamp(). clamp_with_ifs(15, 0, 10) is 10.",
+  "signature": "func clamp_with_ifs(value, low, high):",
+  "fn": "clamp_with_ifs",
+  "starter": "func clamp_with_ifs(value, low, high):\n\treturn value",
   "tests": [
     {
       "name": "Inside the limits is unchanged",
@@ -49,7 +50,7 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(value, low, high):\n\tif value < low:\n\t\treturn low\n\telif value > high:\n\t\treturn high\n\telse:\n\t\treturn value",
+  "solution": "func clamp_with_ifs(value, low, high):\n\tif value < low:\n\t\treturn low\n\telif value > high:\n\t\treturn high\n\telse:\n\t\treturn value",
   "generator": [
     {
       "int": [

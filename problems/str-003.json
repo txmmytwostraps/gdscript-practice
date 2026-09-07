@@ -4,8 +4,9 @@
   "concept": "strings",
   "difficulty": 0,
   "prompt": "Return the text in capital letters with an exclamation mark on the end.",
-  "signature": "func solve(s):",
-  "starter": "func solve(s):\n\treturn s",
+  "signature": "func shout(s):",
+  "fn": "shout",
+  "starter": "func shout(s):\n\treturn s",
   "tests": [
     {
       "name": "hi becomes HI!",
@@ -43,7 +44,7 @@
       "what": "Joins two strings into one. Numbers must be turned into text first."
     }
   ],
-  "solution": "func solve(s):\n\treturn s.to_upper() + \"!\"",
+  "solution": "func shout(s):\n\treturn s.to_upper() + \"!\"",
   "generator": [
     {
       "pick": [

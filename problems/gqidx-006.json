@@ -4,8 +4,9 @@
   "concept": "gq-indices",
   "difficulty": 0,
   "prompt": "Return the first number plus the last number in the array.",
-  "signature": "func solve(nums):",
-  "starter": "func solve(nums):\n\treturn 0",
+  "signature": "func first_plus_last(nums):",
+  "fn": "first_plus_last",
+  "starter": "func first_plus_last(nums):\n\treturn 0",
   "tests": [
     {
       "name": "1 plus 4 is 5",
@@ -50,7 +51,7 @@
       "what": "The item at position i. Positions start at 0; -1 is the last item."
     }
   ],
-  "solution": "func solve(nums):\n\treturn nums[0] + nums[-1]",
+  "solution": "func first_plus_last(nums):\n\treturn nums[0] + nums[-1]",
   "generator": [
     {
       "array": {

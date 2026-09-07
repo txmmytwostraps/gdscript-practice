@@ -3,9 +3,10 @@
   "title": "Digits into a number",
   "concept": "gq-parameters",
   "difficulty": 1,
-  "prompt": "Three single digits arrive in order: first, second, third. Return the three-digit number they make, so solve(1, 2, 3) is 123.",
-  "signature": "func solve(first, second, third):",
-  "starter": "func solve(first, second, third):\n\treturn first + second + third",
+  "prompt": "Three single digits arrive in order: first, second, third. Return the three-digit number they make, so digits_to_number(1, 2, 3) is 123.",
+  "signature": "func digits_to_number(first, second, third):",
+  "fn": "digits_to_number",
+  "starter": "func digits_to_number(first, second, third):\n\treturn first + second + third",
   "tests": [
     {
       "name": "1, 2, 3 make 123",
@@ -40,7 +41,7 @@
     "`return first * 100 + second * 10 + third`"
   ],
   "docs": [],
-  "solution": "func solve(first, second, third):\n\treturn first * 100 + second * 10 + third",
+  "solution": "func digits_to_number(first, second, third):\n\treturn first * 100 + second * 10 + third",
   "generator": [
     {
       "int": [

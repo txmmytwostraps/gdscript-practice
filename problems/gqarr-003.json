@@ -4,8 +4,9 @@
   "concept": "gq-arrays",
   "difficulty": 0,
   "prompt": "Return the last item of the array. It always has at least one item.",
-  "signature": "func solve(items):",
-  "starter": "func solve(items):\n\treturn items[0]",
+  "signature": "func last_item(items):",
+  "fn": "last_item",
+  "starter": "func last_item(items):\n\treturn items[0]",
   "tests": [
     {
       "name": "Last of 5, 6, 7 is 7",
@@ -55,7 +56,7 @@
       "what": "Returns how many items the array holds."
     }
   ],
-  "solution": "func solve(items):\n\treturn items[items.size() - 1]",
+  "solution": "func last_item(items):\n\treturn items[items.size() - 1]",
   "generator": [
     {
       "array": {

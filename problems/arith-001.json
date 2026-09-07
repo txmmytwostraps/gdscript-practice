@@ -3,9 +3,10 @@
   "title": "Room area",
   "concept": "arithmetic",
   "difficulty": 0,
-  "prompt": "The robot measures a rectangular room. Return its area: width times height. solve(3, 4) is 12.",
-  "signature": "func solve(width, height):",
-  "starter": "func solve(width, height):\n\treturn 0",
+  "prompt": "The robot measures a rectangular room. Return its area: width times height. room_area(3, 4) is 12.",
+  "signature": "func room_area(width, height):",
+  "fn": "room_area",
+  "starter": "func room_area(width, height):\n\treturn 0",
   "tests": [
     {
       "name": "3 by 4 is 12",
@@ -45,7 +46,7 @@
     "`return width * height`"
   ],
   "docs": [],
-  "solution": "func solve(width, height):\n\treturn width * height",
+  "solution": "func room_area(width, height):\n\treturn width * height",
   "generator": [
     {
       "int": [

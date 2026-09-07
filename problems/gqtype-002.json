@@ -3,9 +3,10 @@
   "title": "A typed parameter",
   "concept": "gq-types",
   "difficulty": 0,
-  "prompt": "Write `double`, whose parameter is hinted as an int and which returns the parameter times 2. solve returns double(n).",
-  "signature": "func solve(n: int) -> int:",
-  "starter": "func solve(n: int) -> int:\n\treturn n",
+  "prompt": "Write `double`, whose parameter is hinted as an int and which returns the parameter times 2. doubled_int returns double(n).",
+  "signature": "func doubled_int(n: int) -> int:",
+  "fn": "doubled_int",
+  "starter": "func doubled_int(n: int) -> int:\n\treturn n",
   "tests": [
     {
       "name": "4 doubles to 8",
@@ -36,7 +37,7 @@
       "what": "Return type hint: the function promises to return that type."
     }
   ],
-  "solution": "func solve(n: int) -> int:\n\treturn double(n)\n\nfunc double(value: int) -> int:\n\treturn value * 2",
+  "solution": "func doubled_int(n: int) -> int:\n\treturn double(n)\n\nfunc double(value: int) -> int:\n\treturn value * 2",
   "allow_type_hints": true,
   "require_methods": [
     "double"

@@ -4,8 +4,9 @@
   "concept": "gq-arrays",
   "difficulty": 1,
   "prompt": "Return a new array containing only the even numbers from nums, in their original order.",
-  "signature": "func solve(nums):",
-  "starter": "func solve(nums):\n\treturn nums",
+  "signature": "func evens_only(nums):",
+  "fn": "evens_only",
+  "starter": "func evens_only(nums):\n\treturn nums",
   "tests": [
     {
       "name": "[1, 2, 3, 4] keeps [2, 4]",
@@ -64,7 +65,7 @@
       "what": "Adds value to the end of the array. Returns nothing."
     }
   ],
-  "solution": "func solve(nums):\n\tvar result = []\n\tfor n in nums:\n\t\tif n % 2 == 0:\n\t\t\tresult.append(n)\n\treturn result",
+  "solution": "func evens_only(nums):\n\tvar result = []\n\tfor n in nums:\n\t\tif n % 2 == 0:\n\t\t\tresult.append(n)\n\treturn result",
   "generator": [
     {
       "array": {

@@ -4,8 +4,9 @@
   "concept": "gq-indices",
   "difficulty": 0,
   "prompt": "The array always has exactly three items. Return the middle one.",
-  "signature": "func solve(items):",
-  "starter": "func solve(items):\n\treturn items[0]",
+  "signature": "func middle_of_three(items):",
+  "fn": "middle_of_three",
+  "starter": "func middle_of_three(items):\n\treturn items[0]",
   "tests": [
     {
       "name": "Middle of 1, 2, 3",
@@ -40,7 +41,7 @@
       "what": "The item at position i. Positions start at 0; -1 is the last item."
     }
   ],
-  "solution": "func solve(items):\n\treturn items[1]",
+  "solution": "func middle_of_three(items):\n\treturn items[1]",
   "generator": [
     {
       "pick": [

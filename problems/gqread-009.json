@@ -4,8 +4,9 @@
   "concept": "gq-readable",
   "difficulty": 0,
   "prompt": "The robot wins at 1000 points. This returns how many points are still needed. Name the 1000 `WIN_SCORE`.",
-  "signature": "func solve(score):",
-  "starter": "func solve(score):\n\treturn 1000 - score",
+  "signature": "func points_needed(score):",
+  "fn": "points_needed",
+  "starter": "func points_needed(score):\n\treturn 1000 - score",
   "require_names": [
     "WIN_SCORE"
   ],
@@ -45,5 +46,5 @@
       "what": "Declares a named value that never changes. Written in CAPITALS by convention."
     }
   ],
-  "solution": "func solve(score):\n\tconst WIN_SCORE = 1000\n\treturn WIN_SCORE - score"
+  "solution": "func points_needed(score):\n\tconst WIN_SCORE = 1000\n\treturn WIN_SCORE - score"
 }

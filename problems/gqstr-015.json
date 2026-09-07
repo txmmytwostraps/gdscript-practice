@@ -4,8 +4,9 @@
   "concept": "gq-strings",
   "difficulty": 1,
   "prompt": "Return true if the text reads the same backwards as forwards, like \"level\".",
-  "signature": "func solve(text):",
-  "starter": "func solve(text):\n\treturn false",
+  "signature": "func is_palindrome(text):",
+  "fn": "is_palindrome",
+  "starter": "func is_palindrome(text):\n\treturn false",
   "tests": [
     {
       "name": "level is one",
@@ -39,7 +40,7 @@
       "what": "Returns the text backwards. Unlike arrays, this returns a new string."
     }
   ],
-  "solution": "func solve(text):\n\treturn text == text.reverse()",
+  "solution": "func is_palindrome(text):\n\treturn text == text.reverse()",
   "generator": [
     {
       "pick": [

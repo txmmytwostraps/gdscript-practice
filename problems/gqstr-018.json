@@ -4,8 +4,9 @@
   "concept": "gq-strings",
   "difficulty": 1,
   "prompt": "Return \"NAME has N hp\" using a format string instead of joining pieces.",
-  "signature": "func solve(name, hp):",
-  "starter": "func solve(name, hp):\n\treturn name",
+  "signature": "func format_status(name, hp):",
+  "fn": "format_status",
+  "starter": "func format_status(name, hp):\n\treturn name",
   "tests": [
     {
       "name": "Robo with 100",
@@ -34,7 +35,7 @@
       "what": "Fills the slots: %s takes text, %d a whole number. Values come after the % in an array."
     }
   ],
-  "solution": "func solve(name, hp):\n\treturn \"%s has %d hp\" % [name, hp]",
+  "solution": "func format_status(name, hp):\n\treturn \"%s has %d hp\" % [name, hp]",
   "generator": [
     {
       "pick": [

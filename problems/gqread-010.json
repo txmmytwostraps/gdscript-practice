@@ -4,8 +4,9 @@
   "concept": "gq-readable",
   "difficulty": 0,
   "prompt": "A critical hit does 1.5 times the normal damage. Name the 1.5 `CRIT_MULTIPLIER` and use it.",
-  "signature": "func solve(damage) -> float:",
-  "starter": "func solve(damage) -> float:\n\treturn damage * 1.5",
+  "signature": "func critical_damage(damage) -> float:",
+  "fn": "critical_damage",
+  "starter": "func critical_damage(damage) -> float:\n\treturn damage * 1.5",
   "require_names": [
     "CRIT_MULTIPLIER"
   ],
@@ -45,5 +46,5 @@
       "what": "Declares a named value that never changes. Written in CAPITALS by convention."
     }
   ],
-  "solution": "func solve(damage) -> float:\n\tconst CRIT_MULTIPLIER = 1.5\n\treturn damage * CRIT_MULTIPLIER"
+  "solution": "func critical_damage(damage) -> float:\n\tconst CRIT_MULTIPLIER = 1.5\n\treturn damage * CRIT_MULTIPLIER"
 }

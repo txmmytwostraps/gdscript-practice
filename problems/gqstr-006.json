@@ -4,8 +4,9 @@
   "concept": "gq-strings",
   "difficulty": 0,
   "prompt": "Same task, using the built-in repeat method on the string.",
-  "signature": "func solve(text, times):",
-  "starter": "func solve(text, times):\n\treturn text",
+  "signature": "func repeat_with_method(text, times):",
+  "fn": "repeat_with_method",
+  "starter": "func repeat_with_method(text, times):\n\treturn text",
   "tests": [
     {
       "name": "ab three times",
@@ -42,7 +43,7 @@
       "what": "Returns the text repeated n times."
     }
   ],
-  "solution": "func solve(text, times):\n\treturn text.repeat(times)",
+  "solution": "func repeat_with_method(text, times):\n\treturn text.repeat(times)",
   "generator": [
     {
       "pick": [

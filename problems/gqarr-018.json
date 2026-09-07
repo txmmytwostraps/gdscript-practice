@@ -4,8 +4,9 @@
   "concept": "gq-arrays",
   "difficulty": 1,
   "prompt": "Return the average of the numbers as a float. If the array is empty, return 0.0 instead of dividing by zero. [1, 2, 3, 4] averages 2.5.",
-  "signature": "func solve(nums) -> float:",
-  "starter": "func solve(nums) -> float:\n\treturn 0.0",
+  "signature": "func average(nums) -> float:",
+  "fn": "average",
+  "starter": "func average(nums) -> float:\n\treturn 0.0",
   "tests": [
     {
       "name": "[1, 2, 3, 4] averages 2.5",
@@ -59,7 +60,7 @@
       "what": "Returns the number as a float, so dividing keeps decimals."
     }
   ],
-  "solution": "func solve(nums) -> float:\n\tif nums.is_empty():\n\t\treturn 0.0\n\tvar total = 0\n\tfor n in nums:\n\t\ttotal += n\n\treturn float(total) / nums.size()",
+  "solution": "func average(nums) -> float:\n\tif nums.is_empty():\n\t\treturn 0.0\n\tvar total = 0\n\tfor n in nums:\n\t\ttotal += n\n\treturn float(total) / nums.size()",
   "generator": [
     {
       "array": {

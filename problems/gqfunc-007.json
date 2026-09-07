@@ -3,9 +3,10 @@
   "title": "Same helper, three times",
   "concept": "gq-functions",
   "difficulty": 0,
-  "prompt": "The robot's clock ticks. Write `tick`, which prints \"tick\", and call it three times from `solve`.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass",
+  "prompt": "The robot's clock ticks. Write `tick`, which prints \"tick\", and call it three times from `run`.",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass",
   "require_methods": [
     "tick"
   ],
@@ -22,8 +23,8 @@
     }
   ],
   "hints": [
-    "Writing the print once in a function means solve only repeats the short call, not the print.",
-    "`func tick():` with `print(\"tick\")`, then `tick()` three times in solve."
+    "Writing the print once in a function means run only repeats the short call, not the print.",
+    "`func tick():` with `print(\"tick\")`, then `tick()` three times in run."
   ],
   "docs": [
     {
@@ -31,5 +32,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve():\n\ttick()\n\ttick()\n\ttick()\n\nfunc tick():\n\tprint(\"tick\")"
+  "solution": "func run():\n\ttick()\n\ttick()\n\ttick()\n\nfunc tick():\n\tprint(\"tick\")"
 }

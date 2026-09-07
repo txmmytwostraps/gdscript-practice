@@ -4,8 +4,9 @@
   "concept": "gq-turtle",
   "difficulty": 1,
   "prompt": "Draw a dashed line: forward 20, then `jump` 10 (which moves without drawing), then forward 20 again.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass",
   "tests": [
     {
       "name": "Draw, jump, draw",
@@ -32,5 +33,5 @@
       "what": "Moves forward without drawing."
     }
   ],
-  "solution": "func solve():\n\tmove_forward(20)\n\tjump(10)\n\tmove_forward(20)"
+  "solution": "func run():\n\tmove_forward(20)\n\tjump(10)\n\tmove_forward(20)"
 }

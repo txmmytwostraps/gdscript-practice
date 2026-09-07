@@ -3,9 +3,10 @@
   "title": "Return an average",
   "concept": "gq-return",
   "difficulty": 1,
-  "prompt": "Write `average`, which returns the average of two whole numbers with decimals, so average(1, 2) is 1.5. `solve` returns average(a, b).",
-  "signature": "func solve(a, b) -> float:",
-  "starter": "func solve(a, b) -> float:\n\treturn (a + b) / 2",
+  "prompt": "Write `average`, which returns the average of two whole numbers with decimals, so average(1, 2) is 1.5. `mean_of` returns average(a, b).",
+  "signature": "func mean_of(a, b) -> float:",
+  "fn": "mean_of",
+  "starter": "func mean_of(a, b) -> float:\n\treturn (a + b) / 2",
   "tests": [
     {
       "name": "1 and 2 average 1.5",
@@ -42,7 +43,7 @@
       "what": "Ends the function and hands value back to whoever called it."
     }
   ],
-  "solution": "func solve(a, b) -> float:\n\treturn average(a, b)\n\nfunc average(x, y):\n\treturn (x + y) / 2.0",
+  "solution": "func mean_of(a, b) -> float:\n\treturn average(a, b)\n\nfunc average(x, y):\n\treturn (x + y) / 2.0",
   "require_methods": [
     "average"
   ],

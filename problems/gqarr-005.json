@@ -3,9 +3,10 @@
   "title": "Append",
   "concept": "gq-arrays",
   "difficulty": 0,
-  "prompt": "Start with an empty array. Add a to the end, then b. Return the array. solve(1, 2) is [1, 2].",
-  "signature": "func solve(a, b):",
-  "starter": "func solve(a, b):\n\tvar items = []\n\treturn items",
+  "prompt": "Start with an empty array. Add a to the end, then b. Return the array. append_two(1, 2) is [1, 2].",
+  "signature": "func append_two(a, b):",
+  "fn": "append_two",
+  "starter": "func append_two(a, b):\n\tvar items = []\n\treturn items",
   "tests": [
     {
       "name": "1 then 2",
@@ -51,7 +52,7 @@
       "what": "Adds value to the end of the array. Returns nothing."
     }
   ],
-  "solution": "func solve(a, b):\n\tvar items = []\n\titems.append(a)\n\titems.append(b)\n\treturn items",
+  "solution": "func append_two(a, b):\n\tvar items = []\n\titems.append(a)\n\titems.append(b)\n\treturn items",
   "generator": [
     {
       "int": [

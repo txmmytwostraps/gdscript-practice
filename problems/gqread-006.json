@@ -4,8 +4,9 @@
   "concept": "gq-readable",
   "difficulty": 0,
   "prompt": "The robot's grid uses tiles 64 pixels wide. Name that `TILE_SIZE` and use it to turn a column number into a pixel position.",
-  "signature": "func solve(column):",
-  "starter": "func solve(column):\n\treturn column * 64",
+  "signature": "func column_to_pixels(column):",
+  "fn": "column_to_pixels",
+  "starter": "func column_to_pixels(column):\n\treturn column * 64",
   "require_names": [
     "TILE_SIZE"
   ],
@@ -45,5 +46,5 @@
       "what": "Declares a named value that never changes. Written in CAPITALS by convention."
     }
   ],
-  "solution": "func solve(column):\n\tconst TILE_SIZE = 64\n\treturn column * TILE_SIZE"
+  "solution": "func column_to_pixels(column):\n\tconst TILE_SIZE = 64\n\treturn column * TILE_SIZE"
 }

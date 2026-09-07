@@ -3,9 +3,10 @@
   "title": "Heal",
   "concept": "gq-members",
   "difficulty": 1,
-  "prompt": "The starter has a member `health` at 50 and a `take_damage` helper. Add a `heal` helper that adds an amount to health. In `solve`, call heal(20). Then return health, which is 70.",
-  "signature": "func solve():",
-  "starter": "var health = 50\n\nfunc solve():\n\treturn health\n\nfunc take_damage(amount):\n\thealth -= amount",
+  "prompt": "The starter has a member `health` at 50 and a `take_damage` helper. Add a `heal` helper that adds an amount to health. In `health_after_heal`, call heal(20). Then return health, which is 70.",
+  "signature": "func health_after_heal():",
+  "fn": "health_after_heal",
+  "starter": "var health = 50\n\nfunc health_after_heal():\n\treturn health\n\nfunc take_damage(amount):\n\thealth -= amount",
   "tests": [
     {
       "name": "50 healed by 20 is 70",
@@ -16,7 +17,7 @@
   "hints": [
     "heal is the mirror of take_damage.",
     "`func heal(amount):` with `health += amount`.",
-    "solve: `heal(20)` then `return health`."
+    "health_after_heal: `heal(20)` then `return health`."
   ],
   "docs": [
     {
@@ -24,7 +25,7 @@
       "what": "A variable at the top of the script (a member variable): every function in the script can read and change it."
     }
   ],
-  "solution": "var health = 50\n\nfunc solve():\n\theal(20)\n\treturn health\n\nfunc take_damage(amount):\n\thealth -= amount\n\nfunc heal(amount):\n\thealth += amount",
+  "solution": "var health = 50\n\nfunc health_after_heal():\n\theal(20)\n\treturn health\n\nfunc take_damage(amount):\n\thealth -= amount\n\nfunc heal(amount):\n\thealth += amount",
   "require_methods": [
     "heal"
   ]

@@ -4,8 +4,9 @@
   "concept": "gq-conditions",
   "difficulty": 1,
   "prompt": "To ride the robot you must be at least 12 years old, and then at least 120 cm tall. Return \"too young\", \"too short\" or \"ride\". Check the age first, and only check the height inside that.",
-  "signature": "func solve(age, height):",
-  "starter": "func solve(age, height):\n\treturn \"ride\"",
+  "signature": "func ride_check(age, height):",
+  "fn": "ride_check",
+  "starter": "func ride_check(age, height):\n\treturn \"ride\"",
   "tests": [
     {
       "name": "10 years old is too young",
@@ -54,7 +55,7 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(age, height):\n\tif age >= 12:\n\t\tif height >= 120:\n\t\t\treturn \"ride\"\n\t\telse:\n\t\t\treturn \"too short\"\n\telse:\n\t\treturn \"too young\"",
+  "solution": "func ride_check(age, height):\n\tif age >= 12:\n\t\tif height >= 120:\n\t\t\treturn \"ride\"\n\t\telse:\n\t\t\treturn \"too short\"\n\telse:\n\t\treturn \"too young\"",
   "generator": [
     {
       "int": [

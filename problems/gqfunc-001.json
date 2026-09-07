@@ -3,9 +3,10 @@
   "title": "The robot says hello",
   "concept": "gq-functions",
   "difficulty": 0,
-  "prompt": "Your robot needs a greeting. Below `solve`, write a second function called `say_hello` that prints \"Hello, I am a robot\". Then make `solve` call it, so running solve prints that line once.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass",
+  "prompt": "Your robot needs a greeting. Below `run`, write a second function called `say_hello` that prints \"Hello, I am a robot\". Then make `run` call it, so running run prints that line once.",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass",
   "require_methods": [
     "say_hello"
   ],
@@ -22,7 +23,7 @@
   "hints": [
     "A function is a named block of code. You define it once with func, then run it by writing its name with brackets.",
     "The definition line is `func say_hello():` and its body is one indented print line.",
-    "Inside solve, replace pass with `say_hello()`."
+    "Inside run, replace pass with `say_hello()`."
   ],
   "docs": [
     {
@@ -30,5 +31,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve():\n\tsay_hello()\n\nfunc say_hello():\n\tprint(\"Hello, I am a robot\")"
+  "solution": "func run():\n\tsay_hello()\n\nfunc say_hello():\n\tprint(\"Hello, I am a robot\")"
 }

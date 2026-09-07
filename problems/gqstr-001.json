@@ -4,8 +4,9 @@
   "concept": "gq-strings",
   "difficulty": 0,
   "prompt": "The robot greets whoever walks in. Return \"Hello, \" followed by the name and an exclamation mark, so \"Tim\" gives \"Hello, Tim!\".",
-  "signature": "func solve(name):",
-  "starter": "func solve(name):\n\treturn name",
+  "signature": "func greet(name):",
+  "fn": "greet",
+  "starter": "func greet(name):\n\treturn name",
   "tests": [
     {
       "name": "Tim gets Hello, Tim!",
@@ -40,7 +41,7 @@
       "what": "Joins two strings into one. Numbers must be turned into text first."
     }
   ],
-  "solution": "func solve(name):\n\treturn \"Hello, \" + name + \"!\"",
+  "solution": "func greet(name):\n\treturn \"Hello, \" + name + \"!\"",
   "generator": [
     {
       "pick": [

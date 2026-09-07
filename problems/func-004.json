@@ -4,8 +4,9 @@
   "concept": "functions",
   "difficulty": 0,
   "prompt": "A function can only return one thing, so put two numbers in an array. Return [a + b, a * b].",
-  "signature": "func solve(a, b):",
-  "starter": "func solve(a, b):\n\treturn []",
+  "signature": "func sum_and_product(a, b):",
+  "fn": "sum_and_product",
+  "starter": "func sum_and_product(a, b):\n\treturn []",
   "tests": [
     {
       "name": "2 and 3 give [5, 6]",
@@ -62,7 +63,7 @@
       "what": "Ends the function and hands value back to whoever called it."
     }
   ],
-  "solution": "func solve(a, b):\n\treturn [a + b, a * b]",
+  "solution": "func sum_and_product(a, b):\n\treturn [a + b, a * b]",
   "generator": [
     {
       "int": [

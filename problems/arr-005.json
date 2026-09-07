@@ -4,8 +4,9 @@
   "concept": "arrays",
   "difficulty": 1,
   "prompt": "The array always has an odd number of items. Return the one in the middle.",
-  "signature": "func solve(items):",
-  "starter": "func solve(items):\n\treturn items[0]",
+  "signature": "func middle_item(items):",
+  "fn": "middle_item",
+  "starter": "func middle_item(items):\n\treturn items[0]",
   "tests": [
     {
       "name": "Middle of three",
@@ -68,7 +69,7 @@
       "what": "The item at position i. Positions start at 0; -1 is the last item."
     }
   ],
-  "solution": "func solve(items):\n\tvar middle = items.size() / 2\n\treturn items[middle]",
+  "solution": "func middle_item(items):\n\tvar middle = items.size() / 2\n\treturn items[middle]",
   "generator": [
     {
       "array": {

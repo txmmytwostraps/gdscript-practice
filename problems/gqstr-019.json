@@ -4,8 +4,9 @@
   "concept": "gq-strings",
   "difficulty": 0,
   "prompt": "Return the text with any spaces removed from the start and the end. Spaces in the middle stay.",
-  "signature": "func solve(text):",
-  "starter": "func solve(text):\n\treturn text",
+  "signature": "func trim_spaces(text):",
+  "fn": "trim_spaces",
+  "starter": "func trim_spaces(text):\n\treturn text",
   "tests": [
     {
       "name": "Spaces both sides removed",
@@ -39,7 +40,7 @@
       "what": "Returns the text without spaces at the start and end."
     }
   ],
-  "solution": "func solve(text):\n\treturn text.strip_edges()",
+  "solution": "func trim_spaces(text):\n\treturn text.strip_edges()",
   "generator": [
     {
       "pick": [

@@ -4,8 +4,9 @@
   "concept": "gq-giants",
   "difficulty": 0,
   "prompt": "Call `hide` and then `show`, so the robot blinks off and back on. The order matters.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass",
   "tests": [
     {
       "name": "hide first, then show",
@@ -27,5 +28,5 @@
       "what": "Makes the robot visible or invisible. No arguments; returns nothing."
     }
   ],
-  "solution": "func solve():\n\thide()\n\tshow()"
+  "solution": "func run():\n\thide()\n\tshow()"
 }

@@ -3,9 +3,10 @@
   "title": "Hours and minutes",
   "concept": "arithmetic",
   "difficulty": 1,
-  "prompt": "The robot has run for some number of minutes. Return an array with two numbers: whole hours, then the minutes left over. solve(90) is [1, 30].",
-  "signature": "func solve(total_minutes):",
-  "starter": "func solve(total_minutes):\n\treturn [0, 0]",
+  "prompt": "The robot has run for some number of minutes. Return an array with two numbers: whole hours, then the minutes left over. hours_and_minutes(90) is [1, 30].",
+  "signature": "func hours_and_minutes(total_minutes):",
+  "fn": "hours_and_minutes",
+  "starter": "func hours_and_minutes(total_minutes):\n\treturn [0, 0]",
   "tests": [
     {
       "name": "90 minutes is 1 hour 30",
@@ -69,7 +70,7 @@
       "what": "The remainder after dividing a by b. 90 % 60 is 30."
     }
   ],
-  "solution": "func solve(total_minutes):\n\tvar hours = total_minutes / 60\n\tvar minutes = total_minutes % 60\n\treturn [hours, minutes]",
+  "solution": "func hours_and_minutes(total_minutes):\n\tvar hours = total_minutes / 60\n\tvar minutes = total_minutes % 60\n\treturn [hours, minutes]",
   "generator": [
     {
       "int": [

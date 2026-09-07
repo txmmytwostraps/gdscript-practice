@@ -4,8 +4,9 @@
   "concept": "gq-strings",
   "difficulty": 0,
   "prompt": "Return the first character of the text joined to the last one. \"hello\" gives \"ho\". The text always has at least one character.",
-  "signature": "func solve(text):",
-  "starter": "func solve(text):\n\treturn text",
+  "signature": "func first_and_last_char(text):",
+  "fn": "first_and_last_char",
+  "starter": "func first_and_last_char(text):\n\treturn text",
   "tests": [
     {
       "name": "hello gives ho",
@@ -48,7 +49,7 @@
       "what": "Joins two strings into one. Numbers must be turned into text first."
     }
   ],
-  "solution": "func solve(text):\n\treturn text[0] + text[text.length() - 1]",
+  "solution": "func first_and_last_char(text):\n\treturn text[0] + text[text.length() - 1]",
   "generator": [
     {
       "pick": [

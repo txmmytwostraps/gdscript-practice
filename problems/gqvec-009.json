@@ -4,8 +4,9 @@
   "concept": "gq-vectors",
   "difficulty": 0,
   "prompt": "The robot at position moves step units along direction, which already has length 1. Return the new position. From (0, 0) along (1, 0) by 5 is (5, 0).",
-  "signature": "func solve(position, direction, step) -> Vector2:",
-  "starter": "func solve(position, direction, step) -> Vector2:\n\treturn position",
+  "signature": "func step_along(position, direction, step) -> Vector2:",
+  "fn": "step_along",
+  "starter": "func step_along(position, direction, step) -> Vector2:\n\treturn position",
   "tests": [
     {
       "name": "(0, 0) along (1, 0) by 5",
@@ -90,7 +91,7 @@
       "what": "Vectors add and subtract part by part, and scale by a plain number."
     }
   ],
-  "solution": "func solve(position, direction, step) -> Vector2:\n\treturn position + direction * step",
+  "solution": "func step_along(position, direction, step) -> Vector2:\n\treturn position + direction * step",
   "generator": [
     {
       "v2": [

@@ -3,9 +3,10 @@
   "title": "Level up with a cap",
   "concept": "gq-multiply",
   "difficulty": 1,
-  "prompt": "Members `max_health` at 100. Write `level_up`, which doubles max_health but never lets it pass 500. In `solve`, call level_up four times. Then return max_health, which is 500.",
-  "signature": "func solve():",
-  "starter": "var max_health = 100\n\nfunc solve():\n\treturn max_health",
+  "prompt": "Members `max_health` at 100. Write `level_up`, which doubles max_health but never lets it pass 500. In `max_health_capped`, call level_up four times. Then return max_health, which is 500.",
+  "signature": "func max_health_capped():",
+  "fn": "max_health_capped",
+  "starter": "var max_health = 100\n\nfunc max_health_capped():\n\treturn max_health",
   "tests": [
     {
       "name": "Four doublings stop at 500",
@@ -27,7 +28,7 @@
       "what": "A member variable: every function in the script can read and change it."
     }
   ],
-  "solution": "var max_health = 100\n\nfunc solve():\n\tlevel_up()\n\tlevel_up()\n\tlevel_up()\n\tlevel_up()\n\treturn max_health\n\nfunc level_up():\n\tmax_health *= 2\n\tif max_health > 500:\n\t\tmax_health = 500",
+  "solution": "var max_health = 100\n\nfunc max_health_capped():\n\tlevel_up()\n\tlevel_up()\n\tlevel_up()\n\tlevel_up()\n\treturn max_health\n\nfunc level_up():\n\tmax_health *= 2\n\tif max_health > 500:\n\t\tmax_health = 500",
   "require_methods": [
     "level_up"
   ]

@@ -4,8 +4,9 @@
   "concept": "gq-appendpop",
   "difficulty": 0,
   "prompt": "Add the new order, then return how many orders are now waiting.",
-  "signature": "func solve(queue, order):",
-  "starter": "func solve(queue, order):\n\treturn 0",
+  "signature": "func orders_waiting(queue, order):",
+  "fn": "orders_waiting",
+  "starter": "func orders_waiting(queue, order):\n\treturn 0",
   "tests": [
     {
       "name": "One plus one is 2",
@@ -40,7 +41,7 @@
       "what": "Returns how many items the array holds."
     }
   ],
-  "solution": "func solve(queue, order):\n\tqueue.append(order)\n\treturn queue.size()",
+  "solution": "func orders_waiting(queue, order):\n\tqueue.append(order)\n\treturn queue.size()",
   "generator": [
     {
       "array": {

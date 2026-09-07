@@ -4,8 +4,9 @@
   "concept": "gq-strings",
   "difficulty": 0,
   "prompt": "Return true if part appears somewhere inside text.",
-  "signature": "func solve(text, part):",
-  "starter": "func solve(text, part):\n\treturn false",
+  "signature": "func contains_part(text, part):",
+  "fn": "contains_part",
+  "starter": "func contains_part(text, part):\n\treturn false",
   "tests": [
     {
       "name": "cat is in concatenate",
@@ -42,7 +43,7 @@
       "what": "true if part appears somewhere in text."
     }
   ],
-  "solution": "func solve(text, part):\n\treturn part in text",
+  "solution": "func contains_part(text, part):\n\treturn part in text",
   "generator": [
     {
       "pick": [

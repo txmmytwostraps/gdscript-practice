@@ -1,14 +1,15 @@
 {
   "id": "gqrect-005",
-  "title": "Centre of a rect",
+  "title": "Center of a rect",
   "concept": "gq-rect",
   "difficulty": 0,
   "prompt": "Return the point in the middle of the rectangle.",
-  "signature": "func solve(r) -> Vector2:",
-  "starter": "func solve(r) -> Vector2:\n\treturn r.position",
+  "signature": "func rect_center(r) -> Vector2:",
+  "fn": "rect_center",
+  "starter": "func rect_center(r) -> Vector2:\n\treturn r.position",
   "tests": [
     {
-      "name": "10 by 10 at origin centres at (5, 5)",
+      "name": "10 by 10 at origin centers at (5, 5)",
       "args": [
         {
           "$rect": [
@@ -27,7 +28,7 @@
       }
     },
     {
-      "name": "(10, 20) 30 by 40 centres at (25, 40)",
+      "name": "(10, 20) 30 by 40 centers at (25, 40)",
       "args": [
         {
           "$rect": [
@@ -56,7 +57,7 @@
       "what": "Returns the middle point of the rectangle."
     }
   ],
-  "solution": "func solve(r) -> Vector2:\n\treturn r.get_center()",
+  "solution": "func rect_center(r) -> Vector2:\n\treturn r.get_center()",
   "generator": [
     {
       "rect": [

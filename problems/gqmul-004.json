@@ -3,9 +3,10 @@
   "title": "Damage scales with level",
   "concept": "gq-multiply",
   "difficulty": 0,
-  "prompt": "The robot deals 10 damage times its level. Return the damage for the given level. solve(3) is 30.",
-  "signature": "func solve(level):",
-  "starter": "func solve(level):\n\treturn 10",
+  "prompt": "The robot deals 10 damage times its level. Return the damage for the given level. damage_for_level(3) is 30.",
+  "signature": "func damage_for_level(level):",
+  "fn": "damage_for_level",
+  "starter": "func damage_for_level(level):\n\treturn 10",
   "tests": [
     {
       "name": "Level 3 deals 30",
@@ -39,7 +40,7 @@
       "what": "Multiplies two numbers. * with a float keeps decimals."
     }
   ],
-  "solution": "func solve(level):\n\treturn 10 * level",
+  "solution": "func damage_for_level(level):\n\treturn 10 * level",
   "generator": [
     {
       "int": [

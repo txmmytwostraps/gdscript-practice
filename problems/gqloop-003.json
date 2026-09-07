@@ -3,9 +3,10 @@
   "title": "Move every frame",
   "concept": "gq-loop",
   "difficulty": 1,
-  "prompt": "A member `x` starts at 0.0 and the robot drives at 120 pixels per second. In `_process`, move x by 120 times delta. After 60 frames solve returns x rounded, which is 120.",
-  "signature": "func solve():",
-  "starter": "var x = 0.0\n\nfunc solve():\n\treturn round(x)",
+  "prompt": "A member `x` starts at 0.0 and the robot drives at 120 pixels per second. In `_process`, move x by 120 times delta. After 60 frames x_after_second returns x rounded, which is 120.",
+  "signature": "func x_after_second():",
+  "fn": "x_after_second",
+  "starter": "var x = 0.0\n\nfunc x_after_second():\n\treturn round(x)",
   "tests": [
     {
       "name": "One second moves 120",
@@ -44,7 +45,7 @@
       "what": "Returns the nearest whole number as a float."
     }
   ],
-  "solution": "var x = 0.0\n\nfunc _process(delta):\n\tx += 120 * delta\n\nfunc solve():\n\treturn round(x)",
+  "solution": "var x = 0.0\n\nfunc _process(delta):\n\tx += 120 * delta\n\nfunc x_after_second():\n\treturn round(x)",
   "require_methods": [
     "_process"
   ]

@@ -3,9 +3,10 @@
   "title": "Two helpers",
   "concept": "gq-turtle",
   "difficulty": 1,
-  "prompt": "Write `square`, which draws a square of 20 with four corners, and use it twice from `solve` with a `jump` of 30 in between.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass",
+  "prompt": "Write `square`, which draws a square of 20 with four corners, and use it twice from `run` with a `jump` of 30 in between.",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass",
   "tests": [
     {
       "name": "Square, jump 30, square",
@@ -33,7 +34,7 @@
     }
   ],
   "hints": [
-    "square is eight calls in a function; solve is three lines.",
+    "square is eight calls in a function; run is three lines.",
     "`square()`, `jump(30)`, `square()`."
   ],
   "docs": [
@@ -50,7 +51,7 @@
       "what": "Moves forward without drawing."
     }
   ],
-  "solution": "func solve():\n\tsquare()\n\tjump(30)\n\tsquare()\n\nfunc square():\n\tmove_forward(20)\n\tturn_left()\n\tmove_forward(20)\n\tturn_left()\n\tmove_forward(20)\n\tturn_left()\n\tmove_forward(20)\n\tturn_left()",
+  "solution": "func run():\n\tsquare()\n\tjump(30)\n\tsquare()\n\nfunc square():\n\tmove_forward(20)\n\tturn_left()\n\tmove_forward(20)\n\tturn_left()\n\tmove_forward(20)\n\tturn_left()\n\tmove_forward(20)\n\tturn_left()",
   "require_methods": [
     "square"
   ]

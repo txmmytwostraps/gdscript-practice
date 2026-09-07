@@ -4,8 +4,9 @@
   "concept": "gq-valuetypes",
   "difficulty": 0,
   "prompt": "The screen needs the robot's health as text. Return \"Health: \" followed by the number, so 80 gives \"Health: 80\". Joining a number straight onto text is an error.",
-  "signature": "func solve(health):",
-  "starter": "func solve(health):\n\treturn \"Health: \"",
+  "signature": "func health_as_text(health):",
+  "fn": "health_as_text",
+  "starter": "func health_as_text(health):\n\treturn \"Health: \"",
   "tests": [
     {
       "name": "80 gives Health: 80",
@@ -36,7 +37,7 @@
       "what": "Joins two strings. Joining text to a number is an error; convert first."
     }
   ],
-  "solution": "func solve(health):\n\treturn \"Health: \" + str(health)",
+  "solution": "func health_as_text(health):\n\treturn \"Health: \" + str(health)",
   "generator": [
     {
       "int": [

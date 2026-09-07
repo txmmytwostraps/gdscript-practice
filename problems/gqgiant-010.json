@@ -4,8 +4,9 @@
   "concept": "gq-giants",
   "difficulty": 1,
   "prompt": "The starter calls rotate with nothing inside the brackets, which is an error because rotate needs a number. Give it 90 so the robot turns.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\trotate()",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\trotate()",
   "tests": [
     {
       "name": "rotate is called with 90",
@@ -26,6 +27,6 @@
       "what": "Turns the robot by that many degrees. Takes one number; returns nothing."
     }
   ],
-  "solution": "func solve():\n\trotate(90)",
+  "solution": "func run():\n\trotate(90)",
   "starter_broken": true
 }

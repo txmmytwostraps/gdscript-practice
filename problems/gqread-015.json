@@ -4,8 +4,9 @@
   "concept": "gq-readable",
   "difficulty": 1,
   "prompt": "This bill is some items at 4.5 each, plus 20% tax. Name both numbers, `PRICE_PER_ITEM` and `TAX_RATE`, and use the names everywhere. Notice 4.5 appears twice in the starter.",
-  "signature": "func solve(quantity) -> float:",
-  "starter": "func solve(quantity) -> float:\n\treturn quantity * 4.5 + quantity * 4.5 * 0.2",
+  "signature": "func bill_with_tax(quantity) -> float:",
+  "fn": "bill_with_tax",
+  "starter": "func bill_with_tax(quantity) -> float:\n\treturn quantity * 4.5 + quantity * 4.5 * 0.2",
   "require_names": [
     "PRICE_PER_ITEM",
     "TAX_RATE"
@@ -48,5 +49,5 @@
       "what": "Declares a named value that never changes. Written in CAPITALS by convention."
     }
   ],
-  "solution": "func solve(quantity) -> float:\n\tconst PRICE_PER_ITEM = 4.5\n\tconst TAX_RATE = 0.2\n\treturn quantity * PRICE_PER_ITEM + quantity * PRICE_PER_ITEM * TAX_RATE"
+  "solution": "func bill_with_tax(quantity) -> float:\n\tconst PRICE_PER_ITEM = 4.5\n\tconst TAX_RATE = 0.2\n\treturn quantity * PRICE_PER_ITEM + quantity * PRICE_PER_ITEM * TAX_RATE"
 }

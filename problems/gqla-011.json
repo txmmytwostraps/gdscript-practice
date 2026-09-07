@@ -4,8 +4,9 @@
   "concept": "gq-looparrays",
   "difficulty": 1,
   "prompt": "For each size in the array, draw a square: forward that size then turn left, four times. [10] gives eight instructions; [10, 20] gives sixteen.",
-  "signature": "func solve(sizes):",
-  "starter": "func solve(sizes):\n\tpass",
+  "signature": "func draw_squares(sizes):",
+  "fn": "draw_squares",
+  "starter": "func draw_squares(sizes):\n\tpass",
   "tests": [
     {
       "name": "One square of 10",
@@ -77,5 +78,5 @@
       "what": "The numbers 0 up to n - 1, for a for loop to count through."
     }
   ],
-  "solution": "func solve(sizes):\n\tfor size in sizes:\n\t\tfor i in range(4):\n\t\t\tmove_forward(size)\n\t\t\tturn_left()"
+  "solution": "func draw_squares(sizes):\n\tfor size in sizes:\n\t\tfor i in range(4):\n\t\t\tmove_forward(size)\n\t\t\tturn_left()"
 }

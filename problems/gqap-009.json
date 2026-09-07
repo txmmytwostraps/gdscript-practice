@@ -4,8 +4,9 @@
   "concept": "gq-appendpop",
   "difficulty": 0,
   "prompt": "A VIP order goes to the front of the queue, not the back. Add it at the front and return the queue.",
-  "signature": "func solve(queue, order):",
-  "starter": "func solve(queue, order):\n\tqueue.append(order)\n\treturn queue",
+  "signature": "func priority_order(queue, order):",
+  "fn": "priority_order",
+  "starter": "func priority_order(queue, order):\n\tqueue.append(order)\n\treturn queue",
   "tests": [
     {
       "name": "VIP goes first",
@@ -43,7 +44,7 @@
       "what": "Adds value at the start. Returns nothing."
     }
   ],
-  "solution": "func solve(queue, order):\n\tqueue.push_front(order)\n\treturn queue",
+  "solution": "func priority_order(queue, order):\n\tqueue.push_front(order)\n\treturn queue",
   "generator": [
     {
       "array": {

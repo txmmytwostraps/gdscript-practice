@@ -3,9 +3,10 @@
   "title": "Letter grade",
   "concept": "gq-conditions",
   "difficulty": 1,
-  "prompt": "Turn a score into a letter: 90 or more is \"A\", 80 or more is \"B\", 70 or more is \"C\", anything lower is \"F\". solve(85) is \"B\".",
-  "signature": "func solve(score):",
-  "starter": "func solve(score):\n\treturn \"F\"",
+  "prompt": "Turn a score into a letter: 90 or more is \"A\", 80 or more is \"B\", 70 or more is \"C\", anything lower is \"F\". letter_grade(85) is \"B\".",
+  "signature": "func letter_grade(score):",
+  "fn": "letter_grade",
+  "starter": "func letter_grade(score):\n\treturn \"F\"",
   "tests": [
     {
       "name": "95 is an A",
@@ -58,7 +59,7 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(score):\n\tif score >= 90:\n\t\treturn \"A\"\n\telif score >= 80:\n\t\treturn \"B\"\n\telif score >= 70:\n\t\treturn \"C\"\n\telse:\n\t\treturn \"F\"",
+  "solution": "func letter_grade(score):\n\tif score >= 90:\n\t\treturn \"A\"\n\telif score >= 80:\n\t\treturn \"B\"\n\telif score >= 70:\n\t\treturn \"C\"\n\telse:\n\t\treturn \"F\"",
   "generator": [
     {
       "int": [

@@ -4,8 +4,9 @@
   "concept": "gq-types",
   "difficulty": 0,
   "prompt": "Declare `speed` using `:=` with the value 250, so Godot infers it is an int. Return speed times seconds as a float.",
-  "signature": "func solve(seconds: float) -> float:",
-  "starter": "func solve(seconds: float) -> float:\n\treturn 0.0",
+  "signature": "func distance_after(seconds: float) -> float:",
+  "fn": "distance_after",
+  "starter": "func distance_after(seconds: float) -> float:\n\treturn 0.0",
   "tests": [
     {
       "name": "1 second is 250",
@@ -32,7 +33,7 @@
       "what": "Infers the type from the value: `var x := 5` makes x an int."
     }
   ],
-  "solution": "func solve(seconds: float) -> float:\n\tvar speed := 250\n\treturn speed * seconds",
+  "solution": "func distance_after(seconds: float) -> float:\n\tvar speed := 250\n\treturn speed * seconds",
   "allow_type_hints": true,
   "require_names": [
     "speed"

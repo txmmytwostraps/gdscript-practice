@@ -3,9 +3,10 @@
   "title": "Calling a name that does not exist",
   "concept": "gq-errors",
   "difficulty": 0,
-  "prompt": "solve calls a helper called `beep`, but the helper below is named `bleep`. Godot cannot find beep. Make the two names match so the output is \"beep\". Change only the helper's name.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tbeep()\n\nfunc bleep():\n\tprint(\"beep\")",
+  "prompt": "run calls a helper called `beep`, but the helper below is named `bleep`. Godot cannot find beep. Make the two names match so the output is \"beep\". Change only the helper's name.",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tbeep()\n\nfunc bleep():\n\tprint(\"beep\")",
   "starter_broken": true,
   "tests": [
     {
@@ -32,7 +33,7 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve():\n\tbeep()\n\nfunc beep():\n\tprint(\"beep\")",
+  "solution": "func run():\n\tbeep()\n\nfunc beep():\n\tprint(\"beep\")",
   "require_methods": [
     "beep"
   ]

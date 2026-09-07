@@ -4,8 +4,9 @@
   "concept": "gq-giants",
   "difficulty": 0,
   "prompt": "The starter moves the robot 20 across and 80 down, but it should be 80 across and 20 down. Swap the arguments.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tmove(20, 80)",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tmove(20, 80)",
   "tests": [
     {
       "name": "move is called with 80 and 20",
@@ -26,5 +27,5 @@
       "what": "Moves the robot by x across and y down. Takes two numbers; returns nothing."
     }
   ],
-  "solution": "func solve():\n\tmove(80, 20)"
+  "solution": "func run():\n\tmove(80, 20)"
 }

@@ -4,8 +4,9 @@
   "concept": "gq-vectors",
   "difficulty": 0,
   "prompt": "The robot's grid has cells 64 pixels wide and tall. Return the pixel position of the top-left corner of the cell at the given column and row. Column 2, row 1 is (128, 64).",
-  "signature": "func solve(column, row) -> Vector2:",
-  "starter": "func solve(column, row) -> Vector2:\n\treturn Vector2(column, row)",
+  "signature": "func grid_to_pixels(column, row) -> Vector2:",
+  "fn": "grid_to_pixels",
+  "starter": "func grid_to_pixels(column, row) -> Vector2:\n\treturn Vector2(column, row)",
   "tests": [
     {
       "name": "Cell (0, 0) is at (0, 0)",
@@ -61,7 +62,7 @@
       "what": "Vectors add and subtract part by part, and scale by a plain number."
     }
   ],
-  "solution": "func solve(column, row) -> Vector2:\n\treturn Vector2(column, row) * 64",
+  "solution": "func grid_to_pixels(column, row) -> Vector2:\n\treturn Vector2(column, row) * 64",
   "generator": [
     {
       "int": [

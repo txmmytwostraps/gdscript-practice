@@ -3,9 +3,10 @@
   "title": "A helper with two lines",
   "concept": "gq-functions",
   "difficulty": 0,
-  "prompt": "The robot's status report is two lines. Write `report`, which prints \"Health OK\" and then \"Level 1\", and call it from `solve`.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass",
+  "prompt": "The robot's status report is two lines. Write `report`, which prints \"Health OK\" and then \"Level 1\", and call it from `run`.",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass",
   "require_methods": [
     "report"
   ],
@@ -22,7 +23,7 @@
   ],
   "hints": [
     "A function body can be as many lines as you need, all indented the same amount.",
-    "`func report():` followed by two print lines, then `report()` in solve."
+    "`func report():` followed by two print lines, then `report()` in run."
   ],
   "docs": [
     {
@@ -30,5 +31,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve():\n\treport()\n\nfunc report():\n\tprint(\"Health OK\")\n\tprint(\"Level 1\")"
+  "solution": "func run():\n\treport()\n\nfunc report():\n\tprint(\"Health OK\")\n\tprint(\"Level 1\")"
 }

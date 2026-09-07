@@ -3,9 +3,10 @@
   "title": "Order matters",
   "concept": "gq-parameters",
   "difficulty": 0,
-  "prompt": "The first value passed in goes into the first parameter, the second into the second. The starter subtracts them the wrong way round. Fix it so solve(10, 3) is 7.",
-  "signature": "func solve(a, b):",
-  "starter": "func solve(a, b):\n\treturn b - a",
+  "prompt": "The first value passed in goes into the first parameter, the second into the second. The starter subtracts them the wrong way round. Fix it so subtract_in_order(10, 3) is 7.",
+  "signature": "func subtract_in_order(a, b):",
+  "fn": "subtract_in_order",
+  "starter": "func subtract_in_order(a, b):\n\treturn b - a",
   "tests": [
     {
       "name": "10 minus 3 is 7",
@@ -33,11 +34,11 @@
     }
   ],
   "hints": [
-    "Look at solve(10, 3): which parameter holds 10?",
+    "Look at subtract_in_order(10, 3): which parameter holds 10?",
     "Swap the two names in the return line."
   ],
   "docs": [],
-  "solution": "func solve(a, b):\n\treturn a - b",
+  "solution": "func subtract_in_order(a, b):\n\treturn a - b",
   "generator": [
     {
       "int": [

@@ -4,8 +4,9 @@
   "concept": "gq-indices",
   "difficulty": 1,
   "prompt": "Swap the items in slots 0 and 1 and return the array. [1, 2, 3] becomes [2, 1, 3].",
-  "signature": "func solve(items):",
-  "starter": "func solve(items):\n\treturn items",
+  "signature": "func swap_first_two(items):",
+  "fn": "swap_first_two",
+  "starter": "func swap_first_two(items):\n\treturn items",
   "tests": [
     {
       "name": "First two swapped",
@@ -46,7 +47,7 @@
       "what": "The item at position i. Positions start at 0; -1 is the last item."
     }
   ],
-  "solution": "func solve(items):\n\tvar temp = items[0]\n\titems[0] = items[1]\n\titems[1] = temp\n\treturn items",
+  "solution": "func swap_first_two(items):\n\tvar temp = items[0]\n\titems[0] = items[1]\n\titems[1] = temp\n\treturn items",
   "generator": [
     {
       "pick": [

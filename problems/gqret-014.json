@@ -3,9 +3,10 @@
   "title": "A helper that returns nothing",
   "concept": "gq-return",
   "difficulty": 0,
-  "prompt": "Write `log_it`, which prints its parameter and returns nothing. In `solve`, call log_it(n), then return n. The helper prints; solve returns.",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\treturn n",
+  "prompt": "Write `log_it`, which prints its parameter and returns nothing. In `log_and_return`, call log_it(n), then return n. The helper prints; log_and_return returns.",
+  "signature": "func log_and_return(n):",
+  "fn": "log_and_return",
+  "starter": "func log_and_return(n):\n\treturn n",
   "tests": [
     {
       "name": "5 is printed and 5 comes back",
@@ -30,7 +31,7 @@
   ],
   "hints": [
     "A function with no return line simply finishes; printing is not returning.",
-    "`log_it(n)` then `return n` in solve."
+    "`log_it(n)` then `return n` in log_and_return."
   ],
   "docs": [
     {
@@ -42,7 +43,7 @@
       "what": "Ends the function and hands value back to whoever called it."
     }
   ],
-  "solution": "func solve(n):\n\tlog_it(n)\n\treturn n\n\nfunc log_it(value):\n\tprint(value)",
+  "solution": "func log_and_return(n):\n\tlog_it(n)\n\treturn n\n\nfunc log_it(value):\n\tprint(value)",
   "require_methods": [
     "log_it"
   ],

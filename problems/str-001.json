@@ -4,8 +4,9 @@
   "concept": "strings",
   "difficulty": 0,
   "prompt": "Return \"Hello, \" followed by the name and an exclamation mark.",
-  "signature": "func solve(name):",
-  "starter": "func solve(name):\n\treturn name",
+  "signature": "func greeting(name):",
+  "fn": "greeting",
+  "starter": "func greeting(name):\n\treturn name",
   "tests": [
     {
       "name": "Tim",
@@ -39,7 +40,7 @@
       "what": "Joins two strings into one. Numbers must be turned into text first."
     }
   ],
-  "solution": "func solve(name):\n\treturn \"Hello, \" + name + \"!\"",
+  "solution": "func greeting(name):\n\treturn \"Hello, \" + name + \"!\"",
   "generator": [
     {
       "pick": [

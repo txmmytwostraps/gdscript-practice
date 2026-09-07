@@ -4,8 +4,9 @@
   "concept": "gq-strings",
   "difficulty": 1,
   "prompt": "Clocks show 5 minutes as \"05\". Return the number as text with at least two digits.",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\treturn str(n)",
+  "signature": "func two_digits(n):",
+  "fn": "two_digits",
+  "starter": "func two_digits(n):\n\treturn str(n)",
   "tests": [
     {
       "name": "5 becomes 05",
@@ -43,7 +44,7 @@
       "what": "Returns the text padded with zeros on the left to at least n digits."
     }
   ],
-  "solution": "func solve(n):\n\treturn str(n).pad_zeros(2)",
+  "solution": "func two_digits(n):\n\treturn str(n).pad_zeros(2)",
   "generator": [
     {
       "int": [

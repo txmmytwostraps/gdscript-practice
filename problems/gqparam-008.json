@@ -3,9 +3,10 @@
   "title": "Repeat a message",
   "concept": "gq-parameters",
   "difficulty": 0,
-  "prompt": "Write `say`, which takes a message and prints it. In `solve`, call say with \"Scanning\" and then with \"Clear\", so the output is those two words.",
-  "signature": "func solve():",
-  "starter": "func solve():\n\tpass",
+  "prompt": "Write `say`, which takes a message and prints it. In `run`, call say with \"Scanning\" and then with \"Clear\", so the output is those two words.",
+  "signature": "func run():",
+  "fn": "run",
+  "starter": "func run():\n\tpass",
   "require_methods": [
     "say"
   ],
@@ -30,5 +31,5 @@
       "what": "Shows value in the output. Takes anything; returns nothing."
     }
   ],
-  "solution": "func solve():\n\tsay(\"Scanning\")\n\tsay(\"Clear\")\n\nfunc say(message):\n\tprint(message)"
+  "solution": "func run():\n\tsay(\"Scanning\")\n\tsay(\"Clear\")\n\nfunc say(message):\n\tprint(message)"
 }

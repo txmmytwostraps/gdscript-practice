@@ -135,3 +135,10 @@
 .nudge { display: flex; flex-direction: column; gap: 8px; }
 .nudge-reply { font-size: 14px; line-height: 1.6; max-width: 60ch; padding: 10px 14px; border-left: 2px solid var(--milestone); background: var(--panel); }
 .nudge-reply .who { display: block; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--milestone); margin-bottom: 4px; }
+
+/* tests and results: calls on the left, outcomes with their verb on the right */
+.testlist .row.head { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); background: var(--bg); }
+.testlist.noinputs .row { grid-template-columns: minmax(0, 1fr); }
+.testlist .check { grid-column: 1 / -1; font-size: 11px; color: var(--dim); margin-top: 2px; text-transform: none; letter-spacing: 0; }
+.testlist .verb, #result-table .verb { color: var(--muted); font-size: 12px; }
+#result-table .check { display: block; text-transform: none; letter-spacing: 0; color: var(--dim); margin-top: 2px; }

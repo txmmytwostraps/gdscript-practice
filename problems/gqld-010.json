@@ -4,8 +4,9 @@
   "concept": "gq-loopdicts",
   "difficulty": 1,
   "prompt": "units maps a unit name to how many to place. Print the name once per unit, so {\"knight\": 2} prints knight twice.",
-  "signature": "func solve(units):",
-  "starter": "func solve(units):\n\tpass",
+  "signature": "func place_units(units):",
+  "fn": "place_units",
+  "starter": "func place_units(units):\n\tpass",
   "tests": [
     {
       "name": "knight twice, archer once",
@@ -53,5 +54,5 @@
       "what": "The numbers 0 up to n - 1, for a for loop to count through."
     }
   ],
-  "solution": "func solve(units):\n\tfor name in units:\n\t\tfor i in range(units[name]):\n\t\t\tprint(name)"
+  "solution": "func place_units(units):\n\tfor name in units:\n\t\tfor i in range(units[name]):\n\t\t\tprint(name)"
 }

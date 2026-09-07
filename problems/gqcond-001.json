@@ -4,8 +4,9 @@
   "concept": "gq-conditions",
   "difficulty": 0,
   "prompt": "The robot can start when its charge is 10 or more. Return true if n is at least 10, otherwise false. A comparison is already a true-or-false value, so no if is needed.",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\treturn false",
+  "signature": "func is_charged(n):",
+  "fn": "is_charged",
+  "starter": "func is_charged(n):\n\treturn false",
   "tests": [
     {
       "name": "10 is enough",
@@ -46,7 +47,7 @@
       "what": "Comparisons. Each gives true or false."
     }
   ],
-  "solution": "func solve(n):\n\treturn n >= 10",
+  "solution": "func is_charged(n):\n\treturn n >= 10",
   "generator": [
     {
       "int": [

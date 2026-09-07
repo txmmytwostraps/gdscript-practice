@@ -3,9 +3,10 @@
   "title": "Three helpers in a chain",
   "concept": "gq-return",
   "difficulty": 1,
-  "prompt": "Write `add_one`, `double` and `square`, each returning what its name says. `solve` returns the result of adding one, then doubling, then squaring n. solve(1) is 16.",
-  "signature": "func solve(n):",
-  "starter": "func solve(n):\n\treturn n",
+  "prompt": "Write `add_one`, `double` and `square`, each returning what its name says. `chained` returns the result of adding one, then doubling, then squaring n. chained(1) is 16.",
+  "signature": "func chained(n):",
+  "fn": "chained",
+  "starter": "func chained(n):\n\treturn n",
   "tests": [
     {
       "name": "1 becomes 16",
@@ -39,7 +40,7 @@
       "what": "Ends the function and hands value back to whoever called it."
     }
   ],
-  "solution": "func solve(n):\n\treturn square(double(add_one(n)))\n\nfunc add_one(v):\n\treturn v + 1\n\nfunc double(v):\n\treturn v * 2\n\nfunc square(v):\n\treturn v * v",
+  "solution": "func chained(n):\n\treturn square(double(add_one(n)))\n\nfunc add_one(v):\n\treturn v + 1\n\nfunc double(v):\n\treturn v * 2\n\nfunc square(v):\n\treturn v * v",
   "require_methods": [
     "add_one",
     "double",

@@ -3,9 +3,10 @@
   "title": "Level up the member",
   "concept": "gq-multiply",
   "difficulty": 1,
-  "prompt": "Members `level` at 1 and `max_health` at 100. Write `level_up`, which adds 1 to level and multiplies max_health by 2. In `solve`, call level_up once. Then return max_health, which is 200.",
-  "signature": "func solve():",
-  "starter": "var level = 1\nvar max_health = 100\n\nfunc solve():\n\treturn max_health",
+  "prompt": "Members `level` at 1 and `max_health` at 100. Write `level_up`, which adds 1 to level and multiplies max_health by 2. In `max_health_after_level`, call level_up once. Then return max_health, which is 200.",
+  "signature": "func max_health_after_level():",
+  "fn": "max_health_after_level",
+  "starter": "var level = 1\nvar max_health = 100\n\nfunc max_health_after_level():\n\treturn max_health",
   "tests": [
     {
       "name": "One level-up doubles max_health to 200",
@@ -28,7 +29,7 @@
       "what": "A member variable: every function in the script can read and change it."
     }
   ],
-  "solution": "var level = 1\nvar max_health = 100\n\nfunc solve():\n\tlevel_up()\n\treturn max_health\n\nfunc level_up():\n\tlevel += 1\n\tmax_health *= 2",
+  "solution": "var level = 1\nvar max_health = 100\n\nfunc max_health_after_level():\n\tlevel_up()\n\treturn max_health\n\nfunc level_up():\n\tlevel += 1\n\tmax_health *= 2",
   "require_methods": [
     "level_up"
   ]

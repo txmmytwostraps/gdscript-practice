@@ -4,8 +4,9 @@
   "concept": "for",
   "difficulty": 0,
   "prompt": "The robot adds up its sensor readings. Return the sum of all the numbers in the array. An empty array sums to 0.",
-  "signature": "func solve(nums):",
-  "starter": "func solve(nums):\n\tvar total = 0\n\treturn total",
+  "signature": "func sum_of_list(nums):",
+  "fn": "sum_of_list",
+  "starter": "func sum_of_list(nums):\n\tvar total = 0\n\treturn total",
   "tests": [
     {
       "name": "1, 2, 3 sum to 6",
@@ -56,7 +57,7 @@
       "what": "Runs the indented lines once per item, with item holding each value in turn."
     }
   ],
-  "solution": "func solve(nums):\n\tvar total = 0\n\tfor n in nums:\n\t\ttotal += n\n\treturn total",
+  "solution": "func sum_of_list(nums):\n\tvar total = 0\n\tfor n in nums:\n\t\ttotal += n\n\treturn total",
   "generator": [
     {
       "array": {

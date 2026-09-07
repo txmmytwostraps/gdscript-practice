@@ -4,8 +4,9 @@
   "concept": "gq-loopdicts",
   "difficulty": 0,
   "prompt": "Return an array of the item names, in order.",
-  "signature": "func solve(inventory):",
-  "starter": "func solve(inventory):\n\treturn []",
+  "signature": "func keys_as_array(inventory):",
+  "fn": "keys_as_array",
+  "starter": "func keys_as_array(inventory):\n\treturn []",
   "tests": [
     {
       "name": "Two names",
@@ -38,7 +39,7 @@
       "what": "Returns an array of every key."
     }
   ],
-  "solution": "func solve(inventory):\n\treturn inventory.keys()",
+  "solution": "func keys_as_array(inventory):\n\treturn inventory.keys()",
   "generator": [
     {
       "pick": [

@@ -3,9 +3,10 @@
   "title": "Between",
   "concept": "gq-conditions",
   "difficulty": 1,
-  "prompt": "Return true if n is between low and high, including both ends. solve(5, 1, 10) is true; solve(11, 1, 10) is false.",
-  "signature": "func solve(n, low, high):",
-  "starter": "func solve(n, low, high):\n\treturn false",
+  "prompt": "Return true if n is between low and high, including both ends. is_between(5, 1, 10) is true; is_between(11, 1, 10) is false.",
+  "signature": "func is_between(n, low, high):",
+  "fn": "is_between",
+  "starter": "func is_between(n, low, high):\n\treturn false",
   "tests": [
     {
       "name": "5 is between 1 and 10",
@@ -59,7 +60,7 @@
       "what": "and is true when both sides are; or when at least one is; not flips true and false."
     }
   ],
-  "solution": "func solve(n, low, high):\n\treturn n >= low and n <= high",
+  "solution": "func is_between(n, low, high):\n\treturn n >= low and n <= high",
   "generator": [
     {
       "int": [

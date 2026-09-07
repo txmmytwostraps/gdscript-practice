@@ -4,8 +4,9 @@
   "concept": "gq-arrays",
   "difficulty": 0,
   "prompt": "Return how many items are in the robot's inventory.",
-  "signature": "func solve(items):",
-  "starter": "func solve(items):\n\treturn 0",
+  "signature": "func how_many(items):",
+  "fn": "how_many",
+  "starter": "func how_many(items):\n\treturn 0",
   "tests": [
     {
       "name": "Three items",
@@ -45,7 +46,7 @@
       "what": "Returns how many items the array holds."
     }
   ],
-  "solution": "func solve(items):\n\treturn items.size()",
+  "solution": "func how_many(items):\n\treturn items.size()",
   "generator": [
     {
       "array": {

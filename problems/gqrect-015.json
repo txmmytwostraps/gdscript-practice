@@ -4,8 +4,9 @@
   "concept": "gq-rect",
   "difficulty": 1,
   "prompt": "The screen runs from (0, 0) to (screen_w, screen_h). Return the rectangle moved the smallest amount needed so it is fully on screen; its size stays the same.",
-  "signature": "func solve(r, screen_w, screen_h) -> Rect2:",
-  "starter": "func solve(r, screen_w, screen_h) -> Rect2:\n\treturn r",
+  "signature": "func keep_on_screen(r, screen_w, screen_h) -> Rect2:",
+  "fn": "keep_on_screen",
+  "starter": "func keep_on_screen(r, screen_w, screen_h) -> Rect2:\n\treturn r",
   "tests": [
     {
       "name": "Off the left edge moves to 0",
@@ -96,7 +97,7 @@
       "what": "Makes a rectangle from a top-left corner and a size. Also Rect2(position, size) with two vectors."
     }
   ],
-  "solution": "func solve(r, screen_w, screen_h) -> Rect2:\n\tvar x = clamp(r.position.x, 0, screen_w - r.size.x)\n\tvar y = clamp(r.position.y, 0, screen_h - r.size.y)\n\treturn Rect2(x, y, r.size.x, r.size.y)",
+  "solution": "func keep_on_screen(r, screen_w, screen_h) -> Rect2:\n\tvar x = clamp(r.position.x, 0, screen_w - r.size.x)\n\tvar y = clamp(r.position.y, 0, screen_h - r.size.y)\n\treturn Rect2(x, y, r.size.x, r.size.y)",
   "generator": [
     {
       "rect": [

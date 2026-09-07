@@ -3,9 +3,10 @@
   "title": "Counting calls",
   "concept": "gq-members",
   "difficulty": 1,
-  "prompt": "A member `count` starts at 0. Write `tick`, which adds 1 to count. In `solve`, call tick n times using a loop, then return count.",
-  "signature": "func solve(n):",
-  "starter": "var count = 0\n\nfunc solve(n):\n\treturn count",
+  "prompt": "A member `count` starts at 0. Write `tick`, which adds 1 to count. In `count_ticks`, call tick n times using a loop, then return count.",
+  "signature": "func count_ticks(n):",
+  "fn": "count_ticks",
+  "starter": "var count = 0\n\nfunc count_ticks(n):\n\treturn count",
   "tests": [
     {
       "name": "3 ticks",
@@ -44,7 +45,7 @@
       "what": "The numbers 0 up to n - 1, for a for loop to count through."
     }
   ],
-  "solution": "var count = 0\n\nfunc solve(n):\n\tfor i in range(n):\n\t\ttick()\n\treturn count\n\nfunc tick():\n\tcount += 1",
+  "solution": "var count = 0\n\nfunc count_ticks(n):\n\tfor i in range(n):\n\t\ttick()\n\treturn count\n\nfunc tick():\n\tcount += 1",
   "require_methods": [
     "tick"
   ],
