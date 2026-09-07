@@ -2,7 +2,7 @@ import { mountShell } from "./shell.js";
 import { onSynced, sync } from "./sync.js";
 import { loadBank, state, store, routeTopics, markerFor, milestoneStatus, milestones, streakInfo, weekRow, xpInfo, XP_PER_LEVEL, dayKey, today } from "./progress.js";
 import { MILESTONES } from "./route-data.js";
-import { makeScene, GAINS } from "./scene.js";
+import { makeScene, GAINS, STAGE_WIDTH } from "./scene.js";
 import * as reviews from "./reviews.js";
 import { runPlan } from "./run.js";
 
@@ -97,6 +97,21 @@ function renderExcerpt(currentConcept) {
   renderCharacter();
 }
 
+// The stage scales to fit the 16:9 box so the walls and the enemy show; only
+// when that would leave the character under 40px tall does the box show the
+// middle of the stage at full size instead.
+const ROBOT_HEIGHT = 55;
+let stageHas = {};
+function fitStage(has) {
+  if (has) stageHas = has;
+  const box = $("character-stage"), canvas = box.querySelector("canvas");
+  if (!canvas || !sceneDemo) return;
+  const scale = box.clientWidth / STAGE_WIDTH;
+  const fit = ROBOT_HEIGHT * scale >= 40;
+  canvas.style.transform = fit ? `translateX(-50%) scale(${scale})` : "translateX(-50%)";
+  if (stageHas.move || stageHas.walk) sceneDemo.demo(stageHas.walk ? 150 : 120, fit ? undefined : [170, 430]);
+}
+window.addEventListener("resize", () => fitStage());
 // The character panel: the Gallery's "so far" stage, with what each finished milestone added.
 let sceneDemo = null, sceneKey = "";
 function renderCharacter() {
@@ -111,7 +126,7 @@ function renderCharacter() {
     sceneKey = key;
     sceneDemo = makeScene($("character-stage"), "character");
     sceneDemo.set({ has, x: 300, facing: "right" });
-    if (has.move || has.walk) sceneDemo.demo(has.walk ? 150 : 120, [170, 430]);   // the box shows the middle of the stage
+    fitStage(has);
   }
   const ro = $("character-stage").querySelector(".scene-readout");
   $("character-caption").textContent = ro ? ro.textContent : "";

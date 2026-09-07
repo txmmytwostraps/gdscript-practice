@@ -49,7 +49,7 @@
   .side { display: flex; flex-direction: column; gap: 24px; }
   .character { display: flex; flex-direction: column; gap: 12px; }
   #character-stage { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid var(--line); }
-  #character-stage canvas { position: absolute; left: 50%; bottom: 14px; width: 600px !important; max-width: none !important; height: 160px !important; transform: translateX(-50%); border: 0 !important; }
+  #character-stage canvas { position: absolute; left: 50%; bottom: 14px; width: 600px !important; max-width: none !important; height: 160px !important; transform: translateX(-50%); transform-origin: 50% 100%; border: 0 !important; }
   #character-stage .scene-readout { display: none; }
   .character .caption { font-size: 12px; color: var(--muted); min-height: 1em; }
   .character .foot2 { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; color: var(--muted); }
