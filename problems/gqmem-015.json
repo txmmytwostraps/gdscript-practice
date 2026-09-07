@@ -8,7 +8,7 @@
   "starter": "func solve():\n\tpass",
   "tests": [
     {
-      "name": "Prints I am Robo",
+      "name": "The name is printed",
       "args": [],
       "expect": null,
       "out": [

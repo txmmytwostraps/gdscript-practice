@@ -60,10 +60,12 @@ const callStr = (p, args) => {
   return `${name}(${args.map((a, i) => fmtTyped(a, types[i])).join(", ")})`;
 };
 // Printed output is shown as stacked lines, exactly as Godot's Output panel would.
-const printedHtml = (lines) => lines.length ? `<span class="p">prints</span>\n${lines.map(esc).join("\n")}` : `<span class="p">prints nothing</span>`;
+// Print-only tests show the lines alone under an "output" heading; tests that
+// also return a value label the printed part so it is not read as the answer.
+const printedHtml = (lines, alone) => lines.length ? `${alone ? "" : `<span class="p">prints</span>\n`}${lines.map(esc).join("\n")}` : `<span class="p">${alone ? "(nothing printed)" : "prints nothing"}</span>`;
 // Game-loop tests run _process(delta) N times before calling solve.
 const framesLabel = (t) => (t.frames != null ? `<span class="muted">after ${t.frames} frame${t.frames === 1 ? "" : "s"} · </span>` : "");
-const expectHtml = (p, t) => (t.expect === null && t.out) ? printedHtml(t.out) : esc(fmtTyped(t.expect, returnType(p.signature))) + (t.out ? `\n${printedHtml(t.out)}` : "");
+const expectHtml = (p, t) => (t.expect === null && t.out) ? printedHtml(t.out, true) : esc(fmtTyped(t.expect, returnType(p.signature))) + (t.out ? `\n${printedHtml(t.out)}` : "");
 
 const KW = /^(func|return|var|const|if|elif|else|while|for|in|not|and|or|pass|break|continue|true|false|null|extends|class_name|match|is|self)$/;
 const TYPES = /^(int|float|String|bool|Array|Dictionary|Variant|Vector2|Vector2i|Rect2|Rect2i|void)$/;
@@ -350,9 +352,9 @@ function renderResult(result, errors) {
   setVerdict(allPass ? "pass" : "fail", allPass ? "[x] All tests pass · solved" : `[x] Not yet · ${missText(p.id)}`);
   el.count.textContent = `${result.passed} / ${result.total} tests`;
   const printOnly = p.tests.some((t) => t.expect === null && t.out);
-  el.resultTable.innerHTML = `<tr><th></th><th>The judge called</th><th>Correct answer</th><th>Your code returned</th></tr>` + result.results.map((r, i) => {
+  el.resultTable.innerHTML = `<tr><th></th><th>The judge called</th><th>${printOnly ? "Expected output" : "Correct answer"}</th><th>${printOnly ? "Your output" : "Your code returned"}</th></tr>` + result.results.map((r, i) => {
     const t = p.tests[i] || {};
-    const yours = (t.expect === null && t.out) ? printedHtml(r.out) : esc(fmtTyped(r.got, rtype)) + (t.out ? `\n${printedHtml(r.out)}` : "");
+    const yours = (t.expect === null && t.out) ? printedHtml(r.out, true) : esc(fmtTyped(r.got, rtype)) + (t.out ? `\n${printedHtml(r.out)}` : "");
     const err = r.error ? `<span class="out">${esc(r.error)}</span>` : "";
     return `<tr class="${r.pass ? "pass" : "fail"}"><td class="mark">${r.pass ? "✓" : "✗"}</td><td>${t.name ? `<span class="check">${esc(t.name)}</span>` : ""}${framesLabel(t)}${esc(callStr(p, r.args))}</td><td>${expectHtml(p, t)}</td><td>${yours}${err}</td></tr>`;
   }).join("");

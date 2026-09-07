@@ -8,7 +8,7 @@
   "starter": "var level = 1\nvar max_health = 100\n\nfunc solve():\n\tpass\n\nfunc level_up():\n\tlevel += 1\n\tmax_health *= 2",
   "tests": [
     {
-      "name": "Prints 2 then 200",
+      "name": "Level is printed, then max health",
       "args": [],
       "expect": null,
       "out": [

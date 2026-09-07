@@ -8,7 +8,7 @@
   "starter": "var health = 80\nvar level = 2\n\nfunc solve():\n\tpass",
   "tests": [
     {
-      "name": "Prints 80 then 2",
+      "name": "Health is printed, then level",
       "args": [],
       "expect": null,
       "out": [

@@ -8,7 +8,7 @@
   "starter": "func solve(items):\n\tpass",
   "tests": [
     {
-      "name": "Three items printed",
+      "name": "All three items are printed",
       "args": [
         [
           "bolt",
@@ -24,7 +24,7 @@
       ]
     },
     {
-      "name": "Empty prints nothing",
+      "name": "An empty list prints nothing",
       "args": [
         []
       ],

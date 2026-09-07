@@ -8,7 +8,7 @@
   "starter": "func solve(n):\n\treturn n * 10",
   "tests": [
     {
-      "name": "Prints 3, returns 30",
+      "name": "3 is printed and 30 comes back",
       "args": [
         3
       ],
@@ -18,7 +18,7 @@
       ]
     },
     {
-      "name": "Prints 0, returns 0",
+      "name": "0 is printed and 0 comes back",
       "args": [
         0
       ],
@@ -28,7 +28,7 @@
       ]
     },
     {
-      "name": "Prints -2, returns -20",
+      "name": "A negative is printed and ten times it comes back",
       "args": [
         -2
       ],

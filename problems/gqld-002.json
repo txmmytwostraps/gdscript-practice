@@ -22,7 +22,7 @@
       ]
     },
     {
-      "name": "Empty prints nothing",
+      "name": "An empty dictionary prints nothing",
       "args": [
         {}
       ],

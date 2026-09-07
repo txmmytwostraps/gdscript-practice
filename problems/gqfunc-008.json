@@ -11,7 +11,7 @@
   ],
   "tests": [
     {
-      "name": "Prints waving",
+      "name": "The message is printed",
       "args": [],
       "expect": null,
       "out": [

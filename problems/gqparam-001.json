@@ -11,7 +11,7 @@
   ],
   "tests": [
     {
-      "name": "Prints 3 then 6",
+      "name": "n is printed, then n times 2",
       "args": [
         3
       ],
@@ -22,7 +22,7 @@
       ]
     },
     {
-      "name": "Prints 0 then 0",
+      "name": "Zero prints zero twice",
       "args": [
         0
       ],

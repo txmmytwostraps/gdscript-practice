@@ -11,7 +11,7 @@
   ],
   "tests": [
     {
-      "name": "Still prints Shields up",
+      "name": "The message is still printed",
       "args": [],
       "expect": null,
       "out": [

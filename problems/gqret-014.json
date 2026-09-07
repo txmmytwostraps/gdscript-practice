@@ -8,7 +8,7 @@
   "starter": "func solve(n):\n\treturn n",
   "tests": [
     {
-      "name": "Prints 5 and returns 5",
+      "name": "5 is printed and 5 comes back",
       "args": [
         5
       ],
@@ -18,7 +18,7 @@
       ]
     },
     {
-      "name": "Prints 0 and returns 0",
+      "name": "0 is printed and 0 comes back",
       "args": [
         0
       ],

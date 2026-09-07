@@ -8,7 +8,7 @@
   "starter": "func solve(a, b):\n\treturn a + b",
   "tests": [
     {
-      "name": "2 and 3: prints adding, returns 5",
+      "name": "adding is printed and the sum comes back",
       "args": [
         2,
         3
@@ -19,7 +19,7 @@
       ]
     },
     {
-      "name": "Zeros: prints adding, returns 0",
+      "name": "Zeros still print adding and return 0",
       "args": [
         0,
         0

@@ -8,7 +8,7 @@
   "starter": "func solve(health: int) -> int:\n\treturn health",
   "tests": [
     {
-      "name": "Prints 80 and returns 80",
+      "name": "Health is printed and returned unchanged",
       "args": [
         80
       ],
@@ -18,7 +18,7 @@
       ]
     },
     {
-      "name": "Prints 0 and returns 0",
+      "name": "Zero health is printed and returned",
       "args": [
         0
       ],

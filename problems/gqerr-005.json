@@ -9,7 +9,7 @@
   "starter_broken": true,
   "tests": [
     {
-      "name": "Prints Charging",
+      "name": "The message is printed",
       "args": [],
       "expect": null,
       "out": [

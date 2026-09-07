@@ -8,7 +8,7 @@
   "starter": "func solve():\n\treturn early()\n\nfunc early():\n\tprint(\"before\")\n\treturn 1\n\tprint(\"after\")",
   "tests": [
     {
-      "name": "Prints before and after, returns 1",
+      "name": "Both words are printed and 1 comes back",
       "args": [],
       "expect": 1,
       "out": [
