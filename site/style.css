@@ -98,3 +98,9 @@
 #result-table .out { display: block; font-size: 12px; color: var(--muted); }
 .judge-frame { position: fixed; width: 1px; height: 1px; bottom: 0; right: 0; opacity: 0; pointer-events: none; }
 .judge-frame iframe { width: 1px; height: 1px; border: 0; }
+
+/* notes */
+.notebox { display: flex; flex-direction: column; gap: 8px; }
+.notebox textarea { width: 100%; box-sizing: border-box; padding: 10px 12px; border: 1px solid var(--line); background: var(--panel); color: var(--text); font: 13px/1.6 var(--mono); resize: vertical; }
+.notebox textarea:focus { outline: none; border-color: var(--accent); }
+.notebox input[type="checkbox"] { accent-color: var(--accent); }

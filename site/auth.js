@@ -70,6 +70,21 @@ export async function upsertReviews(rowsToWrite) {
   if (error) throw new Error(error.message);
 }
 
+/** The user's notes, as { problem_id: row }. */
+export async function fetchNotes() {
+  const { data, error } = await client.from("notes").select("problem_id, text, resolved, updated_at");
+  if (error) throw new Error(error.message);
+  const map = {};
+  for (const row of data) map[row.problem_id] = row;
+  return map;
+}
+
+export async function upsertNotes(rowsToWrite) {
+  if (!rowsToWrite.length) return;
+  const { error } = await client.from("notes").upsert(rowsToWrite, { onConflict: "user_id,problem_id" });
+  if (error) throw new Error(error.message);
+}
+
 /** Every recorded attempt, oldest first. */
 export async function fetchAttempts() {
   const { data, error } = await client.from("attempts").select("problem_id, kind, result, at").order("at", { ascending: true }).limit(5000);
@@ -85,7 +100,7 @@ export async function insertAttempt(userId, problemId, kind, result) {
 
 /** Remove every progress row of this user (the "clear progress" control). */
 export async function deleteAllProgress(userId) {
-  for (const table of ["progress", "reviews", "attempts"]) {
+  for (const table of ["progress", "reviews", "attempts", "notes"]) {
     const { error } = await client.from(table).delete().eq("user_id", userId);
     if (error) throw new Error(error.message);
   }

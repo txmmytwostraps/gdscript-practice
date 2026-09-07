@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notes · GDScript Practice</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="theme.css">
+<style>
+  .page { grid-template-columns: 1fr; gap: 32px; }
+  h1 { font-size: 44px; }
+  .notes { display: flex; flex-direction: column; gap: 8px; }
+  .note { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 20px; padding: 14px 16px; background: var(--panel); border: 1px solid var(--line); }
+  .note.resolved { opacity: 0.55; }
+  .note .head { display: flex; gap: 12px; flex-wrap: wrap; align-items: baseline; font-size: 13px; }
+  .note .head a { color: var(--text); font-weight: 600; }
+  .note .text { grid-column: 1 / -1; white-space: pre-wrap; font-size: 13px; line-height: 1.6; }
+  .note label { display: flex; gap: 6px; align-items: center; font-size: 12px; color: var(--muted); white-space: nowrap; }
+  .note input[type="checkbox"] { accent-color: var(--accent); }
+  .section { display: flex; flex-direction: column; gap: 12px; }
+</style>
+</head>
+<body>
+<main class="page">
+  <div style="display: flex; flex-direction: column; gap: 10px;">
+    <div class="eyebrow">// stats · notes</div>
+    <h1>Notes</h1>
+    <div class="muted" id="intro" style="font-size: 14px; max-width: 70ch;">Everything you wrote in a problem's notes box, unresolved first. Tick a note when you understand it now; it stays here, greyed out.</div>
+  </div>
+  <section class="section">
+    <div class="label" id="count"></div>
+    <div class="notes" id="notes"></div>
+  </section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script type="module" src="notes-page.js"></script>
+</body>
+</html>

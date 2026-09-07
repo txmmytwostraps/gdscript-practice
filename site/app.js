@@ -3,12 +3,13 @@ import { JudgeClient, tidyError } from "./judge-client.js";
 import { loadProblem } from "./problems.js";
 import { mountShell } from "./shell.js";
 import { sync, onSynced, exportProgress, clearProgress } from "./sync.js";
-import { store, state, loadBank, getDraft, setDraft, clearDraft, saveSolved, saveFails, todayRun, routeTopics, currentTopic } from "./progress.js";
+import { store, state, loadBank, getDraft, setDraft, clearDraft, saveSolved, saveFails, todayRun, routeTopics, currentTopic, dayKey } from "./progress.js";
 import { TOPICS } from "./route-data.js";
 import * as reviews from "./reviews.js";
 import * as auth from "./auth.js";
 import { makeParsons } from "./parsons.js";
 import { candidates } from "./mutate.js";
+import * as notes from "./notes.js";
 
 // Problem types. ?mode=parsons puts the solution's lines in order;
 // ?mode=bug plants one bug in the solution to find and fix. Reviews pick a
@@ -36,6 +37,7 @@ const el = {
   run: $("run"), reset: $("reset"), next: $("next"), saved: $("saved"), judgeStatus: $("judge-status"),
   results: $("results"), verdict: $("verdict"), count: $("count"), message: $("message"), resultTable: $("result-table"),
   output: $("output"), outputLines: $("output-lines"), errors: $("errors"), errorLines: $("error-lines"),
+  note: $("note"), noteResolved: $("note-resolved"), noteSaved: $("note-saved"), ask: $("ask"), askNote: $("ask-note"),
 };
 let filters = store.get("filters", { topic: "", difficulty: "any" });
 
@@ -260,7 +262,50 @@ async function showProblem(id, { keepResults = false } = {}) {
   if (inReview) { el.eyebrow.textContent = `// review · ${topicOf(p.concept) ? topicOf(p.concept).title.toLowerCase() : p.concept} · ${reviewIds.indexOf(id) + 1} of ${reviewIds.length}${activeMode !== "normal" ? " · " + modeLabel(activeMode) : ""}`; el.again.hidden = true; }
   if (!keepResults) clearResults();
   renderModes(p);
+  renderNote(p);
   location.hash = id;
+}
+
+// ---------- notes and Ask Claude ----------
+function renderNote(p) {
+  const n = notes.get(p.id);
+  el.note.value = n ? n.text : "";
+  el.noteResolved.checked = Boolean(n && n.resolved);
+  el.noteSaved.textContent = n && n.text ? `saved ${n.updated_at ? dayKey(new Date(n.updated_at)) : ""}` : "";
+  el.askNote.textContent = "";
+}
+async function saveNote(patch) {
+  if (!current) return;
+  el.noteSaved.textContent = "…";
+  try { await notes.save(sync.user, current.id, patch); el.noteSaved.textContent = sync.user ? "saved to your account" : "saved in this browser"; }
+  catch (e) { el.noteSaved.textContent = "saved here only: " + e.message; }
+}
+// The prompt Tim pastes into a Claude chat: the problem, the code as it is,
+// the failing checks, the note, and the instruction to nudge, not answer.
+function askPrompt(p) {
+  const code = activeMode === "parsons" && parsons ? parsons.get() : editor.get();
+  const failing = el.resultTable.hidden ? [] : [...el.resultTable.querySelectorAll("tr.fail")].map((r) => [...r.children].slice(1).map((c) => c.innerText.trim().replace(/\n+/g, " ")).join(" | "));
+  const errors = el.errors.hidden ? "" : el.errorLines.textContent.trim();
+  const n = notes.get(p.id);
+  const tests = p.tests.map((t) => `- ${t.name ? t.name + ": " : ""}${callStr(p, t.args)} → ${t.expect === null && t.out ? "prints " + JSON.stringify(t.out) : fmtTyped(t.expect, returnType(p.signature))}`).join("\n");
+  return [
+    "I am a beginner learning GDScript with the GDQuest course \"Learn GDScript From Zero\". Nudge me toward the fix. Do not give the answer and do not write the code. Ask me a question or point at the line to look at.",
+    `\n## The problem: ${p.title}\n${p.prompt}\n\nThe checks:\n${tests}`,
+    `\n## My code right now\n\`\`\`gdscript\n${code}\n\`\`\``,
+    `\n## What failed on my last run\n${failing.length ? failing.map((f) => "- " + f).join("\n") : errors ? errors : "I have not run it yet, or every check passed."}`,
+    `\n## My note on this problem\n${n && n.text.trim() ? n.text.trim() : "(no note)"}`,
+    "\nRemember: nudge me toward the fix, do not give the answer or write the code.",
+  ].join("\n");
+}
+async function askClaude() {
+  if (!current) return;
+  const text = askPrompt(current);
+  try { await navigator.clipboard.writeText(text); el.askNote.textContent = "copied · paste it into a Claude chat"; }
+  catch (e) {
+    const ta = document.createElement("textarea"); ta.value = text; ta.style.cssText = "position:fixed;left:-9999px"; document.body.appendChild(ta); ta.select();
+    const ok = document.execCommand && document.execCommand("copy"); ta.remove();
+    el.askNote.textContent = ok ? "copied · paste it into a Claude chat" : "could not copy: " + e.message;
+  }
 }
 
 const modeLabel = (m) => (m === "parsons" ? "put the lines in order" : m === "bug" ? "fix the bug" : "");
@@ -433,6 +478,10 @@ async function main() {
     if (activeMode === "bug") { editor.set(bugCode); clearResults(); editor.focus(); return; }
     clearDraft(current.id); editor.set(current.starter); el.saved.textContent = ""; clearResults(); editor.focus(); sync.push(current.id);
   });
+  let noteTimer = null;
+  el.note.addEventListener("input", () => { el.noteSaved.textContent = "…"; clearTimeout(noteTimer); noteTimer = setTimeout(() => saveNote({ text: el.note.value }), 600); });
+  el.noteResolved.addEventListener("change", () => saveNote({ resolved: el.noteResolved.checked }));
+  el.ask.addEventListener("click", askClaude);
   el.hints.addEventListener("click", (ev) => { const b = ev.target.closest("button[data-hint]"); if (!b) return; const p = b.nextElementSibling; p.hidden = !p.hidden; b.textContent = (p.hidden ? "[+] " : "[-] ") + b.textContent.slice(4); });
   el.solutionToggle.addEventListener("click", () => { if (el.solutionToggle.classList.contains("locked")) return; el.solution.hidden = !el.solution.hidden; updateSolutionLock(current); });
   // Practice again: back to the starter without touching the solved date.
@@ -465,6 +514,6 @@ async function main() {
 
   const why = sessionStorage.getItem("gdp.reloaded");
   if (why) { sessionStorage.removeItem("gdp.reloaded"); setVerdict("warn", why === "crash" ? "[!] The judge crashed on your last run and was restarted" : "[!] Your last run took more than 5 seconds — probably an infinite loop", "The judge was restarted; your code is unchanged."); }
-  onSynced((what) => { if (what === "local-changed" && current && activeMode === "normal") { const d = getDraft(current.id); editor.set(d ? d.code : current.starter); updateSolutionLock(current); } renderFilters(); shell.refresh(); });
+  onSynced((what) => { if (what === "local-changed" && current && activeMode === "normal") { const d = getDraft(current.id); editor.set(d ? d.code : current.starter); updateSolutionLock(current); } if ((what === "local-changed" || what === "merged") && current) renderNote(current); renderFilters(); shell.refresh(); });
 }
 main().catch((e) => { setVerdict("fail", "[x] Could not load the problem bank", e.message); });

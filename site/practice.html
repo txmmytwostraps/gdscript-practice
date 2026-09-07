@@ -49,6 +49,18 @@
       <div class="label">Documentation — what this problem uses</div>
       <div class="doclist" id="doclist"></div>
     </div>
+    <div class="notebox">
+      <div class="label" style="display: flex; justify-content: space-between; gap: 12px;"><span>Notes — what I don't get / what I missed</span><a href="notes.html" style="text-transform: none; letter-spacing: 0;">All notes ›</a></div>
+      <textarea id="note" rows="3" spellcheck="true" placeholder="Write it down while it is fresh. It is saved as you type."></textarea>
+      <div class="caps" style="display: flex; gap: 14px; align-items: center; font-size: 12px;">
+        <label class="muted" style="display: flex; gap: 6px; align-items: center;"><input type="checkbox" id="note-resolved"> Resolved</label>
+        <span class="dim" id="note-saved"></span>
+      </div>
+    </div>
+    <div class="tools caps">
+      <button type="button" class="linkish" id="ask">[?] Ask Claude — copy a prompt</button>
+      <span class="dim" id="ask-note"></span>
+    </div>
     <div class="tools caps">
       <button type="button" class="linkish" id="again" hidden>[~] Practice again</button>
       <button type="button" class="linkish" id="export">[v] Export progress</button>

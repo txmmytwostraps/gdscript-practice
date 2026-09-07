@@ -5,6 +5,7 @@
 import * as auth from "./auth.js";
 import { state, store, getDraft, saveSolved, saveFails } from "./progress.js";
 import * as reviews from "./reviews.js";
+import * as notes from "./notes.js";
 
 const listeners = [];
 export function onSynced(fn) { listeners.push(fn); }
@@ -71,6 +72,7 @@ export const sync = {
       await reviews.refresh();
       for (const concept of new Set(state.problems.map((p) => p.concept))) await reviews.scheduleTopicIfCleared(this.user, concept);
     } catch (e) { this.note("Reviews unavailable: " + e.message); }
+    try { await notes.merge(this.user); } catch (e) { this.note("Notes unavailable: " + e.message); }
     this.note(toUpload.length ? `Synced: ${toUpload.length} problem${toUpload.length === 1 ? "" : "s"} updated in your account.` : "Synced.");
     notify(changedLocal ? "local-changed" : "merged");
   },
