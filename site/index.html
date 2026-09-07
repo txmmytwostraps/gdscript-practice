@@ -38,6 +38,7 @@
   .runcard details summary .tr { color: var(--accent); }
   .actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
   .actions .btn { font-size: 14px; padding: 11px 22px; }
+  .actions #runnote a { color: var(--accent); }
   .xpline { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--muted); }
   .xpline b { color: var(--text); font-weight: 600; }
   .xpbar { display: block; width: 100%; height: 4px; background: var(--line-strong); }
@@ -71,8 +72,8 @@
     </div>
     <div class="runcard" id="runcard"></div>
     <div class="actions"><a class="btn primary" id="runbtn" href="practice.html?run=1">Start run</a><span class="muted" id="runnote" style="font-size: 13px;"></span></div>
-    <div class="xpline"><span id="xptext"></span><span class="xpbar" id="xpbar"><i></i></span></div>
-    <div>
+    <div class="xpline" id="xpline"><span id="xptext"></span><span class="xpbar" id="xpbar"><i></i></span></div>
+    <div id="keepblock">
       <div class="label up" style="margin-bottom: 4px;">Keep going</div>
       <div class="keep" id="keep"></div>
     </div>

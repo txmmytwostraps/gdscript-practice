@@ -13,6 +13,7 @@
 
 <div class="subbar">
   <div class="pick">
+    <a class="back" href="practice.html" title="every topic, any problem">‹ Practice</a>
     <label class="label">Topic <select id="topic"></select></label>
     <label class="label">Difficulty
       <select id="difficulty"><option value="any">any</option><option value="0">novice</option><option value="1">beginner</option></select>
@@ -27,7 +28,8 @@
   <div class="today caps" id="todaybar"></div>
 </div>
 
-<main class="page workspace">
+<main class="page landing" id="landing" hidden></main>
+<main class="page workspace" id="workspace">
   <section class="problem">
     <div class="hero">
       <div class="eyebrow" id="eyebrow">// loading</div>

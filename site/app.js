@@ -543,6 +543,35 @@ function showNext() {
   el.next.focus();   // Enter on a ✓ Correct panel is Next
 }
 
+// ---------- the landing ----------
+// Any problem, any time: a Continue card for the current topic, then every
+// topic as a row; cleared ones greyed at the bottom, locked ones dim.
+function renderLanding() {
+  document.querySelector(".subbar").hidden = true; $("workspace").hidden = true;
+  const land = $("landing"); land.hidden = false;
+  const topics = routeTopics().filter((t) => t.total > 0);
+  const cur = currentTopic();
+  const next = cur ? cur.list.find((p) => !state.solved[p.id]) : null;
+  const canDrill = cur && cur.list.some((p) => p.variants);
+  const lockedConcepts = new Set(topics.filter((t) => t.locked).map((t) => t.concept));
+  const openIds = state.problems.filter((p) => !lockedConcepts.has(p.concept) && !state.solved[p.id]);
+  const rnd = openIds.length ? openIds[Math.floor(Math.random() * openIds.length)] : state.problems[0];
+  const L = (n) => `L${String(n).padStart(2, "0")}`;
+  const row = (t) => {
+    const first = t.list.find((p) => !state.solved[p.id]) || t.list[0];
+    const cleared = t.done === t.total;
+    const cls = t.locked ? "locked" : cleared ? "done" : "";
+    const href = t.locked ? "stats.html#settings" : `practice.html?topic=${t.concept}#${first.id}`;
+    return `<a class="lrow ${cls}" href="${href}"><span class="mk">${t.locked ? "#" : cleared ? "✓" : t.done ? "›" : "·"}</span><span class="tt">${L(t.lesson)} · ${esc(t.title)}</span><span class="tr">${t.locked ? `locked until ${L(t.lesson)}` : `${t.done}/${t.total}`}</span></a>`;
+  };
+  const open = topics.filter((t) => t.done < t.total), cleared = topics.filter((t) => t.done === t.total);
+  land.innerHTML = `<div><h1>Practice</h1><div class="line">Any problem, any time · practice never counts against the day</div></div>
+    ${cur ? `<div class="cont"><div class="ct">${esc(cur.title)}</div><div class="cs">${L(cur.lesson)} · ${cur.done}/${cur.total}${next ? ` · next: ${esc(next.title)}` : " · cleared"}</div><div class="go">${next ? `<a class="btn primary" href="practice.html?topic=${cur.concept}#${next.id}">Continue</a>` : `<a class="btn primary" href="practice.html?topic=${cur.concept}#${cur.list[0].id}">Practice again</a>`}${canDrill ? `<a class="btn" href="practice.html?drill=${cur.concept}">Drill</a>` : ""}</div></div>` : ""}
+    <div class="tlist">${rnd ? `<a class="lrow random" href="practice.html?topic=${rnd.concept}#${rnd.id}"><span class="mk">?</span><span class="tt">Random problem</span><span class="tr">${openIds.length} open</span></a>` : ""}${open.map(row).join("")}</div>
+    ${cleared.length ? `<div><div class="label up" style="margin-bottom: 4px;">Cleared</div><div class="tlist">${cleared.map(row).join("")}</div></div>` : ""}`;
+  document.title = "Practice · GDScript Practice";
+}
+
 // ---------- running ----------
 async function runCode() {
   if (!current || running || el.run.disabled) return;
@@ -662,11 +691,21 @@ async function main() {
   });
   await loadBank();
   try { await loadCards(); } catch (e) { /* the page works without the card links */ }
+  // No problem asked for: the landing, not a problem.
+  const askedFor = location.hash.slice(1) || new URLSearchParams(location.search).get("topic");
+  if (!askedFor && !drillTopic && !reviewMode && !runMode) { renderLanding(); onSynced(() => renderLanding()); window.addEventListener("hashchange", () => { if (location.hash) location.reload(); }); return; }
+  window.addEventListener("hashchange", () => { if (!location.hash) location.reload(); });   // the nav's Practice goes to the landing
   judge.load().catch((e) => setVerdict("fail", "The judge could not start", e.message));   // before any problem loads: bug variants need it
 
   el.topic.addEventListener("change", () => { filters.topic = el.topic.value; store.set("filters", filters); renderFilters(); if (!current || !matches(state.byId.get(current.id))) pickNext(); });
   el.difficulty.addEventListener("change", () => { filters.difficulty = el.difficulty.value; store.set("filters", filters); renderFilters(); if (!current || !matches(state.byId.get(current.id))) pickNext(); });
-  el.dots.addEventListener("click", (ev) => { const b = ev.target.closest("button[data-id]"); if (b) showProblem(b.dataset.id); });
+  let dragMoved = false;
+  el.dots.addEventListener("click", (ev) => { if (dragMoved) return; const b = ev.target.closest("button[data-id]"); if (b) showProblem(b.dataset.id); });
+  el.dots.addEventListener("wheel", (ev) => { if (Math.abs(ev.deltaY) > Math.abs(ev.deltaX) && el.dots.scrollWidth > el.dots.clientWidth) { el.dots.scrollLeft += ev.deltaY; ev.preventDefault(); } }, { passive: false });
+  let drag = null;
+  el.dots.addEventListener("pointerdown", (ev) => { drag = { x: ev.clientX, left: el.dots.scrollLeft }; dragMoved = false; });
+  el.dots.addEventListener("pointermove", (ev) => { if (!drag) return; const dx = ev.clientX - drag.x; if (Math.abs(dx) > 4) dragMoved = true; if (dragMoved) el.dots.scrollLeft = drag.left - dx; });
+  window.addEventListener("pointerup", () => { drag = null; setTimeout(() => { dragMoved = false; }, 0); });
   const step = (d) => { const list = pool(); const at = current ? list.findIndex((p) => p.id === current.id) : -1; const target = list[at + d]; if (target) showProblem(target.id); };
   el.prev.addEventListener("click", () => step(-1)); el.nextseq.addEventListener("click", () => step(1));
   el.run.addEventListener("click", runCode);

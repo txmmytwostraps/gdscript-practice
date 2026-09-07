@@ -13,7 +13,9 @@ export function applyTextScale() { document.documentElement.style.setProperty("-
 
 export function mountShell(active, { stats = true } = {}) {
   // Testing aid: ?today=YYYY-MM-DD makes every page believe it is that day.
-  const t = new URLSearchParams(location.search).get("today");
+  const params = new URLSearchParams(location.search);
+  const t = params.get("today");
+  const guest = params.has("guest");   // testing aid: render as signed out without ending the session
   if (t !== null) { try { if (t) sessionStorage.setItem("gdp.today", t); else sessionStorage.removeItem("gdp.today"); } catch (e) {} }
   applyTextScale();
   const header = document.createElement("header");
@@ -65,8 +67,10 @@ export function mountShell(active, { stats = true } = {}) {
     $("email-signin").addEventListener("click", async () => { const err = await auth.signInWithEmail($("email").value.trim(), $("password").value); sync.note(err || ""); });
     $("email-signup").addEventListener("click", async () => { const err = await auth.signUpWithEmail($("email").value.trim(), $("password").value); sync.note(err || "Account created."); });
     $("signout").addEventListener("click", async () => { await sync.flush(); await auth.signOut(); sync.note("Signed out. Progress stays in this browser."); });
-    auth.onAuthChange((u) => { sync.setUser(u); });
-    auth.currentUser().then((u) => { if (u) sync.setUser(u); });
+    if (!guest) {
+      auth.onAuthChange((u) => { sync.setUser(u); });
+      auth.currentUser().then((u) => { if (u) sync.setUser(u); });
+    }
     if (location.search.includes("code=")) history.replaceState(null, "", location.pathname + location.hash);
   }
   window.addEventListener("beforeunload", () => { sync.flush(); });

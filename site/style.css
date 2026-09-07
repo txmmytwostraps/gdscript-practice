@@ -194,6 +194,30 @@
 .testlist .row.req { grid-template-columns: 1fr; }
 .testlist .row.req .exp { color: var(--muted); }
 
+/* the Practice landing: any problem, any time */
+.landing { grid-template-columns: minmax(0, 1fr); max-width: 900px; gap: 28px; }
+.landing .line { font-size: 14px; color: var(--muted); }
+.landing .cont { padding: 18px 20px; background: var(--panel); border: 1px solid var(--accent); display: flex; flex-direction: column; gap: 10px; }
+.landing .cont .ct { font-family: var(--head); font-weight: 700; font-size: 20px; }
+.landing .cont .cs { font-size: 13px; color: var(--muted); }
+.landing .cont .go { display: flex; gap: 12px; align-items: center; margin-top: 4px; }
+.landing .tlist { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.landing .tlist .lrow { display: grid; grid-template-columns: 24px minmax(0, 1fr) auto; align-items: center; gap: 14px; min-height: 44px; padding: 0 6px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+.landing .tlist .lrow .mk { color: var(--dim); font-size: 13px; text-align: center; }
+.landing .tlist .lrow .tt { color: var(--text); } .landing .tlist .lrow .tr { font-size: 12px; color: var(--dim); white-space: nowrap; }
+.landing .tlist .lrow:hover .tt { color: var(--accent); }
+.landing .tlist .lrow.done .tt, .landing .tlist .lrow.locked .tt { color: var(--dim); }
+.landing .tlist .lrow.done .mk { color: var(--accent); opacity: .6; }
+.landing .tlist .lrow.random .tt { color: var(--accent); }
+.landing .tlist .lrow.random .mk { color: var(--accent); }
+.subbar .back { color: var(--muted); font-size: 12px; margin-right: 6px; white-space: nowrap; } .subbar .back:hover { color: var(--accent); }
+/* the problem chips: no scrollbar, faded edges; scroll with the wheel or by dragging */
+@media (min-width: 1400px) {
+  .subbar .dots { scrollbar-width: none; -ms-overflow-style: none; padding: 0 20px; -webkit-mask-image: linear-gradient(to right, transparent, #000 20px, #000 calc(100% - 20px), transparent); mask-image: linear-gradient(to right, transparent, #000 20px, #000 calc(100% - 20px), transparent); cursor: grab; }
+  .subbar .dots::-webkit-scrollbar { display: none; }
+  .subbar .dots:active { cursor: grabbing; }
+}
+
 /* XP: the level next to the streak, with a thin bar to the next level */
 .xpbar { display: inline-block; width: 56px; height: 3px; background: var(--line-strong); vertical-align: middle; margin-left: 8px; }
 .xpbar i { display: block; height: 100%; background: var(--accent); }

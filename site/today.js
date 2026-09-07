@@ -1,7 +1,7 @@
 import { mountShell } from "./shell.js";
 import { onSynced, sync } from "./sync.js";
 import { loadBank, state, store, routeTopics, markerFor, milestoneStatus, milestones, streakInfo, weekRow, xpInfo, XP_PER_LEVEL, dayKey, today } from "./progress.js";
-import { MILESTONES } from "./route-data.js";
+import { MILESTONES, NEW_PER_DAY } from "./route-data.js";
 import { makeScene, GAINS, STAGE_WIDTH } from "./scene.js";
 import * as reviews from "./reviews.js";
 import { runPlan } from "./run.js";
@@ -11,7 +11,21 @@ const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replac
 const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const lessonOf = (t) => `L${String(t.lesson).padStart(2, "0")}`;
 
+// Signed out there is no run: three neutral rows, a sign-in button, and a way to try a problem anyway.
+function renderSignedOut() {
+  const cur = routeTopics().find((t) => !t.locked && t.total > 0 && t.done < t.total) || routeTopics().find((t) => t.total > 0);
+  const first = cur ? (cur.list.find((p) => !state.solved[p.id]) || cur.list[0]) : null;
+  $("streakline").hidden = true; $("xpline").hidden = true; $("keepblock").hidden = true;
+  const rows = [["Reviews", "sign in to get reviews"], ["New problems", `${NEW_PER_DAY} new problems`], ["One more", "one extra"]];
+  $("runcard").innerHTML = rows.map(([t, d], i) => `<div class="runrow"><span class="mk">${i + 1}</span><span><div class="t">${t}</div><div class="d">${d}</div></span><span class="tr"></span></div>`).join("");
+  const btn = $("runbtn");
+  btn.textContent = "Sign in to start"; btn.href = "#account"; btn.classList.add("primary");
+  $("runnote").innerHTML = first ? `<a href="practice.html?topic=${cur.concept}#${first.id}">or try a problem without an account</a>` : "";
+  renderExcerpt(cur ? cur.concept : null);
+}
 function render() {
+  $("streakline").hidden = false; $("xpline").hidden = false; $("keepblock").hidden = false;
+  if (!sync.user) { renderSignedOut(); return; }
   const now = today();
   $("dateline").textContent = `${DAYS[now.getDay()]} ${String(now.getMonth() + 1).padStart(2, "0")}.${String(now.getDate()).padStart(2, "0")}`;
   const plan = runPlan();
@@ -139,6 +153,14 @@ async function main() {
   await loadBank();
   render();
   $("firstvisit-close").addEventListener("click", () => { store.set("aboutSeen", true); $("firstvisit").hidden = true; });
+  // "Sign in to start" opens the sign-in controls in the header.
+  $("runbtn").addEventListener("click", (ev) => {
+    if (sync.user) return;
+    ev.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" });
+    const toggle = document.getElementById("email-toggle"), form = document.getElementById("email-form");
+    if (toggle && form && form.hidden) toggle.click();
+    const email = document.getElementById("email"); if (email) email.focus();
+  });
   onSynced(() => { render(); shell.refresh(); });
 }
 main().catch((e) => { $("runcard").innerHTML = `<div class="error" style="padding: 14px 18px;">Could not load: ${esc(e.message)}</div>`; });
