@@ -116,13 +116,24 @@ export function dayDone(key) {
   if (run) return run.newIds.length > 0 && run.newIds.every((id) => state.solved[id]) && (!run.extraId || state.solved[run.extraId]);
   return solvesOn(key).length >= NEW_PER_DAY + 1;   // a day worked on another machine
 }
+// A day is active when it has at least one solve or one review. The streak
+// counts consecutive active days ending today or yesterday; nothing else.
+export function activeDays() {
+  const days = new Set(Object.values(state.solved).map((iso) => dayKey(new Date(iso))));
+  for (const r of Object.values(store.get("reviews", {}))) if (r.reviewed_at) days.add(dayKey(new Date(r.reviewed_at)));
+  return days;
+}
 export function streakDays() {
+  const days = activeDays();
   let count = 0;
-  const day = new Date();
-  if (!dayDone(dayKey(day))) day.setDate(day.getDate() - 1);
-  while (dayDone(dayKey(day))) { count++; day.setDate(day.getDate() - 1); }
+  const day = today();
+  if (!days.has(dayKey(day))) day.setDate(day.getDate() - 1);
+  while (days.has(dayKey(day))) { count++; day.setDate(day.getDate() - 1); }
   return count;
 }
+// Full daily runs finished, all time. Separate from the streak on purpose: the
+// streak survives a light day, this number only grows on a complete one.
+export function runsCompleted() { return store.keys("run.").filter((k) => dayDone(k.slice(4))).length; }
 export function level() { return routeTopics().filter((t) => !t.extra && t.total > 0 && t.done === t.total).length + 1; }
 
 // ---- time spent today (only while a page is open and visible) ----

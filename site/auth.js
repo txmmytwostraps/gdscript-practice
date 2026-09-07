@@ -70,6 +70,13 @@ export async function upsertReviews(rowsToWrite) {
   if (error) throw new Error(error.message);
 }
 
+/** Every recorded attempt, oldest first. */
+export async function fetchAttempts() {
+  const { data, error } = await client.from("attempts").select("problem_id, kind, result, at").order("at", { ascending: true }).limit(5000);
+  if (error) throw new Error(error.message);
+  return data;
+}
+
 /** One run that reached a verdict. kind: new | review | practice; result: pass | miss. */
 export async function insertAttempt(userId, problemId, kind, result) {
   const { error } = await client.from("attempts").insert({ user_id: userId, problem_id: problemId, kind, result });

@@ -1,6 +1,6 @@
 import { mountShell } from "./shell.js";
 import { onSynced, sync } from "./sync.js";
-import { loadBank, state, store, todayRun, routeTopics, markerFor, nextMilestone, streakDays } from "./progress.js";
+import { loadBank, state, store, todayRun, routeTopics, markerFor, nextMilestone, streakDays, runsCompleted } from "./progress.js";
 import { MILESTONES } from "./route-data.js";
 import * as reviews from "./reviews.js";
 
@@ -27,6 +27,7 @@ function render() {
   const saved = store.get("run." + run.day, null);
   if (saved && saved.done !== run.allDone) { saved.done = run.allDone; store.set("run." + run.day, saved); }
   $("runcount").textContent = `${run.doneCount} / 3 · ${run.minutes} min`;
+  $("runsdone").textContent = String(runsCompleted());
   [...$("runbar").children].forEach((seg, i) => seg.classList.toggle("on", i < run.doneCount));
   const activeIdx = run.slots.findIndex((s) => !s.done);
   const firstNew = run.newIds.find((id) => !state.solved[id]);

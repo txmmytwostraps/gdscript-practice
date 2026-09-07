@@ -448,6 +448,8 @@ async function main() {
   });
 
   const fromHash = location.hash.slice(1);
+  const topicParam = new URLSearchParams(location.search).get("topic");   // links from Stats: practice.html?topic=<concept>
+  if (topicParam && state.problems.some((p) => p.concept === topicParam)) { filters.topic = topicParam; filters.difficulty = "any"; store.set("filters", filters); store.remove("current"); }
   if (reviewMode) {
     try { await reviews.refresh(); } catch (e) { /* use the cached queue */ }
     reviewIds = reviews.dueToday().pending.map((r) => r.problem_id);
