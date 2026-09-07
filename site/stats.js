@@ -31,7 +31,7 @@ function render() {
 
   // badges
   $("badges").innerHTML = milestones().map((m) => m.done
-    ? `<a href="gallery.html#${m.id}"><span>[x] Milestone ${m.number} · ${esc(m.title)}</span><span class="accent">${esc(m.badge || "done")}</span><span class="muted">${m.doneAt ? dayKey(new Date(m.doneAt)) : ""}${m.godotDone ? " · built in Godot" : ""}</span></a>`
+    ? `<a href="gallery.html#${m.id}"><span>✓ Milestone ${m.number} · ${esc(m.title)}</span><span class="accent">${esc(m.badge || "done")}</span><span class="muted">${m.doneAt ? dayKey(new Date(m.doneAt)) : ""}${m.godotDone ? " · built in Godot" : ""}</span></a>`
     : `<a href="route.html#${m.id}" class="dim"><span>[ ] Milestone ${m.number} · ${esc(m.title)}</span><span></span><span class="muted">${m.planned ? "planned" : m.unlocked ? `${m.stepsDone} / ${m.steps} steps` : `${m.topicsToGo} topic${m.topicsToGo === 1 ? "" : "s"} to go`}</span></a>`).join("");
 
   // per-topic tallies

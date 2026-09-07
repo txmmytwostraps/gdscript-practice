@@ -62,10 +62,10 @@ function renderExcerpt(currentConcept) {
   for (let i = from; i < to; i++) {
     const t = topics[i];
     const m = markerFor(t);
-    const cls = t.locked ? "locked" : m === "[x]" ? "done" : i === cur ? "current" : "";
+    const cls = t.locked ? "locked" : m === "✓" ? "done" : i === cur ? "current" : "";
     rows.push(`<a class="${cls}" href="route.html#${t.concept}"><span>${m} ${esc(t.title)}</span><span>${t.locked ? `locked · L${t.lesson}` : `${t.done}/${t.total}`}</span></a>`);
     const ms = MILESTONES.find((x) => x.after === t.concept);
-    if (ms) { const st = milestoneStatus(ms); rows.push(`<a class="milestone" href="${st.unlocked && !ms.planned ? `milestone.html?m=${ms.id}` : `route.html#${ms.id}`}"><span>${st.done ? "[x]" : "[!]"} MILESTONE ${ms.number} — ${esc(ms.title.toLowerCase())}</span><span>${st.done ? "done" : st.unlocked ? `${st.stepsDone}/${ms.steps} steps` : ""}</span></a>`); }
+    if (ms) { const st = milestoneStatus(ms); rows.push(`<a class="milestone" href="${st.unlocked && !ms.planned ? `milestone.html?m=${ms.id}` : `route.html#${ms.id}`}"><span>${st.done ? "✓" : "[!]"} MILESTONE ${ms.number} — ${esc(ms.title.toLowerCase())}</span><span>${st.done ? "done" : st.unlocked ? `${st.stepsDone}/${ms.steps} steps` : ""}</span></a>`); }
   }
   $("excerpt").innerHTML = rows.join("");
   renderCharacter();

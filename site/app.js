@@ -49,7 +49,7 @@ const el = {
   eyebrow: $("eyebrow"), title: $("title"), prompt: $("prompt"), requirements: $("requirements"), hints: $("hints"),
   solution: $("solution"), solutionToggle: $("solution-toggle"), tests: $("tests"), docs: $("docs"), doclist: $("doclist"), again: $("again"),
   run: $("run"), reset: $("reset"), next: $("next"), saved: $("saved"), judgeStatus: $("judge-status"),
-  results: $("results"), verdict: $("verdict"), count: $("count"), message: $("message"), resultTable: $("result-table"),
+  results: $("results"), verdict: $("verdict"), verdictSub: $("verdict-sub"), count: $("count"), message: $("message"), resultTable: $("result-table"),
   output: $("output"), outputLines: $("output-lines"), errors: $("errors"), errorLines: $("error-lines"),
   note: $("note"), noteResolved: $("note-resolved"), noteSaved: $("note-saved"), ask: $("ask"), askNote: $("ask-note"),
 };
@@ -129,6 +129,7 @@ let editor;
 // ---------- judge ----------
 const judge = new JudgeClient({
   src: "../web/index.html", container: $("judge-frame"), timeoutMs: 5000,
+  inline: new URLSearchParams(location.search).get("judge") === "inline",   // ?judge=inline: testing aid, see judge-client.js
   onStatus: (s) => {
     el.judgeStatus.textContent = { loading: "judge: loading…", ready: "judge: ready", timeout: "judge: timed out", crash: "judge: crashed", error: "judge: failed to load" }[s] || "judge: " + s;
     el.judgeStatus.className = "judge-status caps " + (s === "ready" ? "ready" : ["timeout", "crash", "error"].includes(s) ? "bad" : "");
@@ -223,9 +224,16 @@ function renderHintLocks(p) {
   const lv = $("hintlevel");
   if (lv) lv.innerHTML = `Hints: <b>${level}</b>${scaffold.overrideFor(p.concept) ? " (set by hand)" : ""} · <a href="route.html#${p.concept}">change on the route</a>`;
 }
+// A pass or a miss gets a large heading; the detail goes on the line under it.
 function setVerdict(kind, text, message) {
+  const detail = String(text || "").replace(/^[x]s*/, "");
+  el.verdict.textContent = kind === "pass" ? "✓ Correct" : kind === "fail" ? "✗ Not yet" : detail;
+  el.verdictSub.textContent = kind === "pass" || kind === "fail" ? detail : "";
+  el.verdictSub.hidden = !el.verdictSub.textContent;
+  setVerdictRest(kind, text, message);
+}
+function setVerdictRest(kind, text, message) {
   el.results.className = "results " + kind;
-  el.verdict.textContent = text;
   el.message.textContent = message || ""; el.message.hidden = !message;
 }
 function clearResults() {
@@ -384,6 +392,7 @@ async function nextDrill() {
 }
 function showVariant(v) {
   current = v; activeMode = "normal"; parsons = null; bugCode = "";
+  el.run.classList.remove("dim"); if (el.judgeStatus.classList.contains("ready")) el.run.disabled = false;
   if (v.concept !== filters.topic) { filters.topic = v.concept; store.set("filters", filters); }
   renderFilters();
   renderProblem(v);
@@ -408,7 +417,7 @@ function pickNext() {
   if (list.length === 0) return;
   const unsolved = list.filter((p) => !state.solved[p.id] && (!current || p.id !== current.id));
   const from = unsolved.length ? unsolved : list.filter((p) => !current || p.id !== current.id);
-  if (unsolved.length === 0) setVerdict("pass", "[x] Every problem in this topic is solved", "Here is a random one to redo.");
+  if (unsolved.length === 0) setVerdict("pass", "Every problem in this topic is solved", "Here is a random one to redo.");
   const choice = from.length ? from[Math.floor(Math.random() * from.length)] : list[0];
   showProblem(choice.id, { keepResults: unsolved.length === 0 });
 }
@@ -420,7 +429,7 @@ async function runCode() {
   setVerdict("", "Running…"); editor.markError(null);
   const code = activeMode === "parsons" && parsons ? parsons.get() : editor.get();
   try { const { result, errors } = await judge.run(code, current); renderResult(result, errors); }
-  catch (e) { if (!e.timedOut) setVerdict("fail", "[x] Could not run", e.message); }
+  catch (e) { if (!e.timedOut) setVerdict("fail", "Could not run", e.message); }
   finally { running = false; if (el.judgeStatus.classList.contains("ready")) el.run.disabled = false; }
 }
 function missText(id) { const after = current ? unlockAfter(current) : 2; return `miss ${Math.min(state.fails[id] || 0, after)} of ${after}`; }
@@ -429,18 +438,19 @@ function renderResult(result, errors) {
   const p = current, rtype = returnType(p.signature);
   const drill = Boolean(drillTopic && p.variant);
   const miss = drill ? drillVerdict.bind(null, false) : recordFail;
-  if (result.status === "compile_error") { miss(p.id); setVerdict("fail", `[x] Did not compile${drill ? "" : " · " + missText(p.id)}`); el.count.textContent = `0 / ${p.tests.length} tests`; showErrors(errors, "Parse error"); return; }
-  if (result.status === "error") { miss(p.id); setVerdict("fail", drill ? "[x] Not yet" : `[x] ${missText(p.id)}`, result.error); el.count.textContent = `0 / ${p.tests.length} tests`; showErrors(errors); return; }
+  if (result.status === "compile_error") { miss(p.id); setVerdict("fail", `Did not compile${drill ? "" : " · " + missText(p.id)}`); el.count.textContent = `0 / ${p.tests.length} tests`; showErrors(errors, "Parse error"); return; }
+  if (result.status === "error") { miss(p.id); setVerdict("fail", drill ? "Not yet" : `${missText(p.id)}`, result.error); el.count.textContent = `0 / ${p.tests.length} tests`; showErrors(errors); return; }
   const allPass = result.passed === result.total;
   if (!allPass) miss(p.id);
-  setVerdict(allPass ? "pass" : "fail", allPass ? (drill ? "[x] Variant solved · counts as practice" : "[x] All tests pass · solved") : drill ? "[x] Not yet" : `[x] Not yet · ${missText(p.id)}`, allPass && drill ? "Next variant when you are ready." : "");
+  setVerdict(allPass ? "pass" : "fail", allPass ? (drill ? "Variant solved · counts as practice" : "All tests pass · solved") : drill ? "Not yet" : `Not yet · ${missText(p.id)}`, allPass && drill ? "" : "");
+  if (allPass && drill) { el.message.innerHTML = `<button type="button" class="btn primary" id="drill-next">Next variant →</button>`; el.message.hidden = false; el.run.disabled = true; el.run.classList.add("dim"); }
   el.count.textContent = `${result.passed} / ${result.total} tests`;
   const printOnly = p.tests.some((t) => t.expect === null && t.out);
   el.resultTable.innerHTML = `<tr><th></th><th>The judge called</th><th>${printOnly ? "Expected output" : "Correct answer"}</th><th>${printOnly ? "Your output" : "Your code returned"}</th></tr>` + result.results.map((r, i) => {
     const t = p.tests[i] || {};
     const yours = (t.expect === null && t.out) ? printedHtml(r.out, true) : esc(fmtTyped(r.got, rtype)) + (t.out ? `\n${printedHtml(r.out)}` : "");
-    const err = r.error ? `<span class="out">${esc(r.error)}</span>` : "";
-    return `<tr class="${r.pass ? "pass" : "fail"}"><td class="mark">${r.pass ? "✓" : "✗"}</td><td>${t.name ? `<span class="check">${esc(t.name)}</span>` : ""}${framesLabel(t)}${esc(callStr(p, r.args))}</td><td>${expectHtml(p, t)}</td><td>${yours}${err}</td></tr>`;
+    const cell = r.error ? `<span class="err">${esc(r.error)}</span>` : yours;
+    return `<tr class="${r.pass ? "pass" : "fail"}"><td class="mark">${r.pass ? "✓" : "✗"}</td><td>${t.name ? `<span class="check">${esc(t.name)}</span>` : ""}${framesLabel(t)}${esc(callStr(p, r.args))}</td><td>${expectHtml(p, t)}</td><td class="got">${cell}</td></tr>`;
   }).join("");
   el.resultTable.hidden = false;
   const printed = result.results.flatMap((r, i) => r.out.map((line) => `[test ${i + 1}] ${line}`));
@@ -471,7 +481,7 @@ function markSolved(id) {
   renderFilters();
   logVerdict(id, true, first);
   // Completing a topic starts its review week.
-  if (first && sync.user && current) reviews.scheduleTopicIfCleared(sync.user, current.concept).then((started) => { if (started) setVerdict("pass", "[x] Topic cleared", "Reviews for this topic start tomorrow: two a day for a week."); }).catch(() => {});
+  if (first && sync.user && current) reviews.scheduleTopicIfCleared(sync.user, current.concept).then((started) => { if (started) setVerdict("pass", "Topic cleared", "Reviews for this topic start tomorrow: two a day for a week."); }).catch(() => {});
   // The first solve in a topic puts its concept cards into the review queue.
   if (first && sync.user && current) reviews.scheduleCardsIfStarted(sync.user, current.concept).catch(() => {});
 }
@@ -487,8 +497,8 @@ function logVerdict(id, passed, wasNew) {
     const clean = passed && attemptFails === 0;
     reviews.recordResult(sync.user, id, passed, clean).then(() => {
       renderTodayBar();
-      if (passed) setVerdict("pass", clean ? "[x] Review passed cleanly" : "[x] Passed after a miss", clean ? "Next review in a few days." : "This one comes back tomorrow until it is solved cleanly twice.");
-      else setVerdict("fail", `[x] Review missed · ${missText(id)}`, "It comes back tomorrow. You can keep working on it now; that will not change the schedule.");
+      if (passed) setVerdict("pass", clean ? "Review passed cleanly" : "Passed after a miss", clean ? "Next review in a few days." : "This one comes back tomorrow until it is solved cleanly twice.");
+      else setVerdict("fail", `Review missed · ${missText(id)}`, "It comes back tomorrow. You can keep working on it now; that will not change the schedule.");
     }).catch((e) => sync.note("Could not save the review: " + e.message));
   }
 }
@@ -519,11 +529,11 @@ async function main() {
     if (!current || drillTopic || activeMode !== "normal" || (reviewMode && reviewIds.includes(current.id))) return;   // drafts only for the plain problem
     el.saved.textContent = "…";
     clearTimeout(saveTimer);
-    saveTimer = setTimeout(() => { const text = editor.get(); if (text === current.starter) { clearDraft(current.id); el.saved.textContent = ""; } else { setDraft(current.id, text); el.saved.textContent = "saved"; } sync.push(current.id); }, 300);
+    saveTimer = setTimeout(() => { const text = editor.get(); if (text.replace(/[ 	]+$/gm, "") === current.starter.replace(/[ 	]+$/gm, "")) { clearDraft(current.id); el.saved.textContent = ""; } else { setDraft(current.id, text); el.saved.textContent = "saved"; } sync.push(current.id); }, 300);
   });
   await loadBank();
   try { await loadCards(); } catch (e) { /* the page works without the card links */ }
-  judge.load().catch((e) => setVerdict("fail", "[x] The judge could not start", e.message));   // before any problem loads: bug variants need it
+  judge.load().catch((e) => setVerdict("fail", "The judge could not start", e.message));   // before any problem loads: bug variants need it
 
   el.topic.addEventListener("change", () => { filters.topic = el.topic.value; store.set("filters", filters); renderFilters(); if (!current || !matches(state.byId.get(current.id))) pickNext(); });
   el.difficulty.addEventListener("change", () => { filters.difficulty = el.difficulty.value; store.set("filters", filters); renderFilters(); if (!current || !matches(state.byId.get(current.id))) pickNext(); });
@@ -542,6 +552,7 @@ async function main() {
   el.note.addEventListener("input", () => { el.noteSaved.textContent = "…"; clearTimeout(noteTimer); noteTimer = setTimeout(() => saveNote({ text: el.note.value }), 600); });
   el.noteResolved.addEventListener("change", () => saveNote({ resolved: el.noteResolved.checked }));
   el.ask.addEventListener("click", askClaude);
+  el.results.addEventListener("click", (ev) => { if (ev.target.closest("#drill-next")) nextDrill(); });
   el.hints.addEventListener("click", (ev) => {
     const b = ev.target.closest("button[data-hint]"); if (!b || b.classList.contains("locked")) return;
     const p = b.nextElementSibling; p.hidden = !p.hidden; b.textContent = (p.hidden ? "[+] " : "[-] ") + b.textContent.slice(4);
@@ -574,7 +585,7 @@ async function main() {
     try { await reviews.refresh(); } catch (e) { /* use the cached queue */ }
     reviewIds = reviews.dueToday().pending.map((r) => r.problem_id);
     el.next.textContent = "Next review ›";
-    if (reviewIds.length === 0) { setVerdict("pass", "[x] No reviews due", "Nothing to review right now."); location.href = "./"; return; }
+    if (reviewIds.length === 0) { setVerdict("pass", "No reviews due", "Nothing to review right now."); location.href = "./"; return; }
     await showProblem(reviewIds.includes(fromHash) ? fromHash : reviewIds[0]);
   } else {
     const startId = state.byId.has(fromHash) ? fromHash : store.get("current", null);
@@ -586,4 +597,4 @@ async function main() {
   onSynced((what) => { if (what === "user" && sync.user) scaffold.refresh(sync.user).then(() => { if (current) updateSolutionLock(current); });
     if (what === "local-changed" && current && activeMode === "normal") { const d = getDraft(current.id); editor.set(d ? d.code : current.starter); updateSolutionLock(current); } if ((what === "local-changed" || what === "merged") && current) renderNote(current); renderFilters(); shell.refresh(); });
 }
-main().catch((e) => { setVerdict("fail", "[x] Could not load the problem bank", e.message); });
+main().catch((e) => { setVerdict("fail", "Could not load the problem bank", e.message); });

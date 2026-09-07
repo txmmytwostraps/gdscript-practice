@@ -5,8 +5,9 @@
 // this page does not, so we can remove the iframe (killing the loop) and load
 // a fresh one.
 export class JudgeClient {
-  constructor({ src, container, timeoutMs = 5000, reloadDelayMs = 2000, onStatus = () => {}, onTimeout = null }) {
+  constructor({ src, container, timeoutMs = 5000, reloadDelayMs = 2000, onStatus = () => {}, onTimeout = null, inline = false }) {
     this.src = src;
+    this.inline = inline;   // testing aid: no sandbox, for browsers that block opaque-origin frames
     this.container = container;
     this.timeoutMs = timeoutMs;
     this.reloadDelayMs = reloadDelayMs;
@@ -43,7 +44,7 @@ export class JudgeClient {
   _create() {
     this.loads += 1;
     const f = document.createElement("iframe");
-    f.setAttribute("sandbox", "allow-scripts");
+    if (!this.inline) f.setAttribute("sandbox", "allow-scripts");
     f.src = this.src + (this.src.includes("?") ? "&" : "?") + "n=" + this.loads; // defeat bfcache reuse
     this.frame = f;
     this.container.appendChild(f);

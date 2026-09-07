@@ -31,7 +31,9 @@ const judge = new JudgeClient({
 
 function setVerdict(kind, text, message) {
   $("results").className = "results " + (kind || "");
-  $("verdict").textContent = text;
+  const detail = String(text || "").replace(/^[x]s*/, "");
+  $("verdict").textContent = kind === "pass" ? "✓ Correct" : kind === "fail" ? "✗ Not yet" : detail;
+  $("verdict-sub").textContent = kind === "pass" || kind === "fail" ? detail : ""; $("verdict-sub").hidden = !$("verdict-sub").textContent;
   $("message").textContent = message || ""; $("message").hidden = !message;
 }
 function clearResults() { setVerdict("", "Run the checks to see where the step stands."); $("count").textContent = ""; $("result-table").hidden = true; $("errors").hidden = true; }
@@ -46,8 +48,8 @@ function describe(t) {
 function renderSteps() {
   const st = milestoneStatus(meta);
   const godotOn = location.hash === "#godot";
-  $("steps").innerHTML = data.steps.map((s, i) => `<a href="#s${i + 1}" class="${state.solved[s.id] ? "done" : ""} ${!godotOn && i === stepAt ? "current" : ""}">${state.solved[s.id] ? "[x]" : "[ ]"} Step ${i + 1}</a>`).join("")
-    + `<a href="#godot" class="godot ${st.godotDone ? "done" : ""} ${godotOn ? "current" : ""}">${st.godotDone ? "[x]" : "[ ]"} In Godot</a>`;
+  $("steps").innerHTML = data.steps.map((s, i) => `<a href="#s${i + 1}" class="${state.solved[s.id] ? "done" : ""} ${!godotOn && i === stepAt ? "current" : ""}">${state.solved[s.id] ? "✓" : "[ ]"} Step ${i + 1}</a>`).join("")
+    + `<a href="#godot" class="godot ${st.godotDone ? "done" : ""} ${godotOn ? "current" : ""}">${st.godotDone ? "✓" : "[ ]"} In Godot</a>`;
   $("banner").hidden = !st.done;
   if (st.done) $("banner").innerHTML = `<span>[!] Milestone ${meta.number} complete · ${esc(meta.badge)}</span><a href="gallery.html#${meta.id}">See it in the Gallery ›</a>${st.godotDone ? "" : `<a href="#godot">Build it in Godot ›</a>`}`;
   $("next").hidden = !(step && state.solved[step.id] && stepAt < data.steps.length - 1);
@@ -94,7 +96,7 @@ async function runChecks() {
     const { result, errors } = await judge.run(editor.get(), step);
     renderResult(result, errors);
     stage.refresh();
-  } catch (e) { if (!e.timedOut) setVerdict("fail", "[x] Could not run", e.message); }
+  } catch (e) { if (!e.timedOut) setVerdict("fail", "Could not run", e.message); }
   finally { running = false; if ($("judge-status").classList.contains("ready")) $("run").disabled = false; }
 }
 function renderResult(result, errors) {
@@ -106,23 +108,23 @@ function renderResult(result, errors) {
     if (lines.length > 20) shown.push(`… ${lines.length - 20} more lines hidden`);
     if (shown.length) { $("error-lines").textContent = shown.join("\n"); $("errors").hidden = false; const m = /line (\d+)/.exec(shown.join("\n")); if (m) editor.markError(Number(m[1]) - 1); }
   };
-  if (result.status === "compile_error") { setVerdict("fail", "[x] Did not compile"); $("count").textContent = `0 / ${step.tests.length} checks`; showErrors(errors.length ? errors : [result.error]); return; }
-  if (result.status === "error") { setVerdict("fail", "[x] Not yet", result.error); $("count").textContent = `0 / ${step.tests.length} checks`; showErrors(errors); return; }
+  if (result.status === "compile_error") { setVerdict("fail", "Did not compile"); $("count").textContent = `0 / ${step.tests.length} checks`; showErrors(errors.length ? errors : [result.error]); return; }
+  if (result.status === "error") { setVerdict("fail", "Not yet", result.error); $("count").textContent = `0 / ${step.tests.length} checks`; showErrors(errors); return; }
   const allPass = result.passed === result.total;
   $("count").textContent = `${result.passed} / ${result.total} checks`;
   $("result-table").innerHTML = `<tr><th></th><th>Check</th><th>Should be</th><th>Your script gave</th></tr>` + result.results.map((r, i) => {
     const t = step.tests[i] || {};
-    return `<tr class="${r.pass ? "pass" : "fail"}"><td class="mark">${r.pass ? "✓" : "✗"}</td><td>${esc(t.name || "")}<div class="why">${esc(describe(t))}</div></td><td>${esc(JSON.stringify(r.expect))}</td><td>${r.error ? `<span class="why">${esc(r.error)}</span>` : esc(JSON.stringify(r.got))}</td></tr>`;
+    return `<tr class="${r.pass ? "pass" : "fail"}"><td class="mark">${r.pass ? "✓" : "✗"}</td><td>${esc(t.name || "")}<div class="why">${esc(describe(t))}</div></td><td>${esc(JSON.stringify(r.expect))}</td><td class="got">${r.error ? `<span class="err">${esc(r.error)}</span>` : esc(JSON.stringify(r.got))}</td></tr>`;
   }).join("");
   $("result-table").hidden = false;
   if (errors.length) showErrors(errors);
-  if (allPass) markStepDone(); else setVerdict("fail", "[x] Not yet", "Fix what the failing check says, then run again.");
+  if (allPass) markStepDone(); else setVerdict("fail", "Not yet", "Fix what the failing check says, then run again.");
 }
 function markStepDone() {
   const first = !state.solved[step.id];
   if (first) { state.solved[step.id] = new Date().toISOString(); saveSolved(); sync.push(step.id); if (sync.user) auth.insertAttempt(sync.user.id, step.id, "milestone", "pass").catch(() => {}); }
   const st = milestoneStatus(meta);
-  setVerdict("pass", st.done ? `[x] Step ${stepAt + 1} done · milestone complete` : `[x] Step ${stepAt + 1} done`, stepAt < data.steps.length - 1 ? "The next step starts from this script." : st.godotDone ? "" : "Now build the same robot in Godot: the last tab above.");
+  setVerdict("pass", st.done ? `Step ${stepAt + 1} done · milestone complete` : `Step ${stepAt + 1} done`, stepAt < data.steps.length - 1 ? "The next step starts from this script." : st.godotDone ? "" : "Now build the same robot in Godot: the last tab above.");
   renderSteps();
 }
 
@@ -145,7 +147,7 @@ async function main() {
   editor = makeEditor($("editor"), { onRun: runChecks });
   scene = makeScene($("stage"));
   stage = wireScene(scene, judge, { buttonsEl: $("scene-buttons"), noteEl: $("scene-note"), getCode: () => editor.get() });
-  judge.load().catch((e) => setVerdict("fail", "[x] The judge could not start", e.message));
+  judge.load().catch((e) => setVerdict("fail", "The judge could not start", e.message));
   let saveTimer = null, refreshTimer = null;
   editor.onChange(() => {
     if (!step) return;
@@ -179,4 +181,4 @@ async function main() {
   route();
   onSynced((what) => { if (what === "local-changed" && step) { const d = getDraft(step.id); editor.set(d ? d.code : step.starter); } renderSteps(); shell.refresh(); });
 }
-main().catch((e) => { setVerdict("fail", "[x] Could not load the milestone", e.message); $("title").textContent = "Milestone"; });
+main().catch((e) => { setVerdict("fail", "Could not load the milestone", e.message); $("title").textContent = "Milestone"; });

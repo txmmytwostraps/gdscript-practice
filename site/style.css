@@ -119,3 +119,14 @@
   .CodeMirror, .editor-host textarea { min-height: 34rem; }
   .CodeMirror-scroll { min-height: 34rem; }
 }
+
+/* verdict: a large heading, tinted panel */
+.verdict-head { display: flex; flex-direction: column; gap: 4px; }
+.verdict { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.results.pass .verdict, .results.fail .verdict { font-family: var(--head); font-weight: 700; font-size: 24px; line-height: 1.1; letter-spacing: 0; text-transform: none; }
+.verdict-sub { font-size: 12px; color: var(--muted); }
+.results.pass { background: rgba(126, 240, 194, 0.07); } .results.fail { background: rgba(255, 112, 133, 0.07); }
+.results.pass .verdict-sub { color: var(--accent); } .results.fail .verdict-sub { color: var(--error); }
+#result-table tr.pass .got { color: var(--accent); } #result-table tr.fail .got { color: var(--error); }
+#result-table .err { color: var(--error); font-size: 12px; }
+.btn.dim { opacity: 0.4; }

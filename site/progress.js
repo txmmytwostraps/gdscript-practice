@@ -86,7 +86,7 @@ export function nextMilestone() {
   const list = milestones();
   return list.find((m) => !m.done) || null;
 }
-export function markerFor(t) { return t.locked ? "[#]" : t.done === t.total && t.total > 0 ? "[x]" : t.done > 0 ? "[>]" : "[ ]"; }
+export function markerFor(t) { return t.locked ? "[#]" : t.done === t.total && t.total > 0 ? "✓" : t.done > 0 ? "[>]" : "[ ]"; }
 
 // ---- the daily run ----
 // Assigned once per day and kept, so the numbers do not shift while you work:

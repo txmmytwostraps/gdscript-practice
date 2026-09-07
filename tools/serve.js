@@ -1,12 +1,16 @@
 // Minimal static file server for local testing. No dependencies.
-// Usage: node tools/serve.js [port]   (serves the repo root)
+// Usage: node tools/serve.js [port]                 (serves the repo root over http)
+//        node tools/serve.js [port] cert.pem key.pem (the same over https, for
+//        browsers that only run the web export in a secure context)
 // Needed because browsers refuse to load .wasm from file:// URLs.
 const http = require("http");
+const https = require("https");
 const fs = require("fs");
 const path = require("path");
 
 const root = path.resolve(__dirname, "..");
 const port = Number(process.argv[2]) || 8060;
+const tls = process.argv[3] && process.argv[4] ? { cert: fs.readFileSync(process.argv[3]), key: fs.readFileSync(process.argv[4]) } : null;
 const mime = {
   ".html": "text/html; charset=utf-8",
   ".js": "text/javascript",
@@ -18,7 +22,7 @@ const mime = {
   ".ico": "image/x-icon",
 };
 
-http.createServer((req, res) => {
+const handler = (req, res) => {
   let p = decodeURIComponent(req.url.split("?")[0]);
   if (p.endsWith("/")) p += "index.html";
   const file = path.join(root, p);
@@ -30,4 +34,5 @@ http.createServer((req, res) => {
     res.writeHead(200, { "Content-Type": mime[path.extname(file)] || "application/octet-stream", "Access-Control-Allow-Origin": "*", "Cache-Control": "no-cache" });
     res.end(data);
   });
-}).listen(port, () => console.log(`serving ${root} at http://localhost:${port}/`));
+};
+(tls ? https.createServer(tls, handler) : http.createServer(handler)).listen(port, () => console.log(`serving ${root} at ${tls ? "https" : "http"}://localhost:${port}/`));

@@ -35,9 +35,9 @@ function render() {
     for (const t of here) {
       const m = markerFor(t);
       const isCur = cur && t.concept === cur.concept;
-      const cls = t.locked ? "locked" : isCur ? "current" : m === "[x]" ? "done" : "";
+      const cls = t.locked ? "locked" : isCur ? "current" : m === "✓" ? "done" : "";
       const sub = t.locked ? `L${String(t.lesson).padStart(2, "0")} · locked until you clear it in the course`
-        : m === "[x]" ? `L${String(t.lesson).padStart(2, "0")} · ${t.done}/${t.total} · cleared ${short(t.clearedAt)}`
+        : m === "✓" ? `L${String(t.lesson).padStart(2, "0")} · ${t.done}/${t.total} · cleared ${short(t.clearedAt)}`
         : isCur ? `L${String(t.lesson).padStart(2, "0")} · ${t.done}/${t.total} · ${t.total - t.done} to go`
         : `L${String(t.lesson).padStart(2, "0")} · ${t.done}/${t.total}`;
       const note = t.note ? ` · ${esc(t.note)}` : "";
@@ -52,7 +52,7 @@ function render() {
         const planned = milestone.planned;
         const st = milestoneStatus(milestone);
         const afterTitle = t.title;
-        const k = planned ? "" : st.done ? "[x] " : st.unlocked ? "[!] " : "";
+        const k = planned ? "" : st.done ? "✓ " : st.unlocked ? "[!] " : "";
         const when = planned ? `unlocks after ${esc(afterTitle)}`
           : st.done ? `done ${short(st.doneAt)}${st.godotDone ? " · built in Godot" : ""} · <a href="gallery.html#${milestone.id}">gallery</a>`
           : st.unlocked ? `<a class="btn primary" href="milestone.html?m=${milestone.id}">${st.stepsDone ? `Continue · ${st.stepsDone}/${milestone.steps}` : "Start"}</a>`
